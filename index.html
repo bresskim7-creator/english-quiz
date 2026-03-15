@@ -587,12 +587,14 @@
                 </div>
             </div>
 
-            <div class="webhook-settings" id="webhook-settings">
+            <div id="webhook-settings-toggle" style="font-size:12px;color:#999;cursor:pointer;text-align:center;" onclick="document.getElementById('webhook-settings').style.display='block';this.style.display='none';">⚙️ 설정</div>
+            <div class="webhook-settings" id="webhook-settings" style="display:none;">
                 <div class="stats-title">설정</div>
                 <label style="font-size:12px;color:#666;display:block;margin-bottom:4px;">Google Sheets 웹훅 URL</label>
                 <input type="url" id="webhook-input" placeholder="https://script.google.com/..."
                        style="width:100%;padding:10px;border:1px solid #ddd;border-radius:6px;font-size:13px;box-sizing:border-box;" />
                 <button onclick="saveWebhookUrl()" style="margin-top:8px;padding:8px 16px;background:#2F5496;color:white;border:none;border-radius:6px;font-size:13px;cursor:pointer;">저장</button>
+                <button onclick="document.getElementById('webhook-settings').style.display='none';document.getElementById('webhook-settings-toggle').style.display='block';" style="margin-top:8px;margin-left:4px;padding:8px 16px;background:#f0f0f0;border:1px solid #ddd;border-radius:6px;font-size:13px;cursor:pointer;color:#666;">닫기</button>
                 <div id="webhook-status" style="font-size:11px;color:#4CAF50;margin-top:4px;"></div>
             </div>
         </div>
