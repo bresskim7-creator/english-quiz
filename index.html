@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>영어 Lesson 1</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2F5496">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        /* 공통 컨테이너 */
+        .app-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+        }
+
+        /* 상단 바 */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background-color: #2F5496;
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(47, 84, 150, 0.15);
+            z-index: 100;
+        }
+
+        .header-title {
+            font-size: 18px;
+            flex: 1;
+            text-align: center;
+        }
+
+        /* 페이지별 표시 */
+        .page {
+            display: none;
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 16px;
+        }
+
+        .page.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== 홈 화면 ===== */
+        #home-page {
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .home-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2F5496;
+            margin-bottom: 10px;
+        }
+
+        .today-button {
+            width: 85%;
+            max-width: 300px;
+            padding: 24px 20px;
+            background: linear-gradient(135deg, #2F5496 0%, #1a3a6f 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(47, 84, 150, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .today-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(47, 84, 150, 0.4);
+        }
+
+        .today-button:active {
+            transform: translateY(0);
+        }
+
+        .button-subtitle {
+            display: block;
+            font-size: 12px;
+            font-weight: 400;
+            margin-top: 8px;
+            opacity: 0.95;
+        }
+
+        /* 학습 현황 카드 */
+        .stats-card {
+            width: 90%;
+            max-width: 350px;
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e0e0;
+        }
+
+        .stats-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 14px;
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .stat-value {
+            color: #2F5496;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        /* ===== 퀴즈 화면 ===== */
+        #quiz-page {
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background-color: #e0e0e0;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background-color: #4CAF50;
+            transition: width 0.3s ease;
+        }
+
+        .question-number {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .question-text {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .instruction-text {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+
+        /* Fill Blank 스타일 */
+        .choices-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .choice-btn {
+            padding: 14px 12px;
+            background-color: #f0f0f0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .choice-btn:active {
+            transform: scale(0.98);
+        }
+
+        .choice-btn.correct {
+            background-color: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+
+        .choice-btn.incorrect {
+            background-color: #F44336;
+            color: white;
+            border-color: #F44336;
+        }
+
+        .choice-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Arrange 스타일 */
+        .arrange-container {
+            margin-bottom: 16px;
+        }
+
+        .selected-words {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 12px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border: 2px dashed #ddd;
+            min-height: 50px;
+            margin-bottom: 12px;
+            align-content: flex-start;
+        }
+
+        .selected-word {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background-color: #e3f2fd;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid #90caf9;
+        }
+
+        .remove-word-btn {
+            background: none;
+            border: none;
+            color: #2196F3;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 0;
+        }
+
+        .available-words {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .word-btn {
+            padding: 10px 14px;
+            background-color: #f0f0f0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .word-btn:active {
+            transform: scale(0.98);
+        }
+
+        .word-btn.used {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .word-btn.correct {
+            background-color: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+
+        .word-btn.incorrect {
+            background-color: #F44336;
+            color: white;
+            border-color: #F44336;
+        }
+
+        /* Match 스타일 */
+        .match-options {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .match-option {
+            padding: 14px;
+            background-color: #f0f0f0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+
+        .match-option:active {
+            transform: scale(0.98);
+        }
+
+        .match-option.correct {
+            background-color: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+
+        .match-option.incorrect {
+            background-color: #F44336;
+            color: white;
+            border-color: #F44336;
+        }
+
+        /* 컨트롤 버튼 */
+        .quiz-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+            padding-top: 16px;
+        }
+
+        .btn-quit {
+            flex: 1;
+            padding: 14px;
+            background-color: #f0f0f0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .btn-quit:active {
+            background-color: #e0e0e0;
+        }
+
+        /* ===== 완료 화면 ===== */
+        #result-page {
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .result-score {
+            font-size: 48px;
+            font-weight: 700;
+            color: #2F5496;
+            text-align: center;
+        }
+
+        .result-label {
+            font-size: 16px;
+            color: #666;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .missed-questions {
+            width: 90%;
+            max-width: 350px;
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e0e0;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .missed-question-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 13px;
+        }
+
+        .missed-question-item:last-child {
+            border-bottom: none;
+        }
+
+        .missed-keyword {
+            font-weight: 600;
+            color: #F44336;
+        }
+
+        .missed-answer {
+            font-size: 12px;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        .result-buttons {
+            display: flex;
+            gap: 10px;
+            width: 90%;
+            max-width: 350px;
+            flex-direction: column;
+        }
+
+        .btn-export {
+            padding: 14px;
+            background: linear-gradient(135deg, #4CAF50 0%, #388e3c 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-home {
+            padding: 14px;
+            background-color: #2F5496;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-export:active, .btn-home:active {
+            opacity: 0.9;
+        }
+
+        /* 배열형 건너뛰기 버튼 */
+        .btn-skip {
+            flex: 1;
+            padding: 14px;
+            background-color: #fff3e0;
+            border: 2px solid #ff9800;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            color: #e65100;
+        }
+
+        /* 힌트 버튼 */
+        .btn-hint {
+            flex: 1;
+            padding: 14px;
+            background-color: #fff8e1;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            color: #f57f17;
+        }
+
+        /* 결과 화면 - 아이용 섹션 */
+        .result-kid-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .result-emoji {
+            font-size: 64px;
+        }
+
+        .result-score {
+            font-size: 48px;
+            font-weight: 700;
+            color: #2F5496;
+        }
+
+        .result-kid-message {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2F5496;
+            text-align: center;
+        }
+
+        /* 결과 화면 - 부모용 섹션 */
+        .result-parent-section {
+            width: 90%;
+            max-width: 350px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .result-parent-toggle {
+            padding: 10px;
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #666;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        /* 웹훅 설정 */
+        .webhook-settings {
+            width: 90%;
+            max-width: 350px;
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0e0e0;
+        }
+        </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <div class="header-title">영어 Lesson 1</div>
+            <button id="mute-toggle" onclick="toggleMute()" style="background:none;border:none;color:white;font-size:20px;cursor:pointer;padding:4px 8px;">🔊</button>
+        </div>
+
+        <!-- 홈 화면 -->
+        <div id="home-page" class="page active">
+            <div class="home-title">오늘의 학습</div>
+            <button class="today-button" onclick="startSession()">
+                오늘의 학습 시작
+                <span class="button-subtitle">12문항 · 약 10분</span>
+            </button>
+
+            <div class="stats-card">
+                <div class="stats-title">학습 현황</div>
+                <div class="stat-row">
+                    <span class="stat-label">총 학습일수</span>
+                    <span class="stat-value"><span id="stat-days">0</span>일</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">전체 정답률</span>
+                    <span class="stat-value"><span id="stat-accuracy">0</span>%</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">마스터한 문항</span>
+                    <span class="stat-value"><span id="stat-mastered">0</span>/80</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">복습 필요</span>
+                    <span class="stat-value"><span id="stat-review">0</span>개</span>
+                </div>
+            </div>
+
+            <div class="webhook-settings" id="webhook-settings">
+                <div class="stats-title">설정</div>
+                <label style="font-size:12px;color:#666;display:block;margin-bottom:4px;">Google Sheets 웹훅 URL</label>
+                <input type="url" id="webhook-input" placeholder="https://script.google.com/..."
+                       style="width:100%;padding:10px;border:1px solid #ddd;border-radius:6px;font-size:13px;box-sizing:border-box;" />
+                <button onclick="saveWebhookUrl()" style="margin-top:8px;padding:8px 16px;background:#2F5496;color:white;border:none;border-radius:6px;font-size:13px;cursor:pointer;">저장</button>
+                <div id="webhook-status" style="font-size:11px;color:#4CAF50;margin-top:4px;"></div>
+            </div>
+        </div>
+
+        <!-- 퀴즈 화면 -->
+        <div id="quiz-page" class="page">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="question-number" id="question-number">1 / 12</div>
+
+            <div class="instruction-text" id="instruction-text">빈칸에 알맞은 단어를 고르세요.</div>
+            <div class="question-text" id="question-text"></div>
+
+            <!-- Fill Blank -->
+            <div id="fill-blank-container" class="choices-grid" style="display: none;"></div>
+
+            <!-- Arrange -->
+            <div id="arrange-container" class="arrange-container" style="display: none;">
+                <div class="selected-words" id="selected-words"></div>
+                <div class="available-words" id="available-words"></div>
+            </div>
+
+            <!-- Match -->
+            <div id="match-container" class="match-options" style="display: none;"></div>
+
+            <div id="hint-display" style="display:none;background:#fff8e1;border:1px solid #ffc107;border-radius:8px;padding:10px 14px;font-size:13px;color:#795548;margin-top:8px;"></div>
+            <div class="quiz-controls" id="quiz-controls">
+                <button class="btn-hint" id="btn-hint" onclick="showHint()">💡 힌트</button>
+                <button class="btn-quit" onclick="quitQuiz()">그만하기</button>
+                <button class="btn-skip" id="btn-skip" onclick="skipArrange()" style="display:none;">건너뛰기</button>
+            </div>
+        </div>
+
+        <!-- 결과 화면 -->
+        <div id="result-page" class="page">
+            <!-- 아이용 전면 -->
+            <div class="result-kid-section">
+                <div class="result-emoji">🎉</div>
+                <div class="result-score"><span id="result-percentage">0</span>%</div>
+                <div class="result-kid-message">오늘 끝! 내일 또 만나요 👋</div>
+                <button class="btn-home" onclick="goHome()">홈으로</button>
+            </div>
+
+            <!-- 부모용 하단 -->
+            <div class="result-parent-section">
+                <button class="result-parent-toggle" onclick="toggleParentSection()">▼ 상세 결과 보기 (부모용)</button>
+                <div id="parent-detail" style="display:none;">
+                    <div class="missed-questions" id="missed-questions-container" style="display: none;">
+                        <div class="stats-title">틀린 문항</div>
+                        <div id="missed-questions-list"></div>
+                    </div>
+                    <button class="btn-export" onclick="exportResults()">학습 결과 내보내기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 전역 변수
+        let isMuted = localStorage.getItem('sound_muted') === 'true';
+        let arrangeCheckInterval = null;
+        let hintUsedThisQuestion = false;
+
+        // 전체 80문항 데이터 (임베드)
+        // Sound effects
+        function toggleMute() {
+            isMuted = !isMuted;
+            localStorage.setItem('sound_muted', isMuted);
+            document.getElementById('mute-toggle').textContent = isMuted ? '🔇' : '🔊';
+        }
+
+        function playSound(type) {
+            if (isMuted) return;
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                gain.gain.value = 0.3;
+
+                if (type === 'correct') {
+                    osc.frequency.value = 880;
+                    osc.type = 'sine';
+                    osc.start();
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+                    osc.stop(ctx.currentTime + 0.3);
+                } else {
+                    osc.frequency.value = 330;
+                    osc.type = 'square';
+                    osc.start();
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.4);
+                    osc.stop(ctx.currentTime + 0.4);
+                }
+            } catch(e) {}
+        }
+
+        // Hint handling
+        function showHint() {
+            const q = currentSession[currentQuestionIndex];
+            if (q && q.hint) {
+                document.getElementById('hint-display').textContent = q.hint;
+                document.getElementById('hint-display').style.display = 'block';
+                hintUsedThisQuestion = true;
+            }
+        }
+
+        // Skip arrange question
+        function skipArrange() {
+            if (arrangeCheckInterval) {
+                clearInterval(arrangeCheckInterval);
+                arrangeCheckInterval = null;
+            }
+            const q = currentSession[currentQuestionIndex];
+            recordAnswer(q, false);
+            document.getElementById('btn-skip').style.display = 'none';
+            currentQuestionIndex++;
+            showQuestion();
+        }
+
+        // Result page parent section toggle
+        function toggleParentSection() {
+            const detail = document.getElementById('parent-detail');
+            const btn = document.querySelector('.result-parent-toggle');
+            if (detail.style.display === 'none') {
+                detail.style.display = 'flex';
+                detail.style.flexDirection = 'column';
+                detail.style.gap = '12px';
+                btn.textContent = '▲ 상세 결과 접기';
+            } else {
+                detail.style.display = 'none';
+                btn.textContent = '▼ 상세 결과 보기 (부모용)';
+            }
+        }
+
+        // Webhook settings
+        function saveWebhookUrl() {
+            const url = document.getElementById('webhook-input').value.trim();
+            if (url) {
+                localStorage.setItem('webhook_url', url);
+                document.getElementById('webhook-status').textContent = '✓ 저장되었습니다';
+                setTimeout(() => { document.getElementById('webhook-status').textContent = ''; }, 2000);
+            }
+        }
+
+        const QUIZ_DATA = {
+            "questions": [{"id": "W01", "category": "취약단어", "type": "fill_blank", "difficulty": "medium", "keyword": "lively", "tags": ["vocab", "단어뜻"], "instruction": "빈칸에 알맞은 단어를 고르세요.", "sentence": "At night, your body starts to feel sleepy. In the morning, your body starts to feel _____.", "blank_answer": "lively", "choices": ["lively", "active", "awake", "asleep"], "correct": 0, "hint": "활기 넘치는 (a.) — 교과서 p.16", "page": 16}, {"id": "W02", "category": "취약단어", "type": "fill_blank", "difficulty": "medium", "keyword": "lively", "tags": ["vocab", "단어뜻"], "instruction": "빈칸에 알맞은 단어를 고르세요.", "sentence": "The children looked happy and _____ at the playground.", "blank_answer": "lively", "choices": ["asleep", "tired", "lively", "careful"], "correct": 2, "hint": "lively = 활기 넘치는, active와 비슷하지만 '생기 있는' 느낌", "page": 16}, {"id": "W03", "category": "취약단어", "type": "fill_blank", "difficulty": "medium", "keyword": "without", "tags": ["vocab", "단어뜻"], "instruction": "빈칸에 알맞은 단어를 고르세요.", "sentence": "I sleep _____ music. It's too quiet, but I like it.", "blank_answer": "without", "choices": ["with", "without", "about", "before"], "correct": 1, "hint": "~없이 (prep.) — 교과서 p.19", "page": 19}, {"id": "W04", "category": "취약단어", "type": "fill_blank", "difficulty": "hard", "keyword": "without", "tags": ["vocab", "문법"], "instruction": "빈칸에 알맞은 단어를 고르세요.", "sentence": "Don't go outside _____ checking the weather first.", "blank_answer": "without", "choices": ["before", "after", "without", "during"], "correct": 2, "hint": "without + ~ing = ~하지 않고", "page": 19}, {"id": "W05", "category": "취약단어", "type": "fill_blank", "difficulty": "medium", "keyword": "what to do", "tags": ["vocab", "의문사+to부정사"], "instruction": "빈칸에 알맞은 표현을 고르세요.", "sentence": "Let's find out _____.", "blank_answer": "what to do", "choices": ["what to do", "how to do", "what doing", "to do what"], "correct": 0, "hint": "의문사 + to부정사: what to do = 무엇을 해야 할지", "page": 8}, {"id": "W06", "category": "취약단어", "type": "fill_blank", "difficulty": "medium", "keyword": "what to do", "tags": ["vocab", "의문사+to부정사"], "instruction": "빈칙에 알맞은 표현을 고르세요.", "sentence": "I can't decide _____ on vacation.", "blank_answer": "where to go", "choices": ["where to go", "where going", "to go where", "go where to"], "correct": 0, "hint": "의문사 + to부정사 패턴: where to go = 어디로 갈지", "page": 20}, {"id": "W07", "category": "취약단어", "type": "fill_blank", "difficulty": "medium", "keyword": "careful", "tags": ["vocab", "형용사vs부사"], "instruction": "빈칸에 careful과 carefully 중 알맞은 것을 고르세요.", "sentence": "Be _____ about caffeine. It can cause sleep problems.", "blank_answer": "careful", "choices": ["careful", "carefully", "careless", "caring"], "correct": 0, "hint": "Be + 형용사: Be careful (조심하는 상태)", "page": 16}, {"id": "W08", "category": "취약단어", "type": "fill_blank", "difficulty": "medium", "keyword": "careful", "tags": ["vocab", "형용사vs부사"], "instruction": "빈칙에 careful과 carefully 중 알맞은 것을 고르세요.", "sentence": "Please read the instructions _____.", "blank_answer": "carefully", "choices": ["careful", "carefully", "careless", "carefulness"], "correct": 1, "hint": "동사 read를 꾸미는 부사 → carefully", "page": 16}, {"id": "S01A", "category": "핵심문장_빈칸형", "type": "fill_blank", "difficulty": "medium", "keyword": "Do you have any special goals", "tags": ["핵심문장", "빈칙"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "Do you have any _____ goals for this year?", "blank_answer": "special", "choices": ["special", "simple", "general", "similar"], "correct": 0, "hint": "원문: Do you have any special goals for this year?", "page": 8}, {"id": "S02A", "category": "핵심문장_빈칙형", "type": "fill_blank", "difficulty": "medium", "keyword": "Yes, I'm planning to exercise", "tags": ["핵심문장", "빈칙"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "Yes, I'm _____ to exercise more.", "blank_answer": "planning", "choices": ["planning", "hoping", "wanting", "trying"], "correct": 0, "hint": "원문: Yes, I'm planning to exercise more.", "page": 8}, {"id": "S03A", "category": "핵심문장_빈칙형", "type": "fill_blank", "difficulty": "medium", "keyword": "I want to perform at the school festival", "tags": ["핵심문장", "빈칙"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "I want to _____ at the school festival.", "blank_answer": "perform", "choices": ["perform", "practice", "prepare", "present"], "correct": 0, "hint": "원문: I want to perform at the school festival.", "page": 8}, {"id": "S04A", "category": "핵심문장_빈칙형", "type": "fill_blank", "difficulty": "medium", "keyword": "Sounds great. You can do it!", "tags": ["핵심문장", "빈칙"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "Sounds great. You _____ do it!", "blank_answer": "can", "choices": ["can", "may", "will", "must"], "correct": 0, "hint": "원문: Sounds great. You can do it!", "page": 8}, {"id": "S05A", "category": "핵심문장_빈칙형", "type": "fill_blank", "difficulty": "medium", "keyword": "If you use your smartphone late at night", "tags": ["핵심문장", "빈칙"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "If you use your smartphone late at night, your brain will stay _____.", "blank_answer": "active", "choices": ["active", "asleep", "awake", "lively"], "correct": 0, "hint": "원문: If you use your smartphone late at night, your brain will stay active.", "page": 8}, {"id": "S06A", "category": "핵심문장_빈칙형", "type": "fill_blank", "difficulty": "medium", "keyword": "Let's find out what to do", "tags": ["핵심문장", "빈칙"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "Let's find out _____ to do.", "blank_answer": "what", "choices": ["what", "how", "when", "where"], "correct": 0, "hint": "원문: Let's find out what to do.", "page": 8}, {"id": "S01B", "category": "핵심문장_배열형", "type": "arrange", "difficulty": "hard", "keyword": "Do you have any special goals", "tags": ["핵심문장", "배열"], "instruction": "단어를 올바른 순서로 배열하세요.", "sentence_ko": "올해 특별한 목표가 있니?", "words": ["goals", "any", "have", "for", "special", "you", "Do", "this year"], "answer": "Do you have any special goals for this year?", "hint": "한국어 뜻: 올해 특별한 목표가 있니?", "page": 8}, {"id": "S02B", "category": "핵심문장_배열형", "type": "arrange", "difficulty": "hard", "keyword": "Yes, I'm planning to exercise", "tags": ["핵심문장", "배열"], "instruction": "단어를 올바른 순서로 배열하세요.", "sentence_ko": "응, 나는 운동을 더 할 계획이야.", "words": ["planning", "I'm", "Yes,", "more", "exercise", "to"], "answer": "Yes, I'm planning to exercise more.", "hint": "한국어 뜻: 응, 나는 운동을 더 할 계획이야.", "page": 8}, {"id": "S03B", "category": "핵심문장_배열형", "type": "arrange", "difficulty": "hard", "keyword": "I want to perform at the school festival", "tags": ["핵심문장", "배열"], "instruction": "단어를 올바른 순서로 배열하세요.", "sentence_ko": "나는 학교 축제에서 공연하고 싶어.", "words": ["want", "I", "at", "to", "perform", "the school festival"], "answer": "I want to perform at the school festival.", "hint": "한국어 뜻: 나는 학교 축제에서 공연하고 싶어.", "page": 8}, {"id": "S04B", "category": "핵심문장_배열형", "type": "arrange", "difficulty": "hard", "keyword": "Sounds great. You can do it!", "tags": ["핵심문장", "배열"], "instruction": "단어를 올바른 순서로 배열하세요.", "sentence_ko": "좋은데. 너는 할 수 있어!", "words": ["Sounds", "You", "great.", "do", "can", "it!"], "answer": "Sounds great. You can do it!", "hint": "한국어 뜻: 좋은데. 너는 할 수 있어!", "page": 8}, {"id": "S05B", "category": "핵심문장_배열형", "type": "arrange", "difficulty": "hard", "keyword": "If you use your smartphone late at night", "tags": ["핵심문장", "배열", "조건문"], "instruction": "단어를 올바른 순서로 배열하세요.", "sentence_ko": "만약 밤늦게 스마트폰을 사용하면, 뇌가 활동적인 상태를 유지할 것이다.", "words": ["If", "your smartphone", "you use", "late at night,", "your brain", "will stay", "active"], "answer": "If you use your smartphone late at night, your brain will stay active.", "hint": "한국어 뜻: 만약 밤늦게 스마트폰을 사용하면, 뇌가 활동적인 상태를 유지할 것이다.", "page": 8}, {"id": "S06B", "category": "핵심문장_배열형", "type": "arrange", "difficulty": "hard", "keyword": "Let's find out what to do", "tags": ["핵심문장", "배열"], "instruction": "단어를 올바른 순서로 배열하세요.", "sentence_ko": "무엇을 해야 할지 알아보자.", "words": ["find", "Let's", "what", "do", "out", "to"], "answer": "Let's find out what to do.", "hint": "한국어 뜻: 무엇을 해야 할지 알아보자.", "page": 8}, {"id": "S01C", "category": "핵심문장_해석매칭형", "type": "match", "difficulty": "medium", "keyword": "Do you have any special goals", "tags": ["핵심문장", "해석"], "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.", "sentence_ko": "올해 특별한 목표가 있니?", "choices": ["Do you have any special goals for this year?", "Do you have any special plans for this year?", "Did you have any special goals last year?", "Do you have any new goals for next year?"], "correct": 0, "hint": "핵심 표현에 주목하세요.", "page": 8}, {"id": "S02C", "category": "핵심문장_해석매칭형", "type": "match", "difficulty": "medium", "keyword": "Yes, I'm planning to exercise", "tags": ["핵심문장", "해석"], "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.", "sentence_ko": "응, 나는 운동을 더 할 계획이야.", "choices": ["Yes, I'm planning to exercise more.", "Yes, I'm going to exercise more.", "Yes, I'm planning to study more.", "Yes, I planned to exercise more."], "correct": 0, "hint": "핵심 표현에 주목하세요.", "page": 8}, {"id": "S03C", "category": "핵심문장_해석매칭형", "type": "match", "difficulty": "medium", "keyword": "I want to perform at the school festival", "tags": ["핵심문장", "해석"], "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.", "sentence_ko": "나는 학교 축제에서 공연하고 싶어.", "choices": ["I want to perform at the school festival.", "I want to practice at the school festival.", "I want to perform at the school concert.", "I wanted to perform at the school festival."], "correct": 0, "hint": "핵심 표현에 주목하세요.", "page": 8}, {"id": "S04C", "category": "핵심문장_해석매칭형", "type": "match", "difficulty": "medium", "keyword": "Sounds great. You can do it!", "tags": ["핵심문장", "해석"], "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.", "sentence_ko": "좋은데. 너는 할 수 있어!", "choices": ["Sounds great. You can do it!", "Sounds good. You can do it!", "Sounds great. You will do it!", "Sounds great. You can make it!"], "correct": 0, "hint": "핵심 표현에 주목하세요.", "page": 8}, {"id": "S05C", "category": "핵심문장_해석매칭형", "type": "match", "difficulty": "medium", "keyword": "If you use your smartphone late at night", "tags": ["핵심문장", "해석", "조건문"], "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.", "sentence_ko": "만약 밤늦게 스마트폰을 사용하면, 뇌가 활동적인 상태를 유지할 것이다.", "choices": ["If you use your smartphone late at night, your brain will stay active.", "If you use your smartphone late at night, your brain will stay awake.", "If you use your smartphone in the morning, your brain will stay active.", "If you use your smartphone late at night, your eyes will stay active."], "correct": 0, "hint": "핵심 표현에 주목하세요.", "page": 8}, {"id": "S06C", "category": "핵심문장_해석매칭형", "type": "match", "difficulty": "medium", "keyword": "Let's find out what to do", "tags": ["핵심문장", "해석"], "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.", "sentence_ko": "무엇을 해야 할지 알아보자.", "choices": ["Let's find out what to do.", "Let's find out how to do it.", "Let's find out what to eat.", "Let's figure out what to do."], "correct": 0, "hint": "핵심 표현에 주목하세요.", "page": 8}, {"id": "Q027", "category": "추가_단어뜻", "type": "fill_blank", "difficulty": "easy", "keyword": "wake up", "tags": ["vocab", "단어뜻"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "Your body clock tells you when to _____ and sleep.", "blank_answer": "wake up", "choices": ["sleep", "wake up", "stay", "rest"], "correct": 1, "hint": "깨다, 일어나다 (p.14)", "page": 14}, {"id": "Q028", "category": "추가_단어뜻", "type": "fill_blank", "difficulty": "easy", "keyword": "goal", "tags": ["vocab", "단어뜻"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "What is your _____ for next year?", "blank_answer": "goal", "choices": ["goal", "plan", "idea", "habit"], "correct": 0, "hint": "목표 (n.) — 교과서 p.8", "page": 8}, {"id": "Q029", "category": "추가_단어뜻", "type": "fill_blank", "difficulty": "easy", "keyword": "exercise", "tags": ["vocab", "단어뜻"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "I _____ every day to stay healthy.", "blank_answer": "exercise", "choices": ["sleep", "exercise", "rest", "nap"], "correct": 1, "hint": "운동하다 (v.) — 교과서 p.17", "page": 17}, {"id": "Q030", "category": "추가_단어뜻", "type": "fill_blank", "difficulty": "easy", "keyword": "habit", "tags": ["vocab", "단어뜻"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "Good _____ are important for your health.", "blank_answer": "habits", "choices": ["habits", "hobbies", "choices", "styles"], "correct": 0, "hint": "습관 (n.) — 교과서 p.15", "page": 15}, {"id": "Q031", "category": "추가_단어뜻", "type": "fill_blank", "difficulty": "easy", "keyword": "sleep", "tags": ["vocab", "단어뜻"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "Children should _____ eight hours a day.", "blank_answer": "sleep", "choices": ["play", "sleep", "study", "read"], "correct": 1, "hint": "잠자다 (v.) / 수면 (n.) — 교과서 p.15", "page": 15}, {"id": "Q032", "category": "추가_단어뜻", "type": "fill_blank", "difficulty": "easy", "keyword": "bedtime", "tags": ["vocab", "단어뜻"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "Don't use your phone before _____.", "blank_answer": "bedtime", "choices": ["morning", "bedtime", "daytime", "evening"], "correct": 1, "hint": "취침 시간 (n.) — 교과서 p.15", "page": 15}, {"id": "Q033", "category": "추가_단어뜻", "type": "fill_blank", "difficulty": "easy", "keyword": "caffeine", "tags": ["vocab", "단어뜻"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "Coffee has _____, which can cause sleep problems.", "blank_answer": "caffeine", "choices": ["caffeine", "sugar", "salt", "milk"], "correct": 0, "hint": "카페인 (n.) — 교과서 p.14", "page": 14}, {"id": "Q034", "category": "추가_단어뜻", "type": "fill_blank", "difficulty": "easy", "keyword": "awake", "tags": ["vocab", "단어뜻"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "The blue light keeps you _____.", "blank_answer": "awake", "choices": ["asleep", "tired", "awake", "calm"], "correct": 2, "hint": "깨어 있는 (a.) — 교과서 p.17", "page": 17}, {"id": "Q035", "category": "추가_단어뜻", "type": "fill_blank", "difficulty": "easy", "keyword": "nap", "tags": ["vocab", "단어뜻"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "A short _____ in the afternoon can help you rest.", "blank_answer": "nap", "choices": ["break", "nap", "snack", "walk"], "correct": 1, "hint": "낮잠 (n.) — 교과서 p.15", "page": 15}, {"id": "Q036", "category": "추가_단어뜻", "type": "fill_blank", "difficulty": "easy", "keyword": "pattern", "tags": ["vocab", "단어뜻"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "A regular sleep _____ is important.", "blank_answer": "pattern", "choices": ["pattern", "schedule", "routine", "timing"], "correct": 0, "hint": "패턴, 양식 (n.) — 교과서 p.16", "page": 16}, {"id": "Q037", "category": "추가_단어뜻", "type": "fill_blank", "difficulty": "easy", "keyword": "energy", "tags": ["vocab", "단어뜻"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "Good sleep gives you _____ for the day.", "blank_answer": "energy", "choices": ["energy", "strength", "power", "force"], "correct": 0, "hint": "에너지, 활력 (n.) — 교과서 p.15", "page": 15}, {"id": "Q038", "category": "추가_단어뜻", "type": "fill_blank", "difficulty": "easy", "keyword": "concert", "tags": ["vocab", "단어뜻"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "I want to sing at the _____ next month.", "blank_answer": "concert", "choices": ["concert", "festival", "school", "party"], "correct": 0, "hint": "콘서트 (n.) — 교과서 p.10", "page": 10}, {"id": "Q039", "category": "추가_문법_if조건문", "type": "fill_blank", "difficulty": "medium", "keyword": "if 조건문", "tags": ["문법", "if조건문"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "If you study hard, you _____ pass the test.", "blank_answer": "will", "choices": ["will", "would", "can", "should"], "correct": 0, "hint": "if 조건문: If + 현재시제, will + 동사원형", "page": 20}, {"id": "Q040", "category": "추가_문법_if조건문", "type": "fill_blank", "difficulty": "medium", "keyword": "if 조건문", "tags": ["문법", "if조건문"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "If it rains tomorrow, we _____ stay at home.", "blank_answer": "will", "choices": ["will", "can", "might", "should"], "correct": 0, "hint": "if 조건문: If + 현재시제, will + 동사원형", "page": 20}, {"id": "Q041", "category": "추가_문법_의문사to부정사", "type": "fill_blank", "difficulty": "medium", "keyword": "의문사+to부정사", "tags": ["문법", "의문사+to부정사"], "instruction": "빈칙에 알맞은 표현을 고르세요.", "sentence": "I don't know _____ at the restaurant.", "blank_answer": "what to eat", "choices": ["what to eat", "what eating", "eat what", "what I eat"], "correct": 0, "hint": "의문사 + to부정사: what to eat = 무엇을 먹을지", "page": 20}, {"id": "Q042", "category": "추가_문법_의문사to부정사", "type": "fill_blank", "difficulty": "medium", "keyword": "의문사+to부정사", "tags": ["문법", "의문사+to부정사"], "instruction": "빈칙에 알맞은 표현을 고르세요.", "sentence": "Can you tell me _____ this computer?", "blank_answer": "how to use", "choices": ["how to use", "how using", "use how", "how I use"], "correct": 0, "hint": "의문사 + to부정사: how to use = 어떻게 사용할지", "page": 20}, {"id": "Q043", "category": "추가_표현_planning", "type": "fill_blank", "difficulty": "medium", "keyword": "be planning to", "tags": ["표현", "의도"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "She is _____ to learn piano this year.", "blank_answer": "planning", "choices": ["planning", "thinking", "hoping", "trying"], "correct": 0, "hint": "be planning to = ~할 계획이다", "page": 8}, {"id": "Q044", "category": "추가_표현_performing", "type": "fill_blank", "difficulty": "medium", "keyword": "want to perform", "tags": ["표현", "의도"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "They _____ to dance at the talent show.", "blank_answer": "want", "choices": ["want", "wish", "hope", "need"], "correct": 0, "hint": "want to = ~하고 싶다", "page": 8}, {"id": "Q045", "category": "추가_표현_encouragement", "type": "fill_blank", "difficulty": "medium", "keyword": "You can do it", "tags": ["표현", "격려"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "Don't worry! _____ can do it!", "blank_answer": "You", "choices": ["You", "I", "He", "We"], "correct": 0, "hint": "You can do it! = 넌 할 수 있어!", "page": 8}, {"id": "Q046", "category": "추가_문법_if조건문", "type": "fill_blank", "difficulty": "hard", "keyword": "if 조건문", "tags": ["문법", "if조건문"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "If you _____ your smartphone late at night, your brain will stay active.", "blank_answer": "use", "choices": ["use", "used", "will use", "using"], "correct": 0, "hint": "if 조건문의 if절은 현재시제", "page": 20}, {"id": "Q047", "category": "추가_문법_if조건문", "type": "fill_blank", "difficulty": "hard", "keyword": "if 조건문", "tags": ["문법", "if조건문"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "If you _____ early, you will feel better.", "blank_answer": "wake up", "choices": ["wake up", "woken up", "will wake", "waking up"], "correct": 0, "hint": "if 조건문: If + 현재시제, will + 동사원형", "page": 20}, {"id": "Q048", "category": "추가_문법_without", "type": "fill_blank", "difficulty": "hard", "keyword": "without", "tags": ["문법", "전치사"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "You can't succeed _____ working hard.", "blank_answer": "without", "choices": ["without", "with", "by", "through"], "correct": 0, "hint": "without + ~ing = ~하지 않고", "page": 19}, {"id": "Q049", "category": "추가_표현_sleep", "type": "fill_blank", "difficulty": "medium", "keyword": "sleep", "tags": ["표현", "수면습관"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "You should _____ early to feel healthy.", "blank_answer": "sleep", "choices": ["sleep", "rest", "lie down", "relax"], "correct": 0, "hint": "sleep = 잠자다", "page": 15}, {"id": "Q050", "category": "추가_문법_have", "type": "fill_blank", "difficulty": "medium", "keyword": "have", "tags": ["문법", "동사"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "Do you _____ any plans for this weekend?", "blank_answer": "have", "choices": ["have", "has", "had", "having"], "correct": 0, "hint": "현재형 의문문: Do you have...?", "page": 8}, {"id": "Q051", "category": "추가_배열형", "type": "arrange", "difficulty": "hard", "keyword": "배열형", "tags": ["배열", "문장"], "instruction": "단어를 올바른 순서로 배열하세요.", "sentence_ko": "당신의 목표가 무엇인지 말해 봅시다.", "words": ["your", "are", "goals", "What", "this", "year", "?"], "answer": "What are your goals this year?", "hint": "의문문 어순에 주목하세요.", "page": 8}, {"id": "Q052", "category": "추가_배열형", "type": "arrange", "difficulty": "hard", "keyword": "배열형", "tags": ["배열", "문장"], "instruction": "단어를 올바른 순서로 배열하세요.", "sentence_ko": "나는 더 많은 책을 읽을 계획이야.", "words": ["I'm", "planning", "to", "more", "books", "read"], "answer": "I'm planning to read more books.", "hint": "to부정사 표현에 주목하세요.", "page": 8}, {"id": "Q053", "category": "추가_배열형", "type": "arrange", "difficulty": "hard", "keyword": "배열형", "tags": ["배열", "문장"], "instruction": "단어를 올바른 순서로 배열하세요.", "sentence_ko": "너는 할 수 있어. 좋아!", "words": ["You", "do", "can", "it", "Great", "!"], "answer": "You can do it! Great!", "hint": "격려 표현입니다.", "page": 8}, {"id": "Q054", "category": "추가_배열형", "type": "arrange", "difficulty": "hard", "keyword": "배열형", "tags": ["배열", "문장", "조건문"], "instruction": "단어를 올바른 순서로 배열하세요.", "sentence_ko": "만약 당신이 규칙적으로 운동하면, 당신은 더 건강해질 것이다.", "words": ["If", "you", "regularly", "exercise", ",", "you", "will", "be", "healthier"], "answer": "If you exercise regularly, you will be healthier.", "hint": "if 조건문의 어순에 주목하세요.", "page": 20}, {"id": "Q055", "category": "추가_배열형", "type": "arrange", "difficulty": "hard", "keyword": "배열형", "tags": ["배열", "문장"], "instruction": "단어를 올바른 순서로 배열하세요.", "sentence_ko": "나는 학교에서 무엇을 배워야 할지 모르겠어.", "words": ["I", "don't", "know", "what", "to", "learn", "at", "school"], "answer": "I don't know what to learn at school.", "hint": "의문사 + to부정사 표현입니다.", "page": 20}, {"id": "Q056", "category": "추가_배열형", "type": "arrange", "difficulty": "hard", "keyword": "배열형", "tags": ["배열", "문장"], "instruction": "단어를 올바른 순서로 배열하세요.", "sentence_ko": "좋은 수면 습관은 당신의 건강에 중요하다.", "words": ["Good", "sleep", "habits", "are", "important", "for", "your", "health"], "answer": "Good sleep habits are important for your health.", "hint": "주어 + be동사 + 형용사의 어순입니다.", "page": 16}, {"id": "Q057", "category": "추가_배열형", "type": "arrange", "difficulty": "hard", "keyword": "배열형", "tags": ["배열", "문장"], "instruction": "단어를 올바른 순서로 배열하세요.", "sentence_ko": "카페인은 수면에 문제를 일으킬 수 있다.", "words": ["Caffeine", "can", "cause", "sleep", "problems"], "answer": "Caffeine can cause sleep problems.", "hint": "조동사 can의 뒤에는 동사원형이 옵니다.", "page": 14}, {"id": "Q058", "category": "추가_배열형", "type": "arrange", "difficulty": "hard", "keyword": "배열형", "tags": ["배열", "문장"], "instruction": "단어를 올바른 순서로 배열하세요.", "sentence_ko": "밤에 스마트폰을 사용하면 뇌가 활동적이 된다.", "words": ["Your", "brain", "stays", "active", "if", "you", "use", "smartphone", "at", "night"], "answer": "Your brain stays active if you use smartphone at night.", "hint": "주절 + if절의 순서입니다.", "page": 17}, {"id": "Q059", "category": "추가_배열형", "type": "arrange", "difficulty": "hard", "keyword": "배열형", "tags": ["배열", "문장"], "instruction": "단어를 올바른 순서로 배열하세요.", "sentence_ko": "우리는 건강한 수면 습관을 배워야 한다.", "words": ["We", "should", "learn", "healthy", "sleep", "habits"], "answer": "We should learn healthy sleep habits.", "hint": "조동사 should의 뒤에는 동사원형이 옵니다.", "page": 16}, {"id": "Q060", "category": "추가_배열형", "type": "arrange", "difficulty": "hard", "keyword": "배열형", "tags": ["배열", "문장"], "instruction": "단어를 올바른 순서로 배열하세요.", "sentence_ko": "그들은 그들의 새로운 목표에 대해 이야기하고 있다.", "words": ["They", "are", "talking", "about", "their", "new", "goals"], "answer": "They are talking about their new goals.", "hint": "현재진행형 be + ~ing입니다.", "page": 8}, {"id": "Q061", "category": "추가_해석매칭", "type": "match", "difficulty": "medium", "keyword": "해석매칭", "tags": ["해석", "문장"], "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.", "sentence_ko": "좋은 수면 습관을 만드세요.", "choices": ["Make good sleep habits.", "Have good sleep habits.", "Keep good sleep habits.", "Build good sleep habits."], "correct": 1, "hint": "have good sleep habits = 좋은 수면 습관을 가지다", "page": 15}, {"id": "Q062", "category": "추가_해석매칭", "type": "match", "difficulty": "medium", "keyword": "해석매칭", "tags": ["해석", "문장"], "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.", "sentence_ko": "규칙적으로 운동하세요.", "choices": ["Exercise regularly.", "Exercise usually.", "Exercise daily.", "Exercise often."], "correct": 0, "hint": "regularly = 규칙적으로", "page": 17}, {"id": "Q063", "category": "추가_해석매칭", "type": "match", "difficulty": "medium", "keyword": "해석매칭", "tags": ["해석", "문장"], "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.", "sentence_ko": "카페인을 조심하세요.", "choices": ["Be careful about caffeine.", "Be careful with caffeine.", "Be careful of caffeine.", "Be careful for caffeine."], "correct": 0, "hint": "be careful about = ~을 조심하다", "page": 16}, {"id": "Q064", "category": "추가_해석매칭", "type": "match", "difficulty": "medium", "keyword": "해석매칭", "tags": ["해석", "문장"], "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.", "sentence_ko": "스마트폰을 자기 전에 사용하지 마세요.", "choices": ["Don't use your smartphone before bedtime.", "Don't use your smartphone after bedtime.", "Stop using your smartphone after bedtime.", "Avoid using your smartphone before sleep."], "correct": 0, "hint": "before bedtime = 자기 전에", "page": 17}, {"id": "Q065", "category": "추가_해석매칭", "type": "match", "difficulty": "medium", "keyword": "해석매칭", "tags": ["해석", "문장"], "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.", "sentence_ko": "너의 뇌 시계에 귀 기울여야 한다.", "choices": ["Listen to your body clock.", "Hear your body clock.", "Pay attention to your body clock.", "Watch your body clock."], "correct": 0, "hint": "listen to = 귀 기울이다", "page": 16}, {"id": "Q066", "category": "추가_해석매칭", "type": "match", "difficulty": "medium", "keyword": "해석매칭", "tags": ["해석", "문장"], "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.", "sentence_ko": "낮 동안 운동하세요.", "choices": ["Exercise during the day.", "Exercise in the day.", "Exercise at the day.", "Exercise in daytime."], "correct": 0, "hint": "during the day = 낮 동안에", "page": 17}, {"id": "Q067", "category": "추가_해석매칭", "type": "match", "difficulty": "medium", "keyword": "해석매칭", "tags": ["해석", "문장"], "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.", "sentence_ko": "충분한 수면이 필요하다.", "choices": ["You need enough sleep.", "You need much sleep.", "You need more sleep.", "You need good sleep."], "correct": 0, "hint": "enough sleep = 충분한 수면", "page": 15}, {"id": "Q068", "category": "추가_해석매칭", "type": "match", "difficulty": "medium", "keyword": "해석매칭", "tags": ["해석", "문장"], "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.", "sentence_ko": "파란 빛이 뇌에 나쁘다.", "choices": ["Blue light is bad for your brain.", "Blue light is harmful to your brain.", "Blue light affects your brain.", "Blue light hurts your brain."], "correct": 0, "hint": "blue light = 파란 빛", "page": 17}, {"id": "Q069", "category": "추가_해석매칭", "type": "match", "difficulty": "medium", "keyword": "해석매칭", "tags": ["해석", "문장"], "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.", "sentence_ko": "너는 건강하게 느껴질 것이다.", "choices": ["You will feel healthier.", "You will feel more healthy.", "You will feel better health.", "You will be healthy."], "correct": 0, "hint": "feel healthier = 더 건강하게 느끼다", "page": 16}, {"id": "Q070", "category": "추가_해석매칭", "type": "match", "difficulty": "medium", "keyword": "해석매칭", "tags": ["해석", "문장"], "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.", "sentence_ko": "넌 정시에 학교에 갈 수 있어.", "choices": ["You can get to school on time.", "You can reach school on time.", "You can go to school on time.", "You can arrive at school on time."], "correct": 0, "hint": "get to = 도착하다", "page": 14}, {"id": "Q071", "category": "추가_문법복합", "type": "fill_blank", "difficulty": "hard", "keyword": "복합문법", "tags": ["문법", "복합"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "If you don't get enough sleep, you _____ tired at school.", "blank_answer": "will be", "choices": ["will be", "are", "be", "were"], "correct": 0, "hint": "if 조건문에서 미래 결과는 will + 동사", "page": 20}, {"id": "Q072", "category": "추가_문법복합", "type": "fill_blank", "difficulty": "hard", "keyword": "복합문법", "tags": ["문법", "복합"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "I know how to _____ a healthy lifestyle.", "blank_answer": "maintain", "choices": ["maintain", "keeping", "to keep", "keep"], "correct": 3, "hint": "how to + 동사원형", "page": 20}, {"id": "Q073", "category": "추가_문법복합", "type": "fill_blank", "difficulty": "hard", "keyword": "복합문법", "tags": ["문법", "복합"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "She can't decide _____ to buy the blue dress or red dress.", "blank_answer": "whether", "choices": ["whether", "what", "which", "where"], "correct": 2, "hint": "which to ~ = 어느 것을 할지", "page": 20}, {"id": "Q074", "category": "추가_문법복합", "type": "fill_blank", "difficulty": "hard", "keyword": "복합문법", "tags": ["문법", "복합"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "If you _____ water regularly, you will stay healthy.", "blank_answer": "drink", "choices": ["drink", "drinks", "will drink", "drinking"], "correct": 0, "hint": "if절에서는 현재형을 사용합니다", "page": 20}, {"id": "Q075", "category": "추가_문법복합", "type": "fill_blank", "difficulty": "hard", "keyword": "복합문법", "tags": ["문법", "복합"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "They are thinking about _____ to the concert.", "blank_answer": "where to go", "choices": ["go where", "where going", "where to go", "to go where"], "correct": 2, "hint": "의문사 + to부정사: where to go", "page": 20}, {"id": "Q076", "category": "추가_문법_lively강화", "type": "fill_blank", "difficulty": "medium", "keyword": "lively", "tags": ["vocab", "취약단어"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "The _____ music made everyone happy and energetic.", "blank_answer": "lively", "choices": ["alive", "lively", "living", "live"], "correct": 1, "hint": "lively = 활기 넘치는, 생기 있는", "page": 16}, {"id": "Q077", "category": "추가_문법_what to do강화", "type": "fill_blank", "difficulty": "medium", "keyword": "what to do", "tags": ["vocab", "취약단어"], "instruction": "빈칙에 알맞은 표현을 고르세요.", "sentence": "I asked my teacher _____ the difficult problem.", "blank_answer": "how to solve", "choices": ["how to solve", "how solving", "solve how", "how I solve"], "correct": 0, "hint": "의문사 + to부정사: how to solve = 어떻게 풀지", "page": 20}, {"id": "Q078", "category": "추가_문법_careful강화", "type": "fill_blank", "difficulty": "medium", "keyword": "careful", "tags": ["vocab", "취약단어"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "You should be _____ with your phone. Don't drop it!", "blank_answer": "careful", "choices": ["careful", "carefully", "careless", "care"], "correct": 0, "hint": "be + 형용사: be careful = 조심하다", "page": 16}, {"id": "Q079", "category": "추가_문법_without강화", "type": "fill_blank", "difficulty": "medium", "keyword": "without", "tags": ["vocab", "취약단어"], "instruction": "빈칙에 알맞은 표현을 고르세요.", "sentence": "You can't _____ good sleep _____ healthy habits.", "blank_answer": "have", "choices": ["get", "have", "keep", "maintain"], "correct": 1, "hint": "have good sleep without healthy habits = 건강한 습관 없이 좋은 수면을 가질 수 없다", "page": 19}, {"id": "Q080", "category": "추가_최종통합", "type": "fill_blank", "difficulty": "hard", "keyword": "통합문법", "tags": ["종합", "review"], "instruction": "빈칙에 알맞은 단어를 고르세요.", "sentence": "If you want to be _____ and healthy, you should sleep well every night.", "blank_answer": "lively", "choices": ["alive", "awake", "lively", "active"], "correct": 2, "hint": "be lively and healthy = 활기차고 건강하다", "page": 16}]
+        };
+
+        // 상태 관리
+        let currentSession = null;
+        let currentQuestionIndex = 0;
+        let sessionAnswers = [];
+        let questionHistory = {};
+
+        // 초기화
+        function init() {
+            loadQuestionHistory();
+            updateStats();
+            // 음소거 상태 복원
+            document.getElementById('mute-toggle').textContent = isMuted ? '🔇' : '🔊';
+            // 웹훅 URL 복원
+            const savedWebhook = localStorage.getItem('webhook_url');
+            if (savedWebhook) document.getElementById('webhook-input').value = savedWebhook;
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('sw.js').catch(() => {});
+            }
+            retransmitUnsentLogs();
+        }
+
+        // localStorage에서 문항 이력 로드
+        function loadQuestionHistory() {
+            const stored = localStorage.getItem('question_history');
+            questionHistory = stored ? JSON.parse(stored) : {};
+        }
+
+        // 문항 이력 저장
+        function saveQuestionHistory() {
+            localStorage.setItem('question_history', JSON.stringify(questionHistory));
+        }
+
+        // 학습 현황 업데이트
+        function updateStats() {
+            const logs = JSON.parse(localStorage.getItem('quiz_logs') || '[]');
+            const uniqueDays = new Set(logs.map(log => log.date)).size;
+
+            const totalAttempts = Object.values(questionHistory).reduce((sum, q) => sum + (q.attempts || 0), 0);
+            const totalCorrect = Object.values(questionHistory).reduce((sum, q) => sum + (q.correct || 0), 0);
+            const accuracy = totalAttempts > 0 ? Math.round((totalCorrect / totalAttempts) * 100) : 0;
+
+            const mastered = Object.keys(questionHistory).filter(id => {
+                const q = questionHistory[id];
+                return q.correct >= 2 && q.last_correct === true;
+            }).length;
+
+            const review = Object.keys(questionHistory).filter(id => {
+                const q = questionHistory[id];
+                return q.attempts > 0 && q.last_correct === false;
+            }).length;
+
+            document.getElementById('stat-days').textContent = uniqueDays;
+            document.getElementById('stat-accuracy').textContent = accuracy;
+            document.getElementById('stat-mastered').textContent = mastered;
+            document.getElementById('stat-review').textContent = review;
+        }
+
+        // 자동 세션 생성 알고리즘
+        function generateSession() {
+            const questions = QUIZ_DATA.questions;
+            const wrongQuestions = questions.filter(q => {
+                const hist = questionHistory[q.id];
+                return hist && hist.last_correct === false && hist.attempts > 0;
+            }).sort((a, b) => (questionHistory[b.id].last_seen || '') - (questionHistory[a.id].last_seen || ''));
+            const newQuestions = questions.filter(q => !questionHistory[q.id]);
+            const correctQuestions = questions.filter(q => {
+                const hist = questionHistory[q.id];
+                return hist && hist.last_correct === true;
+            }).sort((a, b) => (questionHistory[a.id].last_seen || '') - (questionHistory[b.id].last_seen || ''));
+
+            const selected = [];
+            selected.push(...wrongQuestions.slice(0, 4));
+            selected.push(...newQuestions.slice(0, 5));
+            const remaining = 12 - selected.length;
+            selected.push(...correctQuestions.slice(0, remaining));
+
+            // ★ 12문항 보장
+            if (selected.length < 12) {
+                const selectedIds = new Set(selected.map(q => q.id));
+                const moreNew = newQuestions.filter(q => !selectedIds.has(q.id));
+                selected.push(...moreNew.slice(0, 12 - selected.length));
+            }
+            if (selected.length < 12) {
+                const selectedIds = new Set(selected.map(q => q.id));
+                const moreCorrect = correctQuestions.filter(q => !selectedIds.has(q.id));
+                selected.push(...moreCorrect.slice(0, 12 - selected.length));
+            }
+
+            shuffleArray(selected);
+            return selected.slice(0, 12).map(q => ({ ...q, poolIdx: questions.indexOf(q) }));
+        }
+
+        // 세션 시작
+        function startSession() {
+            currentSession = generateSession();
+            currentQuestionIndex = 0;
+            sessionAnswers = [];
+            showPage('quiz-page');
+            showQuestion();
+        }
+
+        // 문제 표시
+        function showQuestion() {
+            if (currentQuestionIndex >= currentSession.length) {
+                finishSession();
+                return;
+            }
+
+            const q = currentSession[currentQuestionIndex];
+            const progress = ((currentQuestionIndex) / currentSession.length) * 100;
+
+            document.getElementById('progress-fill').style.width = progress + '%';
+            document.getElementById('question-number').textContent = (currentQuestionIndex + 1) + ' / ' + currentSession.length;
+            document.getElementById('instruction-text').textContent = q.instruction;
+
+            // 컨테이너 모두 숨기기
+            document.getElementById('fill-blank-container').style.display = 'none';
+            document.getElementById('arrange-container').style.display = 'none';
+            document.getElementById('match-container').style.display = 'none';
+
+            if (q.type === 'fill_blank') {
+                showFillBlank(q);
+            } else if (q.type === 'arrange') {
+                showArrange(q);
+            } else if (q.type === 'match') {
+                showMatch(q);
+            }
+        }
+
+        // Fill Blank 유형
+        function showFillBlank(q) {
+            document.getElementById('question-text').textContent = q.sentence;
+            const container = document.getElementById('fill-blank-container');
+            container.style.display = 'grid';
+            container.innerHTML = '';
+
+            // 선택지 셔플
+            const shuffled = q.choices.map((choice, idx) => ({ choice, idx }));
+            shuffleArray(shuffled);
+            const newCorrect = shuffled.findIndex(x => x.idx === q.correct);
+
+            shuffled.forEach((item, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'choice-btn';
+                btn.textContent = item.choice;
+                btn.onclick = () => handleFillBlankAnswer(q, idx, newCorrect);
+                container.appendChild(btn);
+            });
+        }
+
+        function handleFillBlankAnswer(q, selectedIdx, correctIdx) {
+            const buttons = document.querySelectorAll('#fill-blank-container .choice-btn');
+            buttons.forEach((btn, idx) => {
+                btn.disabled = true;
+                if (idx === correctIdx) btn.classList.add('correct');
+                if (idx === selectedIdx && idx !== correctIdx) btn.classList.add('incorrect');
+            });
+
+            const isCorrect = selectedIdx === correctIdx;
+            recordAnswer(q, isCorrect);
+
+            setTimeout(() => {
+                currentQuestionIndex++;
+                showQuestion();
+            }, isCorrect ? 1000 : 2000);
+        }
+
+        // Arrange 유형
+        function showArrange(q) {
+            document.getElementById('question-text').textContent = q.sentence_ko;
+            const container = document.getElementById('arrange-container');
+            container.style.display = 'block';
+
+            const selected = [];
+            const shuffled = [...q.words];
+            shuffleArray(shuffled);
+
+            const selectedDiv = document.getElementById('selected-words');
+            const availableDiv = document.getElementById('available-words');
+            selectedDiv.innerHTML = '';
+            availableDiv.innerHTML = '';
+
+            shuffled.forEach((word, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'word-btn';
+                btn.textContent = word;
+                btn.dataset.word = word;
+                btn.dataset.idx = idx;
+                btn.onclick = () => {
+                    if (!btn.classList.contains('used')) {
+                        selected.push({ word, idx });
+                        btn.classList.add('used');
+                        updateSelectedWords();
+                    }
+                };
+                availableDiv.appendChild(btn);
+            });
+
+            function updateSelectedWords() {
+                selectedDiv.innerHTML = '';
+                selected.forEach((item, selIdx) => {
+                    const tag = document.createElement('div');
+                    tag.className = 'selected-word';
+                    tag.textContent = item.word;
+                    const removeBtn = document.createElement('button');
+                    removeBtn.className = 'remove-word-btn';
+                    removeBtn.textContent = '×';
+                    removeBtn.onclick = () => {
+                        selected.splice(selIdx, 1);
+                        document.querySelector(`[data-word="${item.word}"][data-idx="${item.idx}"]`).classList.remove('used');
+                        updateSelectedWords();
+                    };
+                    tag.appendChild(removeBtn);
+                    selectedDiv.appendChild(tag);
+                });
+            }
+
+            // Submit 버튼 추가 (UI에서 다음으로 자동으로 가야 하므로 타이머로 처리)
+            // hint and skip button hidden in showQuestion
+
+            // 5초마다 자동으로 제출된 것처럼 처리 (사용자가 배열을 완료하면)
+            const checkArrange = setInterval(() => {
+                if (selected.length === q.words.length) {
+                    clearInterval(checkArrange);
+                    const userAnswer = selected.map(x => x.word).join(' ');
+                    const isCorrect = userAnswer === q.answer;
+
+                    const buttons = document.querySelectorAll('#available-words .word-btn');
+                    buttons.forEach((btn, idx) => {
+                        if (!btn.classList.contains('used')) return;
+                        if (isCorrect) btn.classList.add('correct');
+                        else btn.classList.add('incorrect');
+                        btn.disabled = true;
+                    });
+
+                    recordAnswer(q, isCorrect);
+
+                    // 오답 시 정답 표시
+                    if (!isCorrect) {
+                        const correctDiv = document.createElement('div');
+                        correctDiv.style.cssText = 'background:#e8f5e9;border:1px solid #4CAF50;border-radius:8px;padding:10px;margin-top:10px;font-size:13px;color:#2e7d32;';
+                        correctDiv.textContent = '정답: ' + q.answer;
+                        container.appendChild(correctDiv);
+                    }
+
+                    setTimeout(() => {
+                        currentQuestionIndex++;
+                        document.getElementById('btn-skip').style.display = 'none';
+                        showQuestion();
+                    }, isCorrect ? 1000 : 2500);
+                }
+            }, 100);
+        }
+
+        // Match 유형
+        function showMatch(q) {
+            document.getElementById('question-text').textContent = q.sentence_ko;
+            const container = document.getElementById('match-container');
+            container.style.display = 'grid';
+            container.innerHTML = '';
+
+            const shuffled = q.choices.map((choice, idx) => ({ choice, idx }));
+            shuffleArray(shuffled);
+            const newCorrect = shuffled.findIndex(x => x.idx === q.correct);
+
+            shuffled.forEach((item, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'match-option';
+                btn.textContent = item.choice;
+                btn.onclick = () => handleMatchAnswer(q, idx, newCorrect);
+                container.appendChild(btn);
+            });
+        }
+
+        function handleMatchAnswer(q, selectedIdx, correctIdx) {
+            const buttons = document.querySelectorAll('#match-container .match-option');
+            buttons.forEach((btn, idx) => {
+                btn.disabled = true;
+                if (idx === correctIdx) btn.classList.add('correct');
+                if (idx === selectedIdx && idx !== correctIdx) btn.classList.add('incorrect');
+            });
+
+            const isCorrect = selectedIdx === correctIdx;
+            recordAnswer(q, isCorrect);
+
+            setTimeout(() => {
+                currentQuestionIndex++;
+                showQuestion();
+            }, isCorrect ? 1000 : 2000);
+        }
+
+        // 답변 기록
+        function recordAnswer(q, isCorrect) {
+            playSound(isCorrect ? 'correct' : 'incorrect');
+            sessionAnswers.push({ id: q.id, correct: isCorrect });
+
+            if (!questionHistory[q.id]) {
+                questionHistory[q.id] = { attempts: 0, correct: 0, last_seen: today(), last_correct: false };
+            }
+
+            const hist = questionHistory[q.id];
+            hist.attempts = (hist.attempts || 0) + 1;
+            if (isCorrect) hist.correct = (hist.correct || 0) + 1;
+            hist.last_seen = today();
+            hist.last_correct = isCorrect;
+
+            saveQuestionHistory();
+        }
+
+        // 세션 종료
+        function finishSession() {
+            const totalCorrect = sessionAnswers.filter(a => a.correct).length;
+            const percentage = Math.round((totalCorrect / sessionAnswers.length) * 100);
+
+            document.getElementById('result-percentage').textContent = percentage;
+
+            // 틀린 문항 표시
+            const missed = sessionAnswers.filter(a => !a.correct).map(a => {
+                const q = QUIZ_DATA.questions.find(x => x.id === a.id);
+                return q;
+            });
+
+            if (missed.length > 0) {
+                document.getElementById('missed-questions-container').style.display = 'block';
+                const list = document.getElementById('missed-questions-list');
+                list.innerHTML = '';
+                missed.forEach(q => {
+                    const item = document.createElement('div');
+                    item.className = 'missed-question-item';
+                    item.innerHTML = `<div class="missed-keyword">${q.keyword}</div><div class="missed-answer">정답: ${q.blank_answer || q.answer || (q.choices ? q.choices[q.correct] : '')}</div>`;
+                    list.appendChild(item);
+                });
+            } else {
+                document.getElementById('missed-questions-container').style.display = 'none';
+            }
+
+            // 로그 저장 및 전송
+            const weakKeywords = sessionAnswers.filter(a => !a.correct).map(a => {
+                const q2 = QUIZ_DATA.questions.find(x => x.id === a.id);
+                return q2 ? q2.keyword : a.id;
+            });
+
+            const log = {
+                date: today(),
+                total: sessionAnswers.length,
+                correct: totalCorrect,
+                percentage: percentage,
+                weak: weakKeywords.join(', '),
+                questions: sessionAnswers,
+                timestamp: new Date().toISOString(),
+                partial: false
+            };
+
+            const logs = JSON.parse(localStorage.getItem('quiz_logs') || '[]');
+            logs.push(log);
+            localStorage.setItem('quiz_logs', JSON.stringify(logs));
+
+            updateStats();
+            showPage('result-page');
+            sendToGoogleSheets();
+        }
+
+        // Google Sheets 전송
+        function sendToGoogleSheets() {
+            const webhookUrl = localStorage.getItem('webhook_url');
+            if (!webhookUrl) return;
+
+            const logs = JSON.parse(localStorage.getItem('quiz_logs') || '[]');
+            const sentKeys = JSON.parse(localStorage.getItem('sent_logs') || '[]');
+
+            logs.forEach((log, idx) => {
+                const key = log.timestamp;
+                if (sentKeys.includes(key)) return;
+
+                const data = {
+                    date: log.date,
+                    total: log.total,
+                    correct: log.correct,
+                    percentage: log.percentage,
+                    weak: log.weak || '',
+                    partial: log.partial ? 'Y' : 'N',
+                    timestamp: log.timestamp
+                };
+
+                fetch(webhookUrl, {
+                    method: 'POST',
+                    body: JSON.stringify(data)
+                }).then(() => {
+                    sentKeys.push(key);
+                    localStorage.setItem('sent_logs', JSON.stringify(sentKeys));
+                }).catch(() => {});
+            });
+        }
+
+        // 미전송 로그 재전송
+        function retransmitUnsentLogs() {
+            sendToGoogleSheets();
+        }
+
+        // 결과 내보내기
+        function exportResults() {
+            const text = `[${today()}] 영어 Lesson 1 학습 결과\n정답률: ${document.getElementById('result-percentage').textContent}%\n\n틀린 문항:\n${Array.from(document.querySelectorAll('.missed-question-item')).map(el => el.textContent).join('\n')}`;
+
+            if (navigator.share) {
+                navigator.share({ title: '학습 결과', text });
+            } else {
+                navigator.clipboard.writeText(text);
+                alert('결과가 클립보드에 복사되었습니다.');
+            }
+        }
+
+        // 홈으로
+        function goHome() {
+            currentSession = null;
+            currentQuestionIndex = 0;
+            sessionAnswers = [];
+            showPage('home-page');
+            updateStats();
+        }
+
+        // 그만하기
+        function quitQuiz() {
+            if (confirm('학습을 중단하겠습니까?')) {
+                // 지금까지 푼 문항의 이력은 이미 recordAnswer에서 저장됨
+                // 로그도 부분 저장
+                if (sessionAnswers.length > 0) {
+                    const totalCorrect = sessionAnswers.filter(a => a.correct).length;
+                    const log = {
+                        date: today(),
+                        total: sessionAnswers.length,
+                        correct: totalCorrect,
+                        percentage: Math.round((totalCorrect / sessionAnswers.length) * 100),
+                        questions: sessionAnswers,
+                        timestamp: new Date().toISOString(),
+                        partial: true
+                    };
+                    const logs = JSON.parse(localStorage.getItem('quiz_logs') || '[]');
+                    logs.push(log);
+                    localStorage.setItem('quiz_logs', JSON.stringify(logs));
+                }
+                // arrange interval 정리
+                if (arrangeCheckInterval) {
+                    clearInterval(arrangeCheckInterval);
+                    arrangeCheckInterval = null;
+                }
+                document.getElementById('btn-skip').style.display = 'none';
+                goHome();
+            }
+        }
+
+        // 페이지 전환
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        // 유틸리티
+        function today() {
+            const d = new Date();
+            return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+        }
+
+        function shuffleArray(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+        }
+
+        // 앱 시작
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>
