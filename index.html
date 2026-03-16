@@ -838,10 +838,14 @@
         }
 
         // 세션 시작
+        let sessionStartTime = null;
+        let questionStartTime = null;
+
         function startSession() {
             currentSession = generateSession();
             currentQuestionIndex = 0;
             sessionAnswers = [];
+            sessionStartTime = Date.now();
             showPage('quiz-page');
             showQuestion();
         }
@@ -855,6 +859,7 @@
 
             const q = currentSession[currentQuestionIndex];
             const progress = ((currentQuestionIndex) / currentSession.length) * 100;
+            questionStartTime = Date.now();
 
             document.getElementById('progress-fill').style.width = progress + '%';
             document.getElementById('question-number').textContent = (currentQuestionIndex + 1) + ' / ' + currentSession.length;
@@ -1039,7 +1044,16 @@
         // 답변 기록
         function recordAnswer(q, isCorrect) {
             playSound(isCorrect ? 'correct' : 'incorrect');
-            sessionAnswers.push({ id: q.id, correct: isCorrect });
+            const elapsed = questionStartTime ? Math.round((Date.now() - questionStartTime) / 1000) : 0;
+            sessionAnswers.push({
+                id: q.id,
+                correct: isCorrect,
+                type: q.type,
+                difficulty: q.difficulty,
+                keyword: q.keyword,
+                time_sec: elapsed,
+                hint_used: hintUsedThisQuestion
+            });
 
             if (!questionHistory[q.id]) {
                 questionHistory[q.id] = { attempts: 0, correct: 0, last_seen: today(), last_correct: false };
@@ -1087,12 +1101,33 @@
                 return q2 ? q2.keyword : a.id;
             });
 
+            const sessionDuration = sessionStartTime ? Math.round((Date.now() - sessionStartTime) / 1000) : 0;
+
+            // 유형별 통계
+            const typeStats = {};
+            sessionAnswers.forEach(a => {
+                if (!typeStats[a.type]) typeStats[a.type] = { total: 0, correct: 0 };
+                typeStats[a.type].total++;
+                if (a.correct) typeStats[a.type].correct++;
+            });
+            const typeBreakdown = Object.entries(typeStats).map(([t, s]) =>
+                t + ':' + s.correct + '/' + s.total
+            ).join(', ');
+
+            const hintCount = sessionAnswers.filter(a => a.hint_used).length;
+
             const log = {
                 date: today(),
                 total: sessionAnswers.length,
                 correct: totalCorrect,
                 percentage: percentage,
+                duration_sec: sessionDuration,
                 weak: weakKeywords.join(', '),
+                type_breakdown: typeBreakdown,
+                hint_count: hintCount,
+                details: sessionAnswers.map(a =>
+                    a.id + (a.correct ? '✓' : '✗') + a.time_sec + 's' + (a.hint_used ? '💡' : '')
+                ).join(', '),
                 questions: sessionAnswers,
                 timestamp: new Date().toISOString(),
                 partial: false
@@ -1124,7 +1159,11 @@
                     total: log.total,
                     correct: log.correct,
                     percentage: log.percentage,
+                    duration_sec: log.duration_sec || 0,
                     weak: log.weak || '',
+                    type_breakdown: log.type_breakdown || '',
+                    hint_count: log.hint_count || 0,
+                    details: log.details || '',
                     partial: log.partial ? 'Y' : 'N',
                     timestamp: log.timestamp
                 };
