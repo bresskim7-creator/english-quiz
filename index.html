@@ -468,6 +468,28 @@
             opacity: 0.9;
         }
 
+        /* 다음 문항 버튼 */
+        .btn-next {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #2F5496 0%, #1a3a6f 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 12px;
+            box-shadow: 0 3px 10px rgba(47, 84, 150, 0.3);
+            display: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-next:active {
+            transform: scale(0.98);
+            opacity: 0.9;
+        }
+
         /* 배열형 건너뛰기 버튼 */
         .btn-skip {
             flex: 1;
@@ -622,6 +644,7 @@
             <div id="match-container" class="match-options" style="display: none;"></div>
 
             <div id="hint-display" style="display:none;background:#fff8e1;border:1px solid #ffc107;border-radius:8px;padding:10px 14px;font-size:13px;color:#795548;margin-top:8px;"></div>
+            <button class="btn-next" id="btn-next" onclick="goNextQuestion()">다음 문항 ▶</button>
             <div class="quiz-controls" id="quiz-controls">
                 <button class="btn-hint" id="btn-hint" onclick="showHint()">💡 힌트</button>
                 <button class="btn-quit" onclick="quitQuiz()">그만하기</button>
@@ -865,6 +888,10 @@
             document.getElementById('question-number').textContent = (currentQuestionIndex + 1) + ' / ' + currentSession.length;
             document.getElementById('instruction-text').textContent = q.instruction;
 
+            // 다음 버튼 숨기기 + 이전 정답 표시 제거
+            document.getElementById('btn-next').style.display = 'none';
+            document.querySelectorAll('.correct-answer-display').forEach(el => el.remove());
+
             // 컨테이너 모두 숨기기
             document.getElementById('fill-blank-container').style.display = 'none';
             document.getElementById('arrange-container').style.display = 'none';
@@ -877,6 +904,27 @@
             } else if (q.type === 'match') {
                 showMatch(q);
             }
+        }
+
+        // 정규화 함수: arrange 정답 비교 시 구두점 차이 무시
+        function normalizeAnswer(str) {
+            return str
+                .replace(/[.,!?;:]/g, '')   // 모든 구두점 제거
+                .replace(/\s+/g, ' ')       // 연속 공백 → 단일 공백
+                .trim();
+        }
+
+        // 다음 문항으로 이동 (수동)
+        function goNextQuestion() {
+            document.getElementById('btn-next').style.display = 'none';
+            currentQuestionIndex++;
+            showQuestion();
+        }
+
+        // 정답/오답 후 "다음" 버튼 표시
+        function showNextButton() {
+            const btn = document.getElementById('btn-next');
+            btn.style.display = 'block';
         }
 
         // Fill Blank 유형
@@ -911,10 +959,15 @@
             const isCorrect = selectedIdx === correctIdx;
             recordAnswer(q, isCorrect);
 
-            setTimeout(() => {
-                currentQuestionIndex++;
-                showQuestion();
-            }, isCorrect ? 1000 : 2000);
+            // 오답일 때 정답 표시
+            if (!isCorrect) {
+                const correctText = document.createElement('div');
+                correctText.style.cssText = 'background:#e8f5e9;border:1px solid #4CAF50;border-radius:8px;padding:10px;margin-top:10px;font-size:13px;color:#2e7d32;';
+                correctText.textContent = '정답: ' + (q.blank_answer || q.choices[q.correct]);
+                document.getElementById('fill-blank-container').after(correctText);
+            }
+
+            showNextButton();
         }
 
         // Arrange 유형
@@ -967,15 +1020,12 @@
                 });
             }
 
-            // Submit 버튼 추가 (UI에서 다음으로 자동으로 가야 하므로 타이머로 처리)
-            // hint and skip button hidden in showQuestion
-
-            // 5초마다 자동으로 제출된 것처럼 처리 (사용자가 배열을 완료하면)
+            // 모든 단어를 배치하면 자동 채점
             const checkArrange = setInterval(() => {
                 if (selected.length === q.words.length) {
                     clearInterval(checkArrange);
                     const userAnswer = selected.map(x => x.word).join(' ');
-                    const isCorrect = userAnswer === q.answer;
+                    const isCorrect = normalizeAnswer(userAnswer) === normalizeAnswer(q.answer);
 
                     const buttons = document.querySelectorAll('#available-words .word-btn');
                     buttons.forEach((btn, idx) => {
@@ -984,6 +1034,9 @@
                         else btn.classList.add('incorrect');
                         btn.disabled = true;
                     });
+
+                    // 제거 버튼 비활성화
+                    document.querySelectorAll('.remove-word-btn').forEach(b => b.disabled = true);
 
                     recordAnswer(q, isCorrect);
 
@@ -995,11 +1048,8 @@
                         container.appendChild(correctDiv);
                     }
 
-                    setTimeout(() => {
-                        currentQuestionIndex++;
-                        document.getElementById('btn-skip').style.display = 'none';
-                        showQuestion();
-                    }, isCorrect ? 1000 : 2500);
+                    document.getElementById('btn-skip').style.display = 'none';
+                    showNextButton();
                 }
             }, 100);
         }
@@ -1035,10 +1085,7 @@
             const isCorrect = selectedIdx === correctIdx;
             recordAnswer(q, isCorrect);
 
-            setTimeout(() => {
-                currentQuestionIndex++;
-                showQuestion();
-            }, isCorrect ? 1000 : 2000);
+            showNextButton();
         }
 
         // 답변 기록
