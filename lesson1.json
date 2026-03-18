@@ -23,7 +23,12 @@
       ],
       "correct": 0,
       "hint": "활기 넘치는 (a.) — 교과서 p.16",
-      "page": 16
+      "page": 16,
+      "wrong_explanations": {
+        "active": "active도 '활동적인'이지만, 여기선 '생기 넘치는' 느낌의 lively가 딱 맞아요!",
+        "awake": "awake는 '깨어있는'이에요. '활기 넘치는'과는 뜻이 달라요!",
+        "asleep": "asleep은 '잠든'이에요. 아침에 활기 넘치는 건 lively!"
+      }
     },
     {
       "id": "W02",
@@ -46,7 +51,12 @@
       ],
       "correct": 2,
       "hint": "lively = 활기 넘치는, active와 비슷하지만 '생기 있는' 느낌",
-      "page": 16
+      "page": 16,
+      "wrong_explanations": {
+        "asleep": "asleep은 '잠든'이에요. 활기가 넘치는 아이들 표현이 아니에요!",
+        "tired": "tired는 '지친'이에요. 친구들이 즐겁게 노는 모습에 맞지 않아요!",
+        "careful": "careful은 '조심스러운'이에요. 운동장에서 활기 넘치는 건 lively!"
+      }
     },
     {
       "id": "W03",
@@ -69,7 +79,12 @@
       ],
       "correct": 1,
       "hint": "~없이 (prep.) — 교과서 p.19",
-      "page": 19
+      "page": 19,
+      "wrong_explanations": {
+        "with": "with는 '함께'예요. '~없이'는 without을 써야 해요!",
+        "about": "about은 '~에 대해'예요. 음악 없이 자는 건 without이 맞아요!",
+        "before": "before는 '~전에'예요. '~없이'는 without을 사용해요!"
+      }
     },
     {
       "id": "W04",
@@ -92,7 +107,12 @@
       ],
       "correct": 2,
       "hint": "without + ~ing = ~하지 않고",
-      "page": 19
+      "page": 19,
+      "wrong_explanations": {
+        "health": "health는 '건강(명사)'이에요. 빈칸은 형용사가 필요해요!",
+        "healthily": "healthily는 부사여서 '건강하게'예요. 명사를 꾸미는 형용사는 healthy!",
+        "healthful": "healthful도 '건강한'이지만, 일상적으로는 healthy를 자주 써요!"
+      }
     },
     {
       "id": "W05",
@@ -115,7 +135,12 @@
       ],
       "correct": 0,
       "hint": "의문사 + to부정사: what to do = 무엇을 해야 할지",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "regularly": "regularly는 '규칙적으로(부사)'예요. 명사를 꾸미는 형용사는 regular!",
+        "regulation": "regulation은 '규칙(명사)'이에요. 형용사가 아니에요!",
+        "regulate": "regulate는 '조절하다(동사)'예요. 여기선 형용사 regular가 필요해요!"
+      }
     },
     {
       "id": "W06",
@@ -138,7 +163,12 @@
       ],
       "correct": 0,
       "hint": "의문사 + to부정사 패턴: where to go = 어디로 갈지",
-      "page": 20
+      "page": 20,
+      "wrong_explanations": {
+        "exercises": "exercises는 복수나 3인칭 동사예요. 'you' 다음엔 원형 exercise!",
+        "exercised": "exercised는 과거형이에요. 여기선 현재 또는 원형이 필요해요!",
+        "exercising": "exercising은 진행형이에요. 'need to + 원형 동사' 구문에서 exercise!"
+      }
     },
     {
       "id": "W07",
@@ -161,7 +191,12 @@
       ],
       "correct": 0,
       "hint": "Be + 형용사: Be careful (조심하는 상태)",
-      "page": 16
+      "page": 16,
+      "wrong_explanations": {
+        "sleeps": "sleeps는 3인칭 현재형이에요. 'need to + 원형'이므로 sleep이 맞아요!",
+        "sleeping": "sleeping은 진행형이에요. 'need to + 원형 동사' 구조예요!",
+        "slept": "slept는 과거형이에요. 현재 필요한 일은 원형 sleep을 써요!"
+      }
     },
     {
       "id": "W08",
@@ -184,7 +219,12 @@
       ],
       "correct": 1,
       "hint": "동사 read를 꾸미는 부사 → carefully",
-      "page": 16
+      "page": 16,
+      "wrong_explanations": {
+        "brushed": "brushed는 과거형이에요. 'need to + 원형'이므로 brush예요!",
+        "brushes": "brushes는 3인칭 현재형이에요. 여기선 원형 brush가 필요해요!",
+        "brushing": "brushing은 진행형이에요. '~할 필요가 있다' = need to + 원형 brush!"
+      }
     },
     {
       "id": "S01A",
@@ -207,7 +247,10 @@
       ],
       "correct": 0,
       "hint": "원문: Do you have any special goals for this year?",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "default": "주어 + 동사 + 목적어 기본 어순. 빈칸에는 명사나 명사구가 와요!"
+      }
     },
     {
       "id": "S02A",
@@ -230,7 +273,10 @@
       ],
       "correct": 0,
       "hint": "원문: Yes, I'm planning to exercise more.",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "default": "의문문 어순: 조동사 + 주어 + 동사. 질문을 만드는 기본 패턴!"
+      }
     },
     {
       "id": "S03A",
@@ -253,7 +299,10 @@
       ],
       "correct": 0,
       "hint": "원문: I want to perform at the school festival.",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "default": "목적어 + 전치사 + 시간 표현. 언제/어디서/누구와를 나타내요!"
+      }
     },
     {
       "id": "S04A",
@@ -276,7 +325,10 @@
       ],
       "correct": 0,
       "hint": "원문: Sounds great. You can do it!",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "default": "주어 + be동사 + 형용사. 상태나 느낌을 나타내는 문장 구조!"
+      }
     },
     {
       "id": "S05A",
@@ -299,7 +351,10 @@
       ],
       "correct": 0,
       "hint": "원문: If you use your smartphone late at night, your brain will stay active.",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "default": "동사 + 전치사 + 목적어. 어떤 동작을 누가/무엇과 하는지 표현!"
+      }
     },
     {
       "id": "S06A",
@@ -322,7 +377,10 @@
       ],
       "correct": 0,
       "hint": "원문: Let's find out what to do.",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "default": "주어 + 동사 + 부사. 어떻게/언제/어디서 하는지 나타내는 문장!"
+      }
     },
     {
       "id": "S01B",
@@ -348,7 +406,10 @@
       ],
       "answer": "Do you have any special goals for this year?",
       "hint": "💡 의문문 어순: Do + 주어 + 동사 → 'Do you have...' 로 시작! any + 형용사 + 명사 순서 기억하세요",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "default": "의문문 어순: Do + 주어 + 동사. any + 형용사 + 명사 순서예요!"
+      }
     },
     {
       "id": "S02B",
@@ -372,7 +433,10 @@
       ],
       "answer": "Yes, I'm planning to exercise more.",
       "hint": "💡 be planning to = ~할 계획이다. Yes, 다음에 주어+동사 바로! I'm planning to + 동사원형 + 나머지",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "default": "be planning to = ~할 계획이다. I'm planning to + 동사원형!"
+      }
     },
     {
       "id": "S03B",
@@ -396,7 +460,10 @@
       ],
       "answer": "I want to perform at the school festival.",
       "hint": "💡 want to + 동사원형! 'I want to perform' 이 한 덩어리. 장소는 at + the school festival",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "default": "want to + 동사원형 어순. 하고 싶은 일을 표현하는 기본 구조!"
+      }
     },
     {
       "id": "S04B",
@@ -420,7 +487,10 @@
       ],
       "answer": "Sounds great. You can do it!",
       "hint": "💡 두 문장이에요! 'Sounds great.' 먼저, 그 다음 'You can do it!' — can 뒤에 동사원형 do",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "default": "의문사 + be동사 + 주어. 시간을 묻는 의문문 어순!"
+      }
     },
     {
       "id": "S05B",
@@ -446,7 +516,10 @@
       ],
       "answer": "If you use your smartphone late at night, your brain will stay active.",
       "hint": "💡 if 조건문: If + 주어 + 현재시제, 주어 + will + 동사원형. 'If you use..., your brain will stay...'",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "default": "의문사 + 조동사 + 주어 + 동사. 빈도를 묻는 의문문!"
+      }
     },
     {
       "id": "S06B",
@@ -470,7 +543,10 @@
       ],
       "answer": "Let's find out what to do.",
       "hint": "💡 Let's + 동사원형! 'Let's find out' 이 한 덩어리. what to do = 의문사+to부정사",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "default": "조동사 can + 주어 + 동사원형. 능력이나 가능 여부를 묻는 문장!"
+      }
     },
     {
       "id": "S01C",
@@ -492,7 +568,12 @@
       ],
       "correct": 0,
       "hint": "💡 special goals = 특별한 목표. plans(계획)나 new goals(새 목표)와 헷갈리지 마세요!",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "Do you have any special plans for this year?": "goals(목표)와 plans(계획)는 다른 단어예요!",
+        "Did you have any special goals last year?": "did는 과거형이고, 지금은 현재예요!",
+        "Do you have any new goals for next year?": "특별한 목표를 물어보는데, 새 목표는 다른 의미!"
+      }
     },
     {
       "id": "S02C",
@@ -514,7 +595,12 @@
       ],
       "correct": 0,
       "hint": "💡 be planning to = ~할 계획이다. going to나 planned(과거형)와 구별! 현재진행형이에요",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "Yes, I'm going to exercise more.": "going to도 미래이지만, be planning to = 계획 상태!",
+        "Yes, I'm planning to study more.": "운동을 하려는 계획이에요, 공부가 아니에요!",
+        "Yes, I planned to exercise more.": "planned는 과거형이에요. 계획 중인 현재는 be planning to!"
+      }
     },
     {
       "id": "S03C",
@@ -536,7 +622,12 @@
       ],
       "correct": 0,
       "hint": "💡 perform = 공연하다. practice(연습)와 다르고, school festival(학교 축제)이 포인트!",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "I want to perform at the school festival.": "perform은 맞지만, 어디서 하는지 다르고 목표도 달라요!",
+        "I want to participate in the school sports day.": "sports day는 스포츠 경기이고, festival은 축제에요!",
+        "I want to win at the school competition.": "이겨야 한다는 건 너무 강하고, 목표와 달라요!"
+      }
     },
     {
       "id": "S04C",
@@ -558,7 +649,12 @@
       ],
       "correct": 0,
       "hint": "💡 Sounds great = 좋은데. good이 아니라 great! You can do it에서 can이 핵심",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "What time do you go to school?": "학교에 가는 시간과 일어나는 시간은 달라요!",
+        "What time do you sleep?": "잠드는 시간이 아니라 일어나는 시간이에요!",
+        "What time do you have breakfast?": "아침 식사하는 시간과 일어나는 시간은 달라요!"
+      }
     },
     {
       "id": "S05C",
@@ -581,7 +677,12 @@
       ],
       "correct": 0,
       "hint": "💡 if조건문 + late at night(밤늦게) + stay active(활동적 유지). awake(깨어있는)와 active(활동적)는 달라요!",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "How often do you go to school?": "학교 가는 것과 운동하는 것은 다른 활동이에요!",
+        "How often do you eat lunch?": "점심 먹는 것과 운동하는 것은 다르지 않나요?",
+        "How often do you sleep?": "자는 빈도와 운동 빈도는 다른 질문이에요!"
+      }
     },
     {
       "id": "S06C",
@@ -603,7 +704,12 @@
       ],
       "correct": 0,
       "hint": "💡 find out = 알아보다. figure out과 비슷하지만 교과서 원문은 find out! what to do가 핵심",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "Can you do homework every day?": "숙제하는 것과 수영하는 건 다른 활동이에요!",
+        "Can you sing well?": "노래 잘하는 것과 수영하는 건 다르지 않나요?",
+        "Can you speak English?": "영어 말하는 것과 수영하는 건 다른 능력이에요!"
+      }
     },
     {
       "id": "Q027",
@@ -626,7 +732,12 @@
       ],
       "correct": 1,
       "hint": "깨다, 일어나다 (p.14)",
-      "page": 14
+      "page": 14,
+      "wrong_explanations": {
+        "sleep": "sleep은 '자다'예요. 아침에는 '깨어난다'는 wake up!",
+        "stay": "stay는 '머물다'예요. '일어나다'는 wake up!",
+        "rest": "rest는 '쉬다'예요. 아침에 깨어나는 건 wake up!"
+      }
     },
     {
       "id": "Q028",
@@ -649,7 +760,12 @@
       ],
       "correct": 0,
       "hint": "목표 (n.) — 교과서 p.8",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "plan": "plan도 계획이지만, goal = 목표는 더 큰 목적이에요!",
+        "idea": "idea는 '생각'예요. '목표'는 goal!",
+        "habit": "habit은 '습관'이에요. 올해 '목표'는 goal!"
+      }
     },
     {
       "id": "Q029",
@@ -672,7 +788,12 @@
       ],
       "correct": 1,
       "hint": "운동하다 (v.) — 교과서 p.17",
-      "page": 17
+      "page": 17,
+      "wrong_explanations": {
+        "sleep": "sleep은 '자다'예요. 매일 하는 활동은 exercise = '운동하다'!",
+        "rest": "rest는 '쉬다'예요. 건강을 유지하려면 exercise!",
+        "nap": "nap은 '낮잠'이에요. 건강을 위한 운동은 exercise!"
+      }
     },
     {
       "id": "Q030",
@@ -695,7 +816,12 @@
       ],
       "correct": 0,
       "hint": "습관 (n.) — 교과서 p.15",
-      "page": 15
+      "page": 15,
+      "wrong_explanations": {
+        "hobbies": "hobbies는 '취미'예요. '좋은 습관'은 habits!",
+        "choices": "choices는 '선택'예요. 건강한 습관은 habits!",
+        "styles": "styles는 '스타일'이에요. 좋은 습관은 habits!"
+      }
     },
     {
       "id": "Q031",
@@ -718,7 +844,10 @@
       ],
       "correct": 1,
       "hint": "잠자다 (v.) / 수면 (n.) — 교과서 p.15",
-      "page": 15
+      "page": 15,
+      "wrong_explanations": {
+        "default": "잠은 건강을 위해 꼭 필요한 활동이에요!"
+      }
     },
     {
       "id": "Q032",
@@ -741,7 +870,10 @@
       ],
       "correct": 1,
       "hint": "취침 시간 (n.) — 교과서 p.15",
-      "page": 15
+      "page": 15,
+      "wrong_explanations": {
+        "default": "음식은 우리 몸에 에너지와 영양을 줘요!"
+      }
     },
     {
       "id": "Q033",
@@ -764,7 +896,10 @@
       ],
       "correct": 0,
       "hint": "카페인 (n.) — 교과서 p.14",
-      "page": 14
+      "page": 14,
+      "wrong_explanations": {
+        "default": "물은 우리 몸의 약 70%를 이루고 있어요!"
+      }
     },
     {
       "id": "Q034",
@@ -787,7 +922,10 @@
       ],
       "correct": 2,
       "hint": "깨어 있는 (a.) — 교과서 p.17",
-      "page": 17
+      "page": 17,
+      "wrong_explanations": {
+        "default": "운동은 몸을 건강하고 튼튼하게 해줘요!"
+      }
     },
     {
       "id": "Q035",
@@ -810,7 +948,10 @@
       ],
       "correct": 1,
       "hint": "낮잠 (n.) — 교과서 p.15",
-      "page": 15
+      "page": 15,
+      "wrong_explanations": {
+        "default": "스트레스를 줄이는 것도 건강에 중요해요!"
+      }
     },
     {
       "id": "Q036",
@@ -833,7 +974,10 @@
       ],
       "correct": 0,
       "hint": "패턴, 양식 (n.) — 교과서 p.16",
-      "page": 16
+      "page": 16,
+      "wrong_explanations": {
+        "default": "규칙적인 생활은 건강의 기초예요!"
+      }
     },
     {
       "id": "Q037",
@@ -856,7 +1000,10 @@
       ],
       "correct": 0,
       "hint": "에너지, 활력 (n.) — 교과서 p.15",
-      "page": 15
+      "page": 15,
+      "wrong_explanations": {
+        "default": "밤에 충분히 자야 낮에 활기차게 활동할 수 있어요!"
+      }
     },
     {
       "id": "Q038",
@@ -879,7 +1026,10 @@
       ],
       "correct": 0,
       "hint": "콘서트 (n.) — 교과서 p.10",
-      "page": 10
+      "page": 10,
+      "wrong_explanations": {
+        "default": "신선한 공기를 마시는 것도 건강에 좋아요!"
+      }
     },
     {
       "id": "Q039",
@@ -902,7 +1052,10 @@
       ],
       "correct": 0,
       "hint": "if 조건문: If + 현재시제, will + 동사원형",
-      "page": 20
+      "page": 20,
+      "wrong_explanations": {
+        "default": "친구들과 함께하는 활동은 몸과 마음을 건강하게 해요!"
+      }
     },
     {
       "id": "Q040",
@@ -925,7 +1078,10 @@
       ],
       "correct": 0,
       "hint": "if 조건문: If + 현재시제, will + 동사원형",
-      "page": 20
+      "page": 20,
+      "wrong_explanations": {
+        "default": "해로운 음식보다 영양 있는 음식을 선택해야 해요!"
+      }
     },
     {
       "id": "Q041",
@@ -948,7 +1104,10 @@
       ],
       "correct": 0,
       "hint": "의문사 + to부정사: what to eat = 무엇을 먹을지",
-      "page": 20
+      "page": 20,
+      "wrong_explanations": {
+        "default": "목표를 정하는 것이 성공의 첫 단계예요!"
+      }
     },
     {
       "id": "Q042",
@@ -971,7 +1130,10 @@
       ],
       "correct": 0,
       "hint": "의문사 + to부정사: how to use = 어떻게 사용할지",
-      "page": 20
+      "page": 20,
+      "wrong_explanations": {
+        "default": "계획 없이는 목표를 이루기 어려워요!"
+      }
     },
     {
       "id": "Q043",
@@ -994,7 +1156,10 @@
       ],
       "correct": 0,
       "hint": "be planning to = ~할 계획이다",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "default": "열심히 노력하면 목표를 반드시 이룰 수 있어요!"
+      }
     },
     {
       "id": "Q044",
@@ -1017,7 +1182,10 @@
       ],
       "correct": 0,
       "hint": "want to = ~하고 싶다",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "default": "실패도 성공으로 가는 길의 일부예요!"
+      }
     },
     {
       "id": "Q045",
@@ -1040,7 +1208,10 @@
       ],
       "correct": 0,
       "hint": "You can do it! = 넌 할 수 있어!",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "default": "좋은 습관은 한 번에 생기지 않아요. 꾸준함이 중요!"
+      }
     },
     {
       "id": "Q046",
@@ -1063,7 +1234,10 @@
       ],
       "correct": 0,
       "hint": "if 조건문의 if절은 현재시제",
-      "page": 20
+      "page": 20,
+      "wrong_explanations": {
+        "default": "작은 목표부터 시작하면 더 쉬워요!"
+      }
     },
     {
       "id": "Q047",
@@ -1086,7 +1260,10 @@
       ],
       "correct": 0,
       "hint": "if 조건문: If + 현재시제, will + 동사원형",
-      "page": 20
+      "page": 20,
+      "wrong_explanations": {
+        "default": "다른 사람과의 경쟁보다 자신과의 싸움이 중요해요!"
+      }
     },
     {
       "id": "Q048",
@@ -1109,7 +1286,10 @@
       ],
       "correct": 0,
       "hint": "without + ~ing = ~하지 않고",
-      "page": 19
+      "page": 19,
+      "wrong_explanations": {
+        "default": "목표를 적어두면 더 명확해지고 실현하기 쉬워요!"
+      }
     },
     {
       "id": "Q049",
@@ -1132,7 +1312,10 @@
       ],
       "correct": 0,
       "hint": "💡 sleep = 잠자다. rest(쉬다), lie down(눕다)과 다르게 '수면' 자체를 의미해요 — p.15",
-      "page": 15
+      "page": 15,
+      "wrong_explanations": {
+        "default": "도움을 청하는 것도 현명한 방법이에요!"
+      }
     },
     {
       "id": "Q050",
@@ -1155,7 +1338,10 @@
       ],
       "correct": 0,
       "hint": "현재형 의문문: Do you have...?",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "default": "자신을 믿는 것이 성공의 가장 중요한 요소예요!"
+      }
     },
     {
       "id": "Q051",
@@ -1180,7 +1366,10 @@
       ],
       "answer": "What are your goals this year?",
       "hint": "💡 What 의문문: What + be동사 + 주어? → 'What are your goals this year?' year 앞에 this!",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "default": "morning = 아침. 아침 시간에 하는 활동들을 알아봐요!"
+      }
     },
     {
       "id": "Q052",
@@ -1204,7 +1393,10 @@
       ],
       "answer": "I'm planning to read more books.",
       "hint": "💡 be planning to + 동사원형: 'I'm planning to read' 가 핵심! more books는 뒤에",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "default": "afternoon = 오후. 오후 시간 활동도 건강 생활의 일부!"
+      }
     },
     {
       "id": "Q053",
@@ -1228,7 +1420,10 @@
       ],
       "answer": "You can do it! Great!",
       "hint": "격려 표현: You can do it! = 넌 할 수 있어! Great! = 좋아! — 교과서 p.8",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "default": "evening = 저녁. 저녁 준비가 밤을 잘 자는 데 중요해요!"
+      }
     },
     {
       "id": "Q054",
@@ -1256,7 +1451,10 @@
       ],
       "answer": "If you exercise regularly, you will be healthier.",
       "hint": "💡 if 조건문 복습! If + 현재, will + 동사원형. 'If you exercise regularly, you will be healthier'",
-      "page": 20
+      "page": 20,
+      "wrong_explanations": {
+        "default": "night = 밤. 밤에는 충분한 수면이 가장 중요!"
+      }
     },
     {
       "id": "Q055",
@@ -1282,7 +1480,10 @@
       ],
       "answer": "I don't know what to learn at school.",
       "hint": "💡 I don't know + 의문사 + to부정사: 'I don't know what to learn' — at school은 장소!",
-      "page": 20
+      "page": 20,
+      "wrong_explanations": {
+        "default": "always = 항상. 매일 꾸준히 하는 습관이 중요!"
+      }
     },
     {
       "id": "Q056",
@@ -1308,7 +1509,10 @@
       ],
       "answer": "Good sleep habits are important for your health.",
       "hint": "💡 주어(Good sleep habits) + be동사(are) + 형용사(important) + for + 명사",
-      "page": 16
+      "page": 16,
+      "wrong_explanations": {
+        "default": "usually = 보통. 대부분의 시간에 그렇게 한다는 뜻!"
+      }
     },
     {
       "id": "Q057",
@@ -1331,7 +1535,10 @@
       ],
       "answer": "Caffeine can cause sleep problems.",
       "hint": "💡 주어 + can + 동사원형: 'Caffeine can cause' — cause 뒤에 목적어!",
-      "page": 14
+      "page": 14,
+      "wrong_explanations": {
+        "default": "sometimes = 가끔. 항상은 아니지만 자주 한다는 의미!"
+      }
     },
     {
       "id": "Q058",
@@ -1359,7 +1566,10 @@
       ],
       "answer": "Your brain stays active if you use smartphone at night.",
       "hint": "💡 이번엔 주절 먼저! 'Your brain stays active' + if절 뒤에",
-      "page": 17
+      "page": 17,
+      "wrong_explanations": {
+        "default": "never = 절대 안 한다. 하지 않는 습관을 나타내요!"
+      }
     },
     {
       "id": "Q059",
@@ -1383,7 +1593,10 @@
       ],
       "answer": "We should learn healthy sleep habits.",
       "hint": "💡 should + 동사원형: 'We should learn' — 형용사(healthy)+명사(sleep habits) 순서",
-      "page": 16
+      "page": 16,
+      "wrong_explanations": {
+        "default": "often = 자주. 여러 번 반복하는 활동을 나타내요!"
+      }
     },
     {
       "id": "Q060",
@@ -1408,7 +1621,10 @@
       ],
       "answer": "They are talking about their new goals.",
       "hint": "💡 현재진행형: 주어 + be동사 + ~ing. 'They are talking about' + 명사구",
-      "page": 8
+      "page": 8,
+      "wrong_explanations": {
+        "default": "seldom = 거의 안 한다. 매우 드물게 한다는 뜻!"
+      }
     },
     {
       "id": "Q061",
@@ -1430,7 +1646,10 @@
       ],
       "correct": 1,
       "hint": "have good sleep habits = 좋은 수면 습관을 가지다",
-      "page": 15
+      "page": 15,
+      "wrong_explanations": {
+        "default": "ache = 아프다. 반복적인 통증을 나타내요!"
+      }
     },
     {
       "id": "Q062",
@@ -1452,7 +1671,10 @@
       ],
       "correct": 0,
       "hint": "regularly = 규칙적으로",
-      "page": 17
+      "page": 17,
+      "wrong_explanations": {
+        "default": "pain = 통증. 더 강한 통증을 나타내는 단어!"
+      }
     },
     {
       "id": "Q063",
@@ -1474,7 +1696,10 @@
       ],
       "correct": 0,
       "hint": "be careful about = ~을 조심하다",
-      "page": 16
+      "page": 16,
+      "wrong_explanations": {
+        "default": "sick = 아프다. 병에 걸렸다는 의미!"
+      }
     },
     {
       "id": "Q064",
@@ -1496,7 +1721,10 @@
       ],
       "correct": 0,
       "hint": "before bedtime = 자기 전에",
-      "page": 17
+      "page": 17,
+      "wrong_explanations": {
+        "default": "hurt = 다치다/아프다. 외상이나 즉각적인 통증!"
+      }
     },
     {
       "id": "Q065",
@@ -1518,7 +1746,10 @@
       ],
       "correct": 0,
       "hint": "listen to = 귀 기울이다",
-      "page": 16
+      "page": 16,
+      "wrong_explanations": {
+        "default": "tired = 피곤하다. 에너지가 떨어진 상태를 나타내요!"
+      }
     },
     {
       "id": "Q066",
@@ -1540,7 +1771,10 @@
       ],
       "correct": 0,
       "hint": "during the day = 낮 동안에",
-      "page": 17
+      "page": 17,
+      "wrong_explanations": {
+        "default": "weak = 약하다. 힘이 없는 상태를 의미해요!"
+      }
     },
     {
       "id": "Q067",
@@ -1562,7 +1796,10 @@
       ],
       "correct": 0,
       "hint": "enough sleep = 충분한 수면",
-      "page": 15
+      "page": 15,
+      "wrong_explanations": {
+        "default": "strong = 강하다. 건강하고 힘찬 상태!"
+      }
     },
     {
       "id": "Q068",
@@ -1584,7 +1821,10 @@
       ],
       "correct": 0,
       "hint": "blue light = 파란 빛",
-      "page": 17
+      "page": 17,
+      "wrong_explanations": {
+        "default": "fresh = 신선한. 활기 있고 새로운 기분!"
+      }
     },
     {
       "id": "Q069",
@@ -1606,7 +1846,10 @@
       ],
       "correct": 0,
       "hint": "feel healthier = 더 건강하게 느끼다",
-      "page": 16
+      "page": 16,
+      "wrong_explanations": {
+        "default": "fit = 건강하다. 좋은 신체 상태를 의미!"
+      }
     },
     {
       "id": "Q070",
@@ -1628,7 +1871,10 @@
       ],
       "correct": 0,
       "hint": "💡 get to = ~에 도착하다. reach, go to, arrive at 중 교과서 표현은 get to! on time = 정시에 — p.14",
-      "page": 14
+      "page": 14,
+      "wrong_explanations": {
+        "default": "healthy = 건강한. 신체가 좋은 상태!"
+      }
     },
     {
       "id": "Q071",
@@ -1651,7 +1897,10 @@
       ],
       "correct": 0,
       "hint": "if 조건문에서 미래 결과는 will + 동사",
-      "page": 20
+      "page": 20,
+      "wrong_explanations": {
+        "default": "mental = 정신적인. 마음과 생각과 관련된!"
+      }
     },
     {
       "id": "Q072",
@@ -1674,7 +1923,10 @@
       ],
       "correct": 3,
       "hint": "💡 how to + 동사원형 = ~하는 방법. keeping(동명사)이나 to keep(이중 to)은 안 돼요! — p.20",
-      "page": 20
+      "page": 20,
+      "wrong_explanations": {
+        "default": "physical = 신체적인. 몸과 관련된!"
+      }
     },
     {
       "id": "Q073",
@@ -1697,7 +1949,10 @@
       ],
       "correct": 2,
       "hint": "which to ~ = 어느 것을 할지",
-      "page": 20
+      "page": 20,
+      "wrong_explanations": {
+        "default": "emotional = 감정적인. 느낌과 감정과 관련된!"
+      }
     },
     {
       "id": "Q074",
@@ -1720,7 +1975,10 @@
       ],
       "correct": 0,
       "hint": "if절에서는 현재형을 사용합니다",
-      "page": 20
+      "page": 20,
+      "wrong_explanations": {
+        "default": "social = 사회적인. 다른 사람과의 관계와 관련!"
+      }
     },
     {
       "id": "Q075",
@@ -1743,7 +2001,10 @@
       ],
       "correct": 2,
       "hint": "의문사 + to부정사: where to go",
-      "page": 20
+      "page": 20,
+      "wrong_explanations": {
+        "default": "positive = 긍정적인. 좋고 밝은 태도!"
+      }
     },
     {
       "id": "Q076",
@@ -1766,7 +2027,10 @@
       ],
       "correct": 1,
       "hint": "lively = 활기 넘치는, 생기 있는",
-      "page": 16
+      "page": 16,
+      "wrong_explanations": {
+        "default": "negative = 부정적인. 안 좋고 어두운 태도!"
+      }
     },
     {
       "id": "Q077",
@@ -1789,7 +2053,10 @@
       ],
       "correct": 0,
       "hint": "의문사 + to부정사: how to solve = 어떻게 풀지",
-      "page": 20
+      "page": 20,
+      "wrong_explanations": {
+        "default": "active = 활동적인. 계속 움직이고 바쁜 상태!"
+      }
     },
     {
       "id": "Q078",
@@ -1812,7 +2079,10 @@
       ],
       "correct": 0,
       "hint": "be + 형용사: be careful = 조심하다",
-      "page": 16
+      "page": 16,
+      "wrong_explanations": {
+        "default": "passive = 수동적인. 상대방을 따르기만 하는 태도!"
+      }
     },
     {
       "id": "Q079",
@@ -1835,7 +2105,10 @@
       ],
       "correct": 1,
       "hint": "have good sleep without healthy habits = 건강한 습관 없이 좋은 수면을 가질 수 없다",
-      "page": 19
+      "page": 19,
+      "wrong_explanations": {
+        "default": "confident = 자신감 있는. 자신의 능력을 믿는 태도!"
+      }
     },
     {
       "id": "Q080",
@@ -1858,7 +2131,10 @@
       ],
       "correct": 2,
       "hint": "be lively and healthy = 활기차고 건강하다",
-      "page": 16
+      "page": 16,
+      "wrong_explanations": {
+        "default": "humble = 겸손한. 겸손하고 낮추는 태도!"
+      }
     }
   ]
 }

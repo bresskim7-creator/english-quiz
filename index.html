@@ -1154,6 +1154,7 @@
 
         function handleFillBlankAnswer(q, selectedIdx, correctIdx) {
             const buttons = document.querySelectorAll('#fill-blank-container .choice-btn');
+            const userChoice = buttons[selectedIdx] ? buttons[selectedIdx].textContent : '';
             buttons.forEach((btn, idx) => {
                 btn.disabled = true;
                 if (idx === correctIdx) btn.classList.add('correct');
@@ -1163,9 +1164,8 @@
             const isCorrect = selectedIdx === correctIdx;
             recordAnswer(q, isCorrect);
 
-            // 오답일 때 정답 + 설명 표시
             if (!isCorrect) {
-                showWrongExplanation(q, document.getElementById('fill-blank-container'));
+                showWrongExplanation(q, document.getElementById('fill-blank-container'), userChoice);
             }
 
             showNextButton();
@@ -1243,7 +1243,7 @@
 
                     // 오답 시 정답 + 설명 표시
                     if (!isCorrect) {
-                        showWrongExplanation(q, container);
+                        showWrongExplanation(q, container, userAnswer);
                     }
 
                     document.getElementById('btn-skip').style.display = 'none';
@@ -1274,6 +1274,7 @@
 
         function handleMatchAnswer(q, selectedIdx, correctIdx) {
             const buttons = document.querySelectorAll('#match-container .match-option');
+            const userChoice = buttons[selectedIdx] ? buttons[selectedIdx].textContent : '';
             buttons.forEach((btn, idx) => {
                 btn.disabled = true;
                 if (idx === correctIdx) btn.classList.add('correct');
@@ -1283,35 +1284,41 @@
             const isCorrect = selectedIdx === correctIdx;
             recordAnswer(q, isCorrect);
 
-            // 오답 시 정답 + 설명 표시
             if (!isCorrect) {
-                showWrongExplanation(q, document.getElementById('match-container'));
+                showWrongExplanation(q, document.getElementById('match-container'), userChoice);
             }
 
             showNextButton();
         }
 
-        // 오답 시 일타강사 스타일 설명 표시
-        function showWrongExplanation(q, afterEl) {
+        // 오답 시 맞춤 설명 (JSON의 wrong_explanations 활용)
+        function showWrongExplanation(q, afterEl, userAnswer) {
             const box = document.createElement('div');
             box.className = 'wrong-explanation';
-            box.style.cssText = 'background:linear-gradient(135deg,#e8f5e9,#f1f8e9);border-left:4px solid #4CAF50;border-radius:0 10px 10px 0;padding:12px 14px;margin-top:12px;font-size:13px;color:#333;line-height:1.6;';
+            box.style.cssText = 'background:linear-gradient(135deg,#e8f5e9,#f1f8e9);border-left:4px solid #4CAF50;border-radius:0 10px 10px 0;padding:14px 16px;margin-top:12px;font-size:15px;color:#333;line-height:1.7;';
 
-            // 정답 표시
-            const answer = q.blank_answer || q.answer || (q.choices ? q.choices[q.correct] : '');
-            let html = '<div style="font-weight:700;color:#2e7d32;margin-bottom:6px;">✅ 정답: ' + answer + '</div>';
+            const correctAnswer = q.blank_answer || q.answer || (q.choices ? q.choices[q.correct] : '');
+            const we = q.wrong_explanations || {};
+            let html = '';
 
-            // 힌트 기반 설명 (일타강사 스타일)
-            if (q.hint) {
-                html += '<div style="font-size:12px;color:#555;">💡 ' + q.hint + '</div>';
+            if (q.type === 'fill_blank') {
+                html += '<div style="color:#c62828;font-weight:600;margin-bottom:6px;">✗ ' + userAnswer + ' → ✅ ' + correctAnswer + '</div>';
+                const explanation = we[userAnswer] || q.hint || '정답은 "' + correctAnswer + '"이에요!';
+                html += '<div style="font-size:14px;color:#444;margin-bottom:6px;">' + explanation + '</div>';
+            } else if (q.type === 'arrange') {
+                html += '<div style="color:#c62828;font-weight:600;margin-bottom:6px;">✗ 네 답: ' + userAnswer + '</div>';
+                html += '<div style="color:#2e7d32;font-weight:600;margin-bottom:6px;">✅ 정답: ' + correctAnswer + '</div>';
+                const explanation = we['default'] || q.hint || '영어는 "주어 + 동사 + 목적어" 순서예요!';
+                html += '<div style="font-size:14px;color:#444;margin-bottom:6px;">' + explanation + '</div>';
+            } else if (q.type === 'match') {
+                const shortUser = userAnswer && userAnswer.length > 50 ? userAnswer.substring(0, 50) + '...' : userAnswer;
+                html += '<div style="color:#c62828;font-weight:600;margin-bottom:6px;">✗ ' + shortUser + '</div>';
+                html += '<div style="color:#2e7d32;font-weight:600;margin-bottom:6px;">✅ ' + correctAnswer + '</div>';
+                const explanation = we[userAnswer] || q.hint || '';
+                html += '<div style="font-size:14px;color:#444;margin-bottom:6px;">' + explanation + '</div>';
             }
 
-            // 유형별 추가 팁
-            if (q.type === 'arrange') {
-                html += '<div style="font-size:11px;color:#888;margin-top:4px;">📝 문장을 소리 내어 읽어보면 어순이 자연스럽게 느껴져요</div>';
-            } else if (q.tags && q.tags.includes('문법')) {
-                html += '<div style="font-size:11px;color:#888;margin-top:4px;">📝 이 문법 패턴을 3번 소리 내어 읽어보세요</div>';
-            }
+            html += '<div style="font-size:13px;color:#777;margin-top:6px;border-top:1px solid #ddd;padding-top:6px;">📖 정답 문장을 소리 내어 2번 읽어보세요!</div>';
 
             box.innerHTML = html;
             afterEl.after(box);
