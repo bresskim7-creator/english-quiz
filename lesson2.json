@@ -1,0 +1,1365 @@
+{
+  "lesson": 2,
+  "title": "Lesson 2: Now One Foot, Now the Other",
+  "questions": [
+    {
+      "id": "W01",
+      "category": "취약단어",
+      "type": "fill_blank",
+      "keyword": "wooden block",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "sentence": "Bobby and his grandfather built a tower with _____.",
+      "blank_answer": "wooden blocks",
+      "choices": [
+        "plastic toys",
+        "wooden blocks",
+        "paper sheets",
+        "metal pieces"
+      ],
+      "correct": 0,
+      "hint": "나무로 만든 블록 (n.) — 교과서 p.26",
+      "page": 26,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q001",
+      "category": "추가_문법_to부정사",
+      "type": "fill_blank",
+      "keyword": "to부정사 목적",
+      "instruction": "빈칸에 알맞은 표현을 고르세요.",
+      "sentence": "It's time _____ a new tower.",
+      "blank_answer": "to build",
+      "choices": [
+        "to build",
+        "building",
+        "build",
+        "built"
+      ],
+      "correct": 1,
+      "hint": "to부정사는 목적을 나타냄 ('~하기 위해') — 교과서 p.28",
+      "page": 28,
+      "difficulty": "medium"
+    },
+    {
+      "id": "W02",
+      "category": "취약단어",
+      "type": "fill_blank",
+      "keyword": "pile",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "sentence": "He began to _____ one block on top of another.",
+      "blank_answer": "pile",
+      "choices": [
+        "push",
+        "pile",
+        "play",
+        "pull"
+      ],
+      "correct": 2,
+      "hint": "쌓다, 겹치다 (v.) — 교과서 p.27",
+      "page": 27,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q002",
+      "category": "추가_문법_to부정사",
+      "type": "fill_blank",
+      "keyword": "to부정사 목적",
+      "instruction": "빈칸에 알맞은 표현을 고르세요.",
+      "sentence": "Bobby came to the hospital _____ his grandfather.",
+      "blank_answer": "to visit",
+      "choices": [
+        "visiting",
+        "to visit",
+        "visit",
+        "visits"
+      ],
+      "correct": 3,
+      "hint": "목적을 나타내는 to부정사 — 교과서 p.32",
+      "page": 32,
+      "difficulty": "medium"
+    },
+    {
+      "id": "W03",
+      "category": "취약단어",
+      "type": "fill_blank",
+      "keyword": "one by one",
+      "instruction": "빈칸에 알맞은 표현을 고르세요.",
+      "sentence": "The blocks fell down _____.",
+      "blank_answer": "one by one",
+      "choices": [
+        "all at once",
+        "one by one",
+        "very fast",
+        "very slowly"
+      ],
+      "correct": 0,
+      "hint": "하나하나씩, 차례대로 (adv.) — 교과서 p.27",
+      "page": 27,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q003",
+      "category": "추가_문법_to부정사",
+      "type": "fill_blank",
+      "keyword": "to부정사 수식",
+      "instruction": "빈칙에 알맞은 표현을 고르세요.",
+      "sentence": "He has a lot of work _____ after leaving the hospital.",
+      "blank_answer": "to do",
+      "choices": [
+        "to do",
+        "doing",
+        "to doing",
+        "do"
+      ],
+      "correct": 1,
+      "hint": "to부정사가 명사를 수식 ('할 일') — 교과서 p.31",
+      "page": 31,
+      "difficulty": "medium"
+    },
+    {
+      "id": "W04",
+      "category": "취약단어",
+      "type": "fill_blank",
+      "keyword": "sneeze",
+      "instruction": "빈칸에 알맞은 동사를 고르세요.",
+      "sentence": "Grandfather started to _____ and the tower fell down.",
+      "blank_answer": "sneeze",
+      "choices": [
+        "cough",
+        "sneeze",
+        "laugh",
+        "cry"
+      ],
+      "correct": 2,
+      "hint": "재채기하다 (v.) — 교과서 p.28",
+      "page": 28,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q004",
+      "category": "추가_문법_to부정사",
+      "type": "fill_blank",
+      "keyword": "to부정사 수식",
+      "instruction": "빈칸에 알맞은 표현을 고르세요.",
+      "sentence": "He didn't have anything _____ with his hands.",
+      "blank_answer": "to do",
+      "choices": [
+        "to do",
+        "doing",
+        "do",
+        "to be doing"
+      ],
+      "correct": 3,
+      "hint": "to부정사가 'anything'을 수식 — 교과서 p.35",
+      "page": 35,
+      "difficulty": "medium"
+    },
+    {
+      "id": "W05",
+      "category": "취약단어",
+      "type": "fill_blank",
+      "keyword": "fall ill",
+      "instruction": "빈칸에 알맞은 표현을 고르세요.",
+      "sentence": "One day, Grandfather Bob _____ and went to the hospital.",
+      "blank_answer": "fell ill",
+      "choices": [
+        "got tired",
+        "fell ill",
+        "woke up",
+        "fell down"
+      ],
+      "correct": 0,
+      "hint": "병이 나다, 아프게 되다 (v.) — 교과서 p.30",
+      "page": 30,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q005",
+      "category": "추가_문법_to부정사",
+      "type": "match",
+      "keyword": "to부정사 의미",
+      "instruction": "한국어 뜻과 맞는 영어 문장을 고르세요.",
+      "sentence_ko": "나는 당신을 도울 친구가 필요하다.",
+      "choices": [
+        "I need a friend to help me.",
+        "I need a friend who helps me.",
+        "I have a friend to help me.",
+        "I want a friend to help me today."
+      ],
+      "correct": 1,
+      "hint": "to부정사가 명사를 꾸밈 — 교과서 p.29",
+      "page": 29,
+      "difficulty": "medium"
+    },
+    {
+      "id": "W06",
+      "category": "취약단어",
+      "type": "fill_blank",
+      "keyword": "recover",
+      "instruction": "빈칸에 알맞은 동사를 고르세요.",
+      "sentence": "Bobby hoped his grandfather would _____ soon.",
+      "blank_answer": "recover",
+      "choices": [
+        "relax",
+        "recover",
+        "remember",
+        "return"
+      ],
+      "correct": 2,
+      "hint": "회복하다, 나아지다 (v.) — 교과서 p.31",
+      "page": 31,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q006",
+      "category": "추가_문법_to부정사",
+      "type": "match",
+      "keyword": "to부정사 의미",
+      "instruction": "한국어 뜻과 맞는 영어 문장을 고르세요.",
+      "sentence_ko": "그는 회복하기 위해 노력했다.",
+      "choices": [
+        "He tried to recover.",
+        "He tried recovering.",
+        "He was trying to recover.",
+        "He will try to recover."
+      ],
+      "correct": 3,
+      "hint": "'~하기 위해' 목적을 나타냄 — 교과서 p.33",
+      "page": 33,
+      "difficulty": "medium"
+    },
+    {
+      "id": "W07",
+      "category": "취약단어",
+      "type": "fill_blank",
+      "keyword": "realize",
+      "instruction": "빈칸에 알맞은 동사를 고르세요.",
+      "sentence": "Bobby _____ that his grandfather was getting better.",
+      "blank_answer": "realized",
+      "choices": [
+        "remembered",
+        "realized",
+        "worried",
+        "imagined"
+      ],
+      "correct": 0,
+      "hint": "깨닫다, 알게 되다 (v.) — 교과서 p.34",
+      "page": 34,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q007",
+      "category": "추가_문법_to부정사",
+      "type": "arrange",
+      "keyword": "to부정사 배열",
+      "instruction": "단어를 올바른 순서로 배열하세요.",
+      "sentence_ko": "나는 할 일이 없다.",
+      "words": [
+        "nothing",
+        "have",
+        "I",
+        "do",
+        "to"
+      ],
+      "answer": "I have nothing to do.",
+      "hint": "to부정사가 nothing을 수식 — 교과서 p.36",
+      "page": 36,
+      "difficulty": "hard",
+      "correct": 1
+    },
+    {
+      "id": "W08",
+      "category": "취약단어",
+      "type": "fill_blank",
+      "keyword": "lean",
+      "instruction": "빈칸에 알맞은 동사를 고르세요.",
+      "sentence": "Grandfather started to _____ on Bobby's shoulder.",
+      "blank_answer": "lean",
+      "choices": [
+        "lean",
+        "leave",
+        "learn",
+        "lead"
+      ],
+      "correct": 2,
+      "hint": "기대다, 의지하다 (v.) — 교과서 p.42",
+      "page": 42,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q008",
+      "category": "추가_문법_to부정사",
+      "type": "arrange",
+      "keyword": "to부정사 배열",
+      "instruction": "단어를 올바른 순서로 배열하세요.",
+      "sentence_ko": "그는 빨리 회복하기를 원했다.",
+      "words": [
+        "wanted",
+        "He",
+        "recover",
+        "to"
+      ],
+      "answer": "He wanted to recover.",
+      "hint": "wanted + to부정사 — 교과서 p.32",
+      "page": 32,
+      "difficulty": "hard",
+      "correct": 3
+    },
+    {
+      "id": "Q009",
+      "category": "추가_문법_관계대명사",
+      "type": "fill_blank",
+      "keyword": "관계대명사 who",
+      "instruction": "빈칸에 알맞은 관계대명사를 고르세요.",
+      "sentence": "Bob is the man _____ taught Bobby to walk.",
+      "blank_answer": "who",
+      "choices": [
+        "who",
+        "which",
+        "that",
+        "whose"
+      ],
+      "correct": 0,
+      "hint": "관계대명사 who는 사람을 나타냄 — 교과서 p.26",
+      "page": 26,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q010",
+      "category": "추가_문법_관계대명사",
+      "type": "fill_blank",
+      "keyword": "관계대명사 who",
+      "instruction": "빈칸에 알맞은 관계대명사를 고르세요.",
+      "sentence": "There was a nurse _____ took care of my grandfather.",
+      "blank_answer": "who",
+      "choices": [
+        "who",
+        "which",
+        "where",
+        "when"
+      ],
+      "correct": 1,
+      "hint": "사람을 나타낼 때 who 사용 — 교과서 p.31",
+      "page": 31,
+      "difficulty": "medium"
+    },
+    {
+      "id": "S01A",
+      "category": "핵심문장_빈칸형",
+      "type": "fill_blank",
+      "keyword": "Hold my hands",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "sentence": "_____ my hands.",
+      "blank_answer": "Hold my hands",
+      "choices": [
+        "Hold my hands",
+        "Not Hold my hands",
+        "Different word",
+        "Wrong choice"
+      ],
+      "correct": 2,
+      "hint": "원문: Hold my hands. — 교과서 p.26",
+      "page": 26,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q011",
+      "category": "추가_문법_관계대명사",
+      "type": "fill_blank",
+      "keyword": "관계대명사 which",
+      "instruction": "빈칙에 알맞은 관계대명사를 고르세요.",
+      "sentence": "He is in a hospital _____ is far from here.",
+      "blank_answer": "which",
+      "choices": [
+        "who",
+        "which",
+        "that",
+        "where"
+      ],
+      "correct": 3,
+      "hint": "관계대명사 which는 사물/장소를 나타냄 — 교과서 p.30",
+      "page": 30,
+      "difficulty": "medium"
+    },
+    {
+      "id": "S01B",
+      "category": "핵심문장_배열형",
+      "type": "arrange",
+      "keyword": "Hold my hands",
+      "instruction": "단어를 올바른 순서로 배열하세요.",
+      "sentence_ko": "내 손을 잡아.",
+      "words": [
+        "Hold",
+        "my",
+        "hands"
+      ],
+      "answer": "Hold my hands.",
+      "hint": "💡 명령문은 동사원형으로 시작! 'Hold my hands' — Hold가 맨 앞, 소유격+명사 뒤에",
+      "page": 26,
+      "difficulty": "hard",
+      "correct": 0
+    },
+    {
+      "id": "Q012",
+      "category": "추가_문법_관계대명사",
+      "type": "fill_blank",
+      "keyword": "관계대명사 which",
+      "instruction": "빈칸에 알맞은 관계대명사를 고르세요.",
+      "sentence": "The tower _____ they built fell down quickly.",
+      "blank_answer": "which",
+      "choices": [
+        "who",
+        "which",
+        "that",
+        "why"
+      ],
+      "correct": 1,
+      "hint": "사물을 나타낼 때 which 사용 — 교과서 p.28",
+      "page": 28,
+      "difficulty": "medium"
+    },
+    {
+      "id": "S01C",
+      "category": "핵심문장_해석매칭형",
+      "type": "match",
+      "keyword": "Hold my hands",
+      "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.",
+      "sentence_ko": "내 손을 잡아.",
+      "choices": [
+        "Hold my hands.",
+        "Similar but wrong sentence",
+        "Different meaning 1",
+        "Different meaning 2"
+      ],
+      "correct": 2,
+      "hint": "원문을 찾으세요: Hold my hands....",
+      "page": 26,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q013",
+      "category": "추가_문법_관계대명사",
+      "type": "match",
+      "keyword": "관계대명사 의미",
+      "instruction": "한국어 뜻과 맞는 영어 문장을 고르세요.",
+      "sentence_ko": "나를 도와주는 친구가 있다.",
+      "choices": [
+        "I have a friend who helps me.",
+        "I have a friend which helps me.",
+        "I have a friend that is helping me.",
+        "I have a friend where help me."
+      ],
+      "correct": 3,
+      "hint": "사람을 나타낼 때는 who — 교과서 p.27",
+      "page": 27,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q014",
+      "category": "추가_문법_관계대명사",
+      "type": "match",
+      "keyword": "관계대명사 의미",
+      "instruction": "한국어 뜻과 맞는 영어 문장을 고르세요.",
+      "sentence_ko": "그는 파리에 있는 병원에 들어갔다.",
+      "choices": [
+        "He went to a hospital which is in Paris.",
+        "He went to a hospital who is in Paris.",
+        "He went to a hospital that was in Paris.",
+        "He went to a hospital where in Paris."
+      ],
+      "correct": 0,
+      "hint": "사물(병원)을 나타낼 때는 which — 교과서 p.30",
+      "page": 30,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q015",
+      "category": "추가_문법_관계대명사",
+      "type": "arrange",
+      "keyword": "관계대명사 배열",
+      "instruction": "단어를 올바른 순서로 배열하세요.",
+      "sentence_ko": "나는 날 도와주는 사람을 알고 있다.",
+      "words": [
+        "I",
+        "know",
+        "the",
+        "who",
+        "helps",
+        "person",
+        "me"
+      ],
+      "answer": "I know the person who helps me.",
+      "hint": "관계대명사 who가 사람을 꾸밈 — 교과서 p.27",
+      "page": 27,
+      "difficulty": "hard",
+      "correct": 1
+    },
+    {
+      "id": "Q016",
+      "category": "추가_문법_관계대명사",
+      "type": "arrange",
+      "keyword": "관계대명사 배열",
+      "instruction": "단어를 올바른 순서로 배열하세요.",
+      "sentence_ko": "나는 파리에 있는 레스토랑을 좋아했다.",
+      "words": [
+        "I",
+        "the",
+        "was",
+        "restaurant",
+        "in",
+        "which",
+        "liked",
+        "Paris"
+      ],
+      "answer": "I liked the restaurant which was in Paris.",
+      "hint": "관계대명사 which가 사물을 꾸밈 — 교과서 p.29",
+      "page": 29,
+      "difficulty": "hard",
+      "correct": 2
+    },
+    {
+      "id": "Q017",
+      "category": "추가_단어뜻",
+      "type": "match",
+      "keyword": "호기심 어휘",
+      "instruction": "단어의 뜻으로 가장 알맞은 것을 고르세요.",
+      "sentence_ko": "side by side",
+      "choices": [
+        "나란히, 옆으로",
+        "앞뒤로",
+        "위아래로",
+        "대각선으로"
+      ],
+      "correct": 3,
+      "hint": "할아버지와 손자가 나란히 앉아있다 — 교과서 p.42",
+      "page": 42,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q018",
+      "category": "추가_단어뜻",
+      "type": "match",
+      "keyword": "호기심 어휘",
+      "instruction": "단어의 뜻으로 가장 알맞은 것을 고르세요.",
+      "sentence_ko": "breeze",
+      "choices": [
+        "산들바람",
+        "강한 바람",
+        "비",
+        "구름"
+      ],
+      "correct": 0,
+      "hint": "좋은 날씨에 산들바람이 불었다 — 교과서 p.41",
+      "page": 41,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q019",
+      "category": "추가_단어뜻",
+      "type": "match",
+      "keyword": "호기심 어휘",
+      "instruction": "단어의 뜻으로 가장 알맞은 것을 고르세요.",
+      "sentence_ko": "happiness",
+      "choices": [
+        "행복",
+        "슬픔",
+        "화남",
+        "무서움"
+      ],
+      "correct": 1,
+      "hint": "가족과 함께하는 행복을 느낀다 — 교과서 p.43",
+      "page": 43,
+      "difficulty": "easy"
+    },
+    {
+      "id": "Q020",
+      "category": "추가_단어뜻",
+      "type": "match",
+      "keyword": "호기심 어휘",
+      "instruction": "단어의 뜻으로 가장 알맞은 것을 고르세요.",
+      "sentence_ko": "while",
+      "choices": [
+        "~하는 동안",
+        "~이후에",
+        "~이전에",
+        "~처럼"
+      ],
+      "correct": 2,
+      "hint": "블록을 쌓는 동안 즐거웠다 — 교과서 p.28",
+      "page": 28,
+      "difficulty": "medium"
+    },
+    {
+      "id": "S02A",
+      "category": "핵심문장_빈칸형",
+      "type": "fill_blank",
+      "keyword": "Now one foot, now the other",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "sentence": "_____ one foot, now the other.",
+      "blank_answer": "Now one foot, now the other",
+      "choices": [
+        "Now one foot, now the other",
+        "Not Now one foot, now the other",
+        "Different word",
+        "Wrong choice"
+      ],
+      "correct": 3,
+      "hint": "원문: Now one foot, now the other. — 교과서 p.26",
+      "page": 26,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q021",
+      "category": "추가_배열형",
+      "type": "arrange",
+      "keyword": "문장 배열",
+      "instruction": "단어를 올바른 순서로 배열하세요.",
+      "sentence_ko": "병원에서 아주 먼 곳에 있었다.",
+      "words": [
+        "was",
+        "far",
+        "He",
+        "from",
+        "in",
+        "hospital"
+      ],
+      "answer": "He was in hospital far from here.",
+      "hint": "먼 곳의 병원 — 교과서 p.30",
+      "page": 30,
+      "difficulty": "hard",
+      "correct": 0
+    },
+    {
+      "id": "S02B",
+      "category": "핵심문장_배열형",
+      "type": "arrange",
+      "keyword": "Now one foot, now the other",
+      "instruction": "단어를 올바른 순서로 배열하세요.",
+      "sentence_ko": "이제 한 발, 이제 다른 발",
+      "words": [
+        "Now",
+        "one foot,",
+        "now",
+        "the other"
+      ],
+      "answer": "Now one foot, now the other.",
+      "hint": "💡 반복 구조: 'Now one foot, now the other' — now가 두 번 반복되는 리듬이에요",
+      "page": 26,
+      "difficulty": "hard",
+      "correct": 1
+    },
+    {
+      "id": "Q022",
+      "category": "추가_배열형",
+      "type": "arrange",
+      "keyword": "문장 배열",
+      "instruction": "단어를 올바른 순서로 배열하세요.",
+      "sentence_ko": "Bobby가 소리를 냈다.",
+      "words": [
+        "Bobby",
+        "sound",
+        "a",
+        "made"
+      ],
+      "answer": "Bobby made a sound.",
+      "hint": "작은 소리를 냄 — 교과서 p.35",
+      "page": 35,
+      "difficulty": "hard",
+      "correct": 2
+    },
+    {
+      "id": "S02C",
+      "category": "핵심문장_해석매칭형",
+      "type": "match",
+      "keyword": "Now one foot, now the other",
+      "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.",
+      "sentence_ko": "이제 한 발, 이제 다른 발",
+      "choices": [
+        "Now one foot, now the other.",
+        "Similar but wrong sentence",
+        "Different meaning 1",
+        "Different meaning 2"
+      ],
+      "correct": 3,
+      "hint": "원문을 찾으세요: Now one foot, now th...",
+      "page": 26,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q023",
+      "category": "추가_배열형",
+      "type": "arrange",
+      "keyword": "문장 배열",
+      "instruction": "단어를 올바른 순서로 배열하세요.",
+      "sentence_ko": "손가락이 움직이기 시작했다.",
+      "words": [
+        "fingers",
+        "move",
+        "started",
+        "His",
+        "to"
+      ],
+      "answer": "His fingers started to move.",
+      "hint": "회복의 신호 — 교과서 p.35",
+      "page": 35,
+      "difficulty": "hard",
+      "correct": 0
+    },
+    {
+      "id": "Q024",
+      "category": "추가_해석매칭",
+      "type": "match",
+      "keyword": "긴 문장 해석",
+      "instruction": "한국어 뜻과 맞는 영어 문장을 고르세요.",
+      "sentence_ko": "마치 마법처럼, Bobby는 할아버지를 도울 수 있었다.",
+      "choices": [
+        "Like magic, Bobby could help his grandfather.",
+        "With magic, Bobby helped his grandfather.",
+        "Bobby made magic to help his grandfather.",
+        "Bobby tried magic to help his grandfather."
+      ],
+      "correct": 1,
+      "hint": "마법 같은 순환 — 교과서 p.43",
+      "page": 43,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q025",
+      "category": "추가_단어뜻",
+      "type": "fill_blank",
+      "keyword": "shoulder",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "sentence": "Bobby's grandfather leaned on his _____.",
+      "blank_answer": "shoulder",
+      "choices": [
+        "arm",
+        "shoulder",
+        "hand",
+        "leg"
+      ],
+      "correct": 2,
+      "hint": "어깨 (n.) — 교과서 p.42",
+      "page": 42,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q026",
+      "category": "추가_문법_to부정사",
+      "type": "fill_blank",
+      "keyword": "have no choice",
+      "instruction": "빈칸에 알맞은 표현을 고르세요.",
+      "sentence": "They _____ but to wait for his recovery.",
+      "blank_answer": "had no choice",
+      "choices": [
+        "had no chance",
+        "had no choice",
+        "have no time",
+        "have nothing"
+      ],
+      "correct": 3,
+      "hint": "'~할 수밖에 없다'는 의미 (v.) — 교과서 p.32",
+      "page": 32,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q027",
+      "category": "추가_단어뜻",
+      "type": "fill_blank",
+      "keyword": "suddenly",
+      "instruction": "빈칙에 알맞은 부사를 고르세요.",
+      "sentence": "_____, Bob made a small sound.",
+      "blank_answer": "Suddenly",
+      "choices": [
+        "Finally",
+        "Suddenly",
+        "Slowly",
+        "Actually"
+      ],
+      "correct": 0,
+      "hint": "갑자기 (adv.) — 교과서 p.34",
+      "page": 34,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q028",
+      "category": "추가_문법_관계대명사",
+      "type": "fill_blank",
+      "keyword": "관계대명사",
+      "instruction": "빈칸에 알맞은 관계대명사를 고르세요.",
+      "sentence": "The wooden blocks _____ Bobby played with were special.",
+      "blank_answer": "which",
+      "choices": [
+        "who",
+        "which",
+        "that",
+        "where"
+      ],
+      "correct": 1,
+      "hint": "사물을 나타내는 which (목적격) — 교과서 p.29",
+      "page": 29,
+      "difficulty": "hard"
+    },
+    {
+      "id": "Q029",
+      "category": "추가_단어뜻",
+      "type": "fill_blank",
+      "keyword": "magic",
+      "instruction": "빈칠에 알맞은 단어를 고르세요.",
+      "sentence": "It seemed like _____ that Bobby could help his grandfather.",
+      "blank_answer": "magic",
+      "choices": [
+        "dream",
+        "magic",
+        "luck",
+        "chance"
+      ],
+      "correct": 2,
+      "hint": "마법 (n.) — 교과서 p.43",
+      "page": 43,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q030",
+      "category": "추가_문법_to부정사",
+      "type": "fill_blank",
+      "keyword": "to부정사 목적",
+      "instruction": "빈칸에 알맞은 표현을 고르세요.",
+      "sentence": "Bobby came to the hospital _____ his grandfather.",
+      "blank_answer": "to see",
+      "choices": [
+        "seeing",
+        "to see",
+        "see",
+        "to seeing"
+      ],
+      "correct": 3,
+      "hint": "목적을 나타내는 to부정사 — 교과서 p.33",
+      "page": 33,
+      "difficulty": "medium"
+    },
+    {
+      "id": "S03A",
+      "category": "핵심문장_빈칸형",
+      "type": "fill_blank",
+      "keyword": "Bob was in a hospital",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "sentence": "_____ was in a hospital.",
+      "blank_answer": "Bob was in a hospital",
+      "choices": [
+        "Bob was in a hospital",
+        "Not Bob was in a hospital",
+        "Different word",
+        "Wrong choice"
+      ],
+      "correct": 0,
+      "hint": "원문: Bob was in a hospital. — 교과서 p.30",
+      "page": 30,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q031",
+      "category": "추가_단어뜻",
+      "type": "fill_blank",
+      "keyword": "memory",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "sentence": "Bobby had many happy _____ with his grandfather.",
+      "blank_answer": "memories",
+      "choices": [
+        "stories",
+        "memories",
+        "moments",
+        "times"
+      ],
+      "correct": 1,
+      "hint": "기억, 추억 (n.) — 교과서 p.28",
+      "page": 28,
+      "difficulty": "medium"
+    },
+    {
+      "id": "S03B",
+      "category": "핵심문장_배열형",
+      "type": "arrange",
+      "keyword": "Bob was in a hospital",
+      "instruction": "단어를 올바른 순서로 배열하세요.",
+      "sentence_ko": "Bob은 병원에 있었다.",
+      "words": [
+        "Bob",
+        "was",
+        "in",
+        "a hospital"
+      ],
+      "answer": "Bob was in a hospital.",
+      "hint": "💡 주어 + be동사 + 장소: 'Bob was in the hospital' — in the hospital이 한 덩어리",
+      "page": 30,
+      "difficulty": "hard",
+      "correct": 2
+    },
+    {
+      "id": "Q032",
+      "category": "추가_문법_to부정사",
+      "type": "fill_blank",
+      "keyword": "need + to",
+      "instruction": "빈칙에 알맞은 표현을 고르세요.",
+      "sentence": "His grandfather needed time _____ stronger.",
+      "blank_answer": "to become",
+      "choices": [
+        "to become",
+        "becoming",
+        "become",
+        "to becoming"
+      ],
+      "correct": 3,
+      "hint": "필요성을 나타내는 to부정사 — 교과서 p.31",
+      "page": 31,
+      "difficulty": "medium"
+    },
+    {
+      "id": "S03C",
+      "category": "핵심문장_해석매칭형",
+      "type": "match",
+      "keyword": "Bob was in a hospital",
+      "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.",
+      "sentence_ko": "Bob은 병원에 있었다.",
+      "choices": [
+        "Bob was in a hospital.",
+        "Similar but wrong sentence",
+        "Different meaning 1",
+        "Different meaning 2"
+      ],
+      "correct": 0,
+      "hint": "원문을 찾으세요: Bob was in a hospita...",
+      "page": 30,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q033",
+      "category": "추가_단어뜻",
+      "type": "fill_blank",
+      "keyword": "appear",
+      "instruction": "빈칸에 알맞은 동사를 고르세요.",
+      "sentence": "When Bobby came, his grandfather _____ to recognize him.",
+      "blank_answer": "appeared",
+      "choices": [
+        "looked",
+        "appeared",
+        "seemed",
+        "found"
+      ],
+      "correct": 1,
+      "hint": "나타나다, 보이다 (v.) — 교과서 p.34",
+      "page": 34,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q034",
+      "category": "추가_문법_관계대명사",
+      "type": "fill_blank",
+      "keyword": "관계대명사",
+      "instruction": "빈칸에 알맞은 관계대명사를 고르세요.",
+      "sentence": "Summer is the season _____ Bobby and Bob sit together.",
+      "blank_answer": "when",
+      "choices": [
+        "who",
+        "which",
+        "when",
+        "where"
+      ],
+      "correct": 2,
+      "hint": "시간을 나타낼 때는 when 또는 which — 교과서 p.42",
+      "page": 42,
+      "difficulty": "hard"
+    },
+    {
+      "id": "Q035",
+      "category": "추가_단어뜻",
+      "type": "fill_blank",
+      "keyword": "breeze",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "sentence": "A cool _____ blew across the garden.",
+      "blank_answer": "breeze",
+      "choices": [
+        "wind",
+        "breeze",
+        "gust",
+        "draft"
+      ],
+      "correct": 3,
+      "hint": "산들바람 (n.) — 교과서 p.41",
+      "page": 41,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q036",
+      "category": "추가_문법_to부정사",
+      "type": "fill_blank",
+      "keyword": "be able to",
+      "instruction": "빈칸에 알맞은 표현을 고르세요.",
+      "sentence": "Bobby was _____ help his grandfather walk.",
+      "blank_answer": "able to",
+      "choices": [
+        "able to",
+        "able",
+        "can",
+        "could"
+      ],
+      "correct": 0,
+      "hint": "'~할 수 있다' = be able to + 동사원형 — 교과서 p.38",
+      "page": 38,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q037",
+      "category": "추가_단어뜻",
+      "type": "fill_blank",
+      "keyword": "arms and legs",
+      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "sentence": "At first, he couldn't move his _____ or _____.",
+      "blank_answer": "arms / legs",
+      "choices": [
+        "hands / feet",
+        "arms / legs",
+        "shoulders / knees",
+        "fingers / toes"
+      ],
+      "correct": 1,
+      "hint": "팔과 다리 (n.) — 교과서 p.31",
+      "page": 31,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q038",
+      "category": "추가_문법_to부정사",
+      "type": "fill_blank",
+      "keyword": "help + to",
+      "instruction": "빈칙에 알맞은 표현을 고르세요.",
+      "sentence": "I want _____ my grandfather recover.",
+      "blank_answer": "to help",
+      "choices": [
+        "help",
+        "to help",
+        "helping",
+        "to helping"
+      ],
+      "correct": 2,
+      "hint": "want + to 부정사 — 교과서 p.32",
+      "page": 32,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q039",
+      "category": "추가_단어뜻",
+      "type": "fill_blank",
+      "keyword": "recover",
+      "instruction": "빈칸에 알맞은 동사를 고르세요.",
+      "sentence": "His grandfather started _____ after a few months.",
+      "blank_answer": "recovering",
+      "choices": [
+        "relax",
+        "recover",
+        "recovering",
+        "recovered"
+      ],
+      "correct": 3,
+      "hint": "회복하다 (v.) — start + ~ing — 교과서 p.35",
+      "page": 35,
+      "difficulty": "medium"
+    },
+    {
+      "id": "Q040",
+      "category": "추가_문법_관계대명사",
+      "type": "fill_blank",
+      "keyword": "관계대명사",
+      "instruction": "빈칠에 알맞은 관계대명사를 고르세요.",
+      "sentence": "Bob is the grandfather _____ raised Bobby well.",
+      "blank_answer": "who",
+      "choices": [
+        "who",
+        "which",
+        "that",
+        "what"
+      ],
+      "correct": 0,
+      "hint": "사람을 나타내는 주격 관계대명사 — 교과서 p.26",
+      "page": 26,
+      "difficulty": "medium"
+    },
+    {
+      "id": "S04A",
+      "category": "핵심문장_빈칸형",
+      "type": "fill_blank",
+      "keyword": "He couldn't move",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "sentence": "_____ couldn't move.",
+      "blank_answer": "He couldn't move",
+      "choices": [
+        "He couldn't move",
+        "Not He couldn't move",
+        "Different word",
+        "Wrong choice"
+      ],
+      "correct": 1,
+      "hint": "원문: He couldn't move. — 교과서 p.31",
+      "page": 31,
+      "difficulty": "medium"
+    },
+    {
+      "id": "S04B",
+      "category": "핵심문장_배열형",
+      "type": "arrange",
+      "keyword": "He couldn't move",
+      "instruction": "단어를 올바른 순서로 배열하세요.",
+      "sentence_ko": "그는 움직일 수 없었다.",
+      "words": [
+        "He",
+        "couldn't",
+        "move"
+      ],
+      "answer": "He couldn't move.",
+      "hint": "💡 주어 + could not + 동사원형: 'He could not move' — could not = 과거의 불가능",
+      "page": 31,
+      "difficulty": "hard",
+      "correct": 2
+    },
+    {
+      "id": "S04C",
+      "category": "핵심문장_해석매칭형",
+      "type": "match",
+      "keyword": "He couldn't move",
+      "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.",
+      "sentence_ko": "그는 움직일 수 없었다.",
+      "choices": [
+        "He couldn't move.",
+        "Similar but wrong sentence",
+        "Different meaning 1",
+        "Different meaning 2"
+      ],
+      "correct": 3,
+      "hint": "원문을 찾으세요: He couldn't move....",
+      "page": 31,
+      "difficulty": "medium"
+    },
+    {
+      "id": "S05A",
+      "category": "핵심문장_빈칸형",
+      "type": "fill_blank",
+      "keyword": "Bobby came with blocks",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "sentence": "_____ came with blocks.",
+      "blank_answer": "Bobby came with blocks",
+      "choices": [
+        "Bobby came with blocks",
+        "Not Bobby came with blocks",
+        "Different word",
+        "Wrong choice"
+      ],
+      "correct": 0,
+      "hint": "원문: Bobby came with blocks. — 교과서 p.33",
+      "page": 33,
+      "difficulty": "medium"
+    },
+    {
+      "id": "S05B",
+      "category": "핵심문장_배열형",
+      "type": "arrange",
+      "keyword": "Bobby came with blocks",
+      "instruction": "단어를 올바른 순서로 배열하세요.",
+      "sentence_ko": "Bobby는 블록을 가지고 왔다.",
+      "words": [
+        "Bobby",
+        "came",
+        "with",
+        "blocks"
+      ],
+      "answer": "Bobby came with blocks.",
+      "hint": "💡 주어 + 동사 + 목적어: 'Bobby brought the blocks' — brought는 bring의 과거형!",
+      "page": 33,
+      "difficulty": "hard",
+      "correct": 1
+    },
+    {
+      "id": "S05C",
+      "category": "핵심문장_해석매칭형",
+      "type": "match",
+      "keyword": "Bobby came with blocks",
+      "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.",
+      "sentence_ko": "Bobby는 블록을 가지고 왔다.",
+      "choices": [
+        "Bobby came with blocks.",
+        "Similar but wrong sentence",
+        "Different meaning 1",
+        "Different meaning 2"
+      ],
+      "correct": 2,
+      "hint": "원문을 찾으세요: Bobby came with bloc...",
+      "page": 33,
+      "difficulty": "medium"
+    },
+    {
+      "id": "S06A",
+      "category": "핵심문장_빈칸형",
+      "type": "fill_blank",
+      "keyword": "Bob made a small sound",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "sentence": "_____ made a small sound.",
+      "blank_answer": "Bob made a small sound",
+      "choices": [
+        "Bob made a small sound",
+        "Not Bob made a small sound",
+        "Different word",
+        "Wrong choice"
+      ],
+      "correct": 3,
+      "hint": "원문: Bob made a small sound. — 교과서 p.34",
+      "page": 34,
+      "difficulty": "medium"
+    },
+    {
+      "id": "S06B",
+      "category": "핵심문장_배열형",
+      "type": "arrange",
+      "keyword": "Bob made a small sound",
+      "instruction": "단어를 올바른 순서로 배열하세요.",
+      "sentence_ko": "Bob은 작은 소리를 냈다.",
+      "words": [
+        "Bob",
+        "made",
+        "a small sound"
+      ],
+      "answer": "Bob made a small sound.",
+      "hint": "💡 주어 + 동사 + 목적어: 'Bob made a small sound' — made는 make의 과거형",
+      "page": 34,
+      "difficulty": "hard",
+      "correct": 0
+    },
+    {
+      "id": "S06C",
+      "category": "핵심문장_해석매칭형",
+      "type": "match",
+      "keyword": "Bob made a small sound",
+      "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.",
+      "sentence_ko": "Bob은 작은 소리를 냈다.",
+      "choices": [
+        "Bob made a small sound.",
+        "Similar but wrong sentence",
+        "Different meaning 1",
+        "Different meaning 2"
+      ],
+      "correct": 1,
+      "hint": "원문을 찾으세요: Bob made a small sou...",
+      "page": 34,
+      "difficulty": "medium"
+    },
+    {
+      "id": "S07A",
+      "category": "핵심문장_빈칸형",
+      "type": "fill_blank",
+      "keyword": "They sat side by side",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "sentence": "_____ sat side by side.",
+      "blank_answer": "They sat side by side",
+      "choices": [
+        "They sat side by side",
+        "Not They sat side by side",
+        "Different word",
+        "Wrong choice"
+      ],
+      "correct": 2,
+      "hint": "원문: They sat side by side. — 교과서 p.42",
+      "page": 42,
+      "difficulty": "medium"
+    },
+    {
+      "id": "S07B",
+      "category": "핵심문장_배열형",
+      "type": "arrange",
+      "keyword": "They sat side by side",
+      "instruction": "단어를 올바른 순서로 배열하세요.",
+      "sentence_ko": "그들은 나란히 앉았다.",
+      "words": [
+        "They",
+        "sat",
+        "side by side"
+      ],
+      "answer": "They sat side by side.",
+      "hint": "💡 주어 + 동사 + 부사구: 'They sat side by side' — side by side = 나란히",
+      "page": 42,
+      "difficulty": "hard",
+      "correct": 3
+    },
+    {
+      "id": "S07C",
+      "category": "핵심문장_해석매칭형",
+      "type": "match",
+      "keyword": "They sat side by side",
+      "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.",
+      "sentence_ko": "그들은 나란히 앉았다.",
+      "choices": [
+        "They sat side by side.",
+        "Similar but wrong sentence",
+        "Different meaning 1",
+        "Different meaning 2"
+      ],
+      "correct": 0,
+      "hint": "원문을 찾으세요: They sat side by sid...",
+      "page": 42,
+      "difficulty": "medium"
+    },
+    {
+      "id": "S08A",
+      "category": "핵심문장_빈칸형",
+      "type": "fill_blank",
+      "keyword": "You taught me to walk",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "sentence": "_____ taught me to walk.",
+      "blank_answer": "You taught me to walk",
+      "choices": [
+        "You taught me to walk",
+        "Not You taught me to walk",
+        "Different word",
+        "Wrong choice"
+      ],
+      "correct": 1,
+      "hint": "원문: You taught me to walk. — 교과서 p.43",
+      "page": 43,
+      "difficulty": "medium"
+    },
+    {
+      "id": "S08B",
+      "category": "핵심문장_배열형",
+      "type": "arrange",
+      "keyword": "You taught me to walk",
+      "instruction": "단어를 올바른 순서로 배열하세요.",
+      "sentence_ko": "넌 나에게 걷는 법을 가르쳤어.",
+      "words": [
+        "You",
+        "taught",
+        "me",
+        "to",
+        "walk"
+      ],
+      "answer": "You taught me to walk.",
+      "hint": "💡 주어 + taught + 간접목적어 + to부정사: 'You taught me to walk' — taught는 teach의 과거형!",
+      "page": 43,
+      "difficulty": "hard",
+      "correct": 2
+    },
+    {
+      "id": "S08C",
+      "category": "핵심문장_해석매칭형",
+      "type": "match",
+      "keyword": "You taught me to walk",
+      "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.",
+      "sentence_ko": "넌 나에게 걷는 법을 가르쳤어.",
+      "choices": [
+        "You taught me to walk.",
+        "Similar but wrong sentence",
+        "Different meaning 1",
+        "Different meaning 2"
+      ],
+      "correct": 3,
+      "hint": "원문을 찾으세요: You taught me to wal...",
+      "page": 43,
+      "difficulty": "medium"
+    }
+  ]
+}
