@@ -25,9 +25,9 @@
       "hint": "활기 넘치는 (a.) — 교과서 p.16",
       "page": 16,
       "wrong_explanations": {
-        "active": "active도 '활동적인'이지만, 여기선 '생기 넘치는' 느낌의 lively가 딱 맞아요!",
+        "active": "\"활동적인\"이라는 뜻이에요. 비슷하지만, 이 문맥에서는 \"생기 있는\" 느낌이 더 어울려요!",
         "awake": "awake는 '깨어있는'이에요. '활기 넘치는'과는 뜻이 달라요!",
-        "asleep": "asleep은 '잠든'이에요. 아침에 활기 넘치는 건 lively!"
+        "asleep": "\"잠든\"이라는 뜻이에요. 문맥과 정반대 의미예요!"
       }
     },
     {
@@ -55,7 +55,7 @@
       "wrong_explanations": {
         "asleep": "asleep은 '잠든'이에요. 활기가 넘치는 아이들 표현이 아니에요!",
         "tired": "tired는 '지친'이에요. 친구들이 즐겁게 노는 모습에 맞지 않아요!",
-        "careful": "careful은 '조심스러운'이에요. 운동장에서 활기 넘치는 건 lively!"
+        "careful": "\"조심스러운\"이에요. 이 문맥에서 필요한 감정/상태와 맞나요?"
       }
     },
     {
@@ -81,9 +81,9 @@
       "hint": "~없이 (prep.) — 교과서 p.19",
       "page": 19,
       "wrong_explanations": {
-        "with": "with는 '함께'예요. '~없이'는 without을 써야 해요!",
-        "about": "about은 '~에 대해'예요. 음악 없이 자는 건 without이 맞아요!",
-        "before": "before는 '~전에'예요. '~없이'는 without을 사용해요!"
+        "with": "\"with\"의 뜻을 생각해보세요. 문장 전체를 읽고 빈칸에 가장 자연스러운 단어를 찾아봐요!",
+        "about": "\"~에 대해\"라는 뜻이에요. 이 문장에서 필요한 관계는 \"~에 대해\"가 아니에요!",
+        "before": "\"before\"의 뜻을 생각해보세요. 문장 전체를 읽고 빈칸에 가장 자연스러운 단어를 찾아봐요!"
       }
     },
     {
@@ -109,9 +109,9 @@
       "hint": "without + ~ing = ~하지 않고",
       "page": 19,
       "wrong_explanations": {
-        "health": "health는 '건강(명사)'이에요. 빈칸은 형용사가 필요해요!",
-        "healthily": "healthily는 부사여서 '건강하게'예요. 명사를 꾸미는 형용사는 healthy!",
-        "healthful": "healthful도 '건강한'이지만, 일상적으로는 healthy를 자주 써요!"
+        "before": "\"~전에\"라는 시간 표현이에요. 이 문장은 시간이 아니라 조건을 말해요!",
+        "after": "\"~후에\"라는 시간 표현이에요. 이 문장의 의미를 다시 생각해보세요!",
+        "during": "\"~동안\"이에요. 기간을 나타내는데, 이 문장에서 필요한 의미가 맞나요?"
       }
     },
     {
@@ -137,9 +137,9 @@
       "hint": "의문사 + to부정사: what to do = 무엇을 해야 할지",
       "page": 8,
       "wrong_explanations": {
-        "regularly": "regularly는 '규칙적으로(부사)'예요. 명사를 꾸미는 형용사는 regular!",
-        "regulation": "regulation은 '규칙(명사)'이에요. 형용사가 아니에요!",
-        "regulate": "regulate는 '조절하다(동사)'예요. 여기선 형용사 regular가 필요해요!"
+        "how to do": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
+        "what doing": "의문사 뒤에는 ~ing가 아니라 \"to + 동사원형\" 패턴이 와요!",
+        "to do what": "이미 의문사가 to를 포함하고 있어서, to를 한 번 더 쓸 필요 없어요!"
       }
     },
     {
@@ -165,9 +165,9 @@
       "hint": "의문사 + to부정사 패턴: where to go = 어디로 갈지",
       "page": 20,
       "wrong_explanations": {
-        "exercises": "exercises는 복수나 3인칭 동사예요. 'you' 다음엔 원형 exercise!",
-        "exercised": "exercised는 과거형이에요. 여기선 현재 또는 원형이 필요해요!",
-        "exercising": "exercising은 진행형이에요. 'need to + 원형 동사' 구문에서 exercise!"
+        "where going": "의문사 뒤에는 ~ing가 아니라 \"to + 동사원형\" 패턴이 와요!",
+        "to go where": "이미 의문사가 to를 포함하고 있어서, to를 한 번 더 쓸 필요 없어요!",
+        "go where to": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
       }
     },
     {
@@ -193,9 +193,9 @@
       "hint": "Be + 형용사: Be careful (조심하는 상태)",
       "page": 16,
       "wrong_explanations": {
-        "sleeps": "sleeps는 3인칭 현재형이에요. 'need to + 원형'이므로 sleep이 맞아요!",
-        "sleeping": "sleeping은 진행형이에요. 'need to + 원형 동사' 구조예요!",
-        "slept": "slept는 과거형이에요. 현재 필요한 일은 원형 sleep을 써요!"
+        "carefully": "여기는 be동사 뒤 자리예요. be동사 뒤에는 부사가 아니라 형용사가 와요!",
+        "careless": "\"부주의한\"이라는 뜻이에요. 문맥상 \"조심하는\"이라는 반대 뜻이 필요해요!",
+        "caring": "\"배려하는\"이라는 뜻이에요. \"조심하는\"과는 뉘앙스가 달라요!"
       }
     },
     {
@@ -221,9 +221,9 @@
       "hint": "동사 read를 꾸미는 부사 → carefully",
       "page": 16,
       "wrong_explanations": {
-        "brushed": "brushed는 과거형이에요. 'need to + 원형'이므로 brush예요!",
-        "brushes": "brushes는 3인칭 현재형이에요. 여기선 원형 brush가 필요해요!",
-        "brushing": "brushing은 진행형이에요. '~할 필요가 있다' = need to + 원형 brush!"
+        "careful": "이 자리는 동사를 꾸며주는 자리예요. 동사를 꾸미려면 형용사가 아니라 부사를 써야 해요!",
+        "careless": "\"부주의한\"이라는 뜻이에요. 문맥상 \"조심하는\"이라는 반대 뜻이 필요해요!",
+        "carefulness": "\"carefulness\"는 명사예요. 동사를 꾸미려면 부사!"
       }
     },
     {
@@ -249,7 +249,9 @@
       "hint": "원문: Do you have any special goals for this year?",
       "page": 8,
       "wrong_explanations": {
-        "default": "주어 + 동사 + 목적어 기본 어순. 빈칸에는 명사나 명사구가 와요!"
+        "simple": "\"단순한\"이에요. 이 문맥에서 필요한 건 \"평범하지 않은\" 느낌이에요!",
+        "general": "\"일반적인\"이에요. 여기선 \"보통이 아닌\" 의미가 필요해요!",
+        "similar": "\"비슷한\"이에요. 이 문장이 말하는 건 \"남다른\" 느낌이에요!"
       }
     },
     {
@@ -275,7 +277,9 @@
       "hint": "원문: Yes, I'm planning to exercise more.",
       "page": 8,
       "wrong_explanations": {
-        "default": "의문문 어순: 조동사 + 주어 + 동사. 질문을 만드는 기본 패턴!"
+        "hoping": "의문사 뒤에는 ~ing가 아니라 \"to + 동사원형\" 패턴이 와요!",
+        "wanting": "의문사 뒤에는 ~ing가 아니라 \"to + 동사원형\" 패턴이 와요!",
+        "trying": "의문사 뒤에는 ~ing가 아니라 \"to + 동사원형\" 패턴이 와요!"
       }
     },
     {
@@ -301,7 +305,9 @@
       "hint": "원문: I want to perform at the school festival.",
       "page": 8,
       "wrong_explanations": {
-        "default": "목적어 + 전치사 + 시간 표현. 언제/어디서/누구와를 나타내요!"
+        "practice": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
+        "prepare": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
+        "present": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
       }
     },
     {
@@ -327,7 +333,9 @@
       "hint": "원문: Sounds great. You can do it!",
       "page": 8,
       "wrong_explanations": {
-        "default": "주어 + be동사 + 형용사. 상태나 느낌을 나타내는 문장 구조!"
+        "may": "\"~해도 된다\"예요. 허락과 \"능력\"은 다른 의미예요!",
+        "will": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
+        "must": "\"~해야 한다\"예요. 의무와 \"능력\"은 다른 의미예요!"
       }
     },
     {
@@ -353,7 +361,9 @@
       "hint": "원문: If you use your smartphone late at night, your brain will stay active.",
       "page": 8,
       "wrong_explanations": {
-        "default": "동사 + 전치사 + 목적어. 어떤 동작을 누가/무엇과 하는지 표현!"
+        "asleep": "\"잠든\"이라는 뜻이에요. 문맥과 정반대 의미예요!",
+        "awake": "\"깨어있는\"이라는 뜻이에요. 단순히 안 자는 것과 \"활기 넘치는\" 건 달라요!",
+        "lively": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
       }
     },
     {
@@ -379,7 +389,9 @@
       "hint": "원문: Let's find out what to do.",
       "page": 8,
       "wrong_explanations": {
-        "default": "주어 + 동사 + 부사. 어떻게/언제/어디서 하는지 나타내는 문장!"
+        "how": "\"어떻게\"예요. 이 문장에서 묻는 건 방법이 아니라 \"무엇\"이에요!",
+        "when": "\"언제\"예요. 시간이 아니라 \"무엇을 할지\"를 말하는 문장이에요!",
+        "where": "\"어디서\"예요. 장소가 아니라 다른 의문사가 필요해요!"
       }
     },
     {
@@ -624,9 +636,9 @@
       "hint": "💡 perform = 공연하다. practice(연습)와 다르고, school festival(학교 축제)이 포인트!",
       "page": 8,
       "wrong_explanations": {
-        "I want to perform at the school festival.": "perform은 맞지만, 어디서 하는지 다르고 목표도 달라요!",
-        "I want to participate in the school sports day.": "sports day는 스포츠 경기이고, festival은 축제에요!",
-        "I want to win at the school competition.": "이겨야 한다는 건 너무 강하고, 목표와 달라요!"
+        "I want to practice at the school festival.": "\"practice\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "I want to perform at the school concert.": "\"concert.\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "I wanted to perform at the school festival.": "\"wanted\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
       }
     },
     {
@@ -651,9 +663,9 @@
       "hint": "💡 Sounds great = 좋은데. good이 아니라 great! You can do it에서 can이 핵심",
       "page": 8,
       "wrong_explanations": {
-        "What time do you go to school?": "학교에 가는 시간과 일어나는 시간은 달라요!",
-        "What time do you sleep?": "잠드는 시간이 아니라 일어나는 시간이에요!",
-        "What time do you have breakfast?": "아침 식사하는 시간과 일어나는 시간은 달라요!"
+        "Sounds good. You can do it!": "\"good.\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "Sounds great. You will do it!": "\"will\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "Sounds great. You can make it!": "\"make\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
       }
     },
     {
@@ -679,9 +691,9 @@
       "hint": "💡 if조건문 + late at night(밤늦게) + stay active(활동적 유지). awake(깨어있는)와 active(활동적)는 달라요!",
       "page": 8,
       "wrong_explanations": {
-        "How often do you go to school?": "학교 가는 것과 운동하는 것은 다른 활동이에요!",
-        "How often do you eat lunch?": "점심 먹는 것과 운동하는 것은 다르지 않나요?",
-        "How often do you sleep?": "자는 빈도와 운동 빈도는 다른 질문이에요!"
+        "If you use your smartphone late at night, your brain will stay awake.": "\"awake.\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "If you use your smartphone in the morning, your brain will stay active.": "\"morning,\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "If you use your smartphone late at night, your eyes will stay active.": "\"eyes\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
       }
     },
     {
@@ -706,9 +718,9 @@
       "hint": "💡 find out = 알아보다. figure out과 비슷하지만 교과서 원문은 find out! what to do가 핵심",
       "page": 8,
       "wrong_explanations": {
-        "Can you do homework every day?": "숙제하는 것과 수영하는 건 다른 활동이에요!",
-        "Can you sing well?": "노래 잘하는 것과 수영하는 건 다르지 않나요?",
-        "Can you speak English?": "영어 말하는 것과 수영하는 건 다른 능력이에요!"
+        "Let's find out how to do it.": "\"it.\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "Let's find out what to eat.": "\"eat.\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "Let's figure out what to do.": "\"figure\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
       }
     },
     {
@@ -734,9 +746,9 @@
       "hint": "깨다, 일어나다 (p.14)",
       "page": 14,
       "wrong_explanations": {
-        "sleep": "sleep은 '자다'예요. 아침에는 '깨어난다'는 wake up!",
-        "stay": "stay는 '머물다'예요. '일어나다'는 wake up!",
-        "rest": "rest는 '쉬다'예요. 아침에 깨어나는 건 wake up!"
+        "sleep": "\"자다\"예요. 이 문장에서 필요한 건 다른 동작이에요!",
+        "stay": "\"머물다\"예요. 이 문장이 말하는 동작과 달라요!",
+        "rest": "\"쉬다\"예요. 비슷하지만 이 문맥에서 딱 맞는 단어가 따로 있어요!"
       }
     },
     {
@@ -762,9 +774,9 @@
       "hint": "목표 (n.) — 교과서 p.8",
       "page": 8,
       "wrong_explanations": {
-        "plan": "plan도 계획이지만, goal = 목표는 더 큰 목적이에요!",
-        "idea": "idea는 '생각'예요. '목표'는 goal!",
-        "habit": "habit은 '습관'이에요. 올해 '목표'는 goal!"
+        "plan": "\"plan\"의 뜻을 생각해보세요. 문장 전체를 읽고 빈칸에 가장 자연스러운 단어를 찾아봐요!",
+        "idea": "\"생각/아이디어\"예요. \"목표\"와는 의미가 달라요!",
+        "habit": "\"습관\"이에요. 이루고 싶은 \"목표\"와는 다른 개념이에요!"
       }
     },
     {
@@ -790,9 +802,9 @@
       "hint": "운동하다 (v.) — 교과서 p.17",
       "page": 17,
       "wrong_explanations": {
-        "sleep": "sleep은 '자다'예요. 매일 하는 활동은 exercise = '운동하다'!",
-        "rest": "rest는 '쉬다'예요. 건강을 유지하려면 exercise!",
-        "nap": "nap은 '낮잠'이에요. 건강을 위한 운동은 exercise!"
+        "sleep": "\"sleep\"의 뜻을 생각해보세요. 문장 전체를 읽고 빈칸에 가장 자연스러운 단어를 찾아봐요!",
+        "rest": "\"쉬다\"예요. 비슷하지만 이 문맥에서 딱 맞는 단어가 따로 있어요!",
+        "nap": "\"nap\"를 넣어보면 문장이 자연스러운가요? 운동하다 (v.) — 교과서 p.17"
       }
     },
     {
@@ -818,9 +830,9 @@
       "hint": "습관 (n.) — 교과서 p.15",
       "page": 15,
       "wrong_explanations": {
-        "hobbies": "hobbies는 '취미'예요. '좋은 습관'은 habits!",
-        "choices": "choices는 '선택'예요. 건강한 습관은 habits!",
-        "styles": "styles는 '스타일'이에요. 좋은 습관은 habits!"
+        "hobbies": "\"취미\"예요. 규칙적으로 반복하는 \"습관\"과는 달라요!",
+        "choices": "\"선택\"이에요. 반복되는 행동 패턴을 말하는 게 아니에요!",
+        "styles": "\"스타일\"이에요. 일상의 반복 행동을 뜻하는 단어가 있어요!"
       }
     },
     {
@@ -846,7 +858,9 @@
       "hint": "잠자다 (v.) / 수면 (n.) — 교과서 p.15",
       "page": 15,
       "wrong_explanations": {
-        "default": "잠은 건강을 위해 꼭 필요한 활동이에요!"
+        "play": "\"놀다\"예요. 여기서 필요한 건 다른 의미의 동사예요!",
+        "study": "\"공부하다\"예요. 이 문장의 맥락과 맞지 않아요!",
+        "read": "\"읽다\"예요. 이 문장이 말하는 동작이 아니에요!"
       }
     },
     {
@@ -872,7 +886,9 @@
       "hint": "취침 시간 (n.) — 교과서 p.15",
       "page": 15,
       "wrong_explanations": {
-        "default": "음식은 우리 몸에 에너지와 영양을 줘요!"
+        "morning": "\"아침\"이에요. 이 문장은 다른 시간대를 말하고 있어요!",
+        "daytime": "\"낮\"이에요. 잠과 관련된 시간은 다른 단어예요!",
+        "evening": "\"저녁\"이에요. 잠자리에 드는 시간을 뜻하는 단어가 따로 있어요!"
       }
     },
     {
@@ -898,7 +914,9 @@
       "hint": "카페인 (n.) — 교과서 p.14",
       "page": 14,
       "wrong_explanations": {
-        "default": "물은 우리 몸의 약 70%를 이루고 있어요!"
+        "sugar": "\"설탕\"이에요. 수면에 영향을 주는 성분은 다른 거예요!",
+        "salt": "\"소금\"이에요. 수면 문제의 원인은 이게 아니에요!",
+        "milk": "\"우유\"예요. 오히려 수면에 도움이 되죠! 방해하는 성분은 따로 있어요."
       }
     },
     {
@@ -924,7 +942,9 @@
       "hint": "깨어 있는 (a.) — 교과서 p.17",
       "page": 17,
       "wrong_explanations": {
-        "default": "운동은 몸을 건강하고 튼튼하게 해줘요!"
+        "asleep": "\"잠든\"이라는 뜻이에요. 문맥과 정반대 의미예요!",
+        "tired": "\"지친\"이라는 뜻이에요. 즐겁게 노는 상황과 맞지 않아요!",
+        "calm": "\"calm\"를 넣어보면 문장이 자연스러운가요? 깨어 있는 (a.) — 교과서 p.17"
       }
     },
     {
@@ -950,7 +970,9 @@
       "hint": "낮잠 (n.) — 교과서 p.15",
       "page": 15,
       "wrong_explanations": {
-        "default": "스트레스를 줄이는 것도 건강에 중요해요!"
+        "break": "\"쉬는 시간\"이에요. 짧은 수면을 뜻하는 단어가 따로 있어요!",
+        "snack": "\"간식\"이에요. 먹는 것과 짧은 수면은 다르죠!",
+        "walk": "\"산책\"이에요. 짧게 자는 것과는 다른 활동이에요!"
       }
     },
     {
@@ -976,7 +998,9 @@
       "hint": "패턴, 양식 (n.) — 교과서 p.16",
       "page": 16,
       "wrong_explanations": {
-        "default": "규칙적인 생활은 건강의 기초예요!"
+        "schedule": "\"일정\"이에요. 반복되는 형태를 뜻하는 단어가 따로 있어요!",
+        "routine": "\"일과\"예요. 비슷하지만 교과서에서 쓴 표현은 다른 단어예요!",
+        "timing": "\"타이밍\"이에요. 반복되는 형태를 말하는 단어가 따로 있어요!"
       }
     },
     {
@@ -1002,7 +1026,9 @@
       "hint": "에너지, 활력 (n.) — 교과서 p.15",
       "page": 15,
       "wrong_explanations": {
-        "default": "밤에 충분히 자야 낮에 활기차게 활동할 수 있어요!"
+        "strength": "\"힘\"이에요. 신체적 힘과 하루의 \"활력\"은 다른 개념이에요!",
+        "power": "\"권력/전력\"이에요. 일상의 \"활력\"과는 뜻이 달라요!",
+        "force": "\"물리적 힘\"이에요. 생활 속 \"에너지/활력\"과는 달라요!"
       }
     },
     {
@@ -1028,7 +1054,9 @@
       "hint": "콘서트 (n.) — 교과서 p.10",
       "page": 10,
       "wrong_explanations": {
-        "default": "신선한 공기를 마시는 것도 건강에 좋아요!"
+        "festival": "\"축제\"예요. 음악 공연을 하는 장소는 다른 단어예요!",
+        "school": "\"학교\"예요. 공연하는 특정 행사를 가리키는 단어가 있어요!",
+        "party": "\"파티\"예요. 음악을 연주하는 공식 행사는 다른 단어예요!"
       }
     },
     {
@@ -1054,7 +1082,9 @@
       "hint": "if 조건문: If + 현재시제, will + 동사원형",
       "page": 20,
       "wrong_explanations": {
-        "default": "친구들과 함께하는 활동은 몸과 마음을 건강하게 해요!"
+        "would": "\"~할 텐데\"예요. 가정법에서 쓰이고, 여기서는 확실한 미래를 말해요!",
+        "can": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
+        "should": "\"~해야 한다\"예요. 의무가 아니라 미래 예측을 말하는 문장이에요!"
       }
     },
     {
@@ -1080,7 +1110,9 @@
       "hint": "if 조건문: If + 현재시제, will + 동사원형",
       "page": 20,
       "wrong_explanations": {
-        "default": "해로운 음식보다 영양 있는 음식을 선택해야 해요!"
+        "can": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
+        "might": "\"~일지도 모른다\"예요. 불확실한 추측이 아니라 확실한 결과를 말해요!",
+        "should": "\"~해야 한다\"예요. 의무가 아니라 미래 예측을 말하는 문장이에요!"
       }
     },
     {
@@ -1106,7 +1138,9 @@
       "hint": "의문사 + to부정사: what to eat = 무엇을 먹을지",
       "page": 20,
       "wrong_explanations": {
-        "default": "목표를 정하는 것이 성공의 첫 단계예요!"
+        "what eating": "의문사 뒤에는 ~ing가 아니라 \"to + 동사원형\" 패턴이 와요!",
+        "eat what": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
+        "what I eat": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
       }
     },
     {
@@ -1132,7 +1166,9 @@
       "hint": "의문사 + to부정사: how to use = 어떻게 사용할지",
       "page": 20,
       "wrong_explanations": {
-        "default": "계획 없이는 목표를 이루기 어려워요!"
+        "how using": "의문사 뒤에는 ~ing가 아니라 \"to + 동사원형\" 패턴이 와요!",
+        "use how": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
+        "how I use": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
       }
     },
     {
@@ -1158,7 +1194,9 @@
       "hint": "be planning to = ~할 계획이다",
       "page": 8,
       "wrong_explanations": {
-        "default": "열심히 노력하면 목표를 반드시 이룰 수 있어요!"
+        "thinking": "의문사 뒤에는 ~ing가 아니라 \"to + 동사원형\" 패턴이 와요!",
+        "hoping": "의문사 뒤에는 ~ing가 아니라 \"to + 동사원형\" 패턴이 와요!",
+        "trying": "의문사 뒤에는 ~ing가 아니라 \"to + 동사원형\" 패턴이 와요!"
       }
     },
     {
@@ -1184,7 +1222,9 @@
       "hint": "want to = ~하고 싶다",
       "page": 8,
       "wrong_explanations": {
-        "default": "실패도 성공으로 가는 길의 일부예요!"
+        "wish": "\"소망하다\"예요. 실현 가능성이 \"원하다\"보다 낮아요!",
+        "hope": "\"희망하다\"예요. \"~하고 싶다\"보다 불확실한 느낌이에요!",
+        "need": "\"필요하다\"예요. \"~하고 싶다\"와 \"필요하다\"는 다른 감정이에요!"
       }
     },
     {
@@ -1210,7 +1250,9 @@
       "hint": "You can do it! = 넌 할 수 있어!",
       "page": 8,
       "wrong_explanations": {
-        "default": "좋은 습관은 한 번에 생기지 않아요. 꾸준함이 중요!"
+        "I": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
+        "He": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
+        "We": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
       }
     },
     {
@@ -1236,7 +1278,9 @@
       "hint": "if 조건문의 if절은 현재시제",
       "page": 20,
       "wrong_explanations": {
-        "default": "작은 목표부터 시작하면 더 쉬워요!"
+        "used": "if절 안에서는 과거형을 쓰지 않아요. \"If + 현재시제\" 규칙을 기억하세요!",
+        "will use": "if절 안에서는 will을 쓰지 않아요! if절은 항상 현재시제예요.",
+        "using": "if절에서는 ~ing 형태를 쓰지 않아요. 동사 원형이 필요해요!"
       }
     },
     {
@@ -1262,7 +1306,9 @@
       "hint": "if 조건문: If + 현재시제, will + 동사원형",
       "page": 20,
       "wrong_explanations": {
-        "default": "다른 사람과의 경쟁보다 자신과의 싸움이 중요해요!"
+        "woken up": "과거분사 형태예요. if절에서는 현재시제 동사원형을 써요!",
+        "will wake": "if절에 will은 안 돼요! will은 결과절(뒤쪽)에서만 써요.",
+        "waking up": "~ing 형태예요. if절에서는 현재시제 동사원형이 필요해요!"
       }
     },
     {
@@ -1288,7 +1334,9 @@
       "hint": "without + ~ing = ~하지 않고",
       "page": 19,
       "wrong_explanations": {
-        "default": "목표를 적어두면 더 명확해지고 실현하기 쉬워요!"
+        "with": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
+        "by": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
+        "through": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
       }
     },
     {
@@ -1314,7 +1362,9 @@
       "hint": "💡 sleep = 잠자다. rest(쉬다), lie down(눕다)과 다르게 '수면' 자체를 의미해요 — p.15",
       "page": 15,
       "wrong_explanations": {
-        "default": "도움을 청하는 것도 현명한 방법이에요!"
+        "rest": "\"쉬다\"예요. 비슷하지만 이 문맥에서 딱 맞는 단어가 따로 있어요!",
+        "lie down": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
+        "relax": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
       }
     },
     {
@@ -1340,7 +1390,9 @@
       "hint": "현재형 의문문: Do you have...?",
       "page": 8,
       "wrong_explanations": {
-        "default": "자신을 믿는 것이 성공의 가장 중요한 요소예요!"
+        "has": "주어가 \"you\"면 has가 아니에요. has는 he/she/it에만 쓰여요!",
+        "had": "과거형이에요. 이 문장은 현재 상황을 말하고 있어요!",
+        "having": "Do you 다음에는 ~ing가 올 수 없어요. 동사 원형이 필요해요!"
       }
     },
     {
@@ -1648,7 +1700,9 @@
       "hint": "have good sleep habits = 좋은 수면 습관을 가지다",
       "page": 15,
       "wrong_explanations": {
-        "default": "ache = 아프다. 반복적인 통증을 나타내요!"
+        "Make good sleep habits.": "\"make\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "Keep good sleep habits.": "\"keep\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "Build good sleep habits.": "\"build\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
       }
     },
     {
@@ -1673,7 +1727,9 @@
       "hint": "regularly = 규칙적으로",
       "page": 17,
       "wrong_explanations": {
-        "default": "pain = 통증. 더 강한 통증을 나타내는 단어!"
+        "Exercise usually.": "\"usually.\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "Exercise daily.": "\"daily.\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "Exercise often.": "\"often.\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
       }
     },
     {
@@ -1698,7 +1754,9 @@
       "hint": "be careful about = ~을 조심하다",
       "page": 16,
       "wrong_explanations": {
-        "default": "sick = 아프다. 병에 걸렸다는 의미!"
+        "Be careful with caffeine.": "\"with\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "Be careful of caffeine.": "\"of\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "Be careful for caffeine.": "\"for\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
       }
     },
     {
@@ -1723,7 +1781,9 @@
       "hint": "before bedtime = 자기 전에",
       "page": 17,
       "wrong_explanations": {
-        "default": "hurt = 다치다/아프다. 외상이나 즉각적인 통증!"
+        "Don't use your smartphone after bedtime.": "\"after\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "Stop using your smartphone after bedtime.": "\"after\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "Avoid using your smartphone before sleep.": "\"using\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
       }
     },
     {
@@ -1748,7 +1808,9 @@
       "hint": "listen to = 귀 기울이다",
       "page": 16,
       "wrong_explanations": {
-        "default": "tired = 피곤하다. 에너지가 떨어진 상태를 나타내요!"
+        "Hear your body clock.": "\"hear\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "Pay attention to your body clock.": "\"pay\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "Watch your body clock.": "\"watch\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
       }
     },
     {
@@ -1773,7 +1835,9 @@
       "hint": "during the day = 낮 동안에",
       "page": 17,
       "wrong_explanations": {
-        "default": "weak = 약하다. 힘이 없는 상태를 의미해요!"
+        "Exercise in the day.": "\"in\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "Exercise at the day.": "\"at\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "Exercise in daytime.": "\"in\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
       }
     },
     {
@@ -1798,7 +1862,9 @@
       "hint": "enough sleep = 충분한 수면",
       "page": 15,
       "wrong_explanations": {
-        "default": "strong = 강하다. 건강하고 힘찬 상태!"
+        "You need much sleep.": "\"much\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "You need more sleep.": "\"more\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "You need good sleep.": "\"good\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
       }
     },
     {
@@ -1823,7 +1889,9 @@
       "hint": "blue light = 파란 빛",
       "page": 17,
       "wrong_explanations": {
-        "default": "fresh = 신선한. 활기 있고 새로운 기분!"
+        "Blue light is harmful to your brain.": "\"harmful\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "Blue light affects your brain.": "\"affects\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "Blue light hurts your brain.": "\"hurts\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
       }
     },
     {
@@ -1848,7 +1916,9 @@
       "hint": "feel healthier = 더 건강하게 느끼다",
       "page": 16,
       "wrong_explanations": {
-        "default": "fit = 건강하다. 좋은 신체 상태를 의미!"
+        "You will feel more healthy.": "\"more\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "You will feel better health.": "\"health.\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "You will be healthy.": "\"healthy.\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
       }
     },
     {
@@ -1873,7 +1943,9 @@
       "hint": "💡 get to = ~에 도착하다. reach, go to, arrive at 중 교과서 표현은 get to! on time = 정시에 — p.14",
       "page": 14,
       "wrong_explanations": {
-        "default": "healthy = 건강한. 신체가 좋은 상태!"
+        "You can reach school on time.": "\"reach\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "You can go to school on time.": "\"go\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
+        "You can arrive at school on time.": "\"at\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
       }
     },
     {
@@ -1899,7 +1971,9 @@
       "hint": "if 조건문에서 미래 결과는 will + 동사",
       "page": 20,
       "wrong_explanations": {
-        "default": "mental = 정신적인. 마음과 생각과 관련된!"
+        "are": "현재형이에요. if 조건문의 결과절에는 \"will + 동사원형\"이 와요!",
+        "be": "동사원형만으로는 안 돼요. 앞에 will이 필요해요!",
+        "were": "과거형이에요. if 조건문의 결과절은 미래를 말하고 있어요!"
       }
     },
     {
@@ -1925,7 +1999,9 @@
       "hint": "💡 how to + 동사원형 = ~하는 방법. keeping(동명사)이나 to keep(이중 to)은 안 돼요! — p.20",
       "page": 20,
       "wrong_explanations": {
-        "default": "physical = 신체적인. 몸과 관련된!"
+        "maintain": "뜻은 비슷하지만, \"how to + 동사원형\" 다음에는 간단한 동사가 와요!",
+        "keeping": "\"to + 동사원형\" 자리에 ~ing는 올 수 없어요!",
+        "to keep": "이미 앞에 to가 있어요. to를 두 번 쓰면 안 돼요!"
       }
     },
     {
@@ -1951,7 +2027,9 @@
       "hint": "which to ~ = 어느 것을 할지",
       "page": 20,
       "wrong_explanations": {
-        "default": "emotional = 감정적인. 느낌과 감정과 관련된!"
+        "whether": "\"~인지 아닌지\"예요. 여기서는 양자택일이라 다른 의문사가 어울려요!",
+        "what": "\"무엇\"이에요. 이 문장에서는 \"무엇\"이 아니라 다른 의문사가 필요해요!",
+        "where": "\"어디서\"예요. 장소가 아니라 다른 의문사가 필요해요!"
       }
     },
     {
@@ -1977,7 +2055,9 @@
       "hint": "if절에서는 현재형을 사용합니다",
       "page": 20,
       "wrong_explanations": {
-        "default": "social = 사회적인. 다른 사람과의 관계와 관련!"
+        "drinks": "주어가 \"you\"일 때는 -s를 붙이지 않아요. 3인칭 단수(he/she)일 때만!",
+        "will drink": "if절에는 will이 들어가지 않아요. 현재시제를 쓰는 게 규칙이에요!",
+        "drinking": "~ing 형태는 if절에서 쓸 수 없어요. 동사 원형을 생각해보세요!"
       }
     },
     {
@@ -2003,7 +2083,9 @@
       "hint": "의문사 + to부정사: where to go",
       "page": 20,
       "wrong_explanations": {
-        "default": "positive = 긍정적인. 좋고 밝은 태도!"
+        "go where": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
+        "where going": "이 자리에 ~ing 형태는 올 수 없어요. \"to + 동사원형\" 패턴이 필요해요!",
+        "to go where": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
       }
     },
     {
@@ -2029,7 +2111,9 @@
       "hint": "lively = 활기 넘치는, 생기 있는",
       "page": 16,
       "wrong_explanations": {
-        "default": "negative = 부정적인. 안 좋고 어두운 태도!"
+        "alive": "\"살아있는\"이라는 뜻이에요. 생존과 \"활기\"는 다른 개념이에요!",
+        "living": "\"살아있는/생활하는\"이에요. \"생기 넘치는\" 느낌과는 달라요!",
+        "live": "동사 \"살다\" 또는 \"라이브\"예요. 형용사 자리에 맞지 않아요!"
       }
     },
     {
@@ -2055,7 +2139,9 @@
       "hint": "의문사 + to부정사: how to solve = 어떻게 풀지",
       "page": 20,
       "wrong_explanations": {
-        "default": "active = 활동적인. 계속 움직이고 바쁜 상태!"
+        "how solving": "의문사 뒤에는 ~ing가 아니라 \"to + 동사원형\" 패턴이 와요!",
+        "solve how": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
+        "how I solve": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
       }
     },
     {
@@ -2081,7 +2167,9 @@
       "hint": "be + 형용사: be careful = 조심하다",
       "page": 16,
       "wrong_explanations": {
-        "default": "passive = 수동적인. 상대방을 따르기만 하는 태도!"
+        "carefully": "여기는 be동사 뒤 자리예요. be동사 뒤에는 부사가 아니라 형용사가 와요!",
+        "careless": "\"부주의한\"이라는 뜻이에요. 문맥상 \"조심하는\"이라는 반대 뜻이 필요해요!",
+        "care": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
       }
     },
     {
@@ -2107,7 +2195,9 @@
       "hint": "have good sleep without healthy habits = 건강한 습관 없이 좋은 수면을 가질 수 없다",
       "page": 19,
       "wrong_explanations": {
-        "default": "confident = 자신감 있는. 자신의 능력을 믿는 태도!"
+        "get": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
+        "keep": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
+        "maintain": "뜻은 비슷하지만, \"how to + 동사원형\" 다음에는 간단한 동사가 와요!"
       }
     },
     {
@@ -2133,7 +2223,9 @@
       "hint": "be lively and healthy = 활기차고 건강하다",
       "page": 16,
       "wrong_explanations": {
-        "default": "humble = 겸손한. 겸손하고 낮추는 태도!"
+        "alive": "\"살아있는\"이라는 뜻이에요. 생존과 \"활기\"는 다른 개념이에요!",
+        "awake": "\"깨어있는\"이라는 뜻이에요. 단순히 안 자는 것과 \"활기 넘치는\" 건 달라요!",
+        "active": "\"활동적인\"이라는 뜻이에요. 비슷하지만, 이 문맥에서는 \"생기 있는\" 느낌이 더 어울려요!"
       }
     }
   ]

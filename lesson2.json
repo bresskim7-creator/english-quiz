@@ -21,6 +21,7 @@
       "page": 26,
       "difficulty": "medium",
       "wrong_explanations": {
+        "wooden blocks": "나무 블록이에요. 이야기에서 실제로 사용한 재료가 뭔지 다시 읽어보세요!",
         "paper sheets": "종이는 쌓기에 약하죠.",
         "metal pieces": "아이들이 쌓기에 너무 무거워요."
       }
@@ -44,6 +45,7 @@
       "page": 28,
       "difficulty": "medium",
       "wrong_explanations": {
+        "to build": "이미 의문사가 to를 포함하고 있어서, to를 한 번 더 쓸 필요 없어요!",
         "build": "동사원형은 시간 표현 뒤에 올 수 없어요.",
         "built": "과거분사는 여기서 필요 없어요."
       }
@@ -68,6 +70,7 @@
       "difficulty": "medium",
       "wrong_explanations": {
         "push": "'밀다'는 뜻이라 틀렸어요.",
+        "pile": "\"쌓다/더미\"예요. 이 문장의 동작을 다시 생각해보세요!",
         "pull": "'당기다'는 뜻이에요."
       }
     },
@@ -91,6 +94,7 @@
       "difficulty": "medium",
       "wrong_explanations": {
         "visiting": "-ing형은 목적을 나타내지 않아요.",
+        "to visit": "이미 의문사가 to를 포함하고 있어서, to를 한 번 더 쓸 필요 없어요!",
         "visit": "동사원형은 시간 표현 뒤에 올 수 없어요."
       }
     },
@@ -113,6 +117,7 @@
       "page": 27,
       "difficulty": "medium",
       "wrong_explanations": {
+        "one by one": "\"하나씩\"이에요. 이야기에서 블록이 어떻게 떨어졌는지 다시 확인해보세요!",
         "very fast": "'아주 빨리'라는 뜻이에요.",
         "very slowly": "'아주 천천히'라는 뜻이에요."
       }
@@ -136,6 +141,7 @@
       "page": 31,
       "difficulty": "medium",
       "wrong_explanations": {
+        "to do": "이미 의문사가 to를 포함하고 있어서, to를 한 번 더 쓸 필요 없어요!",
         "to doing": "이 형태는 존재하지 않아요.",
         "do": "동사원형은 명사를 수식할 수 없어요."
       }
@@ -160,6 +166,7 @@
       "difficulty": "medium",
       "wrong_explanations": {
         "cough": "'기침하다'는 뜻이라 틀렸어요.",
+        "sneeze": "\"sneeze\"를 넣어보면 문장이 자연스러운가요? 재채기하다 (v.) — 교과서 p.28",
         "cry": "'울다'는 뜻이에요."
       }
     },
@@ -182,6 +189,7 @@
       "page": 35,
       "difficulty": "medium",
       "wrong_explanations": {
+        "to do": "\"to do\"를 넣어보면 문장이 자연스러운가요? to부정사가 'anything'을 수식 — 교과서 p.35",
         "doing": "-ing형은 'anything'을 수식할 수 없어요.",
         "do": "동사원형은 명사를 수식할 수 없어요."
       }
@@ -205,6 +213,7 @@
       "page": 30,
       "difficulty": "medium",
       "wrong_explanations": {
+        "fell ill": "\"fell ill\"를 넣어보면 문장이 자연스러운가요? 병이 나다, 아프게 되다 (v.) — 교과서 p.30",
         "woke up": "'깼다'는 뜻이에요.",
         "fell down": "'떨어졌다'는 뜻이라 다르죠."
       }
@@ -227,6 +236,7 @@
       "page": 29,
       "difficulty": "medium",
       "wrong_explanations": {
+        "I need a friend to help me.": "\"help\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "I have a friend to help me.": "have와 to부정사는 이 의미에서 맞지 않아요.",
         "I want a friend to help me today.": "'오늘'이 원문에 없어요."
       }
@@ -251,6 +261,7 @@
       "difficulty": "medium",
       "wrong_explanations": {
         "relax": "'쉬다'는 뜻이라 틀렸어요.",
+        "recover": "\"recover\"를 넣어보면 문장이 자연스러운가요? 회복하다, 나아지다 (v.) — 교과서 p.31",
         "return": "'돌아오다'는 뜻이에요."
       }
     },
@@ -272,6 +283,7 @@
       "page": 33,
       "difficulty": "medium",
       "wrong_explanations": {
+        "He tried to recover.": "\"tried\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "He tried recovering.": "-ing형은 목적의 의미가 약해요.",
         "He was trying to recover.": "과거 진행형은 문맥이 달라요."
       }
@@ -295,6 +307,7 @@
       "page": 34,
       "difficulty": "medium",
       "wrong_explanations": {
+        "realized": "\"realized\"를 넣어보면 문장이 자연스러운가요? 깨닫다, 알게 되다 (v.) — 교과서 p.34",
         "worried": "'걱정했다'는 뜻이에요.",
         "imagined": "'상상했다'는 뜻이에요."
       }
@@ -341,6 +354,7 @@
       "page": 42,
       "difficulty": "medium",
       "wrong_explanations": {
+        "lean": "\"lean\"를 넣어보면 문장이 자연스러운가요? 기대다, 의지하다 (v.) — 교과서 p.42",
         "leave": "'떠나다'는 뜻이라 틀렸어요.",
         "lead": "'이끌다'는 뜻이에요."
       }
@@ -387,7 +401,7 @@
       "difficulty": "medium",
       "wrong_explanations": {
         "which": "사물에 쓰는 관계대명사라 틀렸어요.",
-        "that": "that도 가능하지만 사람에게는 who가 자연스러워요.",
+        "that": "\"that\"의 뜻을 생각해보세요. 문장 전체를 읽고 빈칸에 가장 자연스러운 단어를 찾아봐요!",
         "whose": "소유를 나타내므로 틀렸어요."
       }
     },
@@ -410,6 +424,7 @@
       "page": 31,
       "difficulty": "medium",
       "wrong_explanations": {
+        "who": "\"who\"를 넣어보면 문장이 자연스러운가요? 사람을 나타낼 때 who 사용 — 교과서 p.31",
         "where": "장소를 나타내므로 틀렸어요.",
         "when": "시간을 나타내므로 틀렸어요."
       }
@@ -433,7 +448,9 @@
       "page": 26,
       "difficulty": "medium",
       "wrong_explanations": {
-        "Not Hold my hands": "'Hold my hands'가 맞아요."
+        "Hold my hands": "\"Hold my hands\"를 넣어보면 문장이 자연스러운가요? 원문: Hold my hands. — 교과서 p.26",
+        "Not Hold my hands": "'Hold my hands'가 맞아요.",
+        "Wrong choice": "\"Wrong choice\"를 넣어보면 문장이 자연스러운가요? 원문: Hold my hands. — 교과서 p.26"
       }
     },
     {
@@ -456,6 +473,7 @@
       "difficulty": "medium",
       "wrong_explanations": {
         "who": "사람에 쓰는 관계대명사라 틀렸어요.",
+        "which": "\"which\"를 넣어보면 문장이 자연스러운가요? 관계대명사 which는 사물/장소를 나타냄 — 교과서 p.30",
         "that": "that도 가능하지만 which가 사물에 더 자연스러워요."
       }
     },
@@ -500,7 +518,7 @@
       "difficulty": "medium",
       "wrong_explanations": {
         "who": "사람에 쓰는 관계대명사라 틀렸어요.",
-        "that": "that도 가능하지만 which가 사물에 더 자연스러워요.",
+        "that": "\"that\"의 뜻을 생각해보세요. 문장 전체를 읽고 빈칸에 가장 자연스러운 단어를 찾아봐요!",
         "why": "'왜'를 나타내므로 틀렸어요."
       }
     },
@@ -522,6 +540,7 @@
       "page": 26,
       "difficulty": "medium",
       "wrong_explanations": {
+        "Hold my hands.": "\"hold\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Similar but wrong sentence": "비슷하지만 뜻이 다른 문장이에요.",
         "Different meaning 2": "완전히 다른 뜻이에요."
       }
@@ -544,6 +563,7 @@
       "page": 27,
       "difficulty": "medium",
       "wrong_explanations": {
+        "I have a friend who helps me.": "\"who\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "I have a friend which helps me.": "which는 사물에 쓰는 관계대명사예요.",
         "I have a friend that is helping me.": "진행형은 '도와주는'의 의미가 약해요."
       }
@@ -640,8 +660,9 @@
       "page": 42,
       "difficulty": "medium",
       "wrong_explanations": {
+        "나란히, 옆으로": "\"나란히,\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "앞뒤로": "side by side는 '옆으로'라는 뜻이에요.",
-        "위아래로": "위아래가 아니라 나란히라는 뜻이에요."
+        "위아래로": "비슷해 보이지만 핵심 단어가 달라요. 한국어 뜻과 하나씩 대조해보세요!"
       }
     },
     {
@@ -662,7 +683,7 @@
       "page": 41,
       "difficulty": "medium",
       "wrong_explanations": {
-        "강한 바람": "breeze는 약한 바람, 산들바람이에요.",
+        "강한 바람": "비슷해 보이지만 핵심 단어가 달라요. 한국어 뜻과 하나씩 대조해보세요!",
         "비": "rain을 쓰죠.",
         "구름": "cloud를 쓰죠."
       }
@@ -685,6 +706,7 @@
       "page": 43,
       "difficulty": "easy",
       "wrong_explanations": {
+        "행복": "\"행복\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "화남": "anger를 쓰죠.",
         "무서움": "fear를 쓰죠."
       }
@@ -707,6 +729,7 @@
       "page": 28,
       "difficulty": "medium",
       "wrong_explanations": {
+        "~하는 동안": "\"~하는\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "~이후에": "after를 쓰죠.",
         "~처럼": "like를 쓰죠."
       }
@@ -730,6 +753,7 @@
       "page": 26,
       "difficulty": "medium",
       "wrong_explanations": {
+        "Now one foot, now the other": "\"Now one foot, now the other\"를 넣어보면 문장이 자연스러운가요? 원문: Now one foot, now the other. — 교과서 p.26",
         "Not Now one foot, now the other": "'Now one foot, now the other'가 맞아요.",
         "Different word": "다른 단어는 틀렸어요."
       }
@@ -820,6 +844,7 @@
       "page": 26,
       "difficulty": "medium",
       "wrong_explanations": {
+        "Now one foot, now the other.": "\"one\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Similar but wrong sentence": "비슷하지만 뜻이 다른 문장이에요.",
         "Different meaning 1": "완전히 다른 뜻이에요."
       }
@@ -865,6 +890,7 @@
       "page": 43,
       "difficulty": "medium",
       "wrong_explanations": {
+        "Like magic, Bobby could help his grandfather.": "\"like\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Bobby made magic to help his grandfather.": "'마법을 만들다'는 뜻이라 틀렸어요.",
         "Bobby tried magic to help his grandfather.": "'마법을 시도했다'는 뜻이라 다르죠."
       }
@@ -889,6 +915,7 @@
       "difficulty": "medium",
       "wrong_explanations": {
         "arm": "'팔'이라는 뜻이라 틀렸어요.",
+        "shoulder": "\"shoulder\"를 넣어보면 문장이 자연스러운가요? 어깨 (n.) — 교과서 p.42",
         "leg": "'다리'라는 뜻이에요."
       }
     },
@@ -912,6 +939,7 @@
       "difficulty": "medium",
       "wrong_explanations": {
         "had no chance": "'기회가 없었다'는 뜻이라 틀렸어요.",
+        "had no choice": "\"had no choice\"를 넣어보면 문장이 자연스러운가요? '~할 수밖에 없다'는 의미 (v.) — 교과서 p.32",
         "have no time": "'시간이 없다'는 뜻이에요."
       }
     },
@@ -934,6 +962,7 @@
       "page": 34,
       "difficulty": "medium",
       "wrong_explanations": {
+        "Suddenly": "\"Suddenly\"를 넣어보면 문장이 자연스러운가요? 갑자기 (adv.) — 교과서 p.34",
         "Slowly": "'천천히'라는 뜻이에요.",
         "Actually": "'실제로'라는 뜻이에요."
       }
@@ -958,7 +987,7 @@
       "difficulty": "hard",
       "wrong_explanations": {
         "who": "사람에 쓰는 관계대명사라 틀렸어요.",
-        "that": "that도 가능하지만 which가 사물에 더 자연스러워요.",
+        "that": "\"that\"의 뜻을 생각해보세요. 문장 전체를 읽고 빈칸에 가장 자연스러운 단어를 찾아봐요!",
         "where": "장소를 나타내므로 틀렸어요."
       }
     },
@@ -982,6 +1011,7 @@
       "difficulty": "medium",
       "wrong_explanations": {
         "dream": "'꿈'이라는 뜻이라 틀렸어요.",
+        "magic": "\"magic\"를 넣어보면 문장이 자연스러운가요? 마법 (n.) — 교과서 p.43",
         "chance": "'기회'라는 뜻이에요."
       }
     },
@@ -1005,6 +1035,7 @@
       "difficulty": "medium",
       "wrong_explanations": {
         "seeing": "-ing형은 목적을 나타내지 않아요.",
+        "to see": "\"to see\"를 넣어보면 문장이 자연스러운가요? 목적을 나타내는 to부정사 — 교과서 p.33",
         "see": "동사원형은 문법적으로 틀렸어요."
       }
     },
@@ -1027,8 +1058,9 @@
       "page": 30,
       "difficulty": "medium",
       "wrong_explanations": {
-        "Not Bob was in a hospital": "'Bob was in a hospital'이 맞아요.",
-        "Different word": "다른 단어는 틀렸어요."
+        "Not Bob was in a hospital": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
+        "Different word": "다른 단어는 틀렸어요.",
+        "Wrong choice": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
       }
     },
     {
@@ -1096,6 +1128,7 @@
       "page": 31,
       "difficulty": "medium",
       "wrong_explanations": {
+        "to become": "\"to become\"를 넣어보면 문장이 자연스러운가요? 필요성을 나타내는 to부정사 — 교과서 p.31",
         "becoming": "-ing형은 필요성을 나타내지 않아요.",
         "become": "동사원형은 'needed' 뒤에 올 수 없어요."
       }
@@ -1142,8 +1175,8 @@
       "page": 34,
       "difficulty": "medium",
       "wrong_explanations": {
-        "looked": "'보였다'는 뜻이지만 appeared보다 덜 자연스러워요.",
-        "seemed": "'보였다'는 뜻이지만 appeared가 더 자연스러워요.",
+        "looked": "\"looked\"의 뜻을 생각해보세요. 문장 전체를 읽고 빈칸에 가장 자연스러운 단어를 찾아봐요!",
+        "seemed": "\"seemed\"의 뜻을 생각해보세요. 문장 전체를 읽고 빈칸에 가장 자연스러운 단어를 찾아봐요!",
         "found": "'찾았다'는 뜻이에요."
       }
     },
@@ -1167,7 +1200,8 @@
       "difficulty": "hard",
       "wrong_explanations": {
         "who": "사람에 쓰는 관계대명사라 틀렸어요.",
-        "which": "사물에 쓰는 관계대명사라 틀렸어요."
+        "which": "사물에 쓰는 관계대명사라 틀렸어요.",
+        "where": "\"어디서\"예요. 장소가 아니라 다른 의문사가 필요해요!"
       }
     },
     {
@@ -1190,6 +1224,7 @@
       "difficulty": "medium",
       "wrong_explanations": {
         "wind": "'바람'이라는 뜻이지만 일반적이에요.",
+        "breeze": "\"breeze\"를 넣어보면 문장이 자연스러운가요? 산들바람 (n.) — 교과서 p.41",
         "gust": "'돌풍'이라는 뜻이에요."
       }
     },
@@ -1214,7 +1249,7 @@
       "wrong_explanations": {
         "able": "'수 있었다'는 뜻을 나타내려면 to가 필요해요.",
         "can": "can은 현재형이라 과거와 맞지 않아요.",
-        "could": "could는 조동사라 be able to와 형태가 달라요."
+        "could": "\"could\"의 뜻을 생각해보세요. 문장 전체를 읽고 빈칸에 가장 자연스러운 단어를 찾아봐요!"
       }
     },
     {
@@ -1261,6 +1296,7 @@
       "difficulty": "medium",
       "wrong_explanations": {
         "help": "want 다음에는 to부정사가 필요해요.",
+        "to help": "이미 의문사가 to를 포함하고 있어서, to를 한 번 더 쓸 필요 없어요!",
         "to helping": "이 형태는 존재하지 않아요."
       }
     },
@@ -1284,7 +1320,8 @@
       "difficulty": "medium",
       "wrong_explanations": {
         "relax": "'쉬다'는 뜻이라 틀렸어요.",
-        "recover": "start 다음에는 -ing가 와야 해요."
+        "recover": "start 다음에는 -ing가 와야 해요.",
+        "recovering": "\"recovering\"를 넣어보면 문장이 자연스러운가요? 회복하다 (v.) — start + ~ing — 교과서 p.35"
       }
     },
     {
@@ -1307,7 +1344,7 @@
       "difficulty": "medium",
       "wrong_explanations": {
         "which": "사물에 쓰는 관계대명사라 틀렸어요.",
-        "that": "that도 가능하지만 사람에게는 who가 자연스러워요.",
+        "that": "\"that\"의 뜻을 생각해보세요. 문장 전체를 읽고 빈칸에 가장 자연스러운 단어를 찾아봐요!",
         "what": "'무엇'을 나타내므로 틀렸어요."
       }
     },
@@ -1330,7 +1367,9 @@
       "page": 31,
       "difficulty": "medium",
       "wrong_explanations": {
-        "Different word": "다른 단어는 틀렸어요."
+        "He couldn't move": "\"He couldn't move\"를 넣어보면 문장이 자연스러운가요? 원문: He couldn't move. — 교과서 p.31",
+        "Different word": "다른 단어는 틀렸어요.",
+        "Wrong choice": "\"Wrong choice\"를 넣어보면 문장이 자연스러운가요? 원문: He couldn't move. — 교과서 p.31"
       }
     },
     {
@@ -1372,6 +1411,7 @@
       "page": 31,
       "difficulty": "medium",
       "wrong_explanations": {
+        "He couldn't move.": "\"he\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Similar but wrong sentence": "비슷하지만 뜻이 다른 문장이에요.",
         "Different meaning 1": "완전히 다른 뜻이에요."
       }
@@ -1395,8 +1435,9 @@
       "page": 33,
       "difficulty": "medium",
       "wrong_explanations": {
-        "Not Bobby came with blocks": "'Bobby came with blocks'가 맞아요.",
-        "Different word": "다른 단어는 틀렸어요."
+        "Not Bobby came with blocks": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
+        "Different word": "다른 단어는 틀렸어요.",
+        "Wrong choice": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
       }
     },
     {
@@ -1439,6 +1480,7 @@
       "page": 33,
       "difficulty": "medium",
       "wrong_explanations": {
+        "Bobby came with blocks.": "\"came\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Similar but wrong sentence": "비슷하지만 뜻이 다른 문장이에요.",
         "Different meaning 2": "완전히 다른 뜻이에요."
       }
@@ -1462,6 +1504,7 @@
       "page": 34,
       "difficulty": "medium",
       "wrong_explanations": {
+        "Bob made a small sound": "\"Bob made a small sound\"를 넣어보면 문장이 자연스러운가요? 원문: Bob made a small sound. — 교과서 p.34",
         "Not Bob made a small sound": "'Bob made a small sound'가 맞아요.",
         "Different word": "다른 단어는 틀렸어요."
       }
@@ -1505,6 +1548,7 @@
       "page": 34,
       "difficulty": "medium",
       "wrong_explanations": {
+        "Bob made a small sound.": "\"small\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Different meaning 1": "완전히 다른 뜻이에요.",
         "Different meaning 2": "완전히 다른 뜻이에요."
       }
@@ -1528,7 +1572,9 @@
       "page": 42,
       "difficulty": "medium",
       "wrong_explanations": {
-        "Not They sat side by side": "'They sat side by side'가 맞아요."
+        "They sat side by side": "\"They sat side by side\"를 넣어보면 문장이 자연스러운가요? 원문: They sat side by side. — 교과서 p.42",
+        "Not They sat side by side": "'They sat side by side'가 맞아요.",
+        "Wrong choice": "\"Wrong choice\"를 넣어보면 문장이 자연스러운가요? 원문: They sat side by side. — 교과서 p.42"
       }
     },
     {
@@ -1594,7 +1640,9 @@
       "page": 43,
       "difficulty": "medium",
       "wrong_explanations": {
-        "Different word": "다른 단어는 틀렸어요."
+        "You taught me to walk": "\"You taught me to walk\"를 넣어보면 문장이 자연스러운가요? 원문: You taught me to walk. — 교과서 p.43",
+        "Different word": "다른 단어는 틀렸어요.",
+        "Wrong choice": "\"Wrong choice\"를 넣어보면 문장이 자연스러운가요? 원문: You taught me to walk. — 교과서 p.43"
       }
     },
     {
@@ -1638,6 +1686,7 @@
       "page": 43,
       "difficulty": "medium",
       "wrong_explanations": {
+        "You taught me to walk.": "\"taught\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Similar but wrong sentence": "비슷하지만 뜻이 다른 문장이에요.",
         "Different meaning 1": "완전히 다른 뜻이에요."
       }

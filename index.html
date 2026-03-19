@@ -1291,34 +1291,27 @@
             showNextButton();
         }
 
-        // 오답 시 맞춤 설명 (JSON의 wrong_explanations 활용)
+        // 오답 시 이해 도움 설명 (정답을 직접 말하지 않고 이해를 유도)
         function showWrongExplanation(q, afterEl, userAnswer) {
             const box = document.createElement('div');
             box.className = 'wrong-explanation';
-            box.style.cssText = 'background:linear-gradient(135deg,#e8f5e9,#f1f8e9);border-left:4px solid #4CAF50;border-radius:0 10px 10px 0;padding:14px 16px;margin-top:12px;font-size:15px;color:#333;line-height:1.7;';
+            box.style.cssText = 'background:linear-gradient(135deg,#fff8e1,#fff3e0);border-left:4px solid #FF9800;border-radius:0 10px 10px 0;padding:14px 16px;margin-top:12px;font-size:15px;color:#333;line-height:1.8;';
 
-            const correctAnswer = q.blank_answer || q.answer || (q.choices ? q.choices[q.correct] : '');
             const we = q.wrong_explanations || {};
-            let html = '';
+            let html = '<div style="font-weight:700;color:#e65100;margin-bottom:8px;font-size:16px;">🎓 선생님 설명</div>';
 
             if (q.type === 'fill_blank') {
-                html += '<div style="color:#c62828;font-weight:600;margin-bottom:6px;">✗ ' + userAnswer + ' → ✅ ' + correctAnswer + '</div>';
-                const explanation = we[userAnswer] || q.hint || '정답은 "' + correctAnswer + '"이에요!';
-                html += '<div style="font-size:14px;color:#444;margin-bottom:6px;">' + explanation + '</div>';
-            } else if (q.type === 'arrange') {
-                html += '<div style="color:#c62828;font-weight:600;margin-bottom:6px;">✗ 네 답: ' + userAnswer + '</div>';
-                html += '<div style="color:#2e7d32;font-weight:600;margin-bottom:6px;">✅ 정답: ' + correctAnswer + '</div>';
-                const explanation = we['default'] || q.hint || '영어는 "주어 + 동사 + 목적어" 순서예요!';
-                html += '<div style="font-size:14px;color:#444;margin-bottom:6px;">' + explanation + '</div>';
-            } else if (q.type === 'match') {
-                const shortUser = userAnswer && userAnswer.length > 50 ? userAnswer.substring(0, 50) + '...' : userAnswer;
-                html += '<div style="color:#c62828;font-weight:600;margin-bottom:6px;">✗ ' + shortUser + '</div>';
-                html += '<div style="color:#2e7d32;font-weight:600;margin-bottom:6px;">✅ ' + correctAnswer + '</div>';
                 const explanation = we[userAnswer] || q.hint || '';
-                html += '<div style="font-size:14px;color:#444;margin-bottom:6px;">' + explanation + '</div>';
+                html += '<div style="font-size:15px;color:#333;">' + explanation + '</div>';
+            } else if (q.type === 'arrange') {
+                const explanation = we['default'] || q.hint || '';
+                html += '<div style="font-size:15px;color:#333;">' + explanation + '</div>';
+            } else if (q.type === 'match') {
+                const explanation = we[userAnswer] || q.hint || '';
+                html += '<div style="font-size:15px;color:#333;">' + explanation + '</div>';
             }
 
-            html += '<div style="font-size:13px;color:#777;margin-top:6px;border-top:1px solid #ddd;padding-top:6px;">📖 정답 문장을 소리 내어 2번 읽어보세요!</div>';
+            html += '<div style="font-size:13px;color:#888;margin-top:8px;border-top:1px solid #ffe0b2;padding-top:6px;">📖 정답 문장을 소리 내어 읽어보면 기억에 남아요!</div>';
 
             box.innerHTML = html;
             afterEl.after(box);
