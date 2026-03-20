@@ -1,7 +1,7 @@
 {
-  "name": "영어 Lesson 1",
-  "short_name": "영어L1",
-  "description": "중2 영어 Lesson 1 시험형 학습 앱",
+  "name": "중2 영어 학습",
+  "short_name": "영어학습",
+  "description": "중2 영어 Lesson 1-2 시험형 학습 앱",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
