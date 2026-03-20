@@ -2017,7 +2017,7 @@
                     body: JSON.stringify(data)
                 }).then(() => {
                     sentKeys.push(key);
-                    localStorage.setItem(unsentLogsKey, JSON.stringify(sentKeys));
+                    localStorage.setItem('sent_logs', JSON.stringify(sentKeys));
                 }).catch(() => {});
             });
         }
