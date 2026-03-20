@@ -28,7 +28,11 @@
         "active": "\"활동적인\"이라는 뜻이에요. 비슷하지만, 이 문맥에서는 \"생기 있는\" 느낌이 더 어울려요!",
         "awake": "awake는 '깨어있는'이에요. '활기 넘치는'과는 뜻이 달라요!",
         "asleep": "\"잠든\"이라는 뜻이에요. 문맥과 정반대 의미예요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "W02",
@@ -56,7 +60,11 @@
         "asleep": "asleep은 '잠든'이에요. 활기가 넘치는 아이들 표현이 아니에요!",
         "tired": "tired는 '지친'이에요. 친구들이 즐겁게 노는 모습에 맞지 않아요!",
         "careful": "\"조심스러운\"이에요. 이 문맥에서 필요한 감정/상태와 맞나요?"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "W03",
@@ -84,7 +92,11 @@
         "with": "\"with\"의 뜻을 생각해보세요. 문장 전체를 읽고 빈칸에 가장 자연스러운 단어를 찾아봐요!",
         "about": "\"~에 대해\"라는 뜻이에요. 이 문장에서 필요한 관계는 \"~에 대해\"가 아니에요!",
         "before": "\"before\"의 뜻을 생각해보세요. 문장 전체를 읽고 빈칸에 가장 자연스러운 단어를 찾아봐요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "W04",
@@ -112,7 +124,11 @@
         "before": "\"~전에\"라는 시간 표현이에요. 이 문장은 시간이 아니라 조건을 말해요!",
         "after": "\"~후에\"라는 시간 표현이에요. 이 문장의 의미를 다시 생각해보세요!",
         "during": "\"~동안\"이에요. 기간을 나타내는데, 이 문장에서 필요한 의미가 맞나요?"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "W05",
@@ -140,7 +156,11 @@
         "how to do": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
         "what doing": "의문사 뒤에는 ~ing가 아니라 \"to + 동사원형\" 패턴이 와요!",
         "to do what": "이미 의문사가 to를 포함하고 있어서, to를 한 번 더 쓸 필요 없어요!"
-      }
+      },
+      "language_concept": "grammar_wh_to_inf",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "W06",
@@ -152,7 +172,7 @@
         "vocab",
         "의문사+to부정사"
       ],
-      "instruction": "빈칙에 알맞은 표현을 고르세요.",
+      "instruction": "빈칸에 알맞은 표현을 고르세요.",
       "sentence": "I can't decide _____ on vacation.",
       "blank_answer": "where to go",
       "choices": [
@@ -168,7 +188,11 @@
         "where going": "의문사 뒤에는 ~ing가 아니라 \"to + 동사원형\" 패턴이 와요!",
         "to go where": "이미 의문사가 to를 포함하고 있어서, to를 한 번 더 쓸 필요 없어요!",
         "go where to": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
-      }
+      },
+      "language_concept": "grammar_wh_to_inf",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "W07",
@@ -196,7 +220,11 @@
         "carefully": "여기는 be동사 뒤 자리예요. be동사 뒤에는 부사가 아니라 형용사가 와요!",
         "careless": "\"부주의한\"이라는 뜻이에요. 문맥상 \"조심하는\"이라는 반대 뜻이 필요해요!",
         "caring": "\"배려하는\"이라는 뜻이에요. \"조심하는\"과는 뉘앙스가 달라요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "W08",
@@ -208,7 +236,7 @@
         "vocab",
         "형용사vs부사"
       ],
-      "instruction": "빈칙에 careful과 carefully 중 알맞은 것을 고르세요.",
+      "instruction": "빈칸에 careful과 carefully 중 알맞은 것을 고르세요.",
       "sentence": "Please read the instructions _____.",
       "blank_answer": "carefully",
       "choices": [
@@ -224,7 +252,11 @@
         "careful": "이 자리는 동사를 꾸며주는 자리예요. 동사를 꾸미려면 형용사가 아니라 부사를 써야 해요!",
         "careless": "\"부주의한\"이라는 뜻이에요. 문맥상 \"조심하는\"이라는 반대 뜻이 필요해요!",
         "carefulness": "\"carefulness\"는 명사예요. 동사를 꾸미려면 부사!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "S01A",
@@ -234,9 +266,9 @@
       "keyword": "Do you have any special goals",
       "tags": [
         "핵심문장",
-        "빈칙"
+        "빈칸"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "Do you have any _____ goals for this year?",
       "blank_answer": "special",
       "choices": [
@@ -252,19 +284,23 @@
         "simple": "\"단순한\"이에요. 이 문맥에서 필요한 건 \"평범하지 않은\" 느낌이에요!",
         "general": "\"일반적인\"이에요. 여기선 \"보통이 아닌\" 의미가 필요해요!",
         "similar": "\"비슷한\"이에요. 이 문장이 말하는 건 \"남다른\" 느낌이에요!"
-      }
+      },
+      "language_concept": "key_sentence_L1",
+      "test_task": "sentence_completion",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "S02A",
-      "category": "핵심문장_빈칙형",
+      "category": "핵심문장_빈칸형",
       "type": "fill_blank",
       "difficulty": "medium",
       "keyword": "Yes, I'm planning to exercise",
       "tags": [
         "핵심문장",
-        "빈칙"
+        "빈칸"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "Yes, I'm _____ to exercise more.",
       "blank_answer": "planning",
       "choices": [
@@ -277,22 +313,26 @@
       "hint": "원문: Yes, I'm planning to exercise more.",
       "page": 8,
       "wrong_explanations": {
-        "hoping": "의문사 뒤에는 ~ing가 아니라 \"to + 동사원형\" 패턴이 와요!",
-        "wanting": "의문사 뒤에는 ~ing가 아니라 \"to + 동사원형\" 패턴이 와요!",
-        "trying": "의문사 뒤에는 ~ing가 아니라 \"to + 동사원형\" 패턴이 와요!"
-      }
+        "hoping": "'be hoping to'도 가능하지만, 교과서 핵심 표현은 'be planning to'예요! plan은 구체적인 계획을 나타내요.",
+        "wanting": "'want to'는 맞지만 'wanting to'는 잘 쓰지 않아요. 'be planning to'가 교과서 표현!",
+        "trying": "'be trying to'는 '노력하다'라는 뜻이에요. 계획을 말할 때는 'be planning to'!"
+      },
+      "language_concept": "expr_plan_goal",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "S03A",
-      "category": "핵심문장_빈칙형",
+      "category": "핵심문장_빈칸형",
       "type": "fill_blank",
       "difficulty": "medium",
       "keyword": "I want to perform at the school festival",
       "tags": [
         "핵심문장",
-        "빈칙"
+        "빈칸"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "I want to _____ at the school festival.",
       "blank_answer": "perform",
       "choices": [
@@ -308,19 +348,23 @@
         "practice": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
         "prepare": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
         "present": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
-      }
+      },
+      "language_concept": "expr_plan_goal",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "S04A",
-      "category": "핵심문장_빈칙형",
+      "category": "핵심문장_빈칸형",
       "type": "fill_blank",
       "difficulty": "medium",
       "keyword": "Sounds great. You can do it!",
       "tags": [
         "핵심문장",
-        "빈칙"
+        "빈칸"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "Sounds great. You _____ do it!",
       "blank_answer": "can",
       "choices": [
@@ -336,19 +380,23 @@
         "may": "\"~해도 된다\"예요. 허락과 \"능력\"은 다른 의미예요!",
         "will": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
         "must": "\"~해야 한다\"예요. 의무와 \"능력\"은 다른 의미예요!"
-      }
+      },
+      "language_concept": "key_sentence_L1",
+      "test_task": "sentence_completion",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "S05A",
-      "category": "핵심문장_빈칙형",
+      "category": "핵심문장_빈칸형",
       "type": "fill_blank",
       "difficulty": "medium",
       "keyword": "If you use your smartphone late at night",
       "tags": [
         "핵심문장",
-        "빈칙"
+        "빈칸"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "If you use your smartphone late at night, your brain will stay _____.",
       "blank_answer": "active",
       "choices": [
@@ -364,19 +412,23 @@
         "asleep": "\"잠든\"이라는 뜻이에요. 문맥과 정반대 의미예요!",
         "awake": "\"깨어있는\"이라는 뜻이에요. 단순히 안 자는 것과 \"활기 넘치는\" 건 달라요!",
         "lively": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
-      }
+      },
+      "language_concept": "grammar_if_conditional",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "S06A",
-      "category": "핵심문장_빈칙형",
+      "category": "핵심문장_빈칸형",
       "type": "fill_blank",
       "difficulty": "medium",
       "keyword": "Let's find out what to do",
       "tags": [
         "핵심문장",
-        "빈칙"
+        "빈칸"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "Let's find out _____ to do.",
       "blank_answer": "what",
       "choices": [
@@ -392,7 +444,11 @@
         "how": "\"어떻게\"예요. 이 문장에서 묻는 건 방법이 아니라 \"무엇\"이에요!",
         "when": "\"언제\"예요. 시간이 아니라 \"무엇을 할지\"를 말하는 문장이에요!",
         "where": "\"어디서\"예요. 장소가 아니라 다른 의문사가 필요해요!"
-      }
+      },
+      "language_concept": "grammar_wh_to_inf",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "S01B",
@@ -407,21 +463,22 @@
       "instruction": "단어를 올바른 순서로 배열하세요.",
       "sentence_ko": "올해 특별한 목표가 있니?",
       "words": [
-        "goals",
-        "any",
+        "Do you",
         "have",
-        "for",
-        "special",
-        "you",
-        "Do",
-        "this year"
+        "any special goals",
+        "for this year"
       ],
       "answer": "Do you have any special goals for this year?",
-      "hint": "💡 의문문 어순: Do + 주어 + 동사 → 'Do you have...' 로 시작! any + 형용사 + 명사 순서 기억하세요",
+      "hint": "💡 Do you + 동사 + 목적어 + 전치사구: 시작이 'Do you'로 고정",
       "page": 8,
       "wrong_explanations": {
-        "default": "의문문 어순: Do + 주어 + 동사. any + 형용사 + 명사 순서예요!"
-      }
+        "default": "Do you + have + 목적어(any special goals) + 전치사구(for this year)"
+      },
+      "language_concept": "key_sentence_L1",
+      "test_task": "anchor_arrange",
+      "score_group": "B",
+      "session_type": "B",
+      "correct": 3
     },
     {
       "id": "S02B",
@@ -434,21 +491,24 @@
         "배열"
       ],
       "instruction": "단어를 올바른 순서로 배열하세요.",
-      "sentence_ko": "응, 나는 운동을 더 할 계획이야.",
+      "sentence_ko": "응, 운동을 더 하려고 계획 중이야.",
       "words": [
-        "planning",
-        "I'm",
         "Yes,",
-        "more",
-        "exercise",
-        "to"
+        "I'm planning",
+        "to exercise",
+        "more"
       ],
       "answer": "Yes, I'm planning to exercise more.",
-      "hint": "💡 be planning to = ~할 계획이다. Yes, 다음에 주어+동사 바로! I'm planning to + 동사원형 + 나머지",
+      "hint": "💡 Yes, + I'm planning + to부정사 + 부사: 시작이 'Yes,'로 고정",
       "page": 8,
       "wrong_explanations": {
-        "default": "be planning to = ~할 계획이다. I'm planning to + 동사원형!"
-      }
+        "default": "Yes, + 주어+be+planning + to+동사원형 + 부사"
+      },
+      "language_concept": "expr_plan_goal",
+      "test_task": "anchor_arrange",
+      "score_group": "B",
+      "session_type": "B",
+      "correct": 3
     },
     {
       "id": "S03B",
@@ -461,48 +521,53 @@
         "배열"
       ],
       "instruction": "단어를 올바른 순서로 배열하세요.",
-      "sentence_ko": "나는 학교 축제에서 공연하고 싶어.",
+      "sentence_ko": "학교 축제에서 공연하고 싶어.",
       "words": [
-        "want",
-        "I",
+        "I want",
+        "to perform",
         "at",
-        "to",
-        "perform",
         "the school festival"
       ],
       "answer": "I want to perform at the school festival.",
-      "hint": "💡 want to + 동사원형! 'I want to perform' 이 한 덩어리. 장소는 at + the school festival",
+      "hint": "💡 I want + to부정사 + 전치사 + 장소: 끝이 'the school festival'로 고정",
       "page": 8,
       "wrong_explanations": {
-        "default": "want to + 동사원형 어순. 하고 싶은 일을 표현하는 기본 구조!"
-      }
+        "default": "주어+want + to+동사원형 + 전치사(at) + 장소(the school festival)"
+      },
+      "language_concept": "expr_plan_goal",
+      "test_task": "anchor_arrange",
+      "score_group": "B",
+      "session_type": "B",
+      "correct": 1
     },
     {
       "id": "S04B",
       "category": "핵심문장_배열형",
       "type": "arrange",
-      "difficulty": "hard",
+      "difficulty": "medium",
       "keyword": "Sounds great. You can do it!",
       "tags": [
         "핵심문장",
         "배열"
       ],
       "instruction": "단어를 올바른 순서로 배열하세요.",
-      "sentence_ko": "좋은데. 너는 할 수 있어!",
+      "sentence_ko": "좋아, 넌 해낼 수 있어!",
       "words": [
-        "Sounds",
-        "You",
-        "great.",
-        "do",
-        "can",
-        "it!"
+        "Sounds great.",
+        "You can",
+        "do it!"
       ],
       "answer": "Sounds great. You can do it!",
-      "hint": "💡 두 문장이에요! 'Sounds great.' 먼저, 그 다음 'You can do it!' — can 뒤에 동사원형 do",
+      "hint": "💡 감탄+주어+조동사+동사구: 'Sounds great. You can do it!'",
       "page": 8,
       "wrong_explanations": {
-        "default": "의문사 + be동사 + 주어. 시간을 묻는 의문문 어순!"
-      }
+        "default": "감탄 표현 + 격려 문장 — 'Sounds great. You can do it!'"
+      },
+      "language_concept": "key_sentence_L1",
+      "test_task": "mini_rebuild",
+      "score_group": "A",
+      "session_type": "A",
+      "correct": 0
     },
     {
       "id": "S05B",
@@ -516,49 +581,54 @@
         "조건문"
       ],
       "instruction": "단어를 올바른 순서로 배열하세요.",
-      "sentence_ko": "만약 밤늦게 스마트폰을 사용하면, 뇌가 활동적인 상태를 유지할 것이다.",
+      "sentence_ko": "늦은 밤에 스마트폰을 사용하면 뇌가 계속 활동할 것이다.",
       "words": [
-        "If",
+        "If you use",
         "your smartphone",
-        "you use",
         "late at night,",
         "your brain",
-        "will stay",
-        "active"
+        "will stay active"
       ],
       "answer": "If you use your smartphone late at night, your brain will stay active.",
-      "hint": "💡 if 조건문: If + 주어 + 현재시제, 주어 + will + 동사원형. 'If you use..., your brain will stay...'",
+      "hint": "💡 If절(조건) + 주절(결과): 'If you use... late at night, your brain will stay active'",
       "page": 8,
       "wrong_explanations": {
-        "default": "의문사 + 조동사 + 주어 + 동사. 빈도를 묻는 의문문!"
-      }
+        "default": "If + 조건절(you use your smartphone late at night) + 주절(your brain will stay active)"
+      },
+      "language_concept": "grammar_if_conditional",
+      "test_task": "chunk_arrange",
+      "score_group": "C",
+      "session_type": "B",
+      "correct": 4
     },
     {
       "id": "S06B",
       "category": "핵심문장_배열형",
       "type": "arrange",
-      "difficulty": "hard",
+      "difficulty": "medium",
       "keyword": "Let's find out what to do",
       "tags": [
         "핵심문장",
         "배열"
       ],
       "instruction": "단어를 올바른 순서로 배열하세요.",
-      "sentence_ko": "무엇을 해야 할지 알아보자.",
+      "sentence_ko": "무엇을 해야 하는지 알아보자.",
       "words": [
-        "find",
         "Let's",
-        "what",
-        "do",
-        "out",
-        "to"
+        "find out",
+        "what to do"
       ],
       "answer": "Let's find out what to do.",
-      "hint": "💡 Let's + 동사원형! 'Let's find out' 이 한 덩어리. what to do = 의문사+to부정사",
+      "hint": "💡 Let's + 동사구 + 의문사+to부정사: 'Let's find out what to do'",
       "page": 8,
       "wrong_explanations": {
-        "default": "조동사 can + 주어 + 동사원형. 능력이나 가능 여부를 묻는 문장!"
-      }
+        "default": "Let's + 동사구 + 의문사+to부정사 — 'Let's find out what to do'"
+      },
+      "language_concept": "grammar_wh_to_inf",
+      "test_task": "mini_rebuild",
+      "score_group": "A",
+      "session_type": "A",
+      "correct": 0
     },
     {
       "id": "S01C",
@@ -585,7 +655,11 @@
         "Do you have any special plans for this year?": "goals(목표)와 plans(계획)는 다른 단어예요!",
         "Did you have any special goals last year?": "did는 과거형이고, 지금은 현재예요!",
         "Do you have any new goals for next year?": "특별한 목표를 물어보는데, 새 목표는 다른 의미!"
-      }
+      },
+      "language_concept": "key_sentence_L1",
+      "test_task": "meaning_match",
+      "score_group": "A",
+      "session_type": "AB"
     },
     {
       "id": "S02C",
@@ -612,7 +686,11 @@
         "Yes, I'm going to exercise more.": "going to도 미래이지만, be planning to = 계획 상태!",
         "Yes, I'm planning to study more.": "운동을 하려는 계획이에요, 공부가 아니에요!",
         "Yes, I planned to exercise more.": "planned는 과거형이에요. 계획 중인 현재는 be planning to!"
-      }
+      },
+      "language_concept": "expr_plan_goal",
+      "test_task": "meaning_match",
+      "score_group": "B",
+      "session_type": "AB"
     },
     {
       "id": "S03C",
@@ -639,7 +717,11 @@
         "I want to practice at the school festival.": "\"practice\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "I want to perform at the school concert.": "\"concert.\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "I wanted to perform at the school festival.": "\"wanted\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
-      }
+      },
+      "language_concept": "expr_plan_goal",
+      "test_task": "meaning_match",
+      "score_group": "B",
+      "session_type": "AB"
     },
     {
       "id": "S04C",
@@ -666,7 +748,11 @@
         "Sounds good. You can do it!": "\"good.\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Sounds great. You will do it!": "\"will\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Sounds great. You can make it!": "\"make\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
-      }
+      },
+      "language_concept": "key_sentence_L1",
+      "test_task": "meaning_match",
+      "score_group": "A",
+      "session_type": "AB"
     },
     {
       "id": "S05C",
@@ -694,7 +780,11 @@
         "If you use your smartphone late at night, your brain will stay awake.": "\"awake.\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "If you use your smartphone in the morning, your brain will stay active.": "\"morning,\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "If you use your smartphone late at night, your eyes will stay active.": "\"eyes\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
-      }
+      },
+      "language_concept": "grammar_if_conditional",
+      "test_task": "meaning_match",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "S06C",
@@ -721,7 +811,11 @@
         "Let's find out how to do it.": "\"it.\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Let's find out what to eat.": "\"eat.\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Let's figure out what to do.": "\"figure\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
-      }
+      },
+      "language_concept": "grammar_wh_to_inf",
+      "test_task": "meaning_match",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q027",
@@ -733,7 +827,7 @@
         "vocab",
         "단어뜻"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "Your body clock tells you when to _____ and sleep.",
       "blank_answer": "wake up",
       "choices": [
@@ -749,7 +843,11 @@
         "sleep": "\"자다\"예요. 이 문장에서 필요한 건 다른 동작이에요!",
         "stay": "\"머물다\"예요. 이 문장이 말하는 동작과 달라요!",
         "rest": "\"쉬다\"예요. 비슷하지만 이 문맥에서 딱 맞는 단어가 따로 있어요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q028",
@@ -761,7 +859,7 @@
         "vocab",
         "단어뜻"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "What is your _____ for next year?",
       "blank_answer": "goal",
       "choices": [
@@ -777,7 +875,11 @@
         "plan": "\"plan\"의 뜻을 생각해보세요. 문장 전체를 읽고 빈칸에 가장 자연스러운 단어를 찾아봐요!",
         "idea": "\"생각/아이디어\"예요. \"목표\"와는 의미가 달라요!",
         "habit": "\"습관\"이에요. 이루고 싶은 \"목표\"와는 다른 개념이에요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q029",
@@ -789,7 +891,7 @@
         "vocab",
         "단어뜻"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "I _____ every day to stay healthy.",
       "blank_answer": "exercise",
       "choices": [
@@ -805,7 +907,11 @@
         "sleep": "\"sleep\"의 뜻을 생각해보세요. 문장 전체를 읽고 빈칸에 가장 자연스러운 단어를 찾아봐요!",
         "rest": "\"쉬다\"예요. 비슷하지만 이 문맥에서 딱 맞는 단어가 따로 있어요!",
         "nap": "\"nap\"를 넣어보면 문장이 자연스러운가요? 운동하다 (v.) — 교과서 p.17"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q030",
@@ -817,7 +923,7 @@
         "vocab",
         "단어뜻"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "Good _____ are important for your health.",
       "blank_answer": "habits",
       "choices": [
@@ -833,7 +939,11 @@
         "hobbies": "\"취미\"예요. 규칙적으로 반복하는 \"습관\"과는 달라요!",
         "choices": "\"선택\"이에요. 반복되는 행동 패턴을 말하는 게 아니에요!",
         "styles": "\"스타일\"이에요. 일상의 반복 행동을 뜻하는 단어가 있어요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q031",
@@ -845,7 +955,7 @@
         "vocab",
         "단어뜻"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "Children should _____ eight hours a day.",
       "blank_answer": "sleep",
       "choices": [
@@ -861,7 +971,11 @@
         "play": "\"놀다\"예요. 여기서 필요한 건 다른 의미의 동사예요!",
         "study": "\"공부하다\"예요. 이 문장의 맥락과 맞지 않아요!",
         "read": "\"읽다\"예요. 이 문장이 말하는 동작이 아니에요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q032",
@@ -873,7 +987,7 @@
         "vocab",
         "단어뜻"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "Don't use your phone before _____.",
       "blank_answer": "bedtime",
       "choices": [
@@ -889,7 +1003,11 @@
         "morning": "\"아침\"이에요. 이 문장은 다른 시간대를 말하고 있어요!",
         "daytime": "\"낮\"이에요. 잠과 관련된 시간은 다른 단어예요!",
         "evening": "\"저녁\"이에요. 잠자리에 드는 시간을 뜻하는 단어가 따로 있어요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q033",
@@ -901,7 +1019,7 @@
         "vocab",
         "단어뜻"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "Coffee has _____, which can cause sleep problems.",
       "blank_answer": "caffeine",
       "choices": [
@@ -917,7 +1035,11 @@
         "sugar": "\"설탕\"이에요. 수면에 영향을 주는 성분은 다른 거예요!",
         "salt": "\"소금\"이에요. 수면 문제의 원인은 이게 아니에요!",
         "milk": "\"우유\"예요. 오히려 수면에 도움이 되죠! 방해하는 성분은 따로 있어요."
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q034",
@@ -929,7 +1051,7 @@
         "vocab",
         "단어뜻"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "The blue light keeps you _____.",
       "blank_answer": "awake",
       "choices": [
@@ -945,7 +1067,11 @@
         "asleep": "\"잠든\"이라는 뜻이에요. 문맥과 정반대 의미예요!",
         "tired": "\"지친\"이라는 뜻이에요. 즐겁게 노는 상황과 맞지 않아요!",
         "calm": "\"calm\"를 넣어보면 문장이 자연스러운가요? 깨어 있는 (a.) — 교과서 p.17"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q035",
@@ -957,7 +1083,7 @@
         "vocab",
         "단어뜻"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "A short _____ in the afternoon can help you rest.",
       "blank_answer": "nap",
       "choices": [
@@ -973,7 +1099,11 @@
         "break": "\"쉬는 시간\"이에요. 짧은 수면을 뜻하는 단어가 따로 있어요!",
         "snack": "\"간식\"이에요. 먹는 것과 짧은 수면은 다르죠!",
         "walk": "\"산책\"이에요. 짧게 자는 것과는 다른 활동이에요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q036",
@@ -985,7 +1115,7 @@
         "vocab",
         "단어뜻"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "A regular sleep _____ is important.",
       "blank_answer": "pattern",
       "choices": [
@@ -1001,7 +1131,11 @@
         "schedule": "\"일정\"이에요. 반복되는 형태를 뜻하는 단어가 따로 있어요!",
         "routine": "\"일과\"예요. 비슷하지만 교과서에서 쓴 표현은 다른 단어예요!",
         "timing": "\"타이밍\"이에요. 반복되는 형태를 말하는 단어가 따로 있어요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q037",
@@ -1013,7 +1147,7 @@
         "vocab",
         "단어뜻"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "Good sleep gives you _____ for the day.",
       "blank_answer": "energy",
       "choices": [
@@ -1029,7 +1163,11 @@
         "strength": "\"힘\"이에요. 신체적 힘과 하루의 \"활력\"은 다른 개념이에요!",
         "power": "\"권력/전력\"이에요. 일상의 \"활력\"과는 뜻이 달라요!",
         "force": "\"물리적 힘\"이에요. 생활 속 \"에너지/활력\"과는 달라요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q038",
@@ -1041,7 +1179,7 @@
         "vocab",
         "단어뜻"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "I want to sing at the _____ next month.",
       "blank_answer": "concert",
       "choices": [
@@ -1057,7 +1195,11 @@
         "festival": "\"축제\"예요. 음악 공연을 하는 장소는 다른 단어예요!",
         "school": "\"학교\"예요. 공연하는 특정 행사를 가리키는 단어가 있어요!",
         "party": "\"파티\"예요. 음악을 연주하는 공식 행사는 다른 단어예요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q039",
@@ -1069,7 +1211,7 @@
         "문법",
         "if조건문"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "If you study hard, you _____ pass the test.",
       "blank_answer": "will",
       "choices": [
@@ -1085,7 +1227,11 @@
         "would": "\"~할 텐데\"예요. 가정법에서 쓰이고, 여기서는 확실한 미래를 말해요!",
         "can": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
         "should": "\"~해야 한다\"예요. 의무가 아니라 미래 예측을 말하는 문장이에요!"
-      }
+      },
+      "language_concept": "grammar_if_conditional",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q040",
@@ -1097,7 +1243,7 @@
         "문법",
         "if조건문"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "If it rains tomorrow, we _____ stay at home.",
       "blank_answer": "will",
       "choices": [
@@ -1113,7 +1259,11 @@
         "can": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
         "might": "\"~일지도 모른다\"예요. 불확실한 추측이 아니라 확실한 결과를 말해요!",
         "should": "\"~해야 한다\"예요. 의무가 아니라 미래 예측을 말하는 문장이에요!"
-      }
+      },
+      "language_concept": "grammar_if_conditional",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q041",
@@ -1125,7 +1275,7 @@
         "문법",
         "의문사+to부정사"
       ],
-      "instruction": "빈칙에 알맞은 표현을 고르세요.",
+      "instruction": "빈칸에 알맞은 표현을 고르세요.",
       "sentence": "I don't know _____ at the restaurant.",
       "blank_answer": "what to eat",
       "choices": [
@@ -1141,7 +1291,11 @@
         "what eating": "의문사 뒤에는 ~ing가 아니라 \"to + 동사원형\" 패턴이 와요!",
         "eat what": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
         "what I eat": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
-      }
+      },
+      "language_concept": "grammar_wh_to_inf",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q042",
@@ -1153,7 +1307,7 @@
         "문법",
         "의문사+to부정사"
       ],
-      "instruction": "빈칙에 알맞은 표현을 고르세요.",
+      "instruction": "빈칸에 알맞은 표현을 고르세요.",
       "sentence": "Can you tell me _____ this computer?",
       "blank_answer": "how to use",
       "choices": [
@@ -1169,7 +1323,11 @@
         "how using": "의문사 뒤에는 ~ing가 아니라 \"to + 동사원형\" 패턴이 와요!",
         "use how": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
         "how I use": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
-      }
+      },
+      "language_concept": "grammar_wh_to_inf",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q043",
@@ -1181,7 +1339,7 @@
         "표현",
         "의도"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "She is _____ to learn piano this year.",
       "blank_answer": "planning",
       "choices": [
@@ -1194,10 +1352,14 @@
       "hint": "be planning to = ~할 계획이다",
       "page": 8,
       "wrong_explanations": {
-        "thinking": "의문사 뒤에는 ~ing가 아니라 \"to + 동사원형\" 패턴이 와요!",
-        "hoping": "의문사 뒤에는 ~ing가 아니라 \"to + 동사원형\" 패턴이 와요!",
-        "trying": "의문사 뒤에는 ~ing가 아니라 \"to + 동사원형\" 패턴이 와요!"
-      }
+        "thinking": "'be thinking of ~ing'는 쓰지만, 'thinking to'는 영어에서 잘 안 써요. 계획은 'be planning to'!",
+        "hoping": "'be hoping to'도 가능하지만, 교과서 핵심 표현은 'be planning to'예요!",
+        "trying": "'be trying to'는 '~하려고 노력하다'예요. 계획을 말할 때는 'be planning to'가 딱 맞아요!"
+      },
+      "language_concept": "expr_plan_goal",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q044",
@@ -1209,7 +1371,7 @@
         "표현",
         "의도"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "They _____ to dance at the talent show.",
       "blank_answer": "want",
       "choices": [
@@ -1225,7 +1387,11 @@
         "wish": "\"소망하다\"예요. 실현 가능성이 \"원하다\"보다 낮아요!",
         "hope": "\"희망하다\"예요. \"~하고 싶다\"보다 불확실한 느낌이에요!",
         "need": "\"필요하다\"예요. \"~하고 싶다\"와 \"필요하다\"는 다른 감정이에요!"
-      }
+      },
+      "language_concept": "expr_plan_goal",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q045",
@@ -1237,7 +1403,7 @@
         "표현",
         "격려"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "Don't worry! _____ can do it!",
       "blank_answer": "You",
       "choices": [
@@ -1253,7 +1419,11 @@
         "I": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
         "He": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
         "We": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
-      }
+      },
+      "language_concept": "key_sentence_L1",
+      "test_task": "sentence_completion",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q046",
@@ -1265,7 +1435,7 @@
         "문법",
         "if조건문"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "If you _____ your smartphone late at night, your brain will stay active.",
       "blank_answer": "use",
       "choices": [
@@ -1281,7 +1451,11 @@
         "used": "if절 안에서는 과거형을 쓰지 않아요. \"If + 현재시제\" 규칙을 기억하세요!",
         "will use": "if절 안에서는 will을 쓰지 않아요! if절은 항상 현재시제예요.",
         "using": "if절에서는 ~ing 형태를 쓰지 않아요. 동사 원형이 필요해요!"
-      }
+      },
+      "language_concept": "grammar_if_conditional",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q047",
@@ -1293,7 +1467,7 @@
         "문법",
         "if조건문"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "If you _____ early, you will feel better.",
       "blank_answer": "wake up",
       "choices": [
@@ -1309,7 +1483,11 @@
         "woken up": "과거분사 형태예요. if절에서는 현재시제 동사원형을 써요!",
         "will wake": "if절에 will은 안 돼요! will은 결과절(뒤쪽)에서만 써요.",
         "waking up": "~ing 형태예요. if절에서는 현재시제 동사원형이 필요해요!"
-      }
+      },
+      "language_concept": "grammar_if_conditional",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q048",
@@ -1321,7 +1499,7 @@
         "문법",
         "전치사"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "You can't succeed _____ working hard.",
       "blank_answer": "without",
       "choices": [
@@ -1337,7 +1515,11 @@
         "with": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
         "by": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
         "through": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
-      }
+      },
+      "language_concept": "grammar_without_gerund",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q049",
@@ -1349,7 +1531,7 @@
         "표현",
         "수면습관"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "You should _____ early to feel healthy.",
       "blank_answer": "sleep",
       "choices": [
@@ -1365,7 +1547,11 @@
         "rest": "\"쉬다\"예요. 비슷하지만 이 문맥에서 딱 맞는 단어가 따로 있어요!",
         "lie down": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
         "relax": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q050",
@@ -1377,7 +1563,7 @@
         "문법",
         "동사"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "Do you _____ any plans for this weekend?",
       "blank_answer": "have",
       "choices": [
@@ -1393,7 +1579,11 @@
         "has": "주어가 \"you\"면 has가 아니에요. has는 he/she/it에만 쓰여요!",
         "had": "과거형이에요. 이 문장은 현재 상황을 말하고 있어요!",
         "having": "Do you 다음에는 ~ing가 올 수 없어요. 동사 원형이 필요해요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q051",
@@ -1406,22 +1596,24 @@
         "문장"
       ],
       "instruction": "단어를 올바른 순서로 배열하세요.",
-      "sentence_ko": "당신의 목표가 무엇인지 말해 봅시다.",
+      "sentence_ko": "올해 네 목표가 뭐야?",
       "words": [
-        "your",
-        "are",
-        "goals",
-        "What",
-        "this",
-        "year",
+        "What are",
+        "your goals",
+        "this year",
         "?"
       ],
       "answer": "What are your goals this year?",
-      "hint": "💡 What 의문문: What + be동사 + 주어? → 'What are your goals this year?' year 앞에 this!",
+      "hint": "💡 What are + 명사구 + 시간표현: 시작이 'What are'로 고정",
       "page": 8,
       "wrong_explanations": {
-        "default": "morning = 아침. 아침 시간에 하는 활동들을 알아봐요!"
-      }
+        "default": "What are + 소유격+명사(your goals) + 시간부사(this year) + ?"
+      },
+      "language_concept": "expr_plan_goal",
+      "test_task": "anchor_arrange",
+      "score_group": "B",
+      "session_type": "B",
+      "correct": 2
     },
     {
       "id": "Q052",
@@ -1434,48 +1626,53 @@
         "문장"
       ],
       "instruction": "단어를 올바른 순서로 배열하세요.",
-      "sentence_ko": "나는 더 많은 책을 읽을 계획이야.",
+      "sentence_ko": "책을 더 많이 읽으려고 계획 중이야.",
       "words": [
-        "I'm",
-        "planning",
-        "to",
+        "I'm planning",
+        "to read",
         "more",
-        "books",
-        "read"
+        "books"
       ],
       "answer": "I'm planning to read more books.",
-      "hint": "💡 be planning to + 동사원형: 'I'm planning to read' 가 핵심! more books는 뒤에",
+      "hint": "💡 I'm planning + to부정사 + 수량 + 명사: 시작이 'I'm planning'으로 고정",
       "page": 8,
       "wrong_explanations": {
-        "default": "afternoon = 오후. 오후 시간 활동도 건강 생활의 일부!"
-      }
+        "default": "주어+be+planning + to+동사원형 + 수량형용사(more) + 명사(books)"
+      },
+      "language_concept": "expr_plan_goal",
+      "test_task": "anchor_arrange",
+      "score_group": "B",
+      "session_type": "B",
+      "correct": 0
     },
     {
       "id": "Q053",
       "category": "추가_배열형",
       "type": "arrange",
-      "difficulty": "hard",
+      "difficulty": "medium",
       "keyword": "배열형",
       "tags": [
         "배열",
         "문장"
       ],
       "instruction": "단어를 올바른 순서로 배열하세요.",
-      "sentence_ko": "너는 할 수 있어. 좋아!",
+      "sentence_ko": "넌 해낼 수 있어!",
       "words": [
         "You",
-        "do",
-        "can",
-        "it",
-        "Great",
-        "!"
+        "can do",
+        "it!"
       ],
-      "answer": "You can do it! Great!",
-      "hint": "격려 표현: You can do it! = 넌 할 수 있어! Great! = 좋아! — 교과서 p.8",
+      "answer": "You can do it!",
+      "hint": "💡 주어 + can do + 목적어: 'You can do it!'",
       "page": 8,
       "wrong_explanations": {
-        "default": "evening = 저녁. 저녁 준비가 밤을 잘 자는 데 중요해요!"
-      }
+        "default": "주어 + can + 동사원형 + 목적어 — 'You can do it!'"
+      },
+      "language_concept": "expr_plan_goal",
+      "test_task": "mini_rebuild",
+      "score_group": "A",
+      "session_type": "A",
+      "correct": 1
     },
     {
       "id": "Q054",
@@ -1489,24 +1686,24 @@
         "조건문"
       ],
       "instruction": "단어를 올바른 순서로 배열하세요.",
-      "sentence_ko": "만약 당신이 규칙적으로 운동하면, 당신은 더 건강해질 것이다.",
+      "sentence_ko": "정기적으로 운동하면 더 건강해질 것이다.",
       "words": [
-        "If",
-        "you",
-        "regularly",
-        "exercise",
-        ",",
-        "you",
-        "will",
-        "be",
+        "If you",
+        "exercise regularly,",
+        "you will be",
         "healthier"
       ],
       "answer": "If you exercise regularly, you will be healthier.",
-      "hint": "💡 if 조건문 복습! If + 현재, will + 동사원형. 'If you exercise regularly, you will be healthier'",
+      "hint": "💡 If절(조건) + 주절(결과): 'If you exercise regularly, you will be healthier'",
       "page": 20,
       "wrong_explanations": {
-        "default": "night = 밤. 밤에는 충분한 수면이 가장 중요!"
-      }
+        "default": "If + 주어+동사+부사(exercise regularly) + 주절(you will be healthier)"
+      },
+      "language_concept": "grammar_if_conditional",
+      "test_task": "chunk_arrange",
+      "score_group": "B",
+      "session_type": "B",
+      "correct": 0
     },
     {
       "id": "Q055",
@@ -1519,23 +1716,23 @@
         "문장"
       ],
       "instruction": "단어를 올바른 순서로 배열하세요.",
-      "sentence_ko": "나는 학교에서 무엇을 배워야 할지 모르겠어.",
+      "sentence_ko": "학교에서 무엇을 배워야 하는지 모르겠어.",
       "words": [
-        "I",
-        "don't",
-        "know",
-        "what",
-        "to",
-        "learn",
-        "at",
-        "school"
+        "I don't know",
+        "what to learn",
+        "at school"
       ],
       "answer": "I don't know what to learn at school.",
-      "hint": "💡 I don't know + 의문사 + to부정사: 'I don't know what to learn' — at school은 장소!",
+      "hint": "💡 주절 + 의문사+to부정사 + 장소: 'I don't know what to learn at school'",
       "page": 20,
       "wrong_explanations": {
-        "default": "always = 항상. 매일 꾸준히 하는 습관이 중요!"
-      }
+        "default": "주절(I don't know) + 의문사+to부정사(what to learn) + 장소(at school)"
+      },
+      "language_concept": "grammar_wh_to_inf",
+      "test_task": "chunk_arrange",
+      "score_group": "B",
+      "session_type": "B",
+      "correct": 0
     },
     {
       "id": "Q056",
@@ -1548,49 +1745,52 @@
         "문장"
       ],
       "instruction": "단어를 올바른 순서로 배열하세요.",
-      "sentence_ko": "좋은 수면 습관은 당신의 건강에 중요하다.",
+      "sentence_ko": "좋은 수면 습관은 건강을 위해 중요하다.",
       "words": [
-        "Good",
-        "sleep",
-        "habits",
-        "are",
-        "important",
-        "for",
-        "your",
-        "health"
+        "Good sleep habits",
+        "are important",
+        "for your health"
       ],
       "answer": "Good sleep habits are important for your health.",
-      "hint": "💡 주어(Good sleep habits) + be동사(are) + 형용사(important) + for + 명사",
+      "hint": "💡 주어 + be동사+형용사 + 전치사구: 건강한 수면 습관의 중요성",
       "page": 16,
       "wrong_explanations": {
-        "default": "usually = 보통. 대부분의 시간에 그렇게 한다는 뜻!"
-      }
+        "default": "주어(Good sleep habits) + be+형용사(are important) + 전치사구(for your health)"
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "chunk_arrange",
+      "score_group": "B",
+      "session_type": "B",
+      "correct": 0
     },
     {
       "id": "Q057",
       "category": "추가_배열형",
       "type": "arrange",
-      "difficulty": "hard",
+      "difficulty": "medium",
       "keyword": "배열형",
       "tags": [
         "배열",
         "문장"
       ],
       "instruction": "단어를 올바른 순서로 배열하세요.",
-      "sentence_ko": "카페인은 수면에 문제를 일으킬 수 있다.",
+      "sentence_ko": "카페인은 수면 문제를 일으킬 수 있다.",
       "words": [
         "Caffeine",
-        "can",
-        "cause",
-        "sleep",
-        "problems"
+        "can cause",
+        "sleep problems"
       ],
       "answer": "Caffeine can cause sleep problems.",
-      "hint": "💡 주어 + can + 동사원형: 'Caffeine can cause' — cause 뒤에 목적어!",
+      "hint": "💡 주어 + 조동사+동사 + 목적어: 'Caffeine can cause sleep problems'",
       "page": 14,
       "wrong_explanations": {
-        "default": "sometimes = 가끔. 항상은 아니지만 자주 한다는 의미!"
-      }
+        "default": "주어 + can + 동사원형 + 목적어 — 'Caffeine can cause sleep problems'"
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "mini_rebuild",
+      "score_group": "A",
+      "session_type": "A",
+      "correct": 2
     },
     {
       "id": "Q058",
@@ -1603,31 +1803,30 @@
         "문장"
       ],
       "instruction": "단어를 올바른 순서로 배열하세요.",
-      "sentence_ko": "밤에 스마트폰을 사용하면 뇌가 활동적이 된다.",
+      "sentence_ko": "밤에 스마트폰을 사용하면 뇌가 계속 활동한다.",
       "words": [
-        "Your",
-        "brain",
-        "stays",
-        "active",
-        "if",
-        "you",
-        "use",
-        "smartphone",
-        "at",
-        "night"
+        "Your brain",
+        "stays active",
+        "if you use",
+        "smartphone at night"
       ],
       "answer": "Your brain stays active if you use smartphone at night.",
-      "hint": "💡 이번엔 주절 먼저! 'Your brain stays active' + if절 뒤에",
+      "hint": "💡 주절 + if절: 'Your brain stays active if you use smartphone at night'",
       "page": 17,
       "wrong_explanations": {
-        "default": "never = 절대 안 한다. 하지 않는 습관을 나타내요!"
-      }
+        "default": "주절(Your brain stays active) + if + 조건(you use smartphone at night)"
+      },
+      "language_concept": "grammar_if_conditional",
+      "test_task": "chunk_arrange",
+      "score_group": "C",
+      "session_type": "B",
+      "correct": 0
     },
     {
       "id": "Q059",
       "category": "추가_배열형",
       "type": "arrange",
-      "difficulty": "hard",
+      "difficulty": "medium",
       "keyword": "배열형",
       "tags": [
         "배열",
@@ -1637,18 +1836,20 @@
       "sentence_ko": "우리는 건강한 수면 습관을 배워야 한다.",
       "words": [
         "We",
-        "should",
-        "learn",
-        "healthy",
-        "sleep",
-        "habits"
+        "should learn",
+        "healthy sleep habits"
       ],
       "answer": "We should learn healthy sleep habits.",
-      "hint": "💡 should + 동사원형: 'We should learn' — 형용사(healthy)+명사(sleep habits) 순서",
+      "hint": "💡 주어 + should+동사 + 목적어: 'We should learn healthy sleep habits'",
       "page": 16,
       "wrong_explanations": {
-        "default": "often = 자주. 여러 번 반복하는 활동을 나타내요!"
-      }
+        "default": "주어 + should + 동사원형 + 목적어 — 'We should learn healthy sleep habits'"
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "mini_rebuild",
+      "score_group": "A",
+      "session_type": "A",
+      "correct": 1
     },
     {
       "id": "Q060",
@@ -1661,22 +1862,23 @@
         "문장"
       ],
       "instruction": "단어를 올바른 순서로 배열하세요.",
-      "sentence_ko": "그들은 그들의 새로운 목표에 대해 이야기하고 있다.",
+      "sentence_ko": "그들은 새로운 목표들에 대해 이야기하고 있다.",
       "words": [
-        "They",
-        "are",
-        "talking",
+        "They are talking",
         "about",
-        "their",
-        "new",
-        "goals"
+        "their new goals"
       ],
       "answer": "They are talking about their new goals.",
-      "hint": "💡 현재진행형: 주어 + be동사 + ~ing. 'They are talking about' + 명사구",
+      "hint": "💡 주어+be+동사ing + 전치사 + 목적어: 현재진행형 구조",
       "page": 8,
       "wrong_explanations": {
-        "default": "seldom = 거의 안 한다. 매우 드물게 한다는 뜻!"
-      }
+        "default": "주어+be+동사ing(They are talking) + 전치사(about) + 목적어(their new goals)"
+      },
+      "language_concept": "expr_plan_goal",
+      "test_task": "chunk_arrange",
+      "score_group": "B",
+      "session_type": "B",
+      "correct": 0
     },
     {
       "id": "Q061",
@@ -1703,7 +1905,11 @@
         "Make good sleep habits.": "\"make\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Keep good sleep habits.": "\"keep\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Build good sleep habits.": "\"build\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "meaning_match",
+      "score_group": "A",
+      "session_type": "AB"
     },
     {
       "id": "Q062",
@@ -1730,7 +1936,11 @@
         "Exercise usually.": "\"usually.\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Exercise daily.": "\"daily.\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Exercise often.": "\"often.\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "meaning_match",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q063",
@@ -1757,7 +1967,11 @@
         "Be careful with caffeine.": "\"with\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Be careful of caffeine.": "\"of\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Be careful for caffeine.": "\"for\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "meaning_match",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q064",
@@ -1784,7 +1998,11 @@
         "Don't use your smartphone after bedtime.": "\"after\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Stop using your smartphone after bedtime.": "\"after\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Avoid using your smartphone before sleep.": "\"using\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "meaning_match",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q065",
@@ -1811,7 +2029,11 @@
         "Hear your body clock.": "\"hear\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Pay attention to your body clock.": "\"pay\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Watch your body clock.": "\"watch\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "meaning_match",
+      "score_group": "A",
+      "session_type": "AB"
     },
     {
       "id": "Q066",
@@ -1838,7 +2060,11 @@
         "Exercise in the day.": "\"in\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Exercise at the day.": "\"at\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Exercise in daytime.": "\"in\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "meaning_match",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q067",
@@ -1865,7 +2091,11 @@
         "You need much sleep.": "\"much\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "You need more sleep.": "\"more\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "You need good sleep.": "\"good\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "meaning_match",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q068",
@@ -1892,7 +2122,11 @@
         "Blue light is harmful to your brain.": "\"harmful\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Blue light affects your brain.": "\"affects\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Blue light hurts your brain.": "\"hurts\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "meaning_match",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q069",
@@ -1919,7 +2153,11 @@
         "You will feel more healthy.": "\"more\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "You will feel better health.": "\"health.\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "You will be healthy.": "\"healthy.\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "meaning_match",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q070",
@@ -1946,7 +2184,11 @@
         "You can reach school on time.": "\"reach\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "You can go to school on time.": "\"go\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "You can arrive at school on time.": "\"at\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "meaning_match",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q071",
@@ -1958,7 +2200,7 @@
         "문법",
         "복합"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "If you don't get enough sleep, you _____ tired at school.",
       "blank_answer": "will be",
       "choices": [
@@ -1974,7 +2216,11 @@
         "are": "현재형이에요. if 조건문의 결과절에는 \"will + 동사원형\"이 와요!",
         "be": "동사원형만으로는 안 돼요. 앞에 will이 필요해요!",
         "were": "과거형이에요. if 조건문의 결과절은 미래를 말하고 있어요!"
-      }
+      },
+      "language_concept": "grammar_if_conditional",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q072",
@@ -1986,7 +2232,7 @@
         "문법",
         "복합"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "I know how to _____ a healthy lifestyle.",
       "blank_answer": "maintain",
       "choices": [
@@ -1995,14 +2241,18 @@
         "to keep",
         "keep"
       ],
-      "correct": 3,
+      "correct": 0,
       "hint": "💡 how to + 동사원형 = ~하는 방법. keeping(동명사)이나 to keep(이중 to)은 안 돼요! — p.20",
       "page": 20,
       "wrong_explanations": {
         "maintain": "뜻은 비슷하지만, \"how to + 동사원형\" 다음에는 간단한 동사가 와요!",
         "keeping": "\"to + 동사원형\" 자리에 ~ing는 올 수 없어요!",
         "to keep": "이미 앞에 to가 있어요. to를 두 번 쓰면 안 돼요!"
-      }
+      },
+      "language_concept": "grammar_wh_to_inf",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q073",
@@ -2014,7 +2264,7 @@
         "문법",
         "복합"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "She can't decide _____ to buy the blue dress or red dress.",
       "blank_answer": "whether",
       "choices": [
@@ -2023,14 +2273,18 @@
         "which",
         "where"
       ],
-      "correct": 2,
+      "correct": 0,
       "hint": "which to ~ = 어느 것을 할지",
       "page": 20,
       "wrong_explanations": {
         "whether": "\"~인지 아닌지\"예요. 여기서는 양자택일이라 다른 의문사가 어울려요!",
         "what": "\"무엇\"이에요. 이 문장에서는 \"무엇\"이 아니라 다른 의문사가 필요해요!",
         "where": "\"어디서\"예요. 장소가 아니라 다른 의문사가 필요해요!"
-      }
+      },
+      "language_concept": "grammar_if_conditional",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q074",
@@ -2042,7 +2296,7 @@
         "문법",
         "복합"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "If you _____ water regularly, you will stay healthy.",
       "blank_answer": "drink",
       "choices": [
@@ -2058,7 +2312,11 @@
         "drinks": "주어가 \"you\"일 때는 -s를 붙이지 않아요. 3인칭 단수(he/she)일 때만!",
         "will drink": "if절에는 will이 들어가지 않아요. 현재시제를 쓰는 게 규칙이에요!",
         "drinking": "~ing 형태는 if절에서 쓸 수 없어요. 동사 원형을 생각해보세요!"
-      }
+      },
+      "language_concept": "grammar_if_conditional",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q075",
@@ -2070,7 +2328,7 @@
         "문법",
         "복합"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "They are thinking about _____ to the concert.",
       "blank_answer": "where to go",
       "choices": [
@@ -2086,7 +2344,11 @@
         "go where": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
         "where going": "이 자리에 ~ing 형태는 올 수 없어요. \"to + 동사원형\" 패턴이 필요해요!",
         "to go where": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
-      }
+      },
+      "language_concept": "grammar_wh_to_inf",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q076",
@@ -2098,7 +2360,7 @@
         "vocab",
         "취약단어"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "The _____ music made everyone happy and energetic.",
       "blank_answer": "lively",
       "choices": [
@@ -2114,7 +2376,11 @@
         "alive": "\"살아있는\"이라는 뜻이에요. 생존과 \"활기\"는 다른 개념이에요!",
         "living": "\"살아있는/생활하는\"이에요. \"생기 넘치는\" 느낌과는 달라요!",
         "live": "동사 \"살다\" 또는 \"라이브\"예요. 형용사 자리에 맞지 않아요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q077",
@@ -2126,7 +2392,7 @@
         "vocab",
         "취약단어"
       ],
-      "instruction": "빈칙에 알맞은 표현을 고르세요.",
+      "instruction": "빈칸에 알맞은 표현을 고르세요.",
       "sentence": "I asked my teacher _____ the difficult problem.",
       "blank_answer": "how to solve",
       "choices": [
@@ -2142,7 +2408,11 @@
         "how solving": "의문사 뒤에는 ~ing가 아니라 \"to + 동사원형\" 패턴이 와요!",
         "solve how": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
         "how I solve": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
-      }
+      },
+      "language_concept": "grammar_wh_to_inf",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q078",
@@ -2154,7 +2424,7 @@
         "vocab",
         "취약단어"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "You should be _____ with your phone. Don't drop it!",
       "blank_answer": "careful",
       "choices": [
@@ -2170,7 +2440,11 @@
         "carefully": "여기는 be동사 뒤 자리예요. be동사 뒤에는 부사가 아니라 형용사가 와요!",
         "careless": "\"부주의한\"이라는 뜻이에요. 문맥상 \"조심하는\"이라는 반대 뜻이 필요해요!",
         "care": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q079",
@@ -2182,7 +2456,7 @@
         "vocab",
         "취약단어"
       ],
-      "instruction": "빈칙에 알맞은 표현을 고르세요.",
+      "instruction": "빈칸에 알맞은 표현을 고르세요.",
       "sentence": "You can't _____ good sleep _____ healthy habits.",
       "blank_answer": "have",
       "choices": [
@@ -2195,10 +2469,14 @@
       "hint": "have good sleep without healthy habits = 건강한 습관 없이 좋은 수면을 가질 수 없다",
       "page": 19,
       "wrong_explanations": {
-        "get": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
-        "keep": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
-        "maintain": "뜻은 비슷하지만, \"how to + 동사원형\" 다음에는 간단한 동사가 와요!"
-      }
+        "get": "'get sleep'도 쓸 수 있지만, 'have good sleep'이 더 자연스러운 표현이에요!",
+        "keep": "'keep'은 '유지하다'라는 뜻이에요. 수면을 '가지다/취하다'는 'have'가 맞아요!",
+        "maintain": "'maintain'은 격식체로 '유지하다'예요. 일상 표현에서는 'have good sleep'이 자연스러워요!"
+      },
+      "language_concept": "grammar_without_gerund",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q080",
@@ -2210,7 +2488,7 @@
         "종합",
         "review"
       ],
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "If you want to be _____ and healthy, you should sleep well every night.",
       "blank_answer": "lively",
       "choices": [
@@ -2226,7 +2504,235 @@
         "alive": "\"살아있는\"이라는 뜻이에요. 생존과 \"활기\"는 다른 개념이에요!",
         "awake": "\"깨어있는\"이라는 뜻이에요. 단순히 안 자는 것과 \"활기 넘치는\" 건 달라요!",
         "active": "\"활동적인\"이라는 뜻이에요. 비슷하지만, 이 문맥에서는 \"생기 있는\" 느낌이 더 어울려요!"
-      }
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
+    },
+    {
+      "id": "Q081",
+      "category": "Lesson 1",
+      "type": "dialogue_response",
+      "difficulty": "medium",
+      "keyword": "planning",
+      "instruction": "대화의 빈칸에 알맞은 응답을 고르세요.",
+      "sentence": "A: \"Do you have any special goals for this year?\"\nB: _____",
+      "blank_answer": "Yes, I'm planning to exercise more.",
+      "choices": [
+        "Yes, I'm planning to exercise more.",
+        "No, I don't like this year.",
+        "It's time for lunch.",
+        "I have a pencil."
+      ],
+      "correct": 0,
+      "hint": "💡 목표를 묻는 질문에는 'I'm planning to ~' 패턴으로 답해요.",
+      "page": 14,
+      "wrong_explanations": {
+        "1": "'I don't like this year'은 목표 질문에 대한 적절한 응답이 아니에요.",
+        "2": "'It's time for lunch'는 시간 표현이지, 목표에 대한 답변이 아니에요.",
+        "3": "'I have a pencil'은 소유를 표현하는 문장으로 질문과 관계없어요."
+      },
+      "language_concept": "expr_plan_goal",
+      "test_task": "dialogue_response",
+      "score_group": "B",
+      "session_type": "B"
+    },
+    {
+      "id": "Q082",
+      "category": "Lesson 1",
+      "type": "dialogue_response",
+      "difficulty": "medium",
+      "keyword": "encouragement",
+      "instruction": "대화의 빈칸에 알맞은 응답을 고르세요.",
+      "sentence": "A: \"I want to perform at the school festival.\"\nB: _____",
+      "blank_answer": "Sounds great. You can do it!",
+      "choices": [
+        "That's too bad.",
+        "Sounds great. You can do it!",
+        "Where is the school?",
+        "I don't like festivals."
+      ],
+      "correct": 1,
+      "hint": "💡 상대방의 목표에 격려로 응답해요. 'Sounds great. You can do it!'",
+      "page": 14,
+      "wrong_explanations": {
+        "0": "'That's too bad'는 안 좋은 소식에 쓰는 표현이에요. 여기선 격려가 필요해요!",
+        "2": "'Where is the school?'은 장소를 묻는 말이에요. 격려와 관계없어요.",
+        "3": "'I don't like festivals'는 부정적 반응이에요. 친구의 꿈을 응원해 주세요!"
+      },
+      "language_concept": "key_sentence_L1",
+      "test_task": "dialogue_response",
+      "score_group": "B",
+      "session_type": "B"
+    },
+    {
+      "id": "Q083",
+      "category": "Lesson 1",
+      "type": "dialogue_response",
+      "difficulty": "medium",
+      "keyword": "sleep habits",
+      "instruction": "대화의 빈칸에 알맞은 응답을 고르세요.",
+      "sentence": "A: \"I can't sleep well these days.\"\nB: _____",
+      "blank_answer": "You should stop using your smartphone before bedtime.",
+      "choices": [
+        "You should stop using your smartphone before bedtime.",
+        "Try drinking warm coffee before bed.",
+        "Maybe you should exercise late at night.",
+        "You don't need to sleep much."
+      ],
+      "correct": 0,
+      "hint": "💡 수면 습관 조언: 취침 전 스마트폰 사용을 멈추는 것이 중요해요.",
+      "page": 22,
+      "wrong_explanations": {
+        "1": "커피에는 카페인이 들어있어서 오히려 잠을 방해해요! 교과서에서도 카페인 주의를 강조했어요.",
+        "2": "밤늦게 운동하면 몸이 활발해져서 잠들기 어려워져요. 운동은 낮에 하는 게 좋아요.",
+        "3": "수면은 건강에 매우 중요해요! 교과서에서도 좋은 수면 습관을 강조하고 있어요."
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "dialogue_response",
+      "score_group": "B",
+      "session_type": "B"
+    },
+    {
+      "id": "Q084",
+      "category": "Lesson 1",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "keyword": "caffeine",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Caffeine can cause sleep problems. Be careful about drinks like coffee and energy drinks.\n\nWhat can caffeine cause?",
+      "blank_answer": "Sleep problems",
+      "choices": [
+        "Sleep problems",
+        "Headaches",
+        "Back pain",
+        "Skin trouble"
+      ],
+      "correct": 0,
+      "hint": "💡 첫 문장에 답이 있어요: 'Caffeine can cause sleep problems.'",
+      "page": 22,
+      "wrong_explanations": {
+        "1": "지문에서 'headaches'는 언급되지 않았어요. 카페인이 일으키는 것은 'sleep problems'이에요.",
+        "2": "지문에서 'back pain'은 언급되지 않았어요. 첫 문장을 다시 읽어보세요!",
+        "3": "지문에서 'skin trouble'은 언급되지 않았어요. 카페인과 수면의 관계에 집중하세요."
+      },
+      "language_concept": "vocab_health_daily_life",
+      "test_task": "short_reading",
+      "score_group": "B",
+      "session_type": "B"
+    },
+    {
+      "id": "Q085",
+      "category": "Lesson 1",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "keyword": "smartphone",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "If you use your smartphone late at night, your brain will stay active. You should stop using it before bedtime.\n\nWhat happens if you use your smartphone late at night?",
+      "blank_answer": "Your brain will stay active.",
+      "choices": [
+        "You will fall asleep easily.",
+        "Your brain will stay active.",
+        "Your eyes will get better.",
+        "You will feel hungry."
+      ],
+      "correct": 1,
+      "hint": "💡 If절의 결과를 찾으세요: 'your brain will stay active'",
+      "page": 22,
+      "wrong_explanations": {
+        "0": "스마트폰을 쓰면 쉽게 잠드는 게 아니라 오히려 반대예요! 지문을 다시 읽어보세요.",
+        "2": "지문에서 눈이 좋아진다는 내용은 없어요. 뇌가 활발해진다는 내용이에요.",
+        "3": "지문에서 배고프다는 내용은 없어요. 스마트폰과 뇌의 관계에 집중하세요."
+      },
+      "language_concept": "grammar_if_conditional",
+      "test_task": "short_reading",
+      "score_group": "B",
+      "session_type": "B"
+    },
+    {
+      "id": "Q086",
+      "category": "Lesson 1",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "keyword": "goals",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Mina is planning to read 30 books this year. She wants to read a little every day.\n\nWhat is Mina's goal for this year?",
+      "blank_answer": "To read 30 books",
+      "choices": [
+        "To exercise every day",
+        "To perform at the festival",
+        "To read 30 books",
+        "To wake up early"
+      ],
+      "correct": 2,
+      "hint": "💡 첫 문장에서 Mina의 계획을 찾으세요: 'planning to read 30 books'",
+      "page": 14,
+      "wrong_explanations": {
+        "0": "Mina의 목표는 운동이 아니라 독서예요. 'planning to read 30 books'를 확인하세요.",
+        "1": "축제 공연은 다른 학생의 목표예요. Mina는 책 읽기를 계획하고 있어요.",
+        "3": "일찍 일어나기는 지문에 없는 내용이에요. Mina는 매일 조금씩 '읽기'를 원해요."
+      },
+      "language_concept": "expr_plan_goal",
+      "test_task": "short_reading",
+      "score_group": "B",
+      "session_type": "B"
+    },
+    {
+      "id": "Q087",
+      "category": "Lesson 1",
+      "type": "fill_blank",
+      "difficulty": "medium",
+      "keyword": "fall asleep",
+      "instruction": "빈칸에 알맞은 표현을 고르세요.",
+      "sentence": "If you exercise during the day, you will _____ easily at night.",
+      "blank_answer": "fall asleep",
+      "choices": [
+        "wake up",
+        "stay active",
+        "fall asleep",
+        "feel hungry"
+      ],
+      "correct": 2,
+      "hint": "💡 낮에 운동하면 밤에 쉽게 '잠들다' = fall asleep",
+      "page": 22,
+      "wrong_explanations": {
+        "0": "'wake up'은 '일어나다'예요. 밤에 쉽게 하는 것은 잠드는 것이에요!",
+        "1": "'stay active'는 '활발한 상태 유지'예요. 운동 후 밤에는 오히려 쉽게 잠들어요.",
+        "3": "'feel hungry'는 '배고프다'예요. 운동과 수면의 관계에 집중하세요."
+      },
+      "language_concept": "grammar_if_conditional",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
+    },
+    {
+      "id": "Q088",
+      "category": "Lesson 1",
+      "type": "fill_blank",
+      "difficulty": "medium",
+      "keyword": "how",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "sentence": "I don't know _____ to prepare for the test.",
+      "blank_answer": "how",
+      "choices": [
+        "what",
+        "how",
+        "who",
+        "where"
+      ],
+      "correct": 1,
+      "hint": "💡 의문사 + to부정사: '어떻게 ~할지' = how to ~",
+      "page": 20,
+      "wrong_explanations": {
+        "0": "'what to prepare'는 '무엇을 준비할지'인데, 여기선 시험 '준비 방법'을 모르는 거예요.",
+        "2": "'who to prepare'는 어색한 표현이에요. '누구를 준비하다'는 의미가 되지 않아요.",
+        "3": "'where to prepare'는 '어디서 준비할지'인데, 문맥상 방법을 모르는 상황이에요."
+      },
+      "language_concept": "grammar_wh_to_inf",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     }
   ]
 }

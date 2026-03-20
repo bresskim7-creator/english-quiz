@@ -16,15 +16,18 @@
         "paper sheets",
         "metal pieces"
       ],
-      "correct": 0,
+      "correct": 1,
       "hint": "나무로 만든 블록 (n.) — 교과서 p.26",
       "page": 26,
       "difficulty": "medium",
       "wrong_explanations": {
-        "wooden blocks": "나무 블록이에요. 이야기에서 실제로 사용한 재료가 뭔지 다시 읽어보세요!",
         "paper sheets": "종이는 쌓기에 약하죠.",
         "metal pieces": "아이들이 쌓기에 너무 무거워요."
-      }
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q001",
@@ -40,15 +43,18 @@
         "build",
         "built"
       ],
-      "correct": 1,
+      "correct": 0,
       "hint": "to부정사는 목적을 나타냄 ('~하기 위해') — 교과서 p.28",
       "page": 28,
       "difficulty": "medium",
       "wrong_explanations": {
-        "to build": "이미 의문사가 to를 포함하고 있어서, to를 한 번 더 쓸 필요 없어요!",
         "build": "동사원형은 시간 표현 뒤에 올 수 없어요.",
         "built": "과거분사는 여기서 필요 없어요."
-      }
+      },
+      "language_concept": "grammar_to_inf_purpose",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "W02",
@@ -64,15 +70,18 @@
         "play",
         "pull"
       ],
-      "correct": 2,
+      "correct": 1,
       "hint": "쌓다, 겹치다 (v.) — 교과서 p.27",
       "page": 27,
       "difficulty": "medium",
       "wrong_explanations": {
         "push": "'밀다'는 뜻이라 틀렸어요.",
-        "pile": "\"쌓다/더미\"예요. 이 문장의 동작을 다시 생각해보세요!",
         "pull": "'당기다'는 뜻이에요."
-      }
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q002",
@@ -88,15 +97,18 @@
         "visit",
         "visits"
       ],
-      "correct": 3,
+      "correct": 1,
       "hint": "목적을 나타내는 to부정사 — 교과서 p.32",
       "page": 32,
       "difficulty": "medium",
       "wrong_explanations": {
         "visiting": "-ing형은 목적을 나타내지 않아요.",
-        "to visit": "이미 의문사가 to를 포함하고 있어서, to를 한 번 더 쓸 필요 없어요!",
         "visit": "동사원형은 시간 표현 뒤에 올 수 없어요."
-      }
+      },
+      "language_concept": "grammar_to_inf_purpose",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "W03",
@@ -112,22 +124,25 @@
         "very fast",
         "very slowly"
       ],
-      "correct": 0,
+      "correct": 1,
       "hint": "하나하나씩, 차례대로 (adv.) — 교과서 p.27",
       "page": 27,
       "difficulty": "medium",
       "wrong_explanations": {
-        "one by one": "\"하나씩\"이에요. 이야기에서 블록이 어떻게 떨어졌는지 다시 확인해보세요!",
         "very fast": "'아주 빨리'라는 뜻이에요.",
         "very slowly": "'아주 천천히'라는 뜻이에요."
-      }
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q003",
       "category": "추가_문법_to부정사",
       "type": "fill_blank",
       "keyword": "to부정사 수식",
-      "instruction": "빈칙에 알맞은 표현을 고르세요.",
+      "instruction": "빈칸에 알맞은 표현을 고르세요.",
       "sentence": "He has a lot of work _____ after leaving the hospital.",
       "blank_answer": "to do",
       "choices": [
@@ -136,15 +151,18 @@
         "to doing",
         "do"
       ],
-      "correct": 1,
+      "correct": 0,
       "hint": "to부정사가 명사를 수식 ('할 일') — 교과서 p.31",
       "page": 31,
       "difficulty": "medium",
       "wrong_explanations": {
-        "to do": "이미 의문사가 to를 포함하고 있어서, to를 한 번 더 쓸 필요 없어요!",
         "to doing": "이 형태는 존재하지 않아요.",
         "do": "동사원형은 명사를 수식할 수 없어요."
-      }
+      },
+      "language_concept": "grammar_to_inf_adjectival",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "W04",
@@ -160,15 +178,18 @@
         "laugh",
         "cry"
       ],
-      "correct": 2,
+      "correct": 1,
       "hint": "재채기하다 (v.) — 교과서 p.28",
       "page": 28,
       "difficulty": "medium",
       "wrong_explanations": {
         "cough": "'기침하다'는 뜻이라 틀렸어요.",
-        "sneeze": "\"sneeze\"를 넣어보면 문장이 자연스러운가요? 재채기하다 (v.) — 교과서 p.28",
         "cry": "'울다'는 뜻이에요."
-      }
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q004",
@@ -184,15 +205,18 @@
         "do",
         "to be doing"
       ],
-      "correct": 3,
+      "correct": 0,
       "hint": "to부정사가 'anything'을 수식 — 교과서 p.35",
       "page": 35,
       "difficulty": "medium",
       "wrong_explanations": {
-        "to do": "\"to do\"를 넣어보면 문장이 자연스러운가요? to부정사가 'anything'을 수식 — 교과서 p.35",
         "doing": "-ing형은 'anything'을 수식할 수 없어요.",
         "do": "동사원형은 명사를 수식할 수 없어요."
-      }
+      },
+      "language_concept": "grammar_to_inf_adjectival",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "W05",
@@ -208,15 +232,18 @@
         "woke up",
         "fell down"
       ],
-      "correct": 0,
+      "correct": 1,
       "hint": "병이 나다, 아프게 되다 (v.) — 교과서 p.30",
       "page": 30,
       "difficulty": "medium",
       "wrong_explanations": {
-        "fell ill": "\"fell ill\"를 넣어보면 문장이 자연스러운가요? 병이 나다, 아프게 되다 (v.) — 교과서 p.30",
         "woke up": "'깼다'는 뜻이에요.",
         "fell down": "'떨어졌다'는 뜻이라 다르죠."
-      }
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q005",
@@ -231,15 +258,18 @@
         "I have a friend to help me.",
         "I want a friend to help me today."
       ],
-      "correct": 1,
+      "correct": 0,
       "hint": "to부정사가 명사를 꾸밈 — 교과서 p.29",
       "page": 29,
       "difficulty": "medium",
       "wrong_explanations": {
-        "I need a friend to help me.": "\"help\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "I have a friend to help me.": "have와 to부정사는 이 의미에서 맞지 않아요.",
         "I want a friend to help me today.": "'오늘'이 원문에 없어요."
-      }
+      },
+      "language_concept": "grammar_to_inf_adjectival",
+      "test_task": "meaning_match",
+      "score_group": "A",
+      "session_type": "AB"
     },
     {
       "id": "W06",
@@ -255,15 +285,18 @@
         "remember",
         "return"
       ],
-      "correct": 2,
+      "correct": 1,
       "hint": "회복하다, 나아지다 (v.) — 교과서 p.31",
       "page": 31,
       "difficulty": "medium",
       "wrong_explanations": {
         "relax": "'쉬다'는 뜻이라 틀렸어요.",
-        "recover": "\"recover\"를 넣어보면 문장이 자연스러운가요? 회복하다, 나아지다 (v.) — 교과서 p.31",
         "return": "'돌아오다'는 뜻이에요."
-      }
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q006",
@@ -278,15 +311,18 @@
         "He was trying to recover.",
         "He will try to recover."
       ],
-      "correct": 3,
+      "correct": 0,
       "hint": "'~하기 위해' 목적을 나타냄 — 교과서 p.33",
       "page": 33,
       "difficulty": "medium",
       "wrong_explanations": {
-        "He tried to recover.": "\"tried\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "He tried recovering.": "-ing형은 목적의 의미가 약해요.",
         "He was trying to recover.": "과거 진행형은 문맥이 달라요."
-      }
+      },
+      "language_concept": "grammar_to_inf_purpose",
+      "test_task": "meaning_match",
+      "score_group": "A",
+      "session_type": "AB"
     },
     {
       "id": "W07",
@@ -302,15 +338,18 @@
         "worried",
         "imagined"
       ],
-      "correct": 0,
+      "correct": 1,
       "hint": "깨닫다, 알게 되다 (v.) — 교과서 p.34",
       "page": 34,
       "difficulty": "medium",
       "wrong_explanations": {
-        "realized": "\"realized\"를 넣어보면 문장이 자연스러운가요? 깨닫다, 알게 되다 (v.) — 교과서 p.34",
         "worried": "'걱정했다'는 뜻이에요.",
         "imagined": "'상상했다'는 뜻이에요."
-      }
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q007",
@@ -333,7 +372,11 @@
       "correct": 1,
       "wrong_explanations": {
         "default": "to부정사가 nothing을 수식 — 'I have nothing to do.'"
-      }
+      },
+      "language_concept": "grammar_to_inf_adjectival",
+      "test_task": "anchor_arrange",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "W08",
@@ -349,15 +392,18 @@
         "learn",
         "lead"
       ],
-      "correct": 2,
+      "correct": 0,
       "hint": "기대다, 의지하다 (v.) — 교과서 p.42",
       "page": 42,
       "difficulty": "medium",
       "wrong_explanations": {
-        "lean": "\"lean\"를 넣어보면 문장이 자연스러운가요? 기대다, 의지하다 (v.) — 교과서 p.42",
         "leave": "'떠나다'는 뜻이라 틀렸어요.",
         "lead": "'이끌다'는 뜻이에요."
-      }
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "word_recall",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q008",
@@ -379,7 +425,11 @@
       "correct": 3,
       "wrong_explanations": {
         "default": "wanted + to부정사 — 'He wanted to recover.'"
-      }
+      },
+      "language_concept": "grammar_to_inf_purpose",
+      "test_task": "anchor_arrange",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q009",
@@ -403,7 +453,11 @@
         "which": "사물에 쓰는 관계대명사라 틀렸어요.",
         "that": "\"that\"의 뜻을 생각해보세요. 문장 전체를 읽고 빈칸에 가장 자연스러운 단어를 찾아봐요!",
         "whose": "소유를 나타내므로 틀렸어요."
-      }
+      },
+      "language_concept": "grammar_relative_who",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q010",
@@ -419,15 +473,18 @@
         "where",
         "when"
       ],
-      "correct": 1,
+      "correct": 0,
       "hint": "사람을 나타낼 때 who 사용 — 교과서 p.31",
       "page": 31,
       "difficulty": "medium",
       "wrong_explanations": {
-        "who": "\"who\"를 넣어보면 문장이 자연스러운가요? 사람을 나타낼 때 who 사용 — 교과서 p.31",
         "where": "장소를 나타내므로 틀렸어요.",
         "when": "시간을 나타내므로 틀렸어요."
-      }
+      },
+      "language_concept": "grammar_relative_who",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "S01A",
@@ -443,22 +500,25 @@
         "Different word",
         "Wrong choice"
       ],
-      "correct": 2,
+      "correct": 0,
       "hint": "원문: Hold my hands. — 교과서 p.26",
       "page": 26,
       "difficulty": "medium",
       "wrong_explanations": {
-        "Hold my hands": "\"Hold my hands\"를 넣어보면 문장이 자연스러운가요? 원문: Hold my hands. — 교과서 p.26",
         "Not Hold my hands": "'Hold my hands'가 맞아요.",
         "Wrong choice": "\"Wrong choice\"를 넣어보면 문장이 자연스러운가요? 원문: Hold my hands. — 교과서 p.26"
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "sentence_completion",
+      "score_group": "A",
+      "session_type": "B"
     },
     {
       "id": "Q011",
       "category": "추가_문법_관계대명사",
       "type": "fill_blank",
       "keyword": "관계대명사 which",
-      "instruction": "빈칙에 알맞은 관계대명사를 고르세요.",
+      "instruction": "빈칸에 알맞은 관계대명사를 고르세요.",
       "sentence": "He is in a hospital _____ is far from here.",
       "blank_answer": "which",
       "choices": [
@@ -467,15 +527,18 @@
         "that",
         "where"
       ],
-      "correct": 3,
+      "correct": 1,
       "hint": "관계대명사 which는 사물/장소를 나타냄 — 교과서 p.30",
       "page": 30,
       "difficulty": "medium",
       "wrong_explanations": {
         "who": "사람에 쓰는 관계대명사라 틀렸어요.",
-        "which": "\"which\"를 넣어보면 문장이 자연스러운가요? 관계대명사 which는 사물/장소를 나타냄 — 교과서 p.30",
         "that": "that도 가능하지만 which가 사물에 더 자연스러워요."
-      }
+      },
+      "language_concept": "grammar_relative_which",
+      "test_task": "sentence_completion",
+      "score_group": "C",
+      "session_type": "B"
     },
     {
       "id": "S01B",
@@ -496,7 +559,11 @@
       "correct": 0,
       "wrong_explanations": {
         "default": "명령문은 동사원형으로 시작! 'Hold my hands'"
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "mini_rebuild",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q012",
@@ -520,7 +587,11 @@
         "who": "사람에 쓰는 관계대명사라 틀렸어요.",
         "that": "\"that\"의 뜻을 생각해보세요. 문장 전체를 읽고 빈칸에 가장 자연스러운 단어를 찾아봐요!",
         "why": "'왜'를 나타내므로 틀렸어요."
-      }
+      },
+      "language_concept": "grammar_relative_which",
+      "test_task": "sentence_completion",
+      "score_group": "C",
+      "session_type": "B"
     },
     {
       "id": "S01C",
@@ -535,15 +606,18 @@
         "Different meaning 1",
         "Different meaning 2"
       ],
-      "correct": 2,
+      "correct": 0,
       "hint": "원문을 찾으세요: Hold my hands....",
       "page": 26,
       "difficulty": "medium",
       "wrong_explanations": {
-        "Hold my hands.": "\"hold\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Similar but wrong sentence": "비슷하지만 뜻이 다른 문장이에요.",
         "Different meaning 2": "완전히 다른 뜻이에요."
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "meaning_match",
+      "score_group": "A",
+      "session_type": "AB"
     },
     {
       "id": "Q013",
@@ -558,15 +632,18 @@
         "I have a friend that is helping me.",
         "I have a friend where help me."
       ],
-      "correct": 3,
+      "correct": 0,
       "hint": "사람을 나타낼 때는 who — 교과서 p.27",
       "page": 27,
       "difficulty": "medium",
       "wrong_explanations": {
-        "I have a friend who helps me.": "\"who\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "I have a friend which helps me.": "which는 사물에 쓰는 관계대명사예요.",
         "I have a friend that is helping me.": "진행형은 '도와주는'의 의미가 약해요."
-      }
+      },
+      "language_concept": "grammar_relative_who",
+      "test_task": "meaning_match",
+      "score_group": "C",
+      "session_type": "B"
     },
     {
       "id": "Q014",
@@ -589,7 +666,11 @@
         "He went to a hospital who is in Paris.": "who는 사람에 쓰는 관계대명사예요.",
         "He went to a hospital that was in Paris.": "that도 가능하지만 which가 사물에 더 자연스러워요.",
         "He went to a hospital where in Paris.": "where는 관계부사고 'in'이 중복이에요."
-      }
+      },
+      "language_concept": "grammar_relative_who",
+      "test_task": "meaning_match",
+      "score_group": "C",
+      "session_type": "B"
     },
     {
       "id": "Q015",
@@ -599,22 +680,23 @@
       "instruction": "단어를 올바른 순서로 배열하세요.",
       "sentence_ko": "나는 날 도와주는 사람을 알고 있다.",
       "words": [
-        "I",
-        "know",
-        "the",
-        "who",
-        "helps",
-        "person",
+        "I know",
+        "the person",
+        "who helps",
         "me"
       ],
       "answer": "I know the person who helps me.",
-      "hint": "관계대명사 who가 사람을 꾸밈 — 교과서 p.27",
+      "hint": "💡 주절 + 명사 + 관계대명사절: 시작이 'I know'로 고정",
       "page": 27,
       "difficulty": "hard",
-      "correct": 1,
+      "correct": 2,
       "wrong_explanations": {
-        "default": "관계대명사 who가 사람을 꾸밈 — 'I know the person who helps me.'"
-      }
+        "default": "주절(I know) + 명사(the person) + 관계대명사(who helps) + 목적어(me)"
+      },
+      "language_concept": "grammar_relative_who",
+      "test_task": "anchor_arrange",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q016",
@@ -624,23 +706,23 @@
       "instruction": "단어를 올바른 순서로 배열하세요.",
       "sentence_ko": "나는 파리에 있는 레스토랑을 좋아했다.",
       "words": [
-        "I",
-        "the",
-        "was",
-        "restaurant",
-        "in",
-        "which",
-        "liked",
-        "Paris"
+        "I liked",
+        "the restaurant",
+        "which was",
+        "in Paris"
       ],
       "answer": "I liked the restaurant which was in Paris.",
-      "hint": "관계대명사 which가 사물을 꾸밈 — 교과서 p.29",
+      "hint": "💡 주절 + 명사 + 관계대명사절 + 장소: 관계대명사 which가 사물을 꾸밈",
       "page": 29,
       "difficulty": "hard",
-      "correct": 2,
+      "correct": 3,
       "wrong_explanations": {
-        "default": "관계대명사 which가 사물을 꾸밈 — 'I liked the restaurant which was in Paris.'"
-      }
+        "default": "주절(I liked) + 명사(the restaurant) + 관계대명사절(which was) + 장소(in Paris)"
+      },
+      "language_concept": "grammar_relative_which",
+      "test_task": "chunk_arrange",
+      "score_group": "C",
+      "session_type": "B"
     },
     {
       "id": "Q017",
@@ -655,15 +737,18 @@
         "위아래로",
         "대각선으로"
       ],
-      "correct": 3,
+      "correct": 0,
       "hint": "할아버지와 손자가 나란히 앉아있다 — 교과서 p.42",
       "page": 42,
       "difficulty": "medium",
       "wrong_explanations": {
-        "나란히, 옆으로": "\"나란히,\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "앞뒤로": "side by side는 '옆으로'라는 뜻이에요.",
         "위아래로": "비슷해 보이지만 핵심 단어가 달라요. 한국어 뜻과 하나씩 대조해보세요!"
-      }
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "meaning_match",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q018",
@@ -686,7 +771,11 @@
         "강한 바람": "비슷해 보이지만 핵심 단어가 달라요. 한국어 뜻과 하나씩 대조해보세요!",
         "비": "rain을 쓰죠.",
         "구름": "cloud를 쓰죠."
-      }
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "meaning_match",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q019",
@@ -701,15 +790,18 @@
         "화남",
         "무서움"
       ],
-      "correct": 1,
+      "correct": 0,
       "hint": "가족과 함께하는 행복을 느낀다 — 교과서 p.43",
       "page": 43,
       "difficulty": "easy",
       "wrong_explanations": {
-        "행복": "\"행복\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "화남": "anger를 쓰죠.",
         "무서움": "fear를 쓰죠."
-      }
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "meaning_match",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q020",
@@ -724,15 +816,18 @@
         "~이전에",
         "~처럼"
       ],
-      "correct": 2,
+      "correct": 0,
       "hint": "블록을 쌓는 동안 즐거웠다 — 교과서 p.28",
       "page": 28,
       "difficulty": "medium",
       "wrong_explanations": {
-        "~하는 동안": "\"~하는\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "~이후에": "after를 쓰죠.",
         "~처럼": "like를 쓰죠."
-      }
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "meaning_match",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "S02A",
@@ -748,15 +843,18 @@
         "Different word",
         "Wrong choice"
       ],
-      "correct": 3,
+      "correct": 0,
       "hint": "원문: Now one foot, now the other. — 교과서 p.26",
       "page": 26,
       "difficulty": "medium",
       "wrong_explanations": {
-        "Now one foot, now the other": "\"Now one foot, now the other\"를 넣어보면 문장이 자연스러운가요? 원문: Now one foot, now the other. — 교과서 p.26",
         "Not Now one foot, now the other": "'Now one foot, now the other'가 맞아요.",
         "Different word": "다른 단어는 틀렸어요."
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "sentence_completion",
+      "score_group": "A",
+      "session_type": "B"
     },
     {
       "id": "Q021",
@@ -770,6 +868,7 @@
         "far",
         "He",
         "from",
+        "here",
         "in",
         "hospital"
       ],
@@ -780,7 +879,11 @@
       "correct": 0,
       "wrong_explanations": {
         "default": "주어 + be동사 + 전치사구 — 'He was in hospital far from here.'"
-      }
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "chunk_arrange",
+      "score_group": "C",
+      "session_type": "B"
     },
     {
       "id": "S02B",
@@ -802,7 +905,11 @@
       "correct": 1,
       "wrong_explanations": {
         "default": "반복 구조 'Now one foot, now the other' — now가 두 번!"
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "anchor_arrange",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q022",
@@ -824,7 +931,11 @@
       "correct": 2,
       "wrong_explanations": {
         "default": "주어 + 동사 + 목적어 — 'Bobby made a sound.'"
-      }
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "anchor_arrange",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "S02C",
@@ -839,15 +950,18 @@
         "Different meaning 1",
         "Different meaning 2"
       ],
-      "correct": 3,
+      "correct": 0,
       "hint": "원문을 찾으세요: Now one foot, now th...",
       "page": 26,
       "difficulty": "medium",
       "wrong_explanations": {
-        "Now one foot, now the other.": "\"one\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Similar but wrong sentence": "비슷하지만 뜻이 다른 문장이에요.",
         "Different meaning 1": "완전히 다른 뜻이에요."
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "meaning_match",
+      "score_group": "A",
+      "session_type": "AB"
     },
     {
       "id": "Q023",
@@ -870,7 +984,11 @@
       "correct": 0,
       "wrong_explanations": {
         "default": "주어 + started + to부정사 — 'His fingers started to move.'"
-      }
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "anchor_arrange",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q024",
@@ -885,15 +1003,18 @@
         "Bobby made magic to help his grandfather.",
         "Bobby tried magic to help his grandfather."
       ],
-      "correct": 1,
+      "correct": 0,
       "hint": "마법 같은 순환 — 교과서 p.43",
       "page": 43,
       "difficulty": "medium",
       "wrong_explanations": {
-        "Like magic, Bobby could help his grandfather.": "\"like\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Bobby made magic to help his grandfather.": "'마법을 만들다'는 뜻이라 틀렸어요.",
         "Bobby tried magic to help his grandfather.": "'마법을 시도했다'는 뜻이라 다르죠."
-      }
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "meaning_match",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q025",
@@ -909,15 +1030,18 @@
         "hand",
         "leg"
       ],
-      "correct": 2,
+      "correct": 1,
       "hint": "어깨 (n.) — 교과서 p.42",
       "page": 42,
       "difficulty": "medium",
       "wrong_explanations": {
         "arm": "'팔'이라는 뜻이라 틀렸어요.",
-        "shoulder": "\"shoulder\"를 넣어보면 문장이 자연스러운가요? 어깨 (n.) — 교과서 p.42",
         "leg": "'다리'라는 뜻이에요."
-      }
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q026",
@@ -933,22 +1057,25 @@
         "have no time",
         "have nothing"
       ],
-      "correct": 3,
+      "correct": 1,
       "hint": "'~할 수밖에 없다'는 의미 (v.) — 교과서 p.32",
       "page": 32,
       "difficulty": "medium",
       "wrong_explanations": {
         "had no chance": "'기회가 없었다'는 뜻이라 틀렸어요.",
-        "had no choice": "\"had no choice\"를 넣어보면 문장이 자연스러운가요? '~할 수밖에 없다'는 의미 (v.) — 교과서 p.32",
         "have no time": "'시간이 없다'는 뜻이에요."
-      }
+      },
+      "language_concept": "expr_narrative_core",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q027",
       "category": "추가_단어뜻",
       "type": "fill_blank",
       "keyword": "suddenly",
-      "instruction": "빈칙에 알맞은 부사를 고르세요.",
+      "instruction": "빈칸에 알맞은 부사를 고르세요.",
       "sentence": "_____, Bob made a small sound.",
       "blank_answer": "Suddenly",
       "choices": [
@@ -957,15 +1084,18 @@
         "Slowly",
         "Actually"
       ],
-      "correct": 0,
+      "correct": 1,
       "hint": "갑자기 (adv.) — 교과서 p.34",
       "page": 34,
       "difficulty": "medium",
       "wrong_explanations": {
-        "Suddenly": "\"Suddenly\"를 넣어보면 문장이 자연스러운가요? 갑자기 (adv.) — 교과서 p.34",
         "Slowly": "'천천히'라는 뜻이에요.",
         "Actually": "'실제로'라는 뜻이에요."
-      }
+      },
+      "language_concept": "expr_narrative_core",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q028",
@@ -989,14 +1119,18 @@
         "who": "사람에 쓰는 관계대명사라 틀렸어요.",
         "that": "\"that\"의 뜻을 생각해보세요. 문장 전체를 읽고 빈칸에 가장 자연스러운 단어를 찾아봐요!",
         "where": "장소를 나타내므로 틀렸어요."
-      }
+      },
+      "language_concept": "grammar_relative_which",
+      "test_task": "sentence_completion",
+      "score_group": "C",
+      "session_type": "B"
     },
     {
       "id": "Q029",
       "category": "추가_단어뜻",
       "type": "fill_blank",
       "keyword": "magic",
-      "instruction": "빈칠에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "It seemed like _____ that Bobby could help his grandfather.",
       "blank_answer": "magic",
       "choices": [
@@ -1005,15 +1139,18 @@
         "luck",
         "chance"
       ],
-      "correct": 2,
+      "correct": 1,
       "hint": "마법 (n.) — 교과서 p.43",
       "page": 43,
       "difficulty": "medium",
       "wrong_explanations": {
         "dream": "'꿈'이라는 뜻이라 틀렸어요.",
-        "magic": "\"magic\"를 넣어보면 문장이 자연스러운가요? 마법 (n.) — 교과서 p.43",
         "chance": "'기회'라는 뜻이에요."
-      }
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q030",
@@ -1021,23 +1158,31 @@
       "type": "fill_blank",
       "keyword": "to부정사 목적",
       "instruction": "빈칸에 알맞은 표현을 고르세요.",
-      "sentence": "Bobby came to the hospital _____ his grandfather.",
-      "blank_answer": "to see",
+      "sentence": "Bobby brought blocks _____ a tower with his grandfather.",
+      "blank_answer": "to build",
       "choices": [
-        "seeing",
-        "to see",
-        "see",
-        "to seeing"
+        "to build",
+        "building",
+        "build",
+        "to building"
       ],
-      "correct": 3,
-      "hint": "목적을 나타내는 to부정사 — 교과서 p.33",
+      "correct": 0,
+      "hint": "목적을 나타내는 to부정사: '~하기 위해' — 교과서 p.33",
       "page": 33,
       "difficulty": "medium",
       "wrong_explanations": {
-        "seeing": "-ing형은 목적을 나타내지 않아요.",
-        "to see": "\"to see\"를 넣어보면 문장이 자연스러운가요? 목적을 나타내는 to부정사 — 교과서 p.33",
-        "see": "동사원형은 문법적으로 틀렸어요."
-      }
+        "building": "-ing형은 '~하기 위해'라는 목적을 나타내지 않아요. 'to + 동사원형'을 써야 해요!",
+        "build": "동사원형만으로는 목적을 나타낼 수 없어요. 'to + 동사원형' 형태가 필요해요!",
+        "to building": "'to' 다음에는 동사원형이 와요! 'to building'이 아니라 'to build'가 맞아요!"
+      },
+      "tags": [
+        "문법",
+        "to부정사"
+      ],
+      "language_concept": "grammar_to_inf_purpose",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "S03A",
@@ -1061,7 +1206,11 @@
         "Not Bob was in a hospital": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
         "Different word": "다른 단어는 틀렸어요.",
         "Wrong choice": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "sentence_completion",
+      "score_group": "A",
+      "session_type": "B"
     },
     {
       "id": "Q031",
@@ -1085,7 +1234,11 @@
         "stories": "'이야기'라는 뜻이라 틀렸어요.",
         "moments": "'순간'이라는 뜻이에요.",
         "times": "'시간'이라는 뜻이에요."
-      }
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "S03B",
@@ -1107,14 +1260,18 @@
       "correct": 2,
       "wrong_explanations": {
         "default": "주어 + be동사 + 장소 — 'Bob was in a hospital'"
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "anchor_arrange",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "Q032",
       "category": "추가_문법_to부정사",
       "type": "fill_blank",
       "keyword": "need + to",
-      "instruction": "빈칙에 알맞은 표현을 고르세요.",
+      "instruction": "빈칸에 알맞은 표현을 고르세요.",
       "sentence": "His grandfather needed time _____ stronger.",
       "blank_answer": "to become",
       "choices": [
@@ -1123,15 +1280,18 @@
         "become",
         "to becoming"
       ],
-      "correct": 3,
+      "correct": 0,
       "hint": "필요성을 나타내는 to부정사 — 교과서 p.31",
       "page": 31,
       "difficulty": "medium",
       "wrong_explanations": {
-        "to become": "\"to become\"를 넣어보면 문장이 자연스러운가요? 필요성을 나타내는 to부정사 — 교과서 p.31",
         "becoming": "-ing형은 필요성을 나타내지 않아요.",
         "become": "동사원형은 'needed' 뒤에 올 수 없어요."
-      }
+      },
+      "language_concept": "grammar_to_inf_adjectival",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "S03C",
@@ -1154,7 +1314,11 @@
         "Similar but wrong sentence": "비슷하지만 뜻이 다른 문장이에요.",
         "Different meaning 1": "완전히 다른 뜻이에요.",
         "Different meaning 2": "완전히 다른 뜻이에요."
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "meaning_match",
+      "score_group": "A",
+      "session_type": "AB"
     },
     {
       "id": "Q033",
@@ -1178,7 +1342,11 @@
         "looked": "\"looked\"의 뜻을 생각해보세요. 문장 전체를 읽고 빈칸에 가장 자연스러운 단어를 찾아봐요!",
         "seemed": "\"seemed\"의 뜻을 생각해보세요. 문장 전체를 읽고 빈칸에 가장 자연스러운 단어를 찾아봐요!",
         "found": "'찾았다'는 뜻이에요."
-      }
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q034",
@@ -1202,7 +1370,11 @@
         "who": "사람에 쓰는 관계대명사라 틀렸어요.",
         "which": "사물에 쓰는 관계대명사라 틀렸어요.",
         "where": "\"어디서\"예요. 장소가 아니라 다른 의문사가 필요해요!"
-      }
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "sentence_completion",
+      "score_group": "C",
+      "session_type": "B"
     },
     {
       "id": "Q035",
@@ -1218,15 +1390,18 @@
         "gust",
         "draft"
       ],
-      "correct": 3,
+      "correct": 1,
       "hint": "산들바람 (n.) — 교과서 p.41",
       "page": 41,
       "difficulty": "medium",
       "wrong_explanations": {
         "wind": "'바람'이라는 뜻이지만 일반적이에요.",
-        "breeze": "\"breeze\"를 넣어보면 문장이 자연스러운가요? 산들바람 (n.) — 교과서 p.41",
         "gust": "'돌풍'이라는 뜻이에요."
-      }
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q036",
@@ -1250,14 +1425,18 @@
         "able": "'수 있었다'는 뜻을 나타내려면 to가 필요해요.",
         "can": "can은 현재형이라 과거와 맞지 않아요.",
         "could": "\"could\"의 뜻을 생각해보세요. 문장 전체를 읽고 빈칸에 가장 자연스러운 단어를 찾아봐요!"
-      }
+      },
+      "language_concept": "expr_narrative_core",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q037",
       "category": "추가_단어뜻",
       "type": "fill_blank",
       "keyword": "arms and legs",
-      "instruction": "빈칙에 알맞은 단어를 고르세요.",
+      "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "sentence": "At first, he couldn't move his _____ or _____.",
       "blank_answer": "arms / legs",
       "choices": [
@@ -1274,14 +1453,18 @@
         "hands / feet": "'손과 발'이라는 뜻이라 틀렸어요.",
         "shoulders / knees": "'어깨와 무릎'이라는 뜻이에요.",
         "fingers / toes": "'손가락과 발가락'이라는 뜻이에요."
-      }
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q038",
       "category": "추가_문법_to부정사",
       "type": "fill_blank",
       "keyword": "help + to",
-      "instruction": "빈칙에 알맞은 표현을 고르세요.",
+      "instruction": "빈칸에 알맞은 표현을 고르세요.",
       "sentence": "I want _____ my grandfather recover.",
       "blank_answer": "to help",
       "choices": [
@@ -1290,15 +1473,18 @@
         "helping",
         "to helping"
       ],
-      "correct": 2,
+      "correct": 1,
       "hint": "want + to 부정사 — 교과서 p.32",
       "page": 32,
       "difficulty": "medium",
       "wrong_explanations": {
         "help": "want 다음에는 to부정사가 필요해요.",
-        "to help": "이미 의문사가 to를 포함하고 있어서, to를 한 번 더 쓸 필요 없어요!",
         "to helping": "이 형태는 존재하지 않아요."
-      }
+      },
+      "language_concept": "expr_narrative_core",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q039",
@@ -1314,22 +1500,25 @@
         "recovering",
         "recovered"
       ],
-      "correct": 3,
+      "correct": 2,
       "hint": "회복하다 (v.) — start + ~ing — 교과서 p.35",
       "page": 35,
       "difficulty": "medium",
       "wrong_explanations": {
         "relax": "'쉬다'는 뜻이라 틀렸어요.",
-        "recover": "start 다음에는 -ing가 와야 해요.",
-        "recovering": "\"recovering\"를 넣어보면 문장이 자연스러운가요? 회복하다 (v.) — start + ~ing — 교과서 p.35"
-      }
+        "recover": "start 다음에는 -ing가 와야 해요."
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "Q040",
       "category": "추가_문법_관계대명사",
       "type": "fill_blank",
       "keyword": "관계대명사",
-      "instruction": "빈칠에 알맞은 관계대명사를 고르세요.",
+      "instruction": "빈칸에 알맞은 관계대명사를 고르세요.",
       "sentence": "Bob is the grandfather _____ raised Bobby well.",
       "blank_answer": "who",
       "choices": [
@@ -1346,7 +1535,11 @@
         "which": "사물에 쓰는 관계대명사라 틀렸어요.",
         "that": "\"that\"의 뜻을 생각해보세요. 문장 전체를 읽고 빈칸에 가장 자연스러운 단어를 찾아봐요!",
         "what": "'무엇'을 나타내므로 틀렸어요."
-      }
+      },
+      "language_concept": "grammar_relative_who",
+      "test_task": "sentence_completion",
+      "score_group": "B",
+      "session_type": "B"
     },
     {
       "id": "S04A",
@@ -1362,15 +1555,18 @@
         "Different word",
         "Wrong choice"
       ],
-      "correct": 1,
+      "correct": 0,
       "hint": "원문: He couldn't move. — 교과서 p.31",
       "page": 31,
       "difficulty": "medium",
       "wrong_explanations": {
-        "He couldn't move": "\"He couldn't move\"를 넣어보면 문장이 자연스러운가요? 원문: He couldn't move. — 교과서 p.31",
         "Different word": "다른 단어는 틀렸어요.",
         "Wrong choice": "\"Wrong choice\"를 넣어보면 문장이 자연스러운가요? 원문: He couldn't move. — 교과서 p.31"
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "sentence_completion",
+      "score_group": "A",
+      "session_type": "B"
     },
     {
       "id": "S04B",
@@ -1391,7 +1587,11 @@
       "correct": 2,
       "wrong_explanations": {
         "default": "주어 + could not + 동사원형 — 'He could not move'"
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "mini_rebuild",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "S04C",
@@ -1406,15 +1606,18 @@
         "Different meaning 1",
         "Different meaning 2"
       ],
-      "correct": 3,
+      "correct": 0,
       "hint": "원문을 찾으세요: He couldn't move....",
       "page": 31,
       "difficulty": "medium",
       "wrong_explanations": {
-        "He couldn't move.": "\"he\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Similar but wrong sentence": "비슷하지만 뜻이 다른 문장이에요.",
         "Different meaning 1": "완전히 다른 뜻이에요."
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "meaning_match",
+      "score_group": "A",
+      "session_type": "AB"
     },
     {
       "id": "S05A",
@@ -1438,7 +1641,11 @@
         "Not Bobby came with blocks": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!",
         "Different word": "다른 단어는 틀렸어요.",
         "Wrong choice": "이 단어의 뜻을 생각해보세요. 문장의 빈칸에 넣어서 자연스러운지 확인해봐요!"
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "sentence_completion",
+      "score_group": "A",
+      "session_type": "B"
     },
     {
       "id": "S05B",
@@ -1460,7 +1667,11 @@
       "correct": 1,
       "wrong_explanations": {
         "default": "주어 + 동사 + 전치사구 — 'Bobby came with blocks'"
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "anchor_arrange",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "S05C",
@@ -1475,15 +1686,18 @@
         "Different meaning 1",
         "Different meaning 2"
       ],
-      "correct": 2,
+      "correct": 0,
       "hint": "원문을 찾으세요: Bobby came with bloc...",
       "page": 33,
       "difficulty": "medium",
       "wrong_explanations": {
-        "Bobby came with blocks.": "\"came\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Similar but wrong sentence": "비슷하지만 뜻이 다른 문장이에요.",
         "Different meaning 2": "완전히 다른 뜻이에요."
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "meaning_match",
+      "score_group": "A",
+      "session_type": "AB"
     },
     {
       "id": "S06A",
@@ -1499,15 +1713,18 @@
         "Different word",
         "Wrong choice"
       ],
-      "correct": 3,
+      "correct": 0,
       "hint": "원문: Bob made a small sound. — 교과서 p.34",
       "page": 34,
       "difficulty": "medium",
       "wrong_explanations": {
-        "Bob made a small sound": "\"Bob made a small sound\"를 넣어보면 문장이 자연스러운가요? 원문: Bob made a small sound. — 교과서 p.34",
         "Not Bob made a small sound": "'Bob made a small sound'가 맞아요.",
         "Different word": "다른 단어는 틀렸어요."
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "sentence_completion",
+      "score_group": "A",
+      "session_type": "B"
     },
     {
       "id": "S06B",
@@ -1528,7 +1745,11 @@
       "correct": 0,
       "wrong_explanations": {
         "default": "주어 + 동사 + 목적어 — 'Bob made a small sound'"
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "mini_rebuild",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "S06C",
@@ -1543,15 +1764,18 @@
         "Different meaning 1",
         "Different meaning 2"
       ],
-      "correct": 1,
+      "correct": 0,
       "hint": "원문을 찾으세요: Bob made a small sou...",
       "page": 34,
       "difficulty": "medium",
       "wrong_explanations": {
-        "Bob made a small sound.": "\"small\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Different meaning 1": "완전히 다른 뜻이에요.",
         "Different meaning 2": "완전히 다른 뜻이에요."
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "meaning_match",
+      "score_group": "A",
+      "session_type": "AB"
     },
     {
       "id": "S07A",
@@ -1567,15 +1791,18 @@
         "Different word",
         "Wrong choice"
       ],
-      "correct": 2,
+      "correct": 0,
       "hint": "원문: They sat side by side. — 교과서 p.42",
       "page": 42,
       "difficulty": "medium",
       "wrong_explanations": {
-        "They sat side by side": "\"They sat side by side\"를 넣어보면 문장이 자연스러운가요? 원문: They sat side by side. — 교과서 p.42",
         "Not They sat side by side": "'They sat side by side'가 맞아요.",
         "Wrong choice": "\"Wrong choice\"를 넣어보면 문장이 자연스러운가요? 원문: They sat side by side. — 교과서 p.42"
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "sentence_completion",
+      "score_group": "A",
+      "session_type": "B"
     },
     {
       "id": "S07B",
@@ -1596,7 +1823,11 @@
       "correct": 3,
       "wrong_explanations": {
         "default": "주어 + 동사 + 부사구 — 'They sat side by side'"
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "mini_rebuild",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "S07C",
@@ -1619,7 +1850,11 @@
         "Similar but wrong sentence": "비슷하지만 뜻이 다른 문장이에요.",
         "Different meaning 1": "완전히 다른 뜻이에요.",
         "Different meaning 2": "완전히 다른 뜻이에요."
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "meaning_match",
+      "score_group": "A",
+      "session_type": "AB"
     },
     {
       "id": "S08A",
@@ -1635,15 +1870,18 @@
         "Different word",
         "Wrong choice"
       ],
-      "correct": 1,
+      "correct": 0,
       "hint": "원문: You taught me to walk. — 교과서 p.43",
       "page": 43,
       "difficulty": "medium",
       "wrong_explanations": {
-        "You taught me to walk": "\"You taught me to walk\"를 넣어보면 문장이 자연스러운가요? 원문: You taught me to walk. — 교과서 p.43",
         "Different word": "다른 단어는 틀렸어요.",
         "Wrong choice": "\"Wrong choice\"를 넣어보면 문장이 자연스러운가요? 원문: You taught me to walk. — 교과서 p.43"
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "sentence_completion",
+      "score_group": "A",
+      "session_type": "B"
     },
     {
       "id": "S08B",
@@ -1666,7 +1904,11 @@
       "correct": 2,
       "wrong_explanations": {
         "default": "주어 + taught + 간접목적어 + to부정사 — 'You taught me to walk'"
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "anchor_arrange",
+      "score_group": "A",
+      "session_type": "A"
     },
     {
       "id": "S08C",
@@ -1681,15 +1923,18 @@
         "Different meaning 1",
         "Different meaning 2"
       ],
-      "correct": 3,
+      "correct": 0,
       "hint": "원문을 찾으세요: You taught me to wal...",
       "page": 43,
       "difficulty": "medium",
       "wrong_explanations": {
-        "You taught me to walk.": "\"taught\"가 들어간 문장이 아니에요. 원문의 핵심 단어를 확인하세요!",
         "Similar but wrong sentence": "비슷하지만 뜻이 다른 문장이에요.",
         "Different meaning 1": "완전히 다른 뜻이에요."
-      }
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "meaning_match",
+      "score_group": "A",
+      "session_type": "AB"
     }
   ]
 }

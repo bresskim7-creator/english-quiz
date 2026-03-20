@@ -1096,6 +1096,11 @@
             hintUsedThisQuestion = false;
             document.querySelectorAll('.correct-answer-display, .wrong-explanation').forEach(el => el.remove());
 
+            // question-text innerHTML 초기화 (dialogue/reading용)
+            const questionTextEl = document.getElementById('question-text');
+            questionTextEl.innerHTML = '';
+            questionTextEl.style.whiteSpace = '';
+
             // 컨테이너 모두 숨기기
             document.getElementById('fill-blank-container').style.display = 'none';
             document.getElementById('arrange-container').style.display = 'none';
@@ -1103,6 +1108,10 @@
 
             if (q.type === 'fill_blank') {
                 showFillBlank(q);
+            } else if (q.type === 'dialogue_response') {
+                showDialogueResponse(q);
+            } else if (q.type === 'short_reading') {
+                showShortReading(q);
             } else if (q.type === 'arrange') {
                 showArrange(q);
             } else if (q.type === 'match') {
@@ -1150,6 +1159,83 @@
                 btn.onclick = () => handleFillBlankAnswer(q, idx, newCorrect);
                 container.appendChild(btn);
             });
+        }
+
+        // Dialogue Response 유형 (대화 빈칸)
+        function showDialogueResponse(q) {
+            // 대화 문장: \n → <br> 로 줄바꿈 처리
+            const questionText = document.getElementById('question-text');
+            questionText.innerHTML = q.sentence.replace(/\n/g, '<br>');
+            questionText.style.whiteSpace = 'pre-line';
+
+            const container = document.getElementById('fill-blank-container');
+            container.style.display = 'grid';
+            container.innerHTML = '';
+
+            const shuffled = q.choices.map((choice, idx) => ({ choice, idx }));
+            shuffleArray(shuffled);
+            const newCorrect = shuffled.findIndex(x => x.idx === q.correct);
+
+            shuffled.forEach((item, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'choice-btn';
+                btn.textContent = item.choice;
+                btn.onclick = () => handleChoiceAnswer(q, idx, newCorrect, shuffled[idx].idx);
+                container.appendChild(btn);
+            });
+        }
+
+        // Short Reading 유형 (짧은 독해)
+        function showShortReading(q) {
+            const questionText = document.getElementById('question-text');
+            // 지문과 질문을 분리 (\n\n 기준)
+            const parts = q.sentence.split(/\n\n/);
+            if (parts.length >= 2) {
+                const passage = parts.slice(0, -1).join('<br><br>');
+                const question = parts[parts.length - 1];
+                questionText.innerHTML =
+                    '<div style="background:#f0f4ff;border-left:3px solid #2F5496;padding:10px 14px;border-radius:0 8px 8px 0;margin-bottom:12px;line-height:1.8;font-size:15px;">' +
+                    passage.replace(/\n/g, '<br>') + '</div>' +
+                    '<div style="font-weight:600;color:#333;font-size:15px;">' + question + '</div>';
+            } else {
+                questionText.innerHTML = q.sentence.replace(/\n/g, '<br>');
+            }
+
+            const container = document.getElementById('fill-blank-container');
+            container.style.display = 'grid';
+            container.innerHTML = '';
+
+            const shuffled = q.choices.map((choice, idx) => ({ choice, idx }));
+            shuffleArray(shuffled);
+            const newCorrect = shuffled.findIndex(x => x.idx === q.correct);
+
+            shuffled.forEach((item, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'choice-btn';
+                btn.textContent = item.choice;
+                btn.onclick = () => handleChoiceAnswer(q, idx, newCorrect, shuffled[idx].idx);
+                container.appendChild(btn);
+            });
+        }
+
+        // 공통 선택형 답변 처리 (fill_blank / dialogue_response / short_reading)
+        function handleChoiceAnswer(q, selectedIdx, correctIdx, originalIdx) {
+            const buttons = document.querySelectorAll('#fill-blank-container .choice-btn');
+            const userChoice = buttons[selectedIdx] ? buttons[selectedIdx].textContent : '';
+            buttons.forEach((btn, idx) => {
+                btn.disabled = true;
+                if (idx === correctIdx) btn.classList.add('correct');
+                if (idx === selectedIdx && idx !== correctIdx) btn.classList.add('incorrect');
+            });
+
+            const isCorrect = selectedIdx === correctIdx;
+            recordAnswer(q, isCorrect);
+
+            if (!isCorrect) {
+                showWrongExplanation(q, document.getElementById('fill-blank-container'), userChoice, originalIdx);
+            }
+
+            showNextButton();
         }
 
         function handleFillBlankAnswer(q, selectedIdx, correctIdx) {
@@ -1292,7 +1378,7 @@
         }
 
         // 오답 시 이해 도움 설명 (정답을 직접 말하지 않고 이해를 유도)
-        function showWrongExplanation(q, afterEl, userAnswer) {
+        function showWrongExplanation(q, afterEl, userAnswer, originalIdx) {
             const box = document.createElement('div');
             box.className = 'wrong-explanation';
             box.style.cssText = 'background:linear-gradient(135deg,#fff8e1,#fff3e0);border-left:4px solid #FF9800;border-radius:0 10px 10px 0;padding:14px 16px;margin-top:12px;font-size:15px;color:#333;line-height:1.8;';
@@ -1300,14 +1386,19 @@
             const we = q.wrong_explanations || {};
             let html = '<div style="font-weight:700;color:#e65100;margin-bottom:8px;font-size:16px;">🎓 선생님 설명</div>';
 
-            if (q.type === 'fill_blank') {
-                const explanation = we[userAnswer] || q.hint || '';
+            // 설명 조회: 텍스트 키 → 숫자 인덱스 키 → hint 순으로 시도
+            function findExplanation(answer, idx) {
+                return we[answer] || we[String(idx)] || q.hint || '';
+            }
+
+            if (q.type === 'fill_blank' || q.type === 'dialogue_response' || q.type === 'short_reading') {
+                const explanation = findExplanation(userAnswer, originalIdx);
                 html += '<div style="font-size:15px;color:#333;">' + explanation + '</div>';
             } else if (q.type === 'arrange') {
                 const explanation = we['default'] || q.hint || '';
                 html += '<div style="font-size:15px;color:#333;">' + explanation + '</div>';
             } else if (q.type === 'match') {
-                const explanation = we[userAnswer] || q.hint || '';
+                const explanation = findExplanation(userAnswer, originalIdx);
                 html += '<div style="font-size:15px;color:#333;">' + explanation + '</div>';
             }
 
@@ -1338,6 +1429,10 @@
         function getCorrectSentence(q) {
             if (q.type === 'arrange') return q.answer;
             if (q.type === 'match') return q.choices[q.correct];
+            // dialogue_response: 정답 선택지 읽어주기
+            if (q.type === 'dialogue_response') return q.blank_answer || q.choices[q.correct];
+            // short_reading: 정답 선택지 읽어주기
+            if (q.type === 'short_reading') return q.blank_answer || q.choices[q.correct];
             // fill_blank: 빈칸에 정답을 채운 완성 문장
             if (q.sentence && q.blank_answer) {
                 return q.sentence.replace('_____', q.blank_answer);
