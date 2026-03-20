@@ -641,6 +641,36 @@
             background: #2F5496;
             color: white;
         }
+        .session-type-selector {
+            display: flex;
+            gap: 8px;
+            flex: 1;
+        }
+        .session-type-btn {
+            flex: 1;
+            padding: 8px 10px;
+            border: 2px solid #2F5496;
+            border-radius: 20px;
+            background: white;
+            color: #2F5496;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            line-height: 1.3;
+        }
+        .session-type-btn.active {
+            background: #2F5496;
+            color: white;
+        }
+        .session-type-btn .type-desc {
+            display: block;
+            font-size: 10px;
+            font-weight: 400;
+            opacity: 0.8;
+            margin-top: 2px;
+        }
         .count-display {
             font-size: 20px;
             font-weight: 700;
@@ -670,11 +700,14 @@
                     </div>
                 </div>
                 <div class="setting-row">
-                    <span class="setting-label">문제 수</span>
-                    <div class="count-selector">
-                        <button class="count-btn" onclick="adjustCount(-5)">−</button>
-                        <span class="count-display" id="count-display">20</span>
-                        <button class="count-btn" onclick="adjustCount(5)">+</button>
+                    <span class="setting-label">세션</span>
+                    <div class="session-type-selector">
+                        <button class="session-type-btn active" id="stype-btn-A" onclick="selectSessionType('A')">
+                            A 개념회수<span class="type-desc">8~10문항</span>
+                        </button>
+                        <button class="session-type-btn" id="stype-btn-B" onclick="selectSessionType('B')">
+                            B 시험전이<span class="type-desc">6~8문항</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -776,20 +809,23 @@
         let isMuted = localStorage.getItem('sound_muted') === 'true';
         let arrangeCheckInterval = null;
         let hintUsedThisQuestion = false;
-        let sessionSize = parseInt(localStorage.getItem('session_size') || '20');
+        let sessionType = localStorage.getItem('session_type') || 'A'; // A=개념회수, B=시험전이
 
-        // 문제 수 조절
-        function adjustCount(delta) {
-            const maxQ = QUIZ_DATA ? QUIZ_DATA.questions.length : 80;
-            sessionSize = Math.max(5, Math.min(maxQ, sessionSize + delta));
-            document.getElementById('count-display').textContent = sessionSize;
-            localStorage.setItem('session_size', sessionSize);
+        // 세션 타입 선택
+        function selectSessionType(type) {
+            sessionType = type;
+            localStorage.setItem('session_type', type);
+            document.querySelectorAll('.session-type-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('stype-btn-' + type).classList.add('active');
             updateSubtitle();
         }
 
+        // 고부하 문항 타입 (§7.4 Rule 4: 2개 연속 금지)
+        const HIGH_LOAD_TASKS = new Set(['anchor_arrange', 'chunk_arrange', 'mini_rebuild', 'mini_writing']);
+
         function updateSubtitle() {
-            const mins = Math.round(sessionSize * 0.75);
-            document.getElementById('session-subtitle').textContent = sessionSize + '문항 · 약 ' + mins + '분';
+            const range = sessionType === 'A' ? '8~10문항 · 약 10분' : '6~8문항 · 약 12분';
+            document.getElementById('session-subtitle').textContent = range;
         }
 
         // Sound effects
@@ -893,6 +929,7 @@
         let currentQuestionIndex = 0;
         let sessionAnswers = [];
         let questionHistory = {};
+        let currentSessionMeta = null; // 세션 메타 (type, lesson, metrics)
 
         // Lesson 데이터 로드
         async function loadLesson(lessonNumber) {
@@ -945,8 +982,11 @@
             }
             loadQuestionHistory();
             updateStats();
-            // 문제 수 복원
-            document.getElementById('count-display').textContent = sessionSize;
+            // 세션 타입 복원
+            if (sessionType === 'B') {
+                document.querySelectorAll('.session-type-btn').forEach(b => b.classList.remove('active'));
+                document.getElementById('stype-btn-B').classList.add('active');
+            }
             updateSubtitle();
             // 음소거 상태 복원
             document.getElementById('mute-toggle').textContent = isMuted ? '🔇' : '🔊';
@@ -999,63 +1039,191 @@
             document.getElementById('stat-review').textContent = review;
         }
 
-        // 자동 세션 생성 알고리즘 v2
-        // 원칙: 매 세션마다 다양한 문항이 나오도록
+        // =========================================================
+        // 세션 생성 엔진 v3 — score_group 기반 풀링 + 블록 배치 4규칙
+        // 기획서 v2.1 §5.4, §7.1~§7.4 구현
+        // =========================================================
+
+        // 학습 이력 기반 우선순위 점수 (높을수록 복습 필요)
+        function priorityScore(q) {
+            const h = questionHistory[q.id];
+            if (!h) return 50; // 신규: 중간 우선도
+            if (h.last_correct === false) return 100; // 오답: 최고 우선
+            if (h.correct >= 3 && h.last_correct) return 10; // 마스터: 최저
+            return 70; // 복습 필요
+        }
+
+        // score_group 필터링 + 이력 기반 정렬
+        function poolByScoreGroup(questions, group) {
+            const pool = questions.filter(q => q.score_group === group);
+            shuffleArray(pool); // 먼저 셔플 후 안정 정렬로 우선도 반영
+            pool.sort((a, b) => priorityScore(b) - priorityScore(a));
+            return pool;
+        }
+
+        // session_type 필터: 해당 세션에 투입 가능한 문항인지
+        function canUseInSession(q, sType) {
+            return q.session_type === sType || q.session_type === 'AB';
+        }
+
         function generateSession() {
-            const SESSION_SIZE = sessionSize;
             const questions = QUIZ_DATA.questions;
-            const todayStr = today();
+            const sType = sessionType; // 'A' or 'B'
 
-            // 4개 풀로 분류
-            const pools = { wrong: [], newQ: [], review: [], mastered: [] };
-            questions.forEach(q => {
-                const h = questionHistory[q.id];
-                if (!h) {
-                    pools.newQ.push(q);
-                } else if (h.correct >= 3 && h.last_correct) {
-                    pools.mastered.push(q); // 3회 이상 정답 + 마지막도 정답 → 마스터
-                } else if (h.last_correct === false) {
-                    pools.wrong.push(q);
-                } else {
-                    pools.review.push(q); // 맞춘 적 있지만 아직 마스터 아님
-                }
-            });
+            // === 1. score_group별 풀 구성 (세션 타입 필터 적용) ===
+            const poolA = poolByScoreGroup(questions, 'A').filter(q => canUseInSession(q, sType));
+            const poolB = poolByScoreGroup(questions, 'B').filter(q => canUseInSession(q, sType));
+            const poolC = poolByScoreGroup(questions, 'C').filter(q => canUseInSession(q, sType));
 
-            // 각 풀 내에서 셔플 (매번 다른 문항이 선택되도록!)
-            Object.values(pools).forEach(p => shuffleArray(p));
-
-            // 오답 풀: 오늘 이미 틀린 건 우선도 낮춤 (뒤로 보냄)
-            pools.wrong.sort((a, b) => {
-                const ha = questionHistory[a.id], hb = questionHistory[b.id];
-                const aToday = ha && ha.last_seen === todayStr ? 1 : 0;
-                const bToday = hb && hb.last_seen === todayStr ? 1 : 0;
-                return aToday - bToday; // 오늘 안 한 것 우선
-            });
-
-            // 배분: 오답 4 + 새문항 8 + 복습 6 + 마스터 2 (가용한 만큼)
             const selected = [];
+            const usedIds = new Set();
             const pick = (pool, count) => {
-                const ids = new Set(selected.map(q => q.id));
                 let picked = 0;
                 for (const q of pool) {
                     if (picked >= count) break;
-                    if (!ids.has(q.id)) { selected.push(q); picked++; }
+                    if (!usedIds.has(q.id)) {
+                        selected.push(q);
+                        usedIds.add(q.id);
+                        picked++;
+                    }
                 }
+                return picked;
             };
 
-            pick(pools.wrong, 4);
-            pick(pools.newQ, 8);
-            pick(pools.review, 6);
-            pick(pools.mastered, 2);
+            if (sType === 'A') {
+                // === A-type: 개념 회수형 (8~10문항) ===
+                // Block 1: A군 3개 (최근 맞았지만 불안정한 것 우선)
+                // Block 2: A군 4~5개 (핵심 개념)
+                // Block 3: B군 1~2개 (짧은 확인)
+                // C군: 노출 안 함 (§5.4 Phase 1)
+                const aCount = Math.min(7, poolA.length); // A군 70%+ 목표
+                pick(poolA, aCount);
+                const bCount = Math.min(3, poolB.length);
+                pick(poolB, bCount);
+                // C군은 Phase 1에서 노출하지 않음
+            } else {
+                // === B-type: 시험 전이형 (6~8문항) ===
+                // Block 1: A군 2~3개 (워밍업)
+                // Block 2: B군 2~3개 (short_reading/dialogue_response 등)
+                // Block 3: B군 1~2개 (추가 연습)
+                // C군: 최대 1개 (§5.4 Phase 1: 세션 끝, 선택적)
+                const aCount = Math.min(3, poolA.length);
+                pick(poolA, aCount);
+                const bCount = Math.min(4, poolB.length);
+                pick(poolB, bCount);
+                // C군: Phase 1에서는 최대 1개, 세션 끝에 배치
+                pick(poolC, 1);
+            }
 
-            // 부족하면 나머지 풀에서 채움
-            if (selected.length < SESSION_SIZE) pick(pools.newQ, SESSION_SIZE);
-            if (selected.length < SESSION_SIZE) pick(pools.review, SESSION_SIZE);
-            if (selected.length < SESSION_SIZE) pick(pools.wrong, SESSION_SIZE);
-            if (selected.length < SESSION_SIZE) pick(pools.mastered, SESSION_SIZE);
+            // === 2. 목표 크기 미달 시 보충 ===
+            const targetMin = sType === 'A' ? 8 : 6;
+            const targetMax = sType === 'A' ? 10 : 8;
+            if (selected.length < targetMin) {
+                // 남은 A/B 풀에서 보충
+                pick(poolA, targetMin);
+                pick(poolB, targetMin);
+            }
+            // session_type 필터 완화 보충 (해당 타입 문항 부족 시)
+            if (selected.length < targetMin) {
+                const allA = poolByScoreGroup(questions, 'A');
+                const allB = poolByScoreGroup(questions, 'B');
+                pick(allA, targetMin);
+                pick(allB, targetMin);
+            }
 
-            shuffleArray(selected);
-            return selected.slice(0, SESSION_SIZE).map(q => ({ ...q, poolIdx: questions.indexOf(q) }));
+            // 최대 크기로 자르기
+            const session = selected.slice(0, targetMax);
+
+            // === 3. 블록 배치 4규칙 적용 (§7.4) ===
+            const ordered = applyBlockRules(session, sType);
+
+            return ordered.map(q => ({ ...q, poolIdx: questions.indexOf(q) }));
+        }
+
+        // =========================================================
+        // 블록 배치 4규칙 (§7.4)
+        // Rule 1: 블록 시작 = 가장 쉽거나 최근 맞힌 문항
+        // Rule 2: 핵심 과제는 중간에 배치
+        // Rule 3: 블록 끝 = 짧은 복습/전환 문항
+        // Rule 4: 고부하 타입 2개 연속 금지
+        // =========================================================
+        function applyBlockRules(items, sType) {
+            if (items.length === 0) return items;
+
+            // 난이도 점수 (낮을수록 쉬움)
+            const diffScore = q => ({ easy: 1, medium: 2, hard: 3 }[q.difficulty] || 2);
+
+            // 부하 분류
+            const isHighLoad = q => HIGH_LOAD_TASKS.has(q.test_task);
+            const isLowLoad = q => ['word_recall', 'meaning_match', 'sentence_completion'].includes(q.test_task);
+
+            // score_group 우선도 (A군 선행)
+            const groupPri = q => ({ A: 0, B: 1, C: 2 }[q.score_group] || 1);
+
+            // --- 정렬: A군 선행 + 난이도 순 ---
+            const sorted = [...items].sort((a, b) => {
+                // A군 우선
+                if (groupPri(a) !== groupPri(b)) return groupPri(a) - groupPri(b);
+                // 같은 그룹 내에서는 쉬운 것 먼저
+                return diffScore(a) - diffScore(b);
+            });
+
+            // --- Rule 1: 첫 문항 = 가장 쉬운 것 (이미 sorted[0]) ---
+            // --- Rule 3: 마지막 문항 = 쉬운 것 (low load 문항 찾기) ---
+            const lastIdx = sorted.length - 1;
+            // 마지막에 배치할 쉬운 문항 찾기 (뒤에서 앞으로)
+            let easyEndIdx = -1;
+            for (let i = 1; i < sorted.length - 1; i++) {
+                if (isLowLoad(sorted[i]) && diffScore(sorted[i]) <= 2) {
+                    easyEndIdx = i;
+                }
+            }
+            if (easyEndIdx > 0) {
+                const easyQ = sorted.splice(easyEndIdx, 1)[0];
+                sorted.push(easyQ);
+            }
+
+            // --- Rule 2: arrange 계열은 후반부에 배치 ---
+            // 이미 A군 선행으로 자연스럽게 반영됨 (arrange는 대부분 B/C군)
+
+            // --- Rule 4: 고부하 타입 2개 연속 금지 ---
+            const result = enforceNoConsecutiveHighLoad(sorted);
+
+            return result;
+        }
+
+        // Rule 4 구현: 고부하 타입 연속 배치 해소
+        function enforceNoConsecutiveHighLoad(items) {
+            if (items.length <= 2) return items;
+
+            const result = [...items];
+            let maxIter = result.length * 2; // 무한루프 방지
+            let swapped = true;
+
+            while (swapped && maxIter-- > 0) {
+                swapped = false;
+                for (let i = 0; i < result.length - 1; i++) {
+                    if (HIGH_LOAD_TASKS.has(result[i].test_task) && HIGH_LOAD_TASKS.has(result[i + 1].test_task)) {
+                        // 연속 고부하 발견 — 뒤쪽 것을 저부하 문항과 교체
+                        let swapIdx = -1;
+                        for (let j = i + 2; j < result.length; j++) {
+                            if (!HIGH_LOAD_TASKS.has(result[j].test_task)) { swapIdx = j; break; }
+                        }
+                        // 앞쪽에서도 찾기
+                        if (swapIdx < 0) {
+                            for (let j = i - 1; j >= 0; j--) {
+                                if (!HIGH_LOAD_TASKS.has(result[j].test_task)) { swapIdx = j; break; }
+                            }
+                        }
+                        if (swapIdx >= 0) {
+                            [result[i + 1], result[swapIdx]] = [result[swapIdx], result[i + 1]];
+                            swapped = true;
+                            break; // 한 번 교체 후 처음부터 다시 확인
+                        }
+                    }
+                }
+            }
+            return result;
         }
 
         // 세션 시작
@@ -1070,6 +1238,13 @@
             currentQuestionIndex = 0;
             sessionAnswers = [];
             sessionStartTime = Date.now();
+            // 세션 메타 정보 저장 (메트릭 로깅용)
+            currentSessionMeta = {
+                type: sessionType,
+                lesson: currentLesson,
+                size: currentSession.length,
+                score_groups: currentSession.map(q => q.score_group)
+            };
             showPage('quiz-page');
             showQuestion();
         }
@@ -1454,6 +1629,8 @@
                 type: q.type,
                 difficulty: q.difficulty,
                 keyword: q.keyword,
+                score_group: q.score_group || '',
+                test_task: q.test_task || '',
                 time_sec: elapsed,
                 hint_used: hintUsedThisQuestion
             });
@@ -1472,6 +1649,59 @@
         }
 
         // 세션 종료
+        // =========================================================
+        // 4대 메트릭 계산 (§9.1)
+        // 1) A군 회수율: A군 문항 정답률
+        // 2) 첫 시도 정답률: 힌트 없이 맞춘 비율
+        // 3) 조건 준수율: (Phase 1에서는 placeholder)
+        // 4) arrange 성공률: arrange 계열 정답률
+        // =========================================================
+        function compute4Metrics(answers) {
+            if (!QUIZ_DATA) return null;
+
+            // A군 문항만 필터
+            const aGroupAnswers = answers.filter(a => {
+                const q = QUIZ_DATA.questions.find(x => x.id === a.id);
+                return q && q.score_group === 'A';
+            });
+            const aGroupCorrect = aGroupAnswers.filter(a => a.correct).length;
+            const aGroupRate = aGroupAnswers.length > 0
+                ? Math.round((aGroupCorrect / aGroupAnswers.length) * 100) : null;
+
+            // 첫 시도 정답률 (힌트 미사용 + 정답)
+            const noHintCorrect = answers.filter(a => a.correct && !a.hint_used).length;
+            const firstAttemptRate = answers.length > 0
+                ? Math.round((noHintCorrect / answers.length) * 100) : null;
+
+            // 조건 준수율 (mini_writing 미구현이므로 placeholder)
+            const conditionRate = null;
+
+            // arrange 성공률 (arrange 타입 전체)
+            const arrangeAnswers = answers.filter(a => a.type === 'arrange');
+            const arrangeCorrect = arrangeAnswers.filter(a => a.correct).length;
+            const arrangeRate = arrangeAnswers.length > 0
+                ? Math.round((arrangeCorrect / arrangeAnswers.length) * 100) : null;
+
+            // C군 별도 기록 (§5.4: 핵심 메트릭에 미반영)
+            const cGroupAnswers = answers.filter(a => {
+                const q = QUIZ_DATA.questions.find(x => x.id === a.id);
+                return q && q.score_group === 'C';
+            });
+            const cGroupRate = cGroupAnswers.length > 0
+                ? Math.round((cGroupAnswers.filter(a => a.correct).length / cGroupAnswers.length) * 100) : null;
+
+            return {
+                a_group_recovery: aGroupRate,
+                a_group_count: aGroupAnswers.length,
+                first_attempt_rate: firstAttemptRate,
+                condition_compliance: conditionRate,
+                arrange_success: arrangeRate,
+                arrange_count: arrangeAnswers.length,
+                c_group_separate: cGroupRate,
+                c_group_count: cGroupAnswers.length
+            };
+        }
+
         async function finishSession() {
             const totalCorrect = sessionAnswers.filter(a => a.correct).length;
             const percentage = Math.round((totalCorrect / sessionAnswers.length) * 100);
@@ -1519,9 +1749,13 @@
 
             const hintCount = sessionAnswers.filter(a => a.hint_used).length;
 
+            // === 4대 메트릭 계산 (§9.1) ===
+            const metrics = compute4Metrics(sessionAnswers);
+
             const log = {
                 lesson: currentLesson || 1,
                 date: today(),
+                session_type: currentSessionMeta ? currentSessionMeta.type : sessionType,
                 total: sessionAnswers.length,
                 correct: totalCorrect,
                 percentage: percentage,
@@ -1529,6 +1763,7 @@
                 weak: weakKeywords.join(', '),
                 type_breakdown: typeBreakdown,
                 hint_count: hintCount,
+                metrics: metrics,
                 details: sessionAnswers.map(a =>
                     a.id + (a.correct ? '✓' : '✗') + a.time_sec + 's' + (a.hint_used ? '💡' : '')
                 ).join(', '),
@@ -1558,9 +1793,11 @@
                 const key = log.timestamp;
                 if (sentKeys.includes(key)) return;
 
+                const m = log.metrics || {};
                 const data = {
                     lesson: log.lesson || currentLesson || 1,
                     date: log.date,
+                    session_type: log.session_type || '',
                     total: log.total,
                     correct: log.correct,
                     percentage: log.percentage,
@@ -1568,6 +1805,9 @@
                     weak: log.weak || '',
                     type_breakdown: log.type_breakdown || '',
                     hint_count: log.hint_count || 0,
+                    a_group_recovery: m.a_group_recovery != null ? m.a_group_recovery : '',
+                    first_attempt_rate: m.first_attempt_rate != null ? m.first_attempt_rate : '',
+                    arrange_success: m.arrange_success != null ? m.arrange_success : '',
                     details: log.details || '',
                     partial: log.partial ? 'Y' : 'N',
                     timestamp: log.timestamp
