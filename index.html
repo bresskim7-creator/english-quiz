@@ -786,22 +786,12 @@
                         <button class="lesson-btn" id="lesson-btn-2" onclick="selectLesson(2)">2단원</button>
                     </div>
                 </div>
-                <div class="setting-row">
-                    <span class="setting-label">세션</span>
-                    <div class="session-type-selector">
-                        <button class="session-type-btn active" id="stype-btn-A" onclick="selectSessionType('A')">
-                            A 개념회수<span class="type-desc">8~10문항</span>
-                        </button>
-                        <button class="session-type-btn" id="stype-btn-B" onclick="selectSessionType('B')">
-                            B 시험전이<span class="type-desc">6~8문항</span>
-                        </button>
-                    </div>
-                </div>
+                <!-- A/B 세션 구분 제거: 통합 세션으로 운영 -->
             </div>
 
             <button class="today-button" onclick="startSession()">
                 오늘의 학습 시작
-                <span class="button-subtitle" id="session-subtitle">20문항 · 약 15분</span>
+                <span class="button-subtitle" id="session-subtitle">30문항 · 약 20분</span>
             </button>
 
             <div class="stats-card">
@@ -906,21 +896,18 @@
         let hintUsedThisQuestion = false;
         let sessionType = localStorage.getItem('session_type') || 'A'; // A=개념회수, B=시험전이
 
-        // 세션 타입 선택
+        // 세션 타입 선택 (하위호환 — 로그에 기록용으로 유지)
         function selectSessionType(type) {
             sessionType = type;
             localStorage.setItem('session_type', type);
-            document.querySelectorAll('.session-type-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById('stype-btn-' + type).classList.add('active');
-            updateSubtitle();
         }
 
         // 고부하 문항 타입 (§7.4 Rule 4: 2개 연속 금지)
         const HIGH_LOAD_TASKS = new Set(['anchor_arrange', 'chunk_arrange', 'mini_rebuild', 'mini_writing']);
 
         function updateSubtitle() {
-            const range = sessionType === 'A' ? '8~10문항 · 약 10분' : '6~8문항 · 약 12분';
-            document.getElementById('session-subtitle').textContent = range;
+            const total = QUIZ_DATA ? Math.min(30, QUIZ_DATA.questions.length) : 30;
+            document.getElementById('session-subtitle').textContent = total + '문항 · 약 20분';
         }
 
         // Sound effects
@@ -1078,10 +1065,6 @@
             loadQuestionHistory();
             updateStats();
             // 세션 타입 복원
-            if (sessionType === 'B') {
-                document.querySelectorAll('.session-type-btn').forEach(b => b.classList.remove('active'));
-                document.getElementById('stype-btn-B').classList.add('active');
-            }
             updateSubtitle();
             // 음소거 상태 복원
             document.getElementById('mute-toggle').textContent = isMuted ? '🔇' : '🔊';
@@ -1174,12 +1157,12 @@
 
         function generateSession() {
             const questions = QUIZ_DATA.questions;
-            const sType = sessionType; // 'A' or 'B'
+            const TARGET = 30; // 목표 문항 수
 
-            // === 1. score_group별 풀 구성 (세션 타입 필터 적용) ===
-            const poolA = poolByScoreGroup(questions, 'A').filter(q => canUseInSession(q, sType));
-            const poolB = poolByScoreGroup(questions, 'B').filter(q => canUseInSession(q, sType));
-            const poolC = poolByScoreGroup(questions, 'C').filter(q => canUseInSession(q, sType));
+            // === 1. score_group별 풀 구성 (전체 문항 대상) ===
+            const poolA = poolByScoreGroup(questions, 'A');
+            const poolB = poolByScoreGroup(questions, 'B');
+            const poolC = poolByScoreGroup(questions, 'C');
 
             const selected = [];
             const usedIds = new Set();
@@ -1196,52 +1179,28 @@
                 return picked;
             };
 
-            if (sType === 'A') {
-                // === A-type: 개념 회수형 (8~10문항) ===
-                // Block 1: A군 3개 (최근 맞았지만 불안정한 것 우선)
-                // Block 2: A군 4~5개 (핵심 개념)
-                // Block 3: B군 1~2개 (짧은 확인)
-                // C군: 노출 안 함 (§5.4 Phase 1)
-                const aCount = Math.min(7, poolA.length); // A군 70%+ 목표
-                pick(poolA, aCount);
-                const bCount = Math.min(3, poolB.length);
-                pick(poolB, bCount);
-                // C군은 Phase 1에서 노출하지 않음
-            } else {
-                // === B-type: 시험 전이형 (6~8문항) ===
-                // Block 1: A군 2~3개 (워밍업)
-                // Block 2: B군 2~3개 (short_reading/dialogue_response 등)
-                // Block 3: B군 1~2개 (추가 연습)
-                // C군: 최대 1개 (§5.4 Phase 1: 세션 끝, 선택적)
-                const aCount = Math.min(3, poolA.length);
-                pick(poolA, aCount);
-                const bCount = Math.min(4, poolB.length);
-                pick(poolB, bCount);
-                // C군: Phase 1에서는 최대 1개, 세션 끝에 배치
-                pick(poolC, 1);
+            // === 통합 세션: A → B → C 순서로 채우기 ===
+            // A군(기본 개념) 40% + B군(응용) 40% + C군(심화) 20%
+            const aTarget = Math.round(TARGET * 0.4);
+            const bTarget = Math.round(TARGET * 0.4);
+            const cTarget = TARGET - aTarget - bTarget;
+
+            pick(poolA, aTarget);
+            pick(poolB, bTarget);
+            pick(poolC, cTarget);
+
+            // 목표 미달 시 남은 풀에서 보충
+            if (selected.length < TARGET) {
+                pick(poolA, TARGET);
+                pick(poolB, TARGET);
+                pick(poolC, TARGET);
             }
 
-            // === 2. 목표 크기 미달 시 보충 ===
-            const targetMin = sType === 'A' ? 8 : 6;
-            const targetMax = sType === 'A' ? 10 : 8;
-            if (selected.length < targetMin) {
-                // 남은 A/B 풀에서 보충
-                pick(poolA, targetMin);
-                pick(poolB, targetMin);
-            }
-            // session_type 필터 완화 보충 (해당 타입 문항 부족 시)
-            if (selected.length < targetMin) {
-                const allA = poolByScoreGroup(questions, 'A');
-                const allB = poolByScoreGroup(questions, 'B');
-                pick(allA, targetMin);
-                pick(allB, targetMin);
-            }
+            // 총 문항 수가 TARGET보다 적으면 있는 만큼만
+            const session = selected.slice(0, Math.min(TARGET, questions.length));
 
-            // 최대 크기로 자르기
-            const session = selected.slice(0, targetMax);
-
-            // === 3. 블록 배치 4규칙 적용 (§7.4) ===
-            const ordered = applyBlockRules(session, sType);
+            // === 2. 블록 배치 규칙 적용 ===
+            const ordered = applyBlockRules(session, 'A');
 
             return ordered.map(q => ({ ...q, poolIdx: questions.indexOf(q) }));
         }
