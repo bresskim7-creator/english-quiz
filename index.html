@@ -1140,12 +1140,23 @@
         // =========================================================
 
         // 학습 이력 기반 우선순위 점수 (높을수록 복습 필요)
+        // v3.1: 최근 출제 쿨다운 — 직전 세션 문항이 바로 반복되지 않도록
         function priorityScore(q) {
             const h = questionHistory[q.id];
             if (!h) return 50; // 신규: 중간 우선도
-            if (h.last_correct === false) return 100; // 오답: 최고 우선
-            if (h.correct >= 3 && h.last_correct) return 10; // 마스터: 최저
-            return 70; // 복습 필요
+
+            let base;
+            if (h.last_correct === false) base = 100; // 오답: 최고 우선
+            else if (h.correct >= 3 && h.last_correct) base = 10; // 마스터: 최저
+            else base = 70; // 복습 필요
+
+            // 쿨다운: 최근 세션에서 출제된 문항은 우선도 하향
+            // last_seen이 오늘이고, 이번 세션에서 이미 풀었다면 감점
+            if (h.last_seen === today() && h.attempts > 0) {
+                base -= 40; // 오답(100→60), 복습(70→30) — 신규(50)보다 낮아짐
+            }
+
+            return Math.max(base, 5); // 최소 5
         }
 
         // score_group 필터링 + 이력 기반 정렬
@@ -1985,7 +1996,22 @@
             const webhookUrl = localStorage.getItem('webhook_url');
             if (!webhookUrl) return;
 
-            const logs = JSON.parse(localStorage.getItem('quiz_logs') || '[]');
+            // 모든 레슨 로그 자동 수집 (L1, L2, L3, ... 무제한)
+            const allLogs = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const k = localStorage.key(i);
+                if (k === 'quiz_logs' || (k.startsWith('quiz_logs_L') && /^quiz_logs_L\d+$/.test(k))) {
+                    const items = JSON.parse(localStorage.getItem(k) || '[]');
+                    items.forEach(log => allLogs.push(log));
+                }
+            }
+            // timestamp 기준 중복 제거
+            const seen = new Set();
+            const logs = allLogs.filter(log => {
+                if (seen.has(log.timestamp)) return false;
+                seen.add(log.timestamp);
+                return true;
+            });
             const sentKeys = JSON.parse(localStorage.getItem('sent_logs') || '[]');
 
             logs.forEach((log, idx) => {
