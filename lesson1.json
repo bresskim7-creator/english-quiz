@@ -2733,6 +2733,128 @@
       "test_task": "sentence_completion",
       "score_group": "B",
       "session_type": "B"
+    },
+    {
+      "id": "Q089",
+      "category": "Lesson 1",
+      "type": "position_ask",
+      "difficulty": "medium",
+      "keyword": "planning",
+      "instruction": "다음 문장에서 3번째 단어는 무엇인가요?",
+      "sentence": "I am planning to exercise more.",
+      "blank_answer": "planning",
+      "choices": [
+        "am",
+        "planning",
+        "to",
+        "exercise"
+      ],
+      "correct": 1,
+      "hint": "💡 단어를 하나씩 세어 보세요: I(1) am(2) planning(3)...",
+      "page": 14,
+      "wrong_explanations": {
+        "0": "am은 2번째 단어예요. I(1), am(2), planning(3)의 순서를 확인하세요.",
+        "2": "to는 4번째 단어예요. planning(3) 다음에 옵니다.",
+        "3": "exercise는 5번째 단어예요. 앞에서부터 세어 보세요."
+      },
+      "language_concept": "expr_plan_goal",
+      "test_task": "position_ask",
+      "score_group": "A",
+      "session_type": "A"
+    },
+    {
+      "id": "Q090",
+      "category": "Lesson 1",
+      "type": "position_ask",
+      "difficulty": "medium",
+      "keyword": "conditional",
+      "instruction": "다음 문장에서 4번째 단어는 무엇인가요?",
+      "sentence": "If you study hard, you will do well.",
+      "blank_answer": "hard,",
+      "choices": [
+        "study",
+        "hard,",
+        "you",
+        "will"
+      ],
+      "correct": 1,
+      "hint": "💡 If(1) you(2) study(3) hard,(4)... 쉼표도 단어에 포함돼요.",
+      "page": 18,
+      "wrong_explanations": {
+        "0": "study는 3번째 단어예요. If(1), you(2), study(3)...",
+        "2": "you가 여러 번 나오지만, 4번째는 hard예요.",
+        "3": "will은 6번째 단어예요. 쉼표 뒤에서부터 세어야 해요."
+      },
+      "language_concept": "grammar_if_conditional",
+      "test_task": "position_ask",
+      "score_group": "A",
+      "session_type": "A"
+    },
+    {
+      "id": "Q091",
+      "category": "Lesson 1",
+      "type": "position_ask",
+      "difficulty": "easy",
+      "keyword": "wh-to-infinitive",
+      "instruction": "다음 문장에서 5번째 단어는 무엇인가요?",
+      "sentence": "I don't know how to sleep well.",
+      "blank_answer": "how",
+      "choices": [
+        "know",
+        "how",
+        "to",
+        "sleep"
+      ],
+      "correct": 1,
+      "hint": "💡 I(1) don't(2) know(3)... 축약형도 하나의 단어예요.",
+      "page": 22,
+      "wrong_explanations": {
+        "0": "know은 4번째 단어예요. don't도 하나로 세야 해요.",
+        "2": "to는 6번째 단어예요. how(5) 다음에 옵니다.",
+        "3": "sleep은 7번째 단어예요. 앞에서부터 다시 세어 보세요."
+      },
+      "language_concept": "grammar_wh_to_inf",
+      "test_task": "position_ask",
+      "score_group": "A",
+      "session_type": "A"
+    },
+    {
+      "id": "Q092",
+      "category": "Lesson 1",
+      "type": "mini_writing",
+      "difficulty": "medium",
+      "keyword": "planning",
+      "instruction": "조건에 맞게 영어 문장을 쓰세요.",
+      "sentence": "",
+      "required_word": "planning",
+      "min_words": 5,
+      "example_answer": "I am planning to read more books.",
+      "hint": "💡 'planning to + 동사원형' 패턴을 사용하면 쉽게 쓸 수 있어요.",
+      "page": 14,
+      "wrong_explanations": {},
+      "language_concept": "expr_plan_goal",
+      "test_task": "mini_writing",
+      "score_group": "B",
+      "session_type": "B"
+    },
+    {
+      "id": "Q093",
+      "category": "Lesson 1",
+      "type": "mini_writing",
+      "difficulty": "medium",
+      "keyword": "if conditional",
+      "instruction": "조건에 맞게 영어 문장을 쓰세요.",
+      "sentence": "",
+      "required_word": "if",
+      "min_words": 6,
+      "example_answer": "If you exercise, you will be healthy.",
+      "hint": "💡 'If + 주어 + 동사, 주어 + will + 동사' 패턴으로 써 보세요.",
+      "page": 18,
+      "wrong_explanations": {},
+      "language_concept": "grammar_if_conditional",
+      "test_task": "mini_writing",
+      "score_group": "B",
+      "session_type": "B"
     }
   ]
 }

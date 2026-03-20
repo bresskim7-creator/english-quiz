@@ -1935,6 +1935,296 @@
       "test_task": "meaning_match",
       "score_group": "A",
       "session_type": "AB"
+    },
+    {
+      "id": "Q041",
+      "category": "Lesson 2",
+      "type": "dialogue_response",
+      "difficulty": "medium",
+      "keyword": "walking lesson",
+      "instruction": "대화의 빈칸에 알맞은 응답을 고르세요.",
+      "sentence": "Bob: \"Hold my hands, Bobby.\"\nBobby: _____",
+      "blank_answer": "Now one foot, now the other.",
+      "choices": [
+        "Now one foot, now the other.",
+        "I want to eat lunch.",
+        "Where are my shoes?",
+        "I can ride a bike."
+      ],
+      "correct": 0,
+      "hint": "💡 Bob이 Bobby에게 걸음마를 가르칠 때 한 말을 떠올려 보세요.",
+      "page": 26,
+      "wrong_explanations": {
+        "1": "점심 이야기는 걸음마 연습과 관련이 없어요. Bob은 걸음마를 가르치고 있어요.",
+        "2": "신발을 찾는 것은 이 장면과 맞지 않아요. Bob이 두 손을 잡아주는 장면이에요.",
+        "3": "자전거 타기는 이 대화와 관계없어요. Bobby는 아직 걸음마를 배우는 중이에요."
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "dialogue_response",
+      "score_group": "B",
+      "session_type": "B"
+    },
+    {
+      "id": "Q042",
+      "category": "Lesson 2",
+      "type": "dialogue_response",
+      "difficulty": "medium",
+      "keyword": "elephant block",
+      "instruction": "대화의 빈칸에 알맞은 응답을 고르세요.",
+      "sentence": "Bob: \"There is one more block to put.\"\nBobby: _____",
+      "blank_answer": "And that's the elephant block!",
+      "choices": [
+        "I don't like blocks.",
+        "And that's the elephant block!",
+        "Let's go to the park.",
+        "It's time for bed."
+      ],
+      "correct": 1,
+      "hint": "💡 탑 쌓기 놀이에서 마지막 블록은 항상 어떤 블록이었나요?",
+      "page": 27,
+      "wrong_explanations": {
+        "0": "블록을 싫어한다는 것은 이야기와 맞지 않아요. Bobby는 블록 쌓기를 좋아했어요!",
+        "2": "공원에 가자는 말은 블록 쌓기 장면과 관계없어요.",
+        "3": "잘 시간이라는 것은 이 대화와 맞지 않아요. 둘은 블록을 쌓고 있어요."
+      },
+      "language_concept": "expr_narrative_core",
+      "test_task": "dialogue_response",
+      "score_group": "B",
+      "session_type": "B"
+    },
+    {
+      "id": "Q043",
+      "category": "Lesson 2",
+      "type": "dialogue_response",
+      "difficulty": "medium",
+      "keyword": "recovery",
+      "instruction": "대화의 빈칸에 알맞은 응답을 고르세요.",
+      "sentence": "Bobby: \"Bob, it's time to build a tower!\"\nBob: _____",
+      "blank_answer": "(Bob's mouth made a small smile.)",
+      "choices": [
+        "I don't remember you.",
+        "No, I want to sleep.",
+        "(Bob's mouth made a small smile.)",
+        "Let's go to the hospital."
+      ],
+      "correct": 2,
+      "hint": "💡 Bob이 아프고 난 후 Bobby가 블록을 가져왔을 때, Bob의 반응을 떠올려 보세요.",
+      "page": 33,
+      "wrong_explanations": {
+        "0": "Bob은 Bobby를 기억하지 못하는 것이 아니에요. 말을 할 수 없었을 뿐이에요.",
+        "1": "거절하는 것이 아니에요. 이야기에서 Bob은 Bobby의 행동에 미소를 지었어요.",
+        "3": "Bob은 이미 병원에서 돌아와 집에 있어요. Bobby가 방으로 찾아온 거예요."
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "dialogue_response",
+      "score_group": "B",
+      "session_type": "B"
+    },
+    {
+      "id": "Q044",
+      "category": "Lesson 2",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "keyword": "sneeze",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Bobby carefully put the elephant block on top, but Bob sneezed and the tower fell down. Bobby laughed.\n\nWhy did the tower fall down?",
+      "blank_answer": "Because Bob sneezed.",
+      "choices": [
+        "Because Bobby pushed it.",
+        "Because the wind blew.",
+        "Because Bob sneezed.",
+        "Because there were too many blocks."
+      ],
+      "correct": 2,
+      "hint": "💡 탑이 무너진 직접적인 원인을 지문에서 찾으세요.",
+      "page": 27,
+      "wrong_explanations": {
+        "0": "Bobby가 밀은 것이 아니에요. 지문을 보면 Bobby는 조심스럽게 블록을 올렸어요.",
+        "1": "바람이 분 것은 지문에 없어요. Bob이 재채기를 했다고 나와 있어요.",
+        "3": "블록이 너무 많아서가 아니에요. Bob의 재채기가 직접적인 원인이에요."
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "short_reading",
+      "score_group": "B",
+      "session_type": "B"
+    },
+    {
+      "id": "Q045",
+      "category": "Lesson 2",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "keyword": "Bob's illness",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Bob fell ill and went to the hospital. He couldn't move his arms and legs. He couldn't talk.\n\nWhat happened to Bob?",
+      "blank_answer": "He fell ill and couldn't move or talk.",
+      "choices": [
+        "He went on a vacation.",
+        "He fell ill and couldn't move or talk.",
+        "He moved to another city.",
+        "He got a new job."
+      ],
+      "correct": 1,
+      "hint": "💡 Bob에게 무슨 일이 생겼는지 첫 문장에서 찾으세요.",
+      "page": 32,
+      "wrong_explanations": {
+        "0": "휴가를 간 것이 아니에요. 지문에서 Bob은 아파서 병원에 갔어요.",
+        "2": "다른 도시로 이사한 것이 아니에요. Bob은 아파서 병원에 입원했어요.",
+        "3": "새 직장과는 관계없어요. Bob은 심하게 아팠어요."
+      },
+      "language_concept": "vocab_story_narrative",
+      "test_task": "short_reading",
+      "score_group": "B",
+      "session_type": "B"
+    },
+    {
+      "id": "Q046",
+      "category": "Lesson 2",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "keyword": "purpose",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Bobby came into Bob's room with the blocks to build a tower. He wanted to make Bob smile again.\n\nWhy did Bobby bring the blocks?",
+      "blank_answer": "To build a tower and make Bob smile.",
+      "choices": [
+        "To sell them at the market.",
+        "To give them to a friend.",
+        "To build a tower and make Bob smile.",
+        "To clean Bob's room."
+      ],
+      "correct": 2,
+      "hint": "💡 Bobby가 블록을 가져온 목적(to ~)을 지문에서 찾으세요.",
+      "page": 33,
+      "wrong_explanations": {
+        "0": "시장에서 팔기 위해서가 아니에요. Bobby는 Bob을 위해 블록을 가져왔어요.",
+        "1": "친구에게 주려는 것이 아니에요. Bobby의 목적은 Bob을 웃게 만드는 거예요.",
+        "3": "방 청소와는 관련이 없어요. 지문의 to build a tower에 주목하세요."
+      },
+      "language_concept": "grammar_to_inf_purpose",
+      "test_task": "short_reading",
+      "score_group": "B",
+      "session_type": "B"
+    },
+    {
+      "id": "Q047",
+      "category": "Lesson 2",
+      "type": "position_ask",
+      "difficulty": "medium",
+      "keyword": "tower",
+      "instruction": "다음 문장에서 5번째 단어는 무엇인가요?",
+      "sentence": "It is time to build a tower.",
+      "blank_answer": "build",
+      "choices": [
+        "time",
+        "to",
+        "build",
+        "a"
+      ],
+      "correct": 2,
+      "hint": "💡 It(1) is(2) time(3) to(4) build(5)...",
+      "page": 27,
+      "wrong_explanations": {
+        "0": "time은 3번째 단어예요. It(1), is(2), time(3)...",
+        "1": "to는 4번째 단어예요. time(3) 다음에 옵니다.",
+        "3": "a는 6번째 단어예요. build(5) 다음에 옵니다."
+      },
+      "language_concept": "key_sentence_L2",
+      "test_task": "position_ask",
+      "score_group": "A",
+      "session_type": "A"
+    },
+    {
+      "id": "Q048",
+      "category": "Lesson 2",
+      "type": "position_ask",
+      "difficulty": "medium",
+      "keyword": "relative who",
+      "instruction": "다음 문장에서 4번째 단어는 무엇인가요?",
+      "sentence": "Bobby is a boy who loves his grandfather.",
+      "blank_answer": "boy",
+      "choices": [
+        "a",
+        "boy",
+        "who",
+        "loves"
+      ],
+      "correct": 1,
+      "hint": "💡 Bobby(1) is(2) a(3) boy(4)...",
+      "page": 32,
+      "wrong_explanations": {
+        "0": "a는 3번째 단어예요. Bobby(1), is(2), a(3)...",
+        "2": "who는 5번째 단어예요. boy(4) 다음에 옵니다.",
+        "3": "loves는 6번째 단어예요. who(5) 다음에 옵니다."
+      },
+      "language_concept": "grammar_relative_who",
+      "test_task": "position_ask",
+      "score_group": "A",
+      "session_type": "A"
+    },
+    {
+      "id": "Q049",
+      "category": "Lesson 2",
+      "type": "position_ask",
+      "difficulty": "easy",
+      "keyword": "to-infinitive",
+      "instruction": "다음 문장에서 3번째 단어는 무엇인가요?",
+      "sentence": "He wanted to make Bob smile.",
+      "blank_answer": "to",
+      "choices": [
+        "wanted",
+        "to",
+        "make",
+        "Bob"
+      ],
+      "correct": 1,
+      "hint": "💡 He(1) wanted(2) to(3)...",
+      "page": 33,
+      "wrong_explanations": {
+        "0": "wanted는 2번째 단어예요. He(1), wanted(2)...",
+        "2": "make는 4번째 단어예요. to(3) 다음에 옵니다.",
+        "3": "Bob은 5번째 단어예요. make(4) 다음에 옵니다."
+      },
+      "language_concept": "grammar_to_inf_purpose",
+      "test_task": "position_ask",
+      "score_group": "A",
+      "session_type": "A"
+    },
+    {
+      "id": "Q050",
+      "category": "Lesson 2",
+      "type": "mini_writing",
+      "difficulty": "medium",
+      "keyword": "to-infinitive purpose",
+      "instruction": "조건에 맞게 영어 문장을 쓰세요.",
+      "sentence": "",
+      "required_word": "to",
+      "min_words": 5,
+      "example_answer": "Bobby came to build a tower.",
+      "hint": "💡 '주어 + 동사 + to + 동사원형' 패턴으로 목적을 표현하세요.",
+      "page": 33,
+      "wrong_explanations": {},
+      "language_concept": "grammar_to_inf_purpose",
+      "test_task": "mini_writing",
+      "score_group": "B",
+      "session_type": "B"
+    },
+    {
+      "id": "Q051_W",
+      "category": "Lesson 2",
+      "type": "mini_writing",
+      "difficulty": "medium",
+      "keyword": "relative pronoun who",
+      "instruction": "조건에 맞게 영어 문장을 쓰세요.",
+      "sentence": "",
+      "required_word": "who",
+      "min_words": 6,
+      "example_answer": "Bob is a man who loves Bobby.",
+      "hint": "💡 '명사 + who + 동사' 패턴으로 사람을 설명하는 문장을 만드세요.",
+      "page": 32,
+      "wrong_explanations": {},
+      "language_concept": "grammar_relative_who",
+      "test_task": "mini_writing",
+      "score_group": "B",
+      "session_type": "B"
     }
   ]
 }

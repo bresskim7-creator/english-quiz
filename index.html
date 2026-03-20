@@ -573,6 +573,93 @@
             border: 1px solid #e0e0e0;
         }
         
+        /* position_ask: 단어 위치 표시 */
+        .position-sentence {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2F5496;
+            text-align: center;
+            padding: 16px;
+            background: #f0f4ff;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+        .position-sentence .word-token {
+            display: inline-block;
+            padding: 4px 6px;
+            margin: 2px;
+            border-bottom: 2px solid #ccc;
+            font-family: monospace;
+        }
+        .position-sentence .word-number {
+            display: block;
+            font-size: 10px;
+            color: #999;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        /* mini_writing: 서술형 입력 */
+        .writing-container {
+            display: none;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .writing-condition {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 12px 14px;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+            color: #333;
+        }
+        .writing-condition strong {
+            color: #e65100;
+        }
+        .writing-input {
+            width: 100%;
+            min-height: 60px;
+            padding: 14px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: system-ui, -apple-system, sans-serif;
+            resize: none;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+        }
+        .writing-input:focus {
+            outline: none;
+            border-color: #2F5496;
+        }
+        .writing-submit-btn {
+            padding: 14px;
+            background: linear-gradient(135deg, #2F5496 0%, #1a3a6f 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .writing-feedback {
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .writing-feedback.pass {
+            background: #e8f5e9;
+            border: 1px solid #4CAF50;
+            color: #2e7d32;
+        }
+        .writing-feedback.fail {
+            background: #fce4ec;
+            border: 1px solid #f44336;
+            color: #c62828;
+        }
+
         /* Lesson Selector */
         .settings-card {
             background: #f8f9fa;
@@ -770,6 +857,14 @@
 
             <!-- Match -->
             <div id="match-container" class="match-options" style="display: none;"></div>
+
+            <!-- Writing (mini_writing) -->
+            <div id="writing-container" class="writing-container">
+                <div id="writing-condition" class="writing-condition"></div>
+                <textarea id="writing-input" class="writing-input" placeholder="영어 문장을 입력하세요..."></textarea>
+                <button id="writing-submit" class="writing-submit-btn" onclick="checkWriting()">제출</button>
+                <div id="writing-feedback" class="writing-feedback" style="display:none;"></div>
+            </div>
 
             <div id="hint-display" style="display:none;background:#fff8e1;border:1px solid #ffc107;border-radius:8px;padding:10px 14px;font-size:13px;color:#795548;margin-top:8px;"></div>
             <button class="btn-next" id="btn-next" onclick="goNextQuestion()">다음 문항 ▶</button>
@@ -1280,9 +1375,11 @@
             document.getElementById('fill-blank-container').style.display = 'none';
             document.getElementById('arrange-container').style.display = 'none';
             document.getElementById('match-container').style.display = 'none';
+            document.getElementById('writing-container').style.display = 'none';
 
-            if (q.type === 'fill_blank') {
-                showFillBlank(q);
+            if (q.type === 'fill_blank' || q.type === 'position_ask') {
+                if (q.type === 'position_ask') showPositionAsk(q);
+                else showFillBlank(q);
             } else if (q.type === 'dialogue_response') {
                 showDialogueResponse(q);
             } else if (q.type === 'short_reading') {
@@ -1291,6 +1388,8 @@
                 showArrange(q);
             } else if (q.type === 'match') {
                 showMatch(q);
+            } else if (q.type === 'mini_writing') {
+                showMiniWriting(q);
             }
         }
 
@@ -1600,15 +1699,115 @@
             speechSynthesis.speak(utter);
         }
 
+        // =========================================================
+        // position_ask: 어순 감각 문항
+        // 문장의 N번째 단어를 묻는 4지선다
+        // =========================================================
+        function showPositionAsk(q) {
+            const questionText = document.getElementById('question-text');
+            // 문장을 단어별로 번호 매긴 형태로 표시
+            const words = q.sentence.split(' ');
+            let html = '<div class="position-sentence">';
+            words.forEach((w, i) => {
+                html += '<span class="word-token"><span class="word-number">' + (i + 1) + '</span>' + w + '</span> ';
+            });
+            html += '</div>';
+            questionText.innerHTML = html;
+
+            // 선택지는 fill-blank-container 재사용
+            const container = document.getElementById('fill-blank-container');
+            container.style.display = 'grid';
+            container.innerHTML = '';
+
+            const shuffled = q.choices.map((choice, idx) => ({ choice, idx }));
+            shuffleArray(shuffled);
+            const newCorrect = shuffled.findIndex(x => x.idx === q.correct);
+
+            shuffled.forEach((item, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'choice-btn';
+                btn.textContent = item.choice;
+                btn.onclick = () => handleChoiceAnswer(q, idx, newCorrect, shuffled[idx].idx);
+                container.appendChild(btn);
+            });
+        }
+
+        // =========================================================
+        // mini_writing: 서술형 조건 충족 문항
+        // 조건(필수 단어, 최소 단어 수)을 제시하고 자유 입력
+        // =========================================================
+        let currentWritingQ = null;
+
+        function showMiniWriting(q) {
+            currentWritingQ = q;
+            document.getElementById('question-text').textContent = '';
+
+            const container = document.getElementById('writing-container');
+            container.style.display = 'flex';
+
+            // 조건 표시
+            const condEl = document.getElementById('writing-condition');
+            let condHtml = '<strong>조건:</strong><br>';
+            if (q.required_word) condHtml += '• <strong>"' + q.required_word + '"</strong>을(를) 사용하세요<br>';
+            if (q.min_words) condHtml += '• ' + q.min_words + '단어 이상으로 쓰세요';
+            condEl.innerHTML = condHtml;
+
+            // 입력 초기화
+            document.getElementById('writing-input').value = '';
+            document.getElementById('writing-input').disabled = false;
+            document.getElementById('writing-submit').style.display = 'block';
+            document.getElementById('writing-feedback').style.display = 'none';
+        }
+
+        function checkWriting() {
+            const q = currentWritingQ;
+            if (!q) return;
+
+            const input = document.getElementById('writing-input').value.trim();
+            if (!input) { alert('문장을 입력해 주세요.'); return; }
+
+            const words = input.split(/\s+/);
+            const wordCount = words.length;
+            const minWords = q.min_words || 5;
+            const requiredWord = q.required_word ? q.required_word.toLowerCase() : null;
+
+            // 조건 검사
+            const hasRequiredWord = requiredWord ? input.toLowerCase().includes(requiredWord) : true;
+            const hasMinWords = wordCount >= minWords;
+            const isCorrect = hasRequiredWord && hasMinWords;
+
+            // 피드백 생성
+            const feedbackEl = document.getElementById('writing-feedback');
+            feedbackEl.style.display = 'block';
+            document.getElementById('writing-input').disabled = true;
+            document.getElementById('writing-submit').style.display = 'none';
+
+            if (isCorrect) {
+                feedbackEl.className = 'writing-feedback pass';
+                feedbackEl.innerHTML = '✅ 조건을 충족했어요!<br>(' + wordCount + '단어'
+                    + (requiredWord ? ', "' + q.required_word + '" 포함' : '') + ')'
+                    + (q.example_answer ? '<br><br>📝 예시 답안: <em>' + q.example_answer + '</em>' : '');
+            } else {
+                let reasons = [];
+                if (!hasRequiredWord) reasons.push('"' + q.required_word + '"을(를) 사용하지 않았어요');
+                if (!hasMinWords) reasons.push(minWords + '단어 이상이어야 해요 (현재 ' + wordCount + '단어)');
+                feedbackEl.className = 'writing-feedback fail';
+                feedbackEl.innerHTML = '❌ 조건을 충족하지 못했어요.<br>• ' + reasons.join('<br>• ')
+                    + (q.example_answer ? '<br><br>📝 예시 답안: <em>' + q.example_answer + '</em>' : '');
+            }
+
+            recordAnswer(q, isCorrect);
+            showNextButton();
+        }
+
         // 정답 문장 추출 (유형별)
         function getCorrectSentence(q) {
             if (q.type === 'arrange') return q.answer;
             if (q.type === 'match') return q.choices[q.correct];
-            // dialogue_response: 정답 선택지 읽어주기
             if (q.type === 'dialogue_response') return q.blank_answer || q.choices[q.correct];
-            // short_reading: 정답 선택지 읽어주기
             if (q.type === 'short_reading') return q.blank_answer || q.choices[q.correct];
-            // fill_blank: 빈칸에 정답을 채운 완성 문장
+            if (q.type === 'position_ask') return q.sentence; // 전체 문장 읽기
+            if (q.type === 'mini_writing') return q.example_answer || '';
             if (q.sentence && q.blank_answer) {
                 return q.sentence.replace('_____', q.blank_answer);
             }
