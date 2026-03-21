@@ -1,9 +1,9 @@
 __loadLesson({
   "lesson": 1,
   "title": "Lesson 1: Good Habits for Good Health",
-  "version": "3.5",
+  "version": "3.7",
   "build_date": "2026-03-21",
-  "build_note": "v3.4 + 메타데이터 병합: core_sentences 필드(source/is_priority/linked_rule_ids/bridge_to_exam), grammar_rules, exam_pattern 태깅.",
+  "build_note": "v3.6 + exam_prep training_layer 재분류 (skill_focus/mixed_practice)",
   "core_sentences": [
     {
       "id": "CS01a",
@@ -1715,7 +1715,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": null,
-      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "마지막 두 문장을 읽어보세요: 'sleep regularly' → 'feel healthier'",
       "wrong_explanations": {
         "0": "반대예요! 아침에는 lively(활기 있게), 밤에 sleepy(졸리게) 느껴요.",
@@ -1735,7 +1735,8 @@ __loadLesson({
         "불규칙한 수면이 건강에 좋다."
       ],
       "correct": 1,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "R002",
@@ -1743,7 +1744,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": null,
-      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "본문에서 카페인이 숨어있는 곳을 모두 확인하세요.",
       "wrong_explanations": {
         "0": "이건 본문 첫 문장과 일치해요! '일치하지 않는 것'을 찾아야 해요.",
@@ -1763,7 +1764,8 @@ __loadLesson({
         "에너지 음료에 카페인이 있다."
       ],
       "correct": 2,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "R003",
@@ -1771,7 +1773,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": null,
-      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "본문에서 '몇 시간'이라는 구체적 수치가 나오는지 확인하세요.",
       "wrong_explanations": {
         "0": "답할 수 있어요! 'your brain will stay active'가 답이에요.",
@@ -1791,7 +1793,8 @@ __loadLesson({
         "잘 자려면 스마트폰을 언제 멈춰야 하나?"
       ],
       "correct": 2,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "R004",
@@ -1799,7 +1802,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": null,
-      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "'낮에 운동하면 밤에 쉽게 잠든다'가 이 단락의 핵심 메시지예요.",
       "wrong_explanations": {
         "1": "반대예요! 취침 직전(right before bedtime)에 끝내면 안 된다고 했어요.",
@@ -1819,7 +1822,8 @@ __loadLesson({
         "운동하면 밤에 너무 깨어있게 된다."
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "R005",
@@ -1827,7 +1831,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": null,
-      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "글의 핵심 주제를 찾으세요: sleep well → energy",
       "wrong_explanations": {
         "0": "시간표 이야기가 아니에요. 수면과 에너지의 관계가 핵심이에요.",
@@ -1847,7 +1851,8 @@ __loadLesson({
         "운동의 효과"
       ],
       "correct": 1,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "R006",
@@ -1855,7 +1860,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "hard",
       "keyword": null,
-      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "이 문장은 '규칙적으로 자라'는 조언의 결과예요. 조언 바로 뒤에 와야 해요.",
       "wrong_explanations": {
         "0": "첫 문장 바로 뒤에는 body clock 설명이 이어져야 자연스러워요.",
@@ -1877,7 +1882,8 @@ __loadLesson({
         "⑤"
       ],
       "correct": 4,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "R007",
@@ -1885,7 +1891,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "hard",
       "keyword": null,
-      "instruction": "다음 글의 내용을 올바르게 이해한 사람으로 가장 적절한 것은?",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "각 사람의 말을 본문과 대조하세요. 본문의 핵심 내용을 가장 정확히 말한 사람은?",
       "wrong_explanations": {
         "0": "반대예요! 초콜릿에 카페인이 있어서 수면 문제를 일으킬 수 있어요.",
@@ -1905,7 +1911,8 @@ __loadLesson({
         "하은: 에너지 음료를 마시면 수면에 문제가 생길 수 있어."
       ],
       "correct": 2,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "R008",
@@ -1913,7 +1920,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": null,
-      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "앞 문장에서 'use'의 목적어를 찾으세요. 무엇을 사용하지 말라는 건가요?",
       "wrong_explanations": {
         "0": "brain은 '사용하다(use)'의 대상이 아니에요. 스마트폰을 사용하지 말라는 거예요.",
@@ -1933,7 +1940,8 @@ __loadLesson({
         "bedtime"
       ],
       "correct": 2,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "R009",
@@ -1941,7 +1949,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": null,
-      "instruction": "다음 글의 요지로 가장 적절한 것은?",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "마지막 문장이 글 전체를 요약하고 있어요.",
       "wrong_explanations": {
         "1": "맛에 대한 이야기가 아니에요. 카페인을 '조심하라'는 내용이에요.",
@@ -1961,7 +1969,8 @@ __loadLesson({
         "운동은 아침에만 해야 한다."
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "R010",
@@ -1989,7 +1998,8 @@ __loadLesson({
         "(B)-(A)-(C)"
       ],
       "correct": 0,
-      "exam_pattern": "글의 순서"
+      "exam_pattern": "글의 순서",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G001",
@@ -1997,7 +2007,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "if절 시제",
-      "instruction": "다음 중 어법상 어색한 문장은?",
+      "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: if 조건절에는 will을 쓰지 않는다을 확인하세요.",
       "hint": "if절 안에서는 미래의 일이어도 현재시제를 써요!",
       "wrong_explanations": {
         "0": "맞는 문장이에요! if절(exercise) 현재형 + 주절(will sleep) 미래형. 완벽해요.",
@@ -2019,7 +2029,8 @@ __loadLesson({
         "If we hurry, we won't miss the bus."
       ],
       "correct": 2,
-      "exam_pattern": "어법 판단"
+      "exam_pattern": "어법 판단",
+      "training_layer": "skill_focus"
     },
     {
       "id": "G002",
@@ -2027,7 +2038,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "의문사+to부정사",
-      "instruction": "다음 중 어법상 올바른 문장은?",
+      "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: to부정사(to + 동사원형) 용법을 확인하세요.",
       "hint": "'의문사 + to부정사' 구조를 생각하세요: what to do, how to solve",
       "wrong_explanations": {
         "0": "what 뒤에 to부정사가 와야 해요! what to do가 맞아요.",
@@ -2049,7 +2060,8 @@ __loadLesson({
         "He told me how solve it."
       ],
       "correct": 2,
-      "exam_pattern": "어법 판단"
+      "exam_pattern": "어법 판단",
+      "training_layer": "skill_focus"
     },
     {
       "id": "G003",
@@ -2057,7 +2069,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "if절+의문사",
-      "instruction": "다음 중 어법상 어색한 문장을 고르세요.",
+      "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: if 조건절에는 will을 쓰지 않는다, to부정사(to + 동사원형) 용법을 확인하세요.",
       "hint": "if절에 will이 들어가면 안 돼요! 조건절에서는 현재형을 써야 해요.",
       "wrong_explanations": {
         "1": "올바른 문장이에요! where to go = 어디로 갈지. 의문사+to부정사 구조가 맞아요.",
@@ -2080,7 +2092,8 @@ __loadLesson({
         "Tell me when to leave."
       ],
       "correct": 0,
-      "exam_pattern": "어법 판단"
+      "exam_pattern": "어법 판단",
+      "training_layer": "skill_focus"
     },
     {
       "id": "G004",
@@ -2110,7 +2123,8 @@ __loadLesson({
         "Until"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G005",
@@ -2140,7 +2154,8 @@ __loadLesson({
         "that"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G006",
@@ -2148,7 +2163,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "hard",
       "keyword": "to부정사 오류",
-      "instruction": "밑줄 친 부분이 어법상 어색한 것은?",
+      "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: if 조건절에는 will을 쓰지 않는다, to부정사(to + 동사원형) 용법을 확인하세요.",
       "hint": "의문사 + to + 동사원형! doing이 아니라 do가 와야 해요.",
       "wrong_explanations": {
         "0": "올바른 문장! if절(sleep) 현재형 + 주절(will feel) 미래형.",
@@ -2171,7 +2186,8 @@ __loadLesson({
         "If it snows, we will make a snowman."
       ],
       "correct": 2,
-      "exam_pattern": "어법 판단"
+      "exam_pattern": "어법 판단",
+      "training_layer": "skill_focus"
     },
     {
       "id": "G008",
@@ -2179,7 +2195,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "hard",
       "keyword": "어법 오류",
-      "instruction": "다음 글의 밑줄 친 ⓐ~ⓓ 중, 어법상 어색한 것은?",
+      "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: if 조건절에는 will을 쓰지 않는다을 확인하세요.",
       "hint": "will 뒤에는 항상 동사원형! will stays → will stay",
       "wrong_explanations": {
         "0": "if절에서 현재형 use는 맞아요! 미래의 일이어도 if절에서는 현재형.",
@@ -2201,7 +2217,8 @@ __loadLesson({
         "ⓓ To sleep"
       ],
       "correct": 1,
-      "exam_pattern": "어법 판단"
+      "exam_pattern": "어법 판단",
+      "training_layer": "skill_focus"
     },
     {
       "id": "V001",
@@ -2229,7 +2246,8 @@ __loadLesson({
         "a substance that keeps you awake"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "V002",
@@ -2257,7 +2275,8 @@ __loadLesson({
         "a part of your body that controls sleep"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "V003",
@@ -2285,7 +2304,8 @@ __loadLesson({
         "careful"
       ],
       "correct": 1,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "V004",
@@ -2313,7 +2333,8 @@ __loadLesson({
         "daytime"
       ],
       "correct": 1,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "V005",
@@ -2341,7 +2362,8 @@ __loadLesson({
         "song"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "V006",
@@ -2369,7 +2391,8 @@ __loadLesson({
         "quiet"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "V007",
@@ -2397,7 +2420,8 @@ __loadLesson({
         "get"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "V008",
@@ -2425,7 +2449,8 @@ __loadLesson({
         "sleep"
       ],
       "correct": 3,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "V009",
@@ -2453,7 +2478,8 @@ __loadLesson({
         "alive"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "V010",
@@ -2481,7 +2507,8 @@ __loadLesson({
         "runs"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "V011",
@@ -2509,7 +2536,8 @@ __loadLesson({
         "There's no cause for worry."
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "D001",
@@ -2538,7 +2566,8 @@ __loadLesson({
       ],
       "correct": 0,
       "blank_answer": "I'm planning to visit my grandparents.",
-      "exam_pattern": "대화 완성"
+      "exam_pattern": "대화 완성",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "D002",
@@ -2567,7 +2596,8 @@ __loadLesson({
       ],
       "correct": 0,
       "blank_answer": "Sounds great. You can do it!",
-      "exam_pattern": "대화 완성"
+      "exam_pattern": "대화 완성",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "D003",
@@ -2596,7 +2626,8 @@ __loadLesson({
       ],
       "correct": 0,
       "blank_answer": "Why don't you stop using your smartphone before bedtime?",
-      "exam_pattern": "대화 완성"
+      "exam_pattern": "대화 완성",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "D004",
@@ -2625,7 +2656,8 @@ __loadLesson({
       ],
       "correct": 1,
       "blank_answer": "B는 올해 그림 실력을 키울 계획이다.",
-      "exam_pattern": "대화 완성"
+      "exam_pattern": "대화 완성",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "D005",
@@ -2654,7 +2686,8 @@ __loadLesson({
       ],
       "correct": 3,
       "blank_answer": "적절하지 않은 것 찾기",
-      "exam_pattern": "대화 완성"
+      "exam_pattern": "대화 완성",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "A001",
@@ -2685,7 +2718,8 @@ __loadLesson({
       ],
       "answer": "If you use your smartphone late at night, your brain will stay active.",
       "correct": 0,
-      "exam_pattern": "배열/영작"
+      "exam_pattern": "배열/영작",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "A002",
@@ -2714,7 +2748,8 @@ __loadLesson({
       ],
       "answer": "Let's find out what to do.",
       "correct": 0,
-      "exam_pattern": "배열/영작"
+      "exam_pattern": "배열/영작",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "A003",
@@ -2744,7 +2779,8 @@ __loadLesson({
         "fall asleep"
       ],
       "correct": 1,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "A004",
@@ -2772,7 +2808,8 @@ __loadLesson({
         "hides"
       ],
       "correct": 3,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "A005",
@@ -2798,7 +2835,8 @@ __loadLesson({
       ],
       "answer": "Caffeine can cause sleep problems.",
       "correct": 0,
-      "exam_pattern": "배열/영작"
+      "exam_pattern": "배열/영작",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "A006",
@@ -2828,7 +2866,8 @@ __loadLesson({
       ],
       "answer": "I don't know what to do this year.",
       "correct": 0,
-      "exam_pattern": "배열/영작"
+      "exam_pattern": "배열/영작",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "M001",
@@ -2836,7 +2875,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "핵심문장 매칭",
-      "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "body clock(몸의 시계) + sleep regularly(규칙적으로 자다)",
       "wrong_explanations": {
         "1": "exercise(운동)가 아니라 sleep(자다)이에요!",
@@ -2856,7 +2895,8 @@ __loadLesson({
         "Follow your schedule and sleep well."
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "M002",
@@ -2864,7 +2904,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "if절 핵심문장",
-      "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "if절 + 주절 구조: 사용하면 → 활발한 상태 유지",
       "wrong_explanations": {
         "1": "뇌가 피곤해진다(gets tired)는 본문과 반대예요. 활발해진다(stays active)가 맞아요.",
@@ -2886,7 +2926,8 @@ __loadLesson({
         "If you stop using your phone, your brain will stay active."
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "W001",
@@ -2894,7 +2935,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "if절 서술형",
-      "instruction": "다음 조건에 맞게 영어 문장을 완성하세요.",
+      "instruction": "핵심문장 틀을 떠올리고, 조건에 맞게 단어만 바꾸세요.",
       "hint": "If + 주어 + 현재형, 주어 + will + 동사원형. 'feel healthier'를 기억하세요!",
       "wrong_explanations": {
         "default": "정답 예시: If you sleep regularly, you will feel healthier. (8단어)\nif절: If you sleep regularly (현재형!)\n주절: you will feel healthier (will + 동사원형)"
@@ -2909,7 +2950,8 @@ __loadLesson({
       "required_word": "if",
       "min_words": 3,
       "example_answer": "If you sleep regularly, you will feel healthier.",
-      "exam_pattern": "조건 영작"
+      "exam_pattern": "조건 영작",
+      "training_layer": "skill_focus"
     },
     {
       "id": "W002",
@@ -2917,7 +2959,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "if절 문장합치기",
-      "instruction": "다음 두 문장을 if를 사용하여 한 문장으로 합치세요.",
+      "instruction": "핵심문장 틀을 떠올리고, 조건에 맞게 단어만 바꾸세요.",
       "hint": "조건(exercise during the day)을 if절에, 결과(fall asleep easily)를 주절에!",
       "wrong_explanations": {
         "default": "정답: If you exercise during the day, you will fall asleep easily at night.\nif절에는 현재형(exercise), 주절에는 will + 동사원형(will fall asleep). 콤마(,) 잊지 마세요!"
@@ -2933,7 +2975,8 @@ __loadLesson({
       "min_words": 3,
       "example_answer": "If you exercise during the day, you will fall asleep easily at night.",
       "exam_pattern": "조건 영작",
-      "context": "① You exercise during the day.\n② You will fall asleep easily at night."
+      "context": "① You exercise during the day.\n② You will fall asleep easily at night.",
+      "training_layer": "skill_focus"
     },
     {
       "id": "W003",
@@ -2941,7 +2984,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "hard",
       "keyword": "의문사+to부정사 서술형",
-      "instruction": "다음 조건에 맞게 영어 문장을 완성하세요.",
+      "instruction": "핵심문장 틀을 떠올리고, 조건에 맞게 단어만 바꾸세요.",
       "hint": "I don't know + what to do + to sleep better. 의문사+to부정사 + 목적의 to부정사!",
       "wrong_explanations": {
         "default": "정답 예시: I don't know what to do to sleep better. (9단어)\n의문사+to부정사: what to do (무엇을 할지)\n목적의 to부정사: to sleep better (더 잘 자기 위해)"
@@ -2956,7 +2999,8 @@ __loadLesson({
       "required_word": "what to",
       "min_words": 3,
       "example_answer": "I don't know what to do to sleep better.",
-      "exam_pattern": "조건 영작"
+      "exam_pattern": "조건 영작",
+      "training_layer": "skill_focus"
     },
     {
       "id": "W004",
@@ -2981,7 +3025,8 @@ __loadLesson({
       "min_words": 3,
       "example_answer": "(1) If you use (2) what to do",
       "exam_pattern": "문장 오류 고치기",
-      "context": "If you will use your smartphone before bed, you won't know what to doing."
+      "context": "If you will use your smartphone before bed, you won't know what to doing.",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "W005",
@@ -2989,7 +3034,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "격려 표현 서술형",
-      "instruction": "빈칸에 들어갈 문장을 조건에 맞게 쓰세요.",
+      "instruction": "핵심문장 틀을 떠올리고, 조건에 맞게 단어만 바꾸세요.",
       "hint": "교과서 핵심 표현: Sounds great / good / wonderful + You can do it!",
       "wrong_explanations": {
         "default": "정답 예시: Sounds great. You can do it! (7단어)\n또는: That's a good plan. You can do it! (8단어)\n'Sounds + 긍정 형용사'로 반응 + 'You can do it!'으로 격려!"
@@ -3003,7 +3048,8 @@ __loadLesson({
       "min_words": 3,
       "example_answer": "Sounds great. You can do it!",
       "exam_pattern": "조건 영작",
-      "context": "A: I'm planning to exercise every morning from now on.\nB: ________________"
+      "context": "A: I'm planning to exercise every morning from now on.\nB: ________________",
+      "training_layer": "skill_focus"
     },
     {
       "id": "G009",
@@ -3033,7 +3079,8 @@ __loadLesson({
         "(A) where — (B) Although"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G010",
@@ -3061,7 +3108,8 @@ __loadLesson({
         "He decided to wake up early."
       ],
       "correct": 2,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "R011",
@@ -3069,7 +3117,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": null,
-      "instruction": "다음 글의 빈칸에 들어갈 말로 가장 적절한 것은?",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "수면에 방해가 되는 음식에 대해 '조심하라'는 조언이에요.",
       "wrong_explanations": {
         "1": "careless는 '부주의한'이에요. 조심하라는 조언에 반대되는 말이에요!",
@@ -3089,7 +3137,8 @@ __loadLesson({
         "excited"
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "R012",
@@ -3097,7 +3146,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "hard",
       "keyword": null,
-      "instruction": "다음 글을 두 문단으로 나눌 때, 두 번째 문단이 시작하는 곳으로 가장 적절한 것은?",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "(A)(B)는 '내적 요인(몸, 음식)'이고 (C)(D)는 '외적 행동(스마트폰, 운동)'이에요.",
       "wrong_explanations": {
         "0": "첫 문장부터 나누면 두 번째 문단만 남아요. 의미 단위로 나눠야 해요.",
@@ -3119,7 +3168,8 @@ __loadLesson({
         "(E)"
       ],
       "correct": 2,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "V012",
@@ -3147,7 +3197,8 @@ __loadLesson({
         "wanted"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "V013",
@@ -3175,7 +3226,8 @@ __loadLesson({
         "class"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "V014",
@@ -3203,7 +3255,8 @@ __loadLesson({
         "plan"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "R013",
@@ -3211,7 +3264,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": null,
-      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "따뜻한 샤워, 취침 전 식사 안 하기 → 모두 '잘 자는 방법'에 대한 조언이에요.",
       "wrong_explanations": {
         "0": "음식 자체가 아니라 '먹지 말라'는 조언이에요. 수면 방법이 주제예요.",
@@ -3231,7 +3284,8 @@ __loadLesson({
         "따뜻한 샤워의 과학"
       ],
       "correct": 1,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "R014",
@@ -3239,7 +3293,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": null,
-      "instruction": "다음 글의 내용과 일치하도록 빈칸을 채우세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "during the day = 낮에, right before bedtime = 취침 직전",
       "wrong_explanations": {
         "1": "밤이 아니라 '낮(during the day)'에 운동하라고 했어요!",
@@ -3259,7 +3313,8 @@ __loadLesson({
         "저녁 — 직후"
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "G011",
@@ -3267,7 +3322,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "올바른 문장",
-      "instruction": "다음 중 어법상 올바른 문장을 고르세요.",
+      "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: if 조건절에는 will을 쓰지 않는다, to부정사(to + 동사원형) 용법을 확인하세요.",
       "hint": "의문사 + to부정사 구조를 떠올려 보세요. what/how/where 뒤에 뭐가 와야 할까요?",
       "wrong_explanations": {
         "0": "if절에 will이 들어갔어요! if + 현재형이 맞아요. → If it rains가 올바른 형태!",
@@ -3290,7 +3345,8 @@ __loadLesson({
         "She told me where going."
       ],
       "correct": 1,
-      "exam_pattern": "어법 판단"
+      "exam_pattern": "어법 판단",
+      "training_layer": "skill_focus"
     },
     {
       "id": "D006",
@@ -3319,7 +3375,8 @@ __loadLesson({
       ],
       "correct": 0,
       "blank_answer": "great",
-      "exam_pattern": "대화 완성"
+      "exam_pattern": "대화 완성",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "D007",
@@ -3348,7 +3405,8 @@ __loadLesson({
       ],
       "correct": 2,
       "blank_answer": "답할 수 없는 질문",
-      "exam_pattern": "대화 완성"
+      "exam_pattern": "대화 완성",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "V015",
@@ -3376,7 +3434,8 @@ __loadLesson({
         "during"
       ],
       "correct": 1,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "R015",
@@ -3406,7 +3465,8 @@ __loadLesson({
         "⑤"
       ],
       "correct": 2,
-      "exam_pattern": "글의 순서"
+      "exam_pattern": "글의 순서",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G012",
@@ -3436,7 +3496,8 @@ __loadLesson({
         "why"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G013",
@@ -3466,7 +3527,8 @@ __loadLesson({
         "Because — am going to"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "R016",
@@ -3474,7 +3536,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": null,
-      "instruction": "다음 글의 내용과 일치하지 않는 것은?",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "본문에서 'right before bedtime'에 끝내면 어떻게 된다고 했나요?",
       "wrong_explanations": {
         "0": "일치해요! 'you will fall asleep easily at night'",
@@ -3494,7 +3556,8 @@ __loadLesson({
         "취침 직전 운동하면 너무 깨어있을 수 있다."
       ],
       "correct": 2,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "V016",
@@ -3522,7 +3585,8 @@ __loadLesson({
         "pattern"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "V017",
@@ -3550,7 +3614,8 @@ __loadLesson({
         "go for"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G014",
@@ -3558,7 +3623,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "hard",
       "keyword": "복수 어법 오류",
-      "instruction": "다음 글의 ⓐ~ⓓ 중 어법상 어색한 것을 모두 고르면?",
+      "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: if 조건절에는 will을 쓰지 않는다, to부정사(to + 동사원형) 용법을 확인하세요.",
       "hint": "ⓐ: if절에 will? ⓓ: how to 다음에 동명사? 두 가지 모두 잘못됐어요!",
       "wrong_explanations": {
         "1": "ⓒ(To sleep well)은 올바른 to부정사 부사적 용법이에요.",
@@ -3581,7 +3646,8 @@ __loadLesson({
         "ⓒ, ⓓ"
       ],
       "correct": 0,
-      "exam_pattern": "어법 판단"
+      "exam_pattern": "어법 판단",
+      "training_layer": "skill_focus"
     },
     {
       "id": "W007",
@@ -3589,7 +3655,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "계획 서술형",
-      "instruction": "다음 조건에 맞게 영어 문장을 쓰세요.",
+      "instruction": "핵심문장 틀을 떠올리고, 조건에 맞게 단어만 바꾸세요.",
       "hint": "I'm planning to + 동사원형 + 구체적 내용. 예: read 30 books, learn cooking 등",
       "wrong_explanations": {
         "default": "정답 예시:\n- I'm planning to exercise every day this year. (8단어)\n- I'm planning to read more books this year. (8단어)\n- I'm planning to learn how to cook this year. (9단어)\n'I'm planning to + 동사원형'으로 시작하고, 구체적인 계획을 써야 해요."
@@ -3602,7 +3668,8 @@ __loadLesson({
       "required_word": "planning to",
       "min_words": 3,
       "example_answer": "I'm planning to exercise every day this year.",
-      "exam_pattern": "조건 영작"
+      "exam_pattern": "조건 영작",
+      "training_layer": "skill_focus"
     },
     {
       "id": "R017",
@@ -3610,7 +3677,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": null,
-      "instruction": "다음 글의 내용을 한 문장으로 요약할 때, 빈칸에 들어갈 말로 가장 적절한 것은?",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "수면 '습관'이 수면의 '질'을 향상시킨다는 요약이에요.",
       "wrong_explanations": {
         "1": "음식(foods)만 이야기한 게 아니에요. 운동, 스마트폰 등 여러 습관이에요.",
@@ -3630,7 +3697,8 @@ __loadLesson({
         "(A) clothes — (B) cost"
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "V018",
@@ -3658,7 +3726,8 @@ __loadLesson({
         "avoids"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "D008",
@@ -3687,7 +3756,8 @@ __loadLesson({
       ],
       "correct": 2,
       "blank_answer": "어색한 대화",
-      "exam_pattern": "대화 완성"
+      "exam_pattern": "대화 완성",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "W008",
@@ -3695,7 +3765,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "hard",
       "keyword": "복합 서술형",
-      "instruction": "다음 채점 기준에 맞게 수면 습관 조언 글을 완성하세요.",
+      "instruction": "핵심문장 틀을 떠올리고, 조건에 맞게 단어만 바꾸세요.",
       "hint": "if절은 이미 있어요! 의문사+to부정사(what to do / how to relax)를 포함하면 돼요.",
       "wrong_explanations": {
         "default": "정답 예시:\n- If you want to sleep better, you should know what to do before bedtime. (14단어)\n- If you want to sleep well, learn how to relax before going to bed. (13단어)\nif + 의문사+to부정사를 모두 포함해야 해요!"
@@ -3711,7 +3781,8 @@ __loadLesson({
       "required_word": "what to",
       "min_words": 3,
       "example_answer": "If you want to sleep better, you should know what to do before bedtime.",
-      "exam_pattern": "조건 영작"
+      "exam_pattern": "조건 영작",
+      "training_layer": "skill_focus"
     },
     {
       "id": "V019",
@@ -3739,7 +3810,8 @@ __loadLesson({
         "swim"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G015",
@@ -3769,7 +3841,8 @@ __loadLesson({
         "studying"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "R018",
@@ -3777,7 +3850,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "hard",
       "keyword": null,
-      "instruction": "다음 글의 내용을 올바르게 이해한 사람으로 가장 적절한 것은?",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "본문의 구체적인 표현을 가장 정확히 이해한 사람을 고르세요.",
       "wrong_explanations": {
         "0": "반대예요! 파란 빛은 뇌를 '활발하게(active)' 만들어요. 편안하게가 아니에요.",
@@ -3797,7 +3870,8 @@ __loadLesson({
         "하늘: 스마트폰을 밤에 쓰면 뇌가 쉬게 된다."
       ],
       "correct": 1,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "V020",
@@ -3825,7 +3899,8 @@ __loadLesson({
         "stop"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "D009",
@@ -3854,7 +3929,8 @@ __loadLesson({
       ],
       "correct": 0,
       "blank_answer": "Why don't you stop using your phone before bedtime?",
-      "exam_pattern": "대화 완성"
+      "exam_pattern": "대화 완성",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "W009",
@@ -3862,7 +3938,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "planning to 서술형",
-      "instruction": "다음 조건에 맞게 영어 문장을 완성하세요.",
+      "instruction": "핵심문장 틀을 떠올리고, 조건에 맞게 단어만 바꾸세요.",
       "hint": "'I'm planning to + 동사원형'으로 시작하세요!",
       "wrong_explanations": {
         "default": "정답 예시: I'm planning to exercise this weekend. (7단어)\nI'm planning to + 동사원형(exercise) + 시간표현(this weekend)"
@@ -3875,7 +3951,8 @@ __loadLesson({
       "required_word": "planning to",
       "min_words": 3,
       "example_answer": "I'm planning to exercise this weekend.",
-      "exam_pattern": "조건 영작"
+      "exam_pattern": "조건 영작",
+      "training_layer": "skill_focus"
     },
     {
       "id": "W010",
@@ -3883,7 +3960,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "hard",
       "keyword": "의문사+to부정사 서술형",
-      "instruction": "다음 조건에 맞게 영어 문장을 완성하세요.",
+      "instruction": "핵심문장 틀을 떠올리고, 조건에 맞게 단어만 바꾸세요.",
       "hint": "'주어 + don't know + 의문사 + to + 동사원형' 구조예요!",
       "wrong_explanations": {
         "default": "정답 예시: I don't know where to go for vacation. (8단어)\n주절(I don't know) + 의문사+to부정사(where to go) + 추가정보(for vacation)"
@@ -3898,7 +3975,8 @@ __loadLesson({
       "required_word": "don't know",
       "min_words": 3,
       "example_answer": "I don't know where to go for vacation.",
-      "exam_pattern": "조건 영작"
+      "exam_pattern": "조건 영작",
+      "training_layer": "skill_focus"
     },
     {
       "id": "A007",
@@ -3925,7 +4003,8 @@ __loadLesson({
       ],
       "answer": "Caffeine can cause sleep problems.",
       "correct": 0,
-      "exam_pattern": "배열/영작"
+      "exam_pattern": "배열/영작",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "A008",
@@ -3952,7 +4031,8 @@ __loadLesson({
       ],
       "answer": "To sleep well, don't use your phone right before bedtime.",
       "correct": 0,
-      "exam_pattern": "배열/영작"
+      "exam_pattern": "배열/영작",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "A009",
@@ -3979,7 +4059,8 @@ __loadLesson({
       ],
       "answer": "Remember to finish exercising a few hours before bedtime.",
       "correct": 0,
-      "exam_pattern": "배열/영작"
+      "exam_pattern": "배열/영작",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "M003",
@@ -3987,7 +4068,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "카페인 매칭",
-      "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "'일으키다'는 cause예요. cure(치료하다)와 헷갈리지 마세요!",
       "wrong_explanations": {
         "1": "cure는 '치료하다'예요. '일으키다'가 아니에요!",
@@ -4007,7 +4088,8 @@ __loadLesson({
         "Coffee can cause health problems."
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "M004",
@@ -4015,7 +4097,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "if절 매칭",
-      "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "if + smartphone late at night → brain + stay active",
       "wrong_explanations": {
         "1": "eyes will stay healthy가 아니라 brain will stay active예요!",
@@ -4037,7 +4119,8 @@ __loadLesson({
         "If you stop using your phone, your brain will stay active."
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "M005",
@@ -4045,7 +4128,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "운동 매칭",
-      "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "낮 = during the day, 운동 = exercise",
       "wrong_explanations": {
         "1": "night(밤)이 아니라 day(낮)예요!",
@@ -4065,7 +4148,8 @@ __loadLesson({
         "Rest during the day."
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "M006",
@@ -4073,7 +4157,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "잠들다 매칭",
-      "instruction": "한국어 뜻에 맞는 영어 문장을 고르세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "'잠들다'는 fall asleep이에요. feel sleepy(졸리다)와 달라요!",
       "wrong_explanations": {
         "1": "feel sleepy는 '졸리다'예요. '잠들다(fall asleep)'와 달라요!",
@@ -4093,7 +4177,8 @@ __loadLesson({
         "You will get asleep easily at night."
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "M007",
@@ -4101,7 +4186,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "운동시간 매칭",
-      "instruction": "영어 문장에 맞는 한국어 뜻을 고르세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "finish exercising = 운동을 끝내다, a few hours before = 몇 시간 전에",
       "wrong_explanations": {
         "1": "'직전에 시작'이 아니라 '몇 시간 전에 끝내라'예요!",
@@ -4121,7 +4206,8 @@ __loadLesson({
         "운동을 몇 시간 동안 계속하는 것을 기억하세요."
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "M008",
@@ -4129,7 +4215,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "어휘 매칭",
-      "instruction": "영어 단어와 한국어 뜻이 올바르게 짝지어진 것을 고르세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "lively는 '살아있는 것처럼 활발한'이라는 뜻이에요.",
       "wrong_explanations": {
         "1": "졸린은 sleepy예요. lively는 반대로 활기찬이에요!",
@@ -4149,7 +4235,8 @@ __loadLesson({
         "regular — 불규칙적인"
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "M009",
@@ -4157,7 +4244,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "어휘 매칭",
-      "instruction": "영어 단어와 한국어 뜻이 올바르게 짝지어진 것을 고르세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "cause는 '원인' 또는 '일으키다'예요.",
       "wrong_explanations": {
         "1": "예방하다는 prevent예요. cause는 '일으키다'!",
@@ -4177,7 +4264,8 @@ __loadLesson({
         "awake — 졸린"
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "M010",
@@ -4185,7 +4273,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "계획 표현 매칭",
-      "instruction": "한국어 뜻에 맞는 영어 표현을 고르세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "'I'm planning to + 동사원형'이 맞는 형태예요!",
       "wrong_explanations": {
         "1": "good은 형용사, better는 비교급 부사예요. eat 뒤에는 부사 better가 와야 해요.",
@@ -4205,7 +4293,8 @@ __loadLesson({
         "I plan eating better this year."
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "M011",
@@ -4213,7 +4302,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "의문사+to부정사 매칭",
-      "instruction": "한국어 뜻에 맞는 영어 표현을 고르세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "'의문사 + to + 동사원형' 구조를 확인하세요!",
       "wrong_explanations": {
         "1": "what doing은 틀려요. 의문사 + to + 동사원형(what to do)이 맞아요!",
@@ -4235,7 +4324,8 @@ __loadLesson({
         "Let's find out how to doing."
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "P001",
@@ -4263,7 +4353,8 @@ __loadLesson({
         "and"
       ],
       "correct": 1,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "P002",
@@ -4291,7 +4382,8 @@ __loadLesson({
         "drinks"
       ],
       "correct": 2,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "P003",
@@ -4321,7 +4413,8 @@ __loadLesson({
         "your"
       ],
       "correct": 1,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "P004",
@@ -4349,7 +4442,456 @@ __loadLesson({
         "easily"
       ],
       "correct": 1,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
+    },
+    {
+      "id": "PC-A-01",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "easy",
+      "recovery_band": "A",
+      "core_sentence_id": "CS01a",
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 16,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Have a regular sleep pattern.\n\nYour body has a \"clock.\" The body clock tells you when to wake up and sleep. For example, in the morning, your body starts to feel lively. At night, your body starts to feel sleepy. Listen to your body clock and sleep regularly. You will feel healthier.\n\n위 글에서 '생체 시계(body clock)'가 알려주는 것은?",
+      "choices": [
+        "언제 자고 일어나야 하는지",
+        "어떤 음식을 먹어야 하는지",
+        "어디에서 운동해야 하는지",
+        "언제 스마트폰을 써야 하는지"
+      ],
+      "correct": 0,
+      "hint": "두 번째 문장을 읽어보세요: 'tells you when to wake up and sleep'",
+      "wrong_explanations": {
+        "1": "음식 이야기는 이 단락에 없어요. body clock은 잠자는 시간을 알려줘요!",
+        "2": "운동 이야기는 다른 단락에 나와요. 여기서는 수면 패턴이 주제예요.",
+        "3": "스마트폰 이야기도 다른 단락이에요. body clock = 언제 자고 일어나는지!"
+      }
+    },
+    {
+      "id": "PC-A-02",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "easy",
+      "recovery_band": "A",
+      "core_sentence_id": "CS02",
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 16,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Have a regular sleep pattern.\n\nYour body has a \"clock.\" The body clock tells you when to wake up and sleep. For example, in the morning, your body starts to feel lively. At night, your body starts to feel sleepy. Listen to your body clock and sleep regularly. You will feel healthier.\n\n위 글의 내용과 일치하는 것은?",
+      "choices": [
+        "아침에 몸이 졸리게 느껴진다.",
+        "밤에 몸이 활기차게 느껴진다.",
+        "규칙적으로 자면 더 건강해진다.",
+        "생체 시계는 밤에만 작동한다."
+      ],
+      "correct": 2,
+      "hint": "마지막 두 문장을 보세요: sleep regularly → feel healthier",
+      "wrong_explanations": {
+        "0": "반대예요! 아침(morning)에는 lively(활기차게), 밤(night)에 sleepy(졸리게)예요.",
+        "1": "반대예요! 밤에는 sleepy(졸리게) 느껴요. lively(활기찬)는 아침이에요.",
+        "3": "아침에도 밤에도 작동해요. 아침엔 lively, 밤엔 sleepy로 알려주니까요."
+      }
+    },
+    {
+      "id": "PC-A-03",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "easy",
+      "recovery_band": "A",
+      "core_sentence_id": "CS05",
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 16,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Be careful about caffeine.\n\nCaffeine can cause sleep problems. Do you know that even chocolate has caffeine? Caffeine hides in many foods and drinks such as chocolate, coffee, tea, soda, and energy drinks. So, be careful!\n\n위 글에 따르면, 다음 중 카페인이 들어있다고 한 것은?",
+      "choices": [
+        "우유",
+        "과일 주스",
+        "초콜릿",
+        "물"
+      ],
+      "correct": 2,
+      "hint": "'even chocolate has caffeine' — 초콜릿에도 카페인이!",
+      "wrong_explanations": {
+        "0": "본문에 우유(milk)는 나오지 않아요. chocolate, coffee, tea, soda, energy drinks가 나와요.",
+        "1": "과일 주스(fruit juice)도 본문에 없어요. 카페인 목록을 다시 확인해보세요.",
+        "3": "물(water)도 본문에 없어요. 'even chocolate has caffeine'이 핵심이에요!"
+      }
+    },
+    {
+      "id": "PC-A-04",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "easy",
+      "recovery_band": "A",
+      "core_sentence_id": "CS04",
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 16,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Be careful about caffeine.\n\nCaffeine can cause sleep problems. Do you know that even chocolate has caffeine? Caffeine hides in many foods and drinks such as chocolate, coffee, tea, soda, and energy drinks. So, be careful!\n\n위 글의 내용과 일치하지 않는 것은?",
+      "choices": [
+        "카페인은 수면 문제를 일으킬 수 있다.",
+        "초콜릿에도 카페인이 들어있다.",
+        "카페인은 커피에만 들어있다.",
+        "에너지 음료에도 카페인이 있다."
+      ],
+      "correct": 2,
+      "hint": "'many foods and drinks'라고 했어요. '~에만'이라는 말이 있나 확인하세요.",
+      "wrong_explanations": {
+        "0": "이건 본문과 일치해요! 첫 문장에 'cause sleep problems'라고 나와요.",
+        "1": "이것도 일치해요! 'even chocolate has caffeine'이라고 했어요.",
+        "3": "이것도 일치해요! energy drinks가 카페인 목록에 포함되어 있어요."
+      }
+    },
+    {
+      "id": "PC-A-05",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "easy",
+      "recovery_band": "A",
+      "core_sentence_id": "CS06",
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 17,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Stop using your smartphone before bedtime.\n\nIf you use your smartphone late at night, your brain will stay active. The blue light from the phone will also tell your brain, \"Hey, don't sleep yet.\" To sleep well, don't use your phone right before bedtime.\n\n위 글에 따르면, 밤늦게 스마트폰을 사용하면 어떻게 되나요?",
+      "choices": [
+        "뇌가 활발하게 깨어있게 된다.",
+        "눈이 더 좋아진다.",
+        "잠을 더 잘 자게 된다.",
+        "공부를 더 잘하게 된다."
+      ],
+      "correct": 0,
+      "hint": "첫 문장: 'your brain will stay active'",
+      "wrong_explanations": {
+        "1": "눈이 좋아진다는 내용은 없어요. 오히려 파란 빛이 뇌에 안 좋은 신호를 보내요.",
+        "2": "반대예요! 스마트폰을 쓰면 뇌가 깨어있어서 잠을 못 자요.",
+        "3": "공부와 관련된 내용은 없어요. 스마트폰 → 뇌 활발 → 잠이 안 옴이 핵심이에요."
+      }
+    },
+    {
+      "id": "PC-A-06",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "easy",
+      "recovery_band": "A",
+      "core_sentence_id": "CS07",
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 17,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Stop using your smartphone before bedtime.\n\nIf you use your smartphone late at night, your brain will stay active. The blue light from the phone will also tell your brain, \"Hey, don't sleep yet.\" To sleep well, don't use your phone right before bedtime.\n\n위 글에서 스마트폰의 파란 빛(blue light)이 뇌에 보내는 메시지는?",
+      "choices": [
+        "\"이제 잠을 자!\"",
+        "\"아직 자지 마!\"",
+        "\"운동을 시작해!\"",
+        "\"물을 마셔!\""
+      ],
+      "correct": 1,
+      "hint": "본문에 직접 나와요: \"Hey, don't sleep yet.\"",
+      "wrong_explanations": {
+        "0": "반대예요! '자라'가 아니라 '자지 마(don't sleep yet)'라고 해요.",
+        "2": "운동과 관련 없어요. 파란 빛은 '아직 자지 마!'라는 신호를 보내요.",
+        "3": "물 이야기는 본문에 없어요. \"Hey, don't sleep yet.\"이 정답이에요."
+      }
+    },
+    {
+      "id": "PC-A-07",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "easy",
+      "recovery_band": "A",
+      "core_sentence_id": "CS09",
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 17,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Move your body actively.\n\nExercise during the day. Then, your body will feel a little tired, and you will fall asleep easily at night. Remember to finish exercising a few hours before bedtime. If you finish it right before bedtime, your body may feel too awake. You may not fall asleep easily.\n\n위 글에 따르면, 낮에 운동하면 밤에 어떻게 되나요?",
+      "choices": [
+        "잠들기 더 어려워진다.",
+        "쉽게 잠들 수 있다.",
+        "배가 더 고파진다.",
+        "숙제를 잘하게 된다."
+      ],
+      "correct": 1,
+      "hint": "'you will fall asleep easily at night' — 밤에 쉽게 잠든다!",
+      "wrong_explanations": {
+        "0": "반대예요! 낮에 운동하면 쉽게(easily) 잠들어요. 어려워지는 건 취침 직전에 운동했을 때예요.",
+        "2": "배고픔 이야기는 본문에 없어요. 'a little tired' = 약간 피곤 → 쉽게 잠듦이 핵심이에요.",
+        "3": "숙제와 관련 없어요. 운동 → 약간 피곤 → 밤에 쉽게 잠듦이 이 단락의 내용이에요."
+      }
+    },
+    {
+      "id": "PC-A-08",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "easy",
+      "recovery_band": "A",
+      "core_sentence_id": "CS10",
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 17,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Move your body actively.\n\nExercise during the day. Then, your body will feel a little tired, and you will fall asleep easily at night. Remember to finish exercising a few hours before bedtime. If you finish it right before bedtime, your body may feel too awake. You may not fall asleep easily.\n\n위 글의 내용과 일치하는 것은?",
+      "choices": [
+        "취침 직전에 운동을 끝내면 좋다.",
+        "운동은 밤에 하는 것이 효과적이다.",
+        "취침 몇 시간 전에 운동을 끝내야 한다.",
+        "운동을 하면 항상 잠을 못 자게 된다."
+      ],
+      "correct": 2,
+      "hint": "'a few hours before bedtime' = 취침 몇 시간 전",
+      "wrong_explanations": {
+        "0": "반대예요! 취침 직전(right before bedtime)에 끝내면 너무 깨어있게 돼요(too awake).",
+        "1": "반대예요! 'during the day(낮에)' 운동하라고 했어요. 밤이 아니에요!",
+        "3": "'항상'이 틀렸어요. 낮에 하면 쉽게 잠들고, 취침 직전에 하면 못 잠드는 거예요."
+      }
+    },
+    {
+      "id": "PC-B-01",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "B",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "recovery_band": "A",
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 16,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Have a regular sleep pattern.\n\nYour body has a \"clock.\" The body clock tells you when to wake up and sleep. For example, in the morning, your body starts to feel lively. At night, your body starts to feel sleepy. Listen to your body clock and sleep regularly. You will feel healthier.\n\nBe careful about caffeine.\n\nCaffeine can cause sleep problems. Do you know that even chocolate has caffeine? Caffeine hides in many foods and drinks such as chocolate, coffee, tea, soda, and energy drinks. So, be careful!\n\n위 글의 내용과 일치하는 것은?",
+      "choices": [
+        "생체 시계는 밤에 활기차게 느끼게 한다.",
+        "카페인은 커피에만 들어있다.",
+        "규칙적인 수면은 건강에 좋다.",
+        "초콜릿에는 카페인이 없다."
+      ],
+      "correct": 2,
+      "hint": "첫 번째 단락 마지막: 'sleep regularly. You will feel healthier.'",
+      "wrong_explanations": {
+        "0": "반대예요! 밤(night)에는 sleepy(졸리게), 아침(morning)에 lively(활기차게)예요.",
+        "1": "'many foods and drinks'에 숨어있다고 했어요. 커피만이 아니에요!",
+        "3": "반대예요! 'even chocolate has caffeine' — 초콜릿에도 카페인이 있어요."
+      }
+    },
+    {
+      "id": "PC-B-02",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "B",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "recovery_band": "B",
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "exam_pattern": "unanswerable_question",
+      "page": 16,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Have a regular sleep pattern.\n\nYour body has a \"clock.\" The body clock tells you when to wake up and sleep. For example, in the morning, your body starts to feel lively. At night, your body starts to feel sleepy. Listen to your body clock and sleep regularly. You will feel healthier.\n\nBe careful about caffeine.\n\nCaffeine can cause sleep problems. Do you know that even chocolate has caffeine? Caffeine hides in many foods and drinks such as chocolate, coffee, tea, soda, and energy drinks. So, be careful!\n\n위 글을 읽고 답할 수 없는 질문은?",
+      "choices": [
+        "생체 시계는 무엇을 알려주나?",
+        "카페인이 들어있는 음식에는 어떤 것이 있나?",
+        "하루에 물을 얼마나 마셔야 하나?",
+        "카페인은 어떤 문제를 일으킬 수 있나?"
+      ],
+      "correct": 2,
+      "hint": "선택지 하나하나를 본문에서 찾아보세요. 본문에 아예 없는 내용이 정답이에요.",
+      "wrong_explanations": {
+        "0": "답할 수 있어요! 'tells you when to wake up and sleep'이 답이에요.",
+        "1": "답할 수 있어요! chocolate, coffee, tea, soda, energy drinks라고 나와요.",
+        "3": "답할 수 있어요! 'cause sleep problems(수면 문제를 일으킨다)'가 답이에요."
+      }
+    },
+    {
+      "id": "PC-B-03",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "B",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "recovery_band": "A",
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 17,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Stop using your smartphone before bedtime.\n\nIf you use your smartphone late at night, your brain will stay active. The blue light from the phone will also tell your brain, \"Hey, don't sleep yet.\" To sleep well, don't use your phone right before bedtime.\n\nMove your body actively.\n\nExercise during the day. Then, your body will feel a little tired, and you will fall asleep easily at night. Remember to finish exercising a few hours before bedtime. If you finish it right before bedtime, your body may feel too awake. You may not fall asleep easily.\n\n위 글의 내용과 일치하지 않는 것은?",
+      "choices": [
+        "밤늦게 스마트폰을 쓰면 뇌가 활발해진다.",
+        "파란 빛은 뇌에 '아직 자지 마'라는 신호를 보낸다.",
+        "낮에 운동하면 밤에 쉽게 잠든다.",
+        "취침 직전에 운동하면 쉽게 잠들 수 있다."
+      ],
+      "correct": 3,
+      "hint": "취침 직전에 운동하면 어떻게 된다고 했는지 마지막 부분을 다시 읽어보세요.",
+      "wrong_explanations": {
+        "0": "이건 본문과 일치해요! 'your brain will stay active'라고 했어요.",
+        "1": "이것도 일치해요! \"Hey, don't sleep yet.\"이라고 했어요.",
+        "2": "이것도 일치해요! 'fall asleep easily at night'이라고 했어요."
+      }
+    },
+    {
+      "id": "PC-B-04",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "B",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "recovery_band": "A",
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 17,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Stop using your smartphone before bedtime.\n\nIf you use your smartphone late at night, your brain will stay active. The blue light from the phone will also tell your brain, \"Hey, don't sleep yet.\" To sleep well, don't use your phone right before bedtime.\n\nMove your body actively.\n\nExercise during the day. Then, your body will feel a little tired, and you will fall asleep easily at night. Remember to finish exercising a few hours before bedtime. If you finish it right before bedtime, your body may feel too awake. You may not fall asleep easily.\n\n위 글에서 잠자기 전에 하지 말아야 할 것 두 가지는?",
+      "choices": [
+        "스마트폰 사용, 취침 직전 운동",
+        "물 마시기, 음악 듣기",
+        "책 읽기, 간식 먹기",
+        "양치질, 샤워"
+      ],
+      "correct": 0,
+      "hint": "두 단락 각각에서 '하지 말라'고 한 것을 찾으세요.",
+      "wrong_explanations": {
+        "1": "물 마시기, 음악 듣기는 본문에 전혀 나오지 않아요.",
+        "2": "책 읽기, 간식 먹기도 본문에 없어요. 스마트폰과 취침 직전 운동이 답!",
+        "3": "양치질, 샤워는 본문 내용이 아니에요. 두 단락의 핵심을 다시 읽어보세요."
+      }
+    },
+    {
+      "id": "PC-C-01",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "C",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "recovery_band": "A",
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 16,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Better Sleep, Better Life\n\nWelcome back to school. How do you feel today? Did you sleep well last night? Sleeping well can give you energy for the new school year.\n\nHave a regular sleep pattern.\nYour body has a \"clock.\" The body clock tells you when to wake up and sleep. For example, in the morning, your body starts to feel lively. At night, your body starts to feel sleepy. Listen to your body clock and sleep regularly. You will feel healthier.\n\nBe careful about caffeine.\nCaffeine can cause sleep problems. Do you know that even chocolate has caffeine? Caffeine hides in many foods and drinks such as chocolate, coffee, tea, soda, and energy drinks. So, be careful!\n\nStop using your smartphone before bedtime.\nIf you use your smartphone late at night, your brain will stay active. The blue light from the phone will also tell your brain, \"Hey, don't sleep yet.\" To sleep well, don't use your phone right before bedtime.\n\nMove your body actively.\nExercise during the day. Then, your body will feel a little tired, and you will fall asleep easily at night. Remember to finish exercising a few hours before bedtime. If you finish it right before bedtime, your body may feel too awake. You may not fall asleep easily.\n\n위 글의 내용과 일치하는 것은?",
+      "choices": [
+        "카페인은 음료에만 들어있다.",
+        "밤에 스마트폰을 쓰면 뇌가 쉬게 된다.",
+        "취침 직전에 운동하면 깨어있을 수 있다.",
+        "생체 시계는 아침에만 작동한다."
+      ],
+      "correct": 2,
+      "hint": "마지막 단락: 'your body may feel too awake'",
+      "wrong_explanations": {
+        "0": "'many foods AND drinks'라고 했어요. 음료만이 아니에요!",
+        "1": "반대예요! 뇌가 쉬는 게 아니라 'stay active(활발해진다)'예요.",
+        "3": "아침에도 밤에도 작동해요. morning → lively, night → sleepy 둘 다요."
+      }
+    },
+    {
+      "id": "PC-C-02",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "C",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "recovery_band": "A",
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 16,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Better Sleep, Better Life\n\nWelcome back to school. How do you feel today? Did you sleep well last night? Sleeping well can give you energy for the new school year.\n\nHave a regular sleep pattern.\nYour body has a \"clock.\" The body clock tells you when to wake up and sleep. For example, in the morning, your body starts to feel lively. At night, your body starts to feel sleepy. Listen to your body clock and sleep regularly. You will feel healthier.\n\nBe careful about caffeine.\nCaffeine can cause sleep problems. Do you know that even chocolate has caffeine? Caffeine hides in many foods and drinks such as chocolate, coffee, tea, soda, and energy drinks. So, be careful!\n\nStop using your smartphone before bedtime.\nIf you use your smartphone late at night, your brain will stay active. The blue light from the phone will also tell your brain, \"Hey, don't sleep yet.\" To sleep well, don't use your phone right before bedtime.\n\nMove your body actively.\nExercise during the day. Then, your body will feel a little tired, and you will fall asleep easily at night. Remember to finish exercising a few hours before bedtime. If you finish it right before bedtime, your body may feel too awake. You may not fall asleep easily.\n\n위 글의 내용과 일치하지 않는 것은?",
+      "choices": [
+        "잘 자면 새 학년에 에너지를 얻을 수 있다.",
+        "규칙적으로 자면 더 건강해진다.",
+        "낮에 운동하면 밤에 잠들기 어렵다.",
+        "초콜릿에도 카페인이 들어있다."
+      ],
+      "correct": 2,
+      "hint": "낮에 운동하면 밤에 어떻게 된다고 했나요? 'easily'를 찾아보세요.",
+      "wrong_explanations": {
+        "0": "일치해요! 도입부에 'give you energy for the new school year'라고 했어요.",
+        "1": "일치해요! 'sleep regularly. You will feel healthier.'라고 했어요.",
+        "3": "일치해요! 'even chocolate has caffeine'이라고 했어요."
+      }
+    },
+    {
+      "id": "PC-C-03",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "C",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "recovery_band": "B",
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "exam_pattern": "title_main_idea",
+      "page": 15,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Better Sleep, Better Life\n\nWelcome back to school. How do you feel today? Did you sleep well last night? Sleeping well can give you energy for the new school year.\n\nHave a regular sleep pattern.\nYour body has a \"clock.\" The body clock tells you when to wake up and sleep. For example, in the morning, your body starts to feel lively. At night, your body starts to feel sleepy. Listen to your body clock and sleep regularly. You will feel healthier.\n\nBe careful about caffeine.\nCaffeine can cause sleep problems. Do you know that even chocolate has caffeine? Caffeine hides in many foods and drinks such as chocolate, coffee, tea, soda, and energy drinks. So, be careful!\n\nStop using your smartphone before bedtime.\nIf you use your smartphone late at night, your brain will stay active. The blue light from the phone will also tell your brain, \"Hey, don't sleep yet.\" To sleep well, don't use your phone right before bedtime.\n\nMove your body actively.\nExercise during the day. Then, your body will feel a little tired, and you will fall asleep easily at night. Remember to finish exercising a few hours before bedtime. If you finish it right before bedtime, your body may feel too awake. You may not fall asleep easily.\n\n위 글의 주제로 가장 적절한 것은?",
+      "choices": [
+        "건강한 수면을 위한 좋은 습관들",
+        "카페인이 몸에 미치는 영향",
+        "스마트폰 사용의 장단점",
+        "학교생활에 필요한 준비물"
+      ],
+      "correct": 0,
+      "hint": "글 전체가 '잘 자기 위한 방법'을 4가지로 설명하고 있어요.",
+      "wrong_explanations": {
+        "1": "카페인은 4가지 중 하나일 뿐이에요. 글 전체는 수면 습관 전반을 다뤄요.",
+        "2": "스마트폰도 4가지 중 하나예요. 장단점을 비교하는 글이 아니에요.",
+        "3": "준비물 이야기가 아니에요. 수면 습관에 대한 조언이에요."
+      }
+    },
+    {
+      "id": "PC-C-04",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "C",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "recovery_band": "B",
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "exam_pattern": "unanswerable_question",
+      "page": 15,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Better Sleep, Better Life\n\nWelcome back to school. How do you feel today? Did you sleep well last night? Sleeping well can give you energy for the new school year.\n\nHave a regular sleep pattern.\nYour body has a \"clock.\" The body clock tells you when to wake up and sleep. For example, in the morning, your body starts to feel lively. At night, your body starts to feel sleepy. Listen to your body clock and sleep regularly. You will feel healthier.\n\nBe careful about caffeine.\nCaffeine can cause sleep problems. Do you know that even chocolate has caffeine? Caffeine hides in many foods and drinks such as chocolate, coffee, tea, soda, and energy drinks. So, be careful!\n\nStop using your smartphone before bedtime.\nIf you use your smartphone late at night, your brain will stay active. The blue light from the phone will also tell your brain, \"Hey, don't sleep yet.\" To sleep well, don't use your phone right before bedtime.\n\nMove your body actively.\nExercise during the day. Then, your body will feel a little tired, and you will fall asleep easily at night. Remember to finish exercising a few hours before bedtime. If you finish it right before bedtime, your body may feel too awake. You may not fall asleep easily.\n\n위 글을 읽고 답할 수 없는 질문은?",
+      "choices": [
+        "카페인이 숨어있는 음식에는 어떤 것이 있나?",
+        "밤늦게 스마트폰을 쓰면 뇌에 어떤 일이 생기나?",
+        "하루에 몇 시간을 자야 건강에 좋은가?",
+        "취침 전 운동은 언제 끝내야 하나?"
+      ],
+      "correct": 2,
+      "hint": "선택지 하나하나를 본문에서 찾아보세요. '몇 시간을 자야 하는지'가 본문에 있나요?",
+      "wrong_explanations": {
+        "0": "답할 수 있어요! chocolate, coffee, tea, soda, energy drinks라고 나와요.",
+        "1": "답할 수 있어요! 'your brain will stay active'가 답이에요.",
+        "3": "답할 수 있어요! 'a few hours before bedtime'이라고 나와요."
+      }
     }
   ],
   "vocab_drill": [

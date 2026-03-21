@@ -1,9 +1,9 @@
 __loadLesson({
   "lesson": 2,
   "title": "Lesson 2: Now One Foot, Now the Other",
-  "version": "3.4",
+  "version": "3.6",
   "build_date": "2026-03-21",
-  "build_note": "v3.3 + 메타데이터 병합: core_sentences 필드(source/is_priority/linked_rule_ids/bridge_to_exam), grammar_rules, exam_pattern 태깅.",
+  "build_note": "v3.5 + exam_prep training_layer 재분류 (skill_focus/mixed_practice)",
   "core_sentences": [
     {
       "id": "CS01",
@@ -1573,7 +1573,8 @@ __loadLesson({
       ],
       "answer": "I have nothing to do.",
       "correct": 1,
-      "exam_pattern": "배열/영작"
+      "exam_pattern": "배열/영작",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "A002",
@@ -1600,7 +1601,8 @@ __loadLesson({
       ],
       "answer": "He wanted to recover.",
       "correct": 3,
-      "exam_pattern": "배열/영작"
+      "exam_pattern": "배열/영작",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "A003",
@@ -1629,7 +1631,8 @@ __loadLesson({
       ],
       "answer": "I know the person who helps me.",
       "correct": 2,
-      "exam_pattern": "배열/영작"
+      "exam_pattern": "배열/영작",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "A004",
@@ -1658,7 +1661,8 @@ __loadLesson({
       ],
       "answer": "I liked the restaurant which was in Paris.",
       "correct": 3,
-      "exam_pattern": "배열/영작"
+      "exam_pattern": "배열/영작",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "M004",
@@ -1666,7 +1670,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "호기심 어휘",
-      "instruction": "단어의 뜻으로 가장 알맞은 것을 고르세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "좋은 날씨에 산들바람이 불었다 — 교과서 p.41",
       "wrong_explanations": {
         "강한 바람": "gale이나 wind는 '강한 바람'을 의미해요. breeze는 부드러운 산들바람이라 느낌이 완전히 달라요!\n정답은 산들바람이에요. breeze = gentle, mild wind(부드럽고 약한 바람)\n'산들바람'이라는 느낌: 부드롭고 기분 좋은 바람을 떠올리면 잊지 않을 거예요!",
@@ -1686,7 +1690,8 @@ __loadLesson({
         "구름"
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "A005",
@@ -1713,7 +1718,8 @@ __loadLesson({
       ],
       "answer": "Bobby made a sound.",
       "correct": 2,
-      "exam_pattern": "배열/영작"
+      "exam_pattern": "배열/영작",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "A006",
@@ -1741,7 +1747,8 @@ __loadLesson({
       ],
       "answer": "His fingers started to move.",
       "correct": 0,
-      "exam_pattern": "배열/영작"
+      "exam_pattern": "배열/영작",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G011",
@@ -1771,7 +1778,8 @@ __loadLesson({
         "to building"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G014",
@@ -1799,7 +1807,8 @@ __loadLesson({
         "could"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G015",
@@ -1827,7 +1836,8 @@ __loadLesson({
         "fingers / toes"
       ],
       "correct": 1,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "DR005",
@@ -1856,7 +1866,8 @@ __loadLesson({
       ],
       "correct": 0,
       "blank_answer": "Now one foot, now the other.",
-      "exam_pattern": "대화 완성"
+      "exam_pattern": "대화 완성",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "DR006",
@@ -1885,7 +1896,8 @@ __loadLesson({
       ],
       "correct": 1,
       "blank_answer": "And that's the elephant block!",
-      "exam_pattern": "대화 완성"
+      "exam_pattern": "대화 완성",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "DR007",
@@ -1914,7 +1926,8 @@ __loadLesson({
       ],
       "correct": 2,
       "blank_answer": "(Bob's mouth made a small smile.)",
-      "exam_pattern": "대화 완성"
+      "exam_pattern": "대화 완성",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "R001",
@@ -1922,7 +1935,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "sneeze",
-      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "💡 탑이 무너진 직접적인 원인을 지문에서 찾으세요.",
       "wrong_explanations": {
         "0": "Bobby가 밀은 것이 아니에요. 지문을 보면 Bobby는 조심스럽게 블록을 올렸어요.",
@@ -1942,7 +1955,8 @@ __loadLesson({
         "Because there were too many blocks."
       ],
       "correct": 2,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "R002",
@@ -1950,7 +1964,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "Bob's illness",
-      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "💡 Bob에게 무슨 일이 생겼는지 첫 문장에서 찾으세요.",
       "wrong_explanations": {
         "0": "휴가를 간 것이 아니에요. 지문에서 Bob은 아파서 병원에 갔어요.",
@@ -1970,7 +1984,8 @@ __loadLesson({
         "He got a new job."
       ],
       "correct": 1,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "R003",
@@ -1978,7 +1993,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "purpose",
-      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "💡 Bobby가 블록을 가져온 목적(to ~)을 지문에서 찾으세요.",
       "wrong_explanations": {
         "0": "시장에서 팔기 위해서가 아니에요. Bobby는 Bob을 위해 블록을 가져왔어요.",
@@ -1998,7 +2013,8 @@ __loadLesson({
         "To clean Bob's room."
       ],
       "correct": 2,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "P001",
@@ -2026,7 +2042,8 @@ __loadLesson({
         "a"
       ],
       "correct": 2,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "MW006",
@@ -2034,7 +2051,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "to-infinitive purpose",
-      "instruction": "조건에 맞게 영어 문장을 쓰세요.",
+      "instruction": "핵심문장 틀을 떠올리고, 조건에 맞게 단어만 바꾸세요.",
       "hint": "💡 '주어 + 동사 + to + 동사원형' 패턴으로 목적을 표현하세요.",
       "wrong_explanations": {},
       "core_sentence_id": null,
@@ -2045,7 +2062,8 @@ __loadLesson({
       "required_word": "to",
       "min_words": 5,
       "example_answer": "Bobby came to build a tower.",
-      "exam_pattern": "조건 영작"
+      "exam_pattern": "조건 영작",
+      "training_layer": "skill_focus"
     },
     {
       "id": "MW007",
@@ -2053,7 +2071,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "relative pronoun who",
-      "instruction": "조건에 맞게 영어 문장을 쓰세요.",
+      "instruction": "핵심문장 틀을 떠올리고, 조건에 맞게 단어만 바꾸세요.",
       "hint": "💡 '명사 + who + 동사' 패턴으로 사람을 설명하는 문장을 만드세요.",
       "wrong_explanations": {},
       "core_sentence_id": null,
@@ -2064,7 +2082,8 @@ __loadLesson({
       "required_word": "who",
       "min_words": 6,
       "example_answer": "Bob is a man who loves Bobby.",
-      "exam_pattern": "조건 영작"
+      "exam_pattern": "조건 영작",
+      "training_layer": "skill_focus"
     },
     {
       "id": "G001",
@@ -2094,7 +2113,8 @@ __loadLesson({
         "built"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G002",
@@ -2122,7 +2142,8 @@ __loadLesson({
         "visits"
       ],
       "correct": 1,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G003",
@@ -2152,7 +2173,8 @@ __loadLesson({
         "do"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G004",
@@ -2182,7 +2204,8 @@ __loadLesson({
         "to be doing"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G005",
@@ -2212,7 +2235,8 @@ __loadLesson({
         "where"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G006",
@@ -2242,7 +2266,8 @@ __loadLesson({
         "when"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G007",
@@ -2272,7 +2297,8 @@ __loadLesson({
         "where"
       ],
       "correct": 1,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "M001",
@@ -2280,7 +2306,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "관계대명사 의미",
-      "instruction": "한국어 뜻과 맞는 영어 문장을 고르세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "사람을 나타낼 때는 who — 교과서 p.27",
       "wrong_explanations": {
         "I have a friend which helps me.": "which는 사물에 쓰는 관계대명사예요.",
@@ -2302,7 +2328,8 @@ __loadLesson({
         "I have a friend where help me."
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "M002",
@@ -2310,7 +2337,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "관계대명사 의미",
-      "instruction": "한국어 뜻과 맞는 영어 문장을 고르세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "사물(병원)을 나타낼 때는 which — 교과서 p.30",
       "wrong_explanations": {
         "He went to a hospital who is in Paris.": "who는 사람에 쓰는 관계대명사예요.",
@@ -2332,7 +2359,8 @@ __loadLesson({
         "He went to a hospital where in Paris."
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "M003",
@@ -2340,7 +2368,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "호기심 어휘",
-      "instruction": "단어의 뜻으로 가장 알맞은 것을 고르세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "할아버지와 손자가 나란히 앉아있다 — 교과서 p.42",
       "wrong_explanations": {
         "앞뒤로": "side by side는 '옆으로'라는 뜻이에요.",
@@ -2360,7 +2388,8 @@ __loadLesson({
         "대각선으로"
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "M005",
@@ -2368,7 +2397,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "호기심 어휘",
-      "instruction": "단어의 뜻으로 가장 알맞은 것을 고르세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "가족과 함께하는 행복을 느낀다 — 교과서 p.43",
       "wrong_explanations": {
         "화남": "anger는 '화남, 분노'를 의미해요. happiness는 긍정적인 감정이라 완전히 달라요!\n정답은 행복이에요. happiness = joy, contentment(행복, 기쁨)\nanger(화남)와 happiness(행복)는 정반대의 감정이에요!",
@@ -2388,7 +2417,8 @@ __loadLesson({
         "무서움"
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "M006",
@@ -2396,7 +2426,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "호기심 어휘",
-      "instruction": "단어의 뜻으로 가장 알맞은 것을 고르세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "블록을 쌓는 동안 즐거웠다 — 교과서 p.28",
       "wrong_explanations": {
         "~이후에": "after는 '~이후에'를 의미해서 끝을 표현해요. while은 과정 중간의 계속되는 행동을 나타내죠!\n정답은 ~하는 동안이에요. while = during(~하는 동안)\nafter(이후)는 끝을 표현하지만 while(동안)은 진행 중을 표현해요!",
@@ -2416,7 +2446,8 @@ __loadLesson({
         "~처럼"
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "M007",
@@ -2424,7 +2455,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "긴 문장 해석",
-      "instruction": "한국어 뜻과 맞는 영어 문장을 고르세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "마법 같은 순환 — 교과서 p.43",
       "wrong_explanations": {
         "Bobby made magic to help his grandfather.": "'마법을 만들다'는 뜻이라 틀렸어요.",
@@ -2444,7 +2475,8 @@ __loadLesson({
         "Bobby tried magic to help his grandfather."
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "G008",
@@ -2472,7 +2504,8 @@ __loadLesson({
         "leg"
       ],
       "correct": 1,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G009",
@@ -2500,7 +2533,8 @@ __loadLesson({
         "Actually"
       ],
       "correct": 1,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G010",
@@ -2528,7 +2562,8 @@ __loadLesson({
         "chance"
       ],
       "correct": 1,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G012",
@@ -2558,7 +2593,8 @@ __loadLesson({
         "to becoming"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G013",
@@ -2586,7 +2622,8 @@ __loadLesson({
         "draft"
       ],
       "correct": 1,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G016",
@@ -2614,7 +2651,8 @@ __loadLesson({
         "to helping"
       ],
       "correct": 1,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G017",
@@ -2642,7 +2680,8 @@ __loadLesson({
         "recovered"
       ],
       "correct": 2,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "G018",
@@ -2672,7 +2711,8 @@ __loadLesson({
         "what"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "P002",
@@ -2700,7 +2740,8 @@ __loadLesson({
         "taught"
       ],
       "correct": 2,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "P003",
@@ -2728,7 +2769,8 @@ __loadLesson({
         "to"
       ],
       "correct": 2,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "W01",
@@ -2756,7 +2798,8 @@ __loadLesson({
         "metal pieces"
       ],
       "correct": 1,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "W02",
@@ -2784,7 +2827,8 @@ __loadLesson({
         "pull"
       ],
       "correct": 1,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "W03",
@@ -2812,7 +2856,8 @@ __loadLesson({
         "very slowly"
       ],
       "correct": 1,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "W04",
@@ -2840,7 +2885,8 @@ __loadLesson({
         "cry"
       ],
       "correct": 1,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "W05",
@@ -2868,7 +2914,8 @@ __loadLesson({
         "fell down"
       ],
       "correct": 1,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "W06",
@@ -2896,7 +2943,8 @@ __loadLesson({
         "return"
       ],
       "correct": 1,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "W07",
@@ -2924,7 +2972,8 @@ __loadLesson({
         "imagined"
       ],
       "correct": 1,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "W08",
@@ -2952,7 +3001,8 @@ __loadLesson({
         "lead"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "E-V-005",
@@ -2960,7 +3010,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "to부정사 형용사적",
-      "instruction": "한국어 뜻과 맞는 영어 문장을 고르세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "명사(block) 뒤에 to부정사가 와서 '올려놓을 블록' — 교과서 p.33",
       "wrong_explanations": {
         "There is one more block putting.": "-ing형은 명사를 뒤에서 수식하는 용법이 다르에요. 'to put'이 맞아요.",
@@ -2982,7 +3032,8 @@ __loadLesson({
         "There is one more block puts."
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "E-V-006",
@@ -2990,7 +3041,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "to부정사 형용사적",
-      "instruction": "한국어 뜻과 맞는 영어 문장을 고르세요.",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "'It's time + to부정사' = ~할 시간이다 — 교과서 p.34",
       "wrong_explanations": {
         "It's time building a tower!": "'It's time' 뒤에는 -ing가 아니라 to부정사가 와요.",
@@ -3012,7 +3063,8 @@ __loadLesson({
         "It's time built a tower!"
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "E-V-026",
@@ -3040,7 +3092,8 @@ __loadLesson({
         "think"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "E-V-031",
@@ -3068,7 +3121,8 @@ __loadLesson({
         "easily"
       ],
       "correct": 1,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "E-V-033",
@@ -3096,7 +3150,8 @@ __loadLesson({
         "falls"
       ],
       "correct": 0,
-      "exam_pattern": "문맥 어휘"
+      "exam_pattern": "문맥 어휘",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "E-SR-001",
@@ -3104,7 +3159,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": null,
       "keyword": null,
-      "instruction": "다음 글의 내용과 일치하는 것은?",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "'Bobby got his name from his grandfather, Bob.' — 이름을 따서 지었다는 뜻이에요.",
       "wrong_explanations": {
         "1": "Bob이 Bobby에게 걷는 법을 가르쳤어요. 'Bob was the person who taught Bobby how to walk.'",
@@ -3126,7 +3181,8 @@ __loadLesson({
         "Bobby는 Bob에게 걷는 법을 가르쳤다."
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "E-SR-002",
@@ -3134,7 +3190,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": null,
       "keyword": null,
-      "instruction": "다음 글의 내용과 일치하지 않는 것은?",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "재채기를 한 건 누구인지 다시 읽어보세요.",
       "wrong_explanations": {
         "0": "'often played with old wooden blocks'이므로 일치해요.",
@@ -3154,7 +3210,8 @@ __loadLesson({
         "마지막에 올린 블록은 코끼리 블록이었다."
       ],
       "correct": 2,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "E-SR-003",
@@ -3184,7 +3241,8 @@ __loadLesson({
         "Bobby는 Bob을 만나고 싶어 했는가?"
       ],
       "correct": 2,
-      "exam_pattern": "답할 수 없는 질문"
+      "exam_pattern": "답할 수 없는 질문",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "E-SR-004",
@@ -3212,7 +3270,8 @@ __loadLesson({
         "④"
       ],
       "correct": 3,
-      "exam_pattern": "글의 순서"
+      "exam_pattern": "글의 순서",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "E-SR-005",
@@ -3220,7 +3279,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": null,
       "keyword": null,
-      "instruction": "다음 글의 주제로 가장 적절한 것은?",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "Bob이 Bobby에게 해 준 것을, Bobby가 Bob에게 돌려주는 이야기예요.",
       "wrong_explanations": {
         "1": "블록 쌓기는 둘의 추억이지, 교육적 효과를 말하는 글이 아니에요.",
@@ -3240,7 +3299,8 @@ __loadLesson({
         "어린 시절 추억의 소중함"
       ],
       "correct": 0,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "E-SR-006",
@@ -3248,7 +3308,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": null,
       "keyword": null,
-      "instruction": "Bobby가 할아버지의 회복을 깨달은 순간은 언제인가?",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "'At that moment' — 어떤 순간을 가리키는지 바로 앞 문장을 보세요.",
       "wrong_explanations": {
         "0": "돌아왔을 때는 아직 누워만 있었어요. 회복 신호가 아니에요.",
@@ -3268,7 +3328,8 @@ __loadLesson({
         "Bob이 작은 소리를 냈을 때"
       ],
       "correct": 1,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "E-SR-007",
@@ -3276,7 +3337,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": null,
       "keyword": null,
-      "instruction": "주어진 글 다음에 이어질 순서로 가장 적절한 것은?",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "시간 순서를 생각하세요. 블록 놀이 → 병 → 퇴원 후 다시 블록.",
       "wrong_explanations": {
         "0": "먼저 아프기 전에 블록 놀이를 했으니까 (C)가 (B)보다 앞이에요.",
@@ -3296,7 +3357,8 @@ __loadLesson({
         "(A) — (B) — (C)"
       ],
       "correct": 1,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "E-SR-008",
@@ -3304,7 +3366,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": null,
       "keyword": null,
-      "instruction": "다음 글의 빈칸에 들어갈 말로 가장 적절한 것은?",
+      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "어렸을 때 Bob이 Bobby에게 했던 말을, 이번에는 Bobby가 Bob에게 하는 거예요.",
       "wrong_explanations": {
         "0": "탑 쌓기가 아니라 걷기를 도와주는 장면이에요.",
@@ -3324,7 +3386,8 @@ __loadLesson({
         "Hold my hands, Bobby."
       ],
       "correct": 1,
-      "exam_pattern": "내용 일치/불일치"
+      "exam_pattern": "내용 일치/불일치",
+      "training_layer": "skill_focus"
     },
     {
       "id": "E-DR-001",
@@ -3353,7 +3416,8 @@ __loadLesson({
       ],
       "correct": 0,
       "blank_answer": null,
-      "exam_pattern": "대화 완성"
+      "exam_pattern": "대화 완성",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "E-DR-002",
@@ -3382,7 +3446,8 @@ __loadLesson({
       ],
       "correct": 0,
       "blank_answer": null,
-      "exam_pattern": "대화 완성"
+      "exam_pattern": "대화 완성",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "E-DR-003",
@@ -3411,7 +3476,8 @@ __loadLesson({
       ],
       "correct": 2,
       "blank_answer": null,
-      "exam_pattern": "대화 완성"
+      "exam_pattern": "대화 완성",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "E-DR-004",
@@ -3440,7 +3506,8 @@ __loadLesson({
       ],
       "correct": 0,
       "blank_answer": null,
-      "exam_pattern": "대화 완성"
+      "exam_pattern": "대화 완성",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "E-MW-001",
@@ -3448,7 +3515,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": null,
       "keyword": null,
-      "instruction": "조건: to부정사(형용사적 용법)를 반드시 사용하고, 5~8단어로 쓸 것.\n\n'놓을 블록이 하나 더 있어.'를 영어로 쓰세요.",
+      "instruction": "핵심문장 틀을 떠올리고, 조건에 맞게 단어만 바꾸세요.",
       "hint": "'놓을' → to put. '블록이 하나 더 있어' → There is one more block.",
       "wrong_explanations": {
         "default": "정답 예시:\n- There is one more block to put. (7단어)\n'명사 + to + 동사원형'이 to부정사 형용사적 용법이에요. block(명사) + to put(놓을)!"
@@ -3463,7 +3530,8 @@ __loadLesson({
       "required_word": null,
       "min_words": 3,
       "example_answer": null,
-      "exam_pattern": "조건 영작"
+      "exam_pattern": "조건 영작",
+      "training_layer": "skill_focus"
     },
     {
       "id": "E-MW-002",
@@ -3471,7 +3539,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": null,
       "keyword": null,
-      "instruction": "조건: 주격 관계대명사 who를 반드시 사용하고, 8~12단어로 쓸 것.\n\n'Bob은 Bobby에게 걷는 법을 가르쳐 준 사람이었다.'를 영어로 쓰세요.",
+      "instruction": "핵심문장 틀을 떠올리고, 조건에 맞게 단어만 바꾸세요.",
       "hint": "'가르쳐 준 사람' → the person who taught. 'how to walk' = 걷는 법.",
       "wrong_explanations": {
         "default": "정답 예시:\n- Bob was the person who taught Bobby how to walk. (10단어)\n'사람 + who + 동사'가 주격 관계대명사 패턴이에요!"
@@ -3486,7 +3554,8 @@ __loadLesson({
       "required_word": null,
       "min_words": 3,
       "example_answer": null,
-      "exam_pattern": "조건 영작"
+      "exam_pattern": "조건 영작",
+      "training_layer": "skill_focus"
     },
     {
       "id": "E-MW-003",
@@ -3509,7 +3578,8 @@ __loadLesson({
       "required_word": null,
       "min_words": 3,
       "example_answer": null,
-      "exam_pattern": "문장 오류 고치기"
+      "exam_pattern": "문장 오류 고치기",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "E-MW-004",
@@ -3517,7 +3587,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": null,
       "keyword": null,
-      "instruction": "조건: which를 반드시 사용하고, 8~12단어로 쓸 것.\n\n'그는 여기서 멀리 떨어진 병원에 있다.'를 영어로 쓰세요.",
+      "instruction": "핵심문장 틀을 떠올리고, 조건에 맞게 단어만 바꾸세요.",
       "hint": "'멀리 떨어진 병원' → a hospital which is far from here.",
       "wrong_explanations": {
         "default": "정답 예시:\n- He is in a hospital which is far from here. (11단어)\n'사물/장소 + which + 동사'가 주격 관계대명사 패턴이에요!"
@@ -3532,7 +3602,8 @@ __loadLesson({
       "required_word": null,
       "min_words": 3,
       "example_answer": null,
-      "exam_pattern": "조건 영작"
+      "exam_pattern": "조건 영작",
+      "training_layer": "skill_focus"
     },
     {
       "id": "E-MW-005",
@@ -3540,7 +3611,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": null,
       "keyword": null,
-      "instruction": "조건:\n- 'Is it okay if'를 반드시 사용할 것\n- 7~12단어로 쓸 것\n\n'내가 친구들과 축구를 해도 괜찮을까?'를 영어로 쓰세요.",
+      "instruction": "핵심문장 틀을 떠올리고, 조건에 맞게 단어만 바꾸세요.",
       "hint": "'Is it okay if I + 동사원형' 패턴을 쓰세요!",
       "wrong_explanations": {
         "default": "정답 예시:\n- Is it okay if I play soccer with my friends? (11단어)\n'Is it okay if + 주어 + 동사원형' = ~해도 괜찮을까?"
@@ -3553,7 +3624,456 @@ __loadLesson({
       "required_word": null,
       "min_words": 3,
       "example_answer": null,
-      "exam_pattern": "조건 영작"
+      "exam_pattern": "조건 영작",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "PC2-A-01",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "easy",
+      "recovery_band": "A",
+      "core_sentence_id": "CS01",
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 33,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Bobby got his name from his grandfather, Bob. Bob was his best friend. Bob was the person who taught Bobby how to walk. \"Hold my hands, Bobby,\" Bob said. \"Now one foot, now the other.\"\n\nBob은 Bobby에게 무엇을 가르쳐 주었나요?",
+      "choices": [
+        "걷는 법",
+        "수영하는 법",
+        "요리하는 법",
+        "노래하는 법"
+      ],
+      "correct": 0,
+      "hint": "'taught Bobby how to walk' — walk = 걷다",
+      "wrong_explanations": {
+        "1": "수영(swim)은 본문에 없어요. 'how to walk(걷는 법)'이라고 했어요.",
+        "2": "요리(cook)도 본문에 없어요. Bob은 Bobby의 손을 잡고 걷는 법을 가르쳤어요.",
+        "3": "노래(sing)도 본문에 없어요. \"Now one foot, now the other\"가 걷기 연습이에요."
+      }
+    },
+    {
+      "id": "PC2-A-02",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "easy",
+      "recovery_band": "A",
+      "core_sentence_id": "CS03",
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 33,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Bob and Bobby often played with old wooden blocks. They slowly piled the blocks one by one to build a tower. \"There is one more block to put,\" Bob said. \"And that's the elephant block,\" Bobby said. Bobby carefully put the elephant block on the top. But Bob sneezed, and the tower fell. Bobby laughed and laughed. Bobby said, \"You always sneeze when the elephant block appears.\"\n\n탑이 무너진 이유는?",
+      "choices": [
+        "Bobby가 밀어서",
+        "Bob이 재채기를 해서",
+        "바람이 불어서",
+        "블록이 부서져서"
+      ],
+      "correct": 1,
+      "hint": "'Bob sneezed, and the tower fell' — sneeze = 재채기하다",
+      "wrong_explanations": {
+        "0": "Bobby가 민 게 아니에요. Bobby는 조심스럽게(carefully) 블록을 올렸어요.",
+        "2": "바람(wind) 이야기는 본문에 없어요. Bob의 재채기(sneeze) 때문이에요.",
+        "3": "블록이 부서진 게 아니라, 재채기 때문에 탑이 무너진(fell) 거예요."
+      }
+    },
+    {
+      "id": "PC2-A-03",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "easy",
+      "recovery_band": "A",
+      "core_sentence_id": "CS04",
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 34,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Time passed. One day, Bobby's dad looked very sad. He told Bobby, \"Bob fell ill. He is in a hospital which is far from here.\"\n\"I want to see him,\" Bobby said.\n\"You can't, Bobby,\" Mom told him. \"He can't move his arms and legs, and he can't talk. We'll just have to wait and hope that he will get better.\"\n\nBob에게 어떤 일이 생겼나요?",
+      "choices": [
+        "여행을 떠났다.",
+        "아프게 되었다.",
+        "이사를 갔다.",
+        "학교에 입학했다."
+      ],
+      "correct": 1,
+      "hint": "'Bob fell ill' — fell ill = 아프게 되다",
+      "wrong_explanations": {
+        "0": "여행이 아니에요. 'fell ill(아프게 되었다)'이고 병원에 있어요.",
+        "2": "이사가 아니에요. 'a hospital which is far from here(먼 병원)'에 있는 거예요.",
+        "3": "학교 이야기는 없어요. Bob은 아파서(fell ill) 병원에 있어요."
+      }
+    },
+    {
+      "id": "PC2-A-04",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "easy",
+      "recovery_band": "A",
+      "core_sentence_id": "CS05",
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 34,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Time passed. One day, Bobby's dad looked very sad. He told Bobby, \"Bob fell ill. He is in a hospital which is far from here.\"\n\"I want to see him,\" Bobby said.\n\"You can't, Bobby,\" Mom told him. \"He can't move his arms and legs, and he can't talk. We'll just have to wait and hope that he will get better.\"\n\n위 글의 내용과 일치하는 것은?",
+      "choices": [
+        "Bobby의 아빠는 기뻐 보였다.",
+        "Bob은 가까운 병원에 있었다.",
+        "Bob은 팔다리를 움직일 수 없었다.",
+        "Bobby는 Bob을 바로 만나러 갔다."
+      ],
+      "correct": 2,
+      "hint": "'He can't move his arms and legs' — 팔다리를 못 움직여요.",
+      "wrong_explanations": {
+        "0": "반대예요! 'looked very sad(매우 슬퍼 보였다)'라고 했어요.",
+        "1": "반대예요! 'far from here(여기서 먼)' 병원이라고 했어요.",
+        "3": "못 갔어요! \"You can't, Bobby\"라고 엄마가 말했어요."
+      }
+    },
+    {
+      "id": "PC2-A-05",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "easy",
+      "recovery_band": "A",
+      "core_sentence_id": "CS06",
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 34,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Bob came back home after a few months. He just lay in bed without talking or moving. After a while, Bobby came into Bob's room with the blocks.\n\"Bob, it's time to build a tower!\"\nBob's mouth made a small smile. Bobby began to build the tower.\n\"Okay, Bob, now the elephant block.\"\nSuddenly, Bob made a small sound like sneezing. At that moment, Bobby realized that Bob would recover soon.\n\nBob이 집에 돌아온 뒤, Bobby가 가져온 것은?",
+      "choices": [
+        "책",
+        "블록",
+        "음식",
+        "그림"
+      ],
+      "correct": 1,
+      "hint": "'came into Bob's room with the blocks' — blocks = 블록",
+      "wrong_explanations": {
+        "0": "책(book)은 본문에 없어요. Bobby는 블록(blocks)을 가져왔어요.",
+        "2": "음식(food)도 본문에 없어요. 탑을 쌓으려고 블록을 가져온 거예요.",
+        "3": "그림(picture)도 본문에 없어요. 'with the blocks'가 핵심이에요."
+      }
+    },
+    {
+      "id": "PC2-A-06",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "easy",
+      "recovery_band": "A",
+      "core_sentence_id": "CS07",
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 34,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Bob came back home after a few months. He just lay in bed without talking or moving. After a while, Bobby came into Bob's room with the blocks.\n\"Bob, it's time to build a tower!\"\nBob's mouth made a small smile. Bobby began to build the tower.\n\"Okay, Bob, now the elephant block.\"\nSuddenly, Bob made a small sound like sneezing. At that moment, Bobby realized that Bob would recover soon.\n\nBobby가 Bob이 곧 나을 거라고 깨달은 순간은?",
+      "choices": [
+        "Bob이 재채기 같은 소리를 냈을 때",
+        "Bob이 일어나 걸었을 때",
+        "Bob이 블록을 집었을 때",
+        "Bob이 큰 소리로 웃었을 때"
+      ],
+      "correct": 0,
+      "hint": "'Bob made a small sound like sneezing. At that moment, Bobby realized...'",
+      "wrong_explanations": {
+        "1": "이 장면에서 Bob은 아직 걷지 못해요. 걷는 건 마지막 장면이에요.",
+        "2": "블록을 집었다는 내용은 없어요. 재채기 같은 소리를 낸 거예요.",
+        "3": "큰 소리로 웃은 게 아니에요. 'a small sound like sneezing(재채기 같은 작은 소리)'예요."
+      }
+    },
+    {
+      "id": "PC2-A-07",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "easy",
+      "recovery_band": "A",
+      "core_sentence_id": "CS08",
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 35,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "When the weather got nice and warm, Bob and Bobby sat side by side. The summer breeze with the smell of happiness was blowing.\n\"You taught me how to walk. Do you remember?\" Bobby said.\nThen, Bob stood up very slowly. Bobby smiled and stood in front of Bob. Bob leaned on Bobby's shoulders.\nBobby said, \"When I was little, you held my hands and said these words.\" And Bobby added, \"Now one foot.\"\nLike magic, Bob moved one foot.\n\"Now the other.\"\nAnd Bob moved the other.\n\nBob이 다시 걸을 때, Bob은 누구에게 기대었나요?",
+      "choices": [
+        "Bobby의 어깨",
+        "벽",
+        "지팡이",
+        "Bobby의 아빠"
+      ],
+      "correct": 0,
+      "hint": "'Bob leaned on Bobby's shoulders' — lean on = ~에 기대다",
+      "wrong_explanations": {
+        "1": "벽(wall)은 본문에 없어요. Bobby의 어깨(shoulders)에 기대었어요.",
+        "2": "지팡이(stick)도 본문에 없어요. Bobby가 Bob 앞에 서서 도와준 거예요.",
+        "3": "아빠가 아니라 Bobby예요. Bobby가 Bob 앞에 서서 어깨를 빌려줬어요."
+      }
+    },
+    {
+      "id": "PC2-A-08",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "easy",
+      "recovery_band": "A",
+      "core_sentence_id": "CS09",
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 35,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "When the weather got nice and warm, Bob and Bobby sat side by side. The summer breeze with the smell of happiness was blowing.\n\"You taught me how to walk. Do you remember?\" Bobby said.\nThen, Bob stood up very slowly. Bobby smiled and stood in front of Bob. Bob leaned on Bobby's shoulders.\nBobby said, \"When I was little, you held my hands and said these words.\" And Bobby added, \"Now one foot.\"\nLike magic, Bob moved one foot.\n\"Now the other.\"\nAnd Bob moved the other.\n\n위 글의 내용과 일치하는 것은?",
+      "choices": [
+        "Bobby가 Bob에게 걷는 법을 다시 가르쳐 주었다.",
+        "Bob이 혼자서 빠르게 걸었다.",
+        "Bobby가 Bob을 병원에 데려갔다.",
+        "Bob은 걷지 못하고 포기했다."
+      ],
+      "correct": 0,
+      "hint": "어릴 때 Bob이 Bobby에게 한 것을, 이제 Bobby가 Bob에게 해줘요.",
+      "wrong_explanations": {
+        "1": "혼자서 빠르게가 아니에요. 'very slowly' + Bobby의 어깨에 기대서 걸었어요.",
+        "2": "병원에 데려간 게 아니에요. 따뜻한 날씨에 함께 앉아서 걷기 연습을 한 거예요.",
+        "3": "포기하지 않았어요! 'Like magic, Bob moved one foot' — 성공했어요!"
+      }
+    },
+    {
+      "id": "PC2-B-01",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "B",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "recovery_band": "A",
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 33,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Bobby got his name from his grandfather, Bob. Bob was his best friend. Bob was the person who taught Bobby how to walk. \"Hold my hands, Bobby,\" Bob said. \"Now one foot, now the other.\"\n\nBob and Bobby often played with old wooden blocks. They slowly piled the blocks one by one to build a tower. \"There is one more block to put,\" Bob said. \"And that's the elephant block,\" Bobby said. Bobby carefully put the elephant block on the top. But Bob sneezed, and the tower fell. Bobby laughed and laughed.\n\nTime passed. One day, Bobby's dad looked very sad. He told Bobby, \"Bob fell ill. He is in a hospital which is far from here.\"\n\"I want to see him,\" Bobby said.\n\"You can't, Bobby,\" Mom told him. \"He can't move his arms and legs, and he can't talk.\"\n\n위 글의 내용과 일치하지 않는 것은?",
+      "choices": [
+        "Bob은 Bobby의 할아버지이다.",
+        "Bobby는 탑이 무너지자 웃었다.",
+        "Bob은 가까운 병원에 입원했다.",
+        "Bob은 팔다리를 움직일 수 없었다."
+      ],
+      "correct": 2,
+      "hint": "'far from here(여기서 먼)'인지 '가까운'인지 확인하세요.",
+      "wrong_explanations": {
+        "0": "일치해요! 'his grandfather, Bob'이라고 했어요.",
+        "1": "일치해요! 'Bobby laughed and laughed'라고 했어요.",
+        "3": "일치해요! 'He can't move his arms and legs'라고 했어요."
+      }
+    },
+    {
+      "id": "PC2-B-02",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "B",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "recovery_band": "B",
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "exam_pattern": "unanswerable_question",
+      "page": 33,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Bobby got his name from his grandfather, Bob. Bob was his best friend. Bob was the person who taught Bobby how to walk. \"Hold my hands, Bobby,\" Bob said. \"Now one foot, now the other.\"\n\nBob and Bobby often played with old wooden blocks. They slowly piled the blocks one by one to build a tower. \"There is one more block to put,\" Bob said. \"And that's the elephant block,\" Bobby said. Bobby carefully put the elephant block on the top. But Bob sneezed, and the tower fell. Bobby laughed and laughed.\n\nTime passed. One day, Bobby's dad looked very sad. He told Bobby, \"Bob fell ill. He is in a hospital which is far from here.\"\n\"I want to see him,\" Bobby said.\n\"You can't, Bobby,\" Mom told him. \"He can't move his arms and legs, and he can't talk.\"\n\n위 글을 읽고 답할 수 없는 질문은?",
+      "choices": [
+        "Bob은 Bobby에게 무엇을 가르쳐 주었나?",
+        "탑이 무너진 이유는 무엇인가?",
+        "Bob은 왜 아프게 되었나?",
+        "Bob은 어디에 입원해 있었나?"
+      ],
+      "correct": 2,
+      "hint": "Bob이 아픈 '이유'가 본문에 나와 있나요? 'fell ill'만 나오고 원인은 없어요.",
+      "wrong_explanations": {
+        "0": "답할 수 있어요! 'taught Bobby how to walk(걷는 법)'이라고 나와요.",
+        "1": "답할 수 있어요! 'Bob sneezed, and the tower fell(재채기 → 무너짐)'이라고 나와요.",
+        "3": "답할 수 있어요! 'a hospital which is far from here(먼 병원)'라고 나와요."
+      }
+    },
+    {
+      "id": "PC2-B-03",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "B",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "recovery_band": "A",
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 34,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Bob came back home after a few months. He just lay in bed without talking or moving. After a while, Bobby came into Bob's room with the blocks.\n\"Bob, it's time to build a tower!\"\nBob's mouth made a small smile. Bobby began to build the tower.\n\"Okay, Bob, now the elephant block.\"\nSuddenly, Bob made a small sound like sneezing. At that moment, Bobby realized that Bob would recover soon. And Bob did. Slowly, Bob began to talk a little and move his fingers. But he still couldn't walk.\n\nWhen the weather got nice and warm, Bob and Bobby sat side by side.\n\"You taught me how to walk. Do you remember?\" Bobby said.\nThen, Bob stood up very slowly. Bobby smiled and stood in front of Bob. Bob leaned on Bobby's shoulders.\nBobby said, \"When I was little, you held my hands and said these words.\" And Bobby added, \"Now one foot.\"\nLike magic, Bob moved one foot.\n\"Now the other.\"\nAnd Bob moved the other.\n\n위 글의 내용과 일치하는 것은?",
+      "choices": [
+        "Bob은 집에 돌아오자마자 걸었다.",
+        "Bobby는 Bob의 방에 음식을 가져왔다.",
+        "Bob은 재채기 소리를 내고 조금씩 회복하기 시작했다.",
+        "Bob은 Bobby의 도움 없이 혼자 걸었다."
+      ],
+      "correct": 2,
+      "hint": "'a small sound like sneezing' → 'Bob would recover soon' → 'began to talk a little'",
+      "wrong_explanations": {
+        "0": "바로 걸은 게 아니에요! 처음엔 'lay in bed without talking or moving'이었고, 나중에야 걸었어요.",
+        "1": "음식이 아니라 블록(blocks)을 가져왔어요. 탑을 쌓으려고요!",
+        "3": "혼자가 아니에요! Bobby의 어깨에 기대서(leaned on Bobby's shoulders) 걸었어요."
+      }
+    },
+    {
+      "id": "PC2-B-04",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "B",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "recovery_band": "B",
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 35,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Bob came back home after a few months. He just lay in bed without talking or moving. After a while, Bobby came into Bob's room with the blocks.\n\"Bob, it's time to build a tower!\"\nBob's mouth made a small smile. Bobby began to build the tower.\n\"Okay, Bob, now the elephant block.\"\nSuddenly, Bob made a small sound like sneezing. At that moment, Bobby realized that Bob would recover soon. And Bob did. Slowly, Bob began to talk a little and move his fingers. But he still couldn't walk.\n\nWhen the weather got nice and warm, Bob and Bobby sat side by side.\n\"You taught me how to walk. Do you remember?\" Bobby said.\nThen, Bob stood up very slowly. Bobby smiled and stood in front of Bob. Bob leaned on Bobby's shoulders.\nBobby said, \"When I was little, you held my hands and said these words.\" And Bobby added, \"Now one foot.\"\nLike magic, Bob moved one foot.\n\"Now the other.\"\nAnd Bob moved the other.\n\nBob의 회복 순서로 올바른 것은?",
+      "choices": [
+        "재채기 소리 → 말하기 → 손가락 움직이기 → 걷기",
+        "걷기 → 말하기 → 손가락 움직이기 → 재채기 소리",
+        "손가락 움직이기 → 재채기 소리 → 걷기 → 말하기",
+        "말하기 → 걷기 → 재채기 소리 → 손가락 움직이기"
+      ],
+      "correct": 0,
+      "hint": "본문 순서대로 따라가세요: small sound → talk a little → move fingers → walked",
+      "wrong_explanations": {
+        "1": "걷기는 가장 마지막이에요! 제일 처음은 재채기 같은 소리를 낸 거예요.",
+        "2": "재채기 소리가 제일 먼저예요. 그 다음에 말하기, 손가락, 걷기 순서예요.",
+        "3": "말하기보다 재채기 소리가 먼저예요. 순서를 본문에서 다시 확인해보세요."
+      }
+    },
+    {
+      "id": "PC2-C-01",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "C",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "recovery_band": "A",
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 33,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Now One Foot, Now the Other\n\nBobby got his name from his grandfather, Bob. Bob was his best friend. Bob was the person who taught Bobby how to walk. \"Hold my hands, Bobby,\" Bob said. \"Now one foot, now the other.\"\n\nBob and Bobby often played with old wooden blocks. They slowly piled the blocks one by one to build a tower. \"There is one more block to put,\" Bob said. \"And that's the elephant block,\" Bobby said. Bobby carefully put the elephant block on the top. But Bob sneezed, and the tower fell. Bobby laughed and laughed.\n\nTime passed. One day, Bobby's dad looked very sad. He told Bobby, \"Bob fell ill. He is in a hospital which is far from here.\"\n\"I want to see him,\" Bobby said.\n\"You can't, Bobby,\" Mom told him. \"He can't move his arms and legs, and he can't talk. We'll just have to wait and hope that he will get better.\"\n\nBob came back home after a few months. He just lay in bed without talking or moving. After a while, Bobby came into Bob's room with the blocks.\n\"Bob, it's time to build a tower!\"\nBob's mouth made a small smile. Bobby began to build the tower.\nSuddenly, Bob made a small sound like sneezing. At that moment, Bobby realized that Bob would recover soon. And Bob did. Slowly, Bob began to talk a little and move his fingers. But he still couldn't walk.\n\nWhen the weather got nice and warm, Bob and Bobby sat side by side.\n\"You taught me how to walk. Do you remember?\" Bobby said.\nThen, Bob stood up very slowly. Bobby smiled and stood in front of Bob. Bob leaned on Bobby's shoulders.\nBobby said, \"When I was little, you held my hands and said these words.\" And Bobby added, \"Now one foot.\"\nLike magic, Bob moved one foot.\n\"Now the other.\"\nAnd Bob moved the other.\n\n위 글의 내용과 일치하지 않는 것은?",
+      "choices": [
+        "Bob은 Bobby에게 걷는 법을 가르쳐 주었다.",
+        "Bob이 아프기 전에 둘은 블록 놀이를 자주 했다.",
+        "Bob은 병원에서 바로 완전히 회복되어 돌아왔다.",
+        "Bobby는 Bob이 다시 걸을 수 있도록 도와주었다."
+      ],
+      "correct": 2,
+      "hint": "Bob이 집에 돌아왔을 때 상태가 어땠나요? 'lay in bed without talking or moving'",
+      "wrong_explanations": {
+        "0": "일치해요! 'taught Bobby how to walk'라고 했어요.",
+        "1": "일치해요! 'often played with old wooden blocks'라고 했어요.",
+        "3": "일치해요! Bobby의 어깨에 기대서 다시 걸었어요."
+      }
+    },
+    {
+      "id": "PC2-C-02",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "C",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "recovery_band": "A",
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "exam_pattern": "content_match",
+      "page": 33,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Now One Foot, Now the Other\n\nBobby got his name from his grandfather, Bob. Bob was his best friend. Bob was the person who taught Bobby how to walk. \"Hold my hands, Bobby,\" Bob said. \"Now one foot, now the other.\"\n\nBob and Bobby often played with old wooden blocks. They slowly piled the blocks one by one to build a tower. \"There is one more block to put,\" Bob said. \"And that's the elephant block,\" Bobby said. Bobby carefully put the elephant block on the top. But Bob sneezed, and the tower fell. Bobby laughed and laughed.\n\nTime passed. One day, Bobby's dad looked very sad. He told Bobby, \"Bob fell ill. He is in a hospital which is far from here.\"\n\"I want to see him,\" Bobby said.\n\"You can't, Bobby,\" Mom told him. \"He can't move his arms and legs, and he can't talk. We'll just have to wait and hope that he will get better.\"\n\nBob came back home after a few months. He just lay in bed without talking or moving. After a while, Bobby came into Bob's room with the blocks.\n\"Bob, it's time to build a tower!\"\nBob's mouth made a small smile. Bobby began to build the tower.\nSuddenly, Bob made a small sound like sneezing. At that moment, Bobby realized that Bob would recover soon. And Bob did. Slowly, Bob began to talk a little and move his fingers. But he still couldn't walk.\n\nWhen the weather got nice and warm, Bob and Bobby sat side by side.\n\"You taught me how to walk. Do you remember?\" Bobby said.\nThen, Bob stood up very slowly. Bobby smiled and stood in front of Bob. Bob leaned on Bobby's shoulders.\nBobby said, \"When I was little, you held my hands and said these words.\" And Bobby added, \"Now one foot.\"\nLike magic, Bob moved one foot.\n\"Now the other.\"\nAnd Bob moved the other.\n\n위 글에서 \"Now one foot, now the other\"라는 말이 두 번 나옵니다. 각각 누가 누구에게 한 말인가요?",
+      "choices": [
+        "처음: Bob → Bobby, 나중: Bobby → Bob",
+        "처음: Bobby → Bob, 나중: Bob → Bobby",
+        "둘 다 Bob이 Bobby에게 한 말",
+        "둘 다 Bobby가 Bob에게 한 말"
+      ],
+      "correct": 0,
+      "hint": "처음에는 Bob이 어린 Bobby에게, 나중에는 Bobby가 아픈 Bob에게 같은 말을 해요.",
+      "wrong_explanations": {
+        "1": "순서가 반대예요! 처음에 Bob이 가르친 거고, 나중에 Bobby가 돌려준 거예요.",
+        "2": "나중에는 Bobby가 Bob에게 한 말이에요. 역할이 바뀐 게 이 이야기의 핵심이에요.",
+        "3": "처음에는 Bob이 Bobby에게 한 말이에요. 어린 Bobby에게 걷기를 가르칠 때요."
+      }
+    },
+    {
+      "id": "PC2-C-03",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "C",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "recovery_band": "B",
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "exam_pattern": "title_main_idea",
+      "page": 33,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Now One Foot, Now the Other\n\nBobby got his name from his grandfather, Bob. Bob was his best friend. Bob was the person who taught Bobby how to walk. \"Hold my hands, Bobby,\" Bob said. \"Now one foot, now the other.\"\n\nBob and Bobby often played with old wooden blocks. They slowly piled the blocks one by one to build a tower. \"There is one more block to put,\" Bob said. \"And that's the elephant block,\" Bobby said. Bobby carefully put the elephant block on the top. But Bob sneezed, and the tower fell. Bobby laughed and laughed.\n\nTime passed. One day, Bobby's dad looked very sad. He told Bobby, \"Bob fell ill. He is in a hospital which is far from here.\"\n\"I want to see him,\" Bobby said.\n\"You can't, Bobby,\" Mom told him. \"He can't move his arms and legs, and he can't talk. We'll just have to wait and hope that he will get better.\"\n\nBob came back home after a few months. He just lay in bed without talking or moving. After a while, Bobby came into Bob's room with the blocks.\n\"Bob, it's time to build a tower!\"\nBob's mouth made a small smile. Bobby began to build the tower.\nSuddenly, Bob made a small sound like sneezing. At that moment, Bobby realized that Bob would recover soon. And Bob did. Slowly, Bob began to talk a little and move his fingers. But he still couldn't walk.\n\nWhen the weather got nice and warm, Bob and Bobby sat side by side.\n\"You taught me how to walk. Do you remember?\" Bobby said.\nThen, Bob stood up very slowly. Bobby smiled and stood in front of Bob. Bob leaned on Bobby's shoulders.\nBobby said, \"When I was little, you held my hands and said these words.\" And Bobby added, \"Now one foot.\"\nLike magic, Bob moved one foot.\n\"Now the other.\"\nAnd Bob moved the other.\n\n위 글의 주제로 가장 적절한 것은?",
+      "choices": [
+        "할아버지와 손자 사이의 사랑과 돌봄",
+        "블록 놀이의 재미와 교육적 효과",
+        "병원에서의 치료와 회복 과정",
+        "어린이에게 걷기를 가르치는 방법"
+      ],
+      "correct": 0,
+      "hint": "글 전체를 관통하는 건 뭐예요? Bob이 Bobby를 돌봐주고, Bobby가 Bob을 돌봐주는 이야기.",
+      "wrong_explanations": {
+        "1": "블록 놀이는 이야기의 한 부분일 뿐이에요. 전체 주제는 둘의 사랑이에요.",
+        "2": "병원 치료 과정은 자세히 안 나와요. 집에서 Bobby가 도와주는 이야기가 핵심이에요.",
+        "3": "걷기를 가르치는 건 수단이에요. 그 속에 담긴 '사랑'이 진짜 주제예요."
+      }
+    },
+    {
+      "id": "PC2-C-04",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "C",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "recovery_band": "B",
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "exam_pattern": "unanswerable_question",
+      "page": 33,
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "Now One Foot, Now the Other\n\nBobby got his name from his grandfather, Bob. Bob was his best friend. Bob was the person who taught Bobby how to walk. \"Hold my hands, Bobby,\" Bob said. \"Now one foot, now the other.\"\n\nBob and Bobby often played with old wooden blocks. They slowly piled the blocks one by one to build a tower. \"There is one more block to put,\" Bob said. \"And that's the elephant block,\" Bobby said. Bobby carefully put the elephant block on the top. But Bob sneezed, and the tower fell. Bobby laughed and laughed.\n\nTime passed. One day, Bobby's dad looked very sad. He told Bobby, \"Bob fell ill. He is in a hospital which is far from here.\"\n\"I want to see him,\" Bobby said.\n\"You can't, Bobby,\" Mom told him. \"He can't move his arms and legs, and he can't talk. We'll just have to wait and hope that he will get better.\"\n\nBob came back home after a few months. He just lay in bed without talking or moving. After a while, Bobby came into Bob's room with the blocks.\n\"Bob, it's time to build a tower!\"\nBob's mouth made a small smile. Bobby began to build the tower.\nSuddenly, Bob made a small sound like sneezing. At that moment, Bobby realized that Bob would recover soon. And Bob did. Slowly, Bob began to talk a little and move his fingers. But he still couldn't walk.\n\nWhen the weather got nice and warm, Bob and Bobby sat side by side.\n\"You taught me how to walk. Do you remember?\" Bobby said.\nThen, Bob stood up very slowly. Bobby smiled and stood in front of Bob. Bob leaned on Bobby's shoulders.\nBobby said, \"When I was little, you held my hands and said these words.\" And Bobby added, \"Now one foot.\"\nLike magic, Bob moved one foot.\n\"Now the other.\"\nAnd Bob moved the other.\n\n위 글을 읽고 답할 수 없는 질문은?",
+      "choices": [
+        "Bobby의 이름은 누구의 이름에서 따왔나?",
+        "Bob은 병원에서 몇 개월 만에 돌아왔나?",
+        "Bobby는 몇 살 때 Bob에게 걷기를 배웠나?",
+        "Bob이 다시 걸을 때 누구에게 기대었나?"
+      ],
+      "correct": 2,
+      "hint": "'when I was little'이라고만 했지, 정확한 나이는 안 나와요.",
+      "wrong_explanations": {
+        "0": "답할 수 있어요! 'got his name from his grandfather, Bob'이라고 나와요.",
+        "1": "답할 수 있어요! 'after a few months(몇 개월 후)'라고 나와요.",
+        "3": "답할 수 있어요! 'leaned on Bobby's shoulders(Bobby의 어깨에 기대었다)'라고 나와요."
+      }
     }
   ],
   "vocab_drill": [

@@ -1457,61 +1457,61 @@
             return ordered;
         }
 
-        // B-4: Exam Prep Session Engine (extended from existing)
+        // B-4: Exam Prep Session Engine — training_layer 기반 3단계 구성
+        // 1단계: passage_check (Stage A 4문항 워밍업)
+        // 2단계: skill_focus 3~4문항
+        // 3단계: mixed_practice 2~3문항
+        // 같은 레이어 내 셔플, JSON 순서 무관, fallback: mixed_practice
         function generateExamPrepSession() {
             const allQuestions = QUIZ_DATA.questions;
             const examPrepQuestions = allQuestions.filter(q => q.phase === 'exam_prep');
 
-            // Map score_group if it doesn't exist (use recovery_band as fallback)
-            examPrepQuestions.forEach(q => {
-                if (!q.score_group && q.recovery_band) {
-                    q.score_group = q.recovery_band;
-                }
+            // training_layer 기준 분류 (없으면 mixed_practice fallback)
+            const passageCheck = examPrepQuestions.filter(q => q.training_layer === 'passage_check');
+            const skillFocus = examPrepQuestions.filter(q => q.training_layer === 'skill_focus');
+            const mixedPractice = examPrepQuestions.filter(q =>
+                q.training_layer === 'mixed_practice' || !q.training_layer
+            );
+
+            // passage_check: Stage A 우선, 4문항
+            const pcStageA = passageCheck.filter(q => q.passage_stage === 'A');
+            const pcOther = passageCheck.filter(q => q.passage_stage !== 'A');
+            shuffleArray(pcStageA);
+            shuffleArray(pcOther);
+            const pcPool = pcStageA.concat(pcOther);
+            const pcPick = pcPool.slice(0, 4);
+
+            // skill_focus: 3~4문항 (score_group A 우선)
+            const sfSorted = [...skillFocus];
+            sfSorted.sort((a, b) => {
+                const ga = a.score_group === 'A' || a.recovery_band === 'A' ? 0 : 1;
+                const gb = b.score_group === 'A' || b.recovery_band === 'A' ? 0 : 1;
+                return ga - gb;
             });
+            shuffleArray(sfSorted); // 셔플 후 A군 우선 안정 정렬
+            sfSorted.sort((a, b) => {
+                const ga = a.score_group === 'A' || a.recovery_band === 'A' ? 0 : 1;
+                const gb = b.score_group === 'A' || b.recovery_band === 'A' ? 0 : 1;
+                return ga - gb;
+            });
+            const sfTarget = Math.min(4, sfSorted.length);
+            const sfPick = sfSorted.slice(0, sfTarget);
 
-            // Reuse existing poolByScoreGroup and applyBlockRules logic
-            const TARGET = 30;
-            const poolA = examPrepQuestions.filter(q => q.score_group === 'A');
-            const poolB = examPrepQuestions.filter(q => q.score_group === 'B');
-            const poolC = examPrepQuestions.filter(q => q.score_group === 'C');
+            // mixed_practice: 2~3문항
+            shuffleArray(mixedPractice);
+            const mpTarget = Math.min(3, mixedPractice.length);
+            const mpPick = mixedPractice.slice(0, mpTarget);
 
-            shuffleArray(poolA);
-            shuffleArray(poolB);
-            shuffleArray(poolC);
+            // 세션 조합: 레이어 순서 유지, 레이어 내부만 셔플 (이미 셔플됨)
+            const session = [...pcPick, ...sfPick, ...mpPick];
 
-            const selected = [];
-            const usedIds = new Set();
-            const pick = (pool, count) => {
-                let picked = 0;
-                for (const q of pool) {
-                    if (picked >= count) break;
-                    if (!usedIds.has(q.id)) {
-                        selected.push(q);
-                        usedIds.add(q.id);
-                        picked++;
-                    }
-                }
-                return picked;
-            };
-
-            const aTarget = Math.round(TARGET * 0.4);
-            const bTarget = Math.round(TARGET * 0.4);
-            const cTarget = TARGET - aTarget - bTarget;
-
-            pick(poolA, aTarget);
-            pick(poolB, bTarget);
-            pick(poolC, cTarget);
-
-            if (selected.length < TARGET) {
-                pick(poolA, TARGET);
-                pick(poolB, TARGET);
-                pick(poolC, TARGET);
+            // 세션이 비어있으면 기존 전체 풀에서 fallback
+            if (session.length === 0) {
+                shuffleArray(examPrepQuestions);
+                return examPrepQuestions.slice(0, 10);
             }
 
-            const session = selected.slice(0, Math.min(TARGET, examPrepQuestions.length));
-            const ordered = applyBlockRules(session, 'A');
-
-            return ordered;
+            return session;
         }
 
         // score_group 필터링 + 이력 기반 정렬
