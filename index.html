@@ -690,13 +690,14 @@
             gap: 8px;
         }
         .lesson-btn {
-            padding: 8px 18px;
+            padding: 8px 16px;
+            min-width: 40px;
             border: 2px solid #2F5496;
             border-radius: 20px;
             background: white;
             color: #2F5496;
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 15px;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.2s;
         }
@@ -765,6 +766,83 @@
             min-width: 36px;
             text-align: center;
         }
+
+        /* Flashcard — Quizlet-style flip */
+        .flashcard-scene {
+            perspective: 800px;
+            min-height: 180px;
+            cursor: pointer;
+        }
+        .flashcard {
+            position: relative;
+            width: 100%;
+            min-height: 180px;
+            transform-style: preserve-3d;
+            transition: transform 0.25s ease;
+        }
+        .flashcard.flipped { transform: rotateY(180deg); }
+        .flashcard-face {
+            position: absolute;
+            width: 100%;
+            min-height: 180px;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            background: white;
+            border-radius: 16px;
+            padding: 30px 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+        .flashcard-front { font-size: 20px; font-weight: 600; color: #2F5496; line-height: 1.6; text-align: center; }
+        .flashcard-back {
+            transform: rotateY(180deg);
+            font-size: 18px; color: #333; line-height: 1.6; text-align: center;
+        }
+        .flashcard-back .grammar-note { font-size: 14px; color: #e65100; background: #fff3e0; padding: 8px 12px; border-radius: 8px; margin-top: 10px; }
+        .flashcard-tap-hint { font-size: 13px; color: #999; margin-top: 12px; }
+        #vocab-hint-display { background: #e3f2fd; border: 1px solid #90caf9; border-radius: 8px; padding: 8px 12px; font-size: 13px; color: #1565c0; margin-top: 8px; }
+        .flashcard-buttons { display: flex; gap: 12px; margin-top: 16px; }
+        .flashcard-btn { flex: 1; padding: 14px; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+        .flashcard-btn.know { background: #e8f5e9; color: #2e7d32; }
+        .flashcard-btn.dont-know { background: #fce4ec; color: #c62828; }
+
+        /* Vocab Drill */
+        .vocab-word { font-size: 32px; font-weight: 700; color: #2F5496; }
+        .vocab-meaning { font-size: 22px; font-weight: 600; color: #333; }
+        .vocab-pos { font-size: 14px; color: #888; margin-top: 8px; }
+        .vocab-progress-bar { width: 100%; height: 6px; background: #e0e0e0; border-radius: 3px; margin-bottom: 12px; overflow: hidden; }
+        .vocab-progress-fill { height: 100%; background: #4CAF50; border-radius: 3px; transition: width 0.3s; }
+        .vocab-counter { font-size: 13px; color: #888; text-align: center; margin-bottom: 8px; }
+        .vocab-round-msg { text-align: center; padding: 20px; }
+        .vocab-round-msg h3 { font-size: 20px; color: #2F5496; margin-bottom: 12px; }
+        .vocab-round-msg p { font-size: 15px; color: #666; margin-bottom: 20px; }
+        .vocab-result-summary { text-align: center; padding: 24px 16px; }
+        .vocab-result-summary h2 { font-size: 24px; color: #2F5496; margin-bottom: 16px; }
+        .vocab-result-summary .score { font-size: 48px; font-weight: 700; color: #4CAF50; }
+        .vocab-result-summary .detail { font-size: 15px; color: #666; margin-top: 12px; }
+        .vocab-retry-btn { width: 100%; padding: 16px; border: 2px solid #ff9800; border-radius: 10px; background: #fff3e0; color: #e65100; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 12px; }
+        .vocab-done-btn { width: 100%; padding: 16px; border: none; border-radius: 10px; background: #2F5496; color: white; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 12px; }
+
+
+        /* Typed Blank */
+        .typed-blank-prompt { font-size: 16px; line-height: 1.8; color: #333; margin-bottom: 16px; }
+        .typed-blank-input { width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; margin-bottom: 8px; }
+        .typed-blank-input.correct-input { border-color: #4CAF50; background: #e8f5e9; }
+        .typed-blank-input.wrong-input { border-color: #f44336; background: #fce4ec; }
+        .typed-blank-input.typo-input { border-color: #FF9800; background: #fff3e0; }
+
+        /* Mode selector */
+        .mode-selector { display: flex; gap: 10px; width: 85%; max-width: 300px; }
+        .mode-btn { flex: 1; padding: 16px 12px; border: 2px solid #2F5496; border-radius: 10px; background: white; color: #2F5496; font-size: 15px; font-weight: 600; cursor: pointer; text-align: center; transition: all 0.2s; white-space: nowrap; }
+        .mode-btn.active { background: #2F5496; color: white; }
+        .mode-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        .mode-btn .mode-desc { display: block; font-size: 11px; font-weight: 400; opacity: 0.7; margin-top: 4px; }
+        .preparing-msg { color: #999; font-size: 14px; text-align: center; padding: 10px; }
+
 </style>
 </head>
 <body>
@@ -780,37 +858,47 @@
 
             <div class="settings-card">
                 <div class="setting-row">
-                    <span class="setting-label">단원</span>
+                    <span class="setting-label">Lesson</span>
                     <div class="lesson-selector">
-                        <button class="lesson-btn active" id="lesson-btn-1" onclick="selectLesson(1)">1단원</button>
-                        <button class="lesson-btn" id="lesson-btn-2" onclick="selectLesson(2)">2단원</button>
+                        <button class="lesson-btn active" id="lesson-btn-1" onclick="selectLesson(1)">1</button>
+                        <button class="lesson-btn" id="lesson-btn-2" onclick="selectLesson(2)">2</button>
                     </div>
                 </div>
+
+                <!-- Mode selector for v3.0 drill questions -->
+                <div id="mode-selector-container" style="display:none;margin-top:12px;">
+                    <span class="setting-label" style="display:block;margin-bottom:8px;">학습 모드</span>
+                    <div class="mode-selector">
+                        <button class="mode-btn" id="mode-btn-vocab" onclick="selectAndStart('vocab')">
+                            단어 드릴
+                            <span class="mode-desc">핵심 단어</span>
+                        </button>
+                        <button class="mode-btn" id="mode-btn-drill" onclick="selectAndStart('drill')">
+                            문장 드릴
+                            <span class="mode-desc">기초 문항</span>
+                        </button>
+                        <button class="mode-btn" id="mode-btn-exam" onclick="selectAndStart('exam_prep')">
+                            실전 대비
+                            <span class="mode-desc">시험 문항</span>
+                        </button>
+                    </div>
+                </div>
+                <div id="mode-preparing-msg" class="preparing-msg" style="display:none;">이 Lesson은 준비 중입니다</div>
                 <!-- A/B 세션 구분 제거: 통합 세션으로 운영 -->
             </div>
 
-            <button class="today-button" onclick="startSession()">
-                오늘의 학습 시작
-                <span class="button-subtitle" id="session-subtitle">30문항 · 약 20분</span>
-            </button>
+            <!-- "오늘의 학습 시작" 버튼 제거: 모드 버튼 클릭 시 바로 시작 -->
+            <div id="session-subtitle-info" style="font-size:13px;color:#888;text-align:center;margin-top:-8px;"></div>
 
             <div class="stats-card">
                 <div class="stats-title">학습 현황</div>
                 <div class="stat-row">
-                    <span class="stat-label">총 학습일수</span>
-                    <span class="stat-value"><span id="stat-days">0</span>일</span>
-                </div>
-                <div class="stat-row">
-                    <span class="stat-label">전체 정답률</span>
+                    <span class="stat-label">문장 정답률</span>
                     <span class="stat-value"><span id="stat-accuracy">0</span>%</span>
                 </div>
                 <div class="stat-row">
-                    <span class="stat-label">마스터한 문항</span>
-                    <span class="stat-value"><span id="stat-mastered">0</span>/<span id="stat-total-q">80</span></span>
-                </div>
-                <div class="stat-row">
-                    <span class="stat-label">복습 필요</span>
-                    <span class="stat-value"><span id="stat-review">0</span>개</span>
+                    <span class="stat-label">단어 암기율</span>
+                    <span class="stat-value"><span id="stat-vocab">—</span></span>
                 </div>
             </div>
 
@@ -856,12 +944,56 @@
                 <div id="writing-feedback" class="writing-feedback" style="display:none;"></div>
             </div>
 
+            <!-- Flashcard (Quizlet-style flip) -->
+            <div id="flashcard-container" style="display:none;">
+                <div class="flashcard-scene" id="flashcard-scene">
+                    <div class="flashcard" id="flashcard-card">
+                        <div class="flashcard-face flashcard-front" id="flashcard-front"></div>
+                        <div class="flashcard-face flashcard-back" id="flashcard-back"></div>
+                    </div>
+                </div>
+                <div class="flashcard-buttons" id="flashcard-buttons" style="display:none;">
+                    <button class="flashcard-btn know" onclick="handleFlashcardAnswer(true)">알겠어요 ✓</button>
+                    <button class="flashcard-btn dont-know" onclick="handleFlashcardAnswer(false)">모르겠어요 ✗</button>
+                </div>
+            </div>
+
+            <!-- Typed Blank -->
+            <div id="typed-blank-container" style="display:none;">
+                <div id="typed-blank-prompt" class="typed-blank-prompt"></div>
+                <div id="typed-blank-inputs"></div>
+                <button id="typed-blank-submit" class="writing-submit-btn" onclick="checkTypedBlank()">제출</button>
+                <div id="typed-blank-feedback" style="display:none;"></div>
+            </div>
+
             <div id="hint-display" style="display:none;background:#fff8e1;border:1px solid #ffc107;border-radius:8px;padding:10px 14px;font-size:13px;color:#795548;margin-top:8px;"></div>
             <button class="btn-next" id="btn-next" onclick="goNextQuestion()">다음 문항 ▶</button>
             <div class="quiz-controls" id="quiz-controls">
                 <button class="btn-hint" id="btn-hint" onclick="showHint()">💡 힌트</button>
                 <button class="btn-quit" onclick="quitQuiz()">그만하기</button>
                 <button class="btn-skip" id="btn-skip" onclick="skipArrange()" style="display:none;">건너뛰기</button>
+            </div>
+        </div>
+
+        <!-- Vocab Drill Page -->
+        <div class="page" id="vocab-page">
+            <div class="vocab-progress-bar"><div class="vocab-progress-fill" id="vocab-progress-fill"></div></div>
+            <div class="vocab-counter" id="vocab-counter"></div>
+            <div id="vocab-card-area">
+                <div class="flashcard-scene" id="vocab-scene">
+                    <div class="flashcard" id="vocab-card">
+                        <div class="flashcard-face flashcard-front" id="vocab-front"></div>
+                        <div class="flashcard-face flashcard-back" id="vocab-back"></div>
+                    </div>
+                </div>
+                <div class="flashcard-buttons" id="vocab-buttons" style="display:none;">
+                    <button class="flashcard-btn know" onclick="handleVocabAnswer(true)">알아요 ✓</button>
+                    <button class="flashcard-btn dont-know" onclick="handleVocabAnswer(false)">모르겠어요 ✗</button>
+                </div>
+            </div>
+            <div id="vocab-result-area" style="display:none;"></div>
+            <div class="quiz-controls" id="vocab-controls">
+                <button class="btn-quit" onclick="quitVocabDrill()">그만하기</button>
             </div>
         </div>
 
@@ -906,8 +1038,16 @@
         const HIGH_LOAD_TASKS = new Set(['anchor_arrange', 'chunk_arrange', 'mini_rebuild', 'mini_writing']);
 
         function updateSubtitle() {
-            const total = QUIZ_DATA ? Math.min(30, QUIZ_DATA.questions.length) : 30;
-            document.getElementById('session-subtitle').textContent = total + '문항 · 약 20분';
+            // 버튼 제거됨 — 모드 선택 시 바로 시작하므로 subtitle info만 업데이트
+            const el = document.getElementById('session-subtitle-info');
+            if (!el) return;
+            if (currentMode === 'vocab') {
+                const count = (QUIZ_DATA && QUIZ_DATA.vocab_drill) ? QUIZ_DATA.vocab_drill.length : 0;
+                el.textContent = count + '단어 · 약 5분';
+            } else {
+                const total = QUIZ_DATA ? Math.min(30, QUIZ_DATA.questions.length) : 30;
+                el.textContent = total + '문항 · 약 20분';
+            }
         }
 
         // Sound effects
@@ -973,8 +1113,16 @@
             const q = currentSession[currentQuestionIndex];
             recordAnswer(q, false);
             document.getElementById('btn-skip').style.display = 'none';
-            currentQuestionIndex++;
-            showQuestion();
+
+            // Show correct answer before moving on
+            const container = document.getElementById('arrange-container');
+            const answerDiv = document.createElement('div');
+            answerDiv.className = 'correct-answer-display';
+            answerDiv.style.cssText = 'background:#e8f5e9;border:1px solid #4CAF50;border-radius:8px;padding:10px 14px;margin-top:10px;font-size:14px;color:#2e7d32;';
+            answerDiv.textContent = '정답: ' + (q.answer || '');
+            container.after(answerDiv);
+
+            showNextButton();
         }
 
         // Result page parent section toggle
@@ -1004,7 +1152,7 @@
         // 외부 JSON 로드용 변수
         let QUIZ_DATA = null;
         let currentLesson = null;
-
+        let currentMode = 'exam_prep'; // 'drill' or 'exam_prep' (default: exam_prep for legacy)
 
         // 상태 관리
         let currentSession = null;
@@ -1014,21 +1162,73 @@
         let currentSessionMeta = null; // 세션 메타 (type, lesson, metrics)
 
         // Lesson 데이터 로드
+        // file:// 프로토콜 호환 JSON 로더: fetch → XHR → <script> 태그 3단 폴백
+        function fetchJsonCompat(url) {
+            return fetch(url).then(r => {
+                if (!r.ok) throw new Error('HTTP ' + r.status);
+                return r.json();
+            }).catch(() => {
+                // 2nd fallback: XMLHttpRequest
+                return new Promise((resolve, reject) => {
+                    const xhr = new XMLHttpRequest();
+                    xhr.open('GET', url, true);
+                    xhr.onload = function() {
+                        if (xhr.status === 0 || xhr.status === 200) {
+                            try { resolve(JSON.parse(xhr.responseText)); }
+                            catch(e) { reject(e); }
+                        } else { reject(new Error('XHR ' + xhr.status)); }
+                    };
+                    xhr.onerror = function() { reject(new Error('XHR network error')); };
+                    xhr.send();
+                });
+            }).catch(() => {
+                // 3rd fallback: <script> 태그 (file:// CORS 우회)
+                const jsUrl = url.replace(/\.json$/, '.js');
+                return new Promise((resolve, reject) => {
+                    window.__loadLesson = function(data) {
+                        delete window.__loadLesson;
+                        resolve(data);
+                    };
+                    const script = document.createElement('script');
+                    script.src = jsUrl;
+                    script.onload = function() { script.remove(); };
+                    script.onerror = function() {
+                        delete window.__loadLesson;
+                        script.remove();
+                        reject(new Error('Script fallback failed: ' + jsUrl));
+                    };
+                    document.head.appendChild(script);
+                });
+            });
+        }
+
         async function loadLesson(lessonNumber) {
             try {
-                const response = await fetch(`lesson${lessonNumber}.json`);
-                if (!response.ok) throw new Error(`Failed to load lesson${lessonNumber}.json`);
-                QUIZ_DATA = await response.json();
+                QUIZ_DATA = await fetchJsonCompat(`lesson${lessonNumber}.json`);
                 currentLesson = lessonNumber;
-                
+
+                // B-1: Filter out string comments from questions array
+                const realQuestions = QUIZ_DATA.questions.filter(q => typeof q === 'object' && q !== null);
+                QUIZ_DATA.questions = realQuestions;
+
+                // Detect v3.0 schema
+                if (QUIZ_DATA.core_sentences && QUIZ_DATA.questions) {
+                    // New v3.0 schema
+                    QUIZ_DATA._isV3 = true;
+                } else if (QUIZ_DATA.questions) {
+                    // Legacy schema
+                    QUIZ_DATA._isV3 = false;
+                }
+
                 // localStorage key update
                 loadQuestionHistory();
                 updateStats();
-                
-                console.log(`Lesson ${lessonNumber} loaded with ${QUIZ_DATA.questions.length} questions`);
+                updateModeSelector(); // B-2: Update mode selector based on schema
+
+                console.log(`Lesson ${lessonNumber} loaded (v3: ${QUIZ_DATA._isV3}) with ${QUIZ_DATA.questions.length} questions`);
             } catch (error) {
                 console.error(`Error loading lesson${lessonNumber}.json:`, error);
-                alert(`Lesson ${lessonNumber} 데이터를 로드할 수 없습니다.`);
+                alert(`Lesson ${lessonNumber} 데이터를 로드할 수 없습니다.\n(${error.message})`);
             }
         }
 
@@ -1046,14 +1246,62 @@
             // Load lesson data
             await loadLesson(lessonNumber);
 
-            // 문제 수가 해당 단원 총 문항보다 크면 조정
-            const maxQ = QUIZ_DATA.questions.length;
-            if (sessionSize > maxQ) {
-                sessionSize = maxQ;
-                document.getElementById('count-display').textContent = sessionSize;
-                localStorage.setItem('session_size', sessionSize);
+            updateSubtitle();
+        }
+
+        // B-2: Mode selector update
+        function updateModeSelector() {
+            if (!QUIZ_DATA || !QUIZ_DATA._isV3) {
+                // Legacy schema — hide mode selector
+                document.getElementById('mode-selector-container').style.display = 'none';
+                document.getElementById('mode-preparing-msg').style.display = 'none';
+                currentMode = 'exam_prep'; // Default to exam_prep for legacy
+                return;
+            }
+
+            // V3 schema with core_sentences — show mode selector
+            const hasExamPrep = QUIZ_DATA.questions.some(q => q.phase === 'exam_prep');
+            const hasDrill = QUIZ_DATA.questions.some(q => q.phase === 'drill');
+            const hasVocab = QUIZ_DATA.vocab_drill && QUIZ_DATA.vocab_drill.length > 0;
+
+            if (hasDrill || hasVocab) {
+                // Both modes available
+                document.getElementById('mode-selector-container').style.display = 'block';
+                document.getElementById('mode-preparing-msg').style.display = 'none';
+                // Show/hide vocab button
+                const vocabBtn = document.getElementById('mode-btn-vocab');
+                if (vocabBtn) vocabBtn.style.display = hasVocab ? '' : 'none';
+                selectMode('drill'); // Default to drill for v3
+            } else if (hasExamPrep) {
+                // Only exam_prep available (準備中 message)
+                document.getElementById('mode-selector-container').style.display = 'none';
+                document.getElementById('mode-preparing-msg').style.display = 'block';
+                currentMode = 'exam_prep';
+            } else {
+                // No questions at all
+                document.getElementById('mode-selector-container').style.display = 'none';
+                document.getElementById('mode-preparing-msg').style.display = 'block';
+            }
+        }
+
+        // B-2: Select learning mode
+        function selectMode(mode) {
+            currentMode = mode;
+            document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+            if (mode === 'drill') {
+                document.getElementById('mode-btn-drill')?.classList.add('active');
+            } else if (mode === 'vocab') {
+                document.getElementById('mode-btn-vocab')?.classList.add('active');
+            } else {
+                document.getElementById('mode-btn-exam')?.classList.add('active');
             }
             updateSubtitle();
+        }
+
+        // 모드 선택 + 바로 시작
+        async function selectAndStart(mode) {
+            selectMode(mode);
+            await startSession();
         }
 
         // 초기화
@@ -1092,29 +1340,23 @@
 
         // 학습 현황 업데이트
         function updateStats() {
-            const logsKey = currentLesson ? `quiz_logs_L${currentLesson}` : 'quiz_logs';
-            const logs = JSON.parse(localStorage.getItem(logsKey) || '[]');
-            const uniqueDays = new Set(logs.map(log => log.date)).size;
-
+            // 문장 정답률
             const totalAttempts = Object.values(questionHistory).reduce((sum, q) => sum + (q.attempts || 0), 0);
             const totalCorrect = Object.values(questionHistory).reduce((sum, q) => sum + (q.correct || 0), 0);
             const accuracy = totalAttempts > 0 ? Math.round((totalCorrect / totalAttempts) * 100) : 0;
-
-            const mastered = Object.keys(questionHistory).filter(id => {
-                const q = questionHistory[id];
-                return q.correct >= 3 && q.last_correct === true;
-            }).length;
-
-            const review = Object.keys(questionHistory).filter(id => {
-                const q = questionHistory[id];
-                return q.attempts > 0 && q.last_correct === false;
-            }).length;
-
-            document.getElementById('stat-days').textContent = uniqueDays;
             document.getElementById('stat-accuracy').textContent = accuracy;
-            document.getElementById('stat-mastered').textContent = mastered;
-            if (QUIZ_DATA) document.getElementById('stat-total-q').textContent = QUIZ_DATA.questions.length;
-            document.getElementById('stat-review').textContent = review;
+
+            // 단어 암기율
+            const vocabResults = JSON.parse(localStorage.getItem('vocab_results') || '{}');
+            const lessonKey = 'L' + (currentLesson || 1);
+            const lessonVocab = vocabResults[lessonKey] || {};
+            const vocabTested = Object.keys(lessonVocab).length;
+            if (vocabTested > 0) {
+                const vocabKnown = Object.values(lessonVocab).filter(v => v.known === true).length;
+                document.getElementById('stat-vocab').textContent = Math.round((vocabKnown / vocabTested) * 100) + '%';
+            } else {
+                document.getElementById('stat-vocab').textContent = '—';
+            }
         }
 
         // =========================================================
@@ -1140,6 +1382,122 @@
             }
 
             return Math.max(base, 5); // 최소 5
+        }
+
+        // =========================================================
+        // B-3: Drill Session Engine
+        // =========================================================
+        function getDrillStage() {
+            const key = `drill_progress_L${currentLesson}`;
+            return parseInt(localStorage.getItem(key) || '1');
+        }
+
+        function setDrillStage(stage) {
+            const key = `drill_progress_L${currentLesson}`;
+            localStorage.setItem(key, String(stage));
+        }
+
+        function generateDrillSession() {
+            if (!QUIZ_DATA || !QUIZ_DATA.core_sentences) return [];
+
+            const allQuestions = QUIZ_DATA.questions;
+            const drillQuestions = allQuestions.filter(q => q.phase === 'drill');
+            const currentStage = getDrillStage();
+
+            // Get questions for current stage
+            let stageQuestions = drillQuestions.filter(q => q.drill_stage === currentStage);
+
+            // Group by core_sentence_id and handle pairs
+            const groups = {};
+            stageQuestions.forEach(q => {
+                const csId = q.core_sentence_id;
+                if (!groups[csId]) groups[csId] = [];
+                groups[csId].push(q);
+            });
+
+            // Build session respecting pair_id adjacency
+            const coreSentences = QUIZ_DATA.core_sentences || [];
+            const ordered = [];
+            const processedCS = new Set();
+
+            // Shuffle core sentence order
+            const csIds = Object.keys(groups);
+            shuffleArray(csIds);
+
+            csIds.forEach(csId => {
+                if (processedCS.has(csId)) return;
+                processedCS.add(csId);
+
+                // Check if this CS has a pair
+                const cs = coreSentences.find(c => c.id === csId);
+                if (cs && cs.pair_id && groups[cs.pair_id] && !processedCS.has(cs.pair_id)) {
+                    // Add both pair members adjacent
+                    processedCS.add(cs.pair_id);
+                    ordered.push(...(groups[csId] || []));
+                    ordered.push(...(groups[cs.pair_id] || []));
+                } else {
+                    ordered.push(...(groups[csId] || []));
+                }
+            });
+
+            return ordered;
+        }
+
+        // B-4: Exam Prep Session Engine (extended from existing)
+        function generateExamPrepSession() {
+            const allQuestions = QUIZ_DATA.questions;
+            const examPrepQuestions = allQuestions.filter(q => q.phase === 'exam_prep');
+
+            // Map score_group if it doesn't exist (use recovery_band as fallback)
+            examPrepQuestions.forEach(q => {
+                if (!q.score_group && q.recovery_band) {
+                    q.score_group = q.recovery_band;
+                }
+            });
+
+            // Reuse existing poolByScoreGroup and applyBlockRules logic
+            const TARGET = 30;
+            const poolA = examPrepQuestions.filter(q => q.score_group === 'A');
+            const poolB = examPrepQuestions.filter(q => q.score_group === 'B');
+            const poolC = examPrepQuestions.filter(q => q.score_group === 'C');
+
+            shuffleArray(poolA);
+            shuffleArray(poolB);
+            shuffleArray(poolC);
+
+            const selected = [];
+            const usedIds = new Set();
+            const pick = (pool, count) => {
+                let picked = 0;
+                for (const q of pool) {
+                    if (picked >= count) break;
+                    if (!usedIds.has(q.id)) {
+                        selected.push(q);
+                        usedIds.add(q.id);
+                        picked++;
+                    }
+                }
+                return picked;
+            };
+
+            const aTarget = Math.round(TARGET * 0.4);
+            const bTarget = Math.round(TARGET * 0.4);
+            const cTarget = TARGET - aTarget - bTarget;
+
+            pick(poolA, aTarget);
+            pick(poolB, bTarget);
+            pick(poolC, cTarget);
+
+            if (selected.length < TARGET) {
+                pick(poolA, TARGET);
+                pick(poolB, TARGET);
+                pick(poolC, TARGET);
+            }
+
+            const session = selected.slice(0, Math.min(TARGET, examPrepQuestions.length));
+            const ordered = applyBlockRules(session, 'A');
+
+            return ordered;
         }
 
         // score_group 필터링 + 이력 기반 정렬
@@ -1299,17 +1657,42 @@
             if (!QUIZ_DATA) {
                 await loadLesson(currentLesson || 1);
             }
-            currentSession = generateSession();
+
+            // Vocab drill: separate flow
+            if (currentMode === 'vocab') {
+                startVocabDrill();
+                return;
+            }
+
+            // B-4: Generate session based on mode
+            if (currentMode === 'drill') {
+                currentSession = generateDrillSession();
+            } else {
+                currentSession = generateExamPrepSession();
+            }
+
+            if (!currentSession || currentSession.length === 0) {
+                alert('이 모드의 문항이 없습니다.');
+                return;
+            }
+
             currentQuestionIndex = 0;
             sessionAnswers = [];
             sessionStartTime = Date.now();
+
             // 세션 메타 정보 저장 (메트릭 로깅용)
             currentSessionMeta = {
                 type: sessionType,
                 lesson: currentLesson,
+                mode: currentMode,
                 size: currentSession.length,
-                score_groups: currentSession.map(q => q.score_group)
+                score_groups: currentSession.map(q => q.score_group || q.recovery_band || '')
             };
+
+            // Update header title with mode label
+            const modeLabel = currentMode === 'drill' ? '문장 드릴' : '실전 대비';
+            document.querySelector('.header-title').textContent = `영어 Lesson ${currentLesson} · ${modeLabel}`;
+
             showPage('quiz-page');
             showQuestion();
         }
@@ -1327,7 +1710,7 @@
 
             document.getElementById('progress-fill').style.width = progress + '%';
             document.getElementById('question-number').textContent = (currentQuestionIndex + 1) + ' / ' + currentSession.length;
-            document.getElementById('instruction-text').textContent = q.instruction;
+            document.getElementById('instruction-text').textContent = q.instruction || '';
 
             // 다음 버튼 숨기기 + 이전 정답/힌트/설명 표시 제거
             document.getElementById('btn-next').style.display = 'none';
@@ -1341,13 +1724,30 @@
             questionTextEl.innerHTML = '';
             questionTextEl.style.whiteSpace = '';
 
-            // 컨테이너 모두 숨기기
+            // 컨테이너 모두 숨기기 (B-6)
             document.getElementById('fill-blank-container').style.display = 'none';
             document.getElementById('arrange-container').style.display = 'none';
             document.getElementById('match-container').style.display = 'none';
             document.getElementById('writing-container').style.display = 'none';
+            document.getElementById('flashcard-container').style.display = 'none';
+            document.getElementById('typed-blank-container').style.display = 'none';
 
-            if (q.type === 'fill_blank' || q.type === 'position_ask') {
+            // Show/hide controls based on type (B-6)
+            const hintBtn = document.getElementById('btn-hint');
+            const skipBtn = document.getElementById('btn-skip');
+            hintBtn.style.display = (q.type === 'flashcard') ? 'none' : 'inline-block';
+            skipBtn.style.display = (q.type === 'arrange' || q.type === 'chunk_order') ? 'inline-block' : 'none';
+
+            // Dispatch by type (B-6)
+            if (q.type === 'flashcard') {
+                showFlashcard(q);
+            } else if (q.type === 'choice_blank') {
+                showChoiceBlank(q);
+            } else if (q.type === 'chunk_order') {
+                showChunkOrder(q);
+            } else if (q.type === 'typed_blank') {
+                showTypedBlank(q);
+            } else if (q.type === 'fill_blank' || q.type === 'position_ask') {
                 if (q.type === 'position_ask') showPositionAsk(q);
                 else showFillBlank(q);
             } else if (q.type === 'dialogue_response') {
@@ -1361,6 +1761,9 @@
             } else if (q.type === 'mini_writing') {
                 showMiniWriting(q);
             }
+
+            // Vocab hint: show unknown words that appear in this question
+            showVocabHint(q);
         }
 
         // 정규화 함수: arrange 정답 비교 시 구두점 차이 무시
@@ -1638,6 +2041,13 @@
             if (q.type === 'fill_blank' || q.type === 'dialogue_response' || q.type === 'short_reading') {
                 const explanation = findExplanation(userAnswer, originalIdx);
                 html += '<div style="font-size:15px;color:#333;">' + explanation + '</div>';
+            } else if (q.type === 'choice_blank') {
+                const explanation = findExplanation(userAnswer, originalIdx);
+                html += '<div style="font-size:15px;color:#333;">' + explanation + '</div>';
+            } else if (q.type === 'chunk_order') {
+                const explanation = we['default'] || q.hint || '';
+                html += '<div style="font-size:15px;color:#333;">' + explanation + '</div>';
+                html += '<div style="margin-top:8px;font-size:14px;color:#2F5496;">정답: ' + (q.answer || '') + '</div>';
             } else if (q.type === 'arrange') {
                 const explanation = we['default'] || q.hint || '';
                 html += '<div style="font-size:15px;color:#333;">' + explanation + '</div>';
@@ -1715,11 +2125,21 @@
             const container = document.getElementById('writing-container');
             container.style.display = 'flex';
 
-            // 조건 표시
+            // B-7: 조건 표시 (formal vs fallback)
             const condEl = document.getElementById('writing-condition');
             let condHtml = '<strong>조건:</strong><br>';
-            if (q.required_word) condHtml += '• <strong>"' + q.required_word + '"</strong>을(를) 사용하세요<br>';
-            if (q.min_words) condHtml += '• ' + q.min_words + '단어 이상으로 쓰세요';
+
+            // Check if formal rubric exists
+            if (q.required_word || q.min_words) {
+                // Formal scoring
+                if (q.required_word) condHtml += '• <strong>"' + q.required_word + '"</strong>을(를) 사용하세요<br>';
+                if (q.min_words) condHtml += '• ' + q.min_words + '단어 이상으로 쓰세요';
+            } else if (q.wrong_explanations && q.wrong_explanations.default) {
+                // Fallback: show conditions from wrong_explanations
+                condHtml += q.wrong_explanations.default;
+            } else {
+                condHtml += '• 자유롭게 문장을 완성하세요';
+            }
             condEl.innerHTML = condHtml;
 
             // 입력 초기화
@@ -1736,42 +2156,359 @@
             const input = document.getElementById('writing-input').value.trim();
             if (!input) { alert('문장을 입력해 주세요.'); return; }
 
-            const words = input.split(/\s+/);
-            const wordCount = words.length;
-            const minWords = q.min_words || 5;
-            const requiredWord = q.required_word ? q.required_word.toLowerCase() : null;
-
-            // 조건 검사
-            const hasRequiredWord = requiredWord ? input.toLowerCase().includes(requiredWord) : true;
-            const hasMinWords = wordCount >= minWords;
-            const isCorrect = hasRequiredWord && hasMinWords;
-
-            // 피드백 생성
-            const feedbackEl = document.getElementById('writing-feedback');
+            // B-7: Formal vs Fallback scoring
+            let isCorrect = false;
+            let feedbackEl = document.getElementById('writing-feedback');
             feedbackEl.style.display = 'block';
             document.getElementById('writing-input').disabled = true;
             document.getElementById('writing-submit').style.display = 'none';
 
-            if (isCorrect) {
-                feedbackEl.className = 'writing-feedback pass';
-                feedbackEl.innerHTML = '✅ 조건을 충족했어요!<br>(' + wordCount + '단어'
-                    + (requiredWord ? ', "' + q.required_word + '" 포함' : '') + ')'
-                    + (q.example_answer ? '<br><br>📝 예시 답안: <em>' + q.example_answer + '</em>' : '');
+            if (q.required_word || q.min_words) {
+                // Formal scoring path
+                const words = input.split(/\s+/);
+                const wordCount = words.length;
+                const minWords = q.min_words || 5;
+                const requiredWord = q.required_word ? q.required_word.toLowerCase() : null;
+
+                // 조건 검사
+                const hasRequiredWord = requiredWord ? input.toLowerCase().includes(requiredWord) : true;
+                const hasMinWords = wordCount >= minWords;
+                isCorrect = hasRequiredWord && hasMinWords;
+
+                if (isCorrect) {
+                    feedbackEl.className = 'writing-feedback pass';
+                    feedbackEl.innerHTML = '✅ 조건을 충족했어요!<br>(' + wordCount + '단어'
+                        + (requiredWord ? ', "' + q.required_word + '" 포함' : '') + ')'
+                        + (q.example_answer ? '<br><br>📝 예시 답안: <em>' + q.example_answer + '</em>' : '');
+                } else {
+                    let reasons = [];
+                    if (!hasRequiredWord) reasons.push('"' + q.required_word + '"을(를) 사용하지 않았어요');
+                    if (!hasMinWords) reasons.push(minWords + '단어 이상이어야 해요 (현재 ' + wordCount + '단어)');
+                    feedbackEl.className = 'writing-feedback fail';
+                    feedbackEl.innerHTML = '❌ 조건을 충족하지 못했어요.<br>• ' + reasons.join('<br>• ')
+                        + (q.example_answer ? '<br><br>📝 예시 답안: <em>' + q.example_answer + '</em>' : '');
+                }
             } else {
-                let reasons = [];
-                if (!hasRequiredWord) reasons.push('"' + q.required_word + '"을(를) 사용하지 않았어요');
-                if (!hasMinWords) reasons.push(minWords + '단어 이상이어야 해요 (현재 ' + wordCount + '단어)');
-                feedbackEl.className = 'writing-feedback fail';
-                feedbackEl.innerHTML = '❌ 조건을 충족하지 못했어요.<br>• ' + reasons.join('<br>• ')
-                    + (q.example_answer ? '<br><br>📝 예시 답안: <em>' + q.example_answer + '</em>' : '');
+                // Fallback self-check scoring
+                feedbackEl.className = 'writing-feedback';
+                feedbackEl.style.background = '#e8f5e9';
+                feedbackEl.style.border = '1px solid #4CAF50';
+                feedbackEl.style.borderRadius = '8px';
+                feedbackEl.style.padding = '12px';
+                feedbackEl.style.marginTop = '10px';
+
+                let html = '<strong>📝 모범 답안</strong><br><em>' + (q.blank_answer || '') + '</em>';
+                if (q.wrong_explanations && q.wrong_explanations.default) {
+                    html += '<br><strong>조건:</strong><br>' + q.wrong_explanations.default;
+                }
+                html += '<br><br><strong>조건을 충족했나요?</strong>';
+                feedbackEl.innerHTML = html;
+
+                // Two buttons for self-check: 충족했어요 / 부족해요
+                const btn1 = document.createElement('button');
+                btn1.textContent = '✓ 충족했어요';
+                btn1.style.cssText = 'margin-top:8px;margin-right:8px;padding:8px 12px;background:#4CAF50;color:white;border:none;border-radius:6px;font-size:14px;cursor:pointer;';
+                btn1.onclick = () => { recordAnswer(q, true); showNextButton(); };
+                feedbackEl.appendChild(btn1);
+
+                const btn2 = document.createElement('button');
+                btn2.textContent = '✗ 부족해요';
+                btn2.style.cssText = 'padding:8px 12px;background:#f44336;color:white;border:none;border-radius:6px;font-size:14px;cursor:pointer;';
+                btn2.onclick = () => { recordAnswer(q, false); showNextButton(); };
+                feedbackEl.appendChild(btn2);
+
+                return; // Don't call recordAnswer here, buttons will do it
             }
 
             recordAnswer(q, isCorrect);
             showNextButton();
         }
 
-        // 정답 문장 추출 (유형별)
+        // =========================================================
+        // B-5: Drill Question Renderers
+        // =========================================================
+
+        // Flashcard renderer — Quizlet-style flip
+        let flashcardFlipped = false;
+
+        function showFlashcard(q) {
+            document.getElementById('question-text').textContent = '';
+            document.getElementById('flashcard-container').style.display = 'block';
+
+            const front = document.getElementById('flashcard-front');
+            const back = document.getElementById('flashcard-back');
+            const buttons = document.getElementById('flashcard-buttons');
+            const card = document.getElementById('flashcard-card');
+            const scene = document.getElementById('flashcard-scene');
+
+            // Reset flip state
+            flashcardFlipped = false;
+            card.classList.remove('flipped');
+
+            // Front: 영어 문장 + 탭 안내
+            front.innerHTML = '<div>' + q.prompt_en + '</div><div class="flashcard-tap-hint">탭하면 뜻 보기</div>';
+
+            // Back: 한국어 뜻 + grammar note
+            let backHtml = '<div>' + q.prompt_ko + '</div>';
+            if (q.grammar_note) {
+                backHtml += '<div class="grammar-note">' + q.grammar_note + '</div>';
+            }
+            backHtml += '<div class="flashcard-tap-hint">탭하면 영어 보기</div>';
+            back.innerHTML = backHtml;
+
+            // Reset & hide buttons
+            buttons.style.display = 'none';
+            document.querySelectorAll('.flashcard-btn').forEach(b => { b.disabled = false; });
+
+            // TTS: 카드 나타나면 즉시 영어 문장 읽어주기
+            setTimeout(() => speakEnglish(q.prompt_en), 300);
+
+            // Click handler: toggle flip (Quizlet style)
+            scene.onclick = function() {
+                flashcardFlipped = !flashcardFlipped;
+                card.classList.toggle('flipped');
+
+                // 뜻이 보이면(첫 뒤집기) 버튼 표시
+                if (flashcardFlipped) {
+                    buttons.style.display = 'flex';
+                }
+                // 영어로 돌아오면 다시 TTS
+                if (!flashcardFlipped) {
+                    setTimeout(() => speakEnglish(q.prompt_en), 300);
+                }
+            };
+        }
+
+        function handleFlashcardAnswer(knew) {
+            const q = currentSession[currentQuestionIndex];
+            document.getElementById('flashcard-scene').onclick = null;
+
+            // Disable buttons immediately to prevent double-tap
+            document.querySelectorAll('.flashcard-btn').forEach(b => { b.disabled = true; });
+
+            recordAnswer(q, knew);
+            showNextButton();
+        }
+
+        // Choice Blank renderer (reuse fill-blank-container)
+        function showChoiceBlank(q) {
+            document.getElementById('question-text').textContent = q.prompt;
+            const container = document.getElementById('fill-blank-container');
+            container.style.display = 'grid';
+            container.innerHTML = '';
+
+            const shuffled = q.choices.map((choice, idx) => ({ choice, idx }));
+            shuffleArray(shuffled);
+            // Map correct_index through shuffle
+            const newCorrect = shuffled.findIndex(x => x.idx === q.correct_index);
+
+            shuffled.forEach((item, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'choice-btn';
+                btn.textContent = item.choice;
+                btn.onclick = () => handleChoiceBlankAnswer(q, idx, newCorrect, item.choice);
+                container.appendChild(btn);
+            });
+        }
+
+        function handleChoiceBlankAnswer(q, selectedIdx, correctIdx, userChoice) {
+            const buttons = document.querySelectorAll('#fill-blank-container .choice-btn');
+            buttons.forEach((btn, idx) => {
+                btn.disabled = true;
+                if (idx === correctIdx) btn.classList.add('correct');
+                if (idx === selectedIdx && idx !== correctIdx) btn.classList.add('incorrect');
+            });
+            const isCorrect = selectedIdx === correctIdx;
+            recordAnswer(q, isCorrect);
+            if (!isCorrect) {
+                showWrongExplanation(q, document.getElementById('fill-blank-container'), userChoice);
+            }
+            showNextButton();
+        }
+
+        // Chunk Order renderer (reuse arrange-container)
+        function showChunkOrder(q) {
+            document.getElementById('question-text').textContent = q.prompt_ko;
+            const container = document.getElementById('arrange-container');
+            container.style.display = 'block';
+
+            const selected = [];
+            const shuffled = [...q.chunks];
+            shuffleArray(shuffled);
+
+            const selectedDiv = document.getElementById('selected-words');
+            const availableDiv = document.getElementById('available-words');
+            selectedDiv.innerHTML = '';
+            availableDiv.innerHTML = '';
+
+            // Show skip button for chunk_order
+            document.getElementById('btn-skip').style.display = 'inline-block';
+
+            shuffled.forEach((chunk, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'word-btn';
+                btn.textContent = chunk;
+                btn.dataset.word = chunk;
+                btn.dataset.idx = idx;
+                btn.onclick = () => {
+                    if (!btn.classList.contains('used')) {
+                        selected.push({ word: chunk, idx });
+                        btn.classList.add('used');
+                        updateSelectedChunks();
+                    }
+                };
+                availableDiv.appendChild(btn);
+            });
+
+            function updateSelectedChunks() {
+                selectedDiv.innerHTML = '';
+                selected.forEach((item, selIdx) => {
+                    const tag = document.createElement('div');
+                    tag.className = 'selected-word';
+                    tag.textContent = item.word;
+                    const removeBtn = document.createElement('button');
+                    removeBtn.className = 'remove-word-btn';
+                    removeBtn.textContent = '×';
+                    removeBtn.onclick = () => {
+                        selected.splice(selIdx, 1);
+                        document.querySelector(`[data-word="${item.word}"][data-idx="${item.idx}"]`).classList.remove('used');
+                        updateSelectedChunks();
+                    };
+                    tag.appendChild(removeBtn);
+                    selectedDiv.appendChild(tag);
+                });
+            }
+
+            // Auto-check when all chunks placed
+            if (arrangeCheckInterval) clearInterval(arrangeCheckInterval);
+            arrangeCheckInterval = setInterval(() => {
+                if (selected.length === q.chunks.length) {
+                    clearInterval(arrangeCheckInterval);
+                    arrangeCheckInterval = null;
+                    const userAnswer = selected.map(x => x.word).join(' ');
+                    const isCorrect = normalizeAnswer(userAnswer) === normalizeAnswer(q.answer);
+
+                    document.querySelectorAll('#available-words .word-btn').forEach(btn => {
+                        if (btn.classList.contains('used')) {
+                            btn.classList.add(isCorrect ? 'correct' : 'incorrect');
+                        }
+                        btn.disabled = true;
+                    });
+                    document.querySelectorAll('.remove-word-btn').forEach(b => b.disabled = true);
+
+                    recordAnswer(q, isCorrect);
+                    if (!isCorrect) {
+                        showWrongExplanation(q, container, userAnswer);
+                    }
+                    document.getElementById('btn-skip').style.display = 'none';
+                    showNextButton();
+                }
+            }, 100);
+        }
+
+        // Typed Blank renderer
+        function showTypedBlank(q) {
+            document.getElementById('question-text').textContent = '';
+            const container = document.getElementById('typed-blank-container');
+            container.style.display = 'block';
+
+            // Show prompt with blanks highlighted
+            const promptEl = document.getElementById('typed-blank-prompt');
+            promptEl.innerHTML = q.prompt.replace(/_____/g, '<span style="border-bottom:2px solid #2F5496;padding:0 20px;color:#2F5496;font-weight:600;">?</span>');
+
+            // Create input fields for each blank
+            const inputsDiv = document.getElementById('typed-blank-inputs');
+            inputsDiv.innerHTML = '';
+            const blankCount = (q.prompt.match(/_____/g) || []).length;
+
+            for (let i = 0; i < blankCount; i++) {
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.className = 'typed-blank-input';
+                input.placeholder = '빈칸 ' + (i + 1) + '을(를) 입력하세요';
+                input.autocomplete = 'off';
+                input.autocapitalize = 'none';
+                inputsDiv.appendChild(input);
+            }
+
+            document.getElementById('typed-blank-submit').style.display = 'block';
+            document.getElementById('typed-blank-feedback').style.display = 'none';
+            document.getElementById('typed-blank-feedback').innerHTML = '';
+        }
+
+        function checkTypedBlank() {
+            const q = currentSession[currentQuestionIndex];
+            if (!q) return;
+
+            const inputs = document.querySelectorAll('#typed-blank-inputs .typed-blank-input');
+            const answers = q.answers || [];
+            const acceptTypos = q.accept_typos || {};
+
+            let allCorrect = true;
+            let hasTypo = false;
+            let typoWords = [];
+
+            inputs.forEach((input, i) => {
+                const userVal = input.value.trim().toLowerCase();
+                const correctVal = (answers[i] || '').toLowerCase();
+                input.disabled = true;
+
+                if (userVal === correctVal) {
+                    input.classList.add('correct-input');
+                } else {
+                    // Check accept_typos
+                    const typoList = acceptTypos[answers[i]] || [];
+                    if (typoList.map(t => t.toLowerCase()).includes(userVal)) {
+                        input.classList.add('typo-input');
+                        hasTypo = true;
+                        typoWords.push(answers[i]);
+                    } else {
+                        input.classList.add('wrong-input');
+                        allCorrect = false;
+                    }
+                }
+            });
+
+            document.getElementById('typed-blank-submit').style.display = 'none';
+            const feedbackEl = document.getElementById('typed-blank-feedback');
+            feedbackEl.style.display = 'block';
+
+            if (allCorrect) {
+                if (hasTypo) {
+                    feedbackEl.className = 'writing-feedback';
+                    feedbackEl.style.background = '#fff3e0';
+                    feedbackEl.style.border = '1px solid #FF9800';
+                    feedbackEl.style.borderRadius = '8px';
+                    feedbackEl.style.padding = '12px';
+                    feedbackEl.style.marginTop = '10px';
+                    feedbackEl.innerHTML = '✅ 거의 맞았어요! 정확한 철자: <strong>' + typoWords.join(', ') + '</strong>';
+                } else {
+                    feedbackEl.className = 'writing-feedback pass';
+                    feedbackEl.innerHTML = '✅ 정답!';
+                }
+                recordAnswer(q, true);
+            } else {
+                feedbackEl.className = 'writing-feedback fail';
+                feedbackEl.innerHTML = '❌ 오답이에요. 정답: <strong>' + answers.join(', ') + '</strong>';
+                if (q.hint) feedbackEl.innerHTML += '<br><span style="color:#795548;font-size:13px;">💡 ' + q.hint + '</span>';
+                recordAnswer(q, false);
+            }
+
+            showNextButton();
+        }
+
+        // 정답 문장 추출 (유형별) - B-9
         function getCorrectSentence(q) {
+            // B-9: Drill types
+            if (q.type === 'flashcard') return q.prompt_en || '';
+            if (q.type === 'choice_blank') return q.prompt ? q.prompt.replace('_____', q.answer || '') : '';
+            if (q.type === 'chunk_order') return q.answer || '';
+            if (q.type === 'typed_blank') {
+                let result = q.prompt || '';
+                (q.answers || []).forEach(a => { result = result.replace('_____', a); });
+                return result;
+            }
+            // Existing types
             if (q.type === 'arrange') return q.answer;
             if (q.type === 'match') return q.choices[q.correct];
             if (q.type === 'dialogue_response') return q.blank_answer || q.choices[q.correct];
@@ -1784,11 +2521,45 @@
             return q.blank_answer || q.answer || '';
         }
 
-        // 답변 기록
+        // Vocab hint for sentence drill: show unknown words
+        function showVocabHint(q) {
+            let hintEl = document.getElementById('vocab-hint-display');
+            if (!hintEl) {
+                // Create hint element if not exists
+                hintEl = document.createElement('div');
+                hintEl.id = 'vocab-hint-display';
+                hintEl.style.cssText = 'background:#e3f2fd;border:1px solid #90caf9;border-radius:8px;padding:8px 12px;font-size:13px;color:#1565c0;margin-top:8px;display:none;';
+                document.getElementById('hint-display').parentNode.insertBefore(hintEl, document.getElementById('hint-display'));
+            }
+            hintEl.style.display = 'none';
+            hintEl.textContent = '';
+
+            if (!QUIZ_DATA || !QUIZ_DATA.vocab_drill || currentMode === 'vocab') return;
+
+            const vocabResults = JSON.parse(localStorage.getItem('vocab_results') || '{}');
+            const lessonKey = 'L' + currentLesson;
+            const lessonResults = vocabResults[lessonKey] || {};
+
+            // Find words that appear in this question and are known === false
+            const qId = q.id || '';
+            const csId = q.core_sentence_id || '';
+            const unknownWords = QUIZ_DATA.vocab_drill.filter(item => {
+                const result = lessonResults[item.id];
+                if (!result || result.known !== false) return false;
+                return item.appears_in && (item.appears_in.includes(qId) || item.appears_in.includes(csId));
+            });
+
+            if (unknownWords.length > 0) {
+                hintEl.textContent = '💡 ' + unknownWords.map(w => w.word + ' ' + w.meaning).join(' · ');
+                hintEl.style.display = 'block';
+            }
+        }
+
+        // 답변 기록 - B-8: Fallback field support
         function recordAnswer(q, isCorrect) {
             playSound(isCorrect ? 'correct' : 'incorrect');
-            // 정답이면 0.5초 후 문장 읽어주기 (효과음 끝난 뒤)
-            if (isCorrect) {
+            // 정답이면 0.5초 후 문장 읽어주기 (드릴 모드만, 실전대비는 제외)
+            if (isCorrect && currentMode === 'drill') {
                 setTimeout(() => speakEnglish(getCorrectSentence(q)), 500);
             }
             const elapsed = questionStartTime ? Math.round((Date.now() - questionStartTime) / 1000) : 0;
@@ -1796,12 +2567,13 @@
                 id: q.id,
                 correct: isCorrect,
                 type: q.type,
-                difficulty: q.difficulty,
-                keyword: q.keyword,
-                score_group: q.score_group || '',
-                test_task: q.test_task || '',
+                difficulty: q.difficulty || (q.phase === 'drill' ? 'drill' : ''),
+                keyword: q.keyword || q.core_sentence_id || q.id,
+                score_group: q.score_group || q.recovery_band || '',
+                test_task: q.test_task || q.type || '',
                 time_sec: elapsed,
-                hint_used: hintUsedThisQuestion
+                hint_used: hintUsedThisQuestion,
+                phase: q.phase || ''
             });
 
             if (!questionHistory[q.id]) {
@@ -1817,6 +2589,221 @@
             saveQuestionHistory();
         }
 
+        // =========================================================
+        // Vocab Drill Engine
+        // =========================================================
+        let vocabDrillList = [];      // current round words (shuffled)
+        let vocabDrillIndex = 0;
+        let vocabDrillResults = {};   // { "VD-L1-001": true/false, ... }
+        let vocabDrillRound = 1;
+
+        function startVocabDrill() {
+            if (!QUIZ_DATA || !QUIZ_DATA.vocab_drill || QUIZ_DATA.vocab_drill.length === 0) {
+                alert('이 Lesson에는 단어 드릴 데이터가 없습니다.');
+                return;
+            }
+
+            vocabDrillRound = 1;
+            vocabDrillResults = {};
+            vocabDrillList = [...QUIZ_DATA.vocab_drill];
+            shuffleArray(vocabDrillList);
+            vocabDrillIndex = 0;
+
+            document.getElementById('vocab-result-area').style.display = 'none';
+            document.getElementById('vocab-card-area').style.display = 'block';
+            document.getElementById('vocab-controls').style.display = '';
+
+            const modeLabel = '단어 드릴';
+            document.querySelector('.header-title').textContent = `영어 Lesson ${currentLesson} · ${modeLabel}`;
+
+            showPage('vocab-page');
+            showVocabCard();
+        }
+
+        function showVocabCard() {
+            if (vocabDrillIndex >= vocabDrillList.length) {
+                finishVocabRound();
+                return;
+            }
+
+            const item = vocabDrillList[vocabDrillIndex];
+            const total = vocabDrillList.length;
+            const progress = (vocabDrillIndex / total) * 100;
+
+            document.getElementById('vocab-progress-fill').style.width = progress + '%';
+            document.getElementById('vocab-counter').textContent = (vocabDrillIndex + 1) + ' / ' + total + (vocabDrillRound > 1 ? ' (재시도)' : '');
+
+            const front = document.getElementById('vocab-front');
+            const back = document.getElementById('vocab-back');
+            const buttons = document.getElementById('vocab-buttons');
+            const card = document.getElementById('vocab-card');
+            const scene = document.getElementById('vocab-scene');
+
+            // Reset
+            card.classList.remove('flipped');
+            buttons.style.display = 'none';
+            document.querySelectorAll('#vocab-buttons .flashcard-btn').forEach(b => { b.disabled = false; });
+
+            // Front: English word (big)
+            front.innerHTML = '<div class="vocab-word">' + item.word + '</div><div class="flashcard-tap-hint">탭하면 뜻 보기</div>';
+
+            // Back: Korean meaning + POS
+            back.innerHTML = '<div class="vocab-meaning">' + item.meaning + '</div><div class="vocab-pos">' + item.pos + '</div><div class="flashcard-tap-hint">탭하면 영어 보기</div>';
+
+            // TTS
+            setTimeout(() => speakEnglish(item.word), 300);
+
+            let flipped = false;
+            scene.onclick = function() {
+                flipped = !flipped;
+                card.classList.toggle('flipped');
+                if (flipped) {
+                    buttons.style.display = 'flex';
+                }
+                if (!flipped) {
+                    setTimeout(() => speakEnglish(item.word), 300);
+                }
+            };
+        }
+
+        function handleVocabAnswer(known) {
+            const item = vocabDrillList[vocabDrillIndex];
+            document.getElementById('vocab-scene').onclick = null;
+            document.querySelectorAll('#vocab-buttons .flashcard-btn').forEach(b => { b.disabled = true; });
+
+            vocabDrillResults[item.id] = known;
+            playSound(known ? 'correct' : 'incorrect');
+
+            vocabDrillIndex++;
+            setTimeout(() => showVocabCard(), 400);
+        }
+
+        function finishVocabRound() {
+            const unknownItems = vocabDrillList.filter(item => vocabDrillResults[item.id] === false);
+            const knownCount = vocabDrillList.filter(item => vocabDrillResults[item.id] === true).length;
+            const totalAll = QUIZ_DATA.vocab_drill.length;
+            const totalKnown = QUIZ_DATA.vocab_drill.filter(item => vocabDrillResults[item.id] === true).length;
+
+            if (unknownItems.length > 0 && vocabDrillRound < 3) {
+                // Show retry prompt
+                const area = document.getElementById('vocab-result-area');
+                area.style.display = 'block';
+                document.getElementById('vocab-card-area').style.display = 'none';
+                area.innerHTML = `
+                    <div class="vocab-round-msg">
+                        <h3>라운드 ${vocabDrillRound} 완료!</h3>
+                        <p>알아요: ${totalKnown}개 / 모르겠어요: ${unknownItems.length}개</p>
+                        <button class="vocab-retry-btn" onclick="retryVocabDrill()">모르겠어요 ${unknownItems.length}개 다시 도전</button>
+                        <button class="vocab-done-btn" onclick="finishVocabDrill()">여기서 마치기</button>
+                    </div>
+                `;
+            } else {
+                finishVocabDrill();
+            }
+        }
+
+        function retryVocabDrill() {
+            vocabDrillRound++;
+            const unknownItems = QUIZ_DATA.vocab_drill.filter(item => vocabDrillResults[item.id] === false);
+            vocabDrillList = [...unknownItems];
+            shuffleArray(vocabDrillList);
+            vocabDrillIndex = 0;
+
+            document.getElementById('vocab-result-area').style.display = 'none';
+            document.getElementById('vocab-card-area').style.display = 'block';
+            showVocabCard();
+        }
+
+        function quitVocabDrill() {
+            if (confirm('학습을 중단하겠습니까?')) {
+                if (Object.keys(vocabDrillResults).length > 0) {
+                    finishVocabDrill();
+                } else {
+                    showPage('home-page');
+                }
+            }
+        }
+
+        function finishVocabDrill() {
+            // 그만하기 버튼 숨기기 (결과 화면에서는 "홈으로 돌아가기"가 있으므로)
+            document.getElementById('vocab-controls').style.display = 'none';
+            // Save results to localStorage
+            const vocabResults = JSON.parse(localStorage.getItem('vocab_results') || '{}');
+            const lessonKey = 'L' + currentLesson;
+            if (!vocabResults[lessonKey]) vocabResults[lessonKey] = {};
+            const now = new Date().toISOString();
+            QUIZ_DATA.vocab_drill.forEach(item => {
+                if (vocabDrillResults[item.id] !== undefined) {
+                    vocabResults[lessonKey][item.id] = {
+                        known: vocabDrillResults[item.id],
+                        tested_at: now
+                    };
+                }
+            });
+            localStorage.setItem('vocab_results', JSON.stringify(vocabResults));
+
+            // Calculate final stats
+            const totalAll = QUIZ_DATA.vocab_drill.length;
+            const totalKnown = QUIZ_DATA.vocab_drill.filter(item => vocabDrillResults[item.id] === true).length;
+            const percentage = Math.round((totalKnown / totalAll) * 100);
+
+            // Show result
+            const area = document.getElementById('vocab-result-area');
+            area.style.display = 'block';
+            document.getElementById('vocab-card-area').style.display = 'none';
+
+            const unknownWords = QUIZ_DATA.vocab_drill.filter(item => vocabDrillResults[item.id] === false);
+            let unknownHtml = '';
+            if (unknownWords.length > 0) {
+                unknownHtml = '<div style="text-align:left;margin-top:20px;"><div style="font-size:15px;font-weight:600;color:#e65100;margin-bottom:8px;">복습 필요 단어</div>';
+                unknownWords.forEach(w => {
+                    unknownHtml += `<div style="padding:8px 0;border-bottom:1px solid #eee;font-size:14px;"><strong>${w.word}</strong> <span style="color:#888">${w.pos}</span> — ${w.meaning}</div>`;
+                });
+                unknownHtml += '</div>';
+            }
+
+            area.innerHTML = `
+                <div class="vocab-result-summary">
+                    <h2>단어 드릴 완료!</h2>
+                    <div class="score">${percentage}%</div>
+                    <div class="detail">${totalAll}개 중 ${totalKnown}개 알고 있어요</div>
+                    ${unknownHtml}
+                    <button class="vocab-done-btn" onclick="showPage('home-page')" style="margin-top:24px;">홈으로 돌아가기</button>
+                </div>
+            `;
+
+            // Send to Google Sheets (vocab_log)
+            sendVocabToGoogleSheets();
+        }
+
+        function sendVocabToGoogleSheets() {
+            const webhookUrl = localStorage.getItem('webhook_url');
+            if (!webhookUrl) return;
+
+            const rows = [];
+            const now = new Date().toISOString();
+            QUIZ_DATA.vocab_drill.forEach(item => {
+                if (vocabDrillResults[item.id] !== undefined) {
+                    rows.push({
+                        sheet: 'vocab_log',
+                        timestamp: now,
+                        lesson: currentLesson,
+                        word_id: item.id,
+                        word: item.word,
+                        known: vocabDrillResults[item.id] ? 'T' : 'F'
+                    });
+                }
+            });
+
+            // Send in batch
+            rows.forEach(row => {
+                fetch(webhookUrl, {
+                    method: 'POST',
+                    body: JSON.stringify(row)
+                }).catch(() => {});
+            });
+        }
+
         // 세션 종료
         // =========================================================
         // 4대 메트릭 계산 (§9.1)
@@ -1825,13 +2812,32 @@
         // 3) 조건 준수율: (Phase 1에서는 placeholder)
         // 4) arrange 성공률: arrange 계열 정답률
         // =========================================================
+        // B-11: Drill metrics (MVP minimal)
         function compute4Metrics(answers) {
             if (!QUIZ_DATA) return null;
+
+            // Check if this is a drill session
+            const isDrillSession = currentMode === 'drill';
+
+            if (isDrillSession) {
+                // Drill-specific metrics
+                const totalCorrect = answers.filter(a => a.correct).length;
+                const totalRate = answers.length > 0 ? Math.round((totalCorrect / answers.length) * 100) : 0;
+                return {
+                    mode: 'drill',
+                    drill_stage: getDrillStage(),
+                    total_rate: totalRate,
+                    sentences_practiced: new Set(answers.map(a => {
+                        const q = QUIZ_DATA.questions.find(x => x.id === a.id);
+                        return q ? q.core_sentence_id : null;
+                    }).filter(Boolean)).size
+                };
+            }
 
             // A군 문항만 필터
             const aGroupAnswers = answers.filter(a => {
                 const q = QUIZ_DATA.questions.find(x => x.id === a.id);
-                return q && q.score_group === 'A';
+                return q && (q.score_group === 'A' || q.recovery_band === 'A');
             });
             const aGroupCorrect = aGroupAnswers.filter(a => a.correct).length;
             const aGroupRate = aGroupAnswers.length > 0
@@ -1877,7 +2883,7 @@
 
             document.getElementById('result-percentage').textContent = percentage;
 
-            // 틀린 문항 표시
+            // 틀린 문항 표시 - B-8: Fallback field support
             const missed = sessionAnswers.filter(a => !a.correct).map(a => {
                 const q = QUIZ_DATA.questions.find(x => x.id === a.id);
                 return q;
@@ -1890,7 +2896,10 @@
                 missed.forEach(q => {
                     const item = document.createElement('div');
                     item.className = 'missed-question-item';
-                    item.innerHTML = `<div class="missed-keyword">${q.keyword}</div><div class="missed-answer">정답: ${q.blank_answer || q.answer || (q.choices ? q.choices[q.correct] : '')}</div>`;
+                    // B-8: Use fallback fields
+                    const keyword = q.keyword || q.prompt_en || q.prompt || q.id;
+                    const answer = q.blank_answer || q.answer || (q.choices && q.correct_index != null ? q.choices[q.correct_index] : '') || (q.choices && q.correct != null ? q.choices[q.correct] : '') || '';
+                    item.innerHTML = `<div class="missed-keyword">${keyword}</div><div class="missed-answer">정답: ${answer}</div>`;
                     list.appendChild(item);
                 });
             } else {
@@ -1944,6 +2953,16 @@
             const logs = JSON.parse(localStorage.getItem(`quiz_logs_L${currentLesson}`) || '[]');
             logs.push(log);
             localStorage.setItem(`quiz_logs_L${currentLesson}`, JSON.stringify(logs));
+
+            // Drill stage progression check
+            if (currentMode === 'drill') {
+                const percentage = Math.round((totalCorrect / sessionAnswers.length) * 100);
+                const currentStage = getDrillStage();
+                if (percentage >= 80 && currentStage < 4) {
+                    setDrillStage(currentStage + 1);
+                    // Show progression message in result page (optional UI enhancement)
+                }
+            }
 
             updateStats();
             showPage('result-page');
@@ -2029,6 +3048,8 @@
             currentSession = null;
             currentQuestionIndex = 0;
             sessionAnswers = [];
+            // Reset header title
+            document.querySelector('.header-title').textContent = `영어 Lesson ${currentLesson || 1}`;
             showPage('home-page');
             updateStats();
         }
@@ -2050,9 +3071,10 @@
                         timestamp: new Date().toISOString(),
                         partial: true
                     };
-                    const logs = JSON.parse(localStorage.getItem('quiz_logs') || '[]');
+                    // B-13: Fix localStorage key bug
+                    const logs = JSON.parse(localStorage.getItem(`quiz_logs_L${currentLesson}`) || '[]');
                     logs.push(log);
-                    localStorage.setItem('quiz_logs', JSON.stringify(logs));
+                    localStorage.setItem(`quiz_logs_L${currentLesson}`, JSON.stringify(logs));
                 }
                 // arrange interval 정리
                 if (arrangeCheckInterval) {
