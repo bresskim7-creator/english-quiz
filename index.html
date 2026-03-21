@@ -192,13 +192,16 @@
             color: #333;
             margin-bottom: 16px;
             line-height: 1.5;
+            white-space: pre-line;
         }
 
         .instruction-text {
-            font-size: 13px;
+            font-size: 15px;
             color: #666;
             margin-bottom: 12px;
             font-weight: 400;
+            line-height: 1.5;
+            white-space: pre-line;
         }
 
         /* Fill Blank 스타일 */
@@ -2131,7 +2134,15 @@
 
         function showMiniWriting(q) {
             currentWritingQ = q;
-            document.getElementById('question-text').textContent = '';
+            // context가 있으면 question-text에 표시 (예: 합칠 두 문장, 밑줄 문장 등)
+            const qTextEl = document.getElementById('question-text');
+            if (q.context) {
+                qTextEl.textContent = q.context;
+            } else if (q.sentence) {
+                qTextEl.textContent = q.sentence;
+            } else {
+                qTextEl.textContent = '';
+            }
 
             const container = document.getElementById('writing-container');
             container.style.display = 'flex';

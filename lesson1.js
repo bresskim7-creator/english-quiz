@@ -1,93 +1,233 @@
-window.__loadLesson({
+__loadLesson({
   "lesson": 1,
   "title": "Lesson 1: Good Habits for Good Health",
-  "version": "3.3",
+  "version": "3.5",
   "build_date": "2026-03-21",
-  "build_note": "v3.2 + exam_prep 19문항 추가 (과제D: L2 비율 정합). dialogue_response+1, mini_writing+2, arrange+3, match+9, position_ask+4.",
+  "build_note": "v3.4 + 메타데이터 병합: core_sentences 필드(source/is_priority/linked_rule_ids/bridge_to_exam), grammar_rules, exam_pattern 태깅.",
   "core_sentences": [
     {
       "id": "CS01a",
       "text_en": "Your body starts to feel lively.",
       "text_ko": "네 몸이 활기차게 느끼기 시작해.",
-      "pair_id": "CS01b"
+      "pair_id": "CS01b",
+      "source": "focus_on_language_p20",
+      "is_priority": true,
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "bridge_to_exam": [
+        "grammar_awkward",
+        "required_word_write",
+        "error_correction"
+      ]
     },
     {
       "id": "CS01b",
       "text_en": "Your body starts to feel sleepy.",
       "text_ko": "네 몸이 졸리게 느끼기 시작해.",
-      "pair_id": "CS01a"
+      "pair_id": "CS01a",
+      "source": "focus_on_language_p20",
+      "is_priority": true,
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "bridge_to_exam": [
+        "grammar_awkward",
+        "required_word_write",
+        "error_correction"
+      ]
     },
     {
       "id": "CS02",
       "text_en": "Listen to your body clock and sleep regularly.",
       "text_ko": "네 생체 시계에 귀 기울이고 규칙적으로 자.",
-      "pair_id": null
+      "pair_id": null,
+      "source": "focus_on_language_p20",
+      "is_priority": true,
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "bridge_to_exam": [
+        "grammar_awkward",
+        "required_word_write",
+        "error_correction"
+      ]
     },
     {
       "id": "CS03",
       "text_en": "You will feel healthier.",
       "text_ko": "너는 더 건강하게 느낄 거야.",
-      "pair_id": null
+      "pair_id": null,
+      "source": "focus_on_language_p20",
+      "is_priority": true,
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "bridge_to_exam": [
+        "grammar_awkward",
+        "required_word_write",
+        "error_correction"
+      ]
     },
     {
       "id": "CS04",
       "text_en": "Caffeine can cause sleep problems.",
       "text_ko": "카페인은 수면 문제를 일으킬 수 있어.",
-      "pair_id": null
+      "pair_id": null,
+      "source": "focus_on_language_p20",
+      "is_priority": true,
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "bridge_to_exam": [
+        "grammar_awkward",
+        "required_word_write",
+        "error_correction"
+      ]
     },
     {
       "id": "CS05",
       "text_en": "Caffeine hides in many foods and drinks such as chocolate, coffee, tea, soda, and energy drinks.",
       "text_ko": "카페인은 초콜릿, 커피, 차, 탄산음료, 에너지 음료 같은 많은 음식과 음료에 숨어 있어.",
-      "pair_id": null
+      "pair_id": null,
+      "source": "focus_on_language_p20",
+      "is_priority": true,
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "bridge_to_exam": [
+        "grammar_awkward",
+        "required_word_write",
+        "error_correction"
+      ]
     },
     {
       "id": "CS06",
       "text_en": "If you use your smartphone late at night, your brain will stay active.",
       "text_ko": "밤늦게 스마트폰을 사용하면, 네 뇌가 활발한 상태를 유지할 거야.",
-      "pair_id": null
+      "pair_id": null,
+      "source": "focus_on_language_p20",
+      "is_priority": true,
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "bridge_to_exam": [
+        "grammar_awkward",
+        "required_word_write",
+        "error_correction"
+      ]
     },
     {
       "id": "CS07",
       "text_en": "The blue light from the phone will also tell your brain, \"Hey, don't sleep yet.\"",
       "text_ko": "폰의 파란 빛도 네 뇌에게 \"야, 아직 자지 마\"라고 말할 거야.",
-      "pair_id": null
+      "pair_id": null,
+      "source": "focus_on_language_p20",
+      "is_priority": true,
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "bridge_to_exam": [
+        "grammar_awkward",
+        "required_word_write",
+        "error_correction"
+      ]
     },
     {
       "id": "CS08",
       "text_en": "Exercise during the day.",
       "text_ko": "낮 동안 운동해.",
-      "pair_id": null
+      "pair_id": null,
+      "source": "focus_on_language_p20",
+      "is_priority": true,
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "bridge_to_exam": [
+        "grammar_awkward",
+        "required_word_write",
+        "error_correction"
+      ]
     },
     {
       "id": "CS09",
       "text_en": "You will fall asleep easily at night.",
       "text_ko": "너는 밤에 쉽게 잠들 거야.",
-      "pair_id": null
+      "pair_id": null,
+      "source": "focus_on_language_p20",
+      "is_priority": true,
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "bridge_to_exam": [
+        "grammar_awkward",
+        "required_word_write",
+        "error_correction"
+      ]
     },
     {
       "id": "CS10",
       "text_en": "Remember to finish exercising a few hours before bedtime.",
       "text_ko": "취침 시간 몇 시간 전에 운동을 끝내는 것을 기억해.",
-      "pair_id": null
+      "pair_id": null,
+      "source": "focus_on_language_p20",
+      "is_priority": true,
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "bridge_to_exam": [
+        "grammar_awkward",
+        "required_word_write",
+        "error_correction"
+      ]
     },
     {
       "id": "CS11",
       "text_en": "I'm planning to exercise more.",
       "text_ko": "나는 운동을 더 할 계획이야.",
-      "pair_id": null
+      "pair_id": null,
+      "source": "focus_on_language_p20",
+      "is_priority": true,
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "bridge_to_exam": [
+        "grammar_awkward",
+        "required_word_write",
+        "error_correction"
+      ]
     },
     {
       "id": "CS12",
       "text_en": "Sounds great. You can do it!",
       "text_ko": "좋은데. 너는 할 수 있어!",
-      "pair_id": null
+      "pair_id": null,
+      "source": "focus_on_language_p20",
+      "is_priority": true,
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "bridge_to_exam": [
+        "grammar_awkward",
+        "required_word_write",
+        "error_correction"
+      ]
     },
     {
       "id": "CS13",
       "text_en": "Let's find out what to do.",
       "text_ko": "무엇을 해야 할지 알아보자.",
-      "pair_id": null
+      "pair_id": null,
+      "source": "focus_on_language_p20",
+      "is_priority": true,
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "bridge_to_exam": [
+        "grammar_awkward",
+        "required_word_write",
+        "error_correction"
+      ]
     }
   ],
   "questions": [
@@ -1594,7 +1734,8 @@ window.__loadLesson({
         "몸의 시계는 밤에 활발하게 만든다.",
         "불규칙한 수면이 건강에 좋다."
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "R002",
@@ -1621,7 +1762,8 @@ window.__loadLesson({
         "카페인은 커피에만 들어있다.",
         "에너지 음료에 카페인이 있다."
       ],
-      "correct": 2
+      "correct": 2,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "R003",
@@ -1648,7 +1790,8 @@ window.__loadLesson({
         "하루에 스마트폰을 몇 시간 사용해야 하나?",
         "잘 자려면 스마트폰을 언제 멈춰야 하나?"
       ],
-      "correct": 2
+      "correct": 2,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "R004",
@@ -1675,7 +1818,8 @@ window.__loadLesson({
         "운동은 취침 몇 시간 전에 끝내야 한다.",
         "운동하면 밤에 너무 깨어있게 된다."
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "R005",
@@ -1702,7 +1846,8 @@ window.__loadLesson({
         "학교 급식 안내",
         "운동의 효과"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "R006",
@@ -1731,7 +1876,8 @@ window.__loadLesson({
         "④",
         "⑤"
       ],
-      "correct": 4
+      "correct": 4,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "R007",
@@ -1758,7 +1904,8 @@ window.__loadLesson({
         "수호: 낮에 운동하면 밤에 쉽게 잠들 수 있어.",
         "하은: 에너지 음료를 마시면 수면에 문제가 생길 수 있어."
       ],
-      "correct": 2
+      "correct": 2,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "R008",
@@ -1785,7 +1932,8 @@ window.__loadLesson({
         "your smartphone",
         "bedtime"
       ],
-      "correct": 2
+      "correct": 2,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "R009",
@@ -1812,7 +1960,8 @@ window.__loadLesson({
         "스마트폰은 공부에 필수적이다.",
         "운동은 아침에만 해야 한다."
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "R010",
@@ -1839,7 +1988,8 @@ window.__loadLesson({
         "(C)-(A)-(B)",
         "(B)-(A)-(C)"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "글의 순서"
     },
     {
       "id": "G001",
@@ -1868,7 +2018,8 @@ window.__loadLesson({
         "If she will study hard, she will pass.",
         "If we hurry, we won't miss the bus."
       ],
-      "correct": 2
+      "correct": 2,
+      "exam_pattern": "어법 판단"
     },
     {
       "id": "G002",
@@ -1897,7 +2048,8 @@ window.__loadLesson({
         "Let's find out what to do.",
         "He told me how solve it."
       ],
-      "correct": 2
+      "correct": 2,
+      "exam_pattern": "어법 판단"
     },
     {
       "id": "G003",
@@ -1927,7 +2079,8 @@ window.__loadLesson({
         "If it is sunny, we will play outside.",
         "Tell me when to leave."
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "어법 판단"
     },
     {
       "id": "G004",
@@ -1956,7 +2109,8 @@ window.__loadLesson({
         "Because",
         "Until"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "G005",
@@ -1985,7 +2139,8 @@ window.__loadLesson({
         "where",
         "that"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "G006",
@@ -2015,7 +2170,8 @@ window.__loadLesson({
         "We learned what to doing next.",
         "If it snows, we will make a snowman."
       ],
-      "correct": 2
+      "correct": 2,
+      "exam_pattern": "어법 판단"
     },
     {
       "id": "G008",
@@ -2044,7 +2200,8 @@ window.__loadLesson({
         "ⓒ will tell",
         "ⓓ To sleep"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "어법 판단"
     },
     {
       "id": "V001",
@@ -2071,7 +2228,8 @@ window.__loadLesson({
         "a short sleep during the day",
         "a substance that keeps you awake"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "V002",
@@ -2098,7 +2256,8 @@ window.__loadLesson({
         "a type of exercise",
         "a part of your body that controls sleep"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "V003",
@@ -2125,7 +2284,8 @@ window.__loadLesson({
         "tired",
         "careful"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "V004",
@@ -2152,7 +2312,8 @@ window.__loadLesson({
         "lunchtime",
         "daytime"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "V005",
@@ -2179,7 +2340,8 @@ window.__loadLesson({
         "room",
         "song"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "V006",
@@ -2206,7 +2368,8 @@ window.__loadLesson({
         "healthy",
         "quiet"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "V007",
@@ -2233,7 +2396,8 @@ window.__loadLesson({
         "keep",
         "get"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "V008",
@@ -2260,7 +2424,8 @@ window.__loadLesson({
         "say",
         "sleep"
       ],
-      "correct": 3
+      "correct": 3,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "V009",
@@ -2287,7 +2452,8 @@ window.__loadLesson({
         "active",
         "alive"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "V010",
@@ -2314,7 +2480,8 @@ window.__loadLesson({
         "stays",
         "runs"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "V011",
@@ -2341,7 +2508,8 @@ window.__loadLesson({
         "What was the cause of the fire?",
         "There's no cause for worry."
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "D001",
@@ -2369,7 +2537,8 @@ window.__loadLesson({
         "I don't have grandparents."
       ],
       "correct": 0,
-      "blank_answer": "I'm planning to visit my grandparents."
+      "blank_answer": "I'm planning to visit my grandparents.",
+      "exam_pattern": "대화 완성"
     },
     {
       "id": "D002",
@@ -2397,7 +2566,8 @@ window.__loadLesson({
         "That's too bad."
       ],
       "correct": 0,
-      "blank_answer": "Sounds great. You can do it!"
+      "blank_answer": "Sounds great. You can do it!",
+      "exam_pattern": "대화 완성"
     },
     {
       "id": "D003",
@@ -2425,7 +2595,8 @@ window.__loadLesson({
         "You should skip lunch every day."
       ],
       "correct": 0,
-      "blank_answer": "Why don't you stop using your smartphone before bedtime?"
+      "blank_answer": "Why don't you stop using your smartphone before bedtime?",
+      "exam_pattern": "대화 완성"
     },
     {
       "id": "D004",
@@ -2453,7 +2624,8 @@ window.__loadLesson({
         "B는 작년에 그림 수업을 들었다."
       ],
       "correct": 1,
-      "blank_answer": "B는 올해 그림 실력을 키울 계획이다."
+      "blank_answer": "B는 올해 그림 실력을 키울 계획이다.",
+      "exam_pattern": "대화 완성"
     },
     {
       "id": "D005",
@@ -2481,7 +2653,8 @@ window.__loadLesson({
         "You should sleep later to wake up early."
       ],
       "correct": 3,
-      "blank_answer": "적절하지 않은 것 찾기"
+      "blank_answer": "적절하지 않은 것 찾기",
+      "exam_pattern": "대화 완성"
     },
     {
       "id": "A001",
@@ -2511,7 +2684,8 @@ window.__loadLesson({
         "late at night"
       ],
       "answer": "If you use your smartphone late at night, your brain will stay active.",
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "배열/영작"
     },
     {
       "id": "A002",
@@ -2539,7 +2713,8 @@ window.__loadLesson({
         "to do"
       ],
       "answer": "Let's find out what to do.",
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "배열/영작"
     },
     {
       "id": "A003",
@@ -2568,7 +2743,8 @@ window.__loadLesson({
         "you",
         "fall asleep"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "A004",
@@ -2595,7 +2771,8 @@ window.__loadLesson({
         "caffeine",
         "hides"
       ],
-      "correct": 3
+      "correct": 3,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "A005",
@@ -2620,7 +2797,8 @@ window.__loadLesson({
         "sleep problems"
       ],
       "answer": "Caffeine can cause sleep problems.",
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "배열/영작"
     },
     {
       "id": "A006",
@@ -2649,7 +2827,8 @@ window.__loadLesson({
         "this year"
       ],
       "answer": "I don't know what to do this year.",
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "배열/영작"
     },
     {
       "id": "M001",
@@ -2676,7 +2855,8 @@ window.__loadLesson({
         "Look at the clock and go to sleep.",
         "Follow your schedule and sleep well."
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "M002",
@@ -2705,7 +2885,8 @@ window.__loadLesson({
         "Your smartphone keeps your brain healthy at night.",
         "If you stop using your phone, your brain will stay active."
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "W001",
@@ -2727,7 +2908,8 @@ window.__loadLesson({
       "page": 16,
       "required_word": "if",
       "min_words": 3,
-      "example_answer": "If you sleep regularly, you will feel healthier."
+      "example_answer": "If you sleep regularly, you will feel healthier.",
+      "exam_pattern": "조건 영작"
     },
     {
       "id": "W002",
@@ -2749,7 +2931,9 @@ window.__loadLesson({
       "page": 17,
       "required_word": "if",
       "min_words": 3,
-      "example_answer": "If you exercise during the day, you will fall asleep easily at night."
+      "example_answer": "If you exercise during the day, you will fall asleep easily at night.",
+      "exam_pattern": "조건 영작",
+      "context": "① You exercise during the day.\n② You will fall asleep easily at night."
     },
     {
       "id": "W003",
@@ -2771,7 +2955,8 @@ window.__loadLesson({
       "page": 19,
       "required_word": "what to",
       "min_words": 3,
-      "example_answer": "I don't know what to do to sleep better."
+      "example_answer": "I don't know what to do to sleep better.",
+      "exam_pattern": "조건 영작"
     },
     {
       "id": "W004",
@@ -2794,7 +2979,9 @@ window.__loadLesson({
       "page": 19,
       "required_word": null,
       "min_words": 3,
-      "example_answer": "(1) If you use (2) what to do"
+      "example_answer": "(1) If you use (2) what to do",
+      "exam_pattern": "문장 오류 고치기",
+      "context": "If you will use your smartphone before bed, you won't know what to doing."
     },
     {
       "id": "W005",
@@ -2814,7 +3001,9 @@ window.__loadLesson({
       "page": 11,
       "required_word": "sounds",
       "min_words": 3,
-      "example_answer": "Sounds great. You can do it!"
+      "example_answer": "Sounds great. You can do it!",
+      "exam_pattern": "조건 영작",
+      "context": "A: I'm planning to exercise every morning from now on.\nB: ________________"
     },
     {
       "id": "G009",
@@ -2843,7 +3032,8 @@ window.__loadLesson({
         "(A) that — (B) Because",
         "(A) where — (B) Although"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "G010",
@@ -2870,7 +3060,8 @@ window.__loadLesson({
         "To sleep well, stop using your phone.",
         "He decided to wake up early."
       ],
-      "correct": 2
+      "correct": 2,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "R011",
@@ -2897,7 +3088,8 @@ window.__loadLesson({
         "happy",
         "excited"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "R012",
@@ -2926,7 +3118,8 @@ window.__loadLesson({
         "(D)",
         "(E)"
       ],
-      "correct": 2
+      "correct": 2,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "V012",
@@ -2953,7 +3146,8 @@ window.__loadLesson({
         "wants",
         "wanted"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "V013",
@@ -2980,7 +3174,8 @@ window.__loadLesson({
         "walk",
         "class"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "V014",
@@ -3007,7 +3202,8 @@ window.__loadLesson({
         "plans",
         "plan"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "R013",
@@ -3034,7 +3230,8 @@ window.__loadLesson({
         "운동의 중요성",
         "따뜻한 샤워의 과학"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "R014",
@@ -3061,7 +3258,8 @@ window.__loadLesson({
         "아침 — 1시간 전",
         "저녁 — 직후"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "G011",
@@ -3091,7 +3289,8 @@ window.__loadLesson({
         "She doesn't know what doing next.",
         "She told me where going."
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "어법 판단"
     },
     {
       "id": "D006",
@@ -3119,7 +3318,8 @@ window.__loadLesson({
         "scary"
       ],
       "correct": 0,
-      "blank_answer": "great"
+      "blank_answer": "great",
+      "exam_pattern": "대화 완성"
     },
     {
       "id": "D007",
@@ -3147,7 +3347,8 @@ window.__loadLesson({
         "A는 B의 계획에 어떻게 반응했는가?"
       ],
       "correct": 2,
-      "blank_answer": "답할 수 없는 질문"
+      "blank_answer": "답할 수 없는 질문",
+      "exam_pattern": "대화 완성"
     },
     {
       "id": "V015",
@@ -3174,7 +3375,8 @@ window.__loadLesson({
         "about",
         "during"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "R015",
@@ -3203,7 +3405,8 @@ window.__loadLesson({
         "④",
         "⑤"
       ],
-      "correct": 2
+      "correct": 2,
+      "exam_pattern": "글의 순서"
     },
     {
       "id": "G012",
@@ -3232,7 +3435,8 @@ window.__loadLesson({
         "where",
         "why"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "G013",
@@ -3261,7 +3465,8 @@ window.__loadLesson({
         "When — will be",
         "Because — am going to"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "R016",
@@ -3288,7 +3493,8 @@ window.__loadLesson({
         "취침 직전 운동을 끝내도 괜찮다.",
         "취침 직전 운동하면 너무 깨어있을 수 있다."
       ],
-      "correct": 2
+      "correct": 2,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "V016",
@@ -3315,7 +3521,8 @@ window.__loadLesson({
         "problem",
         "pattern"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "V017",
@@ -3342,7 +3549,8 @@ window.__loadLesson({
         "go in",
         "go for"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "G014",
@@ -3372,7 +3580,8 @@ window.__loadLesson({
         "ⓑ, ⓓ",
         "ⓒ, ⓓ"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "어법 판단"
     },
     {
       "id": "W007",
@@ -3392,7 +3601,8 @@ window.__loadLesson({
       "page": 11,
       "required_word": "planning to",
       "min_words": 3,
-      "example_answer": "I'm planning to exercise every day this year."
+      "example_answer": "I'm planning to exercise every day this year.",
+      "exam_pattern": "조건 영작"
     },
     {
       "id": "R017",
@@ -3419,7 +3629,8 @@ window.__loadLesson({
         "(A) rooms — (B) place",
         "(A) clothes — (B) cost"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "V018",
@@ -3446,7 +3657,8 @@ window.__loadLesson({
         "removes",
         "avoids"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "D008",
@@ -3474,7 +3686,8 @@ window.__loadLesson({
         "A: I can't sleep well.\nB: Try not using your phone before bed."
       ],
       "correct": 2,
-      "blank_answer": "어색한 대화"
+      "blank_answer": "어색한 대화",
+      "exam_pattern": "대화 완성"
     },
     {
       "id": "W008",
@@ -3497,7 +3710,8 @@ window.__loadLesson({
       "page": 19,
       "required_word": "what to",
       "min_words": 3,
-      "example_answer": "If you want to sleep better, you should know what to do before bedtime."
+      "example_answer": "If you want to sleep better, you should know what to do before bedtime.",
+      "exam_pattern": "조건 영작"
     },
     {
       "id": "V019",
@@ -3524,7 +3738,8 @@ window.__loadLesson({
         "jump",
         "swim"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "G015",
@@ -3553,7 +3768,8 @@ window.__loadLesson({
         "studied",
         "studying"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "R018",
@@ -3580,7 +3796,8 @@ window.__loadLesson({
         "지훈: 잘 자려면 취침 직전에 스마트폰을 사용하면 안 된다.",
         "하늘: 스마트폰을 밤에 쓰면 뇌가 쉬게 된다."
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "V020",
@@ -3607,7 +3824,8 @@ window.__loadLesson({
         "enjoy",
         "stop"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "D009",
@@ -3635,7 +3853,8 @@ window.__loadLesson({
         "Try eating chocolate at night."
       ],
       "correct": 0,
-      "blank_answer": "Why don't you stop using your phone before bedtime?"
+      "blank_answer": "Why don't you stop using your phone before bedtime?",
+      "exam_pattern": "대화 완성"
     },
     {
       "id": "W009",
@@ -3655,7 +3874,8 @@ window.__loadLesson({
       "page": 11,
       "required_word": "planning to",
       "min_words": 3,
-      "example_answer": "I'm planning to exercise this weekend."
+      "example_answer": "I'm planning to exercise this weekend.",
+      "exam_pattern": "조건 영작"
     },
     {
       "id": "W010",
@@ -3677,7 +3897,8 @@ window.__loadLesson({
       "page": 20,
       "required_word": "don't know",
       "min_words": 3,
-      "example_answer": "I don't know where to go for vacation."
+      "example_answer": "I don't know where to go for vacation.",
+      "exam_pattern": "조건 영작"
     },
     {
       "id": "A007",
@@ -3703,7 +3924,8 @@ window.__loadLesson({
         "can"
       ],
       "answer": "Caffeine can cause sleep problems.",
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "배열/영작"
     },
     {
       "id": "A008",
@@ -3729,7 +3951,8 @@ window.__loadLesson({
         "your phone"
       ],
       "answer": "To sleep well, don't use your phone right before bedtime.",
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "배열/영작"
     },
     {
       "id": "A009",
@@ -3755,7 +3978,8 @@ window.__loadLesson({
         "before bedtime"
       ],
       "answer": "Remember to finish exercising a few hours before bedtime.",
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "배열/영작"
     },
     {
       "id": "M003",
@@ -3782,7 +4006,8 @@ window.__loadLesson({
         "Caffeine can prevent sleep problems.",
         "Coffee can cause health problems."
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "M004",
@@ -3811,7 +4036,8 @@ window.__loadLesson({
         "When you use your phone at night, your body will feel sleepy.",
         "If you stop using your phone, your brain will stay active."
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "M005",
@@ -3838,7 +4064,8 @@ window.__loadLesson({
         "Exercise before the day.",
         "Rest during the day."
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "M006",
@@ -3865,7 +4092,8 @@ window.__loadLesson({
         "You will fall awake easily at night.",
         "You will get asleep easily at night."
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "M007",
@@ -3892,7 +4120,8 @@ window.__loadLesson({
         "잠자기 몇 시간 전에 운동을 시작하세요.",
         "운동을 몇 시간 동안 계속하는 것을 기억하세요."
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "M008",
@@ -3919,7 +4148,8 @@ window.__loadLesson({
         "active — 조용한",
         "regular — 불규칙적인"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "M009",
@@ -3946,7 +4176,8 @@ window.__loadLesson({
         "hide — 보여주다",
         "awake — 졸린"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "M010",
@@ -3973,7 +4204,8 @@ window.__loadLesson({
         "I planned to eat better this year.",
         "I plan eating better this year."
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "M011",
@@ -4002,7 +4234,8 @@ window.__loadLesson({
         "Let's find what to do it.",
         "Let's find out how to doing."
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "P001",
@@ -4029,7 +4262,8 @@ window.__loadLesson({
         "clock",
         "and"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "P002",
@@ -4056,7 +4290,8 @@ window.__loadLesson({
         "and",
         "drinks"
       ],
-      "correct": 2
+      "correct": 2,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "P003",
@@ -4085,7 +4320,8 @@ window.__loadLesson({
         "night",
         "your"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "P004",
@@ -4112,7 +4348,8 @@ window.__loadLesson({
         "asleep",
         "easily"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "문맥 어휘"
     }
   ],
   "vocab_drill": [
@@ -4313,6 +4550,24 @@ window.__loadLesson({
       "word": "what to do",
       "pos": "표현",
       "meaning": "무엇을 해야 할지"
+    }
+  ],
+  "grammar_rules": [
+    {
+      "id": "GR01",
+      "name": "if_present_rule",
+      "rule_ko": "if절에는 will을 쓰지 않는다. 미래의 일이어도 if 다음에는 현재형!",
+      "example_correct": "If you use your smartphone, your brain will stay active.",
+      "example_wrong": "If you will use your smartphone, your brain will stay active.",
+      "memory_tip": "if 뒤에 will 보이면 → 무조건 틀림!"
+    },
+    {
+      "id": "GR02",
+      "name": "wh_to_infinitive",
+      "rule_ko": "의문사 + to + 동사원형: what to do, how to use, where to go",
+      "example_correct": "Let's find out what to do.",
+      "example_wrong": "Let's find out what to doing.",
+      "memory_tip": "의문사 + to + 동사원형! -ing 붙이거나 to 빼면 틀림!"
     }
   ]
 });

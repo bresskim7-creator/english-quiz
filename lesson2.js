@@ -1,87 +1,165 @@
-window.__loadLesson({
+__loadLesson({
   "lesson": 2,
   "title": "Lesson 2: Now One Foot, Now the Other",
-  "version": "3.2",
+  "version": "3.4",
   "build_date": "2026-03-21",
-  "build_note": "v3.0 + exam_prep 17문항 추가 (SR8 + DR4 + MW5). fill_blank 비중 53%→40%.",
+  "build_note": "v3.3 + 메타데이터 병합: core_sentences 필드(source/is_priority/linked_rule_ids/bridge_to_exam), grammar_rules, exam_pattern 태깅.",
   "core_sentences": [
     {
       "id": "CS01",
       "text_en": "Bob was the person who taught Bobby how to walk.",
       "text_ko": "Bob은 Bobby에게 걷는 법을 가르쳐 준 사람이었다.",
-      "pair_id": null
+      "pair_id": null,
+      "source": "listen_talk_p29",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "dialogue_completion"
+      ]
     },
     {
       "id": "CS02",
       "text_en": "Now one foot, now the other.",
       "text_ko": "이제 한 발, 이제 다른 발.",
-      "pair_id": null
+      "pair_id": null,
+      "source": "listen_talk_p29",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "dialogue_completion"
+      ]
     },
     {
       "id": "CS03",
       "text_en": "There is one more block to put.",
       "text_ko": "놓을 블록이 하나 더 있어.",
-      "pair_id": null
+      "pair_id": null,
+      "source": "listen_talk_p29",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "dialogue_completion"
+      ]
     },
     {
       "id": "CS04",
       "text_en": "He is in a hospital which is far from here.",
       "text_ko": "그는 여기서 멀리 떨어진 병원에 있어.",
-      "pair_id": null
+      "pair_id": null,
+      "source": "listen_talk_p29",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "dialogue_completion"
+      ]
     },
     {
       "id": "CS05",
       "text_en": "He can't move his arms and legs, and he can't talk.",
       "text_ko": "그는 팔다리를 움직일 수 없고, 말도 할 수 없어.",
-      "pair_id": null
+      "pair_id": null,
+      "source": "listen_talk_p29",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "dialogue_completion"
+      ]
     },
     {
       "id": "CS06",
       "text_en": "Bob, it's time to build a tower!",
       "text_ko": "Bob, 탑을 세울 시간이야!",
-      "pair_id": null
+      "pair_id": null,
+      "source": "listen_talk_p29",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "dialogue_completion"
+      ]
     },
     {
       "id": "CS07",
       "text_en": "At that moment, Bobby realized that Bob would recover soon.",
       "text_ko": "그 순간, Bobby는 Bob이 곧 회복할 것이라고 깨달았다.",
-      "pair_id": null
+      "pair_id": null,
+      "source": "listen_talk_p29",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "dialogue_completion"
+      ]
     },
     {
       "id": "CS08",
       "text_en": "Bob leaned on Bobby's shoulders.",
       "text_ko": "Bob은 Bobby의 어깨에 기대었다.",
-      "pair_id": null
+      "pair_id": null,
+      "source": "listen_talk_p29",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "dialogue_completion"
+      ]
     },
     {
       "id": "CS09",
       "text_en": "When I was little, you held my hands and said these words.",
       "text_ko": "내가 어렸을 때, 넌 내 손을 잡고 이 말을 했어.",
-      "pair_id": null
+      "pair_id": null,
+      "source": "listen_talk_p29",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "dialogue_completion"
+      ]
     },
     {
       "id": "CS10",
       "text_en": "Is it okay if I go to see a baseball game?",
       "text_ko": "내가 야구 경기를 보러 가도 괜찮을까?",
-      "pair_id": null
+      "pair_id": null,
+      "source": "listen_talk_p29",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "dialogue_completion"
+      ]
     },
     {
       "id": "CS11",
       "text_en": "I'm afraid you can't.",
       "text_ko": "유감이지만 안 돼.",
-      "pair_id": null
+      "pair_id": null,
+      "source": "listen_talk_p29",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "dialogue_completion"
+      ]
     },
     {
       "id": "CS12",
       "text_en": "What time is it in London?",
       "text_ko": "런던은 몇 시야?",
-      "pair_id": null
+      "pair_id": null,
+      "source": "listen_talk_p29",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "dialogue_completion"
+      ]
     },
     {
       "id": "CS13",
       "text_en": "It's a quarter past six.",
       "text_ko": "6시 15분이야.",
-      "pair_id": null
+      "pair_id": null,
+      "source": "listen_talk_p29",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "dialogue_completion"
+      ]
     }
   ],
   "questions": [
@@ -1494,7 +1572,8 @@ window.__loadLesson({
         "to"
       ],
       "answer": "I have nothing to do.",
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "배열/영작"
     },
     {
       "id": "A002",
@@ -1520,7 +1599,8 @@ window.__loadLesson({
         "to"
       ],
       "answer": "He wanted to recover.",
-      "correct": 3
+      "correct": 3,
+      "exam_pattern": "배열/영작"
     },
     {
       "id": "A003",
@@ -1548,7 +1628,8 @@ window.__loadLesson({
         "me"
       ],
       "answer": "I know the person who helps me.",
-      "correct": 2
+      "correct": 2,
+      "exam_pattern": "배열/영작"
     },
     {
       "id": "A004",
@@ -1576,7 +1657,8 @@ window.__loadLesson({
         "in Paris"
       ],
       "answer": "I liked the restaurant which was in Paris.",
-      "correct": 3
+      "correct": 3,
+      "exam_pattern": "배열/영작"
     },
     {
       "id": "M004",
@@ -1603,7 +1685,8 @@ window.__loadLesson({
         "비",
         "구름"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "A005",
@@ -1629,7 +1712,8 @@ window.__loadLesson({
         "made"
       ],
       "answer": "Bobby made a sound.",
-      "correct": 2
+      "correct": 2,
+      "exam_pattern": "배열/영작"
     },
     {
       "id": "A006",
@@ -1656,7 +1740,8 @@ window.__loadLesson({
         "to"
       ],
       "answer": "His fingers started to move.",
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "배열/영작"
     },
     {
       "id": "G011",
@@ -1685,7 +1770,8 @@ window.__loadLesson({
         "build",
         "to building"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "G014",
@@ -1712,7 +1798,8 @@ window.__loadLesson({
         "can",
         "could"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "G015",
@@ -1739,7 +1826,8 @@ window.__loadLesson({
         "shoulders / knees",
         "fingers / toes"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "DR005",
@@ -1767,7 +1855,8 @@ window.__loadLesson({
         "I can ride a bike."
       ],
       "correct": 0,
-      "blank_answer": "Now one foot, now the other."
+      "blank_answer": "Now one foot, now the other.",
+      "exam_pattern": "대화 완성"
     },
     {
       "id": "DR006",
@@ -1795,7 +1884,8 @@ window.__loadLesson({
         "It's time for bed."
       ],
       "correct": 1,
-      "blank_answer": "And that's the elephant block!"
+      "blank_answer": "And that's the elephant block!",
+      "exam_pattern": "대화 완성"
     },
     {
       "id": "DR007",
@@ -1823,7 +1913,8 @@ window.__loadLesson({
         "Let's go to the hospital."
       ],
       "correct": 2,
-      "blank_answer": "(Bob's mouth made a small smile.)"
+      "blank_answer": "(Bob's mouth made a small smile.)",
+      "exam_pattern": "대화 완성"
     },
     {
       "id": "R001",
@@ -1850,7 +1941,8 @@ window.__loadLesson({
         "Because Bob sneezed.",
         "Because there were too many blocks."
       ],
-      "correct": 2
+      "correct": 2,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "R002",
@@ -1877,7 +1969,8 @@ window.__loadLesson({
         "He moved to another city.",
         "He got a new job."
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "R003",
@@ -1904,7 +1997,8 @@ window.__loadLesson({
         "To build a tower and make Bob smile.",
         "To clean Bob's room."
       ],
-      "correct": 2
+      "correct": 2,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "P001",
@@ -1931,7 +2025,8 @@ window.__loadLesson({
         "build",
         "a"
       ],
-      "correct": 2
+      "correct": 2,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "MW006",
@@ -1949,7 +2044,8 @@ window.__loadLesson({
       "page": 33,
       "required_word": "to",
       "min_words": 5,
-      "example_answer": "Bobby came to build a tower."
+      "example_answer": "Bobby came to build a tower.",
+      "exam_pattern": "조건 영작"
     },
     {
       "id": "MW007",
@@ -1967,7 +2063,8 @@ window.__loadLesson({
       "page": 32,
       "required_word": "who",
       "min_words": 6,
-      "example_answer": "Bob is a man who loves Bobby."
+      "example_answer": "Bob is a man who loves Bobby.",
+      "exam_pattern": "조건 영작"
     },
     {
       "id": "G001",
@@ -1996,7 +2093,8 @@ window.__loadLesson({
         "build",
         "built"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "G002",
@@ -2023,7 +2121,8 @@ window.__loadLesson({
         "visit",
         "visits"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "G003",
@@ -2052,7 +2151,8 @@ window.__loadLesson({
         "to doing",
         "do"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "G004",
@@ -2081,7 +2181,8 @@ window.__loadLesson({
         "do",
         "to be doing"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "G005",
@@ -2110,7 +2211,8 @@ window.__loadLesson({
         "whose",
         "where"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "G006",
@@ -2139,7 +2241,8 @@ window.__loadLesson({
         "where",
         "when"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "G007",
@@ -2168,7 +2271,8 @@ window.__loadLesson({
         "whom",
         "where"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "M001",
@@ -2197,7 +2301,8 @@ window.__loadLesson({
         "I have a friend that is helping me.",
         "I have a friend where help me."
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "M002",
@@ -2226,7 +2331,8 @@ window.__loadLesson({
         "He went to a hospital that was in Paris.",
         "He went to a hospital where in Paris."
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "M003",
@@ -2253,7 +2359,8 @@ window.__loadLesson({
         "위아래로",
         "대각선으로"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "M005",
@@ -2280,7 +2387,8 @@ window.__loadLesson({
         "화남",
         "무서움"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "M006",
@@ -2307,7 +2415,8 @@ window.__loadLesson({
         "~이전에",
         "~처럼"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "M007",
@@ -2334,7 +2443,8 @@ window.__loadLesson({
         "Bobby made magic to help his grandfather.",
         "Bobby tried magic to help his grandfather."
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "G008",
@@ -2361,7 +2471,8 @@ window.__loadLesson({
         "hand",
         "leg"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "G009",
@@ -2388,7 +2499,8 @@ window.__loadLesson({
         "Slowly",
         "Actually"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "G010",
@@ -2415,7 +2527,8 @@ window.__loadLesson({
         "luck",
         "chance"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "G012",
@@ -2444,7 +2557,8 @@ window.__loadLesson({
         "become",
         "to becoming"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "G013",
@@ -2471,7 +2585,8 @@ window.__loadLesson({
         "gust",
         "draft"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "G016",
@@ -2498,7 +2613,8 @@ window.__loadLesson({
         "helping",
         "to helping"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "G017",
@@ -2525,7 +2641,8 @@ window.__loadLesson({
         "recovering",
         "recovered"
       ],
-      "correct": 2
+      "correct": 2,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "G018",
@@ -2554,7 +2671,8 @@ window.__loadLesson({
         "whom",
         "what"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "P002",
@@ -2581,7 +2699,8 @@ window.__loadLesson({
         "who",
         "taught"
       ],
-      "correct": 2
+      "correct": 2,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "P003",
@@ -2608,7 +2727,8 @@ window.__loadLesson({
         "block",
         "to"
       ],
-      "correct": 2
+      "correct": 2,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "W01",
@@ -2635,7 +2755,8 @@ window.__loadLesson({
         "paper sheets",
         "metal pieces"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "W02",
@@ -2662,7 +2783,8 @@ window.__loadLesson({
         "play",
         "pull"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "W03",
@@ -2689,7 +2811,8 @@ window.__loadLesson({
         "very fast",
         "very slowly"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "W04",
@@ -2716,7 +2839,8 @@ window.__loadLesson({
         "laugh",
         "cry"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "W05",
@@ -2743,7 +2867,8 @@ window.__loadLesson({
         "woke up",
         "fell down"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "W06",
@@ -2770,7 +2895,8 @@ window.__loadLesson({
         "remember",
         "return"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "W07",
@@ -2797,7 +2923,8 @@ window.__loadLesson({
         "worried",
         "imagined"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "W08",
@@ -2824,7 +2951,8 @@ window.__loadLesson({
         "learn",
         "lead"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "E-V-005",
@@ -2853,7 +2981,8 @@ window.__loadLesson({
         "There is one more block for put.",
         "There is one more block puts."
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "E-V-006",
@@ -2882,7 +3011,8 @@ window.__loadLesson({
         "It's time for build a tower!",
         "It's time built a tower!"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "E-V-026",
@@ -2909,7 +3039,8 @@ window.__loadLesson({
         "want",
         "think"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "E-V-031",
@@ -2936,7 +3067,8 @@ window.__loadLesson({
         "loudly",
         "easily"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "E-V-033",
@@ -2963,7 +3095,8 @@ window.__loadLesson({
         "moves",
         "falls"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "문맥 어휘"
     },
     {
       "id": "E-SR-001",
@@ -2992,7 +3125,8 @@ window.__loadLesson({
         "Bob은 Bobby의 아버지이다.",
         "Bobby는 Bob에게 걷는 법을 가르쳤다."
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "E-SR-002",
@@ -3019,7 +3153,8 @@ window.__loadLesson({
         "Bobby가 재채기를 해서 탑이 무너졌다.",
         "마지막에 올린 블록은 코끼리 블록이었다."
       ],
-      "correct": 2
+      "correct": 2,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "E-SR-003",
@@ -3048,7 +3183,8 @@ window.__loadLesson({
         "Bob은 왜 아프게 되었는가?",
         "Bobby는 Bob을 만나고 싶어 했는가?"
       ],
-      "correct": 2
+      "correct": 2,
+      "exam_pattern": "답할 수 없는 질문"
     },
     {
       "id": "E-SR-004",
@@ -3075,7 +3211,8 @@ window.__loadLesson({
         "③",
         "④"
       ],
-      "correct": 3
+      "correct": 3,
+      "exam_pattern": "글의 순서"
     },
     {
       "id": "E-SR-005",
@@ -3102,7 +3239,8 @@ window.__loadLesson({
         "병원에서의 재활 치료 방법",
         "어린 시절 추억의 소중함"
       ],
-      "correct": 0
+      "correct": 0,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "E-SR-006",
@@ -3129,7 +3267,8 @@ window.__loadLesson({
         "Bobby가 블록을 가져왔을 때",
         "Bob이 작은 소리를 냈을 때"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "E-SR-007",
@@ -3156,7 +3295,8 @@ window.__loadLesson({
         "(C) — (A) — (B)",
         "(A) — (B) — (C)"
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "E-SR-008",
@@ -3183,7 +3323,8 @@ window.__loadLesson({
         "You always sneeze.",
         "Hold my hands, Bobby."
       ],
-      "correct": 1
+      "correct": 1,
+      "exam_pattern": "내용 일치/불일치"
     },
     {
       "id": "E-DR-001",
@@ -3211,7 +3352,8 @@ window.__loadLesson({
         "Can you tell me about baseball?"
       ],
       "correct": 0,
-      "blank_answer": null
+      "blank_answer": null,
+      "exam_pattern": "대화 완성"
     },
     {
       "id": "E-DR-002",
@@ -3239,7 +3381,8 @@ window.__loadLesson({
         "I don't know London."
       ],
       "correct": 0,
-      "blank_answer": null
+      "blank_answer": null,
+      "exam_pattern": "대화 완성"
     },
     {
       "id": "E-DR-003",
@@ -3267,7 +3410,8 @@ window.__loadLesson({
         "A: What time is it now?\nB: It's half past eight."
       ],
       "correct": 2,
-      "blank_answer": null
+      "blank_answer": null,
+      "exam_pattern": "대화 완성"
     },
     {
       "id": "E-DR-004",
@@ -3295,7 +3439,8 @@ window.__loadLesson({
         "He went to see a baseball game."
       ],
       "correct": 0,
-      "blank_answer": null
+      "blank_answer": null,
+      "exam_pattern": "대화 완성"
     },
     {
       "id": "E-MW-001",
@@ -3317,7 +3462,8 @@ window.__loadLesson({
       "page": null,
       "required_word": null,
       "min_words": 3,
-      "example_answer": null
+      "example_answer": null,
+      "exam_pattern": "조건 영작"
     },
     {
       "id": "E-MW-002",
@@ -3339,7 +3485,8 @@ window.__loadLesson({
       "page": null,
       "required_word": null,
       "min_words": 3,
-      "example_answer": null
+      "example_answer": null,
+      "exam_pattern": "조건 영작"
     },
     {
       "id": "E-MW-003",
@@ -3361,7 +3508,8 @@ window.__loadLesson({
       "page": null,
       "required_word": null,
       "min_words": 3,
-      "example_answer": null
+      "example_answer": null,
+      "exam_pattern": "문장 오류 고치기"
     },
     {
       "id": "E-MW-004",
@@ -3383,7 +3531,8 @@ window.__loadLesson({
       "page": null,
       "required_word": null,
       "min_words": 3,
-      "example_answer": null
+      "example_answer": null,
+      "exam_pattern": "조건 영작"
     },
     {
       "id": "E-MW-005",
@@ -3403,7 +3552,8 @@ window.__loadLesson({
       "page": null,
       "required_word": null,
       "min_words": 3,
-      "example_answer": null
+      "example_answer": null,
+      "exam_pattern": "조건 영작"
     }
   ],
   "vocab_drill": [
@@ -3568,6 +3718,24 @@ window.__loadLesson({
       "word": "block",
       "pos": "명사",
       "meaning": "블록, 나무 조각"
+    }
+  ],
+  "grammar_rules": [
+    {
+      "id": "GR01",
+      "name": "to_inf_adjective",
+      "rule_ko": "to부정사(to+동사원형)가 앞의 명사를 꾸며주는 역할. '~할', '~하기 위한'으로 해석한다. 명사 바로 뒤에 to가 온다.",
+      "example_correct": "It's time to build a tower. (time ← to build: '세울 시간')",
+      "example_wrong": "It's time building a tower. (×동명사로 명사 수식 불가)",
+      "memory_tip": "명사 + to + 동사원형 = 명사를 꾸며준다!"
+    },
+    {
+      "id": "GR02",
+      "name": "relative_pronoun_subject",
+      "rule_ko": "앞의 명사(선행사)를 설명하는 절을 이끈다. 사람이면 who(that), 사물·동물이면 which(that). 관계대명사 바로 뒤에 동사가 온다.",
+      "example_correct": "He is in a hospital which is far from here. (hospital ← which is far from here)",
+      "example_wrong": "He is in a hospital who is far from here. (×hospital은 사물이라 who 못 씀)",
+      "memory_tip": "사람=who, 사물=which, 둘 다 되면=that!"
     }
   ]
 });
