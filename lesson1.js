@@ -262,7 +262,7 @@ __loadLesson({
       "wrong_explanations": {
         "sleepy": "sleepy는 '졸린'이에요. 그건 밤에 느끼는 거예요! (CS01b 참고)",
         "tired": "tired는 '피곤한'이에요. 본문에서 아침에 느끼는 건 '활기찬' 상태예요.",
-        "quiet": "quiet은 '조용한'이에요. 사람이 아니라 장소에 주로 쓰는 표현이에요."
+        "quiet": "quiet도 가능한 단어지만, 이 문장에서는 아침에 몸이 활기찬 상태를 말하므로 lively가 가장 알맞아요."
       },
       "core_sentence_id": "CS01a",
       "linked_rule_ids": [],
@@ -884,7 +884,7 @@ __loadLesson({
       "wrong_explanations": {
         "asleep": "asleep은 '잠든'이에요. 스마트폰 때문에 뇌가 잠드는 게 아니라 깨어 있게 되는 거예요!",
         "tired": "tired는 '피곤한'이에요. 본문에서는 스마트폰이 뇌를 '활발하게' 만든다고 했어요.",
-        "quiet": "quiet은 '조용한'이에요. 뇌의 상태를 말하는 게 아니라 소리에 쓰는 단어예요!"
+        "quiet": "quiet은 틀린 영어라서가 아니라, 이 문맥의 핵심이 '깨어 있음/활성 상태'라서 active가 맞아요."
       },
       "core_sentence_id": "CS06",
       "linked_rule_ids": [
@@ -2007,7 +2007,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "if절 시제",
-      "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: if 조건절에는 will을 쓰지 않는다을 확인하세요.",
+      "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: if 조건절에는 will을 쓰지 않는다는 점을 확인하세요.",
       "hint": "if절 안에서는 미래의 일이어도 현재시제를 써요!",
       "wrong_explanations": {
         "0": "맞는 문장이에요! if절(exercise) 현재형 + 주절(will sleep) 미래형. 완벽해요.",
@@ -2195,7 +2195,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "hard",
       "keyword": "어법 오류",
-      "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: if 조건절에는 will을 쓰지 않는다을 확인하세요.",
+      "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: if 조건절에는 will을 쓰지 않는다는 점을 확인하세요.",
       "hint": "will 뒤에는 항상 동사원형! will stays → will stay",
       "wrong_explanations": {
         "0": "if절에서 현재형 use는 맞아요! 미래의 일이어도 if절에서는 현재형.",
@@ -2376,7 +2376,7 @@ __loadLesson({
       "wrong_explanations": {
         "1": "asleep은 '잠든'이에요. 파란 빛은 오히려 잠을 방해해요!",
         "2": "healthy는 '건강한'이에요. 여기서는 뇌가 '활동적인' 상태를 말하는 거예요.",
-        "3": "quiet은 '조용한'이에요. 파란 빛은 뇌를 활발하게 만들어요."
+        "3": "quiet도 쓸 수 있지만, 여기서는 파란 빛이 뇌를 '활발하게' 만든다는 내용이라 active가 맞아요."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -2432,16 +2432,16 @@ __loadLesson({
       "instruction": "다음 문장의 빈칸에 어디에도 들어갈 수 없는 단어는?",
       "hint": "각 빈칸에 네 단어를 하나씩 넣어보세요. 세 문장 모두에 들어갈 수 없는 것은?",
       "wrong_explanations": {
-        "0": "make a habit ✓ make dinner ✓ make this word ✓ — 세 문장 모두 가능해요! '어디에도 들어갈 수 없는' 건 아니에요.",
-        "1": "have a habit ✓ have dinner ✓ have this word ✓ — 세 문장 모두 가능해요! '어디에도 들어갈 수 없는' 건 아니에요.",
-        "2": "say a habit ✗ say dinner ✗ — 안 되는 문장이 있지만 say this word ✓ 하나라도 가능하면 정답이 아니에요!"
+        "0": "make a habit ✓ make dinner ✓ make a sentence ✓ — 세 문장 모두 가능해요! '어디에도 들어갈 수 없는' 건 아니에요.",
+        "1": "have a habit ✓ have dinner ✓ have a sentence ✓ — 세 문장 모두 가능해요! '어디에도 들어갈 수 없는' 건 아니에요.",
+        "2": "say a habit ✗ say dinner ✗ — 안 되는 문장이 있지만 say a sentence ✓ 하나라도 가능하면 정답이 아니에요!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
       "recovery_band": "B",
       "test_task": "word_exclusion",
       "page": 16,
-      "sentence": "◦ I want to _____ a good sleep habit.\n◦ She will _____ dinner for us tonight.\n◦ Can you _____ this word in English?",
+      "sentence": "◦ I want to _____ a good sleep habit.\n◦ She will _____ dinner for us tonight.\n◦ Can you _____ a sentence in English?",
       "choices": [
         "make",
         "have",
@@ -2997,7 +2997,7 @@ __loadLesson({
       "test_task": "conditional_writing",
       "page": 19,
       "required_word": "what to",
-      "min_words": 3,
+      "min_words": 6,
       "example_answer": "I don't know what to do to sleep better.",
       "exam_pattern": "조건 영작",
       "training_layer": "skill_focus"
@@ -3666,7 +3666,7 @@ __loadLesson({
       "test_task": "free_writing",
       "page": 11,
       "required_word": "planning to",
-      "min_words": 3,
+      "min_words": 5,
       "example_answer": "I'm planning to exercise every day this year.",
       "exam_pattern": "조건 영작",
       "training_layer": "skill_focus"
@@ -3779,7 +3779,7 @@ __loadLesson({
       "test_task": "complex_writing",
       "page": 19,
       "required_word": "what to",
-      "min_words": 3,
+      "min_words": 8,
       "example_answer": "If you want to sleep better, you should know what to do before bedtime.",
       "exam_pattern": "조건 영작",
       "training_layer": "skill_focus"
@@ -3884,7 +3884,7 @@ __loadLesson({
       "wrong_explanations": {
         "1": "start는 '시작하다'예요. 본문에서는 '끝내라(finish)'고 했어요.",
         "2": "enjoy는 '즐기다'예요. 시간에 관한 조언이니 '끝내다'가 맞아요.",
-        "3": "stop은 '갑자기 멈추다'예요. finish는 '끝까지 하고 마치다'라는 뜻! 운동을 마무리하라는 거니까 finish가 더 자연스러워요."
+        "3": "carry는 '나르다, 운반하다'예요. 운동을 '끝내다'는 finish가 맞아요."
       },
       "core_sentence_id": "CS10",
       "linked_rule_ids": [],
@@ -3896,7 +3896,7 @@ __loadLesson({
         "finish",
         "start",
         "enjoy",
-        "stop"
+        "carry"
       ],
       "correct": 0,
       "exam_pattern": "문맥 어휘",
@@ -3949,7 +3949,7 @@ __loadLesson({
       "test_task": "free_writing",
       "page": 11,
       "required_word": "planning to",
-      "min_words": 3,
+      "min_words": 5,
       "example_answer": "I'm planning to exercise this weekend.",
       "exam_pattern": "조건 영작",
       "training_layer": "skill_focus"
@@ -3973,7 +3973,7 @@ __loadLesson({
       "test_task": "free_writing",
       "page": 20,
       "required_word": "don't know",
-      "min_words": 3,
+      "min_words": 6,
       "example_answer": "I don't know where to go for vacation.",
       "exam_pattern": "조건 영작",
       "training_layer": "skill_focus"

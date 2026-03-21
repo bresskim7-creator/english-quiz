@@ -1702,21 +1702,21 @@ __loadLesson({
       "instruction": "단어를 올바른 순서로 배열하세요.",
       "hint": "작은 소리를 냄 — 교과서 p.35",
       "wrong_explanations": {
-        "default": "주어 + 동사 + 목적어 — 'Bobby made a sound.'"
+        "default": "주어 + 동사 + 목적어 — 'Bob made a sound.'"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
       "recovery_band": "C",
       "test_task": null,
       "page": 35,
-      "sentence_ko": "Bobby가 소리를 냈다.",
+      "sentence_ko": "Bob이 소리를 냈다.",
       "words": [
-        "Bobby",
+        "Bob",
         "sound",
         "a",
         "made"
       ],
-      "answer": "Bobby made a sound.",
+      "answer": "Bob made a sound.",
       "correct": 2,
       "exam_pattern": "배열/영작",
       "training_layer": "mixed_practice"
@@ -1857,7 +1857,7 @@ __loadLesson({
       "recovery_band": "B",
       "test_task": null,
       "page": 26,
-      "sentence": "Bob: \"Hold my hands, Bobby.\"\nBobby: _____",
+      "sentence": "Bob: \"Hold my hands, Bobby. _____\"",
       "choices": [
         "Now one foot, now the other.",
         "I want to eat lunch.",
@@ -1905,7 +1905,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "recovery",
-      "instruction": "대화의 빈칸에 알맞은 응답을 고르세요.",
+      "instruction": "이 장면에서 Bob의 반응으로 알맞은 것을 고르세요.",
       "hint": "💡 Bob이 아프고 난 후 Bobby가 블록을 가져왔을 때, Bob의 반응을 떠올려 보세요.",
       "wrong_explanations": {
         "0": "Bob은 Bobby를 기억하지 못하는 것이 아니에요. 말을 할 수 없었을 뿐이에요.",
@@ -2060,7 +2060,7 @@ __loadLesson({
       "test_task": null,
       "page": 33,
       "required_word": "to",
-      "min_words": 5,
+      "min_words": 6,
       "example_answer": "Bobby came to build a tower.",
       "exam_pattern": "조건 영작",
       "training_layer": "skill_focus"
@@ -2126,7 +2126,7 @@ __loadLesson({
       "hint": "목적을 나타내는 to부정사 — 교과서 p.32",
       "wrong_explanations": {
         "visiting": "-ing형은 목적을 나타내지 않아요.",
-        "visit": "동사원형은 시간 표현 뒤에 올 수 없어요.",
+        "visit": "동사원형만으로는 목적(~하기 위해)을 나타낼 수 없어요. to visit처럼 to + 동사원형이 필요해요.",
         "visits": "3인칭 현재형은 'came(과거형)' 문장과 시제가 맞지 않아요."
       },
       "core_sentence_id": null,
@@ -2309,8 +2309,8 @@ __loadLesson({
       "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
       "hint": "사람을 나타낼 때는 who — 교과서 p.27",
       "wrong_explanations": {
-        "I have a friend which helps me.": "which는 사물에 쓰는 관계대명사예요.",
-        "I have a friend that is helping me.": "진행형은 '도와주는'의 의미가 약해요.",
+        "I have a friend which helps me.": "which는 사물에 쓰는 관계대명사예요. 사람을 설명할 때는 who를 써야 해요.",
+        "I have a friend who help me.": "who 뒤에 오는 동사는 선행사(a friend = 3인칭 단수)에 맞춰야 해요. help → helps!",
         "I have a friend where help me.": "where는 장소를 나타내는 관계부사예요. 사람을 설명할 때는 who를 써요. 또한 'where help'은 문법적으로 틀려요."
       },
       "core_sentence_id": null,
@@ -2324,7 +2324,7 @@ __loadLesson({
       "choices": [
         "I have a friend who helps me.",
         "I have a friend which helps me.",
-        "I have a friend that is helping me.",
+        "I have a friend who help me.",
         "I have a friend where help me."
       ],
       "correct": 0,
@@ -2839,8 +2839,8 @@ __loadLesson({
       "instruction": "빈칸에 알맞은 표현을 고르세요.",
       "hint": "하나하나씩, 차례대로 (adv.) — 교과서 p.27",
       "wrong_explanations": {
-        "very fast": "'아주 빨리'라는 뜻이에요.",
-        "very slowly": "'아주 천천히'라는 뜻이에요.",
+        "very fast": "'아주 빨리'라는 뜻이에요. 본문에서는 천천히 하나씩 쌓았어요.",
+        "very slowly": "'아주 천천히'라는 뜻이에요. 의미는 비슷하지만, 본문 표현은 one by one이에요.",
         "all at once": "'한꺼번에'라는 뜻이에요. 본문에서는 하나하나씩(one by one) 쌓았어요."
       },
       "core_sentence_id": null,
@@ -2848,7 +2848,7 @@ __loadLesson({
       "recovery_band": "A",
       "test_task": null,
       "page": 27,
-      "sentence": "The blocks fell down _____.",
+      "sentence": "They slowly piled the blocks _____.",
       "choices": [
         "all at once",
         "one by one",
@@ -2993,7 +2993,7 @@ __loadLesson({
       "recovery_band": "A",
       "test_task": null,
       "page": 42,
-      "sentence": "Grandfather started to _____ on Bobby's shoulder.",
+      "sentence": "Grandfather started to _____ on Bobby's shoulders.",
       "choices": [
         "lean",
         "leave",
@@ -3527,8 +3527,8 @@ __loadLesson({
       "recovery_band": "B",
       "test_task": null,
       "page": null,
-      "required_word": null,
-      "min_words": 3,
+      "required_word": "to",
+      "min_words": 6,
       "example_answer": null,
       "exam_pattern": "조건 영작",
       "training_layer": "skill_focus"
@@ -3551,8 +3551,8 @@ __loadLesson({
       "recovery_band": "B",
       "test_task": null,
       "page": null,
-      "required_word": null,
-      "min_words": 3,
+      "required_word": "who",
+      "min_words": 7,
       "example_answer": null,
       "exam_pattern": "조건 영작",
       "training_layer": "skill_focus"
@@ -3575,8 +3575,8 @@ __loadLesson({
       "recovery_band": "B",
       "test_task": null,
       "page": null,
-      "required_word": null,
-      "min_words": 3,
+      "required_word": "which",
+      "min_words": 5,
       "example_answer": null,
       "exam_pattern": "문장 오류 고치기",
       "training_layer": "mixed_practice"
@@ -3599,8 +3599,8 @@ __loadLesson({
       "recovery_band": "C",
       "test_task": null,
       "page": null,
-      "required_word": null,
-      "min_words": 3,
+      "required_word": "which",
+      "min_words": 8,
       "example_answer": null,
       "exam_pattern": "조건 영작",
       "training_layer": "skill_focus"
@@ -3621,8 +3621,8 @@ __loadLesson({
       "recovery_band": "C",
       "test_task": null,
       "page": null,
-      "required_word": null,
-      "min_words": 3,
+      "required_word": "Is it okay if",
+      "min_words": 7,
       "example_answer": null,
       "exam_pattern": "조건 영작",
       "training_layer": "skill_focus"
@@ -4243,11 +4243,11 @@ __loadLesson({
   "grammar_rules": [
     {
       "id": "GR01",
-      "name": "to_inf_adjective",
-      "rule_ko": "to부정사(to+동사원형)가 앞의 명사를 꾸며주는 역할. '~할', '~하기 위한'으로 해석한다. 명사 바로 뒤에 to가 온다.",
-      "example_correct": "It's time to build a tower. (time ← to build: '세울 시간')",
-      "example_wrong": "It's time building a tower. (×동명사로 명사 수식 불가)",
-      "memory_tip": "명사 + to + 동사원형 = 명사를 꾸며준다!"
+      "name": "to_infinitive",
+      "rule_ko": "to부정사(to+동사원형)의 주요 쓰임: ① 명사 수식(형용사적 용법): 명사 바로 뒤에서 '~할, ~하기 위한'으로 꾸며줌 (예: time to build). ② 목적(부사적 용법): '~하기 위해' (예: came to visit). ③ 동사 뒤 to부정사: want/need/start + to + 동사원형.",
+      "example_correct": "It's time to build a tower. (명사 수식) / Bobby came to visit Bob. (목적)",
+      "example_wrong": "It's time building a tower. (×동명사로 명사 수식 불가) / Bobby came visiting Bob. (×목적 표현 불가)",
+      "memory_tip": "to + 동사원형: 명사 뒤 = 꾸며준다! / 동사 뒤 = 목적이나 의도!"
     },
     {
       "id": "GR02",
