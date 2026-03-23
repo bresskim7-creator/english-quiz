@@ -1715,7 +1715,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": null,
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "마지막 두 문장을 읽어보세요: 'sleep regularly' → 'feel healthier'",
       "wrong_explanations": {
         "0": "반대예요! 아침에는 lively(활기 있게), 밤에 sleepy(졸리게) 느껴요.",
@@ -1744,7 +1744,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": null,
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "본문에서 카페인이 숨어있는 곳을 모두 확인하세요.",
       "wrong_explanations": {
         "0": "이건 본문 첫 문장과 일치해요! '일치하지 않는 것'을 찾아야 해요.",
@@ -1773,7 +1773,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": null,
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "본문에서 '몇 시간'이라는 구체적 수치가 나오는지 확인하세요.",
       "wrong_explanations": {
         "0": "답할 수 있어요! 'your brain will stay active'가 답이에요.",
@@ -1802,7 +1802,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": null,
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "'낮에 운동하면 밤에 쉽게 잠든다'가 이 단락의 핵심 메시지예요.",
       "wrong_explanations": {
         "1": "반대예요! 취침 직전(right before bedtime)에 끝내면 안 된다고 했어요.",
@@ -1831,7 +1831,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": null,
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "글의 핵심 주제를 찾으세요: sleep well → energy",
       "wrong_explanations": {
         "0": "시간표 이야기가 아니에요. 수면과 에너지의 관계가 핵심이에요.",
@@ -1860,7 +1860,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "hard",
       "keyword": null,
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "이 문장은 '규칙적으로 자라'는 조언의 결과예요. 조언 바로 뒤에 와야 해요.",
       "wrong_explanations": {
         "0": "첫 문장 바로 뒤에는 body clock 설명이 이어져야 자연스러워요.",
@@ -1891,7 +1891,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "hard",
       "keyword": null,
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글의 내용을 가장 잘 이해한 사람은?",
       "hint": "각 사람의 말을 본문과 대조하세요. 본문의 핵심 내용을 가장 정확히 말한 사람은?",
       "wrong_explanations": {
         "0": "반대예요! 초콜릿에 카페인이 있어서 수면 문제를 일으킬 수 있어요.",
@@ -1920,7 +1920,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": null,
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "앞 문장에서 'use'의 목적어를 찾으세요. 무엇을 사용하지 말라는 건가요?",
       "wrong_explanations": {
         "0": "brain은 '사용하다(use)'의 대상이 아니에요. 스마트폰을 사용하지 말라는 거예요.",
@@ -1949,7 +1949,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": null,
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글의 주제로 가장 적절한 것은?",
       "hint": "마지막 문장이 글 전체를 요약하고 있어요.",
       "wrong_explanations": {
         "1": "맛에 대한 이야기가 아니에요. 카페인을 '조심하라'는 내용이에요.",
@@ -2875,7 +2875,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "핵심문장 매칭",
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "body clock(몸의 시계) + sleep regularly(규칙적으로 자다)",
       "wrong_explanations": {
         "1": "exercise(운동)가 아니라 sleep(자다)이에요!",
@@ -2904,7 +2904,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "if절 핵심문장",
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "if절 + 주절 구조: 사용하면 → 활발한 상태 유지",
       "wrong_explanations": {
         "1": "뇌가 피곤해진다(gets tired)는 본문과 반대예요. 활발해진다(stays active)가 맞아요.",
@@ -3117,7 +3117,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": null,
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "빈칸에 들어갈 말로 가장 적절한 것은?",
       "hint": "수면에 방해가 되는 음식에 대해 '조심하라'는 조언이에요.",
       "wrong_explanations": {
         "1": "careless는 '부주의한'이에요. 조심하라는 조언에 반대되는 말이에요!",
@@ -3146,7 +3146,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "hard",
       "keyword": null,
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글을 두 문단으로 나눌 때, 두 번째 문단이 시작되기에 가장 적절한 곳은?",
       "hint": "(A)(B)는 '내적 요인(몸, 음식)'이고 (C)(D)는 '외적 행동(스마트폰, 운동)'이에요.",
       "wrong_explanations": {
         "0": "첫 문장부터 나누면 두 번째 문단만 남아요. 의미 단위로 나눠야 해요.",
@@ -3264,7 +3264,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": null,
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "따뜻한 샤워, 취침 전 식사 안 하기 → 모두 '잘 자는 방법'에 대한 조언이에요.",
       "wrong_explanations": {
         "0": "음식 자체가 아니라 '먹지 말라'는 조언이에요. 수면 방법이 주제예요.",
@@ -3293,7 +3293,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": null,
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글의 내용을 바탕으로 빈칸에 들어갈 말로 적절한 것은?",
       "hint": "during the day = 낮에, right before bedtime = 취침 직전",
       "wrong_explanations": {
         "1": "밤이 아니라 '낮(during the day)'에 운동하라고 했어요!",
@@ -3536,7 +3536,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": null,
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글의 내용과 일치하지 않는 것은?",
       "hint": "본문에서 'right before bedtime'에 끝내면 어떻게 된다고 했나요?",
       "wrong_explanations": {
         "0": "일치해요! 'you will fall asleep easily at night'",
@@ -3677,7 +3677,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": null,
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글의 내용을 바탕으로 빈칸 (A), (B)에 들어갈 말로 적절한 것은?",
       "hint": "수면 '습관'이 수면의 '질'을 향상시킨다는 요약이에요.",
       "wrong_explanations": {
         "1": "음식(foods)만 이야기한 게 아니에요. 운동, 스마트폰 등 여러 습관이에요.",
@@ -3850,7 +3850,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "hard",
       "keyword": null,
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글의 내용을 가장 잘 이해한 사람은?",
       "hint": "본문의 구체적인 표현을 가장 정확히 이해한 사람을 고르세요.",
       "wrong_explanations": {
         "0": "반대예요! 파란 빛은 뇌를 '활발하게(active)' 만들어요. 편안하게가 아니에요.",
@@ -4068,7 +4068,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "카페인 매칭",
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "'일으키다'는 cause예요. cure(치료하다)와 헷갈리지 마세요!",
       "wrong_explanations": {
         "1": "cure는 '치료하다'예요. '일으키다'가 아니에요!",
@@ -4097,7 +4097,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "if절 매칭",
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "if + smartphone late at night → brain + stay active",
       "wrong_explanations": {
         "1": "eyes will stay healthy가 아니라 brain will stay active예요!",
@@ -4128,7 +4128,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "운동 매칭",
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "낮 = during the day, 운동 = exercise",
       "wrong_explanations": {
         "1": "night(밤)이 아니라 day(낮)예요!",
@@ -4157,7 +4157,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "잠들다 매칭",
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "'잠들다'는 fall asleep이에요. feel sleepy(졸리다)와 달라요!",
       "wrong_explanations": {
         "1": "feel sleepy는 '졸리다'예요. '잠들다(fall asleep)'와 달라요!",
@@ -4186,7 +4186,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "운동시간 매칭",
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 영어 문장의 의미와 같은 우리말을 고르세요.",
       "hint": "finish exercising = 운동을 끝내다, a few hours before = 몇 시간 전에",
       "wrong_explanations": {
         "1": "'직전에 시작'이 아니라 '몇 시간 전에 끝내라'예요!",
@@ -4215,7 +4215,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "어휘 매칭",
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 중 단어의 뜻이 올바르게 연결된 것을 고르세요.",
       "hint": "lively는 '살아있는 것처럼 활발한'이라는 뜻이에요.",
       "wrong_explanations": {
         "1": "졸린은 sleepy예요. lively는 반대로 활기찬이에요!",
@@ -4244,7 +4244,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "어휘 매칭",
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 중 단어의 뜻이 올바르게 연결된 것을 고르세요.",
       "hint": "cause는 '원인' 또는 '일으키다'예요.",
       "wrong_explanations": {
         "1": "예방하다는 prevent예요. cause는 '일으키다'!",
@@ -4273,7 +4273,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "계획 표현 매칭",
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "'I'm planning to + 동사원형'이 맞는 형태예요!",
       "wrong_explanations": {
         "1": "good은 형용사, better는 비교급 부사예요. eat 뒤에는 부사 better가 와야 해요.",
@@ -4302,7 +4302,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "의문사+to부정사 매칭",
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "'의문사 + to + 동사원형' 구조를 확인하세요!",
       "wrong_explanations": {
         "1": "what doing은 틀려요. 의문사 + to + 동사원형(what to do)이 맞아요!",

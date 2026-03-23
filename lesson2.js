@@ -1670,7 +1670,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "호기심 어휘",
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 영어 표현의 의미로 적절한 것을 고르세요.",
       "hint": "좋은 날씨에 산들바람이 불었다 — 교과서 p.41",
       "wrong_explanations": {
         "강한 바람": "gale이나 wind는 '강한 바람'을 의미해요. breeze는 부드러운 산들바람이라 느낌이 완전히 달라요!\n정답은 산들바람이에요. breeze = gentle, mild wind(부드럽고 약한 바람)\n'산들바람'이라는 느낌: 부드롭고 기분 좋은 바람을 떠올리면 잊지 않을 거예요!",
@@ -1935,7 +1935,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "sneeze",
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "💡 탑이 무너진 직접적인 원인을 지문에서 찾으세요.",
       "wrong_explanations": {
         "0": "Bobby가 밀은 것이 아니에요. 지문을 보면 Bobby는 조심스럽게 블록을 올렸어요.",
@@ -1964,7 +1964,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "Bob's illness",
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "💡 Bob에게 무슨 일이 생겼는지 첫 문장에서 찾으세요.",
       "wrong_explanations": {
         "0": "휴가를 간 것이 아니에요. 지문에서 Bob은 아파서 병원에 갔어요.",
@@ -1993,7 +1993,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "purpose",
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "💡 Bobby가 블록을 가져온 목적(to ~)을 지문에서 찾으세요.",
       "wrong_explanations": {
         "0": "시장에서 팔기 위해서가 아니에요. Bobby는 Bob을 위해 블록을 가져왔어요.",
@@ -2306,7 +2306,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "관계대명사 의미",
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "사람을 나타낼 때는 who — 교과서 p.27",
       "wrong_explanations": {
         "I have a friend which helps me.": "which는 사물에 쓰는 관계대명사예요. 사람을 설명할 때는 who를 써야 해요.",
@@ -2337,7 +2337,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "관계대명사 의미",
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "사물(병원)을 나타낼 때는 which — 교과서 p.30",
       "wrong_explanations": {
         "He went to a hospital who is in Paris.": "who는 사람에 쓰는 관계대명사예요.",
@@ -2368,7 +2368,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "호기심 어휘",
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 영어 표현의 의미로 적절한 것을 고르세요.",
       "hint": "할아버지와 손자가 나란히 앉아있다 — 교과서 p.42",
       "wrong_explanations": {
         "앞뒤로": "side by side는 '옆으로'라는 뜻이에요.",
@@ -2397,7 +2397,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "호기심 어휘",
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 영어 표현의 의미로 적절한 것을 고르세요.",
       "hint": "가족과 함께하는 행복을 느낀다 — 교과서 p.43",
       "wrong_explanations": {
         "화남": "anger는 '화남, 분노'를 의미해요. happiness는 긍정적인 감정이라 완전히 달라요!\n정답은 행복이에요. happiness = joy, contentment(행복, 기쁨)\nanger(화남)와 happiness(행복)는 정반대의 감정이에요!",
@@ -2426,7 +2426,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "호기심 어휘",
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 영어 표현의 의미로 적절한 것을 고르세요.",
       "hint": "블록을 쌓는 동안 즐거웠다 — 교과서 p.28",
       "wrong_explanations": {
         "~이후에": "after는 '~이후에'를 의미해서 끝을 표현해요. while은 과정 중간의 계속되는 행동을 나타내죠!\n정답은 ~하는 동안이에요. while = during(~하는 동안)\nafter(이후)는 끝을 표현하지만 while(동안)은 진행 중을 표현해요!",
@@ -2455,7 +2455,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "긴 문장 해석",
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "마법 같은 순환 — 교과서 p.43",
       "wrong_explanations": {
         "Bobby made magic to help his grandfather.": "'마법을 만들다'는 뜻이라 틀렸어요.",
@@ -3010,7 +3010,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "to부정사 형용사적",
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "명사(block) 뒤에 to부정사가 와서 '올려놓을 블록' — 교과서 p.33",
       "wrong_explanations": {
         "There is one more block putting.": "-ing형은 명사를 뒤에서 수식하는 용법이 다르에요. 'to put'이 맞아요.",
@@ -3041,7 +3041,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "to부정사 형용사적",
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "'It's time + to부정사' = ~할 시간이다 — 교과서 p.34",
       "wrong_explanations": {
         "It's time building a tower!": "'It's time' 뒤에는 -ing가 아니라 to부정사가 와요.",
@@ -3159,7 +3159,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": null,
       "keyword": null,
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글의 내용과 일치하는 것은?",
       "hint": "'Bobby got his name from his grandfather, Bob.' — 이름을 따서 지었다는 뜻이에요.",
       "wrong_explanations": {
         "1": "Bob이 Bobby에게 걷는 법을 가르쳤어요. 'Bob was the person who taught Bobby how to walk.'",
@@ -3190,7 +3190,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": null,
       "keyword": null,
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글의 내용과 일치하지 않는 것은?",
       "hint": "재채기를 한 건 누구인지 다시 읽어보세요.",
       "wrong_explanations": {
         "0": "'often played with old wooden blocks'이므로 일치해요.",
@@ -3279,7 +3279,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": null,
       "keyword": null,
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글의 주제로 가장 적절한 것은?",
       "hint": "Bob이 Bobby에게 해 준 것을, Bobby가 Bob에게 돌려주는 이야기예요.",
       "wrong_explanations": {
         "1": "블록 쌓기는 둘의 추억이지, 교육적 효과를 말하는 글이 아니에요.",
@@ -3308,7 +3308,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": null,
       "keyword": null,
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글의 내용과 일치하는 것은?",
       "hint": "'At that moment' — 어떤 순간을 가리키는지 바로 앞 문장을 보세요.",
       "wrong_explanations": {
         "0": "돌아왔을 때는 아직 누워만 있었어요. 회복 신호가 아니에요.",
@@ -3337,7 +3337,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": null,
       "keyword": null,
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글의 흐름으로 보아 올바른 시간 순서는?",
       "hint": "시간 순서를 생각하세요. 블록 놀이 → 병 → 퇴원 후 다시 블록.",
       "wrong_explanations": {
         "0": "먼저 아프기 전에 블록 놀이를 했으니까 (C)가 (B)보다 앞이에요.",
@@ -3366,7 +3366,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": null,
       "keyword": null,
-      "instruction": "선택지의 핵심 단어에 동그라미 치고, 본문에서 같은 말을 찾아 대조하세요.",
+      "instruction": "다음 글의 내용과 일치하는 것은?",
       "hint": "어렸을 때 Bob이 Bobby에게 했던 말을, 이번에는 Bobby가 Bob에게 하는 거예요.",
       "wrong_explanations": {
         "0": "탑 쌓기가 아니라 걷기를 도와주는 장면이에요.",
