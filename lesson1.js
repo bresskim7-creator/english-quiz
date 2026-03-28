@@ -257,7 +257,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "활기찬 (형용사) — 아침에 몸이 느끼는 상태",
       "wrong_explanations": {
         "sleepy": "sleepy는 '졸린'이에요. 그건 밤에 느끼는 거예요! (CS01b 참고)",
@@ -272,6 +272,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "Your body starts to feel _____.",
+      "korean_full": "네 몸이 활기차게 느끼기 시작해.",
       "answer": "lively",
       "choices": [
         "lively",
@@ -359,7 +360,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "졸린 (형용사) — 밤에 몸이 느끼는 상태",
       "wrong_explanations": {
         "lively": "lively는 '활기찬'이에요. 그건 아침에 느끼는 거예요! (CS01a 참고)",
@@ -374,6 +375,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "Your body starts to feel _____.",
+      "korean_full": "네 몸이 졸리게 느끼기 시작해.",
       "answer": "sleepy",
       "choices": [
         "sleepy",
@@ -461,7 +463,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "규칙적으로 (부사) — sleep을 꾸며주는 부사",
       "wrong_explanations": {
         "quickly": "quickly는 '빨리'예요. 빨리 자는 게 아니라 규칙적으로 자는 거예요!",
@@ -476,6 +478,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "Listen to your body clock and sleep _____.",
+      "korean_full": "네 생체 시계에 귀 기울이고 규칙적으로 자.",
       "answer": "regularly",
       "choices": [
         "regularly",
@@ -564,7 +567,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "더 건강한 (비교급) — feel + 형용사, 여기서는 비교급!",
       "wrong_explanations": {
         "healthy": "healthy는 원급이에요. 본문에서는 '더 건강하게'라는 비교급이 맞아요.",
@@ -579,6 +582,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "You will feel _____.",
+      "korean_full": "너는 더 건강하게 느낄 거야.",
       "answer": "healthier",
       "choices": [
         "healthier",
@@ -666,7 +670,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "일으키다 (동사) — cause + 명사: ~을 일으키다",
       "wrong_explanations": {
         "make": "make는 '만들다'예요. make problems라고 쓸 수 있지만, 본문에서는 cause를 썼어요.",
@@ -681,6 +685,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "Caffeine can _____ sleep problems.",
+      "korean_full": "카페인은 수면 문제를 일으킬 수 있어.",
       "answer": "cause",
       "choices": [
         "cause",
@@ -769,7 +774,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "숨다 (동사) — 카페인이 음식 속에 '숨어 있다'",
       "wrong_explanations": {
         "lives": "lives는 '산다'예요. 카페인은 생물이 아니라서 '산다'고 하지 않아요.",
@@ -784,6 +789,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "Caffeine _____ in many foods and drinks such as chocolate, coffee, tea, soda, and energy drinks.",
+      "korean_full": "카페인은 초콜릿, 커피, 차, 탄산음료, 에너지 음료 같은 많은 음식과 음료에 숨어 있어.",
       "answer": "hides",
       "choices": [
         "hides",
@@ -879,7 +885,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "활발한 (형용사) — stay + 형용사: ~한 상태를 유지하다",
       "wrong_explanations": {
         "asleep": "asleep은 '잠든'이에요. 스마트폰 때문에 뇌가 잠드는 게 아니라 깨어 있게 되는 거예요!",
@@ -896,6 +902,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "If you use your smartphone late at night, your brain will stay _____.",
+      "korean_full": "밤늦게 스마트폰을 사용하면, 네 뇌가 활발한 상태를 유지할 거야.",
       "answer": "active",
       "choices": [
         "active",
@@ -993,7 +1000,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "또한 (부사) — 시험에서 also를 빠뜨리면 감점!",
       "wrong_explanations": {
         "always": "always는 '항상'이에요. 본문에서는 '또한(also)' 알려준다는 뜻이에요.",
@@ -1008,6 +1015,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "The blue light from the phone will _____ tell your brain, \"Hey, don't sleep yet.\"",
+      "korean_full": "폰의 파란 빛도 네 뇌에게 '야, 아직 자지 마'라고 말할 거야.",
       "answer": "also",
       "choices": [
         "also",
@@ -1101,7 +1109,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "~동안 (전치사) — during the day: 낮 동안",
       "wrong_explanations": {
         "after": "after는 '~후에'예요. 'after the day'는 자연스럽지 않아요.",
@@ -1116,6 +1124,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "Exercise _____ the day.",
+      "korean_full": "낮 동안 운동해.",
       "answer": "during",
       "choices": [
         "during",
@@ -1204,7 +1213,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "쉽게 (부사) — fall asleep easily: 쉽게 잠들다",
       "wrong_explanations": {
         "early": "early는 '일찍'이에요. '쉽게' 잠드는 것과 '일찍' 잠드는 것은 달라요.",
@@ -1219,6 +1228,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "You will fall asleep _____ at night.",
+      "korean_full": "너는 밤에 쉽게 잠들 거야.",
       "answer": "easily",
       "choices": [
         "easily",
@@ -1307,7 +1317,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "~전에 (전치사) — before bedtime: 취침 전에",
       "wrong_explanations": {
         "after": "after는 '~후에'예요. 취침 후에 운동을 끝내라는 건 말이 안 돼요!",
@@ -1322,6 +1332,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "Remember to finish exercising a few hours _____ bedtime.",
+      "korean_full": "취침 시간 몇 시간 전에 운동을 끝내는 것을 기억해.",
       "answer": "before",
       "choices": [
         "before",
@@ -1414,7 +1425,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "계획하는 (동명사) — be planning to: ~할 계획이다",
       "wrong_explanations": {
         "wanting": "wanting은 '원하는'이에요. 본문에서는 plan(계획하다)을 썼어요.",
@@ -1429,6 +1440,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "I'm _____ to exercise more.",
+      "korean_full": "나는 운동을 더 할 계획이야.",
       "answer": "planning",
       "choices": [
         "planning",
@@ -1516,7 +1528,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "좋은/훌륭한 (형용사) — Sounds + 형용사: ~하게 들린다",
       "wrong_explanations": {
         "well": "well은 보통 부사예요. Sounds 뒤에는 형용사가 와야 해요. Sounds great!",
@@ -1531,6 +1543,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "Sounds _____. You can do it!",
+      "korean_full": "좋은데. 너는 할 수 있어!",
       "answer": "great",
       "choices": [
         "great",
@@ -1624,7 +1637,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "의문사 + to + 동사원형: what to do = 무엇을 해야 할지",
       "wrong_explanations": {
         "for": "for는 '~을 위해'예요. what for do는 문법에 안 맞아요. what to do가 맞아요!",
@@ -1641,6 +1654,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "Let's find out what _____ do.",
+      "korean_full": "무엇을 해야 할지 알아보자.",
       "answer": "to",
       "choices": [
         "to",

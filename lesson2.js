@@ -191,7 +191,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "가르치다(teach)의 과거형 — teach-taught-taught",
       "wrong_explanations": {
         "teached": "teach의 과거형은 teached가 아니라 taught예요! 불규칙 동사!",
@@ -208,6 +208,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "Bob was the person who _____ Bobby how to walk.",
+      "korean_full": "Bob은 Bobby에게 걷는 법을 가르쳐 준 사람이었다.",
       "answer": "taught",
       "choices": [
         "taught",
@@ -303,7 +304,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "나머지 하나 — the other: (둘 중) 다른 하나",
       "wrong_explanations": {
         "another": "'또 다른 하나(셋 이상 중)'예요. 여기는 발이 두 개뿐이라 the other가 맞아요!",
@@ -318,6 +319,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "Now one foot, now the _____.",
+      "korean_full": "이제 한 발, 이제 다른 발.",
       "answer": "other",
       "choices": [
         "other",
@@ -407,7 +409,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "놓다, 두다 — block to put: 놓을 블록",
       "wrong_explanations": {
         "pile": "'쌓다'는 뜻이에요. 비슷하지만, 원문에서는 '놓다(put)'라고 했어요.",
@@ -424,6 +426,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "There is one more block to _____.",
+      "korean_full": "놓을 블록이 하나 더 있어.",
       "answer": "put",
       "choices": [
         "put",
@@ -516,7 +519,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "사물(hospital)을 꾸며주는 주격 관계대명사",
       "wrong_explanations": {
         "who": "who는 사람을 꾸밀 때 써요! hospital은 사물이니까 which가 맞아요.",
@@ -533,6 +536,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "He is in a hospital _____ is far from here.",
+      "korean_full": "그는 여기서 멀리 떨어진 병원에 있어.",
       "answer": "which",
       "choices": [
         "which",
@@ -628,7 +632,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "움직이다 — can't move: 움직일 수 없다",
       "wrong_explanations": {
         "hold": "'잡다'는 뜻이에요. 팔다리를 '잡다'가 아니라 '움직이다'가 맞아요.",
@@ -643,6 +647,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "He can't _____ his arms and legs, and he can't talk.",
+      "korean_full": "그는 팔다리를 움직일 수 없고, 말도 할 수 없어.",
       "answer": "move",
       "choices": [
         "move",
@@ -736,7 +741,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "세우다, 짓다 — build a tower: 탑을 세우다",
       "wrong_explanations": {
         "break": "'부수다'는 뜻이에요. 탑을 부수는 게 아니라 세우는 거예요!",
@@ -753,6 +758,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "Bob, it's time to _____ a tower!",
+      "korean_full": "Bob, 탑을 세울 시간이야!",
       "answer": "build",
       "choices": [
         "build",
@@ -849,7 +855,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "회복하다 — would recover: 회복할 것이다",
       "wrong_explanations": {
         "return": "'돌아오다'는 뜻이에요. Bob은 이미 집에 돌아왔고, 지금은 '회복'하는 거예요.",
@@ -864,6 +870,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "At that moment, Bobby realized that Bob would _____ soon.",
+      "korean_full": "그 순간, Bobby는 Bob이 곧 회복할 것이라고 깨달았다.",
       "answer": "recover",
       "choices": [
         "recover",
@@ -957,7 +964,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "기대다 — lean의 과거형: leaned",
       "wrong_explanations": {
         "stood": "'서다'의 과거형이에요. Bob은 Bobby 어깨에 '기대었다'고 했어요.",
@@ -972,6 +979,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "Bob _____ on Bobby's shoulders.",
+      "korean_full": "Bob은 Bobby의 어깨에 기대었다.",
       "answer": "leaned",
       "choices": [
         "leaned",
@@ -1059,7 +1067,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "잡다(hold)의 과거형 — hold-held-held",
       "wrong_explanations": {
         "hold": "hold는 현재형이에요. 이 문장은 과거 이야기라서 과거형 held가 맞아요!",
@@ -1074,6 +1082,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "When I was little, you _____ my hands and said these words.",
+      "korean_full": "내가 어렸을 때, 넌 내 손을 잡고 이 말을 했어.",
       "answer": "held",
       "choices": [
         "held",
@@ -1166,7 +1175,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "~해도 괜찮을까? — Is it okay if ~: 허가 요청 표현",
       "wrong_explanations": {
         "that": "that은 '~라는 것'이에요. 허가를 요청할 때는 if를 써요!",
@@ -1181,6 +1190,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "Is it okay _____ I go to see a baseball game?",
+      "korean_full": "내가 야구 경기를 보러 가도 괜찮을까?",
       "answer": "if",
       "choices": [
         "if",
@@ -1268,7 +1278,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "유감이지만 — I'm afraid: 정중하게 거절할 때 쓰는 표현",
       "wrong_explanations": {
         "sorry": "'미안한'이에요. 비슷하지만, 허가를 거절할 때 교과서 표현은 I'm afraid예요.",
@@ -1283,6 +1293,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "I'm _____ you can't.",
+      "korean_full": "유감이지만 안 돼.",
       "answer": "afraid",
       "choices": [
         "afraid",
@@ -1370,7 +1381,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "몇 시야? — What time is it?: 시간을 묻는 표현",
       "wrong_explanations": {
         "hour": "'시간(길이)'이에요. 시각을 물을 때는 What time이 맞아요!",
@@ -1385,6 +1396,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "What _____ is it in London?",
+      "korean_full": "런던은 몇 시야?",
       "answer": "time",
       "choices": [
         "time",
@@ -1471,7 +1483,7 @@ __loadLesson({
       "phase": "drill",
       "difficulty": null,
       "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 고르세요.",
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "4분의 1, 15분 — a quarter past ~: ~시 15분",
       "wrong_explanations": {
         "half": "'반(30분)'이에요. half past six는 6시 30분이고, 15분은 quarter예요!",
@@ -1486,6 +1498,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "It's a _____ past six.",
+      "korean_full": "6시 15분이야.",
       "answer": "quarter",
       "choices": [
         "quarter",
