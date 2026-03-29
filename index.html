@@ -9,6 +9,9 @@
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#2F5496">
     <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -844,6 +847,10 @@
         .mode-btn.active { background: #2F5496; color: white; }
         .mode-btn:disabled { opacity: 0.4; cursor: not-allowed; }
         .mode-btn .mode-desc { display: block; font-size: 11px; font-weight: 400; opacity: 0.7; margin-top: 4px; }
+        /* 국어 모드 셀렉터: 2x2 그리드 */
+        #korean-mode-selector { flex-wrap: wrap; width: 90%; max-width: 320px; }
+        #korean-mode-selector .mode-btn { flex: 0 0 calc(50% - 5px); white-space: normal; border-color: #6B4C9A; color: #6B4C9A; font-size: 14px; padding: 14px 8px; }
+        #korean-mode-selector .mode-btn.active { background: #6B4C9A; color: white; border-color: #6B4C9A; }
         .preparing-msg { color: #999; font-size: 14px; text-align: center; padding: 10px; }
 
         /* Subject selector */
@@ -896,6 +903,198 @@
         .kor-vocab-example { font-size: 14px; color: #555; font-style: italic; margin-top: 8px; }
         .kor-vocab-similar { display: inline-block; background: #e8eaf6; color: #3f51b5; padding: 2px 8px; border-radius: 12px; font-size: 12px; margin-top: 8px; }
 
+        /* Passage Guide: 작품 선택 카드 */
+        .passage-guide-card {
+            background: linear-gradient(135deg, #f3edff 0%, #e8dff8 100%);
+            border: 2px solid #c4aee0;
+            border-radius: 16px; padding: 28px 20px;
+            text-align: center; cursor: pointer;
+            box-shadow: 0 3px 12px rgba(107,76,154,0.15);
+            transition: transform 0.2s;
+        }
+        .passage-guide-card:active { transform: scale(0.97); }
+        .pg-genre {
+            display: inline-block; font-size: 13px; font-weight: 600;
+            color: #fff; background: #6B4C9A;
+            padding: 3px 12px; border-radius: 12px; margin-bottom: 10px;
+        }
+        .pg-title { font-size: 22px; font-weight: 800; color: #4a2d7a; margin-bottom: 6px; line-height: 1.3; }
+        .pg-author { font-size: 15px; color: #555; margin-bottom: 14px; }
+        .pg-tap { font-size: 14px; color: #6B4C9A; font-weight: 600; opacity: 0.8; }
+
+        /* Passage Guide: 전체 해설 */
+        .passage-guide-full { max-height: 72vh; overflow-y: auto; padding: 8px 2px; }
+        .pg-full-title { font-size: 20px; font-weight: 800; color: #4a2d7a; margin-bottom: 6px; }
+        .pg-full-meta { font-size: 14px; color: #666; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid #e0d4f0; }
+        .pg-section { margin-bottom: 20px; }
+        .pg-section-heading {
+            font-size: 16px; font-weight: 700; color: #4a2d7a;
+            margin-bottom: 8px; padding: 6px 12px;
+            border-left: 4px solid #6B4C9A;
+            background: #f5f0ff; border-radius: 0 6px 6px 0;
+        }
+        .pg-section-content {
+            font-size: 15px; line-height: 1.8; color: #333;
+            padding: 12px 14px; background: #fafafa;
+            border-radius: 10px; border: 1px solid #eee; white-space: pre-line;
+        }
+        .pg-highlight {
+            font-size: 14px; color: #5a3a8a; font-weight: 700;
+            margin-top: 8px; padding: 10px 14px;
+            background: linear-gradient(135deg, #f0e8ff, #e8dff8);
+            border-radius: 8px; border-left: 4px solid #6B4C9A;
+        }
+        .pg-check-section { margin-top: 24px; padding-top: 16px; border-top: 2px solid #e0d4f0; }
+        .pg-check-section h3 { font-size: 16px; margin-bottom: 12px; }
+        .pg-check-q {
+            background: #f8f6ff; padding: 14px;
+            border-radius: 10px; margin-bottom: 10px;
+            cursor: pointer; border: 1px solid #e0d4f0;
+        }
+        .pg-check-q:active { background: #ede5ff; }
+        .pg-check-question { font-size: 15px; font-weight: 600; color: #333; }
+        .pg-check-a { font-size: 15px; color: #5a3a8a; margin-top: 8px; font-weight: 500; line-height: 1.6; }
+
+        /* Concept Card */
+        .concept-card-container { text-align: center; }
+        .cc-pair-title { font-size: 16px; color: #6B4C9A; margin-bottom: 14px; }
+        .cc-cards { display: flex; gap: 8px; margin-bottom: 12px; align-items: stretch; }
+        .cc-card { flex: 1; min-height: 160px; border-radius: 12px; padding: 14px; cursor: pointer; position: relative; transition: all 0.3s; }
+        .cc-card-a { background: #f0e8ff; border: 2px solid #d4c4ef; }
+        .cc-card-b { background: #e8f0ff; border: 2px solid #c4d4ef; }
+        .cc-card .cc-back { display: none; }
+        .cc-card.flipped .cc-front { display: none; }
+        .cc-card.flipped .cc-back { display: block; }
+        .cc-term { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+        .cc-tap { font-size: 12px; color: #aaa; }
+        .cc-definition { font-size: 13px; line-height: 1.5; margin-bottom: 8px; text-align: left; }
+        .cc-simple { font-size: 13px; color: #6B4C9A; margin-bottom: 6px; text-align: left; }
+        .cc-example { font-size: 12px; color: #666; text-align: left; }
+        .cc-vs { font-size: 14px; font-weight: 700; color: #888; align-self: center; }
+        .cc-exam-tip { font-size: 13px; color: #555; background: #fff8e0; padding: 10px; border-radius: 8px; text-align: left; line-height: 1.5; }
+
+        /* Explanation Method Card */
+        .em-card { background: #f8f6ff; border-radius: 14px; padding: 20px; text-align: center; }
+
+        /* Performance Assessment Menu */
+        .perf-menu { }
+        .perf-menu-btn { background: #fff; border: 2px solid #6B4C9A; border-radius: 12px; padding: 20px; margin-bottom: 12px; cursor: pointer; text-align: center; }
+
+        /* Reading Journal Guide */
+        .rj-guide { }
+
+        /* ── Reader View (책처럼 보이는 원문 뷰어) ── */
+        #reader-overlay {
+            display: none;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 9999;
+            background: #f8f3eb;
+            flex-direction: column;
+        }
+        #reader-overlay.active { display: flex; }
+
+        .reader-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 10px 16px;
+            background: #5a3d7a;
+            color: white;
+            flex-shrink: 0;
+        }
+        .reader-close-btn {
+            background: none; border: none; color: white;
+            font-size: 28px; cursor: pointer; padding: 0 4px; line-height: 1;
+        }
+        .reader-header-title {
+            font-size: 15px; font-weight: 600;
+            flex: 1; text-align: center;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            margin: 0 8px;
+        }
+        .reader-font-btn {
+            background: none; border: 1px solid rgba(255,255,255,0.5);
+            color: white; border-radius: 6px; padding: 4px 10px;
+            font-size: 13px; cursor: pointer;
+        }
+
+        .reader-body {
+            flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch;
+            padding: 28px 22px 60px 22px;
+            max-width: 640px;
+            margin: 0 auto; width: 100%;
+        }
+        .reader-title {
+            font-family: 'Noto Serif KR', Georgia, '바탕', serif;
+            font-size: 24px; font-weight: 700;
+            color: #2c1810;
+            text-align: center;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        .reader-meta {
+            font-size: 14px; color: #8a7560;
+            text-align: center;
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #d4c4a8;
+        }
+        .reader-scene-heading {
+            font-family: 'Noto Serif KR', Georgia, '바탕', serif;
+            font-size: 17px; font-weight: 700;
+            color: #5a3d7a;
+            margin: 32px 0 16px 0;
+            padding: 8px 14px;
+            background: rgba(107,76,154,0.06);
+            border-radius: 6px;
+            border-left: 3px solid #6B4C9A;
+        }
+        .reader-paragraph {
+            font-family: 'Noto Serif KR', Georgia, '바탕', serif;
+            font-size: 17px;
+            line-height: 1.95;
+            color: #2c1810;
+            text-indent: 1em;
+            margin-bottom: 18px;
+            word-break: keep-all;
+            text-align: justify;
+        }
+        .reader-paragraph.dialogue {
+            text-indent: 0;
+            padding-left: 0.5em;
+            border-left: 2px solid #d4c4a8;
+            color: #3a2a1a;
+        }
+        .reader-end-mark {
+            text-align: center;
+            font-size: 20px;
+            color: #c4a882;
+            margin-top: 40px;
+            letter-spacing: 12px;
+        }
+
+        /* 폰트 크기 조절 */
+        .reader-body.font-small .reader-paragraph { font-size: 15px; line-height: 1.85; }
+        .reader-body.font-small .reader-scene-heading { font-size: 15px; }
+        .reader-body.font-large .reader-paragraph { font-size: 19px; line-height: 2.05; }
+        .reader-body.font-large .reader-scene-heading { font-size: 19px; }
+
+        /* 원문 읽기 버튼 */
+        .pg-read-original-btn {
+            display: block; width: 100%;
+            padding: 14px; margin: 16px 0;
+            background: linear-gradient(135deg, #f8f3eb, #f0e8d8);
+            border: 2px solid #c4a882;
+            border-radius: 12px;
+            font-size: 16px; font-weight: 700;
+            color: #5a3d2a;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        .pg-read-original-btn:active {
+            transform: scale(0.97);
+            background: #f0e8d8;
+        }
+
 </style>
 </head>
 <body>
@@ -928,7 +1127,7 @@
                 <!-- Mode selector for v3.0 drill questions -->
                 <div id="mode-selector-container" style="display:none;margin-top:12px;">
                     <span class="setting-label" style="display:block;margin-bottom:8px;">학습 모드</span>
-                    <div class="mode-selector">
+                    <div class="mode-selector" id="english-mode-selector">
                         <button class="mode-btn" id="mode-btn-vocab" onclick="selectAndStart('vocab')">
                             단어 드릴
                             <span class="mode-desc">핵심 단어</span>
@@ -940,6 +1139,24 @@
                         <button class="mode-btn" id="mode-btn-exam" onclick="selectAndStart('exam_prep')">
                             실전 대비
                             <span class="mode-desc">시험 문항</span>
+                        </button>
+                    </div>
+                    <div class="mode-selector" id="korean-mode-selector" style="display:none;">
+                        <button class="mode-btn" id="mode-passage-guide" onclick="selectAndStart('passage_guide')">
+                            본문 해설
+                            <span class="mode-desc">📖 작품 이해</span>
+                        </button>
+                        <button class="mode-btn" id="mode-concept-card" onclick="selectAndStart('concept_card')">
+                            개념 카드
+                            <span class="mode-desc">🔄 비교 학습</span>
+                        </button>
+                        <button class="mode-btn" id="mode-exam-prep" onclick="selectAndStart('exam_prep')">
+                            실전 대비
+                            <span class="mode-desc">📝 시험 문항</span>
+                        </button>
+                        <button class="mode-btn" id="mode-perf-assessment" onclick="selectAndStart('perf_assessment')">
+                            수행평가
+                            <span class="mode-desc">✍️ 평가 준비</span>
                         </button>
                     </div>
                 </div>
@@ -1026,6 +1243,9 @@
                 <div id="typed-blank-feedback" style="display:none;"></div>
             </div>
 
+            <!-- 국어 모드 공용 컨테이너 (본문해설, 개념카드, 수행평가 등) -->
+            <div id="question-container" style="display:none;"></div>
+
             <div id="hint-display" style="display:none;background:#fff8e1;border:1px solid #ffc107;border-radius:8px;padding:10px 14px;font-size:13px;color:#795548;margin-top:8px;"></div>
             <button class="btn-next" id="btn-next" onclick="goNextQuestion()">다음 문항 ▶</button>
             <div class="quiz-controls" id="quiz-controls">
@@ -1081,6 +1301,17 @@
         </div>
     </div>
 
+    <!-- 원문 리더 오버레이 -->
+    <div id="reader-overlay">
+        <div class="reader-header">
+            <button class="reader-close-btn" onclick="closeReader()">×</button>
+            <div class="reader-header-title" id="reader-header-title">원문 읽기</div>
+            <button class="reader-font-btn" onclick="toggleReaderFont()">가</button>
+        </div>
+        <div class="reader-body" id="reader-body"></div>
+    </div>
+
+    <script src="kor1_reader.js"></script>
     <script>
         // 전역 변수
         let isMuted = localStorage.getItem('sound_muted') === 'true';
@@ -1371,35 +1602,74 @@
             const hasDrill = QUIZ_DATA.questions.some(q => q.phase === 'drill');
             const hasCoreSentences = QUIZ_DATA.core_sentences && QUIZ_DATA.core_sentences.length > 0;
             const hasVocab = QUIZ_DATA.vocab_drill && QUIZ_DATA.vocab_drill.length > 0;
-            // 국어는 drill 문항이 없어도 core_sentences로 "핵심 문장" 모드 제공
-            const hasDrillOrCoreSentences = hasDrill || (currentSubject === 'korean' && hasCoreSentences);
+            const hasPassageGuides = QUIZ_DATA.passage_guides && QUIZ_DATA.passage_guides.length > 0;
+            const hasConceptCards = QUIZ_DATA.concept_cards && QUIZ_DATA.concept_cards.length > 0;
+            const hasPerfAssessment = QUIZ_DATA.perf_assessment && (QUIZ_DATA.perf_assessment.writing || QUIZ_DATA.perf_assessment.reading_journal);
 
-            if (hasDrillOrCoreSentences || hasVocab) {
-                // Both modes available
-                document.getElementById('mode-selector-container').style.display = 'block';
-                document.getElementById('mode-preparing-msg').style.display = 'none';
-                // Show/hide vocab button
-                const vocabBtn = document.getElementById('mode-btn-vocab');
-                if (vocabBtn) vocabBtn.style.display = hasVocab ? '' : 'none';
-                // 국어일 때 drill 라벨 → "핵심 문장"
-                const drillBtn = document.getElementById('mode-btn-drill');
-                if (drillBtn) {
-                    if (currentSubject === 'korean') {
-                        drillBtn.innerHTML = '핵심 문장<span class="mode-desc">개념 복습</span>';
-                    } else {
-                        drillBtn.innerHTML = '문장 드릴<span class="mode-desc">기초 문항</span>';
-                    }
+            // Show/hide selector based on subject
+            if (currentSubject === 'korean') {
+                // Korean: show 4 mode buttons if any Korean features exist
+                document.getElementById('english-mode-selector').style.display = 'none';
+                document.getElementById('korean-mode-selector').style.display = 'flex';
+
+                if (hasPassageGuides || hasConceptCards || hasExamPrep || hasPerfAssessment) {
+                    document.getElementById('mode-selector-container').style.display = 'block';
+                    document.getElementById('mode-preparing-msg').style.display = 'none';
+
+                    // Show/hide individual Korean buttons
+                    const pgBtn = document.getElementById('mode-passage-guide');
+                    const ccBtn = document.getElementById('mode-concept-card');
+                    const epBtn = document.getElementById('mode-exam-prep');
+                    const paBtn = document.getElementById('mode-perf-assessment');
+
+                    if (pgBtn) pgBtn.style.display = hasPassageGuides ? '' : 'none';
+                    if (ccBtn) ccBtn.style.display = hasConceptCards ? '' : 'none';
+                    if (epBtn) epBtn.style.display = hasExamPrep ? '' : 'none';
+                    if (paBtn) paBtn.style.display = hasPerfAssessment ? '' : 'none';
+
+                    // Default to first available mode
+                    if (hasPassageGuides) selectMode('passage_guide');
+                    else if (hasConceptCards) selectMode('concept_card');
+                    else if (hasExamPrep) selectMode('exam_prep');
+                    else if (hasPerfAssessment) selectMode('perf_assessment');
+                } else {
+                    document.getElementById('mode-selector-container').style.display = 'none';
+                    document.getElementById('mode-preparing-msg').style.display = 'block';
                 }
-                selectMode(hasDrillOrCoreSentences ? 'drill' : 'vocab');
-            } else if (hasExamPrep) {
-                // Only exam_prep available (準備中 message)
-                document.getElementById('mode-selector-container').style.display = 'none';
-                document.getElementById('mode-preparing-msg').style.display = 'block';
-                currentMode = 'exam_prep';
             } else {
-                // No questions at all
-                document.getElementById('mode-selector-container').style.display = 'none';
-                document.getElementById('mode-preparing-msg').style.display = 'block';
+                // English: show 3 mode buttons as before
+                document.getElementById('english-mode-selector').style.display = 'flex';
+                document.getElementById('korean-mode-selector').style.display = 'none';
+
+                const hasDrillOrCoreSentences = hasDrill || (currentSubject === 'korean' && hasCoreSentences);
+
+                if (hasDrillOrCoreSentences || hasVocab) {
+                    // Both modes available
+                    document.getElementById('mode-selector-container').style.display = 'block';
+                    document.getElementById('mode-preparing-msg').style.display = 'none';
+                    // Show/hide vocab button
+                    const vocabBtn = document.getElementById('mode-btn-vocab');
+                    if (vocabBtn) vocabBtn.style.display = hasVocab ? '' : 'none';
+                    // 국어일 때 drill 라벨 → "핵심 문장"
+                    const drillBtn = document.getElementById('mode-btn-drill');
+                    if (drillBtn) {
+                        if (currentSubject === 'korean') {
+                            drillBtn.innerHTML = '핵심 문장<span class="mode-desc">개념 복습</span>';
+                        } else {
+                            drillBtn.innerHTML = '문장 드릴<span class="mode-desc">기초 문항</span>';
+                        }
+                    }
+                    selectMode(hasDrillOrCoreSentences ? 'drill' : 'vocab');
+                } else if (hasExamPrep) {
+                    // Only exam_prep available (準備中 message)
+                    document.getElementById('mode-selector-container').style.display = 'none';
+                    document.getElementById('mode-preparing-msg').style.display = 'block';
+                    currentMode = 'exam_prep';
+                } else {
+                    // No questions at all
+                    document.getElementById('mode-selector-container').style.display = 'none';
+                    document.getElementById('mode-preparing-msg').style.display = 'block';
+                }
             }
         }
 
@@ -1411,16 +1681,28 @@
                 document.getElementById('mode-btn-drill')?.classList.add('active');
             } else if (mode === 'vocab') {
                 document.getElementById('mode-btn-vocab')?.classList.add('active');
+            } else if (mode === 'passage_guide') {
+                document.getElementById('mode-passage-guide')?.classList.add('active');
+            } else if (mode === 'concept_card') {
+                document.getElementById('mode-concept-card')?.classList.add('active');
+            } else if (mode === 'perf_assessment') {
+                document.getElementById('mode-perf-assessment')?.classList.add('active');
             } else {
                 document.getElementById('mode-btn-exam')?.classList.add('active');
+                document.getElementById('mode-exam-prep')?.classList.add('active');
             }
             updateSubtitle();
         }
 
         // 모드 선택 + 바로 시작
         async function selectAndStart(mode) {
-            selectMode(mode);
-            await startSession();
+            try {
+                selectMode(mode);
+                await startSession();
+            } catch (e) {
+                console.error('selectAndStart error:', e);
+                alert('모드 시작 오류: ' + e.message);
+            }
         }
 
         // 초기화
@@ -1522,6 +1804,56 @@
         function setDrillStage(stage) {
             const key = `drill_progress_L${currentLesson}`;
             localStorage.setItem(key, String(stage));
+        }
+
+        // 본문 해설 모드: 각 작품별 해설 선택 화면 + 섹션 표시
+        function generatePassageGuideSession() {
+            const guides = QUIZ_DATA.passage_guides || [];
+            if (!guides.length) return [];
+            return guides.map((g, i) => ({
+                type: 'passage_guide_picker',
+                id: g.id,
+                title: g.title,
+                author: g.author,
+                genre: g.genre,
+                guide_index: i
+            }));
+        }
+
+        // 개념 카드 모드: 모든 쌍을 플립 카드로 표시
+        function generateConceptCardSession() {
+            const cards = QUIZ_DATA.concept_cards || [];
+            return cards.map(c => ({
+                type: 'concept_card',
+                id: c.id,
+                pair_title: c.pair_title,
+                card_a: c.card_a,
+                card_b: c.card_b,
+                exam_tip: c.exam_tip
+            }));
+        }
+
+        // 수행평가 모드: 설명글쓰기 연습 문항
+        function generatePerfWritingSession() {
+            const pa = QUIZ_DATA.perf_assessment;
+            if (!pa || !pa.writing) return [];
+            return pa.writing.practice_questions.map(q => ({
+                ...q,
+                type: 'short_reading'
+            }));
+        }
+
+        // 수행평가 모드: 독서 단어장 가이드
+        function generatePerfReadingJournalSession() {
+            const pa = QUIZ_DATA.perf_assessment;
+            if (!pa || !pa.reading_journal) return [];
+            // 이 모드는 가이드만 표시하고 문항을 푸는 형식이 아니므로
+            // 단일 "가이드" 객체를 반환
+            return [{
+                type: 'reading_journal_guide',
+                id: 'rj-guide',
+                data: pa.reading_journal
+            }];
         }
 
         function generateDrillSession() {
@@ -1886,15 +2218,30 @@
             }
 
             // B-4: Generate session based on mode
-            if (currentMode === 'drill') {
+            let modeLabel = '';
+
+            if (currentMode === 'passage_guide') {
+                currentSession = generatePassageGuideSession();
+                modeLabel = '본문 해설';
+            } else if (currentMode === 'concept_card') {
+                currentSession = generateConceptCardSession();
+                modeLabel = '개념 카드';
+            } else if (currentMode === 'perf_assessment') {
+                // Show perf assessment menu instead of starting session
+                showPerfAssessmentMenu();
+                return;
+            } else if (currentMode === 'drill') {
                 // 국어: core_sentences 플래시카드 모드
                 if (currentSubject === 'korean') {
                     currentSession = generateKoreanCoreSentenceSession();
+                    modeLabel = '핵심 문장';
                 } else {
                     currentSession = generateDrillSession();
+                    modeLabel = '문장 드릴';
                 }
             } else {
                 currentSession = generateExamPrepSession();
+                modeLabel = '실전 대비';
             }
 
             if (!currentSession || currentSession.length === 0) {
@@ -1916,9 +2263,6 @@
             };
 
             // Update header title with mode label
-            const modeLabel = currentMode === 'drill'
-                ? (currentSubject === 'korean' ? '핵심 문장' : '문장 드릴')
-                : '실전 대비';
             document.querySelector('.header-title').textContent = getHeaderTitle(modeLabel);
 
             showPage('quiz-page');
@@ -1959,15 +2303,35 @@
             document.getElementById('writing-container').style.display = 'none';
             document.getElementById('flashcard-container').style.display = 'none';
             document.getElementById('typed-blank-container').style.display = 'none';
+            document.getElementById('question-container').style.display = 'none';
+            document.getElementById('question-container').innerHTML = '';
 
             // Show/hide controls based on type (B-6)
             const hintBtn = document.getElementById('btn-hint');
             const skipBtn = document.getElementById('btn-skip');
-            hintBtn.style.display = (q.type === 'flashcard') ? 'none' : 'inline-block';
+            const hideHintOnTypes = ['flashcard', 'passage_guide_picker', 'passage_guide_section', 'concept_card', 'explanation_method_card', 'reading_journal_guide', 'outline_exercise'];
+            hintBtn.style.display = hideHintOnTypes.includes(q.type) ? 'none' : 'inline-block';
             skipBtn.style.display = (q.type === 'arrange' || q.type === 'chunk_order') ? 'inline-block' : 'none';
 
             // Dispatch by type (B-6)
-            if (q.type === 'kor_core_sentence') {
+            const koreanContainerTypes = ['passage_guide_picker', 'passage_guide_section', 'concept_card', 'explanation_method_card', 'reading_journal_guide', 'outline_exercise'];
+            if (koreanContainerTypes.includes(q.type)) {
+                document.getElementById('question-container').style.display = 'block';
+            }
+
+            if (q.type === 'passage_guide_picker') {
+                showPassageGuidePicker(q);
+            } else if (q.type === 'passage_guide_section') {
+                showPassageGuideSection(q);
+            } else if (q.type === 'concept_card') {
+                showConceptCard(q);
+            } else if (q.type === 'explanation_method_card') {
+                showExplanationMethodCard(q);
+            } else if (q.type === 'reading_journal_guide') {
+                showReadingJournalGuide(q);
+            } else if (q.type === 'outline_exercise') {
+                showOutlineExercise(q);
+            } else if (q.type === 'kor_core_sentence') {
                 showKorCoreSentence(q);
             } else if (q.type === 'flashcard') {
                 showFlashcard(q);
@@ -2009,6 +2373,11 @@
             document.getElementById('btn-next').style.display = 'none';
             currentQuestionIndex++;
             showQuestion();
+        }
+
+        // showNextQuestion alias for new Korean modes
+        function showNextQuestion() {
+            goNextQuestion();
         }
 
         // 정답/오답 후 "다음" 버튼 표시
@@ -2080,9 +2449,9 @@
                     });
                 }
 
-                // reference_type별 보기 박스 생성
+                // reference_type별 보기 박스 생성 (hint 타입은 힌트 버튼으로 처리 — 즉시 노출 안 함)
                 let refBoxHtml = '';
-                if (q.reference_type && q.hint) {
+                if (q.reference_type && q.reference_type !== 'hint' && q.hint) {
                     refBoxHtml = buildReferenceBox(q.reference_type, q.hint);
                 }
 
@@ -2558,6 +2927,437 @@
 
             // 힌트 버튼 숨기기
             document.getElementById('btn-hint').style.display = 'none';
+        }
+
+        // ===== NEW KOREAN MODE RENDERERS =====
+
+        // 이중 이스케이프 정리: \\n → 줄바꿈, \" → ", \\ → \
+        function cleanEscape(str) {
+            if (!str) return '';
+            return str.replace(/\\n/g, '\n').replace(/\\"/g, '"').replace(/\\\\/g, '\\');
+        }
+
+        // 섹션 내장 차트 렌더러 (HTML/CSS — 모바일 이모지 안전)
+        function renderSectionChart(chartType) {
+            if (chartType === 'diminishing_marginal_utility') {
+                const bars = [
+                    { label: '첫 번째', pct: 100, emoji: '😆', desc: '최고!' },
+                    { label: '두 번째', pct: 70,  emoji: '😊', desc: '좋아' },
+                    { label: '세 번째', pct: 42,  emoji: '🙂', desc: '괜찮네' },
+                    { label: '네 번째', pct: 22,  emoji: '😐', desc: '그냥…' },
+                    { label: '다섯 번째', pct: 8, emoji: '😑', desc: '됐어' }
+                ];
+                let html = '<div style="margin:16px 0 10px;padding:16px 14px;background:#fff;border-radius:14px;border:1px solid #e0d4f0;">';
+                html += '<div style="font-size:14px;font-weight:700;color:#4a2d7a;text-align:center;margin-bottom:14px;">📉 한계 효용 체감 — 무한 리필 식당</div>';
+                // Y축 라벨 + 바 영역
+                html += '<div style="display:flex;align-items:stretch;gap:6px;">';
+                // Y축
+                html += '<div style="display:flex;flex-direction:column;justify-content:space-between;font-size:11px;color:#999;padding:2px 0;min-width:28px;text-align:right;">';
+                html += '<span>많음</span><span>적음</span></div>';
+                // 바들
+                html += '<div style="flex:1;display:flex;align-items:flex-end;gap:6px;height:150px;padding-bottom:2px;">';
+                bars.forEach(b => {
+                    const h = Math.max(b.pct * 1.4, 14);
+                    html += '<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;">';
+                    html += `<span style="font-size:20px;line-height:1;">${b.emoji}</span>`;
+                    html += `<div style="width:100%;height:${h}px;background:linear-gradient(180deg,#8b6bbf,#6B4C9A);border-radius:6px 6px 2px 2px;opacity:${(0.35 + b.pct / 100 * 0.65).toFixed(2)};"></div>`;
+                    html += '</div>';
+                });
+                html += '</div></div>';
+                // X축 레이블
+                html += '<div style="display:flex;gap:6px;margin-top:6px;margin-left:34px;">';
+                bars.forEach(b => {
+                    html += `<div style="flex:1;text-align:center;font-size:11px;color:#555;line-height:1.3;">${b.label}<br><span style="font-size:10px;color:#999;">${b.desc}</span></div>`;
+                });
+                html += '</div>';
+                // X축 제목
+                html += '<div style="text-align:center;margin-top:10px;font-size:12px;color:#6B4C9A;font-weight:600;">접시 순서 →</div>';
+                // 요약
+                html += '<div style="text-align:center;margin-top:10px;padding:8px 12px;background:#f5f0ff;border-radius:8px;font-size:13px;color:#5a3a8a;font-weight:600;line-height:1.5;">';
+                html += '첫 접시 🍖 = 최고의 만족<br>다섯 번째 접시 = "이제 됐어…"<br><span style="color:#d4458b;">→ 같은 걸 반복할수록 만족감이 줄어든다!</span></div>';
+                html += '</div>';
+                return html;
+            }
+            return '';
+        }
+
+        // 본문 해설 모드: 작품 선택 화면
+        function showPassageGuidePicker(q) {
+            const container = document.getElementById('question-container');
+            const guide = QUIZ_DATA.passage_guides[q.guide_index];
+            container.innerHTML = `
+                <div class="passage-guide-card" onclick="openPassageGuide(${q.guide_index})">
+                    <div class="pg-genre">${guide.genre}</div>
+                    <div class="pg-title">${guide.title}</div>
+                    <div class="pg-author">${guide.author}</div>
+                    <div class="pg-tap" style="margin-top:12px;">탭하여 해설 보기</div>
+                </div>
+            `;
+            document.getElementById('btn-hint').style.display = 'none';
+            document.getElementById('btn-next').style.display = 'none';
+            document.getElementById('btn-skip').style.display = 'none';
+        }
+
+        // ── 원문 리더 (책처럼 보기) ──
+        let readerFontLevel = 1; // 0=small, 1=medium, 2=large
+
+        function openReader(guideId) {
+            const texts = window.__korReaderTexts;
+            if (!texts || !texts[guideId]) {
+                alert('원문 데이터를 찾을 수 없습니다.');
+                return;
+            }
+            const data = texts[guideId];
+            const overlay = document.getElementById('reader-overlay');
+            const body = document.getElementById('reader-body');
+            document.getElementById('reader-header-title').textContent = data.title;
+
+            let html = '';
+            html += `<h1 class="reader-title">${data.title}</h1>`;
+            html += `<p class="reader-meta">${data.meta}</p>`;
+
+            data.body.forEach(block => {
+                if (block.heading) {
+                    html += `<div class="reader-scene-heading">${block.heading}</div>`;
+                }
+                // 텍스트를 줄바꿈 기준으로 단락 분리
+                const paragraphs = block.text.split('\n').filter(p => p.trim());
+                paragraphs.forEach(p => {
+                    const trimmed = p.trim();
+                    // 대사 판별: "나 「로 시작하거나 큰따옴표로 시작
+                    const isDialogue = /^["\"「『]/.test(trimmed) || /^["]/.test(trimmed);
+                    html += `<p class="reader-paragraph${isDialogue ? ' dialogue' : ''}">${trimmed}</p>`;
+                });
+            });
+
+            html += '<div class="reader-end-mark">· · ·</div>';
+            body.innerHTML = html;
+            body.scrollTop = 0;
+
+            // 폰트 크기 복원
+            body.className = 'reader-body' + (readerFontLevel === 0 ? ' font-small' : readerFontLevel === 2 ? ' font-large' : '');
+
+            overlay.classList.add('active');
+        }
+
+        function closeReader() {
+            document.getElementById('reader-overlay').classList.remove('active');
+        }
+
+        function toggleReaderFont() {
+            readerFontLevel = (readerFontLevel + 1) % 3;
+            const body = document.getElementById('reader-body');
+            body.className = 'reader-body' + (readerFontLevel === 0 ? ' font-small' : readerFontLevel === 2 ? ' font-large' : '');
+            const btn = document.querySelector('.reader-font-btn');
+            btn.textContent = readerFontLevel === 0 ? '가' : readerFontLevel === 1 ? '가' : '가';
+            btn.style.fontSize = readerFontLevel === 0 ? '11px' : readerFontLevel === 1 ? '13px' : '16px';
+        }
+
+        // 본문 해설: 전체 해설 표시
+        function openPassageGuide(index) {
+            const guide = QUIZ_DATA.passage_guides[index];
+            const container = document.getElementById('question-container');
+            let html = '<div class="passage-guide-full">';
+            html += `<h2 class="pg-full-title">📖 ${guide.title}</h2>`;
+            html += `<p class="pg-full-meta">${guide.author} · ${guide.genre} · ${guide.source_book || ''}</p>`;
+
+            // 원문 읽기 버튼 (kor1_reader.js에 해당 텍스트가 있을 때만)
+            if (window.__korReaderTexts && guide.id && window.__korReaderTexts[guide.id]) {
+                html += `<button class="pg-read-original-btn" onclick="openReader('${guide.id}')">📖 교과서 원문 읽기</button>`;
+            }
+
+            if (guide.sections && guide.sections.length) {
+                guide.sections.forEach(s => {
+                    html += '<div class="pg-section">';
+                    html += `<h3 class="pg-section-heading">${s.heading}</h3>`;
+                    html += `<div class="pg-section-content">${cleanEscape(s.content).replace(/\n/g, '<br>')}</div>`;
+                    if (s.chart) {
+                        html += renderSectionChart(s.chart);
+                    }
+                    if (s.highlight) {
+                        html += `<div class="pg-highlight">💡 ${cleanEscape(s.highlight)}</div>`;
+                    }
+                    html += '</div>';
+                });
+            }
+
+            // Check questions
+            if (guide.check_questions && guide.check_questions.length) {
+                html += '<div class="pg-check-section"><h3>✅ 확인 질문</h3>';
+                guide.check_questions.forEach((cq, i) => {
+                    html += `<div class="pg-check-q" onclick="this.querySelector('.pg-check-a').style.display='block'">`;
+                    html += `<p class="pg-check-question">Q${i+1}. ${cleanEscape(cq.q)}</p>`;
+                    html += `<p class="pg-check-a" style="display:none">→ ${cleanEscape(cq.a)}</p>`;
+                    html += '</div>';
+                });
+                html += '</div>';
+            }
+
+            html += `<button class="next-btn" onclick="showNextQuestion()" style="margin-top:16px;width:100%;padding:14px;font-size:16px;background:#6B4C9A;color:white;border:none;border-radius:10px;cursor:pointer;">다음 작품 →</button>`;
+            html += '</div>';
+            container.innerHTML = html;
+            document.getElementById('btn-hint').style.display = 'none';
+        }
+
+        // 개념 카드: 플립 카드 모드
+        function showConceptCard(q) {
+            const container = document.getElementById('question-container');
+            container.innerHTML = `
+                <div class="concept-card-container">
+                    <h3 class="cc-pair-title">${q.pair_title}</h3>
+                    <div class="cc-cards">
+                        <div class="cc-card cc-card-a" onclick="this.classList.toggle('flipped')">
+                            <div class="cc-front">
+                                <div class="cc-term">${q.card_a.term}</div>
+                                <div class="cc-tap">탭하면 자세히 보기</div>
+                            </div>
+                            <div class="cc-back">
+                                <div class="cc-definition">${q.card_a.definition}</div>
+                                <div class="cc-simple">💡 ${q.card_a.simple}</div>
+                                <div class="cc-example">📚 ${q.card_a.example}</div>
+                            </div>
+                        </div>
+                        <div class="cc-vs">VS</div>
+                        <div class="cc-card cc-card-b" onclick="this.classList.toggle('flipped')">
+                            <div class="cc-front">
+                                <div class="cc-term">${q.card_b.term}</div>
+                                <div class="cc-tap">탭하면 자세히 보기</div>
+                            </div>
+                            <div class="cc-back">
+                                <div class="cc-definition">${q.card_b.definition}</div>
+                                <div class="cc-simple">💡 ${q.card_b.simple}</div>
+                                <div class="cc-example">📚 ${q.card_b.example}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cc-exam-tip">🎯 시험 팁: ${q.exam_tip}</div>
+                    <button class="next-btn" onclick="showNextQuestion()" style="margin-top:16px;width:100%;padding:14px;font-size:16px;background:#6B4C9A;color:white;border:none;border-radius:10px;cursor:pointer;">다음 쌍 →</button>
+                </div>
+            `;
+            document.getElementById('btn-hint').style.display = 'none';
+        }
+
+        // 설명 방법 카드: 학습 카드
+        function showExplanationMethodCard(q) {
+            const container = document.getElementById('question-container');
+            container.innerHTML = `
+                <div class="em-card">
+                    <div style="font-size:13px;color:#888;margin-bottom:8px;">설명 방법</div>
+                    <div style="font-size:22px;font-weight:700;color:#6B4C9A;margin-bottom:12px;">${q.name}</div>
+                    <div style="font-size:15px;margin-bottom:14px;line-height:1.6;">${q.definition}</div>
+                    <div style="background:#fff;border-radius:10px;padding:12px;margin-bottom:12px;text-align:left;font-size:14px;line-height:1.6;border-left:3px solid #6B4C9A;">
+                        <div style="font-size:12px;color:#6B4C9A;font-weight:700;margin-bottom:4px;">📝 교과서 예시</div>
+                        ${q.example}
+                    </div>
+                    <div style="background:#eee;border-radius:8px;padding:10px;font-size:13px;text-align:left;">
+                        <b>자주 쓰는 표현:</b> ${q.signal_words}<br>
+                        <b>🎯 시험:</b> ${q.exam_tip}
+                    </div>
+                    <button class="next-btn" onclick="showNextQuestion()" style="margin-top:16px;width:100%;padding:14px;font-size:16px;background:#6B4C9A;color:white;border:none;border-radius:10px;cursor:pointer;">다음 →</button>
+                </div>
+            `;
+            document.getElementById('btn-hint').style.display = 'none';
+        }
+
+        // 개요 짜기 연습 카드
+        function showOutlineExercise(q) {
+            const container = document.getElementById('question-container');
+            const o = q.outline;
+            let bodyHtml = '';
+            o.body.forEach(section => {
+                let pts = section.points.map(p => '<li style="margin-bottom:4px;">' + p + '</li>').join('');
+                bodyHtml += `
+                    <div style="background:#fff;border-radius:8px;padding:12px;margin-bottom:10px;border-left:3px solid #6B4C9A;">
+                        <div style="font-weight:700;color:#4a2d7a;margin-bottom:6px;">${section.heading}</div>
+                        <ul style="margin:0;padding-left:18px;font-size:14px;line-height:1.7;">${pts}</ul>
+                    </div>`;
+            });
+            container.innerHTML = `
+                <div style="max-height:70vh;overflow-y:auto;padding:4px;">
+                    <div style="font-size:13px;color:#888;text-align:center;margin-bottom:4px;">개요 짜기 연습</div>
+                    <div style="font-size:20px;font-weight:700;color:#6B4C9A;text-align:center;margin-bottom:6px;">📋 ${q.topic}</div>
+                    <div style="font-size:13px;color:#888;text-align:center;margin-bottom:16px;">활용 설명 방법: ${q.method_focus}</div>
+                    <div style="background:#f8f6ff;border-radius:10px;padding:14px;margin-bottom:10px;">
+                        <div style="font-size:13px;font-weight:700;color:#6B4C9A;margin-bottom:4px;">서론</div>
+                        <div style="font-size:15px;">${o.intro}</div>
+                    </div>
+                    <div style="font-size:13px;font-weight:700;color:#6B4C9A;margin-bottom:6px;">본론</div>
+                    ${bodyHtml}
+                    <div style="background:#f8f6ff;border-radius:10px;padding:14px;margin-bottom:10px;">
+                        <div style="font-size:13px;font-weight:700;color:#6B4C9A;margin-bottom:4px;">결론</div>
+                        <div style="font-size:15px;">${o.conclusion}</div>
+                    </div>
+                    <button class="next-btn" onclick="showNextQuestion()" style="margin-top:12px;width:100%;padding:14px;font-size:16px;background:#6B4C9A;color:white;border:none;border-radius:10px;cursor:pointer;">다음 →</button>
+                </div>
+            `;
+            document.getElementById('btn-hint').style.display = 'none';
+        }
+
+        // 독서 단어장 가이드
+        function showReadingJournalGuide(q) {
+            const container = document.getElementById('question-container');
+            const rj = q.data;
+            let html = '<div class="rj-guide" style="max-height:70vh;overflow-y:auto;padding:4px;">';
+            html += '<h2 style="text-align:center;color:#6B4C9A;margin-bottom:8px;">📒 독서 단어장 만들기 가이드</h2>';
+            html += '<div style="background:#f8f6ff;border-radius:10px;padding:14px;margin-bottom:16px;font-size:14px;line-height:1.7;color:#444;">';
+            html += '<b>수행평가 과제:</b> 교과서 글을 읽고, 중요한 낱말을 골라 단어장을 만든다.<br>';
+            html += '아래 예시를 보고 <b>어떤 단어를 골라야 하는지</b>, <b>어떻게 정리해야 점수를 받는지</b> 감을 잡아보자.';
+            html += '</div>';
+
+            // Good examples
+            if (rj.good_examples && rj.good_examples.length) {
+                html += '<h3 style="color:#6B4C9A;margin:20px 0 12px;">✅ 좋은 단어장 예시 — 이렇게 쓰면 만점</h3>';
+                rj.good_examples.forEach(ex => {
+                    html += `<div style="background:#f8f6ff;border-radius:10px;padding:14px;margin-bottom:10px;border-left:3px solid #6B4C9A;">`;
+                    html += `<div style="font-weight:700;font-size:16px;margin-bottom:6px;">${ex.word}</div>`;
+                    html += `<div style="font-size:13px;color:#666;margin-bottom:4px;">${ex.pos}</div>`;
+                    html += `<div style="font-size:14px;margin-bottom:6px;">${ex.meaning}</div>`;
+                    html += `<div style="font-size:13px;color:#555;background:#eee;padding:8px;border-radius:6px;margin-bottom:4px;">📖 "${ex.context}" — <em>${ex.context_source}</em></div>`;
+                    html += `<div style="font-size:13px;color:#6B4C9A;">💡 ${ex.my_note}</div>`;
+                    html += '</div>';
+                });
+            }
+
+            // Bad vs Good
+            if (rj.bad_vs_good && rj.bad_vs_good.length) {
+                html += '<h3 style="color:#6B4C9A;margin:20px 0 12px;">❌ vs ✅ 이렇게 바꾸면 만점</h3>';
+                rj.bad_vs_good.forEach(bg => {
+                    html += `<div style="background:#fff;border-radius:10px;padding:14px;margin-bottom:10px;border:1px solid #ddd;">`;
+                    html += `<div style="font-weight:600;font-size:14px;color:#888;margin-bottom:8px;">${bg.topic}</div>`;
+                    html += `<div style="background:#ffe8e8;padding:10px;border-radius:8px;margin-bottom:6px;font-size:13px;"><b>❌</b> ${bg.bad.replace(/\n/g, '<br>')}</div>`;
+                    html += `<div style="background:#e8ffe8;padding:10px;border-radius:8px;margin-bottom:6px;font-size:13px;"><b>✅</b> ${bg.good.replace(/\n/g, '<br>')}</div>`;
+                    html += `<div style="font-size:12px;color:#666;">→ ${bg.why}</div>`;
+                    html += '</div>';
+                });
+            }
+
+            // Selection guide
+            if (rj.selection_guide) {
+                const sg = rj.selection_guide;
+                html += '<h3 style="color:#6B4C9A;margin:20px 0 12px;">🎯 단어 선정 가이드</h3>';
+                if (sg.priority_1) {
+                    html += `<div style="background:#f0f0f0;padding:10px;border-radius:8px;margin-bottom:8px;">`;
+                    html += `<div style="font-weight:600;font-size:14px;">1순위: ${sg.priority_1.label}</div>`;
+                    html += `<div style="font-size:13px;color:#555;margin-top:4px;">${sg.priority_1.examples.join(', ')}</div>`;
+                    html += '</div>';
+                }
+                if (sg.priority_2) {
+                    html += `<div style="background:#f0f0f0;padding:10px;border-radius:8px;margin-bottom:8px;">`;
+                    html += `<div style="font-weight:600;font-size:14px;">2순위: ${sg.priority_2.label}</div>`;
+                    html += `<div style="font-size:13px;color:#555;margin-top:4px;">${sg.priority_2.examples.join(', ')}</div>`;
+                    html += '</div>';
+                }
+                if (sg.priority_3) {
+                    html += `<div style="background:#f0f0f0;padding:10px;border-radius:8px;margin-bottom:8px;">`;
+                    html += `<div style="font-weight:600;font-size:14px;">3순위: ${sg.priority_3.label}</div>`;
+                    html += `<div style="font-size:13px;color:#555;margin-top:4px;">${sg.priority_3.examples.join(', ')}</div>`;
+                    html += '</div>';
+                }
+                if (sg.avoid) {
+                    html += `<div style="background:#fff3f3;padding:10px;border-radius:8px;">`;
+                    html += `<div style="font-weight:600;font-size:14px;color:#c00;">🚫 피해야 할 낱말</div>`;
+                    html += `<div style="font-size:13px;color:#555;margin-top:4px;">${sg.avoid.join(' / ')}</div>`;
+                    html += '</div>';
+                }
+            }
+
+            html += `<button onclick="goHome()" style="margin-top:20px;width:100%;padding:14px;font-size:16px;background:#6B4C9A;color:white;border:none;border-radius:10px;cursor:pointer;">← 돌아가기</button>`;
+            html += '</div>';
+
+            container.innerHTML = html;
+            document.getElementById('btn-hint').style.display = 'none';
+        }
+
+        // 수행평가 메뉴
+        function showPerfAssessmentMenu() {
+            // 이전 모드(실전대비 등) 잔여 UI 정리
+            document.getElementById('question-text').innerHTML = '';
+            document.getElementById('instruction-text').textContent = '';
+            document.getElementById('hint-display').style.display = 'none';
+            document.getElementById('hint-display').textContent = '';
+            document.getElementById('question-number').textContent = '';
+            document.getElementById('progress-fill').style.width = '0%';
+            document.getElementById('fill-blank-container').style.display = 'none';
+            document.getElementById('flashcard-container').style.display = 'none';
+            document.getElementById('btn-next').style.display = 'none';
+            const container = document.getElementById('question-container');
+            container.style.display = 'block';
+            container.innerHTML = `
+                <div class="perf-menu">
+                    <h2 style="text-align:center;margin-bottom:20px;color:#6B4C9A;font-size:20px;">수행평가 연습</h2>
+                    <div class="perf-menu-btn" onclick="startPerfWritingSession()" style="background:#fff;border:2px solid #6B4C9A;border-radius:12px;padding:20px;margin-bottom:12px;cursor:pointer;text-align:center;">
+                        <div style="font-size:24px;margin-bottom:8px;">✍️</div>
+                        <div style="font-size:17px;font-weight:600;color:#6B4C9A;">설명하는 글쓰기</div>
+                        <div style="font-size:13px;color:#888;margin-top:4px;">설명방법 7종 + 문제 + 개요 짜기</div>
+                    </div>
+                    <div class="perf-menu-btn" onclick="startPerfReadingJournalSession()" style="background:#fff;border:2px solid #6B4C9A;border-radius:12px;padding:20px;margin-bottom:12px;cursor:pointer;text-align:center;">
+                        <div style="font-size:24px;margin-bottom:8px;">📒</div>
+                        <div style="font-size:17px;font-weight:600;color:#6B4C9A;">독서 단어장 만들기</div>
+                        <div style="font-size:13px;color:#888;margin-top:4px;">좋은 예시 + 선정 가이드</div>
+                    </div>
+                    <button onclick="goHome()" style="margin-top:12px;width:100%;padding:12px;font-size:15px;background:#f0f0f0;border:none;border-radius:10px;cursor:pointer;">← 돌아가기</button>
+                </div>
+            `;
+            showPage('quiz-page');
+            document.getElementById('btn-hint').style.display = 'none';
+        }
+
+        // 설명글쓰기 세션 시작
+        function startPerfWritingSession() {
+            const pa = QUIZ_DATA.perf_assessment;
+            if (!pa || !pa.writing) {
+                alert('설명글쓰기 자료가 없습니다.');
+                return;
+            }
+
+            // 설명 방법 카드 + 연습 문항 + 개요 짜기
+            const methodCards = pa.writing.explanation_methods.map(em => ({
+                type: 'explanation_method_card',
+                ...em
+            }));
+            const practiceQs = pa.writing.practice_questions.map(q => ({
+                ...q,
+                type: 'short_reading'
+            }));
+            const outlineExs = (pa.writing.outline_exercises || []).map(oe => ({
+                type: 'outline_exercise',
+                topic: oe.topic,
+                method_focus: oe.method_focus,
+                outline: oe.model_outline
+            }));
+
+            currentSession = [...methodCards, ...practiceQs, ...outlineExs];
+            currentQuestionIndex = 0;
+            sessionScore = 0;
+            totalAnswered = 0;
+
+            const modeLabel = '수행평가 - 설명글쓰기';
+            document.querySelector('.header-title').textContent = getHeaderTitle(modeLabel);
+
+            showQuestion();
+        }
+
+        // 독서 단어장 세션
+        function startPerfReadingJournalSession() {
+            const pa = QUIZ_DATA.perf_assessment;
+            if (!pa || !pa.reading_journal) {
+                alert('독서 단어장 자료가 없습니다.');
+                return;
+            }
+
+            currentSession = [{
+                type: 'reading_journal_guide',
+                id: 'rj-guide',
+                data: pa.reading_journal
+            }];
+            currentQuestionIndex = 0;
+            sessionScore = 0;
+            totalAnswered = 0;
+
+            const modeLabel = '수행평가 - 독서 단어장';
+            document.querySelector('.header-title').textContent = getHeaderTitle(modeLabel);
+
+            showQuestion();
         }
 
         // Flashcard renderer — Quizlet-style flip

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'quiz-v18';
+const CACHE_NAME = 'quiz-v28';
 const PRECACHE_URLS = [
   './',
   './index.html',
@@ -7,7 +7,8 @@ const PRECACHE_URLS = [
   './icon-512.png',
   './lesson1.js',
   './lesson2.js',
-  './lesson_kor1.js'
+  './lesson_kor1.js',
+  './kor1_reader.js'
 ];
 
 self.addEventListener('install', event => {
