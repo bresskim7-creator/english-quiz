@@ -904,6 +904,14 @@
         #math-mode-selector { flex-wrap: wrap; width: 90%; max-width: 320px; }
         #math-mode-selector .mode-btn { flex: 0 0 calc(50% - 5px); white-space: normal; border-color: #D4760A; color: #D4760A; font-size: 14px; padding: 14px 8px; }
         #math-mode-selector .mode-btn.active { background: #D4760A; color: white; border-color: #D4760A; }
+
+        #social-mode-selector { flex-wrap: wrap; width: 90%; max-width: 320px; }
+        #social-mode-selector .mode-btn { flex: 0 0 calc(50% - 5px); white-space: normal; border-color: #2E7D32; color: #2E7D32; font-size: 14px; padding: 14px 8px; }
+        #social-mode-selector .mode-btn.active { background: #2E7D32; color: white; border-color: #2E7D32; }
+
+        #science-mode-selector { flex-wrap: wrap; width: 90%; max-width: 320px; }
+        #science-mode-selector .mode-btn { flex: 0 0 calc(50% - 5px); white-space: normal; border-color: #1565C0; color: #1565C0; font-size: 14px; padding: 14px 8px; }
+        #science-mode-selector .mode-btn.active { background: #1565C0; color: white; border-color: #1565C0; }
         /* 수학 수식 CSS */
         .mfrac { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; margin: 0 2px; }
         .mfrac .mnum { border-bottom: 1.5px solid #333; padding: 0 3px 2px; font-size: 0.9em; line-height: 1.2; }
@@ -937,24 +945,62 @@
         .mc-back .mc-tip { font-size: 13px; background: #FFF3E0; padding: 10px; border-radius: 8px; border-left: 3px solid #D4760A; }
         .preparing-msg { color: #999; font-size: 14px; text-align: center; padding: 10px; }
 
-        /* Subject selector */
-        .subject-selector { display: flex; gap: 8px; }
-        .subject-btn {
-            padding: 8px 20px;
-            border: 2px solid #2F5496;
-            border-radius: 20px;
+        /* ===== 과목 선택 화면 (1단계) ===== */
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            width: 90%;
+            max-width: 340px;
+            margin: 0 auto;
+        }
+        .subject-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 12px;
+            border-radius: 16px;
             background: white;
-            color: #2F5496;
-            font-size: 15px;
-            font-weight: 700;
+            border: 2px solid #e0e0e0;
             cursor: pointer;
             transition: all 0.2s;
+            text-decoration: none;
         }
-        .subject-btn.active { background: #2F5496; color: white; }
-        .subject-btn.korean.active { background: #6B4C9A; color: white; border-color: #6B4C9A; }
-        .subject-btn.korean { border-color: #6B4C9A; color: #6B4C9A; }
-        .subject-btn.math.active { background: #D4760A; color: white; border-color: #D4760A; }
-        .subject-btn.math { border-color: #D4760A; color: #D4760A; }
+        .subject-card:active { transform: scale(0.96); }
+        .subject-card-icon { font-size: 32px; margin-bottom: 8px; }
+        .subject-card-name { font-size: 17px; font-weight: 700; }
+        .subject-card-sub { font-size: 12px; margin-top: 4px; opacity: 0.7; }
+        .subject-card.english { border-color: #2F5496; color: #2F5496; }
+        .subject-card.korean { border-color: #6B4C9A; color: #6B4C9A; }
+        .subject-card.math { border-color: #D4760A; color: #D4760A; }
+        .subject-card.social { border-color: #2E7D32; color: #2E7D32; }
+        .subject-card.science { border-color: #1565C0; color: #1565C0; }
+
+        /* ===== 과목 상세 화면 (2단계) ===== */
+        .subject-detail-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+        .subject-back-btn {
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            padding: 4px 8px;
+            color: #666;
+        }
+        .subject-detail-title {
+            font-size: 20px;
+            font-weight: 800;
+            color: #333;
+        }
+
+        /* 기존 subject-btn은 더 이상 사용하지 않지만, 호환용으로 남김 */
+        .subject-selector { display: none; }
+        .subject-btn { display: none; }
 
         /* Symbol marks (국어 ㉠㉡㉢ 강조) */
         .symbol-mark {
@@ -1190,19 +1236,56 @@
             <button id="mute-toggle" onclick="toggleMute()" style="background:none;border:none;color:white;font-size:20px;cursor:pointer;padding:4px 8px;">🔊</button>
         </div>
 
-        <!-- 홈 화면 -->
+        <!-- 1단계: 과목 선택 화면 -->
         <div id="home-page" class="page active">
             <div class="home-title">오늘의 학습</div>
+            <div class="subject-grid">
+                <div class="subject-card english" onclick="selectSubject('english')">
+                    <div class="subject-card-icon">📘</div>
+                    <div class="subject-card-name">영어</div>
+                    <div class="subject-card-sub">Lesson 1·2</div>
+                </div>
+                <div class="subject-card korean" onclick="selectSubject('korean')">
+                    <div class="subject-card-icon">📕</div>
+                    <div class="subject-card-name">국어</div>
+                    <div class="subject-card-sub">1단원</div>
+                </div>
+                <div class="subject-card math" onclick="selectSubject('math')">
+                    <div class="subject-card-icon">📐</div>
+                    <div class="subject-card-name">수학</div>
+                    <div class="subject-card-sub">유리수와 순환소수</div>
+                </div>
+                <div class="subject-card social" onclick="selectSubject('social')">
+                    <div class="subject-card-icon">🏛️</div>
+                    <div class="subject-card-name">사회</div>
+                    <div class="subject-card-sub">국가 기관과 권력 분립</div>
+                </div>
+                <div class="subject-card science" onclick="selectSubject('science')">
+                    <div class="subject-card-icon">🔬</div>
+                    <div class="subject-card-name">과학</div>
+                    <div class="subject-card-sub">물질의 특성</div>
+                </div>
+            </div>
+            <div id="webhook-settings-toggle" style="font-size:12px;color:#999;cursor:pointer;text-align:center;margin-top:24px;" onclick="document.getElementById('webhook-settings').style.display='block';this.style.display='none';">⚙️ 설정</div>
+            <div class="webhook-settings" id="webhook-settings" style="display:none;">
+                <div class="stats-title">설정</div>
+                <label style="font-size:12px;color:#666;display:block;margin-bottom:4px;">Google Sheets 웹훅 URL</label>
+                <input type="url" id="webhook-input" placeholder="https://script.google.com/..."
+                       style="width:100%;padding:10px;border:1px solid #ddd;border-radius:6px;font-size:13px;box-sizing:border-box;" />
+                <button onclick="saveWebhookUrl()" style="margin-top:8px;padding:8px 16px;background:#2F5496;color:white;border:none;border-radius:6px;font-size:13px;cursor:pointer;">저장</button>
+                <button onclick="document.getElementById('webhook-settings').style.display='none';document.getElementById('webhook-settings-toggle').style.display='block';" style="margin-top:8px;margin-left:4px;padding:8px 16px;background:#f0f0f0;border:1px solid #ddd;border-radius:6px;font-size:13px;cursor:pointer;color:#666;">닫기</button>
+                <div id="webhook-status" style="font-size:11px;color:#4CAF50;margin-top:4px;"></div>
+            </div>
+        </div>
+
+        <!-- 2단계: 과목 상세 화면 (단원 + 모드 + 현황) -->
+        <div id="subject-page" class="page">
+            <div class="subject-detail-header">
+                <button class="subject-back-btn" onclick="goSubjectHome()">←</button>
+                <div class="subject-detail-title" id="subject-detail-title">영어</div>
+            </div>
 
             <div class="settings-card">
-                <div class="setting-row">
-                    <span class="setting-label">과목</span>
-                    <div class="subject-selector">
-                        <button class="subject-btn active" id="subject-btn-english" onclick="selectSubject('english')">영어</button>
-                        <button class="subject-btn korean" id="subject-btn-korean" onclick="selectSubject('korean')">국어</button>
-                        <button class="subject-btn math" id="subject-btn-math" onclick="selectSubject('math')">수학</button>
-                    </div>
-                </div>
                 <div class="setting-row" id="lesson-row">
                     <span class="setting-label">Lesson</span>
                     <div class="lesson-selector" id="lesson-selector">
@@ -1211,7 +1294,7 @@
                     </div>
                 </div>
 
-                <!-- Mode selector for v3.0 drill questions -->
+                <!-- Mode selector -->
                 <div id="mode-selector-container" style="display:none;margin-top:12px;">
                     <span class="setting-label" style="display:block;margin-bottom:8px;">학습 모드</span>
                     <div class="mode-selector" id="english-mode-selector">
@@ -1260,15 +1343,33 @@
                             <span class="mode-desc">📝 시험 대비</span>
                         </button>
                     </div>
+                    <div class="mode-selector" id="social-mode-selector" style="display:none;">
+                        <button class="mode-btn" id="mode-social-concept" onclick="selectAndStart('social_concept')">
+                            개념 정리
+                            <span class="mode-desc">📖 쉬운 말 설명</span>
+                        </button>
+                        <button class="mode-btn" id="mode-social-exam" onclick="selectAndStart('exam_prep')">
+                            실전 문제
+                            <span class="mode-desc">📝 시험 대비</span>
+                        </button>
+                    </div>
+                    <div class="mode-selector" id="science-mode-selector" style="display:none;">
+                        <button class="mode-btn" id="mode-science-concept" onclick="selectAndStart('science_concept')">
+                            개념 정리
+                            <span class="mode-desc">🔬 쉬운 말 설명</span>
+                        </button>
+                        <button class="mode-btn" id="mode-science-exam" onclick="selectAndStart('exam_prep')">
+                            실전 문제
+                            <span class="mode-desc">📝 시험 대비</span>
+                        </button>
+                    </div>
                 </div>
                 <div id="mode-preparing-msg" class="preparing-msg" style="display:none;">이 Lesson은 준비 중입니다</div>
-                <!-- A/B 세션 구분 제거: 통합 세션으로 운영 -->
             </div>
 
-            <!-- "오늘의 학습 시작" 버튼 제거: 모드 버튼 클릭 시 바로 시작 -->
             <div id="session-subtitle-info" style="font-size:13px;color:#888;text-align:center;margin-top:-8px;"></div>
 
-            <div class="stats-card">
+            <div class="stats-card" id="stats-card" style="display:none;">
                 <div class="stats-title">학습 현황</div>
                 <div class="stat-row">
                     <span class="stat-label">문장 정답률</span>
@@ -1278,17 +1379,6 @@
                     <span class="stat-label">단어 암기율</span>
                     <span class="stat-value"><span id="stat-vocab">—</span></span>
                 </div>
-            </div>
-
-            <div id="webhook-settings-toggle" style="font-size:12px;color:#999;cursor:pointer;text-align:center;" onclick="document.getElementById('webhook-settings').style.display='block';this.style.display='none';">⚙️ 설정</div>
-            <div class="webhook-settings" id="webhook-settings" style="display:none;">
-                <div class="stats-title">설정</div>
-                <label style="font-size:12px;color:#666;display:block;margin-bottom:4px;">Google Sheets 웹훅 URL</label>
-                <input type="url" id="webhook-input" placeholder="https://script.google.com/..."
-                       style="width:100%;padding:10px;border:1px solid #ddd;border-radius:6px;font-size:13px;box-sizing:border-box;" />
-                <button onclick="saveWebhookUrl()" style="margin-top:8px;padding:8px 16px;background:#2F5496;color:white;border:none;border-radius:6px;font-size:13px;cursor:pointer;">저장</button>
-                <button onclick="document.getElementById('webhook-settings').style.display='none';document.getElementById('webhook-settings-toggle').style.display='block';" style="margin-top:8px;margin-left:4px;padding:8px 16px;background:#f0f0f0;border:1px solid #ddd;border-radius:6px;font-size:13px;cursor:pointer;color:#666;">닫기</button>
-                <div id="webhook-status" style="font-size:11px;color:#4CAF50;margin-top:4px;"></div>
             </div>
         </div>
 
@@ -1444,8 +1534,14 @@
             } else if (currentMode === 'math_procedure') {
                 const count = (QUIZ_DATA && QUIZ_DATA.procedure_drills) ? QUIZ_DATA.procedure_drills.length : 0;
                 el.textContent = count + '문제 · 약 10분';
+            } else if (currentMode === 'social_concept' || currentMode === 'science_concept') {
+                const count = (QUIZ_DATA && QUIZ_DATA.concept_cards) ? QUIZ_DATA.concept_cards.length : 0;
+                el.textContent = count + '개 카드 · 약 5분';
+            } else if ((currentSubject === 'social' || currentSubject === 'science') && currentMode === 'exam_prep') {
+                const count = (QUIZ_DATA && QUIZ_DATA.exam_prep) ? Math.min(15, QUIZ_DATA.exam_prep.length) : 15;
+                el.textContent = count + '문항 · 약 10분';
             } else {
-                const total = QUIZ_DATA ? Math.min(30, QUIZ_DATA.questions.length) : 30;
+                const total = QUIZ_DATA && QUIZ_DATA.questions ? Math.min(30, QUIZ_DATA.questions.length) : 30;
                 el.textContent = total + '문항 · 약 20분';
             }
         }
@@ -1635,9 +1731,11 @@
                     currentSubject = 'math';
                 }
 
-                // B-1: Filter out string comments from questions array
-                const realQuestions = QUIZ_DATA.questions.filter(q => typeof q === 'object' && q !== null);
-                QUIZ_DATA.questions = realQuestions;
+                // B-1: Filter out string comments from questions array (영어/국어/수학만 해당)
+                if (QUIZ_DATA.questions) {
+                    const realQuestions = QUIZ_DATA.questions.filter(q => typeof q === 'object' && q !== null);
+                    QUIZ_DATA.questions = realQuestions;
+                }
 
                 // Detect v3.0 schema
                 if (QUIZ_DATA.core_sentences && QUIZ_DATA.questions) {
@@ -1651,7 +1749,8 @@
                 updateStats();
                 updateModeSelector();
 
-                console.log(`Lesson ${lessonNumber} loaded (v3: ${QUIZ_DATA._isV3}, subject: ${currentSubject}) with ${QUIZ_DATA.questions.length} questions`);
+                const qCount = QUIZ_DATA.questions ? QUIZ_DATA.questions.length : (QUIZ_DATA.exam_prep ? QUIZ_DATA.exam_prep.length : 0);
+                console.log(`Lesson ${lessonNumber} loaded (v3: ${QUIZ_DATA._isV3}, subject: ${currentSubject}) with ${qCount} questions`);
             } catch (error) {
                 console.error(`Error loading ${lessonNumber}:`, error);
                 alert(`Lesson ${lessonNumber} 데이터를 로드할 수 없습니다.\n(${error.message})`);
@@ -1660,12 +1759,15 @@
 
         // 과목 선택
         async function selectSubject(subject) {
-            if (currentSubject === subject && QUIZ_DATA) return;
             currentSubject = subject;
 
-            // 과목 버튼 스타일 업데이트
-            document.querySelectorAll('.subject-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById('subject-btn-' + subject).classList.add('active');
+            // 과목 상세 제목 업데이트
+            const subjectNames = { english: '영어', korean: '국어', math: '수학', social: '사회', science: '과학' };
+            document.getElementById('subject-detail-title').textContent = subjectNames[subject] || subject;
+
+            // 학습 현황 카드: 영어만 표시
+            const statsCard = document.getElementById('stats-card');
+            if (statsCard) statsCard.style.display = (subject === 'english') ? '' : 'none';
 
             // 레슨 버튼 세트 교체
             const lessonSelector = document.getElementById('lesson-selector');
@@ -1678,6 +1780,14 @@
                 lessonRow.querySelector('.setting-label').textContent = '단원';
                 lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-math1" onclick="selectLesson(\'math1\')">유리수와 순환소수</button>';
                 await loadLesson('math1');
+            } else if (subject === 'social') {
+                lessonRow.querySelector('.setting-label').textContent = '단원';
+                lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-soc1" onclick="selectLesson(\'soc1\')">국가 기관과 권력 분립</button>';
+                await loadLesson('soc1');
+            } else if (subject === 'science') {
+                lessonRow.querySelector('.setting-label').textContent = '단원';
+                lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-sci1" onclick="selectLesson(\'sci1\')">물질의 특성</button>';
+                await loadLesson('sci1');
             } else {
                 lessonRow.querySelector('.setting-label').textContent = 'Lesson';
                 lessonSelector.innerHTML =
@@ -1686,6 +1796,19 @@
                 await loadLesson(1);
             }
             updateSubtitle();
+
+            // 과목 상세 페이지로 전환
+            showPage('subject-page');
+            // 헤더 업데이트
+            document.querySelector('.header-title').textContent = getHeaderTitle();
+        }
+
+        // 과목 선택 화면으로 돌아가기
+        function goSubjectHome() {
+            currentSubject = null;
+            QUIZ_DATA = null;
+            document.querySelector('.header-title').textContent = '오늘의 학습';
+            showPage('home-page');
         }
 
         // Lesson 선택
@@ -1708,17 +1831,25 @@
 
         // B-2: Mode selector update
         function updateModeSelector() {
-            if (!QUIZ_DATA || !QUIZ_DATA._isV3) {
-                // Legacy schema — hide mode selector
+            if (!QUIZ_DATA) {
                 document.getElementById('mode-selector-container').style.display = 'none';
                 document.getElementById('mode-preparing-msg').style.display = 'none';
-                currentMode = 'exam_prep'; // Default to exam_prep for legacy
                 return;
             }
 
-            // V3 schema with core_sentences — show mode selector
-            const hasExamPrep = QUIZ_DATA.questions.some(q => q.phase === 'exam_prep');
-            const hasDrill = QUIZ_DATA.questions.some(q => q.phase === 'drill');
+            // 사회/과학은 _isV3 없이 바로 모드 셀렉터 표시
+            if (!QUIZ_DATA._isV3 && currentSubject !== 'social' && currentSubject !== 'science') {
+                // Legacy schema — hide mode selector
+                document.getElementById('mode-selector-container').style.display = 'none';
+                document.getElementById('mode-preparing-msg').style.display = 'none';
+                currentMode = 'exam_prep';
+                return;
+            }
+
+            // V3 schema or social/science
+            const questions = QUIZ_DATA.questions || [];
+            const hasExamPrep = questions.some(q => q.phase === 'exam_prep');
+            const hasDrill = questions.some(q => q.phase === 'drill');
             const hasCoreSentences = QUIZ_DATA.core_sentences && QUIZ_DATA.core_sentences.length > 0;
             const hasVocab = QUIZ_DATA.vocab_drill && QUIZ_DATA.vocab_drill.length > 0;
             const hasPassageGuides = QUIZ_DATA.passage_guides && QUIZ_DATA.passage_guides.length > 0;
@@ -1726,11 +1857,15 @@
             const hasPerfAssessment = QUIZ_DATA.perf_assessment && (QUIZ_DATA.perf_assessment.writing || QUIZ_DATA.perf_assessment.reading_journal);
 
             // Show/hide selector based on subject
+            // 모든 모드 셀렉터 숨기기 (각 분기에서 필요한 것만 보여줌)
+            ['english-mode-selector', 'korean-mode-selector', 'math-mode-selector', 'social-mode-selector', 'science-mode-selector'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.style.display = 'none';
+            });
+
             if (currentSubject === 'korean') {
                 // Korean: show 4 mode buttons if any Korean features exist
-                document.getElementById('english-mode-selector').style.display = 'none';
                 document.getElementById('korean-mode-selector').style.display = 'flex';
-                document.getElementById('math-mode-selector').style.display = 'none';
 
                 if (hasPassageGuides || hasConceptCards || hasExamPrep || hasPerfAssessment) {
                     document.getElementById('mode-selector-container').style.display = 'block';
@@ -1756,11 +1891,61 @@
                     document.getElementById('mode-selector-container').style.display = 'none';
                     document.getElementById('mode-preparing-msg').style.display = 'block';
                 }
+            } else if (currentSubject === 'social') {
+                // Social: show 2 mode buttons (개념정리 + 실전문제)
+                document.getElementById('english-mode-selector').style.display = 'none';
+                document.getElementById('korean-mode-selector').style.display = 'none';
+                document.getElementById('math-mode-selector').style.display = 'none';
+                document.getElementById('social-mode-selector').style.display = 'flex';
+                document.getElementById('science-mode-selector').style.display = 'none';
+
+                const hasCC = QUIZ_DATA.concept_cards && QUIZ_DATA.concept_cards.length > 0;
+                const hasEP = QUIZ_DATA.exam_prep && QUIZ_DATA.exam_prep.length > 0;
+
+                if (hasCC || hasEP) {
+                    document.getElementById('mode-selector-container').style.display = 'block';
+                    document.getElementById('mode-preparing-msg').style.display = 'none';
+                    const scBtn = document.getElementById('mode-social-concept');
+                    const seBtn = document.getElementById('mode-social-exam');
+                    if (scBtn) scBtn.style.display = hasCC ? '' : 'none';
+                    if (seBtn) seBtn.style.display = hasEP ? '' : 'none';
+                    if (hasCC) selectMode('social_concept');
+                    else if (hasEP) selectMode('exam_prep');
+                } else {
+                    document.getElementById('mode-selector-container').style.display = 'none';
+                    document.getElementById('mode-preparing-msg').style.display = 'block';
+                }
+            } else if (currentSubject === 'science') {
+                // Science: show 2 mode buttons (개념정리 + 실전문제)
+                document.getElementById('english-mode-selector').style.display = 'none';
+                document.getElementById('korean-mode-selector').style.display = 'none';
+                document.getElementById('math-mode-selector').style.display = 'none';
+                document.getElementById('social-mode-selector').style.display = 'none';
+                document.getElementById('science-mode-selector').style.display = 'flex';
+
+                const hasSciCC = QUIZ_DATA.concept_cards && QUIZ_DATA.concept_cards.length > 0;
+                const hasSciEP = QUIZ_DATA.exam_prep && QUIZ_DATA.exam_prep.length > 0;
+
+                if (hasSciCC || hasSciEP) {
+                    document.getElementById('mode-selector-container').style.display = 'block';
+                    document.getElementById('mode-preparing-msg').style.display = 'none';
+                    const scBtn = document.getElementById('mode-science-concept');
+                    const seBtn = document.getElementById('mode-science-exam');
+                    if (scBtn) scBtn.style.display = hasSciCC ? '' : 'none';
+                    if (seBtn) seBtn.style.display = hasSciEP ? '' : 'none';
+                    if (hasSciCC) selectMode('science_concept');
+                    else if (hasSciEP) selectMode('exam_prep');
+                } else {
+                    document.getElementById('mode-selector-container').style.display = 'none';
+                    document.getElementById('mode-preparing-msg').style.display = 'block';
+                }
             } else if (currentSubject === 'math') {
                 // Math: show 3 mode buttons
                 document.getElementById('english-mode-selector').style.display = 'none';
                 document.getElementById('korean-mode-selector').style.display = 'none';
                 document.getElementById('math-mode-selector').style.display = 'flex';
+                document.getElementById('social-mode-selector').style.display = 'none';
+                document.getElementById('science-mode-selector').style.display = 'none';
 
                 const hasProcedureDrills = QUIZ_DATA.procedure_drills && QUIZ_DATA.procedure_drills.length > 0;
 
@@ -1838,6 +2023,10 @@
                 document.getElementById('mode-math-concept')?.classList.add('active');
             } else if (mode === 'math_procedure') {
                 document.getElementById('mode-math-procedure')?.classList.add('active');
+            } else if (mode === 'social_concept') {
+                document.getElementById('mode-social-concept')?.classList.add('active');
+            } else if (mode === 'science_concept') {
+                document.getElementById('mode-science-concept')?.classList.add('active');
             } else {
                 document.getElementById('mode-btn-exam')?.classList.add('active');
                 document.getElementById('mode-exam-prep')?.classList.add('active');
@@ -1858,17 +2047,11 @@
 
         // 초기화
         async function init() {
-            if (!currentLesson) {
-                currentLesson = 1;
-                currentSubject = 'english';
-                await loadLesson(1);
-            }
-            loadQuestionHistory();
-            updateStats();
+            // 첫 화면은 과목 선택이므로 데이터를 미리 로드하지 않음
+            currentSubject = null;
+            currentLesson = null;
             // 헤더 타이틀 초기 설정
-            document.querySelector('.header-title').textContent = getHeaderTitle();
-            // 세션 타입 복원
-            updateSubtitle();
+            document.querySelector('.header-title').textContent = '오늘의 학습';
             // 음소거 상태 복원
             document.getElementById('mute-toggle').textContent = isMuted ? '🔇' : '🔊';
             // 웹훅 URL 복원
@@ -2371,7 +2554,10 @@
             // B-4: Generate session based on mode
             let modeLabel = '';
 
-            if (currentMode === 'math_concept') {
+            if (currentMode === 'social_concept' || currentMode === 'science_concept') {
+                currentSession = generateStudyConceptSession();
+                modeLabel = '개념 정리';
+            } else if (currentMode === 'math_concept') {
                 currentSession = generateMathConceptSession();
                 modeLabel = '개념 카드';
             } else if (currentMode === 'math_procedure') {
@@ -2396,6 +2582,9 @@
                     currentSession = generateDrillSession();
                     modeLabel = '문장 드릴';
                 }
+            } else if ((currentSubject === 'social' || currentSubject === 'science') && currentMode === 'exam_prep') {
+                currentSession = generateStudyExamSession();
+                modeLabel = '실전 문제';
             } else {
                 currentSession = generateExamPrepSession();
                 modeLabel = '실전 대비';
@@ -2476,7 +2665,7 @@
             skipBtn.style.display = (q.type === 'arrange' || q.type === 'chunk_order') ? 'inline-block' : 'none';
 
             // Dispatch by type (B-6)
-            const specialContainerTypes = ['passage_guide_picker', 'passage_guide_section', 'concept_card', 'explanation_method_card', 'reading_journal_guide', 'outline_exercise', 'math_concept_card', 'procedure_drill'];
+            const specialContainerTypes = ['passage_guide_picker', 'passage_guide_section', 'concept_card', 'explanation_method_card', 'reading_journal_guide', 'outline_exercise', 'math_concept_card', 'procedure_drill', 'study_concept_card'];
             if (specialContainerTypes.includes(q.type)) {
                 document.getElementById('question-container').style.display = 'block';
             }
@@ -2520,6 +2709,10 @@
                 showMatch(q);
             } else if (q.type === 'mini_writing') {
                 showMiniWriting(q);
+            } else if (q.type === 'study_concept_card') {
+                showStudyConceptCard(q);
+            } else if (q.type === 'choice' && (currentSubject === 'social' || currentSubject === 'science')) {
+                showStudyChoice(q);
             } else if (q.type === 'choice' && currentSubject === 'math') {
                 showMathChoice(q);
             } else if (q.type === 'typed_answer' && currentSubject === 'math') {
@@ -4569,8 +4762,13 @@
             originalSession = [];
             // Reset header title
             document.querySelector('.header-title').textContent = getHeaderTitle();
-            showPage('home-page');
-            updateStats();
+            // 과목이 선택된 상태면 과목 상세로, 아니면 과목 선택으로
+            if (currentSubject) {
+                showPage('subject-page');
+                updateStats();
+            } else {
+                showPage('home-page');
+            }
         }
 
         // 그만하기
@@ -4620,6 +4818,10 @@
             } else if (currentSubject === 'math') {
                 const title = QUIZ_DATA ? QUIZ_DATA.title?.replace('수학 1단원: ', '') : '유리수와 순환소수';
                 return modeLabel ? `수학 · ${modeLabel}` : `수학 · ${title}`;
+            } else if (currentSubject === 'social') {
+                return modeLabel ? `사회 · ${modeLabel}` : '사회';
+            } else if (currentSubject === 'science') {
+                return modeLabel ? `과학 · ${modeLabel}` : '과학';
             }
             return modeLabel ? `영어 Lesson ${currentLesson} · ${modeLabel}` : `영어 Lesson ${currentLesson || 1}`;
         }
@@ -4651,6 +4853,126 @@
         }
 
         // 수학 개념카드 세션 생성
+        // =========================================================
+        // 사회/과학 공통: 개념정리 + 실전문제 세션 엔진
+        // =========================================================
+        function generateStudyConceptSession() {
+            const cards = QUIZ_DATA.concept_cards || [];
+            return cards.map(c => ({...c, type: 'study_concept_card'}));
+        }
+
+        function generateStudyExamSession() {
+            const questions = QUIZ_DATA.exam_prep || [];
+            if (questions.length === 0) return [];
+            // A군 우선, B군 보충, C군 후순위 — 최대 15문항
+            const aGroup = questions.filter(q => q.score_group === 'A');
+            const bGroup = questions.filter(q => q.score_group === 'B');
+            const cGroup = questions.filter(q => q.score_group === 'C');
+            shuffleArray(aGroup);
+            shuffleArray(bGroup);
+            shuffleArray(cGroup);
+            const session = [...aGroup, ...bGroup.slice(0, 8), ...cGroup.slice(0, 2)].slice(0, 15);
+            shuffleArray(session);
+            return session;
+        }
+
+        // 사회/과학 개념카드 렌더러
+        function showStudyConceptCard(q) {
+            const container = document.getElementById('question-container');
+            const subjectColor = currentSubject === 'social' ? '#2E7D32' : '#1565C0';
+            container.innerHTML = `
+                <div class="mc-card" onclick="this.classList.toggle('flipped')" style="--mc-color:${subjectColor}">
+                    <div class="mc-front">
+                        <div class="mc-title" style="color:${subjectColor}">${q.term}</div>
+                        <div class="mc-question" style="font-size:15px;color:#666;margin-top:8px;">이 용어, 뭐야?</div>
+                        <div class="mc-tap">탭하면 설명 보기</div>
+                    </div>
+                    <div class="mc-back">
+                        <div class="mc-easy" style="font-size:16px;line-height:1.7;margin-bottom:12px;">💡 ${q.easy_explanation}</div>
+                        <div class="mc-def" style="font-size:13px;color:#888;border-top:1px solid #eee;padding-top:8px;">📖 교과서 표현: ${q.definition}</div>
+                        ${q.exam_tip ? `<div class="mc-tip" style="margin-top:8px;">🎯 ${q.exam_tip}</div>` : ''}
+                    </div>
+                </div>
+                <button class="next-btn" onclick="showNextQuestion()" style="margin-top:16px;width:100%;padding:14px;font-size:16px;background:${subjectColor};color:white;border:none;border-radius:10px;cursor:pointer;">다음 카드 →</button>
+            `;
+            document.getElementById('btn-hint').style.display = 'none';
+        }
+
+        // 사회/과학 선택형 렌더러 — 보기 셔플 포함
+        function showStudyChoice(q) {
+            const container = document.getElementById('question-container');
+            container.style.display = 'block';
+            const subjectColor = currentSubject === 'social' ? '#2E7D32' : '#1565C0';
+
+            let sentenceHtml = q.sentence ? `<div style="font-size:15px;line-height:1.7;margin-bottom:16px;white-space:pre-line;background:#F1F8E9;padding:12px;border-radius:8px;">${q.sentence}</div>` : '';
+            let questionHtml = q.question ? `<div style="font-size:15px;font-weight:600;margin-bottom:12px;">${q.question}</div>` : '';
+
+            // 보기 셔플
+            const shuffled = q.options.map((opt, idx) => ({ origIdx: idx, opt }));
+            shuffleArray(shuffled);
+            // 셔플 맵 저장 (checkStudyChoice에서 사용)
+            window._studyShuffleMap = shuffled;
+
+            let optionsHtml = shuffled.map((item, i) => {
+                const label = String.fromCharCode(0x2460 + i);
+                return `<button class="option-btn" style="display:block;width:100%;text-align:left;padding:12px 16px;margin-bottom:8px;border:2px solid #ddd;border-radius:10px;background:white;font-size:15px;cursor:pointer;line-height:1.5;" onclick="checkStudyChoice(this, ${i})">${label} ${item.opt}</button>`;
+            }).join('');
+
+            container.innerHTML = sentenceHtml + questionHtml + `<div id="study-options">${optionsHtml}</div>`;
+            document.getElementById('question-text').innerHTML = q.instruction || '';
+            document.getElementById('btn-hint').style.display = q.hint ? '' : 'none';
+            if (q.hint) {
+                document.getElementById('btn-hint').onclick = function() {
+                    document.getElementById('hint-display').style.display = 'block';
+                    document.getElementById('hint-display').textContent = q.hint;
+                    hintUsedThisQuestion = true;
+                };
+            }
+        }
+
+        function checkStudyChoice(btn, displayIdx) {
+            const q = currentSession[currentQuestionIndex];
+            const isMulti = Array.isArray(q.correct);
+            const origIdx = window._studyShuffleMap[displayIdx].origIdx;
+            const isCorrect = isMulti ? q.correct.includes(origIdx) : origIdx === q.correct;
+
+            document.querySelectorAll('#study-options .option-btn').forEach((b, i) => {
+                b.disabled = true;
+                b.style.cursor = 'default';
+                const correctArr = isMulti ? q.correct : [q.correct];
+                if (correctArr.includes(window._studyShuffleMap[i].origIdx)) {
+                    b.style.background = '#E8F5E9';
+                    b.style.borderColor = '#4CAF50';
+                }
+            });
+
+            if (!isCorrect) {
+                btn.style.background = '#FFEBEE';
+                btn.style.borderColor = '#F44336';
+                if (q.wrong_explanations && q.wrong_explanations[String(origIdx)]) {
+                    const wrongDiv = document.createElement('div');
+                    wrongDiv.className = 'wrong-explanation';
+                    wrongDiv.style.cssText = 'background:#FFEBEE;padding:12px;border-radius:8px;margin-top:8px;font-size:14px;line-height:1.5;';
+                    wrongDiv.innerHTML = '❌ ' + q.wrong_explanations[String(origIdx)];
+                    document.getElementById('study-options').appendChild(wrongDiv);
+                }
+            } else {
+                btn.style.background = '#E8F5E9';
+                btn.style.borderColor = '#4CAF50';
+            }
+
+            if (q.explanation) {
+                const expDiv = document.createElement('div');
+                expDiv.className = 'correct-answer-display';
+                expDiv.style.cssText = 'background:#F5F5F5;padding:12px;border-radius:8px;margin-top:8px;font-size:14px;line-height:1.6;white-space:pre-line;';
+                expDiv.innerHTML = '📝 ' + q.explanation;
+                document.getElementById('study-options').appendChild(expDiv);
+            }
+
+            recordAnswer(q, isCorrect);
+            showNextButton();
+        }
+
         function generateMathConceptSession() {
             const cards = QUIZ_DATA.concept_cards || [];
             return cards.map(c => ({...c, type: 'math_concept_card'}));
