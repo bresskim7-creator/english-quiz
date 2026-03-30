@@ -1774,19 +1774,19 @@
             const lessonRow = document.getElementById('lesson-row');
             if (subject === 'korean') {
                 lessonRow.querySelector('.setting-label').textContent = '단원';
-                lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-kor1" onclick="selectLesson(\'kor1\')">1단원</button>';
+                lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-kor1" onclick="selectLesson(\'kor1\')">1단원</button><button class="lesson-btn" id="lesson-btn-kor2" onclick="selectLesson(\'kor2\')">2단원</button>';
                 await loadLesson('kor1');
             } else if (subject === 'math') {
                 lessonRow.querySelector('.setting-label').textContent = '단원';
-                lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-math1" onclick="selectLesson(\'math1\')">유리수와 순환소수</button>';
+                lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-math1" onclick="selectLesson(\'math1\')">1단원</button><button class="lesson-btn" id="lesson-btn-math2" onclick="selectLesson(\'math2\')">2단원</button>';
                 await loadLesson('math1');
             } else if (subject === 'social') {
                 lessonRow.querySelector('.setting-label').textContent = '단원';
-                lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-soc1" onclick="selectLesson(\'soc1\')">국가 기관과 권력 분립</button>';
+                lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-soc1" onclick="selectLesson(\'soc1\')">1단원</button><button class="lesson-btn" id="lesson-btn-soc2" onclick="selectLesson(\'soc2\')">2단원</button>';
                 await loadLesson('soc1');
             } else if (subject === 'science') {
                 lessonRow.querySelector('.setting-label').textContent = '단원';
-                lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-sci1" onclick="selectLesson(\'sci1\')">물질의 특성</button>';
+                lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-sci1" onclick="selectLesson(\'sci1\')">1단원</button><button class="lesson-btn" id="lesson-btn-sci2" onclick="selectLesson(\'sci2\')">2단원</button>';
                 await loadLesson('sci1');
             } else {
                 lessonRow.querySelector('.setting-label').textContent = 'Lesson';
@@ -1838,7 +1838,7 @@
             }
 
             // 사회/과학은 _isV3 없이 바로 모드 셀렉터 표시
-            if (!QUIZ_DATA._isV3 && currentSubject !== 'social' && currentSubject !== 'science') {
+            if (!QUIZ_DATA._isV3 && currentSubject !== 'korean' && currentSubject !== 'social' && currentSubject !== 'science') {
                 // Legacy schema — hide mode selector
                 document.getElementById('mode-selector-container').style.display = 'none';
                 document.getElementById('mode-preparing-msg').style.display = 'none';
@@ -2623,16 +2623,20 @@
             }
 
             const q = currentSession[currentQuestionIndex];
-            const progress = ((currentQuestionIndex) / currentSession.length) * 100;
+            const progress = ((currentQuestionIndex + 1) / currentSession.length) * 100;
             questionStartTime = Date.now();
 
             document.getElementById('progress-fill').style.width = progress + '%';
             const retryLabel = retryMode ? '재도전 ' : '';
             document.getElementById('question-number').textContent = retryLabel + (currentQuestionIndex + 1) + ' / ' + currentSession.length;
+            // 조건어 하이라이트: "틀린", "아닌", "않는", "없는", "못한" 등 부정 조건을 빨간 강조
+            const instrEl = document.getElementById('instruction-text');
+            const instrText = q.instruction || '';
             if (currentSubject === 'math') {
-                document.getElementById('instruction-text').innerHTML = renderMath(q.instruction || '');
+                instrEl.innerHTML = renderMath(instrText);
             } else {
-                document.getElementById('instruction-text').textContent = q.instruction || '';
+                instrEl.innerHTML = instrText.replace(/(틀린|아닌|않는|없는|못한|아닌 것|틀린 것|해당하지 않는|거리가 먼|적절하지 않은|올바르지 않은)/g,
+                    '<span style="color:#E53935;font-weight:700;text-decoration:underline;text-decoration-color:#E53935;">$1</span>');
             }
 
             // 다음 버튼 숨기기 + 이전 정답/힌트/설명 표시 제거
@@ -2660,7 +2664,7 @@
             // Show/hide controls based on type (B-6)
             const hintBtn = document.getElementById('btn-hint');
             const skipBtn = document.getElementById('btn-skip');
-            const hideHintOnTypes = ['flashcard', 'passage_guide_picker', 'passage_guide_section', 'concept_card', 'explanation_method_card', 'reading_journal_guide', 'outline_exercise'];
+            const hideHintOnTypes = ['flashcard', 'passage_guide_picker', 'passage_guide_section', 'concept_card', 'explanation_method_card', 'reading_journal_guide', 'outline_exercise', 'position_ask'];
             hintBtn.style.display = hideHintOnTypes.includes(q.type) ? 'none' : 'inline-block';
             skipBtn.style.display = (q.type === 'arrange' || q.type === 'chunk_order') ? 'inline-block' : 'none';
 
@@ -2741,6 +2745,32 @@
         // showNextQuestion alias for new Korean modes
         function showNextQuestion() {
             goNextQuestion();
+        }
+
+        // 이전 문항으로 돌아가기 (열람형 모드 전용)
+        function goPrevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion();
+            }
+        }
+
+        // 열람형 모드 네비게이션 버튼 생성 헬퍼
+        function browseNavButtons(nextLabel, color) {
+            color = color || '#6B4C9A';
+            const hasPrev = currentQuestionIndex > 0;
+            const isLast = currentQuestionIndex >= currentSession.length - 1;
+            let html = '<div style="display:flex;gap:8px;margin-top:16px;">';
+            if (hasPrev) {
+                html += `<button onclick="goPrevQuestion()" style="flex:1;padding:14px;font-size:15px;background:#f0f0f0;color:#333;border:none;border-radius:10px;cursor:pointer;">← 이전</button>`;
+            }
+            if (!isLast) {
+                html += `<button onclick="showNextQuestion()" style="flex:${hasPrev ? '1' : '1'};padding:14px;font-size:${hasPrev ? '15' : '16'}px;background:${color};color:white;border:none;border-radius:10px;cursor:pointer;">${nextLabel}</button>`;
+            } else {
+                html += `<button onclick="goHome()" style="flex:1;padding:14px;font-size:15px;background:#f0f0f0;color:#333;border:none;border-radius:10px;cursor:pointer;">← 돌아가기</button>`;
+            }
+            html += '</div>';
+            return html;
         }
 
         // 정답/오답 후 "다음" 버튼 표시
@@ -3082,6 +3112,16 @@
 
             html += '<div style="font-size:13px;color:#888;margin-top:8px;border-top:1px solid #ffe0b2;padding-top:6px;">📖 정답 문장을 소리 내어 읽어보면 기억에 남아요!</div>';
 
+            // 영어: 오답 시 핵심문장 복습 버튼
+            if (currentSubject === 'english' && q.core_sentence_id) {
+                const cs = (QUIZ_DATA.core_sentences || []).find(s => s.id === q.core_sentence_id);
+                if (cs) {
+                    html += `<div style="margin-top:12px;padding-top:10px;border-top:1px dashed #FFB74D;">
+                        <button onclick="showCoreSentencePopup('${cs.id}')" style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border:2px solid #2F5496;border-radius:10px;background:#E3F2FD;color:#1565C0;font-size:14px;font-weight:600;cursor:pointer;">📖 핵심문장 복습: ${cs.text_en.substring(0, 30)}${cs.text_en.length > 30 ? '...' : ''}</button>
+                    </div>`;
+                }
+            }
+
             box.innerHTML = html;
             afterEl.after(box);
         }
@@ -3109,14 +3149,8 @@
         // =========================================================
         function showPositionAsk(q) {
             const questionText = document.getElementById('question-text');
-            // 문장을 단어별로 번호 매긴 형태로 표시
-            const words = q.sentence.split(' ');
-            let html = '<div class="position-sentence">';
-            words.forEach((w, i) => {
-                html += '<span class="word-token"><span class="word-number">' + (i + 1) + '</span>' + w + '</span> ';
-            });
-            html += '</div>';
-            questionText.innerHTML = html;
+            // 문장만 표시 — 번호는 학생이 직접 세야 함
+            questionText.innerHTML = '<div class="position-sentence" style="font-size:16px;line-height:2;letter-spacing:0.5px;">' + q.sentence + '</div>';
 
             // 선택지는 fill-blank-container 재사용
             const container = document.getElementById('fill-blank-container');
@@ -3355,6 +3389,7 @@
                     <div class="pg-author">${guide.author}</div>
                     <div class="pg-tap" style="margin-top:12px;">탭하여 해설 보기</div>
                 </div>
+                ${browseNavButtons('다음 작품 →', '#6B4C9A')}
             `;
             document.getElementById('btn-hint').style.display = 'none';
             document.getElementById('btn-next').style.display = 'none';
@@ -3456,7 +3491,7 @@
                 html += '</div>';
             }
 
-            html += `<button class="next-btn" onclick="showNextQuestion()" style="margin-top:16px;width:100%;padding:14px;font-size:16px;background:#6B4C9A;color:white;border:none;border-radius:10px;cursor:pointer;">다음 작품 →</button>`;
+            html += browseNavButtons('다음 작품 →', '#6B4C9A');
             html += '</div>';
             container.innerHTML = html;
             document.getElementById('btn-hint').style.display = 'none';
@@ -3468,6 +3503,7 @@
             container.innerHTML = `
                 <div class="concept-card-container">
                     <h3 class="cc-pair-title">${q.pair_title}</h3>
+                    ${q.visual_svg ? `<div style="margin-bottom:12px;text-align:center;overflow-x:auto;max-width:100%;">${q.visual_svg.replace(/<svg /,'<svg style="max-width:100%;height:auto;" ')}</div>` : ''}
                     <div class="cc-cards">
                         <div class="cc-card cc-card-a" onclick="this.classList.toggle('flipped')">
                             <div class="cc-front">
@@ -3494,7 +3530,7 @@
                         </div>
                     </div>
                     <div class="cc-exam-tip">🎯 시험 팁: ${q.exam_tip}</div>
-                    <button class="next-btn" onclick="showNextQuestion()" style="margin-top:16px;width:100%;padding:14px;font-size:16px;background:#6B4C9A;color:white;border:none;border-radius:10px;cursor:pointer;">다음 쌍 →</button>
+                    ${browseNavButtons('다음 쌍 →', '#6B4C9A')}
                 </div>
             `;
             document.getElementById('btn-hint').style.display = 'none';
@@ -3516,7 +3552,7 @@
                         <b>자주 쓰는 표현:</b> ${q.signal_words}<br>
                         <b>🎯 시험:</b> ${q.exam_tip}
                     </div>
-                    <button class="next-btn" onclick="showNextQuestion()" style="margin-top:16px;width:100%;padding:14px;font-size:16px;background:#6B4C9A;color:white;border:none;border-radius:10px;cursor:pointer;">다음 →</button>
+                    ${browseNavButtons('다음 →', '#6B4C9A')}
                 </div>
             `;
             document.getElementById('btn-hint').style.display = 'none';
@@ -3550,7 +3586,7 @@
                         <div style="font-size:13px;font-weight:700;color:#6B4C9A;margin-bottom:4px;">결론</div>
                         <div style="font-size:15px;">${o.conclusion}</div>
                     </div>
-                    <button class="next-btn" onclick="showNextQuestion()" style="margin-top:12px;width:100%;padding:14px;font-size:16px;background:#6B4C9A;color:white;border:none;border-radius:10px;cursor:pointer;">다음 →</button>
+                    ${browseNavButtons('다음 →', '#6B4C9A')}
                 </div>
             `;
             document.getElementById('btn-hint').style.display = 'none';
@@ -4888,12 +4924,13 @@
                         <div class="mc-tap">탭하면 설명 보기</div>
                     </div>
                     <div class="mc-back">
+                        ${q.visual_svg ? `<div class="mc-visual" style="margin-bottom:12px;text-align:center;overflow-x:auto;max-width:100%;">${q.visual_svg.replace(/<svg /,'<svg style="max-width:100%;height:auto;" ')}</div>` : ''}
                         <div class="mc-easy" style="font-size:16px;line-height:1.7;margin-bottom:12px;">💡 ${q.easy_explanation}</div>
                         <div class="mc-def" style="font-size:13px;color:#888;border-top:1px solid #eee;padding-top:8px;">📖 교과서 표현: ${q.definition}</div>
                         ${q.exam_tip ? `<div class="mc-tip" style="margin-top:8px;">🎯 ${q.exam_tip}</div>` : ''}
                     </div>
                 </div>
-                <button class="next-btn" onclick="showNextQuestion()" style="margin-top:16px;width:100%;padding:14px;font-size:16px;background:${subjectColor};color:white;border:none;border-radius:10px;cursor:pointer;">다음 카드 →</button>
+                ${browseNavButtons('다음 카드 →', subjectColor)}
             `;
             document.getElementById('btn-hint').style.display = 'none';
         }
@@ -4905,7 +4942,7 @@
             const subjectColor = currentSubject === 'social' ? '#2E7D32' : '#1565C0';
 
             let sentenceHtml = q.sentence ? `<div style="font-size:15px;line-height:1.7;margin-bottom:16px;white-space:pre-line;background:#F1F8E9;padding:12px;border-radius:8px;">${q.sentence}</div>` : '';
-            let questionHtml = q.question ? `<div style="font-size:15px;font-weight:600;margin-bottom:12px;">${q.question}</div>` : '';
+            let questionHtml = q.question ? `<div style="font-size:15px;font-weight:600;margin-bottom:12px;">${q.question.replace(/(틀린|아닌|않는|없는|못한|아닌 것|틀린 것|해당하지 않는|거리가 먼|적절하지 않은|올바르지 않은)/g, '<span style="color:#E53935;font-weight:700;text-decoration:underline;text-decoration-color:#E53935;">\$1</span>')}</div>` : '';
 
             // 보기 셔플
             const shuffled = q.options.map((opt, idx) => ({ origIdx: idx, opt }));
@@ -4969,8 +5006,113 @@
                 document.getElementById('study-options').appendChild(expDiv);
             }
 
+            // 오답 시 관련 개념카드 보기 버튼
+            if (!isCorrect && q.linked_concept && q.linked_concept.length > 0) {
+                const conceptCards = QUIZ_DATA.concept_cards || [];
+                const linked = conceptCards.filter(c => q.linked_concept.includes(c.id));
+                if (linked.length > 0) {
+                    const linkDiv = document.createElement('div');
+                    linkDiv.style.cssText = 'margin-top:10px;';
+                    linkDiv.innerHTML = linked.map(c =>
+                        `<button onclick="showLinkedConceptPopup('${c.id}')" style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;margin:4px;border:2px solid #7C4DFF;border-radius:10px;background:#EDE7F6;color:#4527A0;font-size:14px;font-weight:600;cursor:pointer;">📚 <span>${c.term}</span> 개념 복습</button>`
+                    ).join('');
+                    document.getElementById('study-options').appendChild(linkDiv);
+                }
+            }
+
             recordAnswer(q, isCorrect);
             showNextButton();
+        }
+
+        // 오답→개념카드 팝업 오버레이
+        function showLinkedConceptPopup(cardId) {
+            const conceptCards = QUIZ_DATA.concept_cards || [];
+            const card = conceptCards.find(c => c.id === cardId);
+            if (!card) return;
+
+            const overlay = document.createElement('div');
+            overlay.id = 'concept-popup-overlay';
+            overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;';
+            overlay.onclick = function(e) { if (e.target === overlay) overlay.remove(); };
+
+            const subjectColor = currentSubject === 'social' ? '#2E7D32' : '#1565C0';
+            const popup = document.createElement('div');
+            popup.style.cssText = 'background:white;border-radius:16px;max-width:420px;width:100%;max-height:80vh;overflow-y:auto;padding:24px;box-shadow:0 8px 32px rgba(0,0,0,0.3);position:relative;';
+
+            popup.innerHTML = `
+                <button onclick="document.getElementById('concept-popup-overlay').remove()" style="position:absolute;top:12px;right:12px;background:none;border:none;font-size:24px;cursor:pointer;color:#999;padding:4px 8px;">✕</button>
+                <div style="font-size:12px;color:${subjectColor};font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">📚 관련 개념카드</div>
+                <div style="font-size:20px;font-weight:700;color:#333;margin-bottom:16px;">${card.term}</div>
+                ${card.visual_svg ? `<div style="margin-bottom:16px;text-align:center;overflow-x:auto;max-width:100%;">${card.visual_svg.replace(/<svg /,'<svg style="max-width:100%;height:auto;" ')}</div>` : ''}
+                <div style="font-size:16px;line-height:1.7;margin-bottom:16px;color:#333;">💡 ${card.easy_explanation}</div>
+                <div style="font-size:13px;color:#888;border-top:1px solid #eee;padding-top:10px;line-height:1.6;">📖 교과서 표현: ${card.definition}</div>
+                ${card.exam_tip ? `<div style="margin-top:10px;font-size:13px;background:#FFF8E1;padding:10px;border-radius:8px;line-height:1.5;">🎯 시험 팁: ${card.exam_tip}</div>` : ''}
+                ${card.related_terms ? `<div style="margin-top:10px;font-size:12px;color:#999;">🔗 관련: ${card.related_terms.join(', ')}</div>` : ''}
+            `;
+
+            overlay.appendChild(popup);
+            document.body.appendChild(overlay);
+        }
+
+        // 영어 핵심문장 복습 팝업
+        function showCoreSentencePopup(csId) {
+            const coreSentences = QUIZ_DATA.core_sentences || [];
+            const cs = coreSentences.find(s => s.id === csId);
+            if (!cs) return;
+
+            // 연결된 pair 문장 찾기
+            const pair = cs.pair_id ? coreSentences.find(s => s.id === cs.pair_id) : null;
+
+            // 연결된 문법 규칙 찾기
+            const grammarRules = QUIZ_DATA.grammar_rules || [];
+            const linkedRules = (cs.linked_rule_ids || []).map(rid => grammarRules.find(r => r.id === rid)).filter(Boolean);
+
+            const overlay = document.createElement('div');
+            overlay.id = 'cs-popup-overlay';
+            overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;';
+            overlay.onclick = function(e) { if (e.target === overlay) overlay.remove(); };
+
+            const popup = document.createElement('div');
+            popup.style.cssText = 'background:white;border-radius:16px;max-width:420px;width:100%;max-height:80vh;overflow-y:auto;padding:24px;box-shadow:0 8px 32px rgba(0,0,0,0.3);position:relative;';
+
+            let html = `
+                <button onclick="document.getElementById('cs-popup-overlay').remove()" style="position:absolute;top:12px;right:12px;background:none;border:none;font-size:24px;cursor:pointer;color:#999;padding:4px 8px;">✕</button>
+                <div style="font-size:12px;color:#2F5496;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">📖 핵심문장 복습</div>
+                <div style="font-size:18px;font-weight:700;color:#1565C0;margin-bottom:6px;line-height:1.5;">${cs.text_en}</div>
+                <div style="font-size:15px;color:#555;margin-bottom:16px;line-height:1.5;">${cs.text_ko}</div>
+            `;
+
+            // TTS 버튼
+            html += `<button onclick="speakEnglish('${cs.text_en.replace(/'/g, "\\'")}')" style="display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border:1px solid #90CAF9;border-radius:8px;background:#E3F2FD;color:#1565C0;font-size:13px;cursor:pointer;margin-bottom:16px;">🔊 발음 듣기</button>`;
+
+            // 출처
+            if (cs.source) {
+                html += `<div style="font-size:12px;color:#999;margin-bottom:12px;">📍 출처: ${cs.source.replace(/_/g, ' ')}</div>`;
+            }
+
+            // pair 문장
+            if (pair) {
+                html += `<div style="background:#F3E5F5;border-radius:10px;padding:12px;margin-bottom:12px;">
+                    <div style="font-size:12px;color:#7B1FA2;font-weight:600;margin-bottom:4px;">🔗 짝 문장</div>
+                    <div style="font-size:15px;color:#4A148C;font-weight:600;">${pair.text_en}</div>
+                    <div style="font-size:14px;color:#666;margin-top:2px;">${pair.text_ko}</div>
+                </div>`;
+            }
+
+            // 연결된 문법 규칙
+            if (linkedRules.length > 0) {
+                linkedRules.forEach(rule => {
+                    html += `<div style="background:#E8F5E9;border-radius:10px;padding:12px;margin-bottom:8px;">
+                        <div style="font-size:12px;color:#2E7D32;font-weight:600;margin-bottom:4px;">📐 문법: ${rule.name || rule.id}</div>
+                        <div style="font-size:14px;color:#333;line-height:1.6;">${rule.description || ''}</div>
+                        ${rule.example ? `<div style="font-size:13px;color:#1B5E20;margin-top:6px;font-style:italic;">예: ${rule.example}</div>` : ''}
+                    </div>`;
+                });
+            }
+
+            popup.innerHTML = html;
+            overlay.appendChild(popup);
+            document.body.appendChild(overlay);
         }
 
         function generateMathConceptSession() {
@@ -4997,13 +5139,14 @@
                         <div class="mc-tap">탭하면 답 보기</div>
                     </div>
                     <div class="mc-back">
+                        ${q.visual_svg ? `<div style="margin-bottom:12px;text-align:center;overflow-x:auto;max-width:100%;">${q.visual_svg.replace(/<svg /,'<svg style="max-width:100%;height:auto;" ')}</div>` : ''}
                         <div class="mc-def">${renderMath(q.back_definition)}</div>
                         <div class="mc-easy">💡 ${renderMath(q.back_easy)}</div>
                         ${q.back_example ? `<div class="mc-example">📚 예시\n${renderMath(q.back_example)}</div>` : ''}
                         ${q.exam_tip ? `<div class="mc-tip">🎯 시험 팁: ${renderMath(q.exam_tip)}</div>` : ''}
                     </div>
                 </div>
-                <button class="next-btn" onclick="showNextQuestion()" style="margin-top:16px;width:100%;padding:14px;font-size:16px;background:#D4760A;color:white;border:none;border-radius:10px;cursor:pointer;">다음 카드 →</button>
+                ${browseNavButtons('다음 카드 →', '#D4760A')}
             `;
             document.getElementById('btn-hint').style.display = 'none';
         }
