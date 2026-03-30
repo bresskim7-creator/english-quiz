@@ -941,6 +941,11 @@
         .mc-back { text-align: left; }
         .mc-back .mc-def { font-size: 14px; line-height: 1.6; margin-bottom: 12px; white-space: pre-line; background: #FFF8E1; padding: 12px; border-radius: 8px; }
         .mc-back .mc-easy { font-size: 14px; line-height: 1.7; margin-bottom: 12px; white-space: pre-line; }
+        /* 자동 하이라이트 스타일 */
+        .hl-term { background: linear-gradient(transparent 55%, #FFEB3B88 55%); font-weight: 600; }
+        .hl-formula { color: #1565C0; font-weight: 600; }
+        .hl-keyword { border-bottom: 2px solid #FF9800; font-weight: 600; }
+        .hl-quote { font-weight: 600; color: #5D4037; }
         .mc-back .mc-example { font-size: 13px; line-height: 1.6; background: #F5F5F5; padding: 10px; border-radius: 8px; white-space: pre-line; margin-bottom: 12px; }
         .mc-back .mc-tip { font-size: 13px; background: #FFF3E0; padding: 10px; border-radius: 8px; border-left: 3px solid #D4760A; }
         .preparing-msg { color: #999; font-size: 14px; text-align: center; padding: 10px; }
@@ -1248,22 +1253,22 @@
                 <div class="subject-card korean" onclick="selectSubject('korean')">
                     <div class="subject-card-icon">📕</div>
                     <div class="subject-card-name">국어</div>
-                    <div class="subject-card-sub">1단원</div>
+                    <div class="subject-card-sub">1·2단원</div>
                 </div>
                 <div class="subject-card math" onclick="selectSubject('math')">
                     <div class="subject-card-icon">📐</div>
                     <div class="subject-card-name">수학</div>
-                    <div class="subject-card-sub">유리수와 순환소수</div>
+                    <div class="subject-card-sub">1·2단원</div>
                 </div>
                 <div class="subject-card social" onclick="selectSubject('social')">
                     <div class="subject-card-icon">🏛️</div>
                     <div class="subject-card-name">사회</div>
-                    <div class="subject-card-sub">국가 기관과 권력 분립</div>
+                    <div class="subject-card-sub">1·2단원</div>
                 </div>
                 <div class="subject-card science" onclick="selectSubject('science')">
                     <div class="subject-card-icon">🔬</div>
                     <div class="subject-card-name">과학</div>
-                    <div class="subject-card-sub">물질의 특성</div>
+                    <div class="subject-card-sub">1·2단원</div>
                 </div>
             </div>
             <div id="webhook-settings-toggle" style="font-size:12px;color:#999;cursor:pointer;text-align:center;margin-top:24px;" onclick="document.getElementById('webhook-settings').style.display='block';this.style.display='none';">⚙️ 설정</div>
@@ -4921,6 +4926,32 @@
         }
 
         // 사회/과학 개념카드 렌더러
+        // ── 개념카드 텍스트 자동 하이라이트 ──
+        function highlightText(text, term) {
+            if (!text) return text;
+            let s = text;
+
+            // 1) 해당 카드의 term이 설명에 등장하면 형광펜
+            if (term) {
+                const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                s = s.replace(new RegExp('(' + escaped + ')', 'g'), '<span class="hl-term">$1</span>');
+            }
+
+            // 2) 「」 『』 작품명/용어 → 굵게
+            s = s.replace(/([「『][^」』]+[」』])/g, '<span class="hl-quote">$1</span>');
+
+            // 3) 숫자+단위 (g/cm³, °C, %, mL 등) → 파란 볼드
+            s = s.replace(/(\d+\.?\d*\s*(?:g\/cm[³3]|°C|%|mL|cm|kg|g|m\/s|J|N|L|mol))/g, '<span class="hl-formula">$1</span>');
+
+            // 4) = 등호 포함 공식 (밀도 = 질량 ÷ 부피 등) → 파란 볼드
+            s = s.replace(/([\w가-힣]+\s*[=＝]\s*[\w가-힣\s÷×\+\-\/\(\)]+)/g, '<span class="hl-formula">$1</span>');
+
+            // 5) 핵심 패턴: ~(이)란, ~(이)라 하, ~을/를 뜻 → 정의 밑줄
+            s = s.replace(/([\w가-힣]+(?:이란|란|이라 하|라 하|을 뜻하|를 뜻하|을 의미하|를 의미하)[^\.\,]*)/g, '<span class="hl-keyword">$1</span>');
+
+            return s;
+        }
+
         function showStudyConceptCard(q) {
             const container = document.getElementById('question-container');
             const subjectColor = currentSubject === 'social' ? '#2E7D32' : '#1565C0';
@@ -4933,9 +4964,9 @@
                     </div>
                     <div class="mc-back">
                         ${q.visual_svg ? `<div class="mc-visual" style="margin-bottom:12px;text-align:center;overflow-x:auto;max-width:100%;">${q.visual_svg.replace(/<svg /,'<svg style="max-width:100%;height:auto;" ')}</div>` : ''}
-                        <div class="mc-easy" style="font-size:16px;line-height:1.7;margin-bottom:12px;">💡 ${q.easy_explanation}</div>
+                        <div class="mc-easy" style="font-size:16px;line-height:1.7;margin-bottom:12px;">💡 ${highlightText(q.easy_explanation, q.term)}</div>
                         <div class="mc-def" style="font-size:13px;color:#888;border-top:1px solid #eee;padding-top:8px;">📖 교과서 표현: ${q.definition}</div>
-                        ${q.exam_tip ? `<div class="mc-tip" style="margin-top:8px;">🎯 ${q.exam_tip}</div>` : ''}
+                        ${q.exam_tip ? `<div class="mc-tip" style="margin-top:8px;">🎯 ${highlightText(q.exam_tip, q.term)}</div>` : ''}
                     </div>
                 </div>
                 ${browseNavButtons('다음 카드 →', subjectColor)}
@@ -5052,9 +5083,9 @@
                 <div style="font-size:12px;color:${subjectColor};font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">📚 관련 개념카드</div>
                 <div style="font-size:20px;font-weight:700;color:#333;margin-bottom:16px;">${card.term}</div>
                 ${card.visual_svg ? `<div style="margin-bottom:16px;text-align:center;overflow-x:auto;max-width:100%;">${card.visual_svg.replace(/<svg /,'<svg style="max-width:100%;height:auto;" ')}</div>` : ''}
-                <div style="font-size:16px;line-height:1.7;margin-bottom:16px;color:#333;">💡 ${card.easy_explanation}</div>
+                <div style="font-size:16px;line-height:1.7;margin-bottom:16px;color:#333;">💡 ${highlightText(card.easy_explanation, card.term)}</div>
                 <div style="font-size:13px;color:#888;border-top:1px solid #eee;padding-top:10px;line-height:1.6;">📖 교과서 표현: ${card.definition}</div>
-                ${card.exam_tip ? `<div style="margin-top:10px;font-size:13px;background:#FFF8E1;padding:10px;border-radius:8px;line-height:1.5;">🎯 시험 팁: ${card.exam_tip}</div>` : ''}
+                ${card.exam_tip ? `<div style="margin-top:10px;font-size:13px;background:#FFF8E1;padding:10px;border-radius:8px;line-height:1.5;">🎯 시험 팁: ${highlightText(card.exam_tip, card.term)}</div>` : ''}
                 ${card.related_terms ? `<div style="margin-top:10px;font-size:12px;color:#999;">🔗 관련: ${card.related_terms.join(', ')}</div>` : ''}
             `;
 
@@ -5149,9 +5180,9 @@
                     <div class="mc-back">
                         ${q.visual_svg ? `<div style="margin-bottom:12px;text-align:center;overflow-x:auto;max-width:100%;">${q.visual_svg.replace(/<svg /,'<svg style="max-width:100%;height:auto;" ')}</div>` : ''}
                         <div class="mc-def">${renderMath(q.back_definition)}</div>
-                        <div class="mc-easy">💡 ${renderMath(q.back_easy)}</div>
+                        <div class="mc-easy">💡 ${highlightText(renderMath(q.back_easy), q.title)}</div>
                         ${q.back_example ? `<div class="mc-example">📚 예시\n${renderMath(q.back_example)}</div>` : ''}
-                        ${q.exam_tip ? `<div class="mc-tip">🎯 시험 팁: ${renderMath(q.exam_tip)}</div>` : ''}
+                        ${q.exam_tip ? `<div class="mc-tip">🎯 시험 팁: ${highlightText(renderMath(q.exam_tip), q.title)}</div>` : ''}
                     </div>
                 </div>
                 ${browseNavButtons('다음 카드 →', '#D4760A')}
