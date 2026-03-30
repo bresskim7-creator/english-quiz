@@ -1838,8 +1838,8 @@
                 return;
             }
 
-            // 사회/과학은 _isV3 없이 바로 모드 셀렉터 표시
-            if (!QUIZ_DATA._isV3 && currentSubject !== 'korean' && currentSubject !== 'social' && currentSubject !== 'science') {
+            // 사회/과학/수학은 _isV3 없이 바로 모드 셀렉터 표시
+            if (!QUIZ_DATA._isV3 && currentSubject !== 'korean' && currentSubject !== 'social' && currentSubject !== 'science' && currentSubject !== 'math') {
                 // Legacy schema — hide mode selector
                 document.getElementById('mode-selector-container').style.display = 'none';
                 document.getElementById('mode-preparing-msg').style.display = 'none';
