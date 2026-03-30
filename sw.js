@@ -1,4 +1,4 @@
-const CACHE_NAME = 'quiz-v50';
+const CACHE_NAME = 'quiz-v51';
 const PRECACHE_URLS = [
   './',
   './index.html',
@@ -10,6 +10,7 @@ const PRECACHE_URLS = [
   './lesson_kor1.js',
   './lesson_kor2.js',
   './kor1_reader.js',
+  './kor2_reader.js',
   './lesson_math1.js',
   './lesson_math2.js',
   './lesson_soc1.js',

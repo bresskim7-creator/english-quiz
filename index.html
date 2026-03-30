@@ -1504,6 +1504,7 @@
     </div>
 
     <script src="kor1_reader.js"></script>
+    <script src="kor2_reader.js"></script>
     <script>
         // 전역 변수
         let isMuted = localStorage.getItem('sound_muted') === 'true';
@@ -3399,8 +3400,14 @@
         // ── 원문 리더 (책처럼 보기) ──
         let readerFontLevel = 1; // 0=small, 1=medium, 2=large
 
+        function getReaderTexts() {
+            // 현재 레슨에 따라 올바른 reader 데이터 반환
+            if (currentLesson === 'kor2') return window.__kor2ReaderTexts || {};
+            return window.__korReaderTexts || {};
+        }
+
         function openReader(guideId) {
-            const texts = window.__korReaderTexts;
+            const texts = getReaderTexts();
             if (!texts || !texts[guideId]) {
                 alert('원문 데이터를 찾을 수 없습니다.');
                 return;
@@ -3459,8 +3466,9 @@
             html += `<h2 class="pg-full-title">📖 ${guide.title}</h2>`;
             html += `<p class="pg-full-meta">${guide.author} · ${guide.genre} · ${guide.source_book || ''}</p>`;
 
-            // 원문 읽기 버튼 (kor1_reader.js에 해당 텍스트가 있을 때만)
-            if (window.__korReaderTexts && guide.id && window.__korReaderTexts[guide.id]) {
+            // 원문 읽기 버튼 (현재 레슨의 reader 데이터에 해당 텍스트가 있을 때만)
+            const _readerTexts = getReaderTexts();
+            if (_readerTexts && guide.id && _readerTexts[guide.id]) {
                 html += `<button class="pg-read-original-btn" onclick="openReader('${guide.id}')">📖 교과서 원문 읽기</button>`;
             }
 
