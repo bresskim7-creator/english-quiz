@@ -1795,7 +1795,6 @@ __loadLesson({
       "hint": "드라이클리닝이 어떤 물질을 사용하는지 찾으세요.",
       "wrong_explanations": {
         "1": "💡 물질의 이름을 다시 읽으세요. 무엇으로 세척합니까?",
-        "2": "💡 주인이 본 것은 무엇입니까? 텍스트를 다시 읽으세요.",
         "3": "💡 1800년대에 누가 발견했습니까?"
       },
       "core_sentence_id": null,
@@ -1825,7 +1824,6 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "세 가지 발명 중 어느 것이 '우연'으로 발명되었습니까?",
       "wrong_explanations": {
-        "1": "💡 안전 유리가 만들어진 이유를 다시 읽으세요.",
         "2": "💡 드라이클리닝 발견 과정을 다시 읽으세요.",
         "3": "💡 사안전 유리는 어떤 사고로부터 시작되었습니까?"
       },
@@ -1856,7 +1854,6 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "안전 유리가 사용되는 장소를 찾으세요.",
       "wrong_explanations": {
-        "1": "💡 '예를 들어' 다음 부분을 읽으세요.",
         "2": "💡 텍스트에서 언급된 구체적인 사용처는?",
         "3": "💡 안전 유리가 '어디에' 사용된다고 했습니까?"
       },
@@ -1887,7 +1884,6 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "텍스트에서 실제로 '말하지 않은 것'을 찾으세요.",
       "wrong_explanations": {
-        "0": "💡 칩이 녹지 않았다고 분명히 나와 있습니다.",
         "1": "💡 시간이 없었다고 명시되어 있습니다.",
         "3": "💡 초콜릿 칩 쿠키가 맛있었다고 나와 있습니다."
       },
@@ -1918,7 +1914,6 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "'어떻게' 안전 유리가 발명되었는지 다시 읽으세요.",
       "wrong_explanations": {
-        "0": "💡 Benedictus가 '의도적으로' 유리를 떨어뜨렸습니까?",
         "1": "💡 유리가 '완전히' 부러졌습니까? 아니면 함께 있었습니까?",
         "3": "💡 플라스크 '안에' 무엇이 있었습니까?"
       },
@@ -1949,7 +1944,6 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "드라이클리닝의 '발견'에 대해 다시 읽으세요.",
       "wrong_explanations": {
-        "1": "💡 Mr. Jolly가 무엇을 '의도적으로' 했습니까?",
         "2": "💡 누가 실수로 오일을 쏟았습니까?",
         "3": "💡 'Dry cleaning'이 이미 존재했습니까?"
       },
@@ -1980,7 +1974,6 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "세 발명이 '모두' 어떻게 나타났는지 확인하세요.",
       "wrong_explanations": {
-        "1": "💡 첫 번째 발명의 과정을 다시 읽으세요.",
         "2": "💡 'Although' 부분을 다시 읽어 보세요.",
         "3": "💡 세 번째 발명이 어떻게 발견되었습니까?"
       },
@@ -2011,7 +2004,6 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "안전 유리의 사용처에 대해 다시 읽으세요.",
       "wrong_explanations": {
-        "1": "💡 안전 유리가 '어디에' 사용된다고 했습니까?",
         "2": "💡 텍스트는 비행기에 대해 말합니까?",
         "3": "💡 안전 유리가 사람들을 '어떻게' 안전하게 합니까?"
       },
@@ -2043,7 +2035,6 @@ __loadLesson({
       "hint": "세 예시의 공통점을 찾으세요. 우연인가요? 설계인가요?",
       "wrong_explanations": {
         "1": "💡 이 글이 '방법'을 설명합니까? 아니면 어떤 이야기를 하고 있습니까?",
-        "2": "💡 글의 핵심이 '실패'인가요, 아니면 '긍정적인 결과'인가요?",
         "3": "💡 이 발명들이 정말 '계획적'이었습니까?"
       },
       "core_sentence_id": null,
@@ -2074,7 +2065,6 @@ __loadLesson({
       "hint": "글의 마지막 메시지를 읽으세요. 독자에게 무엇을 전하려고 합니까?",
       "wrong_explanations": {
         "1": "💡 이 글이 '공부하는 방법'에 대한 것입니까?",
-        "2": "💡 발명가들이 '실패했습니까'? 아니면 '성공했습니까'?",
         "3": "💡 이 글의 목표가 무엇입니까? 누구에게 영감을 주려는 것입니까?"
       },
       "core_sentence_id": null,
@@ -2135,7 +2125,6 @@ __loadLesson({
       "instruction": "다음 글에서 ( ) 안에 들어갈 문장으로 가장 적절한 것을 고르세요.",
       "hint": "유리가 부러졌다. 그 다음에 무엇이 일어났을까요?",
       "wrong_explanations": {
-        "1": "💡 조각들이 떨어져 나갔습니까? 아니면 함께 있었습니까?",
         "2": "💡 유리가 '예상대로' 행동했습니까? 아니면 '놀랍게도' 행동했습니까?",
         "3": "💡 플라스틱은 어떤 역할을 했습니까?"
       },
@@ -2197,7 +2186,6 @@ __loadLesson({
       "instruction": "다음 문장들을 논리적 순서대로 배열할 때, 가장 적절한 순서는?",
       "hint": "사건의 순서: 실수 → 관찰 → 이해 → 활용을 생각하세요.",
       "wrong_explanations": {
-        "1": "💡 '발명'이 되기 전에 먼저 무엇을 해야 합니까?",
         "2": "💡 '발견'이 되려면 먼저 '사건'이 일어나야 합니다.",
         "3": "💡 안전유리로 사용되기 전에 무엇을 깨달아야 합니까?"
       },
@@ -2324,7 +2312,6 @@ __loadLesson({
       "hint": "과거 사건이므로 'was' 또는 'were' + 과거분사를 찾으세요.",
       "wrong_explanations": {
         "0": "💡 'created'는 과거분사입니다. 시간 표시를 다시 읽으세요.",
-        "1": "💡 'was created by'가 맞는 수동태입니다.",
         "3": "💡 'creating'은 동명사이지 수동태가 아닙니다."
       },
       "core_sentence_id": null,
@@ -2422,7 +2409,6 @@ __loadLesson({
       "instruction": "다음 문장에서 어법상 틀린 부분을 고르세요.",
       "hint": "수동태 형태를 확인하세요. be동사 + 과거분사가 맞는 형태입니다.",
       "wrong_explanations": {
-        "0": "💡 'The book'은 문법적으로 올바릅니다.",
         "1": "💡 'was'는 올바른 be동사입니다. 과거분사를 확인하세요.",
         "3": "💡 'him'은 기본 구조에서 옳은 표현입니다."
       },
@@ -2455,7 +2441,6 @@ __loadLesson({
       "instruction": "다음 문장에서 어법상 틀린 부분을 고르세요.",
       "hint": "수동태에서 필수적인 요소를 다시 확인하세요.",
       "wrong_explanations": {
-        "0": "💡 'The window'는 수동태의 주어로서 올바릅니다.",
         "1": "💡 'broken'은 과거분사입니다. 앞에 무엇이 있어야 합니까?",
         "2": "💡 이 전치사 구조는 올바릅니다.",
         "3": "💡 'yesterday'는 시간 표현으로서 올바릅니다."
@@ -2490,7 +2475,6 @@ __loadLesson({
       "hint": "'Although'를 쓰면 'but'을 쓸 수 없습니다.",
       "wrong_explanations": {
         "0": "💡 'Although'는 종속절을 만드는 접속사입니다.",
-        "2": "💡 'disappointed'는 형용사입니다. 이것이 문제입니까?",
         "3": "💡 'cookies'는 명사입니다. 문제가 없습니다."
       },
       "core_sentence_id": null,
@@ -2523,7 +2507,6 @@ __loadLesson({
       "hint": "수동태 구조: be + 과거분사. 과거 사건이므로 'was' 또는 'were'를 확인하세요.",
       "wrong_explanations": {
         "0": "💡 'create'는 과거분사가 아닙니다.",
-        "1": "💡 'creating'은 동명사입니다.",
         "3": "💡 'was creating'은 과거 진행형입니다."
       },
       "core_sentence_id": null,
@@ -2654,7 +2637,6 @@ __loadLesson({
       "instruction": "다음 중 'by'의 용법이 다른 것을 고르세요.",
       "hint": "'by accident' = 우연히 | 'by + 행위자' = 수동태에서 '~에 의해'",
       "wrong_explanations": {
-        "0": "💡 이것은 '~에 의해'라는 뜻입니다. 행위자를 나타냅니다.",
         "2": "💡 이것은 '~에 의해'라는 뜻입니다. 행위자를 나타냅니다.",
         "3": "💡 이것은 '~에 의해'라는 뜻입니다. 행위자를 나타냅니다."
       },
@@ -2720,7 +2702,6 @@ __loadLesson({
       "instruction": "다음 빈칸 (1)과 (2)에 들어갈 올바른 형태를 고르세요.",
       "hint": "시간 관계를 생각하세요. 'in 1903'은 과거입니다.",
       "wrong_explanations": {
-        "0": "💡 'invented'는 과거분사입니다. 보조동사와 함께 봐야 합니다.",
         "2": "💡 시간 표현을 다시 읽으세요. 현재가 아닙니다.",
         "3": "💡 두 빈칸의 형태를 함께 확인하세요."
       },
@@ -2787,7 +2768,6 @@ __loadLesson({
       "hint": "be동사 + 과거분사 구조와 'although' 사용법을 확인하세요.",
       "wrong_explanations": {
         "0": "💡 몇 가지 오류를 찾아보세요.",
-        "1": "💡 정말 한 군데만 틀렸을까요?",
         "3": "💡 'although'의 사용과 수동태 형태를 다시 확인하세요."
       },
       "core_sentence_id": null,
@@ -3255,7 +3235,6 @@ __loadLesson({
       "instruction": "다음 단어의 한국어 뜻을 고르세요.",
       "hint": "무엇인가를 찾아내는 행위",
       "wrong_explanations": {
-        "0": "💡 정답! discovery = 발견",
         "1": "💡 invention(발명)은 새로운 것을 만드는 것이에요. discovery와는 달라요.",
         "2": "💡 fact(사실)은 발견된 내용이지, 발견 자체가 아니에요.",
         "3": "💡 lesson(교훈)은 배운 것이에요."
@@ -3285,7 +3264,6 @@ __loadLesson({
       "instruction": "다음 단어의 한국어 뜻을 고르세요.",
       "hint": "밀가루와 물을 섞은 재료",
       "wrong_explanations": {
-        "0": "💡 정답! dough = 반죽",
         "1": "💡 flour(밀가루)는 반죽의 한 재료일 뿐이에요.",
         "2": "💡 mixture(혼합물)은 너무 넓은 의미예요.",
         "3": "💡 paste(풀, 페이스트)는 다른 종류의 혼합물이에요."
@@ -3402,7 +3380,6 @@ __loadLesson({
       "instruction": "다음 단어의 한국어 뜻을 고르세요.",
       "hint": "과학적으로 어떤 것을 시험해 보다",
       "wrong_explanations": {
-        "0": "💡 정답! experiment = 실험",
         "1": "💡 test(시험)는 결과를 평가하는 것이에요.",
         "2": "💡 study(연구)는 더 넓은 개념이에요.",
         "3": "💡 research(조사)는 정보를 모으는 것이에요."
@@ -3461,7 +3438,6 @@ __loadLesson({
       "instruction": "다음 단어의 한국어 뜻을 고르세요.",
       "hint": "대량으로 물건을 만드는 곳",
       "wrong_explanations": {
-        "0": "💡 정답! factory = 공장",
         "1": "💡 company(회사)는 더 넓은 조직이에요.",
         "2": "💡 building(건물)은 종류를 특정하지 않아요.",
         "3": "💡 shop(가게)는 팔고 사는 곳이에요."
@@ -3520,7 +3496,6 @@ __loadLesson({
       "instruction": "다음 단어의 한국어 뜻을 고르세요.",
       "hint": "발견한 것, 조사나 연구의 결과",
       "wrong_explanations": {
-        "0": "💡 정답! finding = 발견",
         "1": "💡 find(찾다)는 동사예요. finding과는 형태가 다르죠.",
         "2": "💡 result(결과)는 더 넓은 의미예요.",
         "3": "💡 solution(해결책)은 문제를 해결한 것이에요."
@@ -3782,7 +3757,6 @@ __loadLesson({
       "instruction": "다음 밑줄 친 단어와 같은 의미의 표현을 고르세요.",
       "hint": "Something new that someone creates",
       "wrong_explanations": {
-        "1": "💡 discovery(발견)는 이미 있던 것을 찾는 거예요.",
         "2": "💡 equipment(장비)는 여러 것의 집합이에요.",
         "3": "💡 material(재료)는 무언가를 만드는 데 사용되는 것이에요."
       },
@@ -3811,7 +3785,6 @@ __loadLesson({
       "instruction": "다음 밑줄 친 단어와 같은 의미의 표현을 고르세요.",
       "hint": "A person who invents new things",
       "wrong_explanations": {
-        "1": "💡 discoverer(발견자)는 이미 있던 것을 찾은 사람이에요.",
         "2": "💡 scientist(과학자)는 더 넓은 범주예요.",
         "3": "💡 creator(창조자)는 발명가보다 포괄적이에요."
       },
@@ -3840,7 +3813,6 @@ __loadLesson({
       "instruction": "다음 밑줄 친 단어와 같은 의미의 표현을 고르세요.",
       "hint": "A device that produces light",
       "wrong_explanations": {
-        "1": "💡 light(빛, 조명)는 더 일반적인 의미예요.",
         "2": "💡 bulb(전구)는 lamp의 부분일 뿐이에요.",
         "3": "💡 torch(손전등)는 휴대용 조명이에요."
       },
@@ -3869,7 +3841,6 @@ __loadLesson({
       "instruction": "다음 밑줄 친 단어와 같은 의미의 표현을 고르세요.",
       "hint": "To cause or result in something",
       "wrong_explanations": {
-        "1": "💡 follow(따르다)는 반대 의미예요.",
         "2": "💡 come from(~에서 나오다)는 출발점을 강조해요.",
         "3": "💡 cause(원인이 되다)는 원인만을 강조해요."
       },
@@ -3898,7 +3869,6 @@ __loadLesson({
       "instruction": "다음 밑줄 친 단어와 같은 의미의 표현을 고르세요.",
       "hint": "A substance that flows and has no fixed shape",
       "wrong_explanations": {
-        "1": "💡 water(물)은 liquid의 한 종류일 뿐이에요.",
         "2": "💡 oil(기름)은 특정 종류의 액체예요.",
         "3": "💡 substance(물질)은 너무 넓은 의미예요."
       },
@@ -3927,7 +3897,6 @@ __loadLesson({
       "instruction": "다음 밑줄 친 단어와 같은 의미의 표현을 고르세요.",
       "hint": "A person who controls or organizes something",
       "wrong_explanations": {
-        "1": "💡 boss(상사)는 더 일반적인 상급자를 말해요.",
         "2": "💡 leader(지도자)는 더 광범위한 역할이에요.",
         "3": "💡 supervisor(감시자)는 감독하는 것을 강조해요."
       },
@@ -3956,7 +3925,6 @@ __loadLesson({
       "instruction": "다음 밑줄 친 단어와 같은 의미의 표현을 고르세요.",
       "hint": "To change from solid to liquid by heating",
       "wrong_explanations": {
-        "1": "💡 break(부수다)는 녹는 것이 아니라 깨지는 거예요.",
         "2": "💡 dissolve(녹다)는 액체에 섞이는 의미예요.",
         "3": "💡 heat(데우다)는 녹게 하는 과정일 뿐이에요."
       },
@@ -4132,8 +4100,7 @@ __loadLesson({
       "wrong_explanations": {
         "0": "💡 flour(밀가루)는 요리 재료예요.",
         "1": "💡 salt(소금)는 요리 재료예요.",
-        "2": "💡 sugar(설탕)는 요리 재료예요.",
-        "3": "💡 bottle(병)은 용기지, 요리 재료가 아니에요!"
+        "2": "💡 sugar(설탕)는 요리 재료예요."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4161,7 +4128,6 @@ __loadLesson({
       "hint": "발명과 관련된 단어들",
       "wrong_explanations": {
         "0": "💡 invent(발명하다)는 새로운 것을 만드는 거예요.",
-        "1": "💡 discover(발견하다)는 이미 있는 것을 찾는 거예요.",
         "2": "💡 create(창조하다)는 새로운 것을 만드는 거예요.",
         "3": "💡 make(만들다)는 무언가를 제작하는 거예요."
       },
@@ -4192,8 +4158,7 @@ __loadLesson({
       "wrong_explanations": {
         "0": "💡 disappointed(실망한)은 부정적인 감정이에요.",
         "1": "💡 sad(슬픈)은 부정적인 감정이에요.",
-        "2": "💡 angry(화난)은 부정적인 감정이에요.",
-        "3": "💡 happy(행복한)은 긍정적인 감정이에요!"
+        "2": "💡 angry(화난)은 부정적인 감정이에요."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4220,7 +4185,6 @@ __loadLesson({
       "instruction": "다음 문장에서 3번째 단어를 고르세요.",
       "hint": "'By chance' 다음에 오는 단어",
       "wrong_explanations": {
-        "1": "💡 'By'는 첫 번째 단어예요.",
         "2": "💡 'chance'는 두 번째 단어예요.",
         "3": "💡 'Ruth'가 세 번째 단어예요."
       },
@@ -4309,7 +4273,6 @@ __loadLesson({
       "hint": "'I'm sure that'은 '~라고 확신해'라는 뜻이에요.",
       "wrong_explanations": {
         "1": "💡 '너는 어디 출신이야?'는 대화의 맥락과 안 맞아요.",
-        "2": "💡 '넌 집이 어디야?'도 맥락이 다르네요.",
         "3": "💡 '너는 정말 똑똑해'는 칭찬이지만, 여기선 대회 우승에 대한 확신을 말해야 해요."
       },
       "core_sentence_id": "CS02",
@@ -4339,7 +4302,6 @@ __loadLesson({
       "hint": "대화의 흐름을 따라가 보세요. A가 설명을 해주고, B가 확신을 표현하는 상황이에요.",
       "wrong_explanations": {
         "1": "💡 '이건 너무 어려워'는 부정적인 표현이고, A의 설명 이후에 안 맞아요.",
-        "2": "💡 '나는 과학을 좋아하지 않아'는 대회 이야기와 관련 없어요.",
         "3": "💡 '정말? 더 설명해 줄 수 있어?'는 A의 설명 후에 나오는 말이 아니에요."
       },
       "core_sentence_id": "CS01",
