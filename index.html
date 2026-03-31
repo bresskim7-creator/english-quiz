@@ -1248,7 +1248,7 @@
                 <div class="subject-card english" onclick="selectSubject('english')">
                     <div class="subject-card-icon">📘</div>
                     <div class="subject-card-name">영어</div>
-                    <div class="subject-card-sub">Lesson 1·2</div>
+                    <div class="subject-card-sub">Lesson 1·3</div>
                 </div>
                 <div class="subject-card korean" onclick="selectSubject('korean')">
                     <div class="subject-card-icon">📕</div>
@@ -1258,7 +1258,7 @@
                 <div class="subject-card math" onclick="selectSubject('math')">
                     <div class="subject-card-icon">📐</div>
                     <div class="subject-card-name">수학</div>
-                    <div class="subject-card-sub">1·2단원</div>
+                    <div class="subject-card-sub">Ⅰ·Ⅱ단원</div>
                 </div>
                 <div class="subject-card social" onclick="selectSubject('social')">
                     <div class="subject-card-icon">🏛️</div>
@@ -1296,6 +1296,7 @@
                     <div class="lesson-selector" id="lesson-selector">
                         <button class="lesson-btn active" id="lesson-btn-1" onclick="selectLesson(1)">1</button>
                         <button class="lesson-btn" id="lesson-btn-2" onclick="selectLesson(2)">2</button>
+                        <button class="lesson-btn" id="lesson-btn-3" onclick="selectLesson(3)">3</button>
                     </div>
                 </div>
 
@@ -1780,11 +1781,11 @@
             const lessonRow = document.getElementById('lesson-row');
             if (subject === 'korean') {
                 lessonRow.querySelector('.setting-label').textContent = '단원';
-                lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-kor1" onclick="selectLesson(\'kor1\')">1단원</button><button class="lesson-btn" id="lesson-btn-kor2" onclick="selectLesson(\'kor2\')">2단원</button>';
+                lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-kor1" onclick="selectLesson(\'kor1\')">1단원</button>'; // 2단원은 시험범위 밖 — 시험 후 복원: + '<button class="lesson-btn" id="lesson-btn-kor2" onclick="selectLesson(\'kor2\')">2단원</button>'
                 await loadLesson('kor1');
             } else if (subject === 'math') {
                 lessonRow.querySelector('.setting-label').textContent = '단원';
-                lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-math1" onclick="selectLesson(\'math1\')">1단원</button><button class="lesson-btn" id="lesson-btn-math2" onclick="selectLesson(\'math2\')">2단원</button>';
+                lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-math1" onclick="selectLesson(\'math1\')">Ⅰ. 유리수</button><button class="lesson-btn" id="lesson-btn-math2" onclick="selectLesson(\'math2\')">Ⅱ-1 식의계산</button><button class="lesson-btn" id="lesson-btn-math3" onclick="selectLesson(\'math3\')">Ⅱ-2 부등식</button>';
                 await loadLesson('math1');
             } else if (subject === 'social') {
                 lessonRow.querySelector('.setting-label').textContent = '단원';
@@ -1792,13 +1793,14 @@
                 await loadLesson('soc1');
             } else if (subject === 'science') {
                 lessonRow.querySelector('.setting-label').textContent = '단원';
-                lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-sci1" onclick="selectLesson(\'sci1\')">1단원</button><button class="lesson-btn" id="lesson-btn-sci2" onclick="selectLesson(\'sci2\')">2단원</button>';
+                lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-sci1" onclick="selectLesson(\'sci1\')">1단원</button>'; // 2단원(지권의변화)은 시험범위 밖 — 시험 후 복원: + '<button class="lesson-btn" id="lesson-btn-sci2" onclick="selectLesson(\'sci2\')">2단원</button>'
                 await loadLesson('sci1');
             } else {
                 lessonRow.querySelector('.setting-label').textContent = 'Lesson';
                 lessonSelector.innerHTML =
                     '<button class="lesson-btn active" id="lesson-btn-1" onclick="selectLesson(1)">1</button>' +
-                    '<button class="lesson-btn" id="lesson-btn-2" onclick="selectLesson(2)">2</button>';
+                    // L2는 시험범위 밖 — 시험 후 복원: '<button class="lesson-btn" id="lesson-btn-2" onclick="selectLesson(2)">2</button>' +
+                    '<button class="lesson-btn" id="lesson-btn-3" onclick="selectLesson(3)">3</button>';
                 await loadLesson(1);
             }
             updateSubtitle();
@@ -4865,7 +4867,7 @@
                 const lessonLabel = typeof currentLesson === 'string' ? currentLesson.replace('kor', '') + '단원' : currentLesson;
                 return modeLabel ? `국어 ${lessonLabel} · ${modeLabel}` : `국어 ${lessonLabel}`;
             } else if (currentSubject === 'math') {
-                const title = QUIZ_DATA ? QUIZ_DATA.title?.replace('수학 1단원: ', '') : '유리수와 순환소수';
+                const title = QUIZ_DATA ? QUIZ_DATA.title : '유리수와 순환소수';
                 return modeLabel ? `수학 · ${modeLabel}` : `수학 · ${title}`;
             } else if (currentSubject === 'social') {
                 return modeLabel ? `사회 · ${modeLabel}` : '사회';

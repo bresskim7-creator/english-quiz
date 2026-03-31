@@ -1,4 +1,4 @@
-const CACHE_NAME = 'quiz-v55';
+const CACHE_NAME = 'quiz-v62';
 const PRECACHE_URLS = [
   './',
   './index.html',
@@ -6,17 +6,20 @@ const PRECACHE_URLS = [
   './icon-192.png',
   './icon-512.png',
   './lesson1.js',
-  './lesson2.js',
+  // './lesson2.js',        // 시험범위 밖 — 시험 후 복원
+  './lesson3.js',
   './lesson_kor1.js',
-  './lesson_kor2.js',
+  // './lesson_kor2.js',    // 시험범위 밖 — 시험 후 복원
   './kor1_reader.js',
-  './kor2_reader.js',
+  // './kor2_reader.js',    // 시험범위 밖 — 시험 후 복원
   './lesson_math1.js',
   './lesson_math2.js',
+  './lesson_math3.js',
   './lesson_soc1.js',
   './lesson_soc2.js',
-  './lesson_sci1.js',
-  './lesson_sci2.js'
+  './lesson_sci1.js'
+  // './lesson_sci2.js',    // 시험범위 밖 — 시험 후 복원
+  // './lesson_sci3.js',    // 과학 A반 확인 후 추가
 ];
 
 self.addEventListener('install', event => {

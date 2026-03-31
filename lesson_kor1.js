@@ -1,7 +1,7 @@
 __loadLesson({
   "lesson": "kor1",
   "subject": "korean",
-  "title": "국어 1단원: 표현의 즐거움",
+  "title": "국어 1단원: 능동적으로 읽는 힘",
   "subtitle": "1-01 읽기 과정의 점검과 조정 / 1-02 문학 속 말하는 이·보는 이",
   "publisher": "visang",
   "grade": 2,

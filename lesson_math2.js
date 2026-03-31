@@ -1,9 +1,9 @@
-// lesson_math2.js — 문자와 식 (v1.0)
+// lesson_math2.js — Ⅱ. 문자와 식 > 1. 식의 계산 (v1.0)
 // JSONP wrapper
 __loadLesson({
   "lesson": "math2",
   "subject": "math",
-  "title": "수학 2단원: 문자와 식",
+  "title": "Ⅱ. 문자와 식 — 1. 식의 계산",
   "subtitle": "지수법칙 / 단항식의 곱셈과 나눗셈 / 다항식의 계산",
   "publisher": "교과서 기반",
   "grade": 2,

@@ -1,9 +1,9 @@
-// lesson_math1.js — 유리수와 순환소수 (v1.0)
+// lesson_math1.js — Ⅰ. 유리수와 순환소수 (v1.0)
 // JSONP wrapper
 __loadLesson({
   "lesson": "math1",
   "subject": "math",
-  "title": "수학 1단원: 유리수와 순환소수",
+  "title": "Ⅰ. 유리수와 순환소수",
   "subtitle": "유리수의 소수 표현 / 순환소수의 분수 표현",
   "publisher": "교과서 기반",
   "grade": 2,

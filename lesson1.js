@@ -1,6 +1,6 @@
 __loadLesson({
   "lesson": 1,
-  "title": "Lesson 1: Good Habits for Good Health",
+  "title": "Lesson 1: New Year, New Me",
   "version": "3.7",
   "build_date": "2026-03-21",
   "build_note": "v3.6 + exam_prep training_layer 재분류 (skill_focus/mixed_practice)",
