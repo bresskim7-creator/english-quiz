@@ -946,6 +946,7 @@
         .hl-formula { color: #1565C0; font-weight: 600; }
         .hl-keyword { border-bottom: 2px solid #FF9800; font-weight: 600; }
         .hl-quote { font-weight: 600; color: #5D4037; }
+        mark { background: linear-gradient(transparent 40%, #FFEB3B88 40%); padding: 0 2px; }
         .mc-back .mc-example { font-size: 13px; line-height: 1.6; background: #F5F5F5; padding: 10px; border-radius: 8px; white-space: pre-line; margin-bottom: 12px; }
         .mc-back .mc-tip { font-size: 13px; background: #FFF3E0; padding: 10px; border-radius: 8px; border-left: 3px solid #D4760A; }
         .preparing-msg { color: #999; font-size: 14px; text-align: center; padding: 10px; }
@@ -3526,9 +3527,9 @@
                                 <div class="cc-tap">탭하면 자세히 보기</div>
                             </div>
                             <div class="cc-back">
-                                <div class="cc-definition">${q.card_a.definition}</div>
-                                <div class="cc-simple">💡 ${q.card_a.simple}</div>
-                                <div class="cc-example">📚 ${q.card_a.example}</div>
+                                <div class="cc-definition">${highlightText(q.card_a.definition, q.card_a.term)}</div>
+                                <div class="cc-simple">💡 ${highlightText(q.card_a.simple, q.card_a.term)}</div>
+                                <div class="cc-example">📚 ${highlightText(q.card_a.example, q.card_a.term)}</div>
                             </div>
                         </div>
                         <div class="cc-vs">VS</div>
@@ -3538,13 +3539,13 @@
                                 <div class="cc-tap">탭하면 자세히 보기</div>
                             </div>
                             <div class="cc-back">
-                                <div class="cc-definition">${q.card_b.definition}</div>
-                                <div class="cc-simple">💡 ${q.card_b.simple}</div>
-                                <div class="cc-example">📚 ${q.card_b.example}</div>
+                                <div class="cc-definition">${highlightText(q.card_b.definition, q.card_b.term)}</div>
+                                <div class="cc-simple">💡 ${highlightText(q.card_b.simple, q.card_b.term)}</div>
+                                <div class="cc-example">📚 ${highlightText(q.card_b.example, q.card_b.term)}</div>
                             </div>
                         </div>
                     </div>
-                    <div class="cc-exam-tip">🎯 시험 팁: ${q.exam_tip}</div>
+                    <div class="cc-exam-tip">🎯 시험 팁: ${highlightText(q.exam_tip, q.card_a.term + ' ' + q.card_b.term)}</div>
                     ${browseNavButtons('다음 쌍 →', '#6B4C9A')}
                 </div>
             `;
@@ -3558,14 +3559,14 @@
                 <div class="em-card">
                     <div style="font-size:13px;color:#888;margin-bottom:8px;">설명 방법</div>
                     <div style="font-size:22px;font-weight:700;color:#6B4C9A;margin-bottom:12px;">${q.name}</div>
-                    <div style="font-size:15px;margin-bottom:14px;line-height:1.6;">${q.definition}</div>
+                    <div style="font-size:15px;margin-bottom:14px;line-height:1.6;">${highlightText(q.definition, q.name)}</div>
                     <div style="background:#fff;border-radius:10px;padding:12px;margin-bottom:12px;text-align:left;font-size:14px;line-height:1.6;border-left:3px solid #6B4C9A;">
                         <div style="font-size:12px;color:#6B4C9A;font-weight:700;margin-bottom:4px;">📝 교과서 예시</div>
                         ${q.example}
                     </div>
                     <div style="background:#eee;border-radius:8px;padding:10px;font-size:13px;text-align:left;">
                         <b>자주 쓰는 표현:</b> ${q.signal_words}<br>
-                        <b>🎯 시험:</b> ${q.exam_tip}
+                        <b>🎯 시험:</b> ${highlightText(q.exam_tip, q.name)}
                     </div>
                     ${browseNavButtons('다음 →', '#6B4C9A')}
                 </div>
@@ -4967,7 +4968,7 @@
                     <div class="mc-back">
                         ${q.visual_svg ? `<div class="mc-visual" style="margin-bottom:12px;text-align:center;overflow-x:auto;max-width:100%;">${q.visual_svg.replace(/<svg /,'<svg style="max-width:100%;height:auto;" ')}</div>` : ''}
                         <div class="mc-easy" style="font-size:16px;line-height:1.7;margin-bottom:12px;">💡 ${highlightText(q.easy_explanation, q.term)}</div>
-                        <div class="mc-def" style="font-size:13px;color:#888;border-top:1px solid #eee;padding-top:8px;">📖 교과서 표현: ${q.definition}</div>
+                        <div class="mc-def" style="font-size:13px;color:#888;border-top:1px solid #eee;padding-top:8px;">📖 교과서 표현: ${highlightText(q.definition, q.term)}</div>
                         ${q.exam_tip ? `<div class="mc-tip" style="margin-top:8px;">🎯 ${highlightText(q.exam_tip, q.term)}</div>` : ''}
                     </div>
                 </div>
@@ -5086,7 +5087,7 @@
                 <div style="font-size:20px;font-weight:700;color:#333;margin-bottom:16px;">${card.term}</div>
                 ${card.visual_svg ? `<div style="margin-bottom:16px;text-align:center;overflow-x:auto;max-width:100%;">${card.visual_svg.replace(/<svg /,'<svg style="max-width:100%;height:auto;" ')}</div>` : ''}
                 <div style="font-size:16px;line-height:1.7;margin-bottom:16px;color:#333;">💡 ${highlightText(card.easy_explanation, card.term)}</div>
-                <div style="font-size:13px;color:#888;border-top:1px solid #eee;padding-top:10px;line-height:1.6;">📖 교과서 표현: ${card.definition}</div>
+                <div style="font-size:13px;color:#888;border-top:1px solid #eee;padding-top:10px;line-height:1.6;">📖 교과서 표현: ${highlightText(card.definition, card.term)}</div>
                 ${card.exam_tip ? `<div style="margin-top:10px;font-size:13px;background:#FFF8E1;padding:10px;border-radius:8px;line-height:1.5;">🎯 시험 팁: ${highlightText(card.exam_tip, card.term)}</div>` : ''}
                 ${card.related_terms ? `<div style="margin-top:10px;font-size:12px;color:#999;">🔗 관련: ${card.related_terms.join(', ')}</div>` : ''}
             `;
@@ -5181,7 +5182,7 @@
                     </div>
                     <div class="mc-back">
                         ${q.visual_svg ? `<div style="margin-bottom:12px;text-align:center;overflow-x:auto;max-width:100%;">${q.visual_svg.replace(/<svg /,'<svg style="max-width:100%;height:auto;" ')}</div>` : ''}
-                        <div class="mc-def">${renderMath(q.back_definition)}</div>
+                        <div class="mc-def">${highlightText(renderMath(q.back_definition), q.title)}</div>
                         <div class="mc-easy">💡 ${highlightText(renderMath(q.back_easy), q.title)}</div>
                         ${q.back_example ? `<div class="mc-example">📚 예시\n${renderMath(q.back_example)}</div>` : ''}
                         ${q.exam_tip ? `<div class="mc-tip">🎯 시험 팁: ${highlightText(renderMath(q.exam_tip), q.title)}</div>` : ''}
