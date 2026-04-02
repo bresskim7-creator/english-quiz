@@ -2035,7 +2035,8 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "tower",
-      "instruction": "다음 문장에서 5번째 단어는 무엇인가요?",
+      "instruction": "이 해석의 영어 문장에서 5번째 단어는?",
+      "meaning_ko": "탑을 쌓을 시간이야.",
       "hint": "💡 It(1) is(2) time(3) to(4) build(5)...",
       "wrong_explanations": {
         "0": "💡 '0'의 의미가 문맥과 맞지 않아요.\n📖 교과서 27쪽의 'tower' 관련 내용과 예시를 다시 읽고 이해하세요.\n🗣️ 이 선택지를 고르지 않으려면, 정답이 왜 맞는지 명확히 이해해야 해요!",
@@ -2733,7 +2734,8 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "relative who (CS01)",
-      "instruction": "다음 문장에서 5번째 단어는 무엇인가요?",
+      "instruction": "이 해석의 영어 문장에서 5번째 단어는?",
+      "meaning_ko": "Bob은 Bobby에게 걷는 법을 가르쳐 준 사람이었다.",
       "hint": "💡 Bob(1) was(2) the(3) person(4) who(5)...",
       "wrong_explanations": {
         "the": "💡 'the'의 의미가 문맥과 맞지 않아요.\n📖 교과서 33쪽의 'relative who (CS01)' 관련 내용과 예시를 다시 읽고 이해하세요.\n🗣️ 이 선택지를 고르지 않으려면, 정답이 왜 맞는지 명확히 이해해야 해요!",
@@ -2762,7 +2764,8 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "to부정사 수식 (CS03)",
-      "instruction": "다음 문장에서 5번째 단어는 무엇인가요?",
+      "instruction": "이 해석의 영어 문장에서 5번째 단어는?",
+      "meaning_ko": "놓을 블록이 하나 더 있어.",
       "hint": "💡 There(1) is(2) one(3) more(4) block(5)...",
       "wrong_explanations": {
         "one": "💡 'one'의 의미가 문맥과 맞지 않아요.\n📖 교과서 33쪽의 'to부정사 수식 (CS03)' 관련 내용과 예시를 다시 읽고 이해하세요.\n🗣️ 이 선택지를 고르지 않으려면, 정답이 왜 맞는지 명확히 이해해야 해요!",

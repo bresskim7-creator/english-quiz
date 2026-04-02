@@ -2199,10 +2199,13 @@
             }];
         }
 
+        // mini_writing 임시 비활성화 (시험 임박 시 하드카피로 전환 예정)
+        const HIDDEN_TYPES = new Set(['mini_writing']);
+
         function generateDrillSession() {
             if (!QUIZ_DATA || !QUIZ_DATA.core_sentences) return [];
 
-            const allQuestions = QUIZ_DATA.questions;
+            const allQuestions = QUIZ_DATA.questions.filter(q => !HIDDEN_TYPES.has(q.type));
             const drillQuestions = allQuestions.filter(q => q.phase === 'drill');
             const currentStage = getDrillStage();
 
@@ -2268,7 +2271,7 @@
         // 3단계: mixed_practice 2~3문항
         // 같은 레이어 내 셔플, JSON 순서 무관, fallback: mixed_practice
         function generateExamPrepSession() {
-            const allQuestions = QUIZ_DATA.questions;
+            const allQuestions = QUIZ_DATA.questions.filter(q => !HIDDEN_TYPES.has(q.type));
             const examPrepQuestions = allQuestions.filter(q => q.phase === 'exam_prep');
 
             // === 국어: passage_group 단위 묶음 출제 ===
@@ -2945,6 +2948,15 @@
                 showWrongExplanation(q, document.getElementById('fill-blank-container'), userChoice, originalIdx);
             }
 
+            // position_ask: 답변 후 영어 원문 공개
+            if (q.type === 'position_ask' && q.meaning_ko && q.sentence) {
+                const revealDiv = document.createElement('div');
+                revealDiv.className = 'correct-answer-display';
+                revealDiv.style.cssText = 'background:#e8f5e9;border:1px solid #81c784;border-radius:8px;padding:10px 14px;margin-top:10px;font-size:15px;line-height:1.8;';
+                revealDiv.innerHTML = '📖 <strong>영어 문장:</strong> ' + q.sentence;
+                document.getElementById('fill-blank-container').after(revealDiv);
+            }
+
             showNextButton();
         }
 
@@ -3140,6 +3152,8 @@
             if (isMuted || !window.speechSynthesis) return;
             // 이전 발화 중단
             speechSynthesis.cancel();
+            // 빈칸(_____)을 쉼표로 치환 → TTS가 자연스러운 pause로 처리
+            text = text.replace(/_{2,}/g, ',');
             const utter = new SpeechSynthesisUtterance(text);
             utter.lang = 'en-US';
             utter.rate = 0.85;  // 약간 느리게 (학습용)
@@ -3158,8 +3172,9 @@
         // =========================================================
         function showPositionAsk(q) {
             const questionText = document.getElementById('question-text');
-            // 문장만 표시 — 번호는 학생이 직접 세야 함
-            questionText.innerHTML = '<div class="position-sentence" style="font-size:16px;line-height:2;letter-spacing:0.5px;">' + q.sentence + '</div>';
+            // 한국어 해석을 보여주고, 영어 문장을 머릿속으로 떠올리게 함
+            const displayText = q.meaning_ko || q.sentence;
+            questionText.innerHTML = '<div class="position-sentence" style="font-size:16px;line-height:2;letter-spacing:0.5px;color:#2F5496;background:#f0f4ff;padding:12px 16px;border-radius:8px;border-left:3px solid #2F5496;">' + displayText + '</div>';
 
             // 선택지는 fill-blank-container 재사용
             const container = document.getElementById('fill-blank-container');

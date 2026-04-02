@@ -4347,7 +4347,8 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "body clock",
-      "instruction": "다음 문장에서 4번째 단어는 무엇인가요?",
+      "instruction": "이 해석의 영어 문장에서 4번째 단어는?",
+      "meaning_ko": "너의 생체 시계에 귀 기울이고 규칙적으로 자라.",
       "hint": "Listen(1) to(2) your(3) body(4)...",
       "wrong_explanations": {
         "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
@@ -4376,7 +4377,8 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "caffeine",
-      "instruction": "다음 문장에서 6번째 단어는 무엇인가요?",
+      "instruction": "이 해석의 영어 문장에서 6번째 단어는?",
+      "meaning_ko": "카페인은 많은 음식과 음료에 숨어 있다.",
       "hint": "Caffeine(1) hides(2) in(3) many(4) foods(5) and(6)...",
       "wrong_explanations": {
         "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
@@ -4405,7 +4407,8 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "smartphone",
-      "instruction": "다음 문장에서 7번째 단어는 무엇인가요?",
+      "instruction": "이 해석의 영어 문장에서 7번째 단어는?",
+      "meaning_ko": "밤늦게 스마트폰을 사용하면 뇌가 활동적인 상태를 유지할 것이다.",
       "hint": "If(1) you(2) use(3) your(4) smartphone(5) late(6) at(7)...",
       "wrong_explanations": {
         "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
@@ -4436,7 +4439,8 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "fall asleep",
-      "instruction": "다음 문장에서 3번째 단어는 무엇인가요?",
+      "instruction": "이 해석의 영어 문장에서 3번째 단어는?",
+      "meaning_ko": "밤에 쉽게 잠들 수 있을 것이다.",
       "hint": "You(1) will(2) fall(3)...",
       "wrong_explanations": {
         "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
