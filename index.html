@@ -2163,10 +2163,28 @@
             }));
         }
 
+        // 평일(월~금) 여부 판별
+        function isWeekday() {
+            const day = new Date().getDay();
+            return day >= 1 && day <= 5;
+        }
+
+        // 영어 외 과목 개념카드: 평일 5장, 주말 전체
+        function limitConceptCards(cards) {
+            if (currentSubject === 'english') return cards;
+            if (isWeekday() && cards.length > 5) {
+                const shuffled = [...cards];
+                shuffleArray(shuffled);
+                return shuffled.slice(0, 5);
+            }
+            return cards;
+        }
+
         // 개념 카드 모드: 모든 쌍을 플립 카드로 표시
         function generateConceptCardSession() {
             const cards = QUIZ_DATA.concept_cards || [];
-            return cards.map(c => ({
+            const limited = limitConceptCards(cards);
+            return limited.map(c => ({
                 type: 'concept_card',
                 id: c.id,
                 pair_title: c.pair_title,
@@ -4925,7 +4943,8 @@
         // =========================================================
         function generateStudyConceptSession() {
             const cards = QUIZ_DATA.concept_cards || [];
-            return cards.map(c => ({...c, type: 'study_concept_card'}));
+            const limited = limitConceptCards(cards);
+            return limited.map(c => ({...c, type: 'study_concept_card'}));
         }
 
         function generateStudyExamSession() {
@@ -5174,7 +5193,8 @@
 
         function generateMathConceptSession() {
             const cards = QUIZ_DATA.concept_cards || [];
-            return cards.map(c => ({...c, type: 'math_concept_card'}));
+            const limited = limitConceptCards(cards);
+            return limited.map(c => ({...c, type: 'math_concept_card'}));
         }
 
         // 수학 절차 드릴 세션 생성
