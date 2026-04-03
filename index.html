@@ -2116,6 +2116,35 @@
         // 기획서 v2.1 §5.4, §7.1~§7.4 구현
         // =========================================================
 
+        // 어제 틀린 문항 추출 (간격 반복 워밍업용)
+        function getYesterdayWrongQuestions(maxCount) {
+            const logsKey = (typeof currentLesson === 'string' && isNaN(currentLesson))
+                ? `quiz_logs_${currentLesson}` : `quiz_logs_L${currentLesson}`;
+            const logs = JSON.parse(localStorage.getItem(logsKey) || '[]');
+            const todayStr = today();
+            const yesterday = new Date(Date.now() - 86400000);
+            const yStr = yesterday.getFullYear() + '-' + String(yesterday.getMonth() + 1).padStart(2, '0') + '-' + String(yesterday.getDate()).padStart(2, '0');
+
+            // 어제 로그에서 틀린 문항 ID 수집
+            const wrongIds = new Set();
+            const skipTypes = new Set(['flashcard', 'concept_card', 'math_concept_card', 'study_concept_card',
+                'passage_guide_picker', 'passage_guide_section', 'explanation_method_card',
+                'reading_journal_guide', 'outline_exercise', 'procedure_drill', 'mini_writing', 'kor_core_sentence']);
+            logs.forEach(log => {
+                if (log.date !== yStr || !log.questions) return;
+                log.questions.forEach(a => {
+                    if (!a.correct && !skipTypes.has(a.type)) wrongIds.add(a.id);
+                });
+            });
+            if (wrongIds.size === 0) return [];
+
+            // QUIZ_DATA에서 해당 문항 찾기 (exam_prep + questions 모두 탐색)
+            const allQ = [...(QUIZ_DATA.questions || []), ...(QUIZ_DATA.exam_prep || [])];
+            const found = allQ.filter(q => wrongIds.has(q.id));
+            shuffleArray(found);
+            return found.slice(0, maxCount);
+        }
+
         // 학습 이력 기반 우선순위 점수 (높을수록 복습 필요)
         // v3.1: 최근 출제 쿨다운 — 직전 세션 문항이 바로 반복되지 않도록
         function priorityScore(q) {
@@ -2625,6 +2654,21 @@
                 return;
             }
 
+            // 실전 모드: 어제 틀린 문항 2~3개를 세션 앞에 워밍업으로 삽입
+            if (currentMode === 'exam_prep') {
+                const warmup = getYesterdayWrongQuestions(3);
+                if (warmup.length > 0) {
+                    // 중복 제거 (이미 세션에 포함된 ID 제외)
+                    const sessionIds = new Set(currentSession.map(q => q.id));
+                    const unique = warmup.filter(q => !sessionIds.has(q.id));
+                    if (unique.length > 0) {
+                        // 워밍업 표시용 태그 추가
+                        unique.forEach(q => q._warmup = true);
+                        currentSession = [...unique, ...currentSession];
+                    }
+                }
+            }
+
             currentQuestionIndex = 0;
             sessionAnswers = [];
             sessionStartTime = Date.now();
@@ -3009,7 +3053,7 @@
 
             const selectedDiv = document.getElementById('selected-words');
             const availableDiv = document.getElementById('available-words');
-            selectedDiv.innerHTML = '';
+            selectedDiv.innerHTML = '<div style="color:#999;font-size:13px;padding:8px 0;">👆 아래 단어를 순서대로 탭하세요</div>';
             availableDiv.innerHTML = '';
 
             shuffled.forEach((word, idx) => {
@@ -3926,7 +3970,7 @@
 
             const selectedDiv = document.getElementById('selected-words');
             const availableDiv = document.getElementById('available-words');
-            selectedDiv.innerHTML = '';
+            selectedDiv.innerHTML = '<div style="color:#999;font-size:13px;padding:8px 0;">👆 아래 단어를 순서대로 탭하세요</div>';
             availableDiv.innerHTML = '';
 
             // Show skip button for chunk_order
@@ -4193,8 +4237,18 @@
 
             vocabDrillRound = 1;
             vocabDrillResults = {};
-            vocabDrillList = [...QUIZ_DATA.vocab_drill];
-            shuffleArray(vocabDrillList);
+
+            // 이전 세션 결과 읽어서 모르는 단어를 앞에 배치
+            const prevResults = JSON.parse(localStorage.getItem('vocab_results') || '{}');
+            const lk = (typeof currentLesson === 'string' && isNaN(currentLesson)) ? currentLesson : ('L' + currentLesson);
+            const prevLesson = prevResults[lk] || {};
+            const unknown = QUIZ_DATA.vocab_drill.filter(item => prevLesson[item.id] && prevLesson[item.id].known === false);
+            const untested = QUIZ_DATA.vocab_drill.filter(item => !prevLesson[item.id]);
+            const known = QUIZ_DATA.vocab_drill.filter(item => prevLesson[item.id] && prevLesson[item.id].known === true);
+            shuffleArray(unknown);
+            shuffleArray(untested);
+            shuffleArray(known);
+            vocabDrillList = [...unknown, ...untested, ...known];
             vocabDrillIndex = 0;
 
             document.getElementById('vocab-result-area').style.display = 'none';
@@ -4951,12 +5005,13 @@
             const questions = QUIZ_DATA.exam_prep || [];
             if (questions.length === 0) return [];
             // A군 우선, B군 보충, C군 후순위 — 최대 15문항
+            // 각 군 내에서 priorityScore 기준 정렬 (틀린 문항 우선)
             const aGroup = questions.filter(q => q.score_group === 'A');
             const bGroup = questions.filter(q => q.score_group === 'B');
             const cGroup = questions.filter(q => q.score_group === 'C');
-            shuffleArray(aGroup);
-            shuffleArray(bGroup);
-            shuffleArray(cGroup);
+            aGroup.sort((a, b) => priorityScore(b) - priorityScore(a));
+            bGroup.sort((a, b) => priorityScore(b) - priorityScore(a));
+            cGroup.sort((a, b) => priorityScore(b) - priorityScore(a));
             const session = [...aGroup, ...bGroup.slice(0, 8), ...cGroup.slice(0, 2)].slice(0, 15);
             shuffleArray(session);
             return session;
