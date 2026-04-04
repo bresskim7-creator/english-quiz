@@ -2851,6 +2851,8 @@
         function showNextButton() {
             const btn = document.getElementById('btn-next');
             btn.style.display = 'block';
+            // 설명/개념카드 버튼 등이 추가되어 버튼이 화면 밖으로 밀릴 수 있으므로 스크롤
+            setTimeout(() => btn.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 150);
         }
 
         // Fill Blank 유형
