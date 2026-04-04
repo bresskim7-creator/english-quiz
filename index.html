@@ -4823,7 +4823,7 @@
             const allLogs = [];
             for (let i = 0; i < localStorage.length; i++) {
                 const k = localStorage.key(i);
-                if (k === 'quiz_logs' || k.startsWith('quiz_logs_L') || k.startsWith('quiz_logs_kor')) {
+                if (k === 'quiz_logs' || k.startsWith('quiz_logs_L') || k.startsWith('quiz_logs_kor') || k.startsWith('quiz_logs_math') || k.startsWith('quiz_logs_soc') || k.startsWith('quiz_logs_sci')) {
                     const items = JSON.parse(localStorage.getItem(k) || '[]');
                     items.forEach(log => allLogs.push(log));
                 }
@@ -4859,6 +4859,8 @@
                     arrange_success: m.arrange_success != null ? m.arrange_success : '',
                     details: log.details || '',
                     partial: log.partial ? 'Y' : 'N',
+                    retry: log.retry ? 'Y' : 'N',
+                    recovery_rate: log.recovery_rate != null ? log.recovery_rate : '',
                     timestamp: log.timestamp
                 };
 
