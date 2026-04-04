@@ -3919,11 +3919,14 @@
         // Choice Blank renderer (reuse fill-blank-container)
         function showChoiceBlank(q) {
             const qText = document.getElementById('question-text');
+            // prompt 또는 sentence 중 있는 것 사용 (Lesson 3 등 sentence 필드 대응)
+            const displayText = q.prompt || q.sentence || '';
             if (q.korean_full) {
                 qText.innerHTML = '<span style="color:#1a73e8;font-size:1.05em;display:block;margin-bottom:6px;">' +
-                    q.korean_full.replace(/</g,'&lt;') + '</span>' + q.prompt.replace(/</g,'&lt;');
+                    q.korean_full.replace(/</g,'&lt;') + '</span>' + displayText.replace(/</g,'&lt;');
             } else {
-                qText.textContent = q.prompt;
+                // sentence에 <u> 태그 등 HTML이 포함될 수 있으므로 innerHTML 사용
+                qText.innerHTML = displayText;
             }
             const container = document.getElementById('fill-blank-container');
             container.style.display = 'grid';
@@ -3931,8 +3934,9 @@
 
             const shuffled = q.choices.map((choice, idx) => ({ choice, idx }));
             shuffleArray(shuffled);
-            // Map correct_index through shuffle
-            const newCorrect = shuffled.findIndex(x => x.idx === q.correct_index);
+            // Map correct_index through shuffle (correct 필드도 fallback)
+            const correctIdx = q.correct_index != null ? q.correct_index : q.correct;
+            const newCorrect = shuffled.findIndex(x => x.idx === correctIdx);
 
             shuffled.forEach((item, idx) => {
                 const btn = document.createElement('button');
