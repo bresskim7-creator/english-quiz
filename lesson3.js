@@ -443,6 +443,7 @@ __loadLesson({
       "wrong_explanations": {
         "invested": "'투자했다'는 뜻이에요. '발명했다'와는 달라요.",
         "invited": "'초대했다'는 뜻이에요. invent와 발음은 비슷하지만 의미가 다르죠.",
+        "discovered": "'발견했다'는 뜻이에요. '발명했다(invented)'와는 달라요.",
         "invented": "정답! She invented ~ = 그녀가 ~를 발명했다"
       },
       "core_sentence_id": "CS03",
@@ -461,7 +462,7 @@ __loadLesson({
         "invented",
         "invested",
         "invited",
-        "invented"
+        "discovered"
       ],
       "correct_index": 0
     },
@@ -3955,7 +3956,7 @@ __loadLesson({
       "wrong_explanations": {
         "1": "💡 mistaken(실수한)은 형용사예요.",
         "2": "💡 mistakenly(실수로)는 부사예요.",
-        "3": "💡 mistaken(틀린)은 과거분사 형용사예요."
+        "3": "💡 mistaking(동명사)은 여기서 문법적으로 맞지 않아요. Making mistakes가 올바른 표현이에요."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3967,7 +3968,7 @@ __loadLesson({
         "mistakes",
         "mistaken",
         "mistakenly",
-        "mistaken"
+        "mistaking"
       ],
       "correct": 0,
       "exam_pattern": "어형 변화",
