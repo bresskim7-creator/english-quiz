@@ -3180,19 +3180,29 @@
             if (q.type === 'fill_blank' || q.type === 'dialogue_response' || q.type === 'short_reading') {
                 const explanation = findExplanation(userAnswer, originalIdx);
                 html += '<div style="font-size:15px;color:#333;">' + explanation + '</div>';
+                if (q.choices && q.correct !== undefined) {
+                    html += '<div style="margin-top:8px;font-size:14px;color:#2F5496;font-weight:600;">✅ 정답: ' + q.choices[q.correct] + '</div>';
+                }
             } else if (q.type === 'choice_blank') {
                 const explanation = findExplanation(userAnswer, originalIdx);
                 html += '<div style="font-size:15px;color:#333;">' + explanation + '</div>';
+                if (q.choices && q.correct !== undefined) {
+                    html += '<div style="margin-top:8px;font-size:14px;color:#2F5496;font-weight:600;">✅ 정답: ' + q.choices[q.correct] + '</div>';
+                }
             } else if (q.type === 'chunk_order') {
                 const explanation = we['default'] || q.hint || '';
                 html += '<div style="font-size:15px;color:#333;">' + explanation + '</div>';
-                html += '<div style="margin-top:8px;font-size:14px;color:#2F5496;">정답: ' + (q.answer || '') + '</div>';
+                html += '<div style="margin-top:8px;font-size:14px;color:#2F5496;font-weight:600;">✅ 정답: ' + (q.answer || '') + '</div>';
             } else if (q.type === 'arrange') {
                 const explanation = we['default'] || q.hint || '';
                 html += '<div style="font-size:15px;color:#333;">' + explanation + '</div>';
+                html += '<div style="margin-top:8px;font-size:14px;color:#2F5496;font-weight:600;">✅ 정답: ' + (q.answer || '') + '</div>';
             } else if (q.type === 'match') {
                 const explanation = findExplanation(userAnswer, originalIdx);
                 html += '<div style="font-size:15px;color:#333;">' + explanation + '</div>';
+                if (q.choices && q.correct !== undefined) {
+                    html += '<div style="margin-top:8px;font-size:14px;color:#2F5496;font-weight:600;">✅ 정답: ' + q.choices[q.correct] + '</div>';
+                }
             }
 
             html += '<div style="font-size:13px;color:#888;margin-top:8px;border-top:1px solid #ffe0b2;padding-top:6px;">📖 정답 문장을 소리 내어 읽어보면 기억에 남아요!</div>';

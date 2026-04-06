@@ -208,7 +208,7 @@ __loadLesson({
         "③스스로 빛을 내는 물체를 광원이라고 한다",
         "④모든 물체는 광원이다"
       ],
-      "correct": 1,
+      "correct": 2,
       "score_group": "A",
       "linked_concept": [
         "LC-01"
@@ -256,7 +256,7 @@ __loadLesson({
         "③굴절각은 항상 입사각보다 크다",
         "④굴절은 반사와 같은 현상이다"
       ],
-      "correct": 3,
+      "correct": 1,
       "score_group": "A",
       "linked_concept": [
         "LC-04"
@@ -376,7 +376,7 @@ __loadLesson({
         "③물체가 멀 때는 허상을 만든다",
         "④상의 크기는 거리와 관계없이 항상 같다"
       ],
-      "correct": 0,
+      "correct": 1,
       "score_group": "A",
       "linked_concept": [
         "LC-09"
@@ -400,7 +400,7 @@ __loadLesson({
         "③거리에 따라 상의 모양이 달라진다",
         "④실상을 만들 수 있다"
       ],
-      "correct": 3,
+      "correct": 1,
       "score_group": "A",
       "linked_concept": [
         "LC-10"
@@ -472,7 +472,7 @@ __loadLesson({
         "③빨강, 초록, 파랑이 빛의 삼원색이다",
         "④모니터 화면은 물감 삼원색으로 이루어져 있다"
       ],
-      "correct": 3,
+      "correct": 2,
       "score_group": "A",
       "linked_concept": [
         "LC-13"
@@ -568,7 +568,7 @@ __loadLesson({
         "③빛의 삼원색과 물감의 삼원색은 같다",
         "④둘 다 섞을수록 어두워진다"
       ],
-      "correct": 2,
+      "correct": 1,
       "score_group": "A",
       "linked_concept": [
         "LC-15"

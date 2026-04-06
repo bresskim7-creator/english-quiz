@@ -2725,7 +2725,7 @@ __loadLesson({
       "words": [
         "your brain",
         "will stay active",
-        "if",
+        "If",
         "you use",
         "your smartphone",
         "late at night"

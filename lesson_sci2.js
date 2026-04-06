@@ -250,7 +250,7 @@ __loadLesson({
         "외핵의 온도가 내핵보다 낮다",
         "지각의 두께는 모든 곳에서 같다"
       ],
-      "correct": 2,
+      "correct": 1,
       "score_group": "A",
       "linked_concept": [
         "CC-02"
@@ -1100,7 +1100,7 @@ __loadLesson({
         "태평양 물의 온도가 지각을 데워서 화산 활동을 유발하기 때문이다",
         "태평양 주변의 산맥들이 모두 해령에서 생성되었기 때문이다"
       ],
-      "correct": 3,
+      "correct": 1,
       "score_group": "C",
       "linked_concept": [
         "CC-15",
@@ -1125,7 +1125,7 @@ __loadLesson({
         "한반도는 판의 경계에 있어서 화산과 지진이 매우 활발하다",
         "한반도는 대륙이동의 증거로 가장 중요한 지역이다"
       ],
-      "correct": 2,
+      "correct": 1,
       "score_group": "C",
       "linked_concept": [
         "CC-13",
