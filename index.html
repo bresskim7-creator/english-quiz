@@ -1555,16 +1555,44 @@
         }
 
         // Sound effects
+        // AudioContext를 앱 전체에서 하나만 생성하여 재사용 (모바일 브라우저 제한 대응)
+        let _audioCtx = null;
+        function getAudioCtx() {
+            if (!_audioCtx) {
+                try {
+                    _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                } catch(e) {
+                    console.warn('[Sound] AudioContext 생성 실패:', e);
+                    return null;
+                }
+            }
+            // suspended 상태이면 resume (모바일 브라우저 정책 대응)
+            if (_audioCtx.state === 'suspended') {
+                _audioCtx.resume().catch(() => {});
+            }
+            return _audioCtx;
+        }
+
+        // TTS voices 프리로드 (첫 호출 시 빈 배열 반환 방지)
+        let _ttsVoicesLoaded = false;
+        if (window.speechSynthesis) {
+            speechSynthesis.getVoices(); // 초기 호출로 로딩 트리거
+            speechSynthesis.addEventListener('voiceschanged', () => { _ttsVoicesLoaded = true; });
+        }
+
         function toggleMute() {
             isMuted = !isMuted;
             localStorage.setItem('sound_muted', isMuted);
             document.getElementById('mute-toggle').textContent = isMuted ? '🔇' : '🔊';
+            // 음소거 해제 시 AudioContext 확실히 깨우기
+            if (!isMuted) getAudioCtx();
         }
 
         function playSound(type) {
             if (isMuted) return;
             try {
-                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const ctx = getAudioCtx();
+                if (!ctx) return;
                 const gain = ctx.createGain();
                 gain.connect(ctx.destination);
 
@@ -1595,7 +1623,9 @@
                     });
                     gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.6);
                 }
-            } catch(e) {}
+            } catch(e) {
+                console.warn('[Sound] playSound 오류:', e);
+            }
         }
 
         // Hint handling
@@ -3222,6 +3252,7 @@
         }
 
         // TTS: 정답 시 영어 문장 읽어주기
+        let _cachedEnVoice = null;
         function speakEnglish(text) {
             if (isMuted || !window.speechSynthesis) return;
             // 이전 발화 중단
@@ -3232,12 +3263,19 @@
             utter.lang = 'en-US';
             utter.rate = 0.85;  // 약간 느리게 (학습용)
             utter.pitch = 1.0;
-            // 영어 음성 선택 (가능하면)
-            const voices = speechSynthesis.getVoices();
-            const enVoice = voices.find(v => v.lang.startsWith('en') && v.name.includes('Female'))
-                         || voices.find(v => v.lang.startsWith('en'));
-            if (enVoice) utter.voice = enVoice;
+            // 영어 음성 선택 (캐싱하여 매번 탐색 비용 절감)
+            if (!_cachedEnVoice) {
+                const voices = speechSynthesis.getVoices();
+                _cachedEnVoice = voices.find(v => v.lang.startsWith('en') && v.name.includes('Female'))
+                              || voices.find(v => v.lang.startsWith('en'))
+                              || null;
+            }
+            if (_cachedEnVoice) utter.voice = _cachedEnVoice;
             speechSynthesis.speak(utter);
+        }
+        // voices가 나중에 로드되면 캐시 갱신
+        if (window.speechSynthesis) {
+            speechSynthesis.addEventListener('voiceschanged', () => { _cachedEnVoice = null; });
         }
 
         // =========================================================
