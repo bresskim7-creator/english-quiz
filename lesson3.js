@@ -1,9 +1,9 @@
 __loadLesson({
   "lesson": 3,
   "title": "Lesson 3: New Ideas Bring Big Changes",
-  "version": "1.0",
-  "build_date": "2026-03-31",
-  "build_note": "v1.0 — 중간고사 범위 L3 신규 제작. 4모드 drill + exam_prep.",
+  "version": "1.1",
+  "build_date": "2026-04-07",
+  "build_note": "v1.1 + 교과서 인쇄물 통합: 1개 어휘(CS15: cloth) 드릴 추가",
   "core_sentences": [
     {
       "id": "CS01",
@@ -198,6 +198,16 @@ __loadLesson({
         "dialogue_completion",
         "dialogue_response"
       ]
+    },
+    {
+      "id": "CS15",
+      "text_en": "The cloth on the table is very soft.",
+      "text_ko": "테이블 위의 천은 매우 부드럽다.",
+      "pair_id": null,
+      "source": "vocabulary_extension_print",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": ["vocabulary_recall"]
     }
   ],
   "questions": [
@@ -1723,6 +1733,155 @@ __loadLesson({
           "anser"
         ]
       }
+    },
+    {
+      "id": "D-CS15-01",
+      "type": "flashcard",
+      "phase": "drill",
+      "difficulty": null,
+      "keyword": null,
+      "instruction": null,
+      "hint": null,
+      "wrong_explanations": null,
+      "core_sentence_id": "CS15",
+      "linked_rule_ids": [],
+      "recovery_band": "A",
+      "test_task": null,
+      "page": null,
+      "drill_stage": 1,
+      "is_bridge_item": false,
+      "prompt_en": "The cloth on the table is very soft.",
+      "prompt_ko": "테이블 위의 천은 매우 부드럽다.",
+      "grammar_note": null
+    },
+    {
+      "id": "D-CS15-02",
+      "type": "choice_blank",
+      "phase": "drill",
+      "difficulty": null,
+      "keyword": null,
+      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
+      "hint": "천, 직물 (명사) — 테이블을 덮는 물건",
+      "wrong_explanations": {
+        "clothes": "cloth ≠ clothes! cloth = 천, clothes = 옷. 철자 비슷해서 자주 나오는 함정!",
+        "fabric": "fabric도 '천'이긴 한데, 교과서 단어는 cloth. fabric은 고급 표현.",
+        "cover": "cover는 '덮개'. 천 자체를 말할 땐 cloth!"
+      },
+      "core_sentence_id": "CS15",
+      "linked_rule_ids": [],
+      "recovery_band": "A",
+      "test_task": null,
+      "page": null,
+      "drill_stage": 2,
+      "is_bridge_item": false,
+      "prompt": "The _____ on the table is very soft.",
+      "korean_full": "테이블 위의 천은 매우 부드럽다.",
+      "answer": "cloth",
+      "choices": [
+        "cloth",
+        "clothes",
+        "fabric",
+        "cover"
+      ],
+      "correct_index": 0
+    },
+    {
+      "id": "D-CS15-03",
+      "type": "chunk_order",
+      "phase": "drill",
+      "difficulty": null,
+      "keyword": null,
+      "instruction": "조각을 올바른 순서로 배열하세요.",
+      "hint": "문장을 올바른 순서대로 배치하세요.",
+      "wrong_explanations": null,
+      "core_sentence_id": "CS15",
+      "linked_rule_ids": [],
+      "recovery_band": "A",
+      "test_task": null,
+      "page": null,
+      "drill_stage": 3,
+      "is_bridge_item": false,
+      "prompt_ko": "테이블 위의 천은 매우 부드럽다.",
+      "chunks": [
+        "The cloth",
+        "on the table",
+        "is very soft."
+      ],
+      "answer": "The cloth on the table is very soft."
+    },
+    {
+      "id": "D-CS15-04",
+      "type": "typed_blank",
+      "phase": "drill",
+      "difficulty": null,
+      "keyword": null,
+      "instruction": "빈칸에 알맞은 단어를 직접 입력하세요.",
+      "hint": "천 = cloth (clothes 아님! clothes는 옷!)",
+      "wrong_explanations": {
+        "clothes": "cloth ≠ clothes! cloth = 천, clothes = 옷. 시험에서 이거 바꿔놓으면 바로 감점!"
+      },
+      "core_sentence_id": "CS15",
+      "linked_rule_ids": [],
+      "recovery_band": "A",
+      "test_task": null,
+      "page": null,
+      "drill_stage": 4,
+      "is_bridge_item": false,
+      "prompt": "The _____ on the table is very soft.",
+      "answers": [
+        "cloth"
+      ],
+      "accept_typos": {
+        "cloth": [
+          "cloth"
+        ]
+      }
+    },
+    {
+      "id": "D-CS15-05",
+      "type": "choice_blank",
+      "phase": "drill",
+      "difficulty": null,
+      "keyword": "cloth vs clothes 구분",
+      "instruction": "cloth(천) vs clothes(옷) 구분! 시험 단골 함정.",
+      "hint": "cloth = 천 → a piece of cloth / clothes = 옷 → put on clothes / tablecloth = 식탁보",
+      "wrong_explanations": {
+        "cloth_wrong": "cloth는 '천'! 옷 입는 데는 clothes 써야 함.",
+        "clothes_wrong": "clothes는 '옷'! 천 조각이나 식탁보엔 cloth 써야 함."
+      },
+      "core_sentence_id": "CS15",
+      "linked_rule_ids": [],
+      "recovery_band": "A",
+      "test_task": "cloth_vs_clothes",
+      "page": null,
+      "drill_stage": 5,
+      "is_bridge_item": true,
+      "sub_questions": [
+        {
+          "prompt": "She wiped the table with a piece of _____.",
+          "korean_full": "그녀는 천 조각으로 테이블을 닦았다.",
+          "answer": "cloth",
+          "choices": ["cloth", "clothes"],
+          "correct_index": 0,
+          "explanation": "천 조각 = a piece of cloth. clothes(옷)랑 헷갈리면 안 됨!"
+        },
+        {
+          "prompt": "He put on his _____ and went outside.",
+          "korean_full": "그는 옷을 입고 밖으로 나갔다.",
+          "answer": "clothes",
+          "choices": ["cloth", "clothes"],
+          "correct_index": 1,
+          "explanation": "옷 입다 = put on clothes. cloth는 '천 재료'지 '옷'이 아님!"
+        },
+        {
+          "prompt": "The dirty spot on the table_____ was cleaned by the lamp oil.",
+          "korean_full": "식탁보 위의 더러운 얼룩이 등유로 깨끗해졌다.",
+          "answer": "tablecloth",
+          "choices": ["tablecloth", "tableclothes"],
+          "correct_index": 0,
+          "explanation": "식탁보 = table + cloth = tablecloth. tableclothes? 그런 단어 없음!"
+        }
+      ]
     },
     {
       "id": "R001",

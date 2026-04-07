@@ -1,9 +1,9 @@
 __loadLesson({
   "lesson": 1,
   "title": "Lesson 1: New Year, New Me",
-  "version": "3.7",
-  "build_date": "2026-03-21",
-  "build_note": "v3.6 + exam_prep training_layer 재분류 (skill_focus/mixed_practice)",
+  "version": "3.8",
+  "build_date": "2026-04-07",
+  "build_note": "v3.8 + 교과서 인쇄물 통합: 7개 어휘(CS14-CS20) 드릴 추가 + 13개 문법 연습문제",
   "core_sentences": [
     {
       "id": "CS01a",
@@ -228,6 +228,76 @@ __loadLesson({
         "required_word_write",
         "error_correction"
       ]
+    },
+    {
+      "id": "CS14",
+      "text_en": "I feel tired after school.",
+      "text_ko": "나는 학교 후에 피곤하다.",
+      "pair_id": null,
+      "source": "vocabulary_extension_print",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": ["vocabulary_recall"]
+    },
+    {
+      "id": "CS15",
+      "text_en": "Make a list of your homework.",
+      "text_ko": "너의 숙제의 목록을 만들어.",
+      "pair_id": null,
+      "source": "vocabulary_extension_print",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": ["vocabulary_recall"]
+    },
+    {
+      "id": "CS16",
+      "text_en": "I like fruits, for example, apples and oranges.",
+      "text_ko": "나는 과일을 좋아해, 예를 들어, 사과와 오렌지.",
+      "pair_id": null,
+      "source": "vocabulary_extension_print",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": ["vocabulary_recall"]
+    },
+    {
+      "id": "CS17",
+      "text_en": "Caffeine helps you stay awake.",
+      "text_ko": "카페인은 깨어있게 도와.",
+      "pair_id": null,
+      "source": "vocabulary_extension_print",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": ["vocabulary_recall"]
+    },
+    {
+      "id": "CS18",
+      "text_en": "Do you like to drink soda?",
+      "text_ko": "너는 탄산음료를 마시는 것을 좋아해?",
+      "pair_id": null,
+      "source": "vocabulary_extension_print",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": ["vocabulary_recall"]
+    },
+    {
+      "id": "CS19",
+      "text_en": "She actively participates in sports.",
+      "text_ko": "그녀는 활동적으로 스포츠에 참여한다.",
+      "pair_id": null,
+      "source": "vocabulary_extension_print",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": ["vocabulary_recall"]
+    },
+    {
+      "id": "CS20",
+      "text_en": "Your brain helps you learn.",
+      "text_ko": "너의 뇌는 너가 배우는 것을 도와.",
+      "pair_id": null,
+      "source": "vocabulary_extension_print",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": ["vocabulary_recall"]
     }
   ],
   "questions": [
@@ -1722,6 +1792,713 @@ __loadLesson({
           "too"
         ]
       }
+    },
+    {
+          "id": "D-CS14-01",
+          "type": "flashcard",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": null,
+          "hint": null,
+          "wrong_explanations": null,
+          "core_sentence_id": "CS14",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 1,
+          "is_bridge_item": false,
+          "prompt_en": "I feel tired after school.",
+          "prompt_ko": "나는 학교 후에 피곤하다.",
+          "grammar_note": null
+    },
+    {
+          "id": "D-CS15-01",
+          "type": "flashcard",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": null,
+          "hint": null,
+          "wrong_explanations": null,
+          "core_sentence_id": "CS15",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 1,
+          "is_bridge_item": false,
+          "prompt_en": "Make a list of your homework.",
+          "prompt_ko": "너의 숙제의 목록을 만들어.",
+          "grammar_note": null
+    },
+    {
+          "id": "D-CS16-01",
+          "type": "flashcard",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": null,
+          "hint": null,
+          "wrong_explanations": null,
+          "core_sentence_id": "CS16",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 1,
+          "is_bridge_item": false,
+          "prompt_en": "I like fruits, for example, apples and oranges.",
+          "prompt_ko": "나는 과일을 좋아해, 예를 들어, 사과와 오렌지.",
+          "grammar_note": null
+    },
+    {
+          "id": "D-CS17-01",
+          "type": "flashcard",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": null,
+          "hint": null,
+          "wrong_explanations": null,
+          "core_sentence_id": "CS17",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 1,
+          "is_bridge_item": false,
+          "prompt_en": "Caffeine helps you stay awake.",
+          "prompt_ko": "카페인은 깨어있게 도와.",
+          "grammar_note": null
+    },
+    {
+          "id": "D-CS18-01",
+          "type": "flashcard",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": null,
+          "hint": null,
+          "wrong_explanations": null,
+          "core_sentence_id": "CS18",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 1,
+          "is_bridge_item": false,
+          "prompt_en": "Do you like to drink soda?",
+          "prompt_ko": "너는 탄산음료를 마시는 것을 좋아해?",
+          "grammar_note": null
+    },
+    {
+          "id": "D-CS19-01",
+          "type": "flashcard",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": null,
+          "hint": null,
+          "wrong_explanations": null,
+          "core_sentence_id": "CS19",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 1,
+          "is_bridge_item": false,
+          "prompt_en": "She actively participates in sports.",
+          "prompt_ko": "그녀는 활동적으로 스포츠에 참여한다.",
+          "grammar_note": null
+    },
+    {
+          "id": "D-CS20-01",
+          "type": "flashcard",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": null,
+          "hint": null,
+          "wrong_explanations": null,
+          "core_sentence_id": "CS20",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 1,
+          "is_bridge_item": false,
+          "prompt_en": "Your brain helps you learn.",
+          "prompt_ko": "너의 뇌는 너가 배우는 것을 도와.",
+          "grammar_note": null
+    },
+    {
+          "id": "D-CS14-02",
+          "type": "choice_blank",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
+          "hint": "피곤한 (형용사) — 학교 후에 느끼는 상태",
+          "wrong_explanations": {
+                "sleepy": "sleepy는 '졸린'이에요. 그건 밤에 느끼는 거예요!",
+                "active": "active는 '활발한'이에요. 피곤함의 반대네요.",
+                "busy": "busy는 '바쁜'이에요. 피곤함과는 달라요."
+          },
+          "core_sentence_id": "CS14",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 2,
+          "is_bridge_item": false,
+          "prompt": "I feel _____ after school.",
+          "korean_full": "나는 학교 후에 피곤하다.",
+          "answer": "tired",
+          "choices": [
+                "tired",
+                "sleepy",
+                "active",
+                "busy"
+          ],
+          "correct_index": 0
+    },
+    {
+          "id": "D-CS15-02",
+          "type": "choice_blank",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
+          "hint": "목록 (명사) — 항목들을 기록한 것",
+          "wrong_explanations": {
+                "note": "note는 '메모'예요. 항목별로 정리한 것은 list예요.",
+                "book": "book은 '책'이에요. 정보를 기록하는 방식이 달라요.",
+                "paper": "paper는 '종이'예요. 목록 전체를 말하는 것은 list예요."
+          },
+          "core_sentence_id": "CS15",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 2,
+          "is_bridge_item": false,
+          "prompt": "Make a _____ of your homework.",
+          "korean_full": "너의 숙제의 목록을 만들어.",
+          "answer": "list",
+          "choices": [
+                "list",
+                "note",
+                "book",
+                "paper"
+          ],
+          "correct_index": 0
+    },
+    {
+          "id": "D-CS16-02",
+          "type": "choice_blank",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
+          "hint": "예를 들어 (구) — 구체적인 사례를 제시할 때",
+          "wrong_explanations": {
+                "such as": "such as도 같은 의미이지만, 여기서는 for example을 써야 해요.",
+                "like": "like는 '좋아하다'는 뜻이고, for example과는 달라요.",
+                "and": "and는 연결사예요. 예를 제시하는 표현은 for example이에요."
+          },
+          "core_sentence_id": "CS16",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 2,
+          "is_bridge_item": false,
+          "prompt": "I like fruits, _____, apples and oranges.",
+          "korean_full": "나는 과일을 좋아해, 예를 들어, 사과와 오렌지.",
+          "answer": "for example",
+          "choices": [
+                "for example",
+                "such as",
+                "like",
+                "and"
+          ],
+          "correct_index": 0
+    },
+    {
+          "id": "D-CS17-02",
+          "type": "choice_blank",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
+          "hint": "카페인 (명사) — 커피나 차에 들어있는 물질",
+          "wrong_explanations": {
+                "coffee": "coffee는 '커피'예요. 카페인이 들어있는 음료일 뿐 카페인 그 자체는 아니에요.",
+                "drink": "drink는 '음료'예요. 카페인은 그 안의 물질이에요.",
+                "energy": "energy는 '에너지'예요. 카페인의 효과이지 카페인 자체가 아니에요."
+          },
+          "core_sentence_id": "CS17",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 2,
+          "is_bridge_item": false,
+          "prompt": "Caffeine helps you stay awake.",
+          "korean_full": "카페인은 깨어있게 도와.",
+          "answer": "caffeine",
+          "choices": [
+                "caffeine",
+                "coffee",
+                "drink",
+                "energy"
+          ],
+          "correct_index": 0
+    },
+    {
+          "id": "D-CS18-02",
+          "type": "choice_blank",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
+          "hint": "탄산음료 (명사) — 기포가 있는 달콤한 음료",
+          "wrong_explanations": {
+                "juice": "juice는 '주스'예요. 과일 즙이지, 탄산음료가 아니에요.",
+                "water": "water는 '물'이에요. 탄산음료는 양념과 기포가 있어요.",
+                "tea": "tea는 '차'예요. 탄산음료와는 다른 음료예요."
+          },
+          "core_sentence_id": "CS18",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 2,
+          "is_bridge_item": false,
+          "prompt": "Do you like to drink _____?",
+          "korean_full": "너는 탄산음료를 마시는 것을 좋아해?",
+          "answer": "soda",
+          "choices": [
+                "soda",
+                "juice",
+                "water",
+                "tea"
+          ],
+          "correct_index": 0
+    },
+    {
+          "id": "D-CS19-02",
+          "type": "choice_blank",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
+          "hint": "활동적으로 (부사) — 바쁘고 열정적인 방식으로",
+          "wrong_explanations": {
+                "quietly": "quietly는 '조용히'예요. 스포츠에 적극 참여하는 것과 반대네요.",
+                "slowly": "slowly는 '천천히'예요. 활동적으로 참여하는 것과 다르죠.",
+                "passively": "passively는 '수동적으로'예요. actively의 반대예요."
+          },
+          "core_sentence_id": "CS19",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 2,
+          "is_bridge_item": false,
+          "prompt": "She _____ participates in sports.",
+          "korean_full": "그녀는 활동적으로 스포츠에 참여한다.",
+          "answer": "actively",
+          "choices": [
+                "actively",
+                "quietly",
+                "slowly",
+                "passively"
+          ],
+          "correct_index": 0
+    },
+    {
+          "id": "D-CS20-02",
+          "type": "choice_blank",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
+          "hint": "뇌 (명사) — 생각하고 느끼는 데 도와주는 신체 기관",
+          "wrong_explanations": {
+                "mind": "mind는 '정신'이에요. brain(뇌) 자체와는 다른 개념이에요.",
+                "head": "head는 '머리'예요. 뇌는 머리 안의 특정 기관이에요.",
+                "heart": "heart는 '심장'이에요. 배우는 건 뇌의 역할이에요."
+          },
+          "core_sentence_id": "CS20",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 2,
+          "is_bridge_item": false,
+          "prompt": "Your _____ helps you learn.",
+          "korean_full": "너의 뇌는 너가 배우는 것을 도와.",
+          "answer": "brain",
+          "choices": [
+                "brain",
+                "mind",
+                "head",
+                "heart"
+          ],
+          "correct_index": 0
+    },
+    {
+          "id": "D-CS14-03",
+          "type": "chunk_order",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": "조각을 올바른 순서로 배열하세요.",
+          "hint": "문장을 올바른 순서대로 배치하세요.",
+          "wrong_explanations": null,
+          "core_sentence_id": "CS14",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 3,
+          "is_bridge_item": false,
+          "prompt_ko": "나는 학교 후에 피곤하다.",
+          "chunks": [
+                "I feel",
+                "tired",
+                "after school."
+          ],
+          "answer": "I feel tired after school."
+    },
+    {
+          "id": "D-CS15-03",
+          "type": "chunk_order",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": "조각을 올바른 순서로 배열하세요.",
+          "hint": "문장을 올바른 순서대로 배치하세요.",
+          "wrong_explanations": null,
+          "core_sentence_id": "CS15",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 3,
+          "is_bridge_item": false,
+          "prompt_ko": "너의 숙제의 목록을 만들어.",
+          "chunks": [
+                "Make a",
+                "list",
+                "of your homework."
+          ],
+          "answer": "Make a list of your homework."
+    },
+    {
+          "id": "D-CS16-03",
+          "type": "chunk_order",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": "조각을 올바른 순서로 배열하세요.",
+          "hint": "문장을 올바른 순서대로 배치하세요.",
+          "wrong_explanations": null,
+          "core_sentence_id": "CS16",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 3,
+          "is_bridge_item": false,
+          "prompt_ko": "나는 과일을 좋아해, 예를 들어, 사과와 오렌지.",
+          "chunks": [
+                "I like fruits,",
+                "for example,",
+                "apples and oranges."
+          ],
+          "answer": "I like fruits, for example, apples and oranges."
+    },
+    {
+          "id": "D-CS17-03",
+          "type": "chunk_order",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": "조각을 올바른 순서로 배열하세요.",
+          "hint": "문장을 올바른 순서대로 배치하세요.",
+          "wrong_explanations": null,
+          "core_sentence_id": "CS17",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 3,
+          "is_bridge_item": false,
+          "prompt_ko": "카페인은 깨어있게 도와.",
+          "chunks": [
+                "Caffeine",
+                "helps you",
+                "stay awake."
+          ],
+          "answer": "Caffeine helps you stay awake."
+    },
+    {
+          "id": "D-CS18-03",
+          "type": "chunk_order",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": "조각을 올바른 순서로 배열하세요.",
+          "hint": "문장을 올바른 순서대로 배치하세요.",
+          "wrong_explanations": null,
+          "core_sentence_id": "CS18",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 3,
+          "is_bridge_item": false,
+          "prompt_ko": "너는 탄산음료를 마시는 것을 좋아해?",
+          "chunks": [
+                "Do you like to",
+                "drink",
+                "soda?"
+          ],
+          "answer": "Do you like to drink soda?"
+    },
+    {
+          "id": "D-CS19-03",
+          "type": "chunk_order",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": "조각을 올바른 순서로 배열하세요.",
+          "hint": "문장을 올바른 순서대로 배치하세요.",
+          "wrong_explanations": null,
+          "core_sentence_id": "CS19",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 3,
+          "is_bridge_item": false,
+          "prompt_ko": "그녀는 활동적으로 스포츠에 참여한다.",
+          "chunks": [
+                "She",
+                "actively participates",
+                "in sports."
+          ],
+          "answer": "She actively participates in sports."
+    },
+    {
+          "id": "D-CS20-03",
+          "type": "chunk_order",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": "조각을 올바른 순서로 배열하세요.",
+          "hint": "문장을 올바른 순서대로 배치하세요.",
+          "wrong_explanations": null,
+          "core_sentence_id": "CS20",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 3,
+          "is_bridge_item": false,
+          "prompt_ko": "너의 뇌는 너가 배우는 것을 도와.",
+          "chunks": [
+                "Your",
+                "brain",
+                "helps you learn."
+          ],
+          "answer": "Your brain helps you learn."
+    },
+    {
+          "id": "D-CS14-04",
+          "type": "typed_blank",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": "빈칸에 알맞은 단어를 직접 입력하세요.",
+          "hint": "피곤한 — tired",
+          "wrong_explanations": null,
+          "core_sentence_id": "CS14",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 4,
+          "is_bridge_item": false,
+          "prompt": "I feel _____ after school.",
+          "answers": [
+                "tired"
+          ],
+          "accept_typos": {
+                "tired": [
+                      "tired"
+                ]
+          }
+    },
+    {
+          "id": "D-CS15-04",
+          "type": "typed_blank",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": "빈칸에 알맞은 단어를 직접 입력하세요.",
+          "hint": "목록 — list",
+          "wrong_explanations": null,
+          "core_sentence_id": "CS15",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 4,
+          "is_bridge_item": false,
+          "prompt": "Make a _____ of your homework.",
+          "answers": [
+                "list"
+          ],
+          "accept_typos": {
+                "list": [
+                      "list"
+                ]
+          }
+    },
+    {
+          "id": "D-CS16-04",
+          "type": "typed_blank",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": "빈칸에 알맞은 단어를 직접 입력하세요.",
+          "hint": "예를 들어 — for example",
+          "wrong_explanations": null,
+          "core_sentence_id": "CS16",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 4,
+          "is_bridge_item": false,
+          "prompt": "I like fruits, _____, apples and oranges.",
+          "answers": [
+                "for example"
+          ],
+          "accept_typos": {
+                "for example": [
+                      "for example"
+                ]
+          }
+    },
+    {
+          "id": "D-CS17-04",
+          "type": "typed_blank",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": "빈칸에 알맞은 단어를 직접 입력하세요.",
+          "hint": "카페인 — caffeine",
+          "wrong_explanations": null,
+          "core_sentence_id": "CS17",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 4,
+          "is_bridge_item": false,
+          "prompt": "Caffeine helps you stay awake.",
+          "answers": [
+                "caffeine"
+          ],
+          "accept_typos": {
+                "caffeine": [
+                      "caffeine"
+                ]
+          }
+    },
+    {
+          "id": "D-CS18-04",
+          "type": "typed_blank",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": "빈칸에 알맞은 단어를 직접 입력하세요.",
+          "hint": "탄산음료 — soda",
+          "wrong_explanations": null,
+          "core_sentence_id": "CS18",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 4,
+          "is_bridge_item": false,
+          "prompt": "Do you like to drink _____?",
+          "answers": [
+                "soda"
+          ],
+          "accept_typos": {
+                "soda": [
+                      "soda"
+                ]
+          }
+    },
+    {
+          "id": "D-CS19-04",
+          "type": "typed_blank",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": "빈칸에 알맞은 단어를 직접 입력하세요.",
+          "hint": "활동적으로 — actively",
+          "wrong_explanations": null,
+          "core_sentence_id": "CS19",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 4,
+          "is_bridge_item": false,
+          "prompt": "She _____ participates in sports.",
+          "answers": [
+                "actively"
+          ],
+          "accept_typos": {
+                "actively": [
+                      "actively"
+                ]
+          }
+    },
+    {
+          "id": "D-CS20-04",
+          "type": "typed_blank",
+          "phase": "drill",
+          "difficulty": null,
+          "keyword": null,
+          "instruction": "빈칸에 알맞은 단어를 직접 입력하세요.",
+          "hint": "뇌 — brain",
+          "wrong_explanations": null,
+          "core_sentence_id": "CS20",
+          "linked_rule_ids": [],
+          "recovery_band": "A",
+          "test_task": null,
+          "page": null,
+          "drill_stage": 4,
+          "is_bridge_item": false,
+          "prompt": "Your _____ helps you learn.",
+          "answers": [
+                "brain"
+          ],
+          "accept_typos": {
+                "brain": [
+                      "brain"
+                ]
+          }
     },
     {
       "id": "R001",
@@ -4909,6 +5686,167 @@ __loadLesson({
         "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
         "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
         "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+      }
+    },
+    {
+      "id": "IF-SC-01",
+      "phase": "drill",
+      "training_layer": "grammar_practice",
+      "type": "typed_blank",
+      "difficulty": "medium",
+      "recovery_band": "A",
+      "core_sentence_id": null,
+      "linked_rule_ids": ["GR01"],
+      "instruction": "그림 표현을 활용하여 if 조건문을 완성하세요.",
+      "context": "보기: If the weather is nice, Jenny will play outside.\n표현: go to the park / see a cat",
+      "prompt": "If she _____ to the park, she can see a cat.",
+      "answers": ["goes"],
+      "accept_typos": {"goes": ["goes", "go's"]},
+      "hint": "she 뒤에 go? → goes!",
+      "wrong_explanations": {
+        "go": "she/he/it 뒤 → 동사에 -s! go → goes. if절이라고 예외 없음!"
+      }
+    },
+    {
+      "id": "IF-SC-02",
+      "phase": "drill",
+      "training_layer": "grammar_practice",
+      "type": "typed_blank",
+      "difficulty": "medium",
+      "recovery_band": "A",
+      "core_sentence_id": null,
+      "linked_rule_ids": ["GR01"],
+      "instruction": "표현을 활용하여 if 조건문의 주절을 완성하세요.",
+      "context": "표현: give food to the cat / follow her",
+      "prompt": "If she gives food to the cat, _____ will follow her.",
+      "answers": ["the cat"],
+      "accept_typos": {"the cat": ["the cat", "The cat"]},
+      "hint": "will 앞에 뭐가 빠졌지? 누가 따라오는 건데?",
+      "wrong_explanations": {
+        "": "will 앞에 주어 없으면 → 무조건 감점! '누가' 따라오는지 써야 해. → the cat will follow her."
+      }
+    },
+    {
+      "id": "IF-SC-03",
+      "phase": "drill",
+      "training_layer": "grammar_practice",
+      "type": "typed_blank",
+      "difficulty": "medium",
+      "recovery_band": "A",
+      "core_sentence_id": null,
+      "linked_rule_ids": ["GR01"],
+      "instruction": "표현을 활용하여 if 조건문을 완성하세요.",
+      "context": "표현: bring the cat home / sleep with it",
+      "prompt": "If she _____ the cat home, she will sleep with it.",
+      "answers": ["brings"],
+      "accept_typos": {"brings": ["brings"]},
+      "hint": "she 뒤에 bring? → brings!",
+      "wrong_explanations": {
+        "bring": "she/he/it 뒤 → 동사에 -s! bring → brings. if절 안에서도 똑같아!"
+      }
+    },
+    {
+      "id": "IF-ERR-01",
+      "phase": "drill",
+      "training_layer": "grammar_practice",
+      "type": "choice_blank",
+      "difficulty": "medium",
+      "recovery_band": "A",
+      "core_sentence_id": null,
+      "linked_rule_ids": ["GR01"],
+      "keyword": "3인칭 단수 -s 집중 훈련",
+      "instruction": "어법상 올바른 문장을 고르세요.",
+      "prompt": "다음 중 어법이 올바른 문장은?",
+      "choices": [
+        "If she go to the park, she can see a cat.",
+        "If she goes to the park, she can see a cat.",
+        "If she going to the park, she can see a cat.",
+        "If she will go to the park, she can see a cat."
+      ],
+      "correct_index": 1,
+      "hint": "if절 규칙 2개: ① will 금지 ② she 뒤 -s 붙이기",
+      "wrong_explanations": {
+        "0": "she 뒤에 go? → goes! 3인칭 단수 -s 빠뜨리면 바로 틀림.",
+        "2": "if절에 -ing형 절대 안 돼! 현재형만 가능.",
+        "3": "if 뒤에 will 보이면 → 무조건 틀림!"
+      }
+    },
+    {
+      "id": "IF-ERR-02",
+      "phase": "drill",
+      "training_layer": "grammar_practice",
+      "type": "choice_blank",
+      "difficulty": "medium",
+      "recovery_band": "A",
+      "core_sentence_id": null,
+      "linked_rule_ids": ["GR01"],
+      "keyword": "주절 주어 누락 교정",
+      "instruction": "어법상 올바른 문장을 고르세요.",
+      "prompt": "If she gives food to the cat, _____",
+      "choices": [
+        "will follow her.",
+        "the cat will follow her.",
+        "the cat follow her.",
+        "following her."
+      ],
+      "correct_index": 1,
+      "hint": "영어 문장 = 주어 + 동사. will 앞에 주어 있어?",
+      "wrong_explanations": {
+        "0": "주어 없이 will follow? → 누가 따라오는데? 주어 빠지면 0점! the cat 넣어야 함.",
+        "2": "the cat follow? → will 빠졌어! 주절은 will + 동사원형이 공식.",
+        "3": "following만 달랑? → 주어도 없고 동사도 불완전. 문장이 아님!"
+      }
+    },
+    {
+      "id": "IF-ERR-03",
+      "phase": "drill",
+      "training_layer": "grammar_practice",
+      "type": "choice_blank",
+      "difficulty": "hard",
+      "recovery_band": "A",
+      "core_sentence_id": null,
+      "linked_rule_ids": ["GR01"],
+      "keyword": "3인칭 단수 + if절 종합",
+      "instruction": "빈칸에 알맞은 것을 고르세요.",
+      "prompt": "If he _____ hard, he will pass the test.",
+      "choices": [
+        "study",
+        "studies",
+        "will study",
+        "studying"
+      ],
+      "correct_index": 1,
+      "hint": "he 뒤니까 → studies! (study → y를 i로 바꾸고 -es)",
+      "wrong_explanations": {
+        "0": "he 뒤에 study? → studies! 자음+y → y를 i로 바꾸고 -es 붙이기.",
+        "2": "if 뒤에 will 보이면 → 무조건 틀림!",
+        "3": "if절에 -ing형 절대 안 돼! 현재형만 가능."
+      }
+    },
+    {
+      "id": "IF-ERR-04",
+      "phase": "drill",
+      "training_layer": "grammar_practice",
+      "type": "choice_blank",
+      "difficulty": "hard",
+      "recovery_band": "A",
+      "core_sentence_id": null,
+      "linked_rule_ids": ["GR01"],
+      "keyword": "3인칭 단수 + if절 종합",
+      "instruction": "빈칸에 알맞은 것을 고르세요.",
+      "prompt": "If it _____ tomorrow, we will stay home.",
+      "choices": [
+        "rain",
+        "rains",
+        "will rain",
+        "rained"
+      ],
+      "correct_index": 1,
+      "hint": "it 뒤니까 → rains! 그리고 if절에 will은 절대 금지.",
+      "wrong_explanations": {
+        "0": "it 뒤에 rain? → rains! 3인칭 단수 -s 빠뜨리면 바로 틀림.",
+        "2": "if 뒤에 will 보이면 → 무조건 틀림!",
+        "3": "rained는 과거형! if절은 현재형만 가능. -ed 보이면 틀림."
       }
     }
   ],
