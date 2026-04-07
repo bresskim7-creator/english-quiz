@@ -1269,7 +1269,7 @@
                 <div class="subject-card science" onclick="selectSubject('science')">
                     <div class="subject-card-icon">🔬</div>
                     <div class="subject-card-name">과학</div>
-                    <div class="subject-card-sub">1·2단원</div>
+                    <div class="subject-card-sub">1·3단원</div>
                 </div>
             </div>
             <div id="webhook-settings-toggle" style="font-size:12px;color:#999;cursor:pointer;text-align:center;margin-top:24px;" onclick="document.getElementById('webhook-settings').style.display='block';this.style.display='none';">⚙️ 설정</div>
@@ -1824,7 +1824,9 @@
                 await loadLesson('soc1');
             } else if (subject === 'science') {
                 lessonRow.querySelector('.setting-label').textContent = '단원';
-                lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-sci1" onclick="selectLesson(\'sci1\')">1단원</button>'; // 2단원(지권의변화)은 시험범위 밖 — 시험 후 복원: + '<button class="lesson-btn" id="lesson-btn-sci2" onclick="selectLesson(\'sci2\')">2단원</button>'
+                lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-sci1" onclick="selectLesson(\'sci1\')">1단원</button>' +
+                    // sci2(지권의변화)는 시험범위 밖 — 시험 후 복원: '<button class="lesson-btn" id="lesson-btn-sci2" onclick="selectLesson(\'sci2\')">2단원</button>' +
+                    '<button class="lesson-btn" id="lesson-btn-sci3" onclick="selectLesson(\'sci3\')">3단원</button>';
                 await loadLesson('sci1');
             } else {
                 lessonRow.querySelector('.setting-label').textContent = 'Lesson';

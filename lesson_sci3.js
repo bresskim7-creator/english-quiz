@@ -1,6 +1,7 @@
 __loadLesson({
+  "lesson_id": "sci3",
   "subject": "science",
-  "title": "Ⅲ. 빛과 파동 — 1. 빛",
+  "title": "3단원: 빛과 파동",
   "subtitle": "물체를 보는 과정, 반사와 굴절, 거울과 렌즈, 빛의 합성",
   "version": "1.0",
   "build_date": "2026-03-31",

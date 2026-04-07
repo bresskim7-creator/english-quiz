@@ -1,4 +1,4 @@
-const CACHE_NAME = 'quiz-v74';
+const CACHE_NAME = 'quiz-v75';
 const PRECACHE_URLS = [
   './',
   './index.html',
@@ -17,9 +17,9 @@ const PRECACHE_URLS = [
   './lesson_math3.js',
   './lesson_soc1.js',
   './lesson_soc2.js',
-  './lesson_sci1.js'
+  './lesson_sci1.js',
   // './lesson_sci2.js',    // 시험범위 밖 — 시험 후 복원
-  // './lesson_sci3.js',    // 과학 A반 확인 후 추가
+  './lesson_sci3.js'
 ];
 
 self.addEventListener('install', event => {
