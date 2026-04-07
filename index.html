@@ -4526,6 +4526,15 @@
         function compute4Metrics(answers) {
             if (!QUIZ_DATA) return null;
 
+            // 문항 풀(questions / exam_prep / procedure_drills) 통합 조회
+            const allQuestions = QUIZ_DATA.questions || QUIZ_DATA.exam_prep || [];
+            function findQ(id) {
+                let q = allQuestions.find(x => x.id === id);
+                if (!q && QUIZ_DATA.exam_prep) q = QUIZ_DATA.exam_prep.find(x => x.id === id);
+                if (!q && QUIZ_DATA.procedure_drills) q = QUIZ_DATA.procedure_drills.find(x => x.id === id);
+                return q || null;
+            }
+
             // Check if this is a drill session
             const isDrillSession = currentMode === 'drill';
 
@@ -4538,7 +4547,7 @@
                     drill_stage: getDrillStage(),
                     total_rate: totalRate,
                     sentences_practiced: new Set(answers.map(a => {
-                        const q = QUIZ_DATA.questions.find(x => x.id === a.id);
+                        const q = findQ(a.id);
                         return q ? q.core_sentence_id : null;
                     }).filter(Boolean)).size
                 };
@@ -4546,7 +4555,7 @@
 
             // A군 문항만 필터
             const aGroupAnswers = answers.filter(a => {
-                const q = QUIZ_DATA.questions.find(x => x.id === a.id);
+                const q = findQ(a.id);
                 return q && (q.score_group === 'A' || q.recovery_band === 'A');
             });
             const aGroupCorrect = aGroupAnswers.filter(a => a.correct).length;
@@ -4569,7 +4578,7 @@
 
             // C군 별도 기록 (§5.4: 핵심 메트릭에 미반영)
             const cGroupAnswers = answers.filter(a => {
-                const q = QUIZ_DATA.questions.find(x => x.id === a.id);
+                const q = findQ(a.id);
                 return q && q.score_group === 'C';
             });
             const cGroupRate = cGroupAnswers.length > 0
