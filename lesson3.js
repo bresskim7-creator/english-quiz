@@ -4644,6 +4644,148 @@ __loadLesson({
       "min_words": 25,
       "exam_pattern": "자유 영작",
       "training_layer": "skill_focus"
+    },
+    {
+      "id": "PV001",
+      "type": "choice",
+      "phase": "exam_prep",
+      "difficulty": "easy",
+      "keyword": "active_to_passive",
+      "instruction": "다음 능동태 문장을 수동태로 바르게 바꾼 것을 고르세요.\n\nGustav Klimt painted The Kiss.",
+      "hint": "수동태: 주어(동작을 받는 것) + be + p.p. + by + 행위자",
+      "wrong_explanations": {
+        "0": "💡 was가 빠졌어요! 수동태는 반드시 'be + p.p.' 형태예요.\n📖 painted만 있으면 능동태예요.",
+        "2": "💡 주어와 by 뒤가 바뀌었어요.\n📖 수동태에서 주어는 동작을 '받는' 쪽이에요. The Kiss가 그려진 거니까 The Kiss가 주어!",
+        "3": "💡 is painted는 현재형이에요. 원래 문장이 과거(painted)니까 was painted가 맞아요.\n📖 시제를 맞춰 주세요!"
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": ["GR01"],
+      "recovery_band": "A",
+      "test_task": "active_to_passive",
+      "page": 55,
+      "sentence": null,
+      "choices": [
+        "The Kiss painted by Gustav Klimt.",
+        "The Kiss was painted by Gustav Klimt.",
+        "Gustav Klimt was painted by The Kiss.",
+        "The Kiss is painted by Gustav Klimt."
+      ],
+      "correct": 1,
+      "explanation": "💡 능동태 → 수동태 변환 3단계:\n① 목적어(The Kiss)를 주어로\n② 동사를 'be + p.p.'로 (painted → was painted)\n③ 주어(Gustav Klimt)를 'by ~'로\n📖 The Kiss was painted by Gustav Klimt.",
+      "exam_pattern": "능동태→수동태 전환",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "PV002",
+      "type": "choice",
+      "phase": "exam_prep",
+      "difficulty": "easy",
+      "keyword": "active_to_passive",
+      "instruction": "다음 능동태 문장을 수동태로 바르게 바꾼 것을 고르세요.\n\nA little girl made the robot.",
+      "hint": "과거 시제 능동태 → was/were + p.p. + by ~",
+      "wrong_explanations": {
+        "0": "💡 is made는 현재형이에요. 원문이 made(과거)니까 was made가 맞아요.",
+        "2": "💡 was maked? make의 과거분사는 made예요! make → made → made.\n📖 불규칙 동사를 확인하세요.",
+        "3": "💡 주어와 by 뒤가 바뀌었어요.\n📖 로봇이 만들어진 거니까 The robot이 주어예요."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": ["GR01"],
+      "recovery_band": "A",
+      "test_task": "active_to_passive",
+      "page": 55,
+      "sentence": null,
+      "choices": [
+        "The robot is made by a little girl.",
+        "The robot was made by a little girl.",
+        "The robot was maked by a little girl.",
+        "A little girl was made by the robot."
+      ],
+      "correct": 1,
+      "explanation": "💡 능동: A little girl(주어) made(동사) the robot(목적어)\n→ 수동: The robot(주어) was made(be+p.p.) by a little girl.\n📖 make-made-made (불규칙 동사!)",
+      "exam_pattern": "능동태→수동태 전환",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "PV003",
+      "type": "choice",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "active_to_passive",
+      "instruction": "다음 능동태 문장을 수동태로 바르게 바꾼 것을 고르세요.\n\nJim washes the dishes every night.",
+      "hint": "현재 시제 + 3인칭 단수가 아닌 주어(The dishes) → are + p.p.",
+      "wrong_explanations": {
+        "0": "💡 is washed? The dishes는 복수예요!\n📖 복수 주어에는 are를 써야 해요.",
+        "2": "💡 was washed는 과거 시제예요. 원문은 현재(washes)니까 현재형으로!\n📖 every night = 반복 행동 → 현재 시제.",
+        "3": "💡 be동사(are)가 빠졌어요!\n📖 수동태는 반드시 'be + p.p.' 형태예요. washed만 쓰면 안 돼요."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": ["GR01"],
+      "recovery_band": "B",
+      "test_task": "active_to_passive",
+      "page": 55,
+      "sentence": null,
+      "choices": [
+        "The dishes is washed by Jim every night.",
+        "The dishes are washed by Jim every night.",
+        "The dishes was washed by Jim every night.",
+        "The dishes washed by Jim every night."
+      ],
+      "correct": 1,
+      "explanation": "💡 현재 시제 수동태: am/is/are + p.p.\n📖 The dishes(복수) → are washed\n   Jim(행위자) → by Jim\n   every night는 위치 그대로!",
+      "exam_pattern": "능동태→수동태 전환",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "PV004",
+      "type": "choice",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "passive_to_active",
+      "instruction": "다음 수동태 문장을 능동태로 바르게 바꾼 것을 고르세요.\n\nThe house was built in 1990.",
+      "hint": "by + 행위자가 없으면 누군가(They/Someone)를 주어로 써요.",
+      "wrong_explanations": {
+        "0": "💡 builded? build의 과거형은 built예요! build → built → built.\n📖 불규칙 동사를 확인하세요.",
+        "1": "💡 이건 여전히 수동태예요! was가 있으면 수동태.\n📖 능동태로 바꾸려면 be동사를 없애고 주어를 행위자로 바꿔야 해요.",
+        "3": "💡 builds는 현재형이에요. 원문이 was built(과거)니까 과거로 맞춰야 해요.\n📖 1990은 과거니까 과거 시제(built)로!"
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": ["GR01"],
+      "recovery_band": "B",
+      "test_task": "passive_to_active",
+      "page": 55,
+      "sentence": null,
+      "choices": [
+        "They builded the house in 1990.",
+        "The house was built in 1990.",
+        "They built the house in 1990.",
+        "Someone builds the house in 1990."
+      ],
+      "correct": 2,
+      "explanation": "💡 수동 → 능동 변환:\n① by ~가 없으면 They/Someone을 주어로\n② be + p.p.를 동사 원래 형태로 (was built → built)\n③ 원래 주어(The house)를 목적어로\n📖 They built the house in 1990.",
+      "exam_pattern": "수동태→능동태 전환",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "PV005",
+      "type": "typed_answer",
+      "phase": "exam_prep",
+      "difficulty": "hard",
+      "keyword": "active_to_passive",
+      "instruction": "다음 능동태 문장을 수동태로 바꿀 때, 빈칸에 들어갈 두 단어를 쓰세요.\n\nLight pollution threatens wildlife.\n→ Wildlife ______ by light pollution.",
+      "hint": "현재 시제 + 단수 주어 → is + p.p.",
+      "wrong_explanations": {
+        "default": "💡 threatens → 수동태: is threatened\n📖 Wildlife(단수) + is + threatened(threaten의 p.p.) + by light pollution"
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": ["GR01"],
+      "recovery_band": "B",
+      "test_task": "active_to_passive",
+      "page": null,
+      "correct_answer": "is threatened",
+      "accept_answers": ["is threatened"],
+      "explanation": "💡 능동: Light pollution(주어) threatens(동사) wildlife(목적어)\n→ 수동: Wildlife(주어) is threatened(be+p.p.) by light pollution.\n📖 이 문장은 기출 기말고사에도 나온 유형이에요!",
+      "exam_pattern": "능동태→수동태 전환 (서술형)",
+      "training_layer": "mixed_practice"
     }
   ],
   "vocab_drill": [

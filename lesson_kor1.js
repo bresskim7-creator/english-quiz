@@ -2054,6 +2054,216 @@ __loadLesson({
       ],
       "page": null,
       "core_sentence_id": null
+    },
+    {
+      "id": "KOR-U1-046",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "difficulty": "medium",
+      "recovery_band": "B",
+      "subject": "korean",
+      "unit": "1",
+      "subunit": "1-02",
+      "passage_group": "kor2-visang-u1-02-symbolism-001",
+      "group_order": 1,
+      "is_transfer_item": false,
+      "title": "소설 속 공간의 상징적 의미",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "세상에, 이렇게 작은 방이 있다니. 창문 하나 없는 캄캄한 굴 속 같은 방, 한 사람이 누우면 딱 맞을 정도였다.\n\n이 장면에서 '아빠의 방'이 상징하는 것으로 가장 적절한 것은?",
+      "choices": [
+        "아빠가 겪고 있는 고단하고 외로운 현실",
+        "아빠가 아들을 만나기 싫어하는 마음",
+        "주인공이 아빠를 찾아가기 어려운 거리",
+        "가족이 함께 살 수 없는 경제적 여유"
+      ],
+      "correct": 0,
+      "hint": "방의 '크기'와 '어둠'이 무엇을 나타내는지 생각해 봐.",
+      "reference_type": "hint",
+      "symbol_marks": [],
+      "wrong_explanations": {
+        "1": "💡 아빠는 아들을 반갑게 맞이해. 만나기 싫어하는 게 아니야.\n📖 이 방은 아빠의 '감정'이 아니라 '처지'를 보여 줘.",
+        "2": "💡 거리는 기차를 타고 온 것으로 이미 나타났어.\n📖 방의 묘사는 물리적 거리가 아니라 아빠의 삶의 상태를 보여 줘.",
+        "3": "💡 경제적 여유는 간접적인 이유일 수 있지만, 이 장면이 직접 상징하는 것은 아빠의 고단한 현실이야.\n📖 '창문 하나 없는 캄캄한 굴 속' = 답답하고 외로운 처지."
+      },
+      "explanation": "💡 공간 묘사는 인물의 상황과 심리를 드러내는 장치야.\n📖 '창문 하나 없는 캄캄한 굴 속 같은 방' → 아빠가 처한 고단하고 외로운 현실을 상징해.\n📝 소설에서 공간 = 인물의 처지나 심리를 반영하는 상징적 배경.",
+      "source": "비상_중2국어_1-02 (교과서 원문)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "symbolism",
+        "spatial_description"
+      ],
+      "page": null,
+      "core_sentence_id": null
+    },
+    {
+      "id": "KOR-U1-047",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "difficulty": "medium",
+      "recovery_band": "B",
+      "subject": "korean",
+      "unit": "1",
+      "subunit": "1-02",
+      "passage_group": "kor2-visang-u1-02-symbolism-002",
+      "group_order": 1,
+      "is_transfer_item": false,
+      "title": "아빠의 비유가 담긴 의미",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "\"꽃이나 나무를 옮겨 심어도 새 땅에 뿌리를 내리려면 힘이 든다 아이가. 시간이 흐르고 뿌리가 땅에 튼실히 박히게 되면 꽃도 피워 내고 잎도 피는데, 아빠도 마찬가지 아니겠나.\"\n\n아빠가 '꽃이나 나무를 옮겨 심는 것'에 빗대어 말하려는 것은?",
+      "choices": [
+        "새로운 환경에 적응하는 데는 시간이 필요하다는 것",
+        "꽃을 키우는 일이 자신의 새로운 취미라는 것",
+        "아들에게 빨리 돌아가겠다는 약속",
+        "지금 사는 곳의 자연환경이 좋다는 것"
+      ],
+      "correct": 0,
+      "hint": "'옮겨 심다'와 '뿌리를 내리다'가 사람의 어떤 상황과 비슷한지 생각해 봐.",
+      "reference_type": "hint",
+      "symbol_marks": [],
+      "wrong_explanations": {
+        "1": "💡 아빠는 진짜 꽃 이야기를 하는 게 아니야.\n📖 '꽃/나무'는 자기 자신을 비유한 거야. 새 땅 = 새로운 곳에서의 삶.",
+        "2": "💡 아빠는 돌아간다는 약속을 하지 않았어.\n📖 오히려 '시간이 걸린다'는 것을 솔직하게 말하고 있어.",
+        "3": "💡 자연환경 이야기가 아니야.\n📖 이것은 비유적 표현이야. 꽃/나무 = 아빠 자신, 새 땅 = 새로운 삶의 터전."
+      },
+      "explanation": "💡 비유는 '다른 것에 빗대어 말하는 것'이야.\n📖 꽃/나무를 옮겨 심다 = 아빠가 새로운 곳에서 살기 시작한 것\n   뿌리를 내리다 = 적응하여 안정을 찾다\n📝 아빠는 적응에 시간이 걸린다는 것을 자연물에 빗대어 위로하고 있어.",
+      "source": "비상_중2국어_1-02 (교과서 원문)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "figurative_language",
+        "metaphor"
+      ],
+      "page": null,
+      "core_sentence_id": null
+    },
+    {
+      "id": "KOR-U1-048",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "difficulty": "hard",
+      "recovery_band": "C",
+      "subject": "korean",
+      "unit": "1",
+      "subunit": "1-02",
+      "passage_group": "kor2-visang-u1-02-symbolism-003",
+      "group_order": 1,
+      "is_transfer_item": false,
+      "title": "소설 속 소재의 상징적 의미",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "냉장고 문을 열어 보니 라면 몇 개와 소주 몇 병이 전부였다.\n\n이 장면에서 '냉장고 속 라면과 소주'가 드러내는 것으로 가장 적절한 것은?",
+      "choices": [
+        "아빠의 부실하고 불규칙한 생활",
+        "아빠가 요리를 못하는 성격",
+        "아들이 올 줄 몰라서 준비를 못한 것",
+        "이 동네에는 마트가 없다는 사실"
+      ],
+      "correct": 0,
+      "hint": "냉장고에 있는 것이 '라면과 소주뿐'이라는 것이 어떤 생활을 보여 주는지 생각해 봐.",
+      "reference_type": "hint",
+      "symbol_marks": [],
+      "wrong_explanations": {
+        "1": "💡 요리 실력의 문제가 아니야.\n📖 '라면과 소주뿐'이라는 것은 제대로 된 식사를 못 하고 있다는 뜻이야.",
+        "2": "💡 아들 방문 여부와 관계없이, 평소 냉장고 상태가 이런 거야.\n📖 이것은 아빠의 '일상'을 보여 주는 장치야.",
+        "3": "💡 마트 유무는 이 장면의 포인트가 아니야.\n📖 작가는 냉장고를 통해 아빠의 삶의 상태를 보여 주려는 거야."
+      },
+      "explanation": "💡 소설에서 구체적인 사물 묘사는 인물의 삶을 간접적으로 보여 줘.\n📖 냉장고에 라면과 소주뿐 → 제대로 된 식사를 하지 못하는 불규칙하고 외로운 생활\n📝 이런 기법을 '간접 제시(보여주기)'라고 해. 직접 '아빠가 힘들다'라고 말하지 않고 사물로 보여 줘.",
+      "source": "비상_중2국어_1-02 (교과서 원문)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "symbolism",
+        "indirect_characterization"
+      ],
+      "page": null,
+      "core_sentence_id": null
+    },
+    {
+      "id": "KOR-U1-049",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "difficulty": "medium",
+      "recovery_band": "B",
+      "subject": "korean",
+      "unit": "1",
+      "subunit": "1-02",
+      "passage_group": "kor2-visang-u1-02-symbolism-004",
+      "group_order": 1,
+      "is_transfer_item": false,
+      "title": "해바라기의 상징",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "기차가 역에 섰다. 역 건너편에 해바라기가 노랗게 피어 있다. 해를 바라려고 발뒤꿈치를 들고 빼곡하게 서 있다.\n\n이 소설의 첫 장면에 등장하는 '해바라기'가 상징하는 것으로 가장 적절한 것은?",
+      "choices": [
+        "여름이라는 계절적 배경",
+        "밝은 것을 향해 나아가려는 희망",
+        "시골 마을의 한적한 분위기",
+        "주인공이 좋아하는 꽃"
+      ],
+      "correct": 1,
+      "hint": "해바라기는 '해를 바라본다'는 뜻이야. 소설 전체 주제와 연결해 봐.",
+      "reference_type": "hint",
+      "symbol_marks": [],
+      "wrong_explanations": {
+        "0": "💡 단순한 계절 정보가 아니야.\n📖 작가가 첫 장면에 해바라기를 넣은 것은 상징적 의미 때문이야.",
+        "2": "💡 분위기 묘사보다 더 깊은 의미가 있어.\n📖 '해를 바라려고 발뒤꿈치를 들고'라는 표현에 주목해 봐. 적극적으로 밝은 쪽을 향하고 있어.",
+        "3": "💡 주인공의 취향과는 관계없어.\n📖 소설의 첫 장면에 놓인 이미지는 작품 전체의 주제를 암시하는 역할을 해."
+      },
+      "explanation": "💡 소설의 첫 장면(도입부)은 작품의 주제를 암시하는 경우가 많아.\n📖 해바라기 = '해를 바라보는 꽃' → 밝은 것(희망)을 향해 나아가려는 의지를 상징\n📝 이 소설은 절망적인 상황에서도 희망을 찾는 이야기야. 해바라기가 그 주제를 첫 장면에서 암시해.",
+      "source": "비상_중2국어_1-02 (교과서 원문)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "symbolism",
+        "opening_scene"
+      ],
+      "page": null,
+      "core_sentence_id": null
+    },
+    {
+      "id": "KOR-U1-050",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "difficulty": "hard",
+      "recovery_band": "C",
+      "subject": "korean",
+      "unit": "1",
+      "subunit": "1-02",
+      "passage_group": "kor2-visang-u1-02-perspective-004",
+      "group_order": 1,
+      "is_transfer_item": false,
+      "title": "3인칭 시점 변환 실습",
+      "instruction": "다음 두 글을 비교하고 질문에 답하세요.",
+      "sentence": "[원문 – 1인칭 주인공 시점]\n\"아빠, 당장 집에 가자\"라고 외치다가 \"제발!\"이라며 나도 모르게 목소리가 잦아들었다.\n\n[변환 – 3인칭 관찰자 시점]\n연우는 \"아빠, 당장 집에 가자\"라고 외치다가 \"제발!\"이라며 점점 목소리가 작아졌다.\n\n원문(1인칭)에서 '나도 모르게'라는 표현이 3인칭으로 바뀌면서 사라진다. 이때 함께 사라지는 효과는?",
+      "choices": [
+        "주인공이 자기 감정의 변화를 미처 의식하지 못했다는 느낌",
+        "주인공이 아빠에게 화가 났다는 사실",
+        "장면이 일어난 장소에 대한 정보",
+        "아빠가 아들의 말을 들었다는 사실"
+      ],
+      "correct": 0,
+      "hint": "'나도 모르게'는 '나'만 쓸 수 있는 표현이야. 3인칭으로 바꾸면 왜 이 표현을 못 쓸까?",
+      "reference_type": "hint",
+      "symbol_marks": [],
+      "wrong_explanations": {
+        "1": "💡 화가 났다는 건 3인칭에서도 표현할 수 있어.\n📖 '연우는 화가 나서 소리쳤다'로 쓸 수 있잖아. 사라지는 건 아니야.",
+        "2": "💡 장소 정보는 시점과 관계없이 전달할 수 있어.\n📖 시점이 바뀌어도 배경 묘사는 가능해.",
+        "3": "💡 아빠가 들었는지 여부는 시점과 관계없이 알 수 있어.\n📖 3인칭에서도 '아빠는 연우의 말을 들었다'라고 쓸 수 있어."
+      },
+      "explanation": "💡 '나도 모르게'는 1인칭만의 표현이야.\n📖 '나도 모르게' = 주인공 자신도 인식하지 못한 감정 변화를 독자에게 전달\n   3인칭 관찰자는 바깥에서 보기 때문에 '점점 작아졌다'로만 표현 가능\n📝 1인칭 시점의 핵심 장점: 인물 내면의 무의식적 변화까지 전달할 수 있다.",
+      "source": "비상_중2국어_1-02 (교과서 활동 기반)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "narrative_perspective",
+        "point_of_view_conversion"
+      ],
+      "page": null,
+      "core_sentence_id": null
     }
   ],
   "vocab_drill": [

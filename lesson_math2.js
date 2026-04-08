@@ -1732,6 +1732,87 @@ __loadLesson({
       },
       "hint": "",
       "source": "교과서 기반"
+    },
+    {
+      "id": "Q-34",
+      "type": "choice",
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "score_group": "B",
+      "instruction": "다음 도형의 둘레의 길이는?",
+      "sentence": "",
+      "visual_svg": "<svg viewBox=\"0 0 320 210\" width=\"320\" height=\"210\" xmlns=\"http://www.w3.org/2000/svg\"><g transform=\"translate(40,40)\"><path d=\"M 0,0 L 240,0 L 240,150 L 100,150 L 100,40 L 0,40 Z\" fill=\"none\" stroke=\"#222\" stroke-width=\"2\" stroke-linejoin=\"miter\"/><path d=\"M 10,0 L 10,10 L 0,10\" fill=\"none\" stroke=\"#222\" stroke-width=\"1\"/><path d=\"M 230,0 L 230,10 L 240,10\" fill=\"none\" stroke=\"#222\" stroke-width=\"1\"/><path d=\"M 230,150 L 230,140 L 240,140\" fill=\"none\" stroke=\"#222\" stroke-width=\"1\"/><path d=\"M 110,150 L 110,140 L 100,140\" fill=\"none\" stroke=\"#222\" stroke-width=\"1\"/><path d=\"M 90,40 L 90,50 L 100,50\" fill=\"none\" stroke=\"#222\" stroke-width=\"1\"/><path d=\"M 0,30 L 10,30 L 10,40\" fill=\"none\" stroke=\"#222\" stroke-width=\"1\"/><line x1=\"0\" y1=\"-10\" x2=\"240\" y2=\"-10\" stroke=\"#222\" stroke-width=\"0.8\" stroke-dasharray=\"5,3\"/><line x1=\"0\" y1=\"-14\" x2=\"0\" y2=\"-6\" stroke=\"#222\" stroke-width=\"0.8\"/><line x1=\"240\" y1=\"-14\" x2=\"240\" y2=\"-6\" stroke=\"#222\" stroke-width=\"0.8\"/><text x=\"120\" y=\"-18\" font-family=\"serif\" font-size=\"16\" text-anchor=\"middle\" fill=\"#222\">5x² − 2x + 3</text><line x1=\"-8\" y1=\"1\" x2=\"-8\" y2=\"39\" stroke=\"#222\" stroke-width=\"0.8\"/><line x1=\"-12\" y1=\"1\" x2=\"-4\" y2=\"1\" stroke=\"#222\" stroke-width=\"0.8\"/><line x1=\"-12\" y1=\"39\" x2=\"-4\" y2=\"39\" stroke=\"#222\" stroke-width=\"0.8\"/><text x=\"-18\" y=\"25\" font-family=\"serif\" font-size=\"16\" font-style=\"italic\" text-anchor=\"end\" fill=\"#222\">x</text><line x1=\"107\" y1=\"42\" x2=\"107\" y2=\"148\" stroke=\"#222\" stroke-width=\"0.8\" stroke-dasharray=\"5,3\"/><line x1=\"103\" y1=\"42\" x2=\"111\" y2=\"42\" stroke=\"#222\" stroke-width=\"0.8\"/><line x1=\"103\" y1=\"148\" x2=\"111\" y2=\"148\" stroke=\"#222\" stroke-width=\"0.8\"/><text x=\"116\" y=\"102\" font-family=\"serif\" font-size=\"15\" fill=\"#222\">3x² − 1</text></g></svg>",
+      "options": [
+        "16x² − 2x + 4",
+        "16x² − x + 2",
+        "13x² − 3x + 5",
+        "11x² + 1",
+        "8x² − x + 2"
+      ],
+      "correct": 0,
+      "explanation": "💡 ㄴ자(계단) 모양의 둘레 = 외접 직사각형의 둘레와 같아!\n📖 가로 = 5x² − 2x + 3\n📖 세로 = x + (3x² − 1) = 3x² + x − 1\n🔬 둘레 = 2(5x² − 2x + 3) + 2(3x² + x − 1) = 10x² − 4x + 6 + 6x² + 2x − 2 = 16x² − 2x + 4",
+      "wrong_explanations": {
+        "1": "💡 계단 모양 도형의 둘레는 외접 직사각형의 둘레와 같아!\n📖 세로 전체 = x + (3x² − 1) = 3x² + x − 1. 둘레 = 2(5x² − 2x + 3 + 3x² + x − 1) = 16x² − 2x + 4야.",
+        "2": "💡 세로 부분을 합쳐야 해: x + (3x² − 1) = 3x² + x − 1\n📖 둘레 = 2 × 가로 + 2 × 세로 = 16x² − 2x + 4야.",
+        "3": "💡 이 도형의 둘레는 (가로 + 세로) × 2야.\n📖 가로 = 5x² − 2x + 3, 세로 = 3x² + x − 1. 계산해 보면 16x² − 2x + 4!",
+        "4": "💡 6개의 변을 모두 더해야 해, 하지만 계단 모양의 핵심 공식이 있어!\n📖 둘레 = 2(가로 전체) + 2(세로 전체) = 16x² − 2x + 4."
+      },
+      "hint": "계단 모양 도형의 둘레 = 외접 직사각형의 둘레! 가로 전체와 세로 전체를 각각 구해서 2배 해 봐!",
+      "source": "교과서 p.80 8번 (원문)"
+    },
+    {
+      "id": "Q-35",
+      "type": "typed_answer",
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "score_group": "C",
+      "instruction": "[서술형] 2⁵ × 5⁶은 n자리 자연수이고, 가장 높은 자리의 숫자는 s이다. 이때 n + s의 값을 구하시오.",
+      "sentence": "",
+      "correct_answer": "11",
+      "accept_answers": ["11"],
+      "explanation": "💡 2⁵ × 5⁶ = 2⁵ × 5⁵ × 5 = (2 × 5)⁵ × 5 = 10⁵ × 5 = 500000\n📖 6자리 자연수이므로 n = 6\n📖 가장 높은 자리 숫자는 5이므로 s = 5\n🔬 n + s = 6 + 5 = 11",
+      "wrong_feedback": "💡 지수법칙을 이용해 봐! 2⁵ × 5⁶ = 2⁵ × 5⁵ × 5¹\n📖 (2 × 5)⁵ = 10⁵ = 100000이고, 여기에 5를 곱하면 500000이야.\n🔬 6자리(n=6), 맨 앞 숫자 5(s=5), n+s=11!",
+      "hint": "밑이 같은 것끼리 묶어 봐! 2⁵ × 5⁵ = (2×5)⁵ = 10⁵이고, 남은 5¹을 곱하면?",
+      "source": "교과서 p.81 16번 (원문, 서술형)"
+    },
+    {
+      "id": "Q-36",
+      "type": "choice",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "score_group": "A",
+      "instruction": "(10x² − 15x) ÷ 5x 를 계산하면?",
+      "sentence": "",
+      "options": [
+        "2x − 3",
+        "2x − 15",
+        "2x² − 3x",
+        "50x³ − 75x²"
+      ],
+      "correct": 0,
+      "explanation": "💡 각 항을 5x로 나눠!\n📖 10x² ÷ 5x = 2x\n📖 −15x ÷ 5x = −3\n🔬 답: 2x − 3",
+      "wrong_explanations": {
+        "1": "💡 각 항을 5x로 나누는 거야, 5만 나누면 안 돼!\n📖 10x² ÷ 5x = 2x (x²를 x로 나누면 x), −15x ÷ 5x = −3 (x가 소거됨)",
+        "2": "💡 나눗셈이지, 곱셈이 아니야! ÷ 5x를 해야 해.\n📖 10x² ÷ 5x = 2x, −15x ÷ 5x = −3. 답은 2x − 3이야.",
+        "3": "💡 ÷ 5x는 × (1/5x)와 같아! 곱셈이 아니라 나눗셈이야.\n📖 각 항을 5x로 나누면 2x − 3이야."
+      },
+      "hint": "다항식 ÷ 단항식은 각 항을 단항식으로 나눠! 10x² ÷ 5x = ? , −15x ÷ 5x = ?",
+      "source": "교과서 p.260 8번(3) (원문)"
+    },
+    {
+      "id": "Q-37",
+      "type": "typed_answer",
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "score_group": "C",
+      "instruction": "−3x(2x − y) − (x + 3y) × (−4x) 를 계산하였을 때, x²의 계수를 a, xy의 계수를 b라고 하자. 이때 ab의 값을 구하시오.",
+      "sentence": "",
+      "correct_answer": "-30",
+      "accept_answers": ["-30", "−30"],
+      "explanation": "💡 −3x(2x − y) = −6x² + 3xy\n📖 −(x + 3y)(−4x) = −(−4x² − 12xy) = 4x² + 12xy\n📖 합: (−6x² + 4x²) + (3xy + 12xy) = −2x² + 15xy\n🔬 a = −2, b = 15 → ab = −2 × 15 = −30",
+      "wrong_feedback": "💡 두 부분을 각각 전개한 뒤 합쳐 봐!\n📖 ① −3x(2x − y) = −6x² + 3xy\n📖 ② −(x + 3y)(−4x) = 4x² + 12xy ← 부호 주의!\n🔬 합: −2x² + 15xy → a = −2, b = 15, ab = −30",
+      "hint": "두 부분을 각각 전개해! 특히 −(x + 3y)(−4x)에서 앞의 −와 (−4x)의 −가 만나면 +가 돼!",
+      "source": "교과서 p.260 9번 (원문)"
     }
   ]
 });
