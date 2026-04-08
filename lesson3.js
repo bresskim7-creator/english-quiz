@@ -208,6 +208,51 @@ __loadLesson({
       "is_priority": true,
       "linked_rule_ids": [],
       "bridge_to_exam": ["vocabulary_recall"]
+    },
+    {
+      "id": "CS16",
+      "text_en": "English is spoken in many countries.",
+      "text_ko": "영어는 많은 나라에서 사용된다.",
+      "pair_id": null,
+      "source": "focus_on_language_p54",
+      "is_priority": true,
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "bridge_to_exam": [
+        "grammar_awkward",
+        "error_correction"
+      ]
+    },
+    {
+      "id": "CS17",
+      "text_en": "The cakes are baked every morning.",
+      "text_ko": "케이크들이 매일 아침마다 구워진다.",
+      "pair_id": null,
+      "source": "focus_on_language_p54",
+      "is_priority": true,
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "bridge_to_exam": [
+        "grammar_awkward",
+        "error_correction"
+      ]
+    },
+    {
+      "id": "CS18",
+      "text_en": "The Kiss was painted by Gustav Klimt.",
+      "text_ko": "키스는 구스타프 클림트에 의해 그려졌다.",
+      "pair_id": null,
+      "source": "focus_on_language_p54",
+      "is_priority": true,
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "bridge_to_exam": [
+        "grammar_awkward",
+        "error_correction"
+      ]
     }
   ],
   "questions": [
@@ -4811,6 +4856,36 @@ __loadLesson({
       "word": "spill",
       "pos": "동사",
       "meaning": "엎지르다, 흘리다"
+    },
+    {
+      "id": "VD-L3-036",
+      "word": "shape",
+      "pos": "명사",
+      "meaning": "모양, 형태"
+    },
+    {
+      "id": "VD-L3-037",
+      "word": "true",
+      "pos": "형용사",
+      "meaning": "참인, 사실인"
+    },
+    {
+      "id": "VD-L3-038",
+      "word": "mistake",
+      "pos": "명사",
+      "meaning": "실수, 오류"
+    },
+    {
+      "id": "VD-L3-039",
+      "word": "tablecloth",
+      "pos": "명사",
+      "meaning": "식탁보, 탁자보"
+    },
+    {
+      "id": "VD-L3-040",
+      "word": "manager",
+      "pos": "명사",
+      "meaning": "경영자, 지배인, 관리자"
     }
   ],
   "grammar_rules": [

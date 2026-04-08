@@ -1844,6 +1844,216 @@ __loadLesson({
       "exam_pattern": null,
       "page": null,
       "core_sentence_id": null
+    },
+    {
+      "id": "KOR-U1-041",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "difficulty": "medium",
+      "recovery_band": "A",
+      "subject": "korean",
+      "unit": "1",
+      "subunit": "1-02",
+      "passage_group": "kor2-visang-u1-02-perspective-001",
+      "group_order": 1,
+      "is_transfer_item": false,
+      "title": "시점 구별하기: 1인칭 관찰자 vs 1인칭 주인공",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "①한연우가 아빠를 찾아 서울에 간다. 아빠는 낡은 자취방에서 생라면을 먹고 있었다. 한연우는 여동생과 함께 온 것에 대해 후회했다. \"아빠는 지금 이런 생활을 하고 있구나\"라는 생각이 들었다. 아빠의 모습을 보며 한연우는 가슴이 철렁했다.\n\n②기자가 이 장면을 관찰했다고 생각해보자. 기자는 한연우와 아빠의 모습을 멀리서 지켜보고 있었다. 기자는 이렇게 기록했다: \"아버지는 낡은 자취방에서 생라면을 먹고 있었다. 한연우는 여동생과 함께 들어서며 표정이 흔들렸다. 아버지와 아들 사이에 침묵이 흐르고 있었다.\"\n\n①과 ②의 차이는 무엇인가?",
+      "choices": [
+        "①은 아버지의 심리를 전달하고, ②는 아들의 심리를 전달한다.",
+        "①은 주인공의 심리를 직접 드러내고, ②는 행동과 표정만 관찰하여 전달한다.",
+        "①은 3인칭 시점이고, ②는 1인칭 시점이다.",
+        "①은 과거형이고, ②는 현재형이다."
+      ],
+      "correct": 1,
+      "hint": "1인칭 주인공은 '나'의 감정을 직접 드러낸다. 1인칭 관찰자는 다른 인물을 바라보며 내용만 전달한다.",
+      "reference_type": "hint",
+      "symbol_marks": [],
+      "wrong_explanations": {
+        "0": "💡 ①은 한연우(주인공)의 심리를 드러낸다.\n📖 아버지의 심리는 모두 '아들의 눈'을 통해 해석된 것이다.\n📝 누구의 심리가 직접 드러나는가를 구별하세요.",
+        "2": "💡 ①과 ② 모두 '나'(한연우)가 서술한다.\n📖 어느 쪽이든 1인칭 시점이다. 핵심은 뭘 드러내는가이다.\n📝 시점의 종류와 효과를 구별하세요.",
+        "3": "💡 문법적 시제는 구별점이 아니다.\n📖 문학에서 중요한 것은 시각과 관점이다.\n📝 누가 어떻게 보고 느끼는가를 중심으로 읽으세요."
+      },
+      "explanation": "💡 시점의 핵심은 '무엇을 직접 드러내는가'이다.\n📖 1인칭 주인공 시점: 나의 감정과 생각을 직접 표현\n   1인칭 관찰자 시점: 다른 인물의 행동만 관찰하여 전달\n📝 같은 장면이라도 시점에 따라 전달되는 정보가 달라진다.",
+      "source": "비상_중2국어_1-02",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "narrative_perspective",
+        "passage_comprehension"
+      ],
+      "page": null,
+      "core_sentence_id": null
+    },
+    {
+      "id": "KOR-U1-042",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "difficulty": "hard",
+      "recovery_band": "B",
+      "subject": "korean",
+      "unit": "1",
+      "subunit": "1-02",
+      "passage_group": "kor2-visang-u1-02-perspective-002",
+      "group_order": 2,
+      "is_transfer_item": false,
+      "title": "3인칭 관찰자 시점의 특징",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "한연우는 자신의 감정을 직접 드러낸다(1인칭 주인공): \"아빠, 당장 집에 가자\"라고 외치다가 \"제발!\"이라며 목소리가 잦아들었다.\n\n만약 이를 3인칭 관찰자 시점으로 옮기면: \"당장 집에 가자\"라고 외치던 한연우의 목소리가 \"제발!\"이라는 한 마디와 함께 갑자기 잦아들었다. 할머니와 여동생을 향한 절박한 간청이었던 것 같다.\n\n3인칭 관찰자 시점에서는 무엇이 사라지는가?",
+      "choices": [
+        "주인공의 행동 묘사",
+        "주인공의 내적 심리 상태(생각과 감정의 직접적 표현)",
+        "상황의 현장감",
+        "다른 인물들의 반응"
+      ],
+      "correct": 1,
+      "hint": "3인칭 관찰자는 외부 행동만 보고, 주인공의 '마음'을 직접 읽을 수 없다.",
+      "reference_type": "hint",
+      "symbol_marks": [],
+      "wrong_explanations": {
+        "0": "💡 3인칭 관찰자도 주인공의 행동을 묘사한다.\n📖 오히려 행동 묘사가 더 세부적으로 드러난다.\n📝 사라지는 것은 '행동'이 아니라 '내면'이다.",
+        "2": "💡 오히려 3인칭 관찰자는 거리감이 생긴다.\n📖 객관적 시점이므로 현장감이 약해질 수도 있다.\n📝 사라지는 것을 명확히 파악하세요.",
+        "3": "💡 다른 인물의 반응 해석은 오히려 관찰자에게 더 필요하다.\n📖 자신의 마음을 모르므로 겉으로 보이는 반응만 읽는다.\n📝 시점이 바뀔 때 직접 읽을 수 없는 것을 찾으세요."
+      },
+      "explanation": "💡 핵심은 '내가 누구인가'에 따른 정보 제한이다.\n📖 1인칭 주인공: \"내 마음은...\" (직접 표현)\n   3인칭 관찰자: \"그의 표정으로 보아...\" (추측만 가능)\n📝 시점의 제한이 반대로 작품의 깊이를 만든다.",
+      "source": "비상_중2국어_1-02",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "narrative_perspective",
+        "literary_analysis"
+      ],
+      "page": null,
+      "core_sentence_id": null
+    },
+    {
+      "id": "KOR-U1-043",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "difficulty": "medium",
+      "recovery_band": "A",
+      "subject": "korean",
+      "unit": "1",
+      "subunit": "1-02",
+      "passage_group": "kor2-visang-u1-02-symbolism-001",
+      "group_order": 1,
+      "is_transfer_item": false,
+      "title": "상징성 분석: 생라면과 가난",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "\"아빠는 낡은 자취방에서 생라면을 먹고 있었다.\"\n\n이 장면에서 '생라면(끓이지 않은 라면을 그냥 씹어 먹음)'은 단순한 음식이 아니다. 아빠가 혼자 서울에서 얼마나 힘들게 살고 있는지를 보여준다. 아들 한연우는 이 장면을 보며 \"아빠는 지금 이런 생활을 하고 있구나\"라고 깨닫는다.\n\n이 장면이 효과적인 이유는 무엇인가?",
+      "choices": [
+        "라면이 한국 사람이 좋아하는 음식이기 때문이다.",
+        "생라면을 먹는 모습 하나로 아빠의 생활 상황을 보여주기 때문이다.",
+        "아빠의 심리 상태를 직접 설명하기 때문이다.",
+        "여동생도 같은 음식을 먹기 때문이다."
+      ],
+      "correct": 1,
+      "hint": "장면의 상징성은 글로 설명하지 않고 '보여줌'에 있다. 독자가 장면을 보며 스스로 깨닫게 한다.",
+      "reference_type": "hint",
+      "symbol_marks": [],
+      "wrong_explanations": {
+        "0": "💡 라면이 무엇이냐는 문제가 아니다.\n📖 이 글에서 중요한 것은 그것을 '어떻게' 먹는가이다.\n📝 문화적 의미보다 작품 속 상징을 읽으세요.",
+        "2": "💡 효과적인 글은 직접 설명하지 않는다.\n📖 오히려 장면과 상황으로 의미를 '보여준다'.\n📝 show, don't tell의 원칙을 이해하세요.",
+        "3": "💡 여동생의 식사 습관은 지문에 없다.\n📖 초점은 아빠와 아들의 관계에만 있다.\n📝 지문의 근거 없는 선택지를 피하세요."
+      },
+      "explanation": "💡 좋은 문학은 상황을 통해 의미를 드러낸다.\n📖 \"생라면을 먹는 장면\" = 아빠의 어려운 처지의 상징\n   독자는 이 장면을 보며 스스로 깨닫는다.\n📝 작가는 보여주고, 독자는 읽어낸다.",
+      "source": "비상_중2국어_1-02",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "symbolism",
+        "literary_analysis"
+      ],
+      "page": null,
+      "core_sentence_id": null
+    },
+    {
+      "id": "KOR-U1-044",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "difficulty": "hard",
+      "recovery_band": "B",
+      "subject": "korean",
+      "unit": "1",
+      "subunit": "1-02",
+      "passage_group": "kor2-visang-u1-02-symbolism-002",
+      "group_order": 2,
+      "is_transfer_item": false,
+      "title": "상징성 분석: 벽의 사진과 엄마",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "아빠의 자취방 벽에는 엄마의 사진이 붙어 있었다. 엄마는 이미 세상을 떠났다. 한연우는 그 사진을 본다.\n\n이 장면이 소설에서 중요한 이유를 다음 중에서 고르시오.",
+      "choices": [
+        "엄마가 아름다운 사진이었기 때문이다.",
+        "벽에 사진을 붙이는 것이 유행이기 때문이다.",
+        "아빠가 아내를 잊지 않고 있다는 것을 보여주기 때문이다.",
+        "한연우가 사진을 잘 알고 있기 때문이다."
+      ],
+      "correct": 2,
+      "hint": "돌아가신 엄마의 사진은 아빠의 마음 상태와 가족에 대한 그리움을 상징한다.",
+      "reference_type": "hint",
+      "symbol_marks": [],
+      "wrong_explanations": {
+        "0": "💡 사진이 아름답고 못 아름답고는 주제가 아니다.\n📖 중요한 것은 왜 아빠가 그 사진을 붙였는가이다.\n📝 시험에서는 '무엇의 상징인가'를 묻는다.",
+        "1": "💡 유행 여부는 작품의 주제와 무관하다.\n📖 작품은 개인적 감정을 담고 있다.\n📝 일반적 설명보다 작품 고유의 의미를 찾으세요.",
+        "3": "💡 한연우가 사진을 아는 것이 왜 중요한가?\n📖 중요한 것은 한연우가 그 사진을 보며 무엇을 느끼는가이다.\n📝 객관적 사실보다 감정적 의미를 읽으세요."
+      },
+      "explanation": "💡 사진은 '그리움'과 '연결'의 상징이다.\n📖 아빠는 혼자가 아니다. 가족(아내, 아이들)을 항상 마음에 두고 있다.\n   아들 한연우는 이것을 보며 아빠가 얼마나 가족을 사랑하는지 깨닫는다.\n📝 물건이나 장면 하나가 인물의 마음을 대신해 말한다.",
+      "source": "비상_중2국어_1-02",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "symbolism",
+        "character_understanding"
+      ],
+      "page": null,
+      "core_sentence_id": null
+    },
+    {
+      "id": "KOR-U1-045",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "difficulty": "hard",
+      "recovery_band": "C",
+      "subject": "korean",
+      "unit": "1",
+      "subunit": "1-02",
+      "passage_group": "kor2-visang-u1-02-perspective-003",
+      "group_order": 3,
+      "is_transfer_item": false,
+      "title": "시점 선택의 효과: 1인칭 주인공 vs 3인칭 전지적",
+      "instruction": "다음 글을 읽고 질문에 답하세요.",
+      "sentence": "현재: \"아빠, 당장 집에 가자\"라고 외치다가 \"제발!\"이라며 나도 모르게 목소리가 잦아들었다. (1인칭 주인공 시점)\n\n만약 3인칭 전지적 시점이었다면: 아버지는 아들의 몸이 얼마나 떨고 있는지 알지 못했다. 아들 한연우는 아버지가 이 도시에서 얼마나 외로운지 실감했다. 둘은 같은 방에 있으면서도 각자의 상처를 숨기고 있었다.\n\n1인칭 주인공 시점이 더 효과적인 이유는 무엇인가?",
+      "choices": [
+        "더 많은 정보를 전달할 수 있기 때문이다.",
+        "독자가 주인공과 함께 그 순간을 겪으며 감정적으로 가까워질 수 있기 때문이다.",
+        "아버지의 감정도 함께 드러낼 수 있기 때문이다.",
+        "상황을 더 객관적으로 설명할 수 있기 때문이다."
+      ],
+      "correct": 1,
+      "hint": "읽는 사람이 어느 쪽의 시점에 서는가에 따라 감정 이입의 강도가 달라진다.",
+      "reference_type": "hint",
+      "symbol_marks": [],
+      "wrong_explanations": {
+        "0": "💡 오히려 1인칭 주인공은 정보를 '제한'한다.\n📖 주인공이 아는 것만 알 수 있다.\n📝 더 많은 정보 = 더 나은 것은 아니다.",
+        "2": "💡 1인칭 주인공은 아버지의 내면을 직접 드러낼 수 없다.\n📖 주인공은 아버지가 어떻게 느끼는지 추측할 뿐이다.\n📝 시점의 제한이 오히려 긴장과 미스터리를 만든다.",
+        "3": "💡 객관성이 항상 좋은 것은 아니다.\n📖 소설은 감정적 연결이 중요하다.\n📝 시점 선택은 어떤 효과를 만들고 싶은지와 관련된다."
+      },
+      "explanation": "💡 시점은 독자의 감정 거리를 결정한다.\n📖 1인칭 주인공: 나는 내 감정을 직접 느낀다. → 가까움, 공감\n   3인칭 전지적: 나는 모든 것을 본다. → 거리감, 이해\n📝 이 소설은 독자가 주인공 한연우와 함께 아버지를 만나도록 설계됐다.",
+      "source": "비상_중2국어_1-02",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "narrative_perspective",
+        "literary_effect"
+      ],
+      "page": null,
+      "core_sentence_id": null
     }
   ],
   "vocab_drill": [

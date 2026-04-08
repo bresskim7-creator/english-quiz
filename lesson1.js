@@ -6048,6 +6048,24 @@ __loadLesson({
       "word": "what to do",
       "pos": "표현",
       "meaning": "무엇을 해야 할지"
+    },
+    {
+      "id": "VD-L1-034",
+      "word": "body",
+      "pos": "명사",
+      "meaning": "신체, 몸"
+    },
+    {
+      "id": "VD-L1-035",
+      "word": "change",
+      "pos": "동사",
+      "meaning": "변하다, 바뀌다"
+    },
+    {
+      "id": "VD-L1-036",
+      "word": "decide",
+      "pos": "동사",
+      "meaning": "결정하다, 정하다"
     }
   ],
   "grammar_rules": [
