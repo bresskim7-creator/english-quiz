@@ -2821,6 +2821,8 @@
                 showMiniWriting(q);
             } else if (q.type === 'study_concept_card') {
                 showStudyConceptCard(q);
+            } else if (q.type === 'choice' && currentSubject === 'english') {
+                showEnglishChoice(q);
             } else if (q.type === 'choice' && (currentSubject === 'social' || currentSubject === 'science')) {
                 showStudyChoice(q);
             } else if (q.type === 'choice' && currentSubject === 'math') {
@@ -4012,6 +4014,27 @@
                 showWrongExplanation(q, document.getElementById('fill-blank-container'), userChoice);
             }
             showNextButton();
+        }
+
+        // English choice renderer (PV001-PV004 등 영어 choice 타입 문제)
+        function showEnglishChoice(q) {
+            document.getElementById('question-text').innerHTML = q.instruction || '';
+            const container = document.getElementById('fill-blank-container');
+            container.style.display = 'grid';
+            container.innerHTML = '';
+
+            const shuffled = q.choices.map((choice, idx) => ({ choice, idx }));
+            shuffleArray(shuffled);
+            const correctIdx = q.correct;
+            const newCorrect = shuffled.findIndex(x => x.idx === correctIdx);
+
+            shuffled.forEach((item, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'choice-btn';
+                btn.textContent = item.choice;
+                btn.onclick = () => handleChoiceBlankAnswer(q, idx, newCorrect, item.choice);
+                container.appendChild(btn);
+            });
         }
 
         // Chunk Order renderer (reuse arrange-container)
