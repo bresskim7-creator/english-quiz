@@ -2829,6 +2829,8 @@
                 showMathChoice(q);
             } else if (q.type === 'typed_answer' && currentSubject === 'math') {
                 showMathTypedAnswer(q);
+            } else if (q.type === 'typed_answer' && currentSubject === 'english') {
+                showEnglishTypedAnswer(q);
             }
 
             // Vocab hint: show unknown words that appear in this question
@@ -4035,6 +4037,58 @@
                 btn.onclick = () => handleChoiceBlankAnswer(q, idx, newCorrect, item.choice);
                 container.appendChild(btn);
             });
+        }
+
+        // English typed_answer renderer (PV005 등 영어 서술형 문제)
+        function showEnglishTypedAnswer(q) {
+            document.getElementById('question-text').innerHTML = q.instruction || '';
+            const container = document.getElementById('fill-blank-container');
+            container.style.display = 'block';
+            container.innerHTML = `
+                <input type="text" id="eng-typed-input" style="width:100%;padding:14px;border:2px solid #1a73e8;border-radius:10px;font-size:18px;text-align:center;box-sizing:border-box;" placeholder="답을 영어로 입력하세요" onkeydown="if(event.key==='Enter')checkEnglishTypedAnswer()">
+                <button onclick="checkEnglishTypedAnswer()" style="width:100%;margin-top:10px;padding:14px;background:#1a73e8;color:white;border:none;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;">확인</button>
+                <div id="eng-typed-feedback"></div>
+            `;
+            setTimeout(() => document.getElementById('eng-typed-input')?.focus(), 100);
+
+            document.getElementById('btn-hint').style.display = q.hint ? '' : 'none';
+            if (q.hint) {
+                document.getElementById('btn-hint').onclick = function() {
+                    document.getElementById('hint-display').style.display = 'block';
+                    document.getElementById('hint-display').textContent = q.hint;
+                    hintUsedThisQuestion = true;
+                };
+            }
+        }
+
+        function checkEnglishTypedAnswer() {
+            const q = currentSession[currentQuestionIndex];
+            const input = document.getElementById('eng-typed-input');
+            const answer = input.value.trim().toLowerCase();
+            if (!answer) return;
+
+            input.disabled = true;
+
+            const acceptList = q.accept_answers || [q.correct_answer];
+            const isCorrect = acceptList.some(a => answer.replace(/\s+/g, ' ') === a.toLowerCase().replace(/\s+/g, ' '));
+
+            const feedback = document.getElementById('eng-typed-feedback');
+            if (isCorrect) {
+                input.style.borderColor = '#4CAF50';
+                input.style.background = '#E8F5E9';
+                feedback.innerHTML = '<div style="background:#E8F5E9;padding:12px;border-radius:8px;margin-top:8px;color:#2E7D32;font-size:15px;">✅ 정답!</div>';
+            } else {
+                input.style.borderColor = '#F44336';
+                input.style.background = '#FFEBEE';
+                feedback.innerHTML = '<div style="background:#FFEBEE;padding:12px;border-radius:8px;margin-top:8px;color:#C62828;font-size:14px;line-height:1.5;">❌ 정답: ' + (q.correct_answer || acceptList[0]) + '</div>';
+            }
+
+            if (q.explanation) {
+                feedback.innerHTML += '<div style="background:#F5F5F5;padding:12px;border-radius:8px;margin-top:8px;font-size:14px;line-height:1.6;white-space:pre-line;">📝 ' + q.explanation + '</div>';
+            }
+
+            recordAnswer(q, isCorrect);
+            showNextButton();
         }
 
         // Chunk Order renderer (reuse arrange-container)
@@ -5546,7 +5600,7 @@
 
             container.innerHTML = sentenceHtml + `<div id="math-options">${optionsHtml}</div>`;
 
-            document.getElementById('question-text').innerHTML = '';
+            document.getElementById('question-text').innerHTML = q.instruction ? renderMath(q.instruction) : '';
             document.getElementById('btn-hint').style.display = q.hint ? '' : 'none';
 
             if (q.hint) {
@@ -5622,7 +5676,7 @@
                 <div id="math-typed-feedback"></div>
             `;
 
-            document.getElementById('question-text').innerHTML = '';
+            document.getElementById('question-text').innerHTML = q.instruction ? renderMath(q.instruction) : '';
             setTimeout(() => document.getElementById('math-typed-input')?.focus(), 100);
 
             // 힌트
