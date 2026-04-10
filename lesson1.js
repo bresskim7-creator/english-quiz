@@ -1,9 +1,9 @@
 __loadLesson({
   "lesson": 1,
   "title": "Lesson 1: New Year, New Me",
-  "version": "3.8",
-  "build_date": "2026-04-07",
-  "build_note": "v3.8 + 교과서 인쇄물 통합: 7개 어휘(CS14-CS20) 드릴 추가 + 13개 문법 연습문제",
+  "version": "3.7",
+  "build_date": "2026-03-21",
+  "build_note": "v3.6 + exam_prep training_layer 재분류 (skill_focus/mixed_practice)",
   "core_sentences": [
     {
       "id": "CS01a",
@@ -228,76 +228,6 @@ __loadLesson({
         "required_word_write",
         "error_correction"
       ]
-    },
-    {
-      "id": "CS14",
-      "text_en": "I feel tired after school.",
-      "text_ko": "나는 학교 후에 피곤하다.",
-      "pair_id": null,
-      "source": "vocabulary_extension_print",
-      "is_priority": true,
-      "linked_rule_ids": [],
-      "bridge_to_exam": ["vocabulary_recall"]
-    },
-    {
-      "id": "CS15",
-      "text_en": "Make a list of your homework.",
-      "text_ko": "너의 숙제의 목록을 만들어.",
-      "pair_id": null,
-      "source": "vocabulary_extension_print",
-      "is_priority": true,
-      "linked_rule_ids": [],
-      "bridge_to_exam": ["vocabulary_recall"]
-    },
-    {
-      "id": "CS16",
-      "text_en": "I like fruits, for example, apples and oranges.",
-      "text_ko": "나는 과일을 좋아해, 예를 들어, 사과와 오렌지.",
-      "pair_id": null,
-      "source": "vocabulary_extension_print",
-      "is_priority": true,
-      "linked_rule_ids": [],
-      "bridge_to_exam": ["vocabulary_recall"]
-    },
-    {
-      "id": "CS17",
-      "text_en": "Caffeine helps you stay awake.",
-      "text_ko": "카페인은 깨어있게 도와.",
-      "pair_id": null,
-      "source": "vocabulary_extension_print",
-      "is_priority": true,
-      "linked_rule_ids": [],
-      "bridge_to_exam": ["vocabulary_recall"]
-    },
-    {
-      "id": "CS18",
-      "text_en": "Do you like to drink soda?",
-      "text_ko": "너는 탄산음료를 마시는 것을 좋아해?",
-      "pair_id": null,
-      "source": "vocabulary_extension_print",
-      "is_priority": true,
-      "linked_rule_ids": [],
-      "bridge_to_exam": ["vocabulary_recall"]
-    },
-    {
-      "id": "CS19",
-      "text_en": "She actively participates in sports.",
-      "text_ko": "그녀는 활동적으로 스포츠에 참여한다.",
-      "pair_id": null,
-      "source": "vocabulary_extension_print",
-      "is_priority": true,
-      "linked_rule_ids": [],
-      "bridge_to_exam": ["vocabulary_recall"]
-    },
-    {
-      "id": "CS20",
-      "text_en": "Your brain helps you learn.",
-      "text_ko": "너의 뇌는 너가 배우는 것을 도와.",
-      "pair_id": null,
-      "source": "vocabulary_extension_print",
-      "is_priority": true,
-      "linked_rule_ids": [],
-      "bridge_to_exam": ["vocabulary_recall"]
     }
   ],
   "questions": [
@@ -330,9 +260,9 @@ __loadLesson({
       "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "활기찬 (형용사) — 아침에 몸이 느끼는 상태",
       "wrong_explanations": {
-        "sleepy": "sleepy는 '졸린'이에요. 그건 밤에 느끼는 거예요! (CS01b 참고)",
-        "tired": "tired는 '피곤한'이에요. 본문에서 아침에 느끼는 건 '활기찬' 상태예요.",
-        "quiet": "quiet도 가능한 단어지만, 이 문장에서는 아침에 몸이 활기찬 상태를 말하므로 lively가 가장 알맞아요."
+        "sleepy": "졸린 ≠ 활기찬! 밤엔 sleepy (CS01b). 여긴 아침.",
+        "tired": "피곤한 ≠ 활기찬! 문맥을 읽어.",
+        "quiet": "quiet도 형용사지만 아침은 lively!"
       },
       "core_sentence_id": "CS01a",
       "linked_rule_ids": [],
@@ -433,9 +363,9 @@ __loadLesson({
       "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "졸린 (형용사) — 밤에 몸이 느끼는 상태",
       "wrong_explanations": {
-        "lively": "lively는 '활기찬'이에요. 그건 아침에 느끼는 거예요! (CS01a 참고)",
-        "active": "active는 '활발한'이에요. 밤에는 뇌가 쉬어야 해요, 활발하면 안 돼요!",
-        "hungry": "hungry는 '배고픈'이에요. 수면과는 관련 없는 단어예요."
+        "lively": "활기찬 = 아침! CS01a 참고. 밤엔 sleepy.",
+        "active": "활발한? 뇌가 쉬어야 자거든! 반대야.",
+        "hungry": "배고픈? 수면과 무관하잖아."
       },
       "core_sentence_id": "CS01b",
       "linked_rule_ids": [],
@@ -536,9 +466,9 @@ __loadLesson({
       "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "규칙적으로 (부사) — sleep을 꾸며주는 부사",
       "wrong_explanations": {
-        "quickly": "quickly는 '빨리'예요. 빨리 자는 게 아니라 규칙적으로 자는 거예요!",
-        "loudly": "loudly는 '큰 소리로'예요. 잠은 조용히 자야죠!",
-        "hardly": "hardly는 '거의 ~않다'예요. 거의 안 자라는 뜻이 되어 버려요!"
+        "quickly": "⚡ quickly = '빨리' ≠ regularly. 뜻 다르지!",
+        "loudly": "큰 소리로? X → 조용히 규칙적으로!",
+        "hardly": "⚡ hardly = '거의 ~않다' → '거의 안 자'?!"
       },
       "core_sentence_id": "CS02",
       "linked_rule_ids": [],
@@ -640,9 +570,9 @@ __loadLesson({
       "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "더 건강한 (비교급) — feel + 형용사, 여기서는 비교급!",
       "wrong_explanations": {
-        "healthy": "healthy는 원급이에요. 본문에서는 '더 건강하게'라는 비교급이 맞아요.",
-        "health": "health는 명사예요. feel 뒤에는 형용사가 와야 해요!",
-        "healthily": "healthily는 부사예요. feel 뒤에는 형용사(healthier)가 와야 해요."
+        "healthy": "원급(healthy) ≠ 비교급! '더' → -er!",
+        "health": "명사 ≠ 형용사! feel 뒤는 형용사만!",
+        "healthily": "부사 ≠ 형용사! feel 뒤는 healthier!"
       },
       "core_sentence_id": "CS03",
       "linked_rule_ids": [],
@@ -743,9 +673,9 @@ __loadLesson({
       "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "일으키다 (동사) — cause + 명사: ~을 일으키다",
       "wrong_explanations": {
-        "make": "make는 '만들다'예요. make problems라고 쓸 수 있지만, 본문에서는 cause를 썼어요.",
-        "give": "give는 '주다'예요. give problems가 아니라 cause problems가 자연스러워요.",
-        "bring": "bring은 '가져오다'예요. 수면 문제를 '가져온다'보다 '일으킨다'가 더 정확해요."
+        "make": "make도 가능하지만 본문은 cause!",
+        "give": "give = '주다' ≠ cause. 뜻이 다르지.",
+        "bring": "bring = '가져오다' ≠ cause."
       },
       "core_sentence_id": "CS04",
       "linked_rule_ids": [],
@@ -847,9 +777,9 @@ __loadLesson({
       "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "숨다 (동사) — 카페인이 음식 속에 '숨어 있다'",
       "wrong_explanations": {
-        "lives": "lives는 '산다'예요. 카페인은 생물이 아니라서 '산다'고 하지 않아요.",
-        "stays": "stays는 '머물다'예요. 본문에서는 카페인이 '숨어 있다(hides)'고 표현했어요.",
-        "keeps": "keeps는 '유지하다'예요. keeps 뒤에는 보통 목적어가 필요해요."
+        "lives": "⚡ lives = '산다'. 카페인은 생물 아니잖아!",
+        "stays": "stays = '머물다' ≠ hides. 숨어있다야.",
+        "keeps": "keeps도 가능하지만 본문은 hides!"
       },
       "core_sentence_id": "CS05",
       "linked_rule_ids": [],
@@ -958,9 +888,9 @@ __loadLesson({
       "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "활발한 (형용사) — stay + 형용사: ~한 상태를 유지하다",
       "wrong_explanations": {
-        "asleep": "asleep은 '잠든'이에요. 스마트폰 때문에 뇌가 잠드는 게 아니라 깨어 있게 되는 거예요!",
-        "tired": "tired는 '피곤한'이에요. 본문에서는 스마트폰이 뇌를 '활발하게' 만든다고 했어요.",
-        "quiet": "quiet은 틀린 영어라서가 아니라, 이 문맥의 핵심이 '깨어 있음/활성 상태'라서 active가 맞아요."
+        "asleep": "⚡ asleep = '잠든' ≠ active. 반대!",
+        "tired": "피곤한 ≠ 활발한! 뇌가 깨어나는 거야.",
+        "quiet": "quiet도 형용사지만 active가 정답."
       },
       "core_sentence_id": "CS06",
       "linked_rule_ids": [
@@ -1073,9 +1003,9 @@ __loadLesson({
       "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "또한 (부사) — 시험에서 also를 빠뜨리면 감점!",
       "wrong_explanations": {
-        "always": "always는 '항상'이에요. 본문에서는 '또한(also)' 알려준다는 뜻이에요.",
-        "already": "already는 '이미'예요. 뇌에게 '이미' 말한다는 뜻이 아니에요.",
-        "almost": "almost는 '거의'예요. '거의 말한다'는 어색해요."
+        "always": "⚡ always = '항상' ≠ also. 다르잖아!",
+        "already": "already = '이미' ≠ also. 파란 불도 '또한'!",
+        "almost": "almost = '거의' ≠ also. 뜻이 달라."
       },
       "core_sentence_id": "CS07",
       "linked_rule_ids": [],
@@ -1182,9 +1112,9 @@ __loadLesson({
       "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "~동안 (전치사) — during the day: 낮 동안",
       "wrong_explanations": {
-        "after": "after는 '~후에'예요. 'after the day'는 자연스럽지 않아요.",
-        "before": "before는 '~전에'예요. '낮 전에'가 아니라 '낮 동안' 운동하라는 거예요.",
-        "until": "until은 '~까지'예요. '낮까지'가 아니라 '낮 동안' 운동하라는 거예요."
+        "after": "after = '~후' ≠ during. 낮 동안!",
+        "before": "before = '~전' ≠ during. 계속할 때!",
+        "until": "until = '~까지' ≠ during. 낮 동안!"
       },
       "core_sentence_id": "CS08",
       "linked_rule_ids": [],
@@ -1286,9 +1216,9 @@ __loadLesson({
       "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "쉽게 (부사) — fall asleep easily: 쉽게 잠들다",
       "wrong_explanations": {
-        "early": "early는 '일찍'이에요. '쉽게' 잠드는 것과 '일찍' 잠드는 것은 달라요.",
-        "hardly": "hardly는 '거의 ~않다'예요. '거의 잠들지 않는다'는 반대 의미예요!",
-        "happily": "happily는 '행복하게'예요. 본문에서는 '쉽게(easily)' 잠든다고 했어요."
+        "early": "⚡ early = '일찍' ≠ easily. 쉽게?",
+        "hardly": "⚡ hardly = '거지 못' → 반대의미!",
+        "happily": "happily = '행복하게'? '쉽게'야!"
       },
       "core_sentence_id": "CS09",
       "linked_rule_ids": [],
@@ -1390,9 +1320,9 @@ __loadLesson({
       "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "~전에 (전치사) — before bedtime: 취침 전에",
       "wrong_explanations": {
-        "after": "after는 '~후에'예요. 취침 후에 운동을 끝내라는 건 말이 안 돼요!",
-        "during": "during은 '~동안'이에요. 취침 동안 운동하라는 건 아니에요!",
-        "until": "until은 '~까지'예요. 본문은 취침 '전에' 끝내라는 뜻이에요."
+        "after": "after = '~후'? 취침 후 운동? 말도!",
+        "during": "during = '~동안'? 취침 동안? 아니지!",
+        "until": "until = '~까지' ≠ before. 취침 전!"
       },
       "core_sentence_id": "CS10",
       "linked_rule_ids": [],
@@ -1498,9 +1428,9 @@ __loadLesson({
       "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "계획하는 (동명사) — be planning to: ~할 계획이다",
       "wrong_explanations": {
-        "wanting": "wanting은 '원하는'이에요. 본문에서는 plan(계획하다)을 썼어요.",
-        "hoping": "hoping은 '바라는'이에요. 의도를 표현할 때 plan이 더 강한 표현이에요.",
-        "thinking": "thinking은 '생각하는'이에요. thinking of/about은 쓰지만 thinking to는 안 써요!"
+        "wanting": "wanting = '원함' ≠ planning. 의도 달라.",
+        "hoping": "hoping = '바람' ≠ planning. 강도 다르지.",
+        "thinking": "⚡ thinking to는 불가! thinking of만!"
       },
       "core_sentence_id": "CS11",
       "linked_rule_ids": [],
@@ -1601,9 +1531,9 @@ __loadLesson({
       "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "좋은/훌륭한 (형용사) — Sounds + 형용사: ~하게 들린다",
       "wrong_explanations": {
-        "well": "well은 보통 부사예요. Sounds 뒤에는 형용사가 와야 해요. Sounds great!",
-        "nicely": "nicely는 부사예요. Sounds 뒤에는 형용사(nice/great)가 와야 해요.",
-        "finely": "finely는 부사예요. Sounds 뒤에는 형용사가 와야 해요!"
+        "well": "⚡ well = 부사! sounds 뒤 → 형용사!",
+        "nicely": "nicely = 부사! sounds 뒤 → 형용사!",
+        "finely": "finely = 부사! sounds 뒤 → 형용사!"
       },
       "core_sentence_id": "CS12",
       "linked_rule_ids": [],
@@ -1710,9 +1640,9 @@ __loadLesson({
       "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
       "hint": "의문사 + to + 동사원형: what to do = 무엇을 해야 할지",
       "wrong_explanations": {
-        "for": "for는 '~을 위해'예요. what for do는 문법에 안 맞아요. what to do가 맞아요!",
-        "of": "of는 '~의'예요. what of do는 문법에 안 맞아요. 의문사 + to + 동사원형!",
-        "about": "about은 '~에 대해'예요. what about doing은 되지만 여기서는 what to do가 맞아요."
+        "for": "⚡ 의문사 + to + 동사원형! what to do!",
+        "of": "of = '~의' ≠ what to do. 문법 틀렸어!",
+        "about": "about도 가능하지만 여긴 'what to do'!"
       },
       "core_sentence_id": "CS13",
       "linked_rule_ids": [
@@ -1794,713 +1724,6 @@ __loadLesson({
       }
     },
     {
-          "id": "D-CS14-01",
-          "type": "flashcard",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": null,
-          "hint": null,
-          "wrong_explanations": null,
-          "core_sentence_id": "CS14",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 1,
-          "is_bridge_item": false,
-          "prompt_en": "I feel tired after school.",
-          "prompt_ko": "나는 학교 후에 피곤하다.",
-          "grammar_note": null
-    },
-    {
-          "id": "D-CS15-01",
-          "type": "flashcard",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": null,
-          "hint": null,
-          "wrong_explanations": null,
-          "core_sentence_id": "CS15",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 1,
-          "is_bridge_item": false,
-          "prompt_en": "Make a list of your homework.",
-          "prompt_ko": "너의 숙제의 목록을 만들어.",
-          "grammar_note": null
-    },
-    {
-          "id": "D-CS16-01",
-          "type": "flashcard",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": null,
-          "hint": null,
-          "wrong_explanations": null,
-          "core_sentence_id": "CS16",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 1,
-          "is_bridge_item": false,
-          "prompt_en": "I like fruits, for example, apples and oranges.",
-          "prompt_ko": "나는 과일을 좋아해, 예를 들어, 사과와 오렌지.",
-          "grammar_note": null
-    },
-    {
-          "id": "D-CS17-01",
-          "type": "flashcard",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": null,
-          "hint": null,
-          "wrong_explanations": null,
-          "core_sentence_id": "CS17",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 1,
-          "is_bridge_item": false,
-          "prompt_en": "Caffeine helps you stay awake.",
-          "prompt_ko": "카페인은 깨어있게 도와.",
-          "grammar_note": null
-    },
-    {
-          "id": "D-CS18-01",
-          "type": "flashcard",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": null,
-          "hint": null,
-          "wrong_explanations": null,
-          "core_sentence_id": "CS18",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 1,
-          "is_bridge_item": false,
-          "prompt_en": "Do you like to drink soda?",
-          "prompt_ko": "너는 탄산음료를 마시는 것을 좋아해?",
-          "grammar_note": null
-    },
-    {
-          "id": "D-CS19-01",
-          "type": "flashcard",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": null,
-          "hint": null,
-          "wrong_explanations": null,
-          "core_sentence_id": "CS19",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 1,
-          "is_bridge_item": false,
-          "prompt_en": "She actively participates in sports.",
-          "prompt_ko": "그녀는 활동적으로 스포츠에 참여한다.",
-          "grammar_note": null
-    },
-    {
-          "id": "D-CS20-01",
-          "type": "flashcard",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": null,
-          "hint": null,
-          "wrong_explanations": null,
-          "core_sentence_id": "CS20",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 1,
-          "is_bridge_item": false,
-          "prompt_en": "Your brain helps you learn.",
-          "prompt_ko": "너의 뇌는 너가 배우는 것을 도와.",
-          "grammar_note": null
-    },
-    {
-          "id": "D-CS14-02",
-          "type": "choice_blank",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
-          "hint": "피곤한 (형용사) — 학교 후에 느끼는 상태",
-          "wrong_explanations": {
-                "sleepy": "sleepy는 '졸린'이에요. 그건 밤에 느끼는 거예요!",
-                "active": "active는 '활발한'이에요. 피곤함의 반대네요.",
-                "busy": "busy는 '바쁜'이에요. 피곤함과는 달라요."
-          },
-          "core_sentence_id": "CS14",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 2,
-          "is_bridge_item": false,
-          "prompt": "I feel _____ after school.",
-          "korean_full": "나는 학교 후에 피곤하다.",
-          "answer": "tired",
-          "choices": [
-                "tired",
-                "sleepy",
-                "active",
-                "busy"
-          ],
-          "correct_index": 0
-    },
-    {
-          "id": "D-CS15-02",
-          "type": "choice_blank",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
-          "hint": "목록 (명사) — 항목들을 기록한 것",
-          "wrong_explanations": {
-                "note": "note는 '메모'예요. 항목별로 정리한 것은 list예요.",
-                "book": "book은 '책'이에요. 정보를 기록하는 방식이 달라요.",
-                "paper": "paper는 '종이'예요. 목록 전체를 말하는 것은 list예요."
-          },
-          "core_sentence_id": "CS15",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 2,
-          "is_bridge_item": false,
-          "prompt": "Make a _____ of your homework.",
-          "korean_full": "너의 숙제의 목록을 만들어.",
-          "answer": "list",
-          "choices": [
-                "list",
-                "note",
-                "book",
-                "paper"
-          ],
-          "correct_index": 0
-    },
-    {
-          "id": "D-CS16-02",
-          "type": "choice_blank",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
-          "hint": "예를 들어 (구) — 구체적인 사례를 제시할 때",
-          "wrong_explanations": {
-                "such as": "such as도 같은 의미이지만, 여기서는 for example을 써야 해요.",
-                "like": "like는 '좋아하다'는 뜻이고, for example과는 달라요.",
-                "and": "and는 연결사예요. 예를 제시하는 표현은 for example이에요."
-          },
-          "core_sentence_id": "CS16",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 2,
-          "is_bridge_item": false,
-          "prompt": "I like fruits, _____, apples and oranges.",
-          "korean_full": "나는 과일을 좋아해, 예를 들어, 사과와 오렌지.",
-          "answer": "for example",
-          "choices": [
-                "for example",
-                "such as",
-                "like",
-                "and"
-          ],
-          "correct_index": 0
-    },
-    {
-          "id": "D-CS17-02",
-          "type": "choice_blank",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
-          "hint": "카페인 (명사) — 커피나 차에 들어있는 물질",
-          "wrong_explanations": {
-                "coffee": "coffee는 '커피'예요. 카페인이 들어있는 음료일 뿐 카페인 그 자체는 아니에요.",
-                "drink": "drink는 '음료'예요. 카페인은 그 안의 물질이에요.",
-                "energy": "energy는 '에너지'예요. 카페인의 효과이지 카페인 자체가 아니에요."
-          },
-          "core_sentence_id": "CS17",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 2,
-          "is_bridge_item": false,
-          "prompt": "Caffeine helps you stay awake.",
-          "korean_full": "카페인은 깨어있게 도와.",
-          "answer": "caffeine",
-          "choices": [
-                "caffeine",
-                "coffee",
-                "drink",
-                "energy"
-          ],
-          "correct_index": 0
-    },
-    {
-          "id": "D-CS18-02",
-          "type": "choice_blank",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
-          "hint": "탄산음료 (명사) — 기포가 있는 달콤한 음료",
-          "wrong_explanations": {
-                "juice": "juice는 '주스'예요. 과일 즙이지, 탄산음료가 아니에요.",
-                "water": "water는 '물'이에요. 탄산음료는 양념과 기포가 있어요.",
-                "tea": "tea는 '차'예요. 탄산음료와는 다른 음료예요."
-          },
-          "core_sentence_id": "CS18",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 2,
-          "is_bridge_item": false,
-          "prompt": "Do you like to drink _____?",
-          "korean_full": "너는 탄산음료를 마시는 것을 좋아해?",
-          "answer": "soda",
-          "choices": [
-                "soda",
-                "juice",
-                "water",
-                "tea"
-          ],
-          "correct_index": 0
-    },
-    {
-          "id": "D-CS19-02",
-          "type": "choice_blank",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
-          "hint": "활동적으로 (부사) — 바쁘고 열정적인 방식으로",
-          "wrong_explanations": {
-                "quietly": "quietly는 '조용히'예요. 스포츠에 적극 참여하는 것과 반대네요.",
-                "slowly": "slowly는 '천천히'예요. 활동적으로 참여하는 것과 다르죠.",
-                "passively": "passively는 '수동적으로'예요. actively의 반대예요."
-          },
-          "core_sentence_id": "CS19",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 2,
-          "is_bridge_item": false,
-          "prompt": "She _____ participates in sports.",
-          "korean_full": "그녀는 활동적으로 스포츠에 참여한다.",
-          "answer": "actively",
-          "choices": [
-                "actively",
-                "quietly",
-                "slowly",
-                "passively"
-          ],
-          "correct_index": 0
-    },
-    {
-          "id": "D-CS20-02",
-          "type": "choice_blank",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
-          "hint": "뇌 (명사) — 생각하고 느끼는 데 도와주는 신체 기관",
-          "wrong_explanations": {
-                "mind": "mind는 '정신'이에요. brain(뇌) 자체와는 다른 개념이에요.",
-                "head": "head는 '머리'예요. 뇌는 머리 안의 특정 기관이에요.",
-                "heart": "heart는 '심장'이에요. 배우는 건 뇌의 역할이에요."
-          },
-          "core_sentence_id": "CS20",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 2,
-          "is_bridge_item": false,
-          "prompt": "Your _____ helps you learn.",
-          "korean_full": "너의 뇌는 너가 배우는 것을 도와.",
-          "answer": "brain",
-          "choices": [
-                "brain",
-                "mind",
-                "head",
-                "heart"
-          ],
-          "correct_index": 0
-    },
-    {
-          "id": "D-CS14-03",
-          "type": "chunk_order",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": "조각을 올바른 순서로 배열하세요.",
-          "hint": "문장을 올바른 순서대로 배치하세요.",
-          "wrong_explanations": null,
-          "core_sentence_id": "CS14",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 3,
-          "is_bridge_item": false,
-          "prompt_ko": "나는 학교 후에 피곤하다.",
-          "chunks": [
-                "I feel",
-                "tired",
-                "after school."
-          ],
-          "answer": "I feel tired after school."
-    },
-    {
-          "id": "D-CS15-03",
-          "type": "chunk_order",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": "조각을 올바른 순서로 배열하세요.",
-          "hint": "문장을 올바른 순서대로 배치하세요.",
-          "wrong_explanations": null,
-          "core_sentence_id": "CS15",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 3,
-          "is_bridge_item": false,
-          "prompt_ko": "너의 숙제의 목록을 만들어.",
-          "chunks": [
-                "Make a",
-                "list",
-                "of your homework."
-          ],
-          "answer": "Make a list of your homework."
-    },
-    {
-          "id": "D-CS16-03",
-          "type": "chunk_order",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": "조각을 올바른 순서로 배열하세요.",
-          "hint": "문장을 올바른 순서대로 배치하세요.",
-          "wrong_explanations": null,
-          "core_sentence_id": "CS16",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 3,
-          "is_bridge_item": false,
-          "prompt_ko": "나는 과일을 좋아해, 예를 들어, 사과와 오렌지.",
-          "chunks": [
-                "I like fruits,",
-                "for example,",
-                "apples and oranges."
-          ],
-          "answer": "I like fruits, for example, apples and oranges."
-    },
-    {
-          "id": "D-CS17-03",
-          "type": "chunk_order",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": "조각을 올바른 순서로 배열하세요.",
-          "hint": "문장을 올바른 순서대로 배치하세요.",
-          "wrong_explanations": null,
-          "core_sentence_id": "CS17",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 3,
-          "is_bridge_item": false,
-          "prompt_ko": "카페인은 깨어있게 도와.",
-          "chunks": [
-                "Caffeine",
-                "helps you",
-                "stay awake."
-          ],
-          "answer": "Caffeine helps you stay awake."
-    },
-    {
-          "id": "D-CS18-03",
-          "type": "chunk_order",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": "조각을 올바른 순서로 배열하세요.",
-          "hint": "문장을 올바른 순서대로 배치하세요.",
-          "wrong_explanations": null,
-          "core_sentence_id": "CS18",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 3,
-          "is_bridge_item": false,
-          "prompt_ko": "너는 탄산음료를 마시는 것을 좋아해?",
-          "chunks": [
-                "Do you like to",
-                "drink",
-                "soda?"
-          ],
-          "answer": "Do you like to drink soda?"
-    },
-    {
-          "id": "D-CS19-03",
-          "type": "chunk_order",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": "조각을 올바른 순서로 배열하세요.",
-          "hint": "문장을 올바른 순서대로 배치하세요.",
-          "wrong_explanations": null,
-          "core_sentence_id": "CS19",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 3,
-          "is_bridge_item": false,
-          "prompt_ko": "그녀는 활동적으로 스포츠에 참여한다.",
-          "chunks": [
-                "She",
-                "actively participates",
-                "in sports."
-          ],
-          "answer": "She actively participates in sports."
-    },
-    {
-          "id": "D-CS20-03",
-          "type": "chunk_order",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": "조각을 올바른 순서로 배열하세요.",
-          "hint": "문장을 올바른 순서대로 배치하세요.",
-          "wrong_explanations": null,
-          "core_sentence_id": "CS20",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 3,
-          "is_bridge_item": false,
-          "prompt_ko": "너의 뇌는 너가 배우는 것을 도와.",
-          "chunks": [
-                "Your",
-                "brain",
-                "helps you learn."
-          ],
-          "answer": "Your brain helps you learn."
-    },
-    {
-          "id": "D-CS14-04",
-          "type": "typed_blank",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": "빈칸에 알맞은 단어를 직접 입력하세요.",
-          "hint": "피곤한 — tired",
-          "wrong_explanations": null,
-          "core_sentence_id": "CS14",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 4,
-          "is_bridge_item": false,
-          "prompt": "I feel _____ after school.",
-          "answers": [
-                "tired"
-          ],
-          "accept_typos": {
-                "tired": [
-                      "tired"
-                ]
-          }
-    },
-    {
-          "id": "D-CS15-04",
-          "type": "typed_blank",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": "빈칸에 알맞은 단어를 직접 입력하세요.",
-          "hint": "목록 — list",
-          "wrong_explanations": null,
-          "core_sentence_id": "CS15",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 4,
-          "is_bridge_item": false,
-          "prompt": "Make a _____ of your homework.",
-          "answers": [
-                "list"
-          ],
-          "accept_typos": {
-                "list": [
-                      "list"
-                ]
-          }
-    },
-    {
-          "id": "D-CS16-04",
-          "type": "typed_blank",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": "빈칸에 알맞은 단어를 직접 입력하세요.",
-          "hint": "예를 들어 — for example",
-          "wrong_explanations": null,
-          "core_sentence_id": "CS16",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 4,
-          "is_bridge_item": false,
-          "prompt": "I like fruits, _____, apples and oranges.",
-          "answers": [
-                "for example"
-          ],
-          "accept_typos": {
-                "for example": [
-                      "for example"
-                ]
-          }
-    },
-    {
-          "id": "D-CS17-04",
-          "type": "typed_blank",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": "빈칸에 알맞은 단어를 직접 입력하세요.",
-          "hint": "카페인 — caffeine",
-          "wrong_explanations": null,
-          "core_sentence_id": "CS17",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 4,
-          "is_bridge_item": false,
-          "prompt": "Caffeine helps you stay awake.",
-          "answers": [
-                "caffeine"
-          ],
-          "accept_typos": {
-                "caffeine": [
-                      "caffeine"
-                ]
-          }
-    },
-    {
-          "id": "D-CS18-04",
-          "type": "typed_blank",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": "빈칸에 알맞은 단어를 직접 입력하세요.",
-          "hint": "탄산음료 — soda",
-          "wrong_explanations": null,
-          "core_sentence_id": "CS18",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 4,
-          "is_bridge_item": false,
-          "prompt": "Do you like to drink _____?",
-          "answers": [
-                "soda"
-          ],
-          "accept_typos": {
-                "soda": [
-                      "soda"
-                ]
-          }
-    },
-    {
-          "id": "D-CS19-04",
-          "type": "typed_blank",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": "빈칸에 알맞은 단어를 직접 입력하세요.",
-          "hint": "활동적으로 — actively",
-          "wrong_explanations": null,
-          "core_sentence_id": "CS19",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 4,
-          "is_bridge_item": false,
-          "prompt": "She _____ participates in sports.",
-          "answers": [
-                "actively"
-          ],
-          "accept_typos": {
-                "actively": [
-                      "actively"
-                ]
-          }
-    },
-    {
-          "id": "D-CS20-04",
-          "type": "typed_blank",
-          "phase": "drill",
-          "difficulty": null,
-          "keyword": null,
-          "instruction": "빈칸에 알맞은 단어를 직접 입력하세요.",
-          "hint": "뇌 — brain",
-          "wrong_explanations": null,
-          "core_sentence_id": "CS20",
-          "linked_rule_ids": [],
-          "recovery_band": "A",
-          "test_task": null,
-          "page": null,
-          "drill_stage": 4,
-          "is_bridge_item": false,
-          "prompt": "Your _____ helps you learn.",
-          "answers": [
-                "brain"
-          ],
-          "accept_typos": {
-                "brain": [
-                      "brain"
-                ]
-          }
-    },
-    {
       "id": "R001",
       "type": "short_reading",
       "phase": "exam_prep",
@@ -2509,9 +1732,9 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "마지막 두 문장을 읽어보세요: 'sleep regularly' → 'feel healthier'",
       "wrong_explanations": {
-        "0": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요.",
-        "2": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요.",
-        "3": "💡 본문에서 강조한 규칙성이나 일관성과 맞지 않아요.\n📖 'regularly(규칙적으로)', 'always(항상)' 같은 반복성 표현을 찾아보세요.\n🗣️ 일회적 상황과 반복적 상황을 구분해서 이해하세요."
+        "0": "본문과 맞지 않아!",
+        "2": "밤에 졸렸대잖아! 이건 정반대네.",
+        "3": "규칙적으로 자야 건강하대! 이건 반대야."
       },
       "core_sentence_id": "CS01a",
       "linked_rule_ids": [],
@@ -2538,9 +1761,9 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "본문에서 카페인이 숨어있는 곳을 모두 확인하세요.",
       "wrong_explanations": {
-        "0": "💡 이 내용은 본문과 일치하지만, 문제에서는 '일치하지 않는 것'을 찾고 있어요.\n📖 문제 지시문을 다시 확인하세요. 'X하지 않는 것'이나 '잘못된 것'을 찾는 건 아닌가요?\n🗣️ 문제 유형을 먼저 파악한 후 답을 찾으세요. 긍정과 부정을 구분하는 게 중요해요.",
-        "1": "💡 이 내용은 본문과 일치하지만, 문제에서는 '일치하지 않는 것'을 찾고 있어요.\n📖 문제 지시문을 다시 확인하세요. 'X하지 않는 것'이나 '잘못된 것'을 찾는 건 아닌가요?\n🗣️ 문제 유형을 먼저 파악한 후 답을 찾으세요. 긍정과 부정을 구분하는 게 중요해요.",
-        "3": "💡 이 내용은 본문과 일치하지만, 문제에서는 '일치하지 않는 것'을 찾고 있어요.\n📖 문제 지시문을 다시 확인하세요. 'X하지 않는 것'이나 '잘못된 것'을 찾는 건 아닌가요?\n🗣️ 문제 유형을 먼저 파악한 후 답을 찾으세요. 긍정과 부정을 구분하는 게 중요해요."
+        "0": "본문과 맞지 않아!",
+        "1": "'초콜릿에도 카페인이 들어있다.'는 본문과 맞지 않아!",
+        "3": "본문 내용과 안 맞아!"
       },
       "core_sentence_id": "CS05",
       "linked_rule_ids": [],
@@ -2567,9 +1790,9 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "본문에서 '몇 시간'이라는 구체적 수치가 나오는지 확인하세요.",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "본문과 맞지 않아!",
+        "1": "'파란 빛이 뇌에 어떤 신호를 보내나?'는 본문과 맞지 않아!",
+        "3": "본문 내용과 안 맞아!"
       },
       "core_sentence_id": "CS06",
       "linked_rule_ids": [],
@@ -2594,11 +1817,11 @@ __loadLesson({
       "difficulty": "medium",
       "keyword": null,
       "instruction": "다음 글을 읽고 질문에 답하세요.",
-      "hint": "'낮에 운동하면 밤에 쉽게 잠든다'가 이 단락의 핵심 메시지예요.",
+      "hint": "'낮에 운동하면 밤에 쉽게 잠든다'가 이 단락의 핵심 메시지야.",
       "wrong_explanations": {
-        "1": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요.",
-        "2": "💡 이 내용은 본문과 일치하지만, 문제에서는 '일치하지 않는 것'을 찾고 있어요.\n📖 문제 지시문을 다시 확인하세요. 'X하지 않는 것'이나 '잘못된 것'을 찾는 건 아닌가요?\n🗣️ 문제 유형을 먼저 파악한 후 답을 찾으세요. 긍정과 부정을 구분하는 게 중요해요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'취침 직전에 운동을 끝내는 것이 좋다.'는 본문과 맞지 않아!",
+        "2": "본문과 모순돼!",
+        "3": "본문 내용과 안 맞아!"
       },
       "core_sentence_id": "CS08",
       "linked_rule_ids": [],
@@ -2625,9 +1848,9 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "글의 핵심 주제를 찾으세요: sleep well → energy",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "본문과 맞지 않아!",
+        "2": "본문과 모순돼!",
+        "3": "본문 내용과 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -2652,12 +1875,12 @@ __loadLesson({
       "difficulty": "hard",
       "keyword": null,
       "instruction": "다음 글을 읽고 질문에 답하세요.",
-      "hint": "이 문장은 '규칙적으로 자라'는 조언의 결과예요. 조언 바로 뒤에 와야 해요.",
+      "hint": "이 문장은 '규칙적으로 자라'는 조언의 결과야. 조언 바로 뒤에 와야 해.",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문에서 강조한 규칙성이나 일관성과 맞지 않아요.\n📖 'regularly(규칙적으로)', 'always(항상)' 같은 반복성 표현을 찾아보세요.\n🗣️ 일회적 상황과 반복적 상황을 구분해서 이해하세요."
+        "0": "본문과 맞지 않아!",
+        "1": "'②'는 본문과 맞지 않아!",
+        "2": "본문과 모순돼!",
+        "3": "본문 내용과 안 맞아!"
       },
       "core_sentence_id": "CS01a",
       "linked_rule_ids": [],
@@ -2685,9 +1908,9 @@ __loadLesson({
       "instruction": "다음 글의 내용을 가장 잘 이해한 사람은?",
       "hint": "각 사람의 말을 본문과 대조하세요. 본문의 핵심 내용을 가장 정확히 말한 사람은?",
       "wrong_explanations": {
-        "0": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요.",
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "본문과 맞지 않아!",
+        "1": "'지나: 카페인은 커피에만 들어있어.'는 본문과 맞지 않아!",
+        "3": "본문 내용과 안 맞아!"
       },
       "core_sentence_id": "CS05",
       "linked_rule_ids": [],
@@ -2714,9 +1937,9 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "앞 문장에서 'use'의 목적어를 찾으세요. 무엇을 사용하지 말라는 건가요?",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "본문과 맞지 않아!",
+        "1": "'the blue light'는 본문과 맞지 않아!",
+        "3": "본문 내용과 안 맞아!"
       },
       "core_sentence_id": "CS06",
       "linked_rule_ids": [],
@@ -2741,11 +1964,11 @@ __loadLesson({
       "difficulty": "easy",
       "keyword": null,
       "instruction": "다음 글의 주제로 가장 적절한 것은?",
-      "hint": "마지막 문장이 글 전체를 요약하고 있어요.",
+      "hint": "마지막 문장이 글 전체를 요약하고 있어.",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'카페인이 든 음식은 맛있다.'는 본문과 맞지 않아!",
+        "2": "본문과 모순돼!",
+        "3": "본문 내용과 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -2770,11 +1993,11 @@ __loadLesson({
       "difficulty": "medium",
       "keyword": null,
       "instruction": "다음 (A)~(C)를 글의 흐름에 맞게 배열한 것은?",
-      "hint": "먼저 body clock을 소개 → 아침/밤 예시 → 조언+결론 순서예요.",
+      "hint": "먼저 body clock을 소개 → 아침/밤 예시 → 조언+결론 순서야.",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'(A)-(B)-(C)'는 본문과 맞지 않아!",
+        "2": "본문과 모순돼!",
+        "3": "본문 내용과 안 맞아!"
       },
       "core_sentence_id": "CS01a",
       "linked_rule_ids": [],
@@ -2801,9 +2024,9 @@ __loadLesson({
       "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: if 조건절에는 will을 쓰지 않는다는 점을 확인하세요.",
       "hint": "if절 안에서는 미래의 일이어도 현재시제를 써요!",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "if절에 will이 붙으면 안 돼! 조건은 현재형!",
+        "1": "if절에 will이 붙으면 안 돼! 조건은 현재형!",
+        "3": "'If we hurry, we won't miss the bus.'은 어색해! 'If she will study hard, she will pass.'가 맞아."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2832,9 +2055,9 @@ __loadLesson({
       "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: to부정사(to + 동사원형) 용법을 확인하세요.",
       "hint": "'의문사 + to부정사' 구조를 생각하세요: what to do, how to solve",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "'I don't know what doing.'? 문맥에 안 맞아!",
+        "1": "'She wants to knows the answer.'? 문맥에 안 맞아!",
+        "3": "'He told me how solve it.'? 문맥에 안 맞아!"
       },
       "core_sentence_id": "CS13",
       "linked_rule_ids": [
@@ -2861,11 +2084,11 @@ __loadLesson({
       "difficulty": "medium",
       "keyword": "if절+의문사",
       "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: if 조건절에는 will을 쓰지 않는다, to부정사(to + 동사원형) 용법을 확인하세요.",
-      "hint": "if절에 will이 들어가면 안 돼요! 조건절에서는 현재형을 써야 해요.",
+      "hint": "if절에 will이 들어가면 안 돼! 조건절에서는 현재형을 써야 해.",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'I want to know where to go.'은 어색해! 'If you will eat too much, you will get sick.'가 맞아.",
+        "2": "if절에 will이 붙으면 안 돼! 조건은 현재형!",
+        "3": "'Tell me when to leave.'은 어색해! 'If you will eat too much, you will get sick.'가 맞아."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2893,11 +2116,11 @@ __loadLesson({
       "difficulty": "medium",
       "keyword": "접속사 if",
       "instruction": "빈칸에 들어갈 말로 가장 적절한 것은?",
-      "hint": "교과서 핵심 문장이에요! '~하면, …할 것이다' = If + 현재, will + 동사원형",
+      "hint": "교과서 핵심 문장이야! '~하면, …할 것이다' = If + 현재, will + 동사원형",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'Although'? 문맥에 안 맞아!",
+        "2": "'Because'? 문맥에 안 맞아!",
+        "3": "'Until'? 문맥에 안 맞아!"
       },
       "core_sentence_id": "CS06",
       "linked_rule_ids": [
@@ -2924,11 +2147,11 @@ __loadLesson({
       "difficulty": "medium",
       "keyword": "의문사+to부정사",
       "instruction": "빈칸에 들어갈 말로 가장 적절한 것은?",
-      "hint": "'무엇을 먹을지' = what to eat. 의문사+to부정사 구조예요.",
+      "hint": "'무엇을 먹을지' = what to eat. 의문사+to부정사 구조야.",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'how'? 문맥에 안 맞아!",
+        "2": "'where'? 문맥에 안 맞아!",
+        "3": "'that'? 문맥에 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2955,11 +2178,11 @@ __loadLesson({
       "difficulty": "hard",
       "keyword": "to부정사 오류",
       "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: if 조건절에는 will을 쓰지 않는다, to부정사(to + 동사원형) 용법을 확인하세요.",
-      "hint": "의문사 + to + 동사원형! doing이 아니라 do가 와야 해요.",
+      "hint": "의문사 + to + 동사원형! doing이 아니라 do가 와야 해.",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "if절에 will이 붙으면 안 돼! 조건은 현재형!",
+        "1": "'She doesn't know how to use the app.'은 어색해! 'We learned what to doing next.'가 맞아.",
+        "3": "if절에 will이 붙으면 안 돼! 조건은 현재형!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2989,9 +2212,9 @@ __loadLesson({
       "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: if 조건절에는 will을 쓰지 않는다는 점을 확인하세요.",
       "hint": "will 뒤에는 항상 동사원형! will stays → will stay",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "'ⓐ use'은 어색해! 'ⓑ will stays'가 맞아.",
+        "2": "if절에 will이 붙으면 안 돼! 조건은 현재형!",
+        "3": "'ⓓ To sleep'은 어색해! 'ⓑ will stays'가 맞아."
       },
       "core_sentence_id": "CS07",
       "linked_rule_ids": [
@@ -3020,9 +2243,9 @@ __loadLesson({
       "instruction": "빈칸에 들어갈 단어의 영영풀이로 가장 적절한 것은?",
       "hint": "잘 자면 새 학년을 위한 '활력'을 얻어요. 활력의 영영풀이를 찾으세요.",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'a regular way of doing things'? 문맥에 안 맞아!",
+        "2": "'a short sleep during the day'? 문맥에 안 맞아!",
+        "3": "'a substance that keeps you awake'? 문맥에 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3047,11 +2270,11 @@ __loadLesson({
       "difficulty": "easy",
       "keyword": "caffeine 영영풀이",
       "instruction": "빈칸에 들어갈 단어의 영영풀이로 가장 적절한 것은?",
-      "hint": "커피와 차에 들어있고, 잠을 방해하는 물질이에요.",
+      "hint": "커피와 차에 들어있고, 잠을 방해하는 물질이야.",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'a feeling of being tired'? 문맥에 안 맞아!",
+        "2": "'a type of exercise'? 문맥에 안 맞아!",
+        "3": "'a part of your body that controls sleep'? 문맥에 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3076,11 +2299,11 @@ __loadLesson({
       "difficulty": "easy",
       "keyword": "lively",
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
-      "hint": "아침에 몸이 느끼는 상태예요. '활기 있는'이라는 뜻의 단어!",
+      "hint": "아침에 몸이 느끼는 상태야. '활기 있는'이라는 뜻의 단어!",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "'sleepy'? 문맥에 안 맞아!",
+        "2": "'tired'? 문맥에 안 맞아!",
+        "3": "'careful'? 문맥에 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3105,11 +2328,11 @@ __loadLesson({
       "difficulty": "easy",
       "keyword": "bedtime",
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
-      "hint": "'취침 시간'을 뜻하는 단어예요. bed + time!",
+      "hint": "'취침 시간'을 뜻하는 단어야. bed + time!",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "'breakfast'? 문맥에 안 맞아!",
+        "2": "'lunchtime'? 문맥에 안 맞아!",
+        "3": "'daytime'? 문맥에 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3134,11 +2357,11 @@ __loadLesson({
       "difficulty": "easy",
       "keyword": "pattern",
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
-      "hint": "'규칙적인 수면 패턴'은 교과서 핵심 표현이에요!",
+      "hint": "'규칙적인 수면 패턴'은 교과서 핵심 표현이야!",
       "wrong_explanations": {
-        "1": "💡 본문에서 강조한 규칙성이나 일관성과 맞지 않아요.\n📖 'regularly(규칙적으로)', 'always(항상)' 같은 반복성 표현을 찾아보세요.\n🗣️ 일회적 상황과 반복적 상황을 구분해서 이해하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'problem'? 문맥에 안 맞아!",
+        "2": "'room'? 문맥에 안 맞아!",
+        "3": "'song'? 문맥에 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3163,11 +2386,11 @@ __loadLesson({
       "difficulty": "medium",
       "keyword": "active",
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
-      "hint": "파란 빛이 뇌를 '활발한' 상태로 유지해요. stay active!",
+      "hint": "파란 빛이 뇌를 '활발한' 상태로 유지해. stay active!",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'asleep'? 문맥에 안 맞아!",
+        "2": "'healthy'? 문맥에 안 맞아!",
+        "3": "'quiet'? 문맥에 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3194,9 +2417,9 @@ __loadLesson({
       "instruction": "빈칸에 공통으로 들어갈 말로 가장 적절한 것은?",
       "hint": "세 문장 모두에 자연스럽게 들어가는 단어를 찾으세요. feel good, feel happy, feel the difference!",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'make'? 문맥에 안 맞아!",
+        "2": "'keep'? 문맥에 안 맞아!",
+        "3": "'get'? 문맥에 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3223,9 +2446,9 @@ __loadLesson({
       "instruction": "다음 문장의 빈칸에 어디에도 들어갈 수 없는 단어는?",
       "hint": "각 빈칸에 네 단어를 하나씩 넣어보세요. 세 문장 모두에 들어갈 수 없는 것은?",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "'make'? 문맥에 안 맞아!",
+        "1": "'have'? 문맥에 안 맞아!",
+        "2": "'say'? 문맥에 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3252,9 +2475,9 @@ __loadLesson({
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "hint": "fall asleep = 잠들다. 낮에 운동하면 밤에 쉽게 '잠든다'!",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'awake'? 문맥에 안 맞아!",
+        "2": "'active'? 문맥에 안 맞아!",
+        "3": "'alive'? 문맥에 안 맞아!"
       },
       "core_sentence_id": "CS08",
       "linked_rule_ids": [],
@@ -3279,11 +2502,11 @@ __loadLesson({
       "difficulty": "medium",
       "keyword": "hides",
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
-      "hint": "카페인이 여러 음식에 '숨어있다'는 표현이에요. hide = 숨다",
+      "hint": "카페인이 여러 음식에 '숨어있다'는 표현이야. hide = 숨다",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'lives'? 문맥에 안 맞아!",
+        "2": "'stays'? 문맥에 안 맞아!",
+        "3": "'runs'? 문맥에 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3308,11 +2531,11 @@ __loadLesson({
       "difficulty": "medium",
       "keyword": "다의어 cause",
       "instruction": "밑줄 친 'cause'와 같은 뜻으로 쓰인 것은?",
-      "hint": "본문의 cause는 '~을 일으키다'(동사)예요. 같은 뜻의 동사 cause를 찾으세요.",
+      "hint": "본문의 cause는 '~을 일으키다'(동사)야. 같은 뜻의 동사 cause를 찾으세요.",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'She fought for a good cause.'? 문맥에 안 맞아!",
+        "2": "'What was the cause of the fire?'? 문맥에 안 맞아!",
+        "3": "'There's no cause for worry.'? 문맥에 안 맞아!"
       },
       "core_sentence_id": "CS04",
       "linked_rule_ids": [],
@@ -3339,9 +2562,9 @@ __loadLesson({
       "instruction": "대화의 빈칸에 알맞은 응답을 고르세요.",
       "hint": "'What are you planning to do?'에 대한 대답은 'I'm planning to ~'로!",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "과거시제? 미래 계획을 물어봤는데! 미래형으로!",
+        "2": "대화 상황과 안 맞아!",
+        "3": "이상한 답이야! 자연스럽게 대답해 봐."
       },
       "core_sentence_id": "CS11",
       "linked_rule_ids": [],
@@ -3369,9 +2592,9 @@ __loadLesson({
       "instruction": "대화의 빈칸에 알맞은 응답을 고르세요.",
       "hint": "친구가 계획을 말했을 때, 격려하는 표현은? You can do it!",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "이상한 답이야! 자연스럽게 대답해 봐.",
+        "2": "대화 상황과 안 맞아!",
+        "3": "대화 상황과 안 맞아!"
       },
       "core_sentence_id": "CS11",
       "linked_rule_ids": [],
@@ -3399,9 +2622,9 @@ __loadLesson({
       "instruction": "대화의 빈칸에 알맞은 응답을 고르세요.",
       "hint": "교과서의 수면 습관 조언을 떠올려보세요!",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "대화 상황과 안 맞아!",
+        "2": "대화 상황과 안 맞아!",
+        "3": "대화 상황과 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3429,9 +2652,9 @@ __loadLesson({
       "instruction": "다음 대화에서 알 수 있는 것은?",
       "hint": "B의 말을 잘 보세요: 'I want to draw better this year.'",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "대화 상황과 안 맞아!",
+        "2": "대화 상황과 안 맞아!",
+        "3": "대화 상황과 안 맞아!"
       },
       "core_sentence_id": "CS11",
       "linked_rule_ids": [],
@@ -3459,9 +2682,9 @@ __loadLesson({
       "instruction": "다음 대화의 빈칸에 들어갈 말로 적절하지 않은 것은?",
       "hint": "더 늦게 자면 일찍 일어날 수 있을까요? 상식과 맞지 않아요!",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "대화 상황과 안 맞아!",
+        "1": "대화 상황과 안 맞아!",
+        "2": "대화 상황과 안 맞아!"
       },
       "core_sentence_id": "CS11",
       "linked_rule_ids": [],
@@ -3489,7 +2712,7 @@ __loadLesson({
       "instruction": "주어진 단어들을 올바른 순서로 배열하세요.",
       "hint": "if절이 먼저: If + 주어 + 동사 ~, 주어 + will + 동사원형 ~",
       "wrong_explanations": {
-        "default": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "default": "그 순서면 문맥이 끊겨! 0 순서가 논리적이야."
       },
       "core_sentence_id": "CS06",
       "linked_rule_ids": [
@@ -3521,7 +2744,7 @@ __loadLesson({
       "instruction": "주어진 단어들을 올바른 순서로 배열하세요.",
       "hint": "Let's + 동사원형 + 의문사 + to부정사",
       "wrong_explanations": {
-        "default": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "default": "그 순서면 문맥이 끊겨! 0 순서가 논리적이야."
       },
       "core_sentence_id": "CS13",
       "linked_rule_ids": [
@@ -3551,9 +2774,9 @@ __loadLesson({
       "instruction": "보기의 단어들을 올바르게 배열할 때, 네 번째로 오는 단어는?",
       "hint": "If you exercise during the day, you will fall asleep easily at night. 네 번째는?",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "'exercise'? 문맥에 안 맞아!",
+        "2": "'you'? 문맥에 안 맞아!",
+        "3": "'fall asleep'? 문맥에 안 맞아!"
       },
       "core_sentence_id": "CS08",
       "linked_rule_ids": [
@@ -3582,9 +2805,9 @@ __loadLesson({
       "instruction": "보기의 단어들을 올바르게 배열할 때, 다섯 번째로 오는 단어는?",
       "hint": "Let's find out where caffeine hides. 다섯 번째는?",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "'let's'? 문맥에 안 맞아!",
+        "1": "'where'? 문맥에 안 맞아!",
+        "2": "'caffeine'? 문맥에 안 맞아!"
       },
       "core_sentence_id": "CS05",
       "linked_rule_ids": [],
@@ -3611,7 +2834,7 @@ __loadLesson({
       "instruction": "주어진 단어들을 올바른 순서로 배열하세요.",
       "hint": "주어(Caffeine) + 조동사+동사(can cause) + 목적어(sleep problems)",
       "wrong_explanations": {
-        "default": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "default": "그 순서면 문맥이 끊겨! 0 순서가 논리적이야."
       },
       "core_sentence_id": "CS04",
       "linked_rule_ids": [],
@@ -3638,7 +2861,7 @@ __loadLesson({
       "instruction": "주어진 단어들을 올바른 순서로 배열하세요.",
       "hint": "주어 + 동사 + 의문사 + to부정사 + 시간부사",
       "wrong_explanations": {
-        "default": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "default": "그 순서면 문맥이 끊겨! 0 순서가 논리적이야."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -3669,9 +2892,9 @@ __loadLesson({
       "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "body clock(몸의 시계) + sleep regularly(규칙적으로 자다)",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "뜻이 다르지! 다시 매칭해 봐.",
+        "2": "'clock'은 시계야! '자다'와는 상관없어.",
+        "3": "'schedule'은 일정표! 'body clock'과 다른 거야."
       },
       "core_sentence_id": "CS02",
       "linked_rule_ids": [],
@@ -3698,9 +2921,9 @@ __loadLesson({
       "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "if절 + 주절 구조: 사용하면 → 활발한 상태 유지",
       "wrong_explanations": {
-        "1": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요."
+        "1": "뜻이 다르지! 다시 매칭해 봐.",
+        "2": "뜻이 다르지! 다시 매칭해 봐.",
+        "3": "뜻이 다르지! 다시 매칭해 봐."
       },
       "core_sentence_id": "CS06",
       "linked_rule_ids": [
@@ -3729,7 +2952,7 @@ __loadLesson({
       "instruction": "핵심문장 틀을 떠올리고, 조건에 맞게 단어만 바꾸세요.",
       "hint": "If + 주어 + 현재형, 주어 + will + 동사원형. 'feel healthier'를 기억하세요!",
       "wrong_explanations": {
-        "default": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "default": "''이 정답 형식이야! 정확히 맞춰야 해."
       },
       "core_sentence_id": "CS03",
       "linked_rule_ids": [
@@ -3753,7 +2976,7 @@ __loadLesson({
       "instruction": "핵심문장 틀을 떠올리고, 조건에 맞게 단어만 바꾸세요.",
       "hint": "조건(exercise during the day)을 if절에, 결과(fall asleep easily)를 주절에!",
       "wrong_explanations": {
-        "default": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "default": "''이 정답 형식이야! 정확히 맞춰야 해."
       },
       "core_sentence_id": "CS08",
       "linked_rule_ids": [
@@ -3778,7 +3001,7 @@ __loadLesson({
       "instruction": "핵심문장 틀을 떠올리고, 조건에 맞게 단어만 바꾸세요.",
       "hint": "I don't know + what to do + to sleep better. 의문사+to부정사 + 목적의 to부정사!",
       "wrong_explanations": {
-        "default": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "default": "''이 정답 형식이야! 정확히 맞춰야 해."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -3802,7 +3025,7 @@ __loadLesson({
       "instruction": "밑줄 친 부분을 어법에 맞게 고쳐 쓰세요.",
       "hint": "(1) if절에는 will 안 써요! 현재형으로! (2) 의문사 + to + 동사원형!",
       "wrong_explanations": {
-        "default": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "default": "''이 정답 형식이야! 정확히 맞춰야 해."
       },
       "core_sentence_id": "CS06",
       "linked_rule_ids": [
@@ -3828,7 +3051,7 @@ __loadLesson({
       "instruction": "핵심문장 틀을 떠올리고, 조건에 맞게 단어만 바꾸세요.",
       "hint": "교과서 핵심 표현: Sounds great / good / wonderful + You can do it!",
       "wrong_explanations": {
-        "default": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "default": "''이 정답 형식이야! 정확히 맞춰야 해."
       },
       "core_sentence_id": "CS11",
       "linked_rule_ids": [],
@@ -3851,9 +3074,9 @@ __loadLesson({
       "instruction": "빈칸 (A), (B)에 들어갈 말을 바르게 짝지은 것은?",
       "hint": "(A) 의문사+to부정사: '무엇을 할지' = what to do. (B) 조건: '~하면' = If",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'(A) how — (B) When'? 문맥에 안 맞아!",
+        "2": "'(A) that — (B) Because'? 문맥에 안 맞아!",
+        "3": "'(A) where — (B) Although'? 문맥에 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -3880,11 +3103,11 @@ __loadLesson({
       "difficulty": "hard",
       "keyword": "to부정사 용법",
       "instruction": "밑줄 친 to부정사의 쓰임이 나머지와 다른 하나는?",
-      "hint": "①②④는 '~하기를'(목적), ③은 '~하기 위해'(목적의 부사적 용법)예요.",
+      "hint": "①②④는 '~하기를'(목적), ③은 '~하기 위해'(목적의 부사적 용법)야.",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "'I want to sleep well.'? 문맥에 안 맞아!",
+        "1": "'She needs to exercise.'? 문맥에 안 맞아!",
+        "3": "'He decided to wake up early.'? 문맥에 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3909,11 +3132,11 @@ __loadLesson({
       "difficulty": "medium",
       "keyword": null,
       "instruction": "빈칸에 들어갈 말로 가장 적절한 것은?",
-      "hint": "수면에 방해가 되는 음식에 대해 '조심하라'는 조언이에요.",
+      "hint": "수면에 방해가 되는 음식에 대해 '조심하라'는 조언이야.",
       "wrong_explanations": {
-        "1": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'careless'는 본문과 맞지 않아!",
+        "2": "본문과 모순돼!",
+        "3": "본문 내용과 안 맞아!"
       },
       "core_sentence_id": "CS05",
       "linked_rule_ids": [],
@@ -3938,12 +3161,12 @@ __loadLesson({
       "difficulty": "hard",
       "keyword": null,
       "instruction": "다음 글을 두 문단으로 나눌 때, 두 번째 문단이 시작되기에 가장 적절한 곳은?",
-      "hint": "(A)(B)는 '내적 요인(몸, 음식)'이고 (C)(D)는 '외적 행동(스마트폰, 운동)'이에요.",
+      "hint": "(A)(B)는 '내적 요인(몸, 음식)'이고 (C)(D)는 '외적 행동(스마트폰, 운동)' 뜻이야.",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "4": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "본문과 맞지 않아!",
+        "1": "'(B)'는 본문과 맞지 않아!",
+        "3": "본문 내용과 안 맞아!",
+        "4": "'(E)'는 본문과 맞지 않아!"
       },
       "core_sentence_id": "CS02",
       "linked_rule_ids": [],
@@ -3969,11 +3192,11 @@ __loadLesson({
       "difficulty": "easy",
       "keyword": "want to",
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
-      "hint": "주어가 I이고 현재의 의도를 말하고 있어요. I want to ~",
+      "hint": "주어가 I이고 현재의 의도를 말하고 있어. I want to ~",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'wanting'? 문맥에 안 맞아!",
+        "2": "'wants'? 문맥에 안 맞아!",
+        "3": "'wanted'? 문맥에 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4000,9 +3223,9 @@ __loadLesson({
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "hint": "오후에 짧게 자는 것 = 낮잠(nap)!",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'meal'? 문맥에 안 맞아!",
+        "2": "'walk'? 문맥에 안 맞아!",
+        "3": "'class'? 문맥에 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4029,9 +3252,9 @@ __loadLesson({
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "hint": "be planning to ~ = ~할 계획이다. 현재진행형으로 계획을 나타내요!",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'planned'? 문맥에 안 맞아!",
+        "2": "'plans'? 문맥에 안 맞아!",
+        "3": "'plan'? 문맥에 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4056,11 +3279,11 @@ __loadLesson({
       "difficulty": "easy",
       "keyword": null,
       "instruction": "다음 글을 읽고 질문에 답하세요.",
-      "hint": "따뜻한 샤워, 취침 전 식사 안 하기 → 모두 '잘 자는 방법'에 대한 조언이에요.",
+      "hint": "따뜻한 샤워, 취침 전 식사 안 하기 → 모두 '잘 자는 방법'에 대한 조언이야.",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "본문과 맞지 않아!",
+        "2": "본문과 모순돼!",
+        "3": "본문 내용과 안 맞아!"
       },
       "core_sentence_id": "CS09",
       "linked_rule_ids": [],
@@ -4087,9 +3310,9 @@ __loadLesson({
       "instruction": "다음 글의 내용을 바탕으로 빈칸에 들어갈 말로 적절한 것은?",
       "hint": "during the day = 낮에, right before bedtime = 취침 직전",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 이 정보는 본문에 나오지 않아요. 주어진 내용만 기준으로 판단해야 해요.\n📖 본문을 정확히 읽고 명시된 정보만 찾으세요.\n🗣️ 추가 정보를 임의로 가정하거나 외부 지식을 적용하지 마세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'밤 — 직전'는 본문과 맞지 않아!",
+        "2": "본문과 모순돼!",
+        "3": "본문 내용과 안 맞아!"
       },
       "core_sentence_id": "CS08",
       "linked_rule_ids": [],
@@ -4116,9 +3339,9 @@ __loadLesson({
       "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: if 조건절에는 will을 쓰지 않는다, to부정사(to + 동사원형) 용법을 확인하세요.",
       "hint": "의문사 + to부정사 구조를 떠올려 보세요. what/how/where 뒤에 뭐가 와야 할까요?",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "if절에 will이 붙으면 안 돼! 조건은 현재형!",
+        "2": "'She doesn't know what doing next.'은 어색해! 'I want to know how to cook.'가 맞아.",
+        "3": "'She told me where going.'은 어색해! 'I want to know how to cook.'가 맞아."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -4148,9 +3371,9 @@ __loadLesson({
       "instruction": "대화의 빈칸에 알맞은 응답을 고르세요.",
       "hint": "친구의 계획에 긍정적으로 반응하는 표현! Sounds + 긍정 형용사",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "대화 상황과 안 맞아!",
+        "2": "대화 상황과 안 맞아!",
+        "3": "대화 상황과 안 맞아!"
       },
       "core_sentence_id": "CS11",
       "linked_rule_ids": [],
@@ -4178,9 +3401,9 @@ __loadLesson({
       "instruction": "다음 대화를 읽고 답할 수 없는 질문은?",
       "hint": "대화에서 A는 질문만 하고 격려만 했어요. A 자신의 계획은 말하지 않았어요!",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "대화 상황과 안 맞아!",
+        "1": "대화 상황과 안 맞아!",
+        "3": "대화 상황과 안 맞아!"
       },
       "core_sentence_id": "CS11",
       "linked_rule_ids": [],
@@ -4206,11 +3429,11 @@ __loadLesson({
       "difficulty": "medium",
       "keyword": "without",
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
-      "hint": "'음악 없이' 잔다는 뜻이에요. without = ~없이",
+      "hint": "'음악 없이' 잔다는 뜻이야. without = ~없이",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "'with'? 문맥에 안 맞아!",
+        "2": "'about'? 문맥에 안 맞아!",
+        "3": "'during'? 문맥에 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4235,12 +3458,12 @@ __loadLesson({
       "difficulty": "hard",
       "keyword": null,
       "instruction": "다음 글의 흐름과 관계없는 문장은?",
-      "hint": "글의 주제는 '수면 패턴'이에요. 어떤 문장이 수면과 관계없나요?",
+      "hint": "글의 주제는 '수면 패턴' 뜻이야. 어떤 문장이 수면과 관계없나요?",
       "wrong_explanations": {
-        "0": "💡 본문에서 강조한 규칙성이나 일관성과 맞지 않아요.\n📖 'regularly(규칙적으로)', 'always(항상)' 같은 반복성 표현을 찾아보세요.\n🗣️ 일회적 상황과 반복적 상황을 구분해서 이해하세요.",
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "4": "💡 본문에서 강조한 규칙성이나 일관성과 맞지 않아요.\n📖 'regularly(규칙적으로)', 'always(항상)' 같은 반복성 표현을 찾아보세요.\n🗣️ 일회적 상황과 반복적 상황을 구분해서 이해하세요."
+        "0": "본문과 맞지 않아!",
+        "1": "'②'는 본문과 맞지 않아!",
+        "3": "본문 내용과 안 맞아!",
+        "4": "'⑤'는 본문과 맞지 않아!"
       },
       "core_sentence_id": "CS02",
       "linked_rule_ids": [],
@@ -4268,9 +3491,9 @@ __loadLesson({
       "instruction": "빈칸에 들어갈 말로 가장 적절한 것은?",
       "hint": "'어떻게 도서관에 가는지'를 알려줬어요. how to get to = ~에 가는 방법",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'what'? 문맥에 안 맞아!",
+        "2": "'where'? 문맥에 안 맞아!",
+        "3": "'why'? 문맥에 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -4299,9 +3522,9 @@ __loadLesson({
       "instruction": "다음 해석에 맞도록 빈칸을 채우세요.",
       "hint": "조건(~하면) = If + 현재형, 결과 = will + 동사원형",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'If — would'? 문맥에 안 맞아!",
+        "2": "if절에 will이 붙으면 안 돼! 조건은 현재형!",
+        "3": "'Because — am going to'? 문맥에 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -4330,9 +3553,9 @@ __loadLesson({
       "instruction": "다음 글의 내용과 일치하지 않는 것은?",
       "hint": "본문에서 'right before bedtime'에 끝내면 어떻게 된다고 했나요?",
       "wrong_explanations": {
-        "0": "💡 이 내용은 본문과 일치하지만, 문제에서는 '일치하지 않는 것'을 찾고 있어요.\n📖 문제 지시문을 다시 확인하세요. 'X하지 않는 것'이나 '잘못된 것'을 찾는 건 아닌가요?\n🗣️ 문제 유형을 먼저 파악한 후 답을 찾으세요. 긍정과 부정을 구분하는 게 중요해요.",
-        "1": "💡 이 내용은 본문과 일치하지만, 문제에서는 '일치하지 않는 것'을 찾고 있어요.\n📖 문제 지시문을 다시 확인하세요. 'X하지 않는 것'이나 '잘못된 것'을 찾는 건 아닌가요?\n🗣️ 문제 유형을 먼저 파악한 후 답을 찾으세요. 긍정과 부정을 구분하는 게 중요해요.",
-        "3": "💡 이 내용은 본문과 일치하지만, 문제에서는 '일치하지 않는 것'을 찾고 있어요.\n📖 문제 지시문을 다시 확인하세요. 'X하지 않는 것'이나 '잘못된 것'을 찾는 건 아닌가요?\n🗣️ 문제 유형을 먼저 파악한 후 답을 찾으세요. 긍정과 부정을 구분하는 게 중요해요."
+        "0": "본문과 맞지 않아!",
+        "1": "'운동 후 몸이 약간 피곤해진다.'는 본문과 맞지 않아!",
+        "3": "본문 내용과 안 맞아!"
       },
       "core_sentence_id": "CS08",
       "linked_rule_ids": [],
@@ -4357,11 +3580,11 @@ __loadLesson({
       "difficulty": "easy",
       "keyword": "goal",
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
-      "hint": "반장에 출마하는 것은 '목표(goal)'예요!",
+      "hint": "반장에 출마하는 것은 '목표(goal)'야!",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'habit'? 문맥에 안 맞아!",
+        "2": "'problem'? 문맥에 안 맞아!",
+        "3": "'pattern'? 문맥에 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4388,9 +3611,9 @@ __loadLesson({
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "hint": "콘서트에 '가다' = go to a concert. to가 방향을 나타내요!",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'go at'? 문맥에 안 맞아!",
+        "2": "'go in'? 문맥에 안 맞아!",
+        "3": "'go for'? 문맥에 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4417,9 +3640,9 @@ __loadLesson({
       "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: if 조건절에는 will을 쓰지 않는다, to부정사(to + 동사원형) 용법을 확인하세요.",
       "hint": "ⓐ: if절에 will? ⓓ: how to 다음에 동명사? 두 가지 모두 잘못됐어요!",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'ⓐ, ⓒ'은 어색해! 'ⓐ, ⓓ'가 맞아.",
+        "2": "'ⓑ, ⓓ'은 어색해! 'ⓐ, ⓓ'가 맞아.",
+        "3": "'ⓒ, ⓓ'은 어색해! 'ⓐ, ⓓ'가 맞아."
       },
       "core_sentence_id": "CS03",
       "linked_rule_ids": [
@@ -4449,7 +3672,7 @@ __loadLesson({
       "instruction": "핵심문장 틀을 떠올리고, 조건에 맞게 단어만 바꾸세요.",
       "hint": "I'm planning to + 동사원형 + 구체적 내용. 예: read 30 books, learn cooking 등",
       "wrong_explanations": {
-        "default": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "default": "''이 정답 형식이야! 정확히 맞춰야 해."
       },
       "core_sentence_id": "CS11",
       "linked_rule_ids": [],
@@ -4469,11 +3692,11 @@ __loadLesson({
       "difficulty": "medium",
       "keyword": null,
       "instruction": "다음 글의 내용을 바탕으로 빈칸 (A), (B)에 들어갈 말로 적절한 것은?",
-      "hint": "수면 '습관'이 수면의 '질'을 향상시킨다는 요약이에요.",
+      "hint": "수면 '습관'이 수면의 '질'을 향상시킨다는 요약이야.",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'(A) foods — (B) time'는 본문과 맞지 않아!",
+        "2": "본문과 모순돼!",
+        "3": "본문 내용과 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4500,9 +3723,9 @@ __loadLesson({
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "hint": "나쁜 수면은 문제를 '일으킨다'. cause = 일으키다, 야기하다",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'solves'? 문맥에 안 맞아!",
+        "2": "'removes'? 문맥에 안 맞아!",
+        "3": "'avoids'? 문맥에 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4527,11 +3750,11 @@ __loadLesson({
       "difficulty": "medium",
       "keyword": "어색한 대화",
       "instruction": "다음 대화가 자연스럽지 않은 것은?",
-      "hint": "늦게 자면 일찍 일어날 수 있을까요? 상식에 맞지 않는 조언이에요!",
+      "hint": "늦게 자면 일찍 일어날 수 있을까요? 상식에 맞지 않는 조언이야!",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "대화 상황과 안 맞아!",
+        "1": "이상한 답이야! 자연스럽게 대답해 봐.",
+        "3": "대화 상황과 안 맞아!"
       },
       "core_sentence_id": "CS11",
       "linked_rule_ids": [],
@@ -4557,9 +3780,9 @@ __loadLesson({
       "difficulty": "hard",
       "keyword": "복합 서술형",
       "instruction": "핵심문장 틀을 떠올리고, 조건에 맞게 단어만 바꾸세요.",
-      "hint": "if절은 이미 있어요! 의문사+to부정사(what to do / how to relax)를 포함하면 돼요.",
+      "hint": "if절은 이미 있어! 의문사+to부정사(what to do / how to relax)를 포함하면 돼.",
       "wrong_explanations": {
-        "default": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "default": "''이 정답 형식이야! 정확히 맞춰야 해."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -4582,11 +3805,11 @@ __loadLesson({
       "difficulty": "easy",
       "keyword": "run for",
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
-      "hint": "run for = ~에 출마하다. 달리기가 아니라 '출마하다'라는 뜻이에요!",
+      "hint": "run for = ~에 출마하다. 달리기가 아니라 '출마하다'라는 뜻이야!",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'walk'? 문맥에 안 맞아!",
+        "2": "'jump'? 문맥에 안 맞아!",
+        "3": "'swim'? 문맥에 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4611,11 +3834,11 @@ __loadLesson({
       "difficulty": "easy",
       "keyword": "if절 현재형",
       "instruction": "빈칸에 들어갈 말로 가장 적절한 것은?",
-      "hint": "if절에서는 미래의 일이어도 현재형! will을 쓰면 안 돼요.",
+      "hint": "if절에서는 미래의 일이어도 현재형! will을 쓰면 안 돼.",
       "wrong_explanations": {
-        "1": "💡 본문에서 강조한 규칙성이나 일관성과 맞지 않아요.\n📖 'regularly(규칙적으로)', 'always(항상)' 같은 반복성 표현을 찾아보세요.\n🗣️ 일회적 상황과 반복적 상황을 구분해서 이해하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "if절에 will이 붙으면 안 돼! 조건은 현재형!",
+        "2": "'studied'? 문맥에 안 맞아!",
+        "3": "'studying'? 문맥에 안 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -4644,9 +3867,9 @@ __loadLesson({
       "instruction": "다음 글의 내용을 가장 잘 이해한 사람은?",
       "hint": "본문의 구체적인 표현을 가장 정확히 이해한 사람을 고르세요.",
       "wrong_explanations": {
-        "0": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요."
+        "0": "본문과 맞지 않아!",
+        "2": "본문과 모순돼!",
+        "3": "본문 내용과 안 맞아!"
       },
       "core_sentence_id": "CS06",
       "linked_rule_ids": [],
@@ -4673,9 +3896,9 @@ __loadLesson({
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "hint": "취침 몇 시간 전에 운동을 '끝내라'는 조언! finish exercising",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'start'? 문맥에 안 맞아!",
+        "2": "'enjoy'? 문맥에 안 맞아!",
+        "3": "'carry'? 문맥에 안 맞아!"
       },
       "core_sentence_id": "CS10",
       "linked_rule_ids": [],
@@ -4702,9 +3925,9 @@ __loadLesson({
       "instruction": "대화의 빈칸에 알맞은 응답을 고르세요.",
       "hint": "잠을 못 자는 친구에게 교과서에서 배운 조언을 해주세요!",
       "wrong_explanations": {
-        "1": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "대화 상황과 안 맞아!",
+        "2": "대화 상황과 안 맞아!",
+        "3": "대화 상황과 안 맞아!"
       },
       "core_sentence_id": "CS06",
       "linked_rule_ids": [],
@@ -4732,7 +3955,7 @@ __loadLesson({
       "instruction": "핵심문장 틀을 떠올리고, 조건에 맞게 단어만 바꾸세요.",
       "hint": "'I'm planning to + 동사원형'으로 시작하세요!",
       "wrong_explanations": {
-        "default": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "default": "''이 정답 형식이야! 정확히 맞춰야 해."
       },
       "core_sentence_id": "CS11",
       "linked_rule_ids": [],
@@ -4752,9 +3975,9 @@ __loadLesson({
       "difficulty": "hard",
       "keyword": "의문사+to부정사 서술형",
       "instruction": "핵심문장 틀을 떠올리고, 조건에 맞게 단어만 바꾸세요.",
-      "hint": "'주어 + don't know + 의문사 + to + 동사원형' 구조예요!",
+      "hint": "'주어 + don't know + 의문사 + to + 동사원형' 구조야!",
       "wrong_explanations": {
-        "default": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "default": "''이 정답 형식이야! 정확히 맞춰야 해."
       },
       "core_sentence_id": "CS13",
       "linked_rule_ids": [
@@ -4778,7 +4001,7 @@ __loadLesson({
       "instruction": "주어진 단어들을 올바른 순서로 배열하세요.",
       "hint": "주어(Caffeine) + 조동사(can) + 동사원형(cause) + 목적어",
       "wrong_explanations": {
-        "default": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "default": "그 순서면 문맥이 끊겨! 0 순서가 논리적이야."
       },
       "core_sentence_id": "CS04",
       "linked_rule_ids": [],
@@ -4806,7 +4029,7 @@ __loadLesson({
       "instruction": "주어진 단어들을 올바른 순서로 배열하세요.",
       "hint": "To부정사(목적) + 명령문: To sleep well, + don't use + 목적어 + 시간",
       "wrong_explanations": {
-        "default": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "default": "그 순서면 문맥이 끊겨! 0 순서가 논리적이야."
       },
       "core_sentence_id": "CS07",
       "linked_rule_ids": [],
@@ -4834,7 +4057,7 @@ __loadLesson({
       "instruction": "주어진 단어들을 올바른 순서로 배열하세요.",
       "hint": "Remember to + 동사원형 + 시간표현: 기억해야 할 행동을 먼저!",
       "wrong_explanations": {
-        "default": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "default": "그 순서면 문맥이 끊겨! 0 순서가 논리적이야."
       },
       "core_sentence_id": "CS10",
       "linked_rule_ids": [],
@@ -4860,11 +4083,11 @@ __loadLesson({
       "difficulty": "easy",
       "keyword": "카페인 매칭",
       "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
-      "hint": "'일으키다'는 cause예요. cure(치료하다)와 헷갈리지 마세요!",
+      "hint": "'일으키다'는 cause야. cure(치료하다)와 헷갈리지 마세요!",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "뜻이 다르지! 다시 매칭해 봐.",
+        "2": "뜻이 다르지! 다시 매칭해 봐.",
+        "3": "뜻이 다르지! 다시 매칭해 봐."
       },
       "core_sentence_id": "CS04",
       "linked_rule_ids": [],
@@ -4891,9 +4114,9 @@ __loadLesson({
       "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "if + smartphone late at night → brain + stay active",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "뜻이 다르지! 다시 매칭해 봐.",
+        "2": "뜻이 다르지! 다시 매칭해 봐.",
+        "3": "뜻이 다르지! 다시 매칭해 봐."
       },
       "core_sentence_id": "CS06",
       "linked_rule_ids": [
@@ -4922,9 +4145,9 @@ __loadLesson({
       "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "낮 = during the day, 운동 = exercise",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'exercise'는 '운동하다'! '듣다'가 아니잖아.",
+        "2": "'exercise'는 '운동하다'! '듣다'가 아니잖아.",
+        "3": "뜻이 다르지! 다시 매칭해 봐."
       },
       "core_sentence_id": "CS08",
       "linked_rule_ids": [],
@@ -4949,11 +4172,11 @@ __loadLesson({
       "difficulty": "medium",
       "keyword": "잠들다 매칭",
       "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
-      "hint": "'잠들다'는 fall asleep이에요. feel sleepy(졸리다)와 달라요!",
+      "hint": "'잠들다'는 fall asleep이야. feel sleepy(졸리다)와 달라요!",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "뜻이 다르지! 다시 매칭해 봐.",
+        "2": "뜻이 다르지! 다시 매칭해 봐.",
+        "3": "뜻이 다르지! 다시 매칭해 봐."
       },
       "core_sentence_id": "CS09",
       "linked_rule_ids": [],
@@ -4980,9 +4203,9 @@ __loadLesson({
       "instruction": "다음 영어 문장의 의미와 같은 우리말을 고르세요.",
       "hint": "finish exercising = 운동을 끝내다, a few hours before = 몇 시간 전에",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "뜻이 다르지! 다시 매칭해 봐.",
+        "2": "뜻이 다르지! 다시 매칭해 봐.",
+        "3": "뜻이 다르지! 다시 매칭해 봐."
       },
       "core_sentence_id": "CS10",
       "linked_rule_ids": [],
@@ -5007,11 +4230,11 @@ __loadLesson({
       "difficulty": "easy",
       "keyword": "어휘 매칭",
       "instruction": "다음 중 단어의 뜻이 올바르게 연결된 것을 고르세요.",
-      "hint": "lively는 '살아있는 것처럼 활발한'이라는 뜻이에요.",
+      "hint": "lively는 '살아있는 것처럼 활발한'이라는 뜻이야.",
       "wrong_explanations": {
-        "1": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문에서 강조한 규칙성이나 일관성과 맞지 않아요.\n📖 'regularly(규칙적으로)', 'always(항상)' 같은 반복성 표현을 찾아보세요.\n🗣️ 일회적 상황과 반복적 상황을 구분해서 이해하세요."
+        "1": "뜻이 다르지! 다시 매칭해 봐.",
+        "2": "뜻이 다르지! 다시 매칭해 봐.",
+        "3": "뜻이 다르지! 다시 매칭해 봐."
       },
       "core_sentence_id": "CS01a",
       "linked_rule_ids": [],
@@ -5036,11 +4259,11 @@ __loadLesson({
       "difficulty": "easy",
       "keyword": "어휘 매칭",
       "instruction": "다음 중 단어의 뜻이 올바르게 연결된 것을 고르세요.",
-      "hint": "cause는 '원인' 또는 '일으키다'예요.",
+      "hint": "cause는 '원인' 또는 '일으키다'야.",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요."
+        "1": "뜻이 다르지! 다시 매칭해 봐.",
+        "2": "뜻이 다르지! 다시 매칭해 봐.",
+        "3": "뜻이 다르지! 다시 매칭해 봐."
       },
       "core_sentence_id": "CS04",
       "linked_rule_ids": [],
@@ -5065,11 +4288,11 @@ __loadLesson({
       "difficulty": "medium",
       "keyword": "계획 표현 매칭",
       "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
-      "hint": "'I'm planning to + 동사원형'이 맞는 형태예요!",
+      "hint": "'I'm planning to + 동사원형'이 맞는 형태야!",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "뜻이 다르지! 다시 매칭해 봐.",
+        "2": "뜻이 다르지! 다시 매칭해 봐.",
+        "3": "뜻이 다르지! 다시 매칭해 봐."
       },
       "core_sentence_id": "CS11",
       "linked_rule_ids": [],
@@ -5096,9 +4319,9 @@ __loadLesson({
       "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "'의문사 + to + 동사원형' 구조를 확인하세요!",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "뜻이 다르지! 다시 매칭해 봐.",
+        "2": "뜻이 다르지! 다시 매칭해 봐.",
+        "3": "뜻이 다르지! 다시 매칭해 봐."
       },
       "core_sentence_id": "CS13",
       "linked_rule_ids": [
@@ -5128,9 +4351,9 @@ __loadLesson({
       "meaning_ko": "너의 생체 시계에 귀 기울이고 규칙적으로 자라.",
       "hint": "Listen(1) to(2) your(3) body(4)...",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "'your'은 3번째야! 1번째가 아니야!",
+        "2": "'clock'은 5번째야! 1번째가 아니야!",
+        "3": "'and'은 6번째야! 1번째가 아니야!"
       },
       "core_sentence_id": "CS02",
       "linked_rule_ids": [],
@@ -5158,9 +4381,9 @@ __loadLesson({
       "meaning_ko": "카페인은 많은 음식과 음료에 숨어 있다.",
       "hint": "Caffeine(1) hides(2) in(3) many(4) foods(5) and(6)...",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "'many'은 4번째야! 2번째가 아니야!",
+        "1": "'foods'은 5번째야! 2번째가 아니야!",
+        "3": "'drinks'은 7번째야! 2번째가 아니야!"
       },
       "core_sentence_id": "CS05",
       "linked_rule_ids": [],
@@ -5188,9 +4411,9 @@ __loadLesson({
       "meaning_ko": "밤늦게 스마트폰을 사용하면 뇌가 활동적인 상태를 유지할 것이다.",
       "hint": "If(1) you(2) use(3) your(4) smartphone(5) late(6) at(7)...",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "'late'은 6번째야! 1번째가 아니야!",
+        "2": "'night'은 8번째야! 1번째가 아니야!",
+        "3": "'your'은 4번째야! 1번째가 아니야!"
       },
       "core_sentence_id": "CS06",
       "linked_rule_ids": [
@@ -5220,9 +4443,9 @@ __loadLesson({
       "meaning_ko": "밤에 쉽게 잠들 수 있을 것이다.",
       "hint": "You(1) will(2) fall(3)...",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "'will'은 2번째야! 1번째가 아니야!",
+        "2": "'asleep'은 4번째야! 1번째가 아니야!",
+        "3": "'easily'은 5번째야! 1번째가 아니야!"
       },
       "core_sentence_id": "CS09",
       "linked_rule_ids": [],
@@ -5263,9 +4486,9 @@ __loadLesson({
       "correct": 0,
       "hint": "두 번째 문장을 읽어보세요: 'tells you when to wake up and sleep'",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'어떤 음식을 먹어야 하는지'는 본문과 맞지 않아!",
+        "2": "본문과 모순돼!",
+        "3": "본문 내용과 안 맞아!"
       }
     },
     {
@@ -5291,9 +4514,9 @@ __loadLesson({
       "correct": 2,
       "hint": "마지막 두 문장을 보세요: sleep regularly → feel healthier",
       "wrong_explanations": {
-        "0": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요.",
-        "1": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "본문과 맞지 않아!",
+        "1": "'밤에 몸이 활기차게 느껴진다.'는 본문과 맞지 않아!",
+        "3": "본문 내용과 안 맞아!"
       }
     },
     {
@@ -5319,9 +4542,9 @@ __loadLesson({
       "correct": 2,
       "hint": "'even chocolate has caffeine' — 초콜릿에도 카페인이!",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "1": "💡 이 정보는 본문에 나오지 않아요. 주어진 내용만 기준으로 판단해야 해요.\n📖 본문을 정확히 읽고 명시된 정보만 찾으세요.\n🗣️ 추가 정보를 임의로 가정하거나 외부 지식을 적용하지 마세요.",
-        "3": "💡 이 정보는 본문에 나오지 않아요. 주어진 내용만 기준으로 판단해야 해요.\n📖 본문을 정확히 읽고 명시된 정보만 찾으세요.\n🗣️ 추가 정보를 임의로 가정하거나 외부 지식을 적용하지 마세요."
+        "0": "본문과 맞지 않아!",
+        "1": "'과일 주스'는 본문과 맞지 않아!",
+        "3": "본문 내용과 안 맞아!"
       }
     },
     {
@@ -5347,9 +4570,9 @@ __loadLesson({
       "correct": 2,
       "hint": "'many foods and drinks'라고 했어요. '~에만'이라는 말이 있나 확인하세요.",
       "wrong_explanations": {
-        "0": "💡 이 내용은 본문과 일치하지만, 문제에서는 '일치하지 않는 것'을 찾고 있어요.\n📖 문제 지시문을 다시 확인하세요. 'X하지 않는 것'이나 '잘못된 것'을 찾는 건 아닌가요?\n🗣️ 문제 유형을 먼저 파악한 후 답을 찾으세요. 긍정과 부정을 구분하는 게 중요해요.",
-        "1": "💡 이 내용은 본문과 일치하지만, 문제에서는 '일치하지 않는 것'을 찾고 있어요.\n📖 문제 지시문을 다시 확인하세요. 'X하지 않는 것'이나 '잘못된 것'을 찾는 건 아닌가요?\n🗣️ 문제 유형을 먼저 파악한 후 답을 찾으세요. 긍정과 부정을 구분하는 게 중요해요.",
-        "3": "💡 이 내용은 본문과 일치하지만, 문제에서는 '일치하지 않는 것'을 찾고 있어요.\n📖 문제 지시문을 다시 확인하세요. 'X하지 않는 것'이나 '잘못된 것'을 찾는 건 아닌가요?\n🗣️ 문제 유형을 먼저 파악한 후 답을 찾으세요. 긍정과 부정을 구분하는 게 중요해요."
+        "0": "본문과 맞지 않아!",
+        "1": "'초콜릿에도 카페인이 들어있다.'는 본문과 맞지 않아!",
+        "3": "본문 내용과 안 맞아!"
       }
     },
     {
@@ -5375,9 +4598,9 @@ __loadLesson({
       "correct": 0,
       "hint": "첫 문장: 'your brain will stay active'",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'눈이 더 좋아진다.'는 본문과 맞지 않아!",
+        "2": "본문과 모순돼!",
+        "3": "본문 내용과 안 맞아!"
       }
     },
     {
@@ -5403,9 +4626,9 @@ __loadLesson({
       "correct": 1,
       "hint": "본문에 직접 나와요: \"Hey, don't sleep yet.\"",
       "wrong_explanations": {
-        "0": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 이 정보는 본문에 나오지 않아요. 주어진 내용만 기준으로 판단해야 해요.\n📖 본문을 정확히 읽고 명시된 정보만 찾으세요.\n🗣️ 추가 정보를 임의로 가정하거나 외부 지식을 적용하지 마세요."
+        "0": "본문과 맞지 않아!",
+        "2": "본문과 모순돼!",
+        "3": "본문 내용과 안 맞아!"
       }
     },
     {
@@ -5431,9 +4654,9 @@ __loadLesson({
       "correct": 1,
       "hint": "'you will fall asleep easily at night' — 밤에 쉽게 잠든다!",
       "wrong_explanations": {
-        "0": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요.",
-        "2": "💡 이 정보는 본문에 나오지 않아요. 주어진 내용만 기준으로 판단해야 해요.\n📖 본문을 정확히 읽고 명시된 정보만 찾으세요.\n🗣️ 추가 정보를 임의로 가정하거나 외부 지식을 적용하지 마세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "본문과 맞지 않아!",
+        "2": "본문과 모순돼!",
+        "3": "본문 내용과 안 맞아!"
       }
     },
     {
@@ -5459,9 +4682,9 @@ __loadLesson({
       "correct": 2,
       "hint": "'a few hours before bedtime' = 취침 몇 시간 전",
       "wrong_explanations": {
-        "0": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요.",
-        "1": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "본문과 맞지 않아!",
+        "1": "'운동은 밤에 하는 것이 효과적이다.'는 본문과 맞지 않아!",
+        "3": "본문 내용과 안 맞아!"
       }
     },
     {
@@ -5487,9 +4710,9 @@ __loadLesson({
       "correct": 2,
       "hint": "첫 번째 단락 마지막: 'sleep regularly. You will feel healthier.'",
       "wrong_explanations": {
-        "0": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요.",
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요."
+        "0": "본문과 맞지 않아!",
+        "1": "'카페인은 커피에만 들어있다.'는 본문과 맞지 않아!",
+        "3": "본문 내용과 안 맞아!"
       }
     },
     {
@@ -5513,11 +4736,11 @@ __loadLesson({
         "카페인은 어떤 문제를 일으킬 수 있나?"
       ],
       "correct": 2,
-      "hint": "선택지 하나하나를 본문에서 찾아보세요. 본문에 아예 없는 내용이 정답이에요.",
+      "hint": "선택지 하나하나를 본문에서 찾아보세요. 본문에 아예 없는 내용이 정답이야.",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "본문과 맞지 않아!",
+        "1": "'카페인이 들어있는 음식에는 어떤 것이 있나?'는 본문과 맞지 않아!",
+        "3": "본문 내용과 안 맞아!"
       }
     },
     {
@@ -5543,9 +4766,9 @@ __loadLesson({
       "correct": 3,
       "hint": "취침 직전에 운동하면 어떻게 된다고 했는지 마지막 부분을 다시 읽어보세요.",
       "wrong_explanations": {
-        "0": "💡 이 내용은 본문과 일치하지만, 문제에서는 '일치하지 않는 것'을 찾고 있어요.\n📖 문제 지시문을 다시 확인하세요. 'X하지 않는 것'이나 '잘못된 것'을 찾는 건 아닌가요?\n🗣️ 문제 유형을 먼저 파악한 후 답을 찾으세요. 긍정과 부정을 구분하는 게 중요해요.",
-        "1": "💡 이 내용은 본문과 일치하지만, 문제에서는 '일치하지 않는 것'을 찾고 있어요.\n📖 문제 지시문을 다시 확인하세요. 'X하지 않는 것'이나 '잘못된 것'을 찾는 건 아닌가요?\n🗣️ 문제 유형을 먼저 파악한 후 답을 찾으세요. 긍정과 부정을 구분하는 게 중요해요.",
-        "2": "💡 이 내용은 본문과 일치하지만, 문제에서는 '일치하지 않는 것'을 찾고 있어요.\n📖 문제 지시문을 다시 확인하세요. 'X하지 않는 것'이나 '잘못된 것'을 찾는 건 아닌가요?\n🗣️ 문제 유형을 먼저 파악한 후 답을 찾으세요. 긍정과 부정을 구분하는 게 중요해요."
+        "0": "본문과 맞지 않아!",
+        "1": "'파란 빛은 뇌에 '아직 자지 마'라는 신호를 보낸다.'는 본문과 맞지 않아!",
+        "2": "본문과 모순돼!"
       }
     },
     {
@@ -5571,9 +4794,9 @@ __loadLesson({
       "correct": 0,
       "hint": "두 단락 각각에서 '하지 말라'고 한 것을 찾으세요.",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 이 정보는 본문에 나오지 않아요. 주어진 내용만 기준으로 판단해야 해요.\n📖 본문을 정확히 읽고 명시된 정보만 찾으세요.\n🗣️ 추가 정보를 임의로 가정하거나 외부 지식을 적용하지 마세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'물 마시기, 음악 듣기'는 본문과 맞지 않아!",
+        "2": "본문과 모순돼!",
+        "3": "본문 내용과 안 맞아!"
       }
     },
     {
@@ -5599,9 +4822,9 @@ __loadLesson({
       "correct": 2,
       "hint": "마지막 단락: 'your body may feel too awake'",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "1": "💡 이 선택지는 본문이 말하는 의미의 반대예요.\n📖 문맥을 다시 읽고 필요한 의미를 정확히 파악하세요.\n🗣️ 반대 의미를 헷갈리지 않도록 뜻을 정확히 외우세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "0": "본문과 맞지 않아!",
+        "1": "'밤에 스마트폰을 쓰면 뇌가 쉬게 된다.'는 본문과 맞지 않아!",
+        "3": "본문 내용과 안 맞아!"
       }
     },
     {
@@ -5627,9 +4850,9 @@ __loadLesson({
       "correct": 2,
       "hint": "낮에 운동하면 밤에 어떻게 된다고 했나요? 'easily'를 찾아보세요.",
       "wrong_explanations": {
-        "0": "💡 이 내용은 본문과 일치하지만, 문제에서는 '일치하지 않는 것'을 찾고 있어요.\n📖 문제 지시문을 다시 확인하세요. 'X하지 않는 것'이나 '잘못된 것'을 찾는 건 아닌가요?\n🗣️ 문제 유형을 먼저 파악한 후 답을 찾으세요. 긍정과 부정을 구분하는 게 중요해요.",
-        "1": "💡 이 내용은 본문과 일치하지만, 문제에서는 '일치하지 않는 것'을 찾고 있어요.\n📖 문제 지시문을 다시 확인하세요. 'X하지 않는 것'이나 '잘못된 것'을 찾는 건 아닌가요?\n🗣️ 문제 유형을 먼저 파악한 후 답을 찾으세요. 긍정과 부정을 구분하는 게 중요해요.",
-        "3": "💡 이 내용은 본문과 일치하지만, 문제에서는 '일치하지 않는 것'을 찾고 있어요.\n📖 문제 지시문을 다시 확인하세요. 'X하지 않는 것'이나 '잘못된 것'을 찾는 건 아닌가요?\n🗣️ 문제 유형을 먼저 파악한 후 답을 찾으세요. 긍정과 부정을 구분하는 게 중요해요."
+        "0": "본문과 맞지 않아!",
+        "1": "'규칙적으로 자면 더 건강해진다.'는 본문과 맞지 않아!",
+        "3": "본문 내용과 안 맞아!"
       }
     },
     {
@@ -5653,11 +4876,11 @@ __loadLesson({
         "학교생활에 필요한 준비물"
       ],
       "correct": 0,
-      "hint": "글 전체가 '잘 자기 위한 방법'을 4가지로 설명하고 있어요.",
+      "hint": "글 전체가 '잘 자기 위한 방법'을 4가지로 설명하고 있어.",
       "wrong_explanations": {
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "2": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
+        "1": "'카페인이 몸에 미치는 영향'는 본문과 맞지 않아!",
+        "2": "본문과 모순돼!",
+        "3": "본문 내용과 안 맞아!"
       }
     },
     {
@@ -5683,170 +4906,9 @@ __loadLesson({
       "correct": 2,
       "hint": "선택지 하나하나를 본문에서 찾아보세요. '몇 시간을 자야 하는지'가 본문에 있나요?",
       "wrong_explanations": {
-        "0": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "1": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요.",
-        "3": "💡 본문의 내용과 비교해서 검토해보세요. 일치하지 않는 부분이 있어요.\n📖 관련 문장이나 문단을 다시 읽으면서 비교하세요.\n🗣️ 선택지가 본문과 정확히 맞는지 단계별로 확인하세요."
-      }
-    },
-    {
-      "id": "IF-SC-01",
-      "phase": "drill",
-      "training_layer": "grammar_practice",
-      "type": "typed_blank",
-      "difficulty": "medium",
-      "recovery_band": "A",
-      "core_sentence_id": null,
-      "linked_rule_ids": ["GR01"],
-      "instruction": "그림 표현을 활용하여 if 조건문을 완성하세요.",
-      "context": "보기: If the weather is nice, Jenny will play outside.\n표현: go to the park / see a cat",
-      "prompt": "If she _____ to the park, she can see a cat.",
-      "answers": ["goes"],
-      "accept_typos": {"goes": ["goes", "go's"]},
-      "hint": "she 뒤에 go? → goes!",
-      "wrong_explanations": {
-        "go": "she/he/it 뒤 → 동사에 -s! go → goes. if절이라고 예외 없음!"
-      }
-    },
-    {
-      "id": "IF-SC-02",
-      "phase": "drill",
-      "training_layer": "grammar_practice",
-      "type": "typed_blank",
-      "difficulty": "medium",
-      "recovery_band": "A",
-      "core_sentence_id": null,
-      "linked_rule_ids": ["GR01"],
-      "instruction": "표현을 활용하여 if 조건문의 주절을 완성하세요.",
-      "context": "표현: give food to the cat / follow her",
-      "prompt": "If she gives food to the cat, _____ will follow her.",
-      "answers": ["the cat"],
-      "accept_typos": {"the cat": ["the cat", "The cat"]},
-      "hint": "will 앞에 뭐가 빠졌지? 누가 따라오는 건데?",
-      "wrong_explanations": {
-        "": "will 앞에 주어 없으면 → 무조건 감점! '누가' 따라오는지 써야 해. → the cat will follow her."
-      }
-    },
-    {
-      "id": "IF-SC-03",
-      "phase": "drill",
-      "training_layer": "grammar_practice",
-      "type": "typed_blank",
-      "difficulty": "medium",
-      "recovery_band": "A",
-      "core_sentence_id": null,
-      "linked_rule_ids": ["GR01"],
-      "instruction": "표현을 활용하여 if 조건문을 완성하세요.",
-      "context": "표현: bring the cat home / sleep with it",
-      "prompt": "If she _____ the cat home, she will sleep with it.",
-      "answers": ["brings"],
-      "accept_typos": {"brings": ["brings"]},
-      "hint": "she 뒤에 bring? → brings!",
-      "wrong_explanations": {
-        "bring": "she/he/it 뒤 → 동사에 -s! bring → brings. if절 안에서도 똑같아!"
-      }
-    },
-    {
-      "id": "IF-ERR-01",
-      "phase": "drill",
-      "training_layer": "grammar_practice",
-      "type": "choice_blank",
-      "difficulty": "medium",
-      "recovery_band": "A",
-      "core_sentence_id": null,
-      "linked_rule_ids": ["GR01"],
-      "keyword": "3인칭 단수 -s 집중 훈련",
-      "instruction": "어법상 올바른 문장을 고르세요.",
-      "prompt": "다음 중 어법이 올바른 문장은?",
-      "choices": [
-        "If she go to the park, she can see a cat.",
-        "If she goes to the park, she can see a cat.",
-        "If she going to the park, she can see a cat.",
-        "If she will go to the park, she can see a cat."
-      ],
-      "correct_index": 1,
-      "hint": "if절 규칙 2개: ① will 금지 ② she 뒤 -s 붙이기",
-      "wrong_explanations": {
-        "0": "she 뒤에 go? → goes! 3인칭 단수 -s 빠뜨리면 바로 틀림.",
-        "2": "if절에 -ing형 절대 안 돼! 현재형만 가능.",
-        "3": "if 뒤에 will 보이면 → 무조건 틀림!"
-      }
-    },
-    {
-      "id": "IF-ERR-02",
-      "phase": "drill",
-      "training_layer": "grammar_practice",
-      "type": "choice_blank",
-      "difficulty": "medium",
-      "recovery_band": "A",
-      "core_sentence_id": null,
-      "linked_rule_ids": ["GR01"],
-      "keyword": "주절 주어 누락 교정",
-      "instruction": "어법상 올바른 문장을 고르세요.",
-      "prompt": "If she gives food to the cat, _____",
-      "choices": [
-        "will follow her.",
-        "the cat will follow her.",
-        "the cat follow her.",
-        "following her."
-      ],
-      "correct_index": 1,
-      "hint": "영어 문장 = 주어 + 동사. will 앞에 주어 있어?",
-      "wrong_explanations": {
-        "0": "주어 없이 will follow? → 누가 따라오는데? 주어 빠지면 0점! the cat 넣어야 함.",
-        "2": "the cat follow? → will 빠졌어! 주절은 will + 동사원형이 공식.",
-        "3": "following만 달랑? → 주어도 없고 동사도 불완전. 문장이 아님!"
-      }
-    },
-    {
-      "id": "IF-ERR-03",
-      "phase": "drill",
-      "training_layer": "grammar_practice",
-      "type": "choice_blank",
-      "difficulty": "hard",
-      "recovery_band": "A",
-      "core_sentence_id": null,
-      "linked_rule_ids": ["GR01"],
-      "keyword": "3인칭 단수 + if절 종합",
-      "instruction": "빈칸에 알맞은 것을 고르세요.",
-      "prompt": "If he _____ hard, he will pass the test.",
-      "choices": [
-        "study",
-        "studies",
-        "will study",
-        "studying"
-      ],
-      "correct_index": 1,
-      "hint": "he 뒤니까 → studies! (study → y를 i로 바꾸고 -es)",
-      "wrong_explanations": {
-        "0": "he 뒤에 study? → studies! 자음+y → y를 i로 바꾸고 -es 붙이기.",
-        "2": "if 뒤에 will 보이면 → 무조건 틀림!",
-        "3": "if절에 -ing형 절대 안 돼! 현재형만 가능."
-      }
-    },
-    {
-      "id": "IF-ERR-04",
-      "phase": "drill",
-      "training_layer": "grammar_practice",
-      "type": "choice_blank",
-      "difficulty": "hard",
-      "recovery_band": "A",
-      "core_sentence_id": null,
-      "linked_rule_ids": ["GR01"],
-      "keyword": "3인칭 단수 + if절 종합",
-      "instruction": "빈칸에 알맞은 것을 고르세요.",
-      "prompt": "If it _____ tomorrow, we will stay home.",
-      "choices": [
-        "rain",
-        "rains",
-        "will rain",
-        "rained"
-      ],
-      "correct_index": 1,
-      "hint": "it 뒤니까 → rains! 그리고 if절에 will은 절대 금지.",
-      "wrong_explanations": {
-        "0": "it 뒤에 rain? → rains! 3인칭 단수 -s 빠뜨리면 바로 틀림.",
-        "2": "if 뒤에 will 보이면 → 무조건 틀림!",
-        "3": "rained는 과거형! if절은 현재형만 가능. -ed 보이면 틀림."
+        "0": "본문과 맞지 않아!",
+        "1": "'밤늦게 스마트폰을 쓰면 뇌에 어떤 일이 생기나?'는 본문과 맞지 않아!",
+        "3": "본문 내용과 안 맞아!"
       }
     }
   ],
@@ -6048,24 +5110,6 @@ __loadLesson({
       "word": "what to do",
       "pos": "표현",
       "meaning": "무엇을 해야 할지"
-    },
-    {
-      "id": "VD-L1-034",
-      "word": "body",
-      "pos": "명사",
-      "meaning": "신체, 몸"
-    },
-    {
-      "id": "VD-L1-035",
-      "word": "change",
-      "pos": "동사",
-      "meaning": "변하다, 바뀌다"
-    },
-    {
-      "id": "VD-L1-036",
-      "word": "decide",
-      "pos": "동사",
-      "meaning": "결정하다, 정하다"
     }
   ],
   "grammar_rules": [

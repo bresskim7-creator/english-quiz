@@ -1,9 +1,9 @@
 __loadLesson({
   "lesson": 3,
   "title": "Lesson 3: New Ideas Bring Big Changes",
-  "version": "1.1",
-  "build_date": "2026-04-07",
-  "build_note": "v1.1 + 교과서 인쇄물 통합: 1개 어휘(CS15: cloth) 드릴 추가",
+  "version": "1.0",
+  "build_date": "2026-03-31",
+  "build_note": "v1.0 — 중간고사 범위 L3 신규 제작. 4모드 drill + exam_prep.",
   "core_sentences": [
     {
       "id": "CS01",
@@ -198,61 +198,6 @@ __loadLesson({
         "dialogue_completion",
         "dialogue_response"
       ]
-    },
-    {
-      "id": "CS15",
-      "text_en": "The cloth on the table is very soft.",
-      "text_ko": "테이블 위의 천은 매우 부드럽다.",
-      "pair_id": null,
-      "source": "vocabulary_extension_print",
-      "is_priority": true,
-      "linked_rule_ids": [],
-      "bridge_to_exam": ["vocabulary_recall"]
-    },
-    {
-      "id": "CS16",
-      "text_en": "English is spoken in many countries.",
-      "text_ko": "영어는 많은 나라에서 사용된다.",
-      "pair_id": null,
-      "source": "focus_on_language_p54",
-      "is_priority": true,
-      "linked_rule_ids": [
-        "GR01"
-      ],
-      "bridge_to_exam": [
-        "grammar_awkward",
-        "error_correction"
-      ]
-    },
-    {
-      "id": "CS17",
-      "text_en": "The cakes are baked every morning.",
-      "text_ko": "케이크들이 매일 아침마다 구워진다.",
-      "pair_id": null,
-      "source": "focus_on_language_p54",
-      "is_priority": true,
-      "linked_rule_ids": [
-        "GR01"
-      ],
-      "bridge_to_exam": [
-        "grammar_awkward",
-        "error_correction"
-      ]
-    },
-    {
-      "id": "CS18",
-      "text_en": "The Kiss was painted by Gustav Klimt.",
-      "text_ko": "키스는 구스타프 클림트에 의해 그려졌다.",
-      "pair_id": null,
-      "source": "focus_on_language_p54",
-      "is_priority": true,
-      "linked_rule_ids": [
-        "GR01"
-      ],
-      "bridge_to_exam": [
-        "grammar_awkward",
-        "error_correction"
-      ]
     }
   ],
   "questions": [
@@ -285,9 +230,9 @@ __loadLesson({
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "hint": "설명하다 — explain",
       "wrong_explanations": {
-        "express": "'표현하다'는 뜻이에요. '설명하다'와는 달라요.",
-        "explore": "'탐험하다, 조사하다'는 뜻이에요. '설명해 줄 수 있어?'는 아니에요.",
-        "expect": "'기대하다'는 뜻이에요. 문맥이 맞지 않아요."
+        "express": "'표현하다' = 표현하다! '설명하다'는 완전 다른 단어야.",
+        "explore": "탐험하다, 조사하다 = 탐험하다, 조사하다! '설명해 줄 수 있어?'는 이 문맥 아니야.",
+        "expect": "기대하다 = 기대하다! 여기 문맥과 안 맞아."
       },
       "core_sentence_id": "CS01",
       "linked_rule_ids": [],
@@ -390,9 +335,8 @@ __loadLesson({
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "hint": "가장 높다 — highest",
       "wrong_explanations": {
-        "high": "'높다'는 뜻이지만, 여기는 비교급이 필요해요. '가장 높다'는 최상급이에요.",
-        "higher": "이건 비교급이에요. 둘을 비교할 때 써요. '가장 높다'는 최상급이죠.",
-        "highest": "정답! 셋 이상 중에서 가장 높다는 최상급이에요."
+        "high": "높다 ≠ 여기 문맥! 확인해. '가장 높다'는 최상급이야!",
+        "higher": "'비교급'이 맞는 상황이 아니야!"
       },
       "core_sentence_id": "CS02",
       "linked_rule_ids": [],
@@ -496,10 +440,9 @@ __loadLesson({
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "hint": "발명하다 — invent",
       "wrong_explanations": {
-        "invested": "'투자했다'는 뜻이에요. '발명했다'와는 달라요.",
-        "invited": "'초대했다'는 뜻이에요. invent와 발음은 비슷하지만 의미가 다르죠.",
-        "discovered": "'발견했다'는 뜻이에요. '발명했다(invented)'와는 달라요.",
-        "invented": "정답! She invented ~ = 그녀가 ~를 발명했다"
+        "invested": "'투자했다' = 투자했다! '발명했다'는 완전 다른 단어야.",
+        "invited": "invent = 발명!",
+        "discovered": "invent = 발명!"
       },
       "core_sentence_id": "CS03",
       "linked_rule_ids": [
@@ -609,9 +552,9 @@ __loadLesson({
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "hint": "처음에, 맨 처음 — at first",
       "wrong_explanations": {
-        "on first": "'on first'는 영어에 없어요. 시간 전치사는 'at'을 써요.",
-        "in first": "'in first'는 쓰지 않아요. '처음에'는 'at first'가 맞아요.",
-        "at last": "'결국, 마지막에'라는 뜻이에요. '처음에'는 'at first'죠."
+        "on first": "'on first'는 영어에 없어!. 시간 전치사는 'at'을 써요.",
+        "in first": "'in first'는 쓰지 않아요. '처음에'는 'at first'가 맞아!!",
+        "at last": "'결국, 마지막에'라는 뜻이야!"
       },
       "core_sentence_id": "CS04",
       "linked_rule_ids": [
@@ -727,10 +670,9 @@ __loadLesson({
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "hint": "함께, 한데 — together",
       "wrong_explanations": {
-        "together": "정답! They still held together = 조각들은 여전히 함께 붙어 있었다",
-        "togetherly": "together는 부사이므로 '-ly'를 붙일 수 없어요.",
-        "togethere": "together에 'e'를 붙이지 않아요.",
-        "altogether": "'완전히, 전부'라는 뜻이에요. '함께'는 together죠."
+        "togetherly": "together = 함께!",
+        "togethere": "together = 함께!",
+        "altogether": "together = 함께!"
       },
       "core_sentence_id": "CS05",
       "linked_rule_ids": [
@@ -842,9 +784,9 @@ __loadLesson({
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "hint": "액체의, 액체 같은 — liquid",
       "wrong_explanations": {
-        "liquidy": "liquid는 형용사로 이미 완성된 형태예요. '-y'를 더할 수 없어요.",
-        "licquid": "spelling이 틀렸어요. 정확히는 'liquid'입니다.",
-        "fluidy": "'fluid'라는 단어는 있지만, 여기서는 'liquid'가 맞아요."
+        "liquidy": "구조가 안 맞아!",
+        "licquid": "spelling이 틀렸어!. 정확히는 liquid이야!",
+        "fluidy": "'fluid'라는 단어는 있지만, 여기서는 'liquid'가 맞아!!"
       },
       "core_sentence_id": "CS06",
       "linked_rule_ids": [],
@@ -946,9 +888,8 @@ __loadLesson({
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "hint": "발견 — finding",
       "wrong_explanations": {
-        "found": "'찾다'의 과거형이에요. 명사 '발견'은 finding이죠.",
-        "find": "'찾다'는 동사예요. 문장에서 주어가 필요해요. This finding이 맞아요.",
-        "finding": "정답! This finding = 이 발견"
+        "found": "find = 찾다! finding 현재분사",
+        "find": "find = 찾다! finding 현재분사"
       },
       "core_sentence_id": "CS07",
       "linked_rule_ids": [],
@@ -1052,8 +993,8 @@ __loadLesson({
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "hint": "더러운, 지저분한 — dirty",
       "wrong_explanations": {
-        "dirthy": "spelling이 틀렸어요. dirty + -y가 아니라 그냥 dirty예요.",
-        "dirtied": "과거분사 형태예요. 형용사로는 dirty를 써요.",
+        "dirthy": "spelling이 틀렸어!. dirty + -y가 아니라 그냥 dirty야!!",
+        "dirtied": "과거분사 형태! 'dirty'을 써야 해..",
         "dirts": "'지저분한' 형용사는 dirty인데, 복수형 dirts는 쓰지 않아요."
       },
       "core_sentence_id": "CS08",
@@ -1162,9 +1103,9 @@ __loadLesson({
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "hint": "발견 — discovery",
       "wrong_explanations": {
-        "discover": "'발견하다'는 동사예요. '발견'이라는 명사는 discovery죠.",
-        "discoverer": "'발견자'라는 뜻이에요. '발견'은 discovery입니다.",
-        "discovered": "과거분사 형태예요. 명사 '발견'은 discovery를 써요."
+        "discover": "discover = 발견! 발명 아님",
+        "discoverer": "discover = 발견! 발명 아님",
+        "discovered": "discover = 발견! 발명 아님"
       },
       "core_sentence_id": "CS09",
       "linked_rule_ids": [],
@@ -1266,10 +1207,9 @@ __loadLesson({
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "hint": "훌륭한, 멋진 — wonderful",
       "wrong_explanations": {
-        "wonderful": "정답! wonderful = 훌륭한, 멋진, 놀라운",
-        "wondrous": "'신비로운, 이상한'이라는 의미로 시적 표현이에요.",
-        "wonder": "'놀랐다, 궁금했다'는 동사예요. 형용사는 wonderful이죠.",
-        "wonderly": "wonderful은 이미 완성된 형용사라 '-ly'를 붙일 수 없어요."
+        "wondrous": "'신비로운, 이상한'이라는 의미로 시적 표현이야!",
+        "wonder": "wonderful = 멋진!",
+        "wonderly": "wonderful = 멋진!"
       },
       "core_sentence_id": "CS10",
       "linked_rule_ids": [],
@@ -1371,8 +1311,8 @@ __loadLesson({
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "hint": "잘못되다, 말썽나다 — go wrong",
       "wrong_explanations": {
-        "go bad": "'상하다'는 뜻이에요. 상황에서는 '잘못되다'는 go wrong을 써요.",
-        "break": "'깨지다, 부러지다'는 뜻이에요. '일이 잘못되다'와는 달라요.",
+        "go bad": "상하다 = 상하다! 상황에서는 '잘못되다'는 go wrong을 써요.",
+        "break": "'깨지다, 부러지다' = 깨지다, 부러지다! '일이 잘못되다'는 완전 다른 단어야.",
         "come false": "'거짓이 되다'라는 표현은 흔하지 않아요. go wrong이 맞죠."
       },
       "core_sentence_id": "CS11",
@@ -1478,8 +1418,8 @@ __loadLesson({
       "hint": "많은 — many",
       "wrong_explanations": {
         "much": "'많은'이지만 셀 수 없는 명사(uncountable nouns)와 함께 써요. countries는 셀 수 있으므로 many를 써요.",
-        "a lot": "'많은'이라는 뜻이지만, 격식적인 글쓰기에서는 many를 선호해요.",
-        "plenty of": "'충분한, 많은'이라는 뜻이지만, 여기서는 many가 정답이에요."
+        "a lot": "'많은'이라는 뜻다른 게 더 정확해!",
+        "plenty of": "'충분한, 많은'이라는 뜻이지만, 여기서는 many가 정답이야!"
       },
       "core_sentence_id": "CS12",
       "linked_rule_ids": [
@@ -1589,10 +1529,9 @@ __loadLesson({
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "hint": "실수 — mistakes",
       "wrong_explanations": {
-        "mistakes": "정답! make mistakes = 실수하다",
-        "errors": "'오류, 실수'라는 뜻이지만, '실수하다'라는 표현은 make mistakes를 더 자주 써요.",
-        "faults": "'잘못, 책임'이라는 뜻이에요. make mistakes가 맞아요.",
-        "wrongs": "make mistakes의 형태는 아니에요."
+        "errors": "mistakes = 실수!",
+        "faults": "mistakes = 실수!",
+        "wrongs": "mistakes = 실수!"
       },
       "core_sentence_id": "CS13",
       "linked_rule_ids": [
@@ -1705,9 +1644,9 @@ __loadLesson({
       "instruction": "빈칙한 알맞은 단어를 고르세요.",
       "hint": "답, 대답 — answer",
       "wrong_explanations": {
-        "reply": "'대답, 응답'이라는 뜻이에요. '퀴즈의 답'은 answer를 써요.",
-        "response": "'반응, 대답'이라는 뜻이에요. '문제의 답'은 answer죠.",
-        "solution": "'해결책, 풀이'라는 뜻이에요. '답'은 answer가 맞아요."
+        "reply": "'대답, 응답'이라'answer'이 정답 단어야!.",
+        "response": "'반응, 대답'이라는 뜻이야!",
+        "solution": "'해결책, 풀이'라는 뜻이야!. '답'은 answer가 맞아"
       },
       "core_sentence_id": "CS14",
       "linked_rule_ids": [],
@@ -1780,155 +1719,6 @@ __loadLesson({
       }
     },
     {
-      "id": "D-CS15-01",
-      "type": "flashcard",
-      "phase": "drill",
-      "difficulty": null,
-      "keyword": null,
-      "instruction": null,
-      "hint": null,
-      "wrong_explanations": null,
-      "core_sentence_id": "CS15",
-      "linked_rule_ids": [],
-      "recovery_band": "A",
-      "test_task": null,
-      "page": null,
-      "drill_stage": 1,
-      "is_bridge_item": false,
-      "prompt_en": "The cloth on the table is very soft.",
-      "prompt_ko": "테이블 위의 천은 매우 부드럽다.",
-      "grammar_note": null
-    },
-    {
-      "id": "D-CS15-02",
-      "type": "choice_blank",
-      "phase": "drill",
-      "difficulty": null,
-      "keyword": null,
-      "instruction": "한국어 뜻에 맞는 영어 단어를 고르세요.",
-      "hint": "천, 직물 (명사) — 테이블을 덮는 물건",
-      "wrong_explanations": {
-        "clothes": "cloth ≠ clothes! cloth = 천, clothes = 옷. 철자 비슷해서 자주 나오는 함정!",
-        "fabric": "fabric도 '천'이긴 한데, 교과서 단어는 cloth. fabric은 고급 표현.",
-        "cover": "cover는 '덮개'. 천 자체를 말할 땐 cloth!"
-      },
-      "core_sentence_id": "CS15",
-      "linked_rule_ids": [],
-      "recovery_band": "A",
-      "test_task": null,
-      "page": null,
-      "drill_stage": 2,
-      "is_bridge_item": false,
-      "prompt": "The _____ on the table is very soft.",
-      "korean_full": "테이블 위의 천은 매우 부드럽다.",
-      "answer": "cloth",
-      "choices": [
-        "cloth",
-        "clothes",
-        "fabric",
-        "cover"
-      ],
-      "correct_index": 0
-    },
-    {
-      "id": "D-CS15-03",
-      "type": "chunk_order",
-      "phase": "drill",
-      "difficulty": null,
-      "keyword": null,
-      "instruction": "조각을 올바른 순서로 배열하세요.",
-      "hint": "문장을 올바른 순서대로 배치하세요.",
-      "wrong_explanations": null,
-      "core_sentence_id": "CS15",
-      "linked_rule_ids": [],
-      "recovery_band": "A",
-      "test_task": null,
-      "page": null,
-      "drill_stage": 3,
-      "is_bridge_item": false,
-      "prompt_ko": "테이블 위의 천은 매우 부드럽다.",
-      "chunks": [
-        "The cloth",
-        "on the table",
-        "is very soft."
-      ],
-      "answer": "The cloth on the table is very soft."
-    },
-    {
-      "id": "D-CS15-04",
-      "type": "typed_blank",
-      "phase": "drill",
-      "difficulty": null,
-      "keyword": null,
-      "instruction": "빈칸에 알맞은 단어를 직접 입력하세요.",
-      "hint": "천 = cloth (clothes 아님! clothes는 옷!)",
-      "wrong_explanations": {
-        "clothes": "cloth ≠ clothes! cloth = 천, clothes = 옷. 시험에서 이거 바꿔놓으면 바로 감점!"
-      },
-      "core_sentence_id": "CS15",
-      "linked_rule_ids": [],
-      "recovery_band": "A",
-      "test_task": null,
-      "page": null,
-      "drill_stage": 4,
-      "is_bridge_item": false,
-      "prompt": "The _____ on the table is very soft.",
-      "answers": [
-        "cloth"
-      ],
-      "accept_typos": {
-        "cloth": [
-          "cloth"
-        ]
-      }
-    },
-    {
-      "id": "D-CS15-05",
-      "type": "choice_blank",
-      "phase": "drill",
-      "difficulty": null,
-      "keyword": "cloth vs clothes 구분",
-      "instruction": "cloth(천) vs clothes(옷) 구분! 시험 단골 함정.",
-      "hint": "cloth = 천 → a piece of cloth / clothes = 옷 → put on clothes / tablecloth = 식탁보",
-      "wrong_explanations": {
-        "cloth_wrong": "cloth는 '천'! 옷 입는 데는 clothes 써야 함.",
-        "clothes_wrong": "clothes는 '옷'! 천 조각이나 식탁보엔 cloth 써야 함."
-      },
-      "core_sentence_id": "CS15",
-      "linked_rule_ids": [],
-      "recovery_band": "A",
-      "test_task": "cloth_vs_clothes",
-      "page": null,
-      "drill_stage": 5,
-      "is_bridge_item": true,
-      "sub_questions": [
-        {
-          "prompt": "She wiped the table with a piece of _____.",
-          "korean_full": "그녀는 천 조각으로 테이블을 닦았다.",
-          "answer": "cloth",
-          "choices": ["cloth", "clothes"],
-          "correct_index": 0,
-          "explanation": "천 조각 = a piece of cloth. clothes(옷)랑 헷갈리면 안 됨!"
-        },
-        {
-          "prompt": "He put on his _____ and went outside.",
-          "korean_full": "그는 옷을 입고 밖으로 나갔다.",
-          "answer": "clothes",
-          "choices": ["cloth", "clothes"],
-          "correct_index": 1,
-          "explanation": "옷 입다 = put on clothes. cloth는 '천 재료'지 '옷'이 아님!"
-        },
-        {
-          "prompt": "The dirty spot on the table_____ was cleaned by the lamp oil.",
-          "korean_full": "식탁보 위의 더러운 얼룩이 등유로 깨끗해졌다.",
-          "answer": "tablecloth",
-          "choices": ["tablecloth", "tableclothes"],
-          "correct_index": 0,
-          "explanation": "식탁보 = table + cloth = tablecloth. tableclothes? 그런 단어 없음!"
-        }
-      ]
-    },
-    {
       "id": "R001",
       "type": "short_reading",
       "phase": "exam_prep",
@@ -1937,9 +1727,9 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "첫 번째 문단의 구체적인 상황에 집중하세요.",
       "wrong_explanations": {
-        "1": "💡 그녀가 '초콜릿 바를 녹이지 못해서' 칩을 넣었다는 부분을 다시 읽으세요.",
-        "2": "💡 손님들이 '먼저' 온 것은 아닙니다. 시간이 없었던 이유를 다시 읽으세요.",
-        "3": "💡 초콜릿 칩이 '완전히 녹지 않았고' 형태가 유지되었습니다. 반대입니다."
+        "1": "💡 그녀가 '초콜릿 바를 녹이지 못해서' 칩을 넣었다는 부분을 다시 읽어!.",
+        "2": "💡 손님들이 '먼저' 온 것은 아닙니다. 시간이 없었던 이유를 다시 읽어!.",
+        "3": "초콜릿 칩이 '완전히 녹지 않았고' 형태가 유지되었습니다. 반대이야!!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -1968,7 +1758,7 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "유리 플라스크에서 '비결'이 무엇이었는지 찾으세요.",
       "wrong_explanations": {
-        "0": "💡 액체 플라스틱이 있었다는 부분을 다시 읽으세요.",
+        "0": "💡 액체 플라스틱이 있었다는 부분을 다시 읽어!.",
         "2": "💡 '실수로 떨어뜨렸다'는 어떤 발명으로 이어졌을까요?",
         "3": "💡 유리 조각이 모양을 유지한 비결은 무엇입니까?"
       },
@@ -1999,7 +1789,7 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "드라이클리닝이 어떤 물질을 사용하는지 찾으세요.",
       "wrong_explanations": {
-        "1": "💡 물질의 이름을 다시 읽으세요. 무엇으로 세척합니까?",
+        "1": "💡 물질의 이름을 다시 읽어!. 무엇으로 세척합니까?",
         "3": "💡 1800년대에 누가 발견했습니까?"
       },
       "core_sentence_id": null,
@@ -2029,7 +1819,7 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "세 가지 발명 중 어느 것이 '우연'으로 발명되었습니까?",
       "wrong_explanations": {
-        "2": "💡 드라이클리닝 발견 과정을 다시 읽으세요.",
+        "2": "💡 드라이클리닝 발견 과정을 다시 읽어!.",
         "3": "💡 사안전 유리는 어떤 사고로부터 시작되었습니까?"
       },
       "core_sentence_id": null,
@@ -2179,7 +1969,7 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "세 발명이 '모두' 어떻게 나타났는지 확인하세요.",
       "wrong_explanations": {
-        "2": "💡 'Although' 부분을 다시 읽어 보세요.",
+        "2": "💡 'Although' 부분을 다시 읽어 봐!.",
         "3": "💡 세 번째 발명이 어떻게 발견되었습니까?"
       },
       "core_sentence_id": null,
@@ -2299,9 +2089,9 @@ __loadLesson({
       "instruction": "다음 글에서 ( ) 안에 들어갈 문장으로 가장 적절한 것을 고르세요.",
       "hint": "앞 문장은 '칩이 녹지 않았다'고 했습니다. 그 다음이 무엇이어야 합니까?",
       "wrong_explanations": {
-        "1": "💡 텍스트에서 '처음에는 실망했다'는 언급이 있습니다. 그 다음을 다시 읽으세요.",
+        "1": "💡 텍스트에서 '처음에는 실망했다'는 언급이 있습니다. 그 다음을 다시 읽어!.",
         "2": "💡 이 문장이 주제와 연결되는가? '의도'보다 '결과'가 중요합니다.",
-        "3": "💡 이 발명의 흐름을 다시 생각해 보세요. 마지막은 성공입니다."
+        "3": "이 발명의 흐름을 다시 생각해 봐!. 마지막은 성공이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -2421,8 +2211,8 @@ __loadLesson({
       "instruction": "다음 글을 읽고, 글의 내용으로는 답할 수 없는 질문을 고르세요.",
       "hint": "글에서 명시적으로 언급하지 않은 정보를 찾으세요.",
       "wrong_explanations": {
-        "0": "💡 글에서 '손님들을 위해'라는 말을 보세요.",
-        "2": "💡 글에서 '작은 칩으로 부쉈다'는 설명을 보세요.",
+        "0": "💡 글에서 '손님들을 위해'라는 말을 봐!.",
+        "2": "💡 글에서 '작은 칩으로 부쉈다'는 설명을 봐!.",
         "3": "💡 글의 결론에서 이것을 분명히 말합니다."
       },
       "core_sentence_id": null,
@@ -2454,7 +2244,7 @@ __loadLesson({
       "wrong_explanations": {
         "0": "💡 글에서 이것이 1903년이라고 명시합니까?",
         "2": "💡 '액체 플라스틱'이 플라스크 안에 있었다고 나와 있습니다.",
-        "3": "💡 글의 마지막 부분을 읽으세요."
+        "3": "💡 글의 마지막 부분을 읽어!."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -2483,7 +2273,7 @@ __loadLesson({
       "instruction": "어법상 올바른 문장을 고르세요.",
       "hint": "수동태: be + 과거분사 형태를 확인하세요.",
       "wrong_explanations": {
-        "1": "💡 'be동사'가 빠져있습니다. 수동태는 'be + p.p.'입니다.",
+        "1": "💡 'be동사'가 빠져있습니다. 수동태는 be + p.p.이야!",
         "2": "💡 'broken'은 과거분사이지만, 앞에 'was'를 꼭 붙여야 합니다.",
         "3": "💡 'breaks'는 현재형이므로 수동태가 아닙니다."
       },
@@ -2516,7 +2306,7 @@ __loadLesson({
       "instruction": "어법상 올바른 문장을 고르세요.",
       "hint": "과거 사건이므로 'was' 또는 'were' + 과거분사를 찾으세요.",
       "wrong_explanations": {
-        "0": "💡 'created'는 과거분사입니다. 시간 표시를 다시 읽으세요.",
+        "0": "'created' = 과거분사! 여기는 다른 형태 필요해. 시간 표시를 다시 읽어!.!",
         "3": "💡 'creating'은 동명사이지 수동태가 아닙니다."
       },
       "core_sentence_id": null,
@@ -2550,7 +2340,7 @@ __loadLesson({
       "wrong_explanations": {
         "1": "💡 'although'와 'but'을 함께 쓸 수 없습니다.",
         "2": "💡 'although'는 종속절이므로 '콤마 + but'이 필요하지 않습니다.",
-        "3": "💡 'although'의 용법을 다시 확인하세요."
+        "3": "💡 'although'의 용법을 다시 확인해!."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2614,8 +2404,8 @@ __loadLesson({
       "instruction": "다음 문장에서 어법상 틀린 부분을 고르세요.",
       "hint": "수동태 형태를 확인하세요. be동사 + 과거분사가 맞는 형태입니다.",
       "wrong_explanations": {
-        "1": "💡 'was'는 올바른 be동사입니다. 과거분사를 확인하세요.",
-        "3": "💡 'him'은 기본 구조에서 옳은 표현입니다."
+        "1": "was는 be동사 → 수동태에 필요한 거야! 틀린 건 wrote(written이어야 해)!",
+        "3": "'him'은 기본 구조에서 옳은 표현이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2646,7 +2436,7 @@ __loadLesson({
       "instruction": "다음 문장에서 어법상 틀린 부분을 고르세요.",
       "hint": "수동태에서 필수적인 요소를 다시 확인하세요.",
       "wrong_explanations": {
-        "1": "💡 'broken'은 과거분사입니다. 앞에 무엇이 있어야 합니까?",
+        "1": "'broken'은 과거분사! 앞에 be동사가 필요해.",
         "2": "💡 이 전치사 구조는 올바릅니다.",
         "3": "💡 'yesterday'는 시간 표현으로서 올바릅니다."
       },
@@ -2679,8 +2469,8 @@ __loadLesson({
       "instruction": "다음 문장에서 어법상 틀린 부분을 고르세요.",
       "hint": "'Although'를 쓰면 'but'을 쓸 수 없습니다.",
       "wrong_explanations": {
-        "0": "💡 'Although'는 종속절을 만드는 접속사입니다.",
-        "3": "💡 'cookies'는 명사입니다. 문제가 없습니다."
+        "0": "'Although'는 종속절을 만드는 접속사이야!",
+        "3": "'cookies' = 명사! 여기는 다른 형태 필요해. 문제가 없습니다.!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2712,7 +2502,7 @@ __loadLesson({
       "hint": "수동태 구조: be + 과거분사. 과거 사건이므로 'was' 또는 'were'를 확인하세요.",
       "wrong_explanations": {
         "0": "💡 'create'는 과거분사가 아닙니다.",
-        "3": "💡 'was creating'은 과거 진행형입니다."
+        "3": "'was creating'은 과거 진행형이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2743,9 +2533,9 @@ __loadLesson({
       "instruction": "다음 빈칸에 들어갈 올바른 형태를 고르세요.",
       "hint": "수동태에서 '~에 의해'는 'by'입니다. 빈칸이 동사 자리인지, 주어 자리인지 확인하세요.",
       "wrong_explanations": {
-        "1": "💡 이것은 사람 이름입니다. 동사가 아닙니다.",
-        "2": "💡 'invented'는 과거분사입니다. 동사 형태를 다시 보세요.",
-        "3": "💡 'inventing'은 동명사입니다. 수동태 구조에 맞지 않습니다."
+        "1": "'사람 이름'이야. '동사'이 아니야..",
+        "2": "invent = 발명!",
+        "3": "invent = 발명!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2809,9 +2599,9 @@ __loadLesson({
       "instruction": "다음 빈칸에 들어갈 올바른 형태를 고르세요.",
       "hint": "과거 상황이므로 'was' + 과거분사 형태를 찾으세요.",
       "wrong_explanations": {
-        "1": "💡 'discover'는 원형입니다. 수동태에서는 과거분사 형태가 필요합니다.",
-        "2": "💡 'discovered'는 능동태 과거형입니다.",
-        "3": "💡 'discovering'은 동명사입니다."
+        "1": "discover = 발견! 발명 아님",
+        "2": "discover = 발견! 발명 아님",
+        "3": "discover = 발견! 발명 아님"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2842,8 +2632,8 @@ __loadLesson({
       "instruction": "다음 중 'by'의 용법이 다른 것을 고르세요.",
       "hint": "'by accident' = 우연히 | 'by + 행위자' = 수동태에서 '~에 의해'",
       "wrong_explanations": {
-        "2": "💡 이것은 '~에 의해'라는 뜻입니다. 행위자를 나타냅니다.",
-        "3": "💡 이것은 '~에 의해'라는 뜻입니다. 행위자를 나타냅니다."
+        "2": "이것은 '~에 의해'은 '행위자'를 나타내!.",
+        "3": "이것은 '~에 의해'은 '행위자'를 나타내!."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2874,9 +2664,9 @@ __loadLesson({
       "instruction": "다음 중 문법적으로 다른 하나를 고르세요.",
       "hint": "'although'는 종속절을 만들고, 'but'은 등위절을 만듭니다.",
       "wrong_explanations": {
-        "0": "💡 이것은 'although'의 올바른 사용입니다.",
-        "1": "💡 이것은 'although' + 문장 형태입니다.",
-        "3": "💡 이것도 'although'의 올바른 사용입니다."
+        "0": "이것은 'although'의 올바른 사용이야!",
+        "1": "이것은 'although' + 문장 형태이야!",
+        "3": "이것도 'although'의 올바른 사용이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2907,8 +2697,8 @@ __loadLesson({
       "instruction": "다음 빈칸 (1)과 (2)에 들어갈 올바른 형태를 고르세요.",
       "hint": "시간 관계를 생각하세요. 'in 1903'은 과거입니다.",
       "wrong_explanations": {
-        "2": "💡 시간 표현을 다시 읽으세요. 현재가 아닙니다.",
-        "3": "💡 두 빈칸의 형태를 함께 확인하세요."
+        "2": "💡 시간 표현을 다시 읽어!. 현재가 아닙니다.",
+        "3": "💡 두 빈칸의 형태를 함께 확인해!."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2940,8 +2730,8 @@ __loadLesson({
       "hint": "'Although + 완전한 절, 주절' 구조입니다. 'but'이 올 수 있는지 확인하세요.",
       "wrong_explanations": {
         "1": "💡 'although'와 'but'을 함께 쓸 수 없습니다.",
-        "2": "💡 'Although'를 쓰는 경우를 다시 생각해 보세요.",
-        "3": "💡 주절의 동사 형태를 확인하세요."
+        "2": "💡 'Although'를 쓰는 경우를 다시 생각해 봐!.",
+        "3": "💡 주절의 동사 형태를 확인해!."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2972,8 +2762,8 @@ __loadLesson({
       "instruction": "다음 문장에서 어법상 틀린 부분의 개수는?",
       "hint": "be동사 + 과거분사 구조와 'although' 사용법을 확인하세요.",
       "wrong_explanations": {
-        "0": "💡 몇 가지 오류를 찾아보세요.",
-        "3": "💡 'although'의 사용과 수동태 형태를 다시 확인하세요."
+        "0": "💡 몇 가지 오류를 찾아봐!.",
+        "3": "💡 'although'의 사용과 수동태 형태를 다시 확인해!."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -3005,9 +2795,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어를 고르세요.",
       "hint": "예기치 않게 일어난 불행한 사건",
       "wrong_explanations": {
-        "1": "💡 mistake(실수)는 accident(사고)보다 작은 범위예요. 사고는 보통 더 심각해요.",
-        "2": "💡 problem(문제)은 더 넓은 의미예요. accident는 구체적인 사건을 말해요.",
-        "3": "💡 discovery(발견)는 긍정적인 의미죠. accident는 부정적인 사건이에요."
+        "1": "mistake(실수)은 답이 아니야! 사고는 보통 더 심각해!",
+        "2": "'accident'를 찾아야 해!",
+        "3": "discover = 발견! 발명 아님"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3034,9 +2824,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어를 고르세요.",
       "hint": "의도하지 않은 방식으로 일어나다",
       "wrong_explanations": {
-        "1": "💡 intentionally(의도적으로)는 반대 의미예요.",
-        "2": "💡 carefully(조심스럽게)는 주의 깊게라는 뜻이에요. accidentally는 반대죠.",
-        "3": "💡 suddenly(갑자기)는 시간이 빠르다는 뜻이에요. accidentally와는 달라요."
+        "1": "intentionally(의도적으로)은 답이 아니야!",
+        "2": "carefully(조심스럽게)는 주의 깊게라는 뜻이야!",
+        "3": "'suddenly(갑자기)는 시간이 빠르다'은 정답이 아니야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3063,9 +2853,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어를 고르세요.",
       "hint": "양보의 의미 - 반대상황을 나타내는 접속사",
       "wrong_explanations": {
-        "1": "💡 because(왜냐하면)는 이유를 나타내는 접속사예요.",
-        "2": "💡 therefore(따라서)는 결과를 나타내요.",
-        "3": "💡 and(그리고)는 단순 나열이에요."
+        "1": "because(왜냐하면)은 답이 아니야!",
+        "2": "💡 therefore(따라서)는 결과를 나타내!.",
+        "3": "and(그리고)는 단순 나열이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3092,9 +2882,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어를 고르세요.",
       "hint": "오븐을 사용하여 음식을 요리하다",
       "wrong_explanations": {
-        "1": "💡 cook(요리하다)은 더 넓은 의미예요. bake는 오븐으로 구운 요리만 말해요.",
-        "2": "💡 fry(튀기다)는 기름에 요리하는 방식이에요.",
-        "3": "💡 mix(섞다)는 재료를 합치는 과정이죠. 요리 완성은 아니에요."
+        "1": "'bake'를 찾아야 해!",
+        "2": "fry(튀기다)는 기름에 요리하는 방식이야!",
+        "3": "mix(섞다)은 답이 아니야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3121,9 +2911,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어를 고르세요.",
       "hint": "의도하지 않았는데 일어나다",
       "wrong_explanations": {
-        "1": "💡 on purpose(의도적으로)는 정반대 의미예요.",
-        "2": "💡 by plan(계획대로)은 미리 정한 거예요.",
-        "3": "💡 by accident(실수로)와 비슷하지만, by chance는 더 우연한 상황을 말해요."
+        "1": "on purpose(의도적으로)은 답이 아니야!",
+        "2": "by plan(계획대로)은 미리 정한 거야!",
+        "3": "by accident(실수로)와 비슷하지만, by chance는 더 우연한 상황을 말해!!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3150,9 +2940,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어를 고르세요.",
       "hint": "구부러진 조각, 또는 초콜릿 조각",
       "wrong_explanations": {
-        "1": "💡 piece(조각)는 더 큰 조각을 말해요.",
-        "2": "💡 bit(한입, 작은 조각)은 더 작은 크기예요.",
-        "3": "💡 block(덩어리)은 단단하고 큰 형태예요."
+        "1": "piece(조각)는 더 큰 조각을 말해!",
+        "2": "bit(한입, 작은 조각)은 더 작은 크기야!",
+        "3": "block(덩어리)은 단단하고 큰 형태야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3179,9 +2969,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어를 고르세요.",
       "hint": "먼지나 오염이 없는 상태",
       "wrong_explanations": {
-        "1": "💡 pure(순수한)는 섞임이 없다는 의미예요.",
-        "2": "💡 bright(밝은)는 색깔이나 빛에 관한 말이에요.",
-        "3": "💡 neat(정리된)는 잘 정렬되었다는 의미예요."
+        "1": "pure(순수한)은 답이 아니야!",
+        "2": "bright(밝은)는 색깔이나 빛에 관한 말이야!",
+        "3": "neat(정리된)은 답이 아니야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3209,8 +2999,8 @@ __loadLesson({
       "hint": "두 개 이상의 것을 함께 묶다",
       "wrong_explanations": {
         "1": "💡 link(연결하다)는 connect와 비슷하지만 더 정보 차원에서 많이 써요.",
-        "2": "💡 join(참여하다)는 어떤 그룹에 들어간다는 의미예요.",
-        "3": "💡 attach(붙이다)는 물리적으로 붙인다는 의미예요."
+        "2": "join(참여하다)은 답이 아니야!",
+        "3": "attach(붙이다)은 답이 아니야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3237,9 +3027,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어를 고르세요.",
       "hint": "누가 더 나은지 겨루는 시합",
       "wrong_explanations": {
-        "1": "💡 competition(경쟁)은 내용은 같지만 formal해요.",
-        "2": "💡 game(게임)은 재미 있는 활동이에요.",
-        "3": "💡 match(경기)는 스포츠 경기를 말해요."
+        "1": "competition(경쟁)은 내용은 같지만 formal해!",
+        "2": "game(게임)은 재미 있는 활동이야!",
+        "3": "match(경기)는 스포츠 경기를 말해!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3266,9 +3056,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어를 고르세요.",
       "hint": "무언가를 조종하거나 조절하기 위한 기구",
       "wrong_explanations": {
-        "1": "💡 device(장치)는 더 넓은 의미예요.",
-        "2": "💡 button(버튼)은 작은 부분이에요.",
-        "3": "💡 tool(도구)은 더 일반적인 도구를 말해요."
+        "1": "device(장치)은 답이 아니야!",
+        "2": "button(버튼)은 작은 부분이야!",
+        "3": "tool(도구)은 더 일반적인 도구를 말해!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3295,8 +3085,8 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어를 고르세요.",
       "hint": "달콤한 구운 간식",
       "wrong_explanations": {
-        "1": "💡 cake(케이크)는 더 크고 층으로 이루어진 디저트예요.",
-        "2": "💡 bread(빵)는 기본적인 음식이에요.",
+        "1": "cake(케이크)은 답이 아니야!",
+        "2": "bread(빵)는 기본적인 음식이야!",
         "3": "💡 cracker(크래커)는 바삭하지만 쿠키처럼 달지 않아요."
       },
       "core_sentence_id": null,
@@ -3324,9 +3114,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어를 고르세요.",
       "hint": "매우 맛이 좋은",
       "wrong_explanations": {
-        "1": "💡 good(좋은)은 더 일반적인 표현이에요.",
-        "2": "💡 sweet(달콤한)은 맛의 한 종류일 뿐이에요.",
-        "3": "💡 tasty(맛있는)는 delicious와 비슷하지만 덜 formal해요."
+        "1": "good(좋은)은 더 일반적인 표현이야!",
+        "2": "sweet(달콤한)은 맛의 한 종류일 뿐이야!",
+        "3": "tasty(맛있는)는 delicious와 비슷하지만 덜 formal해!!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3353,9 +3143,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어를 고르세요.",
       "hint": "특정 목적을 위해 만들어진 기계",
       "wrong_explanations": {
-        "1": "💡 tool(도구)은 손으로 드는 간단한 도구예요.",
-        "2": "💡 machine(기계)은 동력으로 작동하는 것만 말해요.",
-        "3": "💡 equipment(장비)는 더 큰 설비를 말해요."
+        "1": "tool(도구)은 손으로 드은 답이 아니야!",
+        "2": "machine(기계)은 동력으로 작동하는 것만 말해!",
+        "3": "equipment(장비)는 더 큰 설비를 말해!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3382,9 +3172,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어를 고르세요.",
       "hint": "서로 같지 않은",
       "wrong_explanations": {
-        "1": "💡 similar(비슷한)는 다른이 아니라 같은 점이 많다는 뜻이에요.",
-        "2": "💡 another(다른)는 단수를 말해요.",
-        "3": "💡 other(다른)는 형용사로 쓸 때도 있지만 다소 informal해요."
+        "1": "similar(비슷한)는 다른이 아니라 같은 점이 많다는 뜻이야!!",
+        "2": "another(다른)는 단수를 말해!",
+        "3": "other(다른)는 형용사로 쓸 때도 있지만 다소 informal해!!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3411,9 +3201,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어를 고르세요.",
       "hint": "기대와 다른 결과에 실망하다",
       "wrong_explanations": {
-        "1": "💡 sad(슬픈)는 감정 상태예요. disappointed는 기대 때문이에요.",
-        "2": "💡 angry(화난)는 분노의 감정이에요.",
-        "3": "💡 frustrated(좌절한)는 계획 실패 때문이에요."
+        "1": "sad(슬픈)은 답이 아니야! disappointed는 기대 때문이야!!",
+        "2": "angry(화난)는 분노의 감정이야!",
+        "3": "frustrated(좌절한)는 계획 실패 때문이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3440,9 +3230,9 @@ __loadLesson({
       "instruction": "다음 단어의 한국어 뜻을 고르세요.",
       "hint": "무엇인가를 찾아내는 행위",
       "wrong_explanations": {
-        "1": "💡 invention(발명)은 새로운 것을 만드는 것이에요. discovery와는 달라요.",
-        "2": "💡 fact(사실)은 발견된 내용이지, 발견 자체가 아니에요.",
-        "3": "💡 lesson(교훈)은 배운 것이에요."
+        "1": "invent = 발명!",
+        "2": "fact(사실)은 발견된 내용이지, 발견 자체가 아니야!",
+        "3": "lesson(교훈)은 배운 것이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3469,9 +3259,9 @@ __loadLesson({
       "instruction": "다음 단어의 한국어 뜻을 고르세요.",
       "hint": "밀가루와 물을 섞은 재료",
       "wrong_explanations": {
-        "1": "💡 flour(밀가루)는 반죽의 한 재료일 뿐이에요.",
-        "2": "💡 mixture(혼합물)은 너무 넓은 의미예요.",
-        "3": "💡 paste(풀, 페이스트)는 다른 종류의 혼합물이에요."
+        "1": "flour(밀가루)는 반죽의 한 재료일 뿐이야!",
+        "2": "mixture(혼합물)은 너무 넓은 의미야!",
+        "3": "paste(풀, 페이스트)는 다른 종류의 혼합물이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3498,9 +3288,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어를 고르세요.",
       "hint": "필요한 양만큼 충분한",
       "wrong_explanations": {
-        "1": "💡 enough(충분한)과 much(많은)는 다른 의미예요.",
-        "2": "💡 plenty(충분한)는 의미가 비슷하지만, 더 informal해요.",
-        "3": "💡 sufficient(충분한)은 formal한 표현이에요."
+        "1": "enough(충분한)과 much(많은)은 답이 아니야!",
+        "2": "plenty(충분한)는 의미가 비슷하지만, 더 informal해!!",
+        "3": "sufficient(충분한)은 formal한 표현이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3527,9 +3317,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어를 고르세요.",
       "hint": "모든 장소에, 어디든지",
       "wrong_explanations": {
-        "1": "💡 somewhere(어딘가)는 특정 장소가 불명확해요.",
-        "2": "💡 nowhere(어디도... 아니다)는 반대 의미예요.",
-        "3": "💡 anywhere(어디든지)는 'could be anywhere'처럼 가능성을 말해요."
+        "1": "somewhere(어딘가)는 특정 장소가 불명확해!",
+        "2": "nowhere(어디도... 아니다)은 답이 아니야!",
+        "3": "anywhere(어디든지)는 'could be anywhere'처럼 가능성을 말해!!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3556,9 +3346,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어를 고르세요.",
       "hint": "~일 것으로 생각하다",
       "wrong_explanations": {
-        "1": "💡 hope(바라다)는 원하는 바를 표현해요. expect는 더 객관적이에요.",
-        "2": "💡 want(원하다)는 원하는 것을 말해요.",
-        "3": "💡 think(생각하다)는 expect보다 덜 구체적이에요."
+        "1": "hope(바라다)는 원하는 바를 표현해!",
+        "2": "want(원하다)는 원하는 것을 말해!",
+        "3": "think(생각하다)는 expect보다 덜 구체적이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3585,9 +3375,9 @@ __loadLesson({
       "instruction": "다음 단어의 한국어 뜻을 고르세요.",
       "hint": "과학적으로 어떤 것을 시험해 보다",
       "wrong_explanations": {
-        "1": "💡 test(시험)는 결과를 평가하는 것이에요.",
-        "2": "💡 study(연구)는 더 넓은 개념이에요.",
-        "3": "💡 research(조사)는 정보를 모으는 것이에요."
+        "1": "test(시험)는 결과를 평가하는 것이야!",
+        "2": "study(연구)는 더 넓은 개념이야!",
+        "3": "research(조사)는 정보를 모으는 것이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3614,9 +3404,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어를 고르세요.",
       "hint": "이해하기 쉽게 말하다",
       "wrong_explanations": {
-        "1": "💡 describe(묘사하다)는 상황을 그려내는 것이에요.",
-        "2": "💡 tell(말하다)는 더 일반적인 표현이에요.",
-        "3": "💡 show(보여주다)는 설명과는 다른 방식이에요."
+        "1": "describe(묘사하다)는 상황을 그려내는 것이야!",
+        "2": "tell(말하다)는 더 일반적인 표현이야!",
+        "3": "show(보여주다)는 설명과는 다른 방식이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3643,9 +3433,9 @@ __loadLesson({
       "instruction": "다음 단어의 한국어 뜻을 고르세요.",
       "hint": "대량으로 물건을 만드는 곳",
       "wrong_explanations": {
-        "1": "💡 company(회사)는 더 넓은 조직이에요.",
+        "1": "company(회사)는 더 넓은 조직이야!",
         "2": "💡 building(건물)은 종류를 특정하지 않아요.",
-        "3": "💡 shop(가게)는 팔고 사는 곳이에요."
+        "3": "shop(가게)는 팔고 사는 곳이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3672,9 +3462,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어를 고르세요.",
       "hint": "많은 사람들이 알고 있는",
       "wrong_explanations": {
-        "1": "💡 popular(인기 있는)는 현재 인기를 말해요.",
-        "2": "💡 well-known(잘 알려진)은 비슷하지만 덜 formal해요.",
-        "3": "💡 special(특별한)은 독특함을 의미해요."
+        "1": "popular(인기 있는)는 현재 인기를 말해!",
+        "2": "well-known(잘 알려진)은 비슷하지만 덜 formal해!",
+        "3": "special(특별한)은 독특함을 의미해!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3701,9 +3491,9 @@ __loadLesson({
       "instruction": "다음 단어의 한국어 뜻을 고르세요.",
       "hint": "발견한 것, 조사나 연구의 결과",
       "wrong_explanations": {
-        "1": "💡 find(찾다)는 동사예요. finding과는 형태가 다르죠.",
-        "2": "💡 result(결과)는 더 넓은 의미예요.",
-        "3": "💡 solution(해결책)은 문제를 해결한 것이에요."
+        "1": "find = 찾다! finding 현재분사",
+        "2": "result(결과)은 답이 아니야!",
+        "3": "solution(해결책)은 문제를 해결한 것이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3730,9 +3520,9 @@ __loadLesson({
       "instruction": "영영풀이에 맞는 단어를 고르세요.",
       "hint": "A container used in science class for holding liquids",
       "wrong_explanations": {
-        "1": "💡 bottle(병)은 일반적인 병이에요. flask는 과학 실험용 특수 용기죠.",
-        "2": "💡 jar(항아리)는 보관용이에요.",
-        "3": "💡 cup(컵)은 마시기 위한 것이에요."
+        "1": "bottle(병)은 일반적인 병이야!",
+        "2": "jar(항아리)는 보관용이야!",
+        "3": "cup(컵)은 마시기 위한 것이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3759,9 +3549,9 @@ __loadLesson({
       "instruction": "영영풀이에 맞는 단어/표현을 고르세요.",
       "hint": "To not work as expected; to fail",
       "wrong_explanations": {
-        "1": "💡 go right(올바르게 가다)는 반대 의미예요.",
-        "2": "💡 make a mistake(실수하다)는 사람이 하는 행동이에요.",
-        "3": "💡 break down(고장 나다)는 기계 관련 표현이에요."
+        "1": "go right(올바르게 가다)은 답이 아니야!",
+        "2": "make a mistake(실수하다)는 사람이 하는 행동이야!",
+        "3": "break down(고장 나다)는 기계 관련 표현이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3788,9 +3578,9 @@ __loadLesson({
       "instruction": "영영풀이에 맞는 단어를 고르세요.",
       "hint": "A person who is invited to visit someone's home or event",
       "wrong_explanations": {
-        "1": "💡 friend(친구)는 손님 관계는 아니에요.",
-        "2": "💡 visitor(방문객)는 더 일반적인 표현이에요.",
-        "3": "💡 customer(고객)은 물건을 사는 사람이에요."
+        "1": "friend(친구)은 답이 아니야!",
+        "2": "visitor(방문객)는 더 일반적인 표현이야!",
+        "3": "customer(고객)은 물건을 사는 사람이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3817,9 +3607,9 @@ __loadLesson({
       "instruction": "영영풀이에 맞는 단어를 고르세요.",
       "hint": "To occur or take place",
       "wrong_explanations": {
-        "1": "💡 occur(일어나다)는 같은 의미지만 더 formal해요.",
-        "2": "💡 begin(시작하다)은 시작만 강조해요.",
-        "3": "💡 continue(계속하다)는 지속을 의미해요."
+        "1": "occur(일어나다)는 같은 의미지만 더 formal해!",
+        "2": "begin(시작하다)은 시작만 강조해!",
+        "3": "continue(계속하다)는 지속을 의미해!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3846,9 +3636,9 @@ __loadLesson({
       "instruction": "영영풀이에 맞는 단어를 고르세요.",
       "hint": "Equipment worn on the head to listen to music or sound privately",
       "wrong_explanations": {
-        "1": "💡 speaker(스피커)는 소리를 내보내는 장치예요.",
-        "2": "💡 microphone(마이크)은 소리를 받는 장치예요.",
-        "3": "💡 device(기구)는 너무 넓은 의미예요."
+        "1": "speaker(스피커)은 답이 아니야!",
+        "2": "microphone(마이크)은 소리를 받은 답이 아니야!",
+        "3": "device(기구)은 답이 아니야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3875,8 +3665,8 @@ __loadLesson({
       "instruction": "영영풀이에 맞는 표현을 고르세요.",
       "hint": "To remain connected; to stay in one piece",
       "wrong_explanations": {
-        "1": "💡 break apart(떨어지다)는 반대 의미예요.",
-        "2": "💡 fall down(떨어지다)은 다른 의미예요.",
+        "1": "break apart(떨어지다)은 답이 아니야!",
+        "2": "fall down(떨어지다)은 다른 의미야!",
         "3": "💡 stick to(붙다)는 주로 접착할 때 써요."
       },
       "core_sentence_id": null,
@@ -3905,8 +3695,8 @@ __loadLesson({
       "hint": "Having the form or appearance of something",
       "wrong_explanations": {
         "1": "💡 by the shape of(~의 모양으로)는 문법적으로 틀려요.",
-        "2": "💡 with the form of(~의 형태로)는 부정확해요.",
-        "3": "💡 of the shape of(~의 모양의)는 반복적이에요."
+        "2": "with the form of(~의 형태로)는 부정확해!",
+        "3": "of the shape of(~의 모양의)는 반복적이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3933,9 +3723,9 @@ __loadLesson({
       "instruction": "영영풀이에 맞는 단어를 고르세요.",
       "hint": "To create or design something new that has never existed before",
       "wrong_explanations": {
-        "1": "💡 discover(발견하다)는 이미 있던 것을 찾는 거예요.",
-        "2": "💡 create(창조하다)는 좀 더 일반적이에요.",
-        "3": "💡 make(만들다)는 발명보다 덜 formal해요."
+        "1": "discover = 발견! 발명 아님",
+        "2": "create(창조하다)는 좀 더 일반적이야!",
+        "3": "make(만들다)는 발명보다 덜 formal해!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3962,8 +3752,8 @@ __loadLesson({
       "instruction": "다음 밑줄 친 단어와 같은 의미의 표현을 고르세요.",
       "hint": "Something new that someone creates",
       "wrong_explanations": {
-        "2": "💡 equipment(장비)는 여러 것의 집합이에요.",
-        "3": "💡 material(재료)는 무언가를 만드는 데 사용되는 것이에요."
+        "2": "equipment(장비)는 여러 것의 집합이야!",
+        "3": "material(재료)는 무언가를 만드는 데 사용되는 것이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3990,8 +3780,8 @@ __loadLesson({
       "instruction": "다음 밑줄 친 단어와 같은 의미의 표현을 고르세요.",
       "hint": "A person who invents new things",
       "wrong_explanations": {
-        "2": "💡 scientist(과학자)는 더 넓은 범주예요.",
-        "3": "💡 creator(창조자)는 발명가보다 포괄적이에요."
+        "2": "scientist(과학자)은 답이 아니야!",
+        "3": "creator(창조자)는 발명가보다 포괄적이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4018,8 +3808,8 @@ __loadLesson({
       "instruction": "다음 밑줄 친 단어와 같은 의미의 표현을 고르세요.",
       "hint": "A device that produces light",
       "wrong_explanations": {
-        "2": "💡 bulb(전구)는 lamp의 부분일 뿐이에요.",
-        "3": "💡 torch(손전등)는 휴대용 조명이에요."
+        "2": "bulb(전구)는 lamp의 부분일 뿐이야!",
+        "3": "torch(손전등)는 휴대용 조명이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4046,8 +3836,8 @@ __loadLesson({
       "instruction": "다음 밑줄 친 단어와 같은 의미의 표현을 고르세요.",
       "hint": "To cause or result in something",
       "wrong_explanations": {
-        "2": "💡 come from(~에서 나오다)는 출발점을 강조해요.",
-        "3": "💡 cause(원인이 되다)는 원인만을 강조해요."
+        "2": "come from(~에서 나오다)는 출발점을 강조해!",
+        "3": "cause(원인이 되다)는 원인만을 강조해!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4074,8 +3864,8 @@ __loadLesson({
       "instruction": "다음 밑줄 친 단어와 같은 의미의 표현을 고르세요.",
       "hint": "A substance that flows and has no fixed shape",
       "wrong_explanations": {
-        "2": "💡 oil(기름)은 특정 종류의 액체예요.",
-        "3": "💡 substance(물질)은 너무 넓은 의미예요."
+        "2": "oil(기름)은 특정 종류의 액체야!",
+        "3": "substance(물질)은 너무 넓은 의미야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4102,8 +3892,8 @@ __loadLesson({
       "instruction": "다음 밑줄 친 단어와 같은 의미의 표현을 고르세요.",
       "hint": "A person who controls or organizes something",
       "wrong_explanations": {
-        "2": "💡 leader(지도자)는 더 광범위한 역할이에요.",
-        "3": "💡 supervisor(감시자)는 감독하는 것을 강조해요."
+        "2": "leader(지도자)는 더 광범위한 역할이야!",
+        "3": "supervisor(감시자)는 감독하는 것을 강조해!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4130,8 +3920,8 @@ __loadLesson({
       "instruction": "다음 밑줄 친 단어와 같은 의미의 표현을 고르세요.",
       "hint": "To change from solid to liquid by heating",
       "wrong_explanations": {
-        "2": "💡 dissolve(녹다)는 액체에 섞이는 의미예요.",
-        "3": "💡 heat(데우다)는 녹게 하는 과정일 뿐이에요."
+        "2": "dissolve(녹다)은 답이 아니야!",
+        "3": "heat(데우다)는 녹게 하는 과정일 뿐이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4158,9 +3948,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어의 올바른 형태를 고르세요.",
       "hint": "mistake의 어형 변화",
       "wrong_explanations": {
-        "1": "💡 mistaken(실수한)은 형용사예요.",
-        "2": "💡 mistakenly(실수로)는 부사예요.",
-        "3": "💡 mistaking(동명사)은 여기서 문법적으로 맞지 않아요. Making mistakes가 올바른 표현이에요."
+        "1": "mistaken(실수한)은 형용사야!",
+        "2": "mistakenly(실수로)은 답이 아니야!",
+        "3": "mistakes = 실수!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4187,9 +3977,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어의 올바른 형태를 고르세요.",
       "hint": "mix의 어형 변화",
       "wrong_explanations": {
-        "1": "💡 mixture(혼합물)은 명사예요.",
-        "2": "💡 mixed(섞인)는 형용사예요.",
-        "3": "💡 mixing(섞는 것)은 동명사예요."
+        "1": "mixture(혼합물)은 명사야!",
+        "2": "mixed(섞인)은 답이 아니야!",
+        "3": "mixing(섞은 답이 아니야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4216,9 +4006,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어의 올바른 형태를 고르세요.",
       "hint": "oil의 어형 변화와 용법",
       "wrong_explanations": {
-        "1": "💡 oily(기름진)는 형용사예요.",
-        "2": "💡 oils(기름들)는 복수 명사예요.",
-        "3": "💡 oiling(기름칠)은 동명사예요."
+        "1": "oily(기름진)은 답이 아니야!",
+        "2": "oils(기름들)은 답이 아니야!",
+        "3": "oiling(기름칠)은 동명사야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4245,9 +4035,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어의 올바른 형태를 고르세요.",
       "hint": "disappoint → disappointed",
       "wrong_explanations": {
-        "1": "💡 disappointing(실망스러운)은 주로 사물의 상태를 나타내요.",
-        "2": "💡 disappointment(실망)은 명사예요.",
-        "3": "💡 disappoint(실망시키다)는 동사의 기본형이에요."
+        "1": "💡 disappointing(실망스러운)은 주로 사물의 상태를 나타내!.",
+        "2": "disappointment(실망)은 명사야!",
+        "3": "disappoint(실망시키다)는 동사의 기본형이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4274,9 +4064,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어의 올바른 형태를 고르세요.",
       "hint": "형용사 wide를 부사로 변화",
       "wrong_explanations": {
-        "1": "💡 width(넓이)는 명사예요.",
-        "2": "💡 wider(더 넓은)는 비교급 형용사예요.",
-        "3": "💡 wide(넓은)는 형용사예요."
+        "1": "width(넓이)은 답이 아니야!",
+        "2": "wider(더 넓은)은 답이 아니야!",
+        "3": "wide(넓은)은 답이 아니야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4303,9 +4093,9 @@ __loadLesson({
       "instruction": "다음 중 다른 한 단어를 찾으세요.",
       "hint": "재료나 음식 관련 단어들",
       "wrong_explanations": {
-        "0": "💡 flour(밀가루)는 요리 재료예요.",
-        "1": "💡 salt(소금)는 요리 재료예요.",
-        "2": "💡 sugar(설탕)는 요리 재료예요."
+        "0": "flour(밀가루)은 답이 아니야!",
+        "1": "salt(소금)은 답이 아니야!",
+        "2": "sugar(설탕)은 답이 아니야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4332,9 +4122,9 @@ __loadLesson({
       "instruction": "다음 중 다른 한 단어를 찾으세요.",
       "hint": "발명과 관련된 단어들",
       "wrong_explanations": {
-        "0": "💡 invent(발명하다)는 새로운 것을 만드는 거예요.",
-        "2": "💡 create(창조하다)는 새로운 것을 만드는 거예요.",
-        "3": "💡 make(만들다)는 무언가를 제작하는 거예요."
+        "0": "invent = 발명!",
+        "2": "create(창조하다)은 답이 아니야!",
+        "3": "make(만들다)은 답이 아니야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4361,9 +4151,9 @@ __loadLesson({
       "instruction": "다음 중 다른 한 단어를 찾으세요.",
       "hint": "부정적인 감정 단어들",
       "wrong_explanations": {
-        "0": "💡 disappointed(실망한)은 부정적인 감정이에요.",
-        "1": "💡 sad(슬픈)은 부정적인 감정이에요.",
-        "2": "💡 angry(화난)은 부정적인 감정이에요."
+        "0": "disappointed(실망한)은 부정적인 감정이야!",
+        "1": "sad(슬픈)은 부정적인 감정이야!",
+        "2": "angry(화난)은 부정적인 감정이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4390,8 +4180,8 @@ __loadLesson({
       "instruction": "다음 문장에서 3번째 단어를 고르세요.",
       "hint": "'By chance' 다음에 오는 단어",
       "wrong_explanations": {
-        "2": "💡 'chance'는 두 번째 단어예요.",
-        "3": "💡 'Ruth'가 세 번째 단어예요."
+        "2": "'chance'은 답이 아니야!",
+        "3": "'Ruth'가 세 번째 단어야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4418,9 +4208,9 @@ __loadLesson({
       "instruction": "다음 문장에서 5번째 단어를 고르세요.",
       "hint": "단어를 하나씩 세어보세요",
       "wrong_explanations": {
-        "1": "💡 'Although'는 첫 번째 단어예요.",
-        "2": "💡 'the'는 네 번째 단어예요.",
-        "3": "💡 'flask'는 여섯 번째 단어예요."
+        "1": "'Although'은 답이 아니야!",
+        "2": "'the'은 답이 아니야!",
+        "3": "'flask'은 답이 아니야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4447,8 +4237,8 @@ __loadLesson({
       "instruction": "대화의 빈칸에 알맞은 응답을 고르세요.",
       "hint": "상대방의 말에 더 알고 싶을 때 쓰는 표현을 찾으세요.",
       "wrong_explanations": {
-        "1": "💡 '나는 너가 이길 거라고 확신해'는 칭찬의 말이지만, 여기선 설명을 요청하는 게 맞아요.",
-        "2": "💡 '나는 과학 프로젝트가 싫어'는 전혀 다른 내용이에요.",
+        "1": "'나는 너가 이길 거라고 확신해'는 칭찬의 말이지만, 여기선 설명을 요청하는 게 맞아!!",
+        "2": "'나는 과학 프로젝트가 싫어'는 전혀 다른 내용이야!",
         "3": "💡 '언제 끝냈어?'는 가능하지만, '더 설명해 줄 수 있어?'가 더 자연스러워요."
       },
       "core_sentence_id": "CS01",
@@ -4477,8 +4267,8 @@ __loadLesson({
       "instruction": "대화의 빈칸에 알맞은 응답을 고르세요.",
       "hint": "'I'm sure that'은 '~라고 확신해'라는 뜻이에요.",
       "wrong_explanations": {
-        "1": "💡 '너는 어디 출신이야?'는 대화의 맥락과 안 맞아요.",
-        "3": "💡 '너는 정말 똑똑해'는 칭찬이지만, 여기선 대회 우승에 대한 확신을 말해야 해요."
+        "1": "'너는 어디 출신이야?'는 대화의 맥락과 안 맞아!",
+        "3": "'너는 정말 똑똑해'는 칭찬이지만, 여기선 대회 우승에 대한 확신을 말해야 해!!"
       },
       "core_sentence_id": "CS02",
       "linked_rule_ids": [],
@@ -4506,8 +4296,8 @@ __loadLesson({
       "instruction": "대화의 빈칸에 알맞은 응답을 고르세요.",
       "hint": "대화의 흐름을 따라가 보세요. A가 설명을 해주고, B가 확신을 표현하는 상황이에요.",
       "wrong_explanations": {
-        "1": "💡 '이건 너무 어려워'는 부정적인 표현이고, A의 설명 이후에 안 맞아요.",
-        "3": "💡 '정말? 더 설명해 줄 수 있어?'는 A의 설명 후에 나오는 말이 아니에요."
+        "1": "'이건 너무 어려워'는 부정적인 표현이고, A의 설명 이후에 안 맞아!!",
+        "3": "'정말? 더 설명해 줄 수 있어?'은 답이 아니야!"
       },
       "core_sentence_id": "CS01",
       "linked_rule_ids": [],
@@ -4535,7 +4325,7 @@ __loadLesson({
       "instruction": "다음 단어를 포함하여 문장을 완성하세요. (6단어 이상)",
       "hint": "수동태는 'be + 과거분사'입니다. 주어가 동작을 당하는 상황이에요.",
       "wrong_explanations": {
-        "default": "💡 수동태는 be + 과거분사! '~가 ~에 의해 ~되다'의 구조예요."
+        "default": "수동태은 답이 아니야!"
       },
       "core_sentence_id": "CS08",
       "linked_rule_ids": [
@@ -4559,7 +4349,7 @@ __loadLesson({
       "instruction": "다음 상황을 문장으로 쓰세요. (8단어 이상)",
       "hint": "although는 '~이지만, ~에도 불구하고'라는 뜻이에요. but과 함께 쓰면 안 됩니다!",
       "wrong_explanations": {
-        "default": "💡 Although절이 먼저 오면, 주절이 뒤에 와요. although와 but을 함께 쓰면 오류예요."
+        "default": "Although절이 먼저 오면, 주절이 뒤에 와요. although와 but을 함께 쓰면 오류야!!"
       },
       "core_sentence_id": "CS04",
       "linked_rule_ids": [
@@ -4583,7 +4373,7 @@ __loadLesson({
       "instruction": "다음 문장의 어법상 틀린 부분을 찾아 바꾸세요.",
       "hint": "수동태의 be동사와 although의 사용법을 확인하세요.",
       "wrong_explanations": {
-        "default": "💡 'although...but'은 틀렸어요. 그리고 수동태가 정확한지도 확인하세요."
+        "default": "💡 'although...but'은 틀렸어!. 그리고 수동태가 정확한지도 확인해!."
       },
       "core_sentence_id": "CS05",
       "linked_rule_ids": [
@@ -4608,7 +4398,7 @@ __loadLesson({
       "instruction": "A의 질문에 'Could you explain'을 사용하여 3문장 이상 답변을 완성하세요.",
       "hint": "'Could you explain more about...'로 시작한 후, 상세한 설명을 이어가세요.",
       "wrong_explanations": {
-        "default": "💡 'Could you explain'은 상대의 말을 더 알고 싶을 때 쓰는 정중한 표현이에요."
+        "default": "'Could you explain'은 상대의 말을 더 알고 싶을 때 쓰는 정중한 표현이야!!"
       },
       "core_sentence_id": "CS01",
       "linked_rule_ids": [],
@@ -4630,7 +4420,7 @@ __loadLesson({
       "instruction": "어떤 발명품을 설명하는 3문장을 쓰세요. 수동태를 최소 1번 이상 사용하세요.",
       "hint": "발명품의 이름, 용도, 특징을 설명하고, 수동태로 '~가 만들어지다/~에 의해 ~되다'를 표현하세요.",
       "wrong_explanations": {
-        "default": "💡 수동태를 꼭 포함하세요. 'was invented', 'was made', 'was discovered' 등을 사용할 수 있어요."
+        "default": "invent = 발명!"
       },
       "core_sentence_id": "CS03",
       "linked_rule_ids": [
@@ -4644,148 +4434,6 @@ __loadLesson({
       "min_words": 25,
       "exam_pattern": "자유 영작",
       "training_layer": "skill_focus"
-    },
-    {
-      "id": "PV001",
-      "type": "choice",
-      "phase": "exam_prep",
-      "difficulty": "easy",
-      "keyword": "active_to_passive",
-      "instruction": "다음 능동태 문장을 수동태로 바르게 바꾼 것을 고르세요.\n\nGustav Klimt painted The Kiss.",
-      "hint": "수동태: 주어(동작을 받는 것) + be + p.p. + by + 행위자",
-      "wrong_explanations": {
-        "0": "💡 was가 빠졌어요! 수동태는 반드시 'be + p.p.' 형태예요.\n📖 painted만 있으면 능동태예요.",
-        "2": "💡 주어와 by 뒤가 바뀌었어요.\n📖 수동태에서 주어는 동작을 '받는' 쪽이에요. The Kiss가 그려진 거니까 The Kiss가 주어!",
-        "3": "💡 is painted는 현재형이에요. 원래 문장이 과거(painted)니까 was painted가 맞아요.\n📖 시제를 맞춰 주세요!"
-      },
-      "core_sentence_id": null,
-      "linked_rule_ids": ["GR01"],
-      "recovery_band": "A",
-      "test_task": "active_to_passive",
-      "page": 55,
-      "sentence": null,
-      "choices": [
-        "The Kiss painted by Gustav Klimt.",
-        "The Kiss was painted by Gustav Klimt.",
-        "Gustav Klimt was painted by The Kiss.",
-        "The Kiss is painted by Gustav Klimt."
-      ],
-      "correct": 1,
-      "explanation": "💡 능동태 → 수동태 변환 3단계:\n① 목적어(The Kiss)를 주어로\n② 동사를 'be + p.p.'로 (painted → was painted)\n③ 주어(Gustav Klimt)를 'by ~'로\n📖 The Kiss was painted by Gustav Klimt.",
-      "exam_pattern": "능동태→수동태 전환",
-      "training_layer": "skill_focus"
-    },
-    {
-      "id": "PV002",
-      "type": "choice",
-      "phase": "exam_prep",
-      "difficulty": "easy",
-      "keyword": "active_to_passive",
-      "instruction": "다음 능동태 문장을 수동태로 바르게 바꾼 것을 고르세요.\n\nA little girl made the robot.",
-      "hint": "과거 시제 능동태 → was/were + p.p. + by ~",
-      "wrong_explanations": {
-        "0": "💡 is made는 현재형이에요. 원문이 made(과거)니까 was made가 맞아요.",
-        "2": "💡 was maked? make의 과거분사는 made예요! make → made → made.\n📖 불규칙 동사를 확인하세요.",
-        "3": "💡 주어와 by 뒤가 바뀌었어요.\n📖 로봇이 만들어진 거니까 The robot이 주어예요."
-      },
-      "core_sentence_id": null,
-      "linked_rule_ids": ["GR01"],
-      "recovery_band": "A",
-      "test_task": "active_to_passive",
-      "page": 55,
-      "sentence": null,
-      "choices": [
-        "The robot is made by a little girl.",
-        "The robot was made by a little girl.",
-        "The robot was maked by a little girl.",
-        "A little girl was made by the robot."
-      ],
-      "correct": 1,
-      "explanation": "💡 능동: A little girl(주어) made(동사) the robot(목적어)\n→ 수동: The robot(주어) was made(be+p.p.) by a little girl.\n📖 make-made-made (불규칙 동사!)",
-      "exam_pattern": "능동태→수동태 전환",
-      "training_layer": "skill_focus"
-    },
-    {
-      "id": "PV003",
-      "type": "choice",
-      "phase": "exam_prep",
-      "difficulty": "medium",
-      "keyword": "active_to_passive",
-      "instruction": "다음 능동태 문장을 수동태로 바르게 바꾼 것을 고르세요.\n\nJim washes the dishes every night.",
-      "hint": "현재 시제 + 3인칭 단수가 아닌 주어(The dishes) → are + p.p.",
-      "wrong_explanations": {
-        "0": "💡 is washed? The dishes는 복수예요!\n📖 복수 주어에는 are를 써야 해요.",
-        "2": "💡 was washed는 과거 시제예요. 원문은 현재(washes)니까 현재형으로!\n📖 every night = 반복 행동 → 현재 시제.",
-        "3": "💡 be동사(are)가 빠졌어요!\n📖 수동태는 반드시 'be + p.p.' 형태예요. washed만 쓰면 안 돼요."
-      },
-      "core_sentence_id": null,
-      "linked_rule_ids": ["GR01"],
-      "recovery_band": "B",
-      "test_task": "active_to_passive",
-      "page": 55,
-      "sentence": null,
-      "choices": [
-        "The dishes is washed by Jim every night.",
-        "The dishes are washed by Jim every night.",
-        "The dishes was washed by Jim every night.",
-        "The dishes washed by Jim every night."
-      ],
-      "correct": 1,
-      "explanation": "💡 현재 시제 수동태: am/is/are + p.p.\n📖 The dishes(복수) → are washed\n   Jim(행위자) → by Jim\n   every night는 위치 그대로!",
-      "exam_pattern": "능동태→수동태 전환",
-      "training_layer": "skill_focus"
-    },
-    {
-      "id": "PV004",
-      "type": "choice",
-      "phase": "exam_prep",
-      "difficulty": "medium",
-      "keyword": "passive_to_active",
-      "instruction": "다음 수동태 문장을 능동태로 바르게 바꾼 것을 고르세요.\n\nThe house was built in 1990.",
-      "hint": "by + 행위자가 없으면 누군가(They/Someone)를 주어로 써요.",
-      "wrong_explanations": {
-        "0": "💡 builded? build의 과거형은 built예요! build → built → built.\n📖 불규칙 동사를 확인하세요.",
-        "1": "💡 이건 여전히 수동태예요! was가 있으면 수동태.\n📖 능동태로 바꾸려면 be동사를 없애고 주어를 행위자로 바꿔야 해요.",
-        "3": "💡 builds는 현재형이에요. 원문이 was built(과거)니까 과거로 맞춰야 해요.\n📖 1990은 과거니까 과거 시제(built)로!"
-      },
-      "core_sentence_id": null,
-      "linked_rule_ids": ["GR01"],
-      "recovery_band": "B",
-      "test_task": "passive_to_active",
-      "page": 55,
-      "sentence": null,
-      "choices": [
-        "They builded the house in 1990.",
-        "The house was built in 1990.",
-        "They built the house in 1990.",
-        "Someone builds the house in 1990."
-      ],
-      "correct": 2,
-      "explanation": "💡 수동 → 능동 변환:\n① by ~가 없으면 They/Someone을 주어로\n② be + p.p.를 동사 원래 형태로 (was built → built)\n③ 원래 주어(The house)를 목적어로\n📖 They built the house in 1990.",
-      "exam_pattern": "수동태→능동태 전환",
-      "training_layer": "skill_focus"
-    },
-    {
-      "id": "PV005",
-      "type": "typed_answer",
-      "phase": "exam_prep",
-      "difficulty": "hard",
-      "keyword": "active_to_passive",
-      "instruction": "다음 능동태 문장을 수동태로 바꿀 때, 빈칸에 들어갈 두 단어를 쓰세요.\n\nLight pollution threatens wildlife.\n→ Wildlife ______ by light pollution.",
-      "hint": "현재 시제 + 단수 주어 → is + p.p.",
-      "wrong_explanations": {
-        "default": "💡 threatens → 수동태: is threatened\n📖 Wildlife(단수) + is + threatened(threaten의 p.p.) + by light pollution"
-      },
-      "core_sentence_id": null,
-      "linked_rule_ids": ["GR01"],
-      "recovery_band": "B",
-      "test_task": "active_to_passive",
-      "page": null,
-      "correct_answer": "is threatened",
-      "accept_answers": ["is threatened"],
-      "explanation": "💡 능동: Light pollution(주어) threatens(동사) wildlife(목적어)\n→ 수동: Wildlife(주어) is threatened(be+p.p.) by light pollution.\n📖 이 문장은 기출 기말고사에도 나온 유형이에요!",
-      "exam_pattern": "능동태→수동태 전환 (서술형)",
-      "training_layer": "mixed_practice"
     }
   ],
   "vocab_drill": [
@@ -4998,36 +4646,6 @@ __loadLesson({
       "word": "spill",
       "pos": "동사",
       "meaning": "엎지르다, 흘리다"
-    },
-    {
-      "id": "VD-L3-036",
-      "word": "shape",
-      "pos": "명사",
-      "meaning": "모양, 형태"
-    },
-    {
-      "id": "VD-L3-037",
-      "word": "true",
-      "pos": "형용사",
-      "meaning": "참인, 사실인"
-    },
-    {
-      "id": "VD-L3-038",
-      "word": "mistake",
-      "pos": "명사",
-      "meaning": "실수, 오류"
-    },
-    {
-      "id": "VD-L3-039",
-      "word": "tablecloth",
-      "pos": "명사",
-      "meaning": "식탁보, 탁자보"
-    },
-    {
-      "id": "VD-L3-040",
-      "word": "manager",
-      "pos": "명사",
-      "meaning": "경영자, 지배인, 관리자"
     }
   ],
   "grammar_rules": [
