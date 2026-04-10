@@ -1732,7 +1732,7 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "마지막 두 문장을 읽어보세요: 'sleep regularly' → 'feel healthier'",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
+        "0": "본문은 'In the morning, your body starts to feel lively'야. 아침에는 활기찬 거지, 졸린 게 아니야.",
         "2": "밤에 졸렸대잖아! 이건 정반대네.",
         "3": "규칙적으로 자야 건강하대! 이건 반대야."
       },
@@ -1761,9 +1761,9 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "본문에서 카페인이 숨어있는 곳을 모두 확인하세요.",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
+        "0": "첫 문장 'Caffeine can cause sleep problems'와 같은 내용이야. 맞는 것 말고 틀린 것을 찾아야 해.",
         "1": "'초콜릿에도 카페인이 들어있다.'는 본문과 맞지 않아!",
-        "3": "본문 내용과 안 맞아!"
+        "3": "'energy drinks'가 카페인 목록에 나와 있어. 본문과 일치하니까 답이 아니야."
       },
       "core_sentence_id": "CS05",
       "linked_rule_ids": [],
@@ -1790,9 +1790,9 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "본문에서 '몇 시간'이라는 구체적 수치가 나오는지 확인하세요.",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
+        "0": "'your brain will stay active'라고 나와 있어. 본문에서 바로 답할 수 있으니 이건 아니야.",
         "1": "'파란 빛이 뇌에 어떤 신호를 보내나?'는 본문과 맞지 않아!",
-        "3": "본문 내용과 안 맞아!"
+        "3": "'don't use your phone right before bedtime'이라고 나와. 답이 있는 질문이야."
       },
       "core_sentence_id": "CS06",
       "linked_rule_ids": [],
@@ -1820,8 +1820,8 @@ __loadLesson({
       "hint": "'낮에 운동하면 밤에 쉽게 잠든다'가 이 단락의 핵심 메시지야.",
       "wrong_explanations": {
         "1": "'취침 직전에 운동을 끝내는 것이 좋다.'는 본문과 맞지 않아!",
-        "2": "본문과 모순돼!",
-        "3": "본문 내용과 안 맞아!"
+        "2": "이것도 본문에 나오지만, 글 전체의 핵심은 '낮 운동 → 밤에 쉽게 잠듦'이야.",
+        "3": "'항상'이 아니야. 'right before bedtime'에 끝낼 때만 too awake 해진다고 했어."
       },
       "core_sentence_id": "CS08",
       "linked_rule_ids": [],
@@ -1848,9 +1848,9 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "글의 핵심 주제를 찾으세요: sleep well → energy",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
-        "2": "본문과 모순돼!",
-        "3": "본문 내용과 안 맞아!"
+        "0": "글에 시간표 얘기는 없어. sleeping well과 energy 이야기야.",
+        "2": "학교 급식 얘기는 없어. sleep과 new school year 이야기야.",
+        "3": "운동 얘기가 아니야. 잠을 잘 자면 에너지가 생긴다는 내용이야."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -1877,10 +1877,10 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "이 문장은 '규칙적으로 자라'는 조언의 결과야. 조언 바로 뒤에 와야 해.",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
+        "0": "①에 넣으면 body clock 설명도 나오기 전에 결론이야. 너무 이른 위치야.",
         "1": "'②'는 본문과 맞지 않아!",
-        "2": "본문과 모순돼!",
-        "3": "본문 내용과 안 맞아!"
+        "2": "③ 뒤에는 밤에 졸리다는 설명이 이어져야 해. 여기서 끊기면 어색해.",
+        "3": "'sleep regularly' 다음에 '더 건강해질 거야'가 와야 자연스러워. ④가 아니라 ⑤."
       },
       "core_sentence_id": "CS01a",
       "linked_rule_ids": [],
@@ -1908,9 +1908,9 @@ __loadLesson({
       "instruction": "다음 글의 내용을 가장 잘 이해한 사람은?",
       "hint": "각 사람의 말을 본문과 대조하세요. 본문의 핵심 내용을 가장 정확히 말한 사람은?",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
+        "0": "초콜릿엔 카페인이 있어서 오히려 'sleep problems'가 생긴대. '잘 잔다'는 정반대야.",
         "1": "'지나: 카페인은 커피에만 들어있어.'는 본문과 맞지 않아!",
-        "3": "본문 내용과 안 맞아!"
+        "3": "하은 말은 추론이야. 본문은 '카페인→수면 문제'와 '에너지 음료에 카페인'을 따로 말했을 뿐이야."
       },
       "core_sentence_id": "CS05",
       "linked_rule_ids": [],
@@ -1937,9 +1937,9 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "앞 문장에서 'use'의 목적어를 찾으세요. 무엇을 사용하지 말라는 건가요?",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
+        "0": "'don't use it'에서 it은 use의 목적어야. brain은 주어이지 사용 대상이 아니야.",
         "1": "'the blue light'는 본문과 맞지 않아!",
-        "3": "본문 내용과 안 맞아!"
+        "3": "bedtime은 시간이야. use(사용하다)의 대상이 될 수 없어."
       },
       "core_sentence_id": "CS06",
       "linked_rule_ids": [],
@@ -1967,8 +1967,8 @@ __loadLesson({
       "hint": "마지막 문장이 글 전체를 요약하고 있어.",
       "wrong_explanations": {
         "1": "'카페인이 든 음식은 맛있다.'는 본문과 맞지 않아!",
-        "2": "본문과 모순돼!",
-        "3": "본문 내용과 안 맞아!"
+        "2": "본문은 'Stop using your smartphone before bedtime'이야. 공부에 필수라는 말은 없어.",
+        "3": "'Move your body actively'라고 했지, '아침에만'이라는 조건은 안 달았어."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -1996,8 +1996,8 @@ __loadLesson({
       "hint": "먼저 body clock을 소개 → 아침/밤 예시 → 조언+결론 순서야.",
       "wrong_explanations": {
         "1": "'(A)-(B)-(C)'는 본문과 맞지 않아!",
-        "2": "본문과 모순돼!",
-        "3": "본문 내용과 안 맞아!"
+        "2": "body clock 소개(B) → 아침/밤 예시(C) → 결론(A) 순서가 자연스러워.",
+        "3": "소개(B) 바로 뒤에 결론(A)이 오면 아침/밤 예시(C)가 뜬금없어져."
       },
       "core_sentence_id": "CS01a",
       "linked_rule_ids": [],
@@ -2563,7 +2563,7 @@ __loadLesson({
       "hint": "'What are you planning to do?'에 대한 대답은 'I'm planning to ~'로!",
       "wrong_explanations": {
         "1": "과거시제? 미래 계획을 물어봤는데! 미래형으로!",
-        "2": "대화 상황과 안 맞아!",
+        "2": "'What are you planning to do?'는 계획을 물었어. 조부모님 거주지는 계획이 아니야.",
         "3": "이상한 답이야! 자연스럽게 대답해 봐."
       },
       "core_sentence_id": "CS11",
@@ -2593,8 +2593,8 @@ __loadLesson({
       "hint": "친구가 계획을 말했을 때, 격려하는 표현은? You can do it!",
       "wrong_explanations": {
         "1": "이상한 답이야! 자연스럽게 대답해 봐.",
-        "2": "대화 상황과 안 맞아!",
-        "3": "대화 상황과 안 맞아!"
+        "2": "마라톤 참가 얘기에 'When is lunch?'는 전혀 관련 없는 대답이야.",
+        "3": "참가한다는 건 좋은 소식인데, 'That's too bad'는 안 좋은 일에 쓰는 표현이야."
       },
       "core_sentence_id": "CS11",
       "linked_rule_ids": [],
@@ -3135,8 +3135,8 @@ __loadLesson({
       "hint": "수면에 방해가 되는 음식에 대해 '조심하라'는 조언이야.",
       "wrong_explanations": {
         "1": "'careless'는 본문과 맞지 않아!",
-        "2": "본문과 모순돼!",
-        "3": "본문 내용과 안 맞아!"
+        "2": "카페인 때문에 'you may not sleep well'이라는 맥락이야. happy(행복한)는 안 맞아.",
+        "3": "카페인을 조심하라는 맥락인데, excited(신난)는 어울리지 않아."
       },
       "core_sentence_id": "CS05",
       "linked_rule_ids": [],
@@ -3163,9 +3163,9 @@ __loadLesson({
       "instruction": "다음 글을 두 문단으로 나눌 때, 두 번째 문단이 시작되기에 가장 적절한 곳은?",
       "hint": "(A)(B)는 '내적 요인(몸, 음식)'이고 (C)(D)는 '외적 행동(스마트폰, 운동)' 뜻이야.",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
+        "0": "(A)는 생체 시계와 규칙적 수면 이야기야. 이 문제가 묻는 단락이 아니야.",
         "1": "'(B)'는 본문과 맞지 않아!",
-        "3": "본문 내용과 안 맞아!",
+        "3": "(D)는 낮 운동과 취침 전 운동 이야기야.",
         "4": "'(E)'는 본문과 맞지 않아!"
       },
       "core_sentence_id": "CS02",
@@ -3281,9 +3281,9 @@ __loadLesson({
       "instruction": "다음 글을 읽고 질문에 답하세요.",
       "hint": "따뜻한 샤워, 취침 전 식사 안 하기 → 모두 '잘 자는 방법'에 대한 조언이야.",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
-        "2": "본문과 모순돼!",
-        "3": "본문 내용과 안 맞아!"
+        "0": "수면에 '좋은 음식' 목록이 아니라, 샤워하기/안 먹기 같은 잠자리 습관 이야기야.",
+        "2": "운동은 언급되지 않아. 따뜻한 샤워와 취침 전 식사 자제 이야기야.",
+        "3": "샤워가 나오긴 하지만, 샤워의 과학이 아니라 '잘 자는 방법' 전체를 다뤄."
       },
       "core_sentence_id": "CS09",
       "linked_rule_ids": [],
@@ -3311,8 +3311,8 @@ __loadLesson({
       "hint": "during the day = 낮에, right before bedtime = 취침 직전",
       "wrong_explanations": {
         "1": "'밤 — 직전'는 본문과 맞지 않아!",
-        "2": "본문과 모순돼!",
-        "3": "본문 내용과 안 맞아!"
+        "2": "'during the day'는 낮이지 아침이 아니야. 'a few hours before'는 1시간이 아니라 몇 시간이야.",
+        "3": "본문은 'during the day(낮)'라고 했고, '직후'라는 표현은 어디에도 없어."
       },
       "core_sentence_id": "CS08",
       "linked_rule_ids": [],
@@ -3460,9 +3460,9 @@ __loadLesson({
       "instruction": "다음 글의 흐름과 관계없는 문장은?",
       "hint": "글의 주제는 '수면 패턴' 뜻이야. 어떤 문장이 수면과 관계없나요?",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
+        "0": "① '규칙적인 수면 패턴을 갖자'는 글 주제와 맞아. 어색한 건 ③ 탁구 문장이야.",
         "1": "'②'는 본문과 맞지 않아!",
-        "3": "본문 내용과 안 맞아!",
+        "3": "④ '생체 시계에 귀 기울여 규칙적으로 자자'는 수면 이야기에 맞는 문장이야.",
         "4": "'⑤'는 본문과 맞지 않아!"
       },
       "core_sentence_id": "CS02",
@@ -3553,9 +3553,9 @@ __loadLesson({
       "instruction": "다음 글의 내용과 일치하지 않는 것은?",
       "hint": "본문에서 'right before bedtime'에 끝내면 어떻게 된다고 했나요?",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
+        "0": "'you will fall asleep easily at night'라고 했어. 본문과 일치하니까 답이 아니야.",
         "1": "'운동 후 몸이 약간 피곤해진다.'는 본문과 맞지 않아!",
-        "3": "본문 내용과 안 맞아!"
+        "3": "'your body may feel too awake'라고 했어. 본문과 일치하니까 답이 아니야."
       },
       "core_sentence_id": "CS08",
       "linked_rule_ids": [],
@@ -3695,8 +3695,8 @@ __loadLesson({
       "hint": "수면 '습관'이 수면의 '질'을 향상시킨다는 요약이야.",
       "wrong_explanations": {
         "1": "'(A) foods — (B) time'는 본문과 맞지 않아!",
-        "2": "본문과 모순돼!",
-        "3": "본문 내용과 안 맞아!"
+        "2": "글은 수면 habits과 수면의 quality를 다뤄. rooms/place는 관련 없어.",
+        "3": "clothes(옷)/cost(비용)는 수면 습관과 관련 없는 단어야."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3752,9 +3752,9 @@ __loadLesson({
       "instruction": "다음 대화가 자연스럽지 않은 것은?",
       "hint": "늦게 자면 일찍 일어날 수 있을까요? 상식에 맞지 않는 조언이야!",
       "wrong_explanations": {
-        "0": "대화 상황과 안 맞아!",
+        "0": "'밴드에 들어갈 거야' → 'Sounds great'은 자연스러운 응원이야.",
         "1": "이상한 답이야! 자연스럽게 대답해 봐.",
-        "3": "대화 상황과 안 맞아!"
+        "3": "'잠을 못 잔다' → '폰을 쓰지 마'는 본문에도 나오는 자연스러운 조언이야."
       },
       "core_sentence_id": "CS11",
       "linked_rule_ids": [],
@@ -3867,9 +3867,9 @@ __loadLesson({
       "instruction": "다음 글의 내용을 가장 잘 이해한 사람은?",
       "hint": "본문의 구체적인 표현을 가장 정확히 이해한 사람을 고르세요.",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
-        "2": "본문과 모순돼!",
-        "3": "본문 내용과 안 맞아!"
+        "0": "정반대! 파란 빛은 뇌를 active(활발)하게 만든다고 했어. 편안하게가 아니야.",
+        "2": "지훈 말도 맞지만, 수진이 'don't sleep yet'이라는 구체적 신호까지 정확히 옮겼어.",
+        "3": "정반대! 'your brain will stay active'라고 했어. 뇌가 쉬는 게 아니야."
       },
       "core_sentence_id": "CS06",
       "linked_rule_ids": [],
@@ -4487,8 +4487,8 @@ __loadLesson({
       "hint": "두 번째 문장을 읽어보세요: 'tells you when to wake up and sleep'",
       "wrong_explanations": {
         "1": "'어떤 음식을 먹어야 하는지'는 본문과 맞지 않아!",
-        "2": "본문과 모순돼!",
-        "3": "본문 내용과 안 맞아!"
+        "2": "body clock은 'when to wake up and sleep'만 알려줘. 운동 장소는 안 나와.",
+        "3": "스마트폰 얘기는 이 단락에 없어. body clock은 잠/기상 시간만 다뤄."
       }
     },
     {
@@ -4514,9 +4514,9 @@ __loadLesson({
       "correct": 2,
       "hint": "마지막 두 문장을 보세요: sleep regularly → feel healthier",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
+        "0": "'In the morning, lively'라고 했어. 아침에 졸린 게 아니라 활기찬 거야.",
         "1": "'밤에 몸이 활기차게 느껴진다.'는 본문과 맞지 않아!",
-        "3": "본문 내용과 안 맞아!"
+        "3": "아침에는 lively, 밤에는 sleepy. 둘 다 알려주니까 '밤에만'이 아니야."
       }
     },
     {
@@ -4542,9 +4542,9 @@ __loadLesson({
       "correct": 2,
       "hint": "'even chocolate has caffeine' — 초콜릿에도 카페인이!",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
+        "0": "본문 목록은 chocolate, coffee, tea, soda, energy drinks야. 우유는 없어.",
         "1": "'과일 주스'는 본문과 맞지 않아!",
-        "3": "본문 내용과 안 맞아!"
+        "3": "카페인이 든 음식 목록에 물은 없어."
       }
     },
     {
@@ -4570,9 +4570,9 @@ __loadLesson({
       "correct": 2,
       "hint": "'many foods and drinks'라고 했어요. '~에만'이라는 말이 있나 확인하세요.",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
+        "0": "첫 문장 'Caffeine can cause sleep problems'와 일치해. 답이 아니야.",
         "1": "'초콜릿에도 카페인이 들어있다.'는 본문과 맞지 않아!",
-        "3": "본문 내용과 안 맞아!"
+        "3": "'energy drinks'가 카페인 목록에 있어. 본문과 일치하니까 답이 아니야."
       }
     },
     {
@@ -4599,8 +4599,8 @@ __loadLesson({
       "hint": "첫 문장: 'your brain will stay active'",
       "wrong_explanations": {
         "1": "'눈이 더 좋아진다.'는 본문과 맞지 않아!",
-        "2": "본문과 모순돼!",
-        "3": "본문 내용과 안 맞아!"
+        "2": "정반대! 뇌가 active해져서 오히려 잠들기 어려워진다고 했어.",
+        "3": "공부를 잘한다는 말은 없어. 뇌가 깨어있게 된다는 내용이야."
       }
     },
     {
@@ -4626,9 +4626,9 @@ __loadLesson({
       "correct": 1,
       "hint": "본문에 직접 나와요: \"Hey, don't sleep yet.\"",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
-        "2": "본문과 모순돼!",
-        "3": "본문 내용과 안 맞아!"
+        "0": "정반대! 본문은 'Hey, don't sleep yet'이야. '자라'가 아니라 '자지 마'야.",
+        "2": "파란 빛이 보내는 메시지에 운동 얘기는 없어.",
+        "3": "파란 빛이 보내는 메시지에 물 얘기는 없어."
       }
     },
     {
@@ -4654,9 +4654,9 @@ __loadLesson({
       "correct": 1,
       "hint": "'you will fall asleep easily at night' — 밤에 쉽게 잠든다!",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
-        "2": "본문과 모순돼!",
-        "3": "본문 내용과 안 맞아!"
+        "0": "정반대! 'you will fall asleep easily at night'라고 했어.",
+        "2": "배고픔 얘기는 안 나와. 피곤해져서 잠든다는 내용이야.",
+        "3": "숙제 얘기는 본문에 없어. 피곤해져서 잠든다는 내용이야."
       }
     },
     {
@@ -4682,9 +4682,9 @@ __loadLesson({
       "correct": 2,
       "hint": "'a few hours before bedtime' = 취침 몇 시간 전",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
+        "0": "정반대! 'right before bedtime'에 끝내면 'too awake'이 된다고 했어.",
         "1": "'운동은 밤에 하는 것이 효과적이다.'는 본문과 맞지 않아!",
-        "3": "본문 내용과 안 맞아!"
+        "3": "'항상'이 아니야. 'right before bedtime'에 끝낼 때만 문제야."
       }
     },
     {
@@ -4710,9 +4710,9 @@ __loadLesson({
       "correct": 2,
       "hint": "첫 번째 단락 마지막: 'sleep regularly. You will feel healthier.'",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
+        "0": "'At night, your body starts to feel sleepy'야. 밤에는 활기찬 게 아니라 졸린 거야.",
         "1": "'카페인은 커피에만 들어있다.'는 본문과 맞지 않아!",
-        "3": "본문 내용과 안 맞아!"
+        "3": "'even chocolate has caffeine'이라고 했어. 카페인이 없다는 건 정반대야."
       }
     },
     {
@@ -4738,9 +4738,9 @@ __loadLesson({
       "correct": 2,
       "hint": "선택지 하나하나를 본문에서 찾아보세요. 본문에 아예 없는 내용이 정답이야.",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
+        "0": "'when to wake up and sleep'라고 나와. 본문에서 바로 답할 수 있어.",
         "1": "'카페인이 들어있는 음식에는 어떤 것이 있나?'는 본문과 맞지 않아!",
-        "3": "본문 내용과 안 맞아!"
+        "3": "'sleep problems'라고 나와. 답이 있는 질문이야."
       }
     },
     {
@@ -4766,9 +4766,9 @@ __loadLesson({
       "correct": 3,
       "hint": "취침 직전에 운동하면 어떻게 된다고 했는지 마지막 부분을 다시 읽어보세요.",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
+        "0": "'your brain will stay active'라고 했어. 본문과 일치하니까 답이 아니야.",
         "1": "'파란 빛은 뇌에 '아직 자지 마'라는 신호를 보낸다.'는 본문과 맞지 않아!",
-        "2": "본문과 모순돼!"
+        "2": "'you will fall asleep easily at night'라고 했어. 본문과 일치해."
       }
     },
     {
@@ -4795,8 +4795,8 @@ __loadLesson({
       "hint": "두 단락 각각에서 '하지 말라'고 한 것을 찾으세요.",
       "wrong_explanations": {
         "1": "'물 마시기, 음악 듣기'는 본문과 맞지 않아!",
-        "2": "본문과 모순돼!",
-        "3": "본문 내용과 안 맞아!"
+        "2": "본문이 말한 건 스마트폰 사용과 취침 직전 운동이야. 책 읽기/간식은 안 나와.",
+        "3": "본문이 말한 건 스마트폰 사용과 취침 직전 운동이야. 양치질/샤워는 안 나와."
       }
     },
     {
@@ -4822,9 +4822,9 @@ __loadLesson({
       "correct": 2,
       "hint": "마지막 단락: 'your body may feel too awake'",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
+        "0": "'foods and drinks'라고 했어. 음료만이 아니라 음식에도 숨어있어.",
         "1": "'밤에 스마트폰을 쓰면 뇌가 쉬게 된다.'는 본문과 맞지 않아!",
-        "3": "본문 내용과 안 맞아!"
+        "3": "아침에 lively, 밤에 sleepy. 둘 다 알려주니까 '아침에만'이 아니야."
       }
     },
     {
@@ -4850,9 +4850,9 @@ __loadLesson({
       "correct": 2,
       "hint": "낮에 운동하면 밤에 어떻게 된다고 했나요? 'easily'를 찾아보세요.",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
+        "0": "'Sleeping well can give you energy'라고 했어. 본문과 일치하니까 답이 아니야.",
         "1": "'규칙적으로 자면 더 건강해진다.'는 본문과 맞지 않아!",
-        "3": "본문 내용과 안 맞아!"
+        "3": "'even chocolate has caffeine'이라고 했어. 맞는 내용이니까 답이 아니야."
       }
     },
     {
@@ -4879,8 +4879,8 @@ __loadLesson({
       "hint": "글 전체가 '잘 자기 위한 방법'을 4가지로 설명하고 있어.",
       "wrong_explanations": {
         "1": "'카페인이 몸에 미치는 영향'는 본문과 맞지 않아!",
-        "2": "본문과 모순돼!",
-        "3": "본문 내용과 안 맞아!"
+        "2": "장단점이 아니야. 스마트폰은 수면에 안 좋다는 한 방향만 다뤄.",
+        "3": "학교생활 준비물 이야기가 아니야. 네 가지 수면 습관 이야기야."
       }
     },
     {
@@ -4906,9 +4906,9 @@ __loadLesson({
       "correct": 2,
       "hint": "선택지 하나하나를 본문에서 찾아보세요. '몇 시간을 자야 하는지'가 본문에 있나요?",
       "wrong_explanations": {
-        "0": "본문과 맞지 않아!",
+        "0": "'chocolate, coffee, tea, soda, energy drinks'라고 나와. 답할 수 있어.",
         "1": "'밤늦게 스마트폰을 쓰면 뇌에 어떤 일이 생기나?'는 본문과 맞지 않아!",
-        "3": "본문 내용과 안 맞아!"
+        "3": "'a few hours before bedtime'이라고 나와. 답할 수 있는 질문이야."
       }
     }
   ],

@@ -441,8 +441,8 @@ __loadLesson({
       "hint": "발명하다 — invent",
       "wrong_explanations": {
         "invested": "'투자했다' = 투자했다! '발명했다'는 완전 다른 단어야.",
-        "invited": "invent = 발명!",
-        "discovered": "invent = 발명!"
+        "invited": "invited는 '초대했다'야. 여기는 쿠키를 새로 만든 거니까 invented(발명했다)가 맞아.",
+        "discovered": "discovered는 '발견했다'야. 쿠키는 원래 있던 걸 찾은 게 아니라 새로 만든(invented) 거야."
       },
       "core_sentence_id": "CS03",
       "linked_rule_ids": [
@@ -784,7 +784,7 @@ __loadLesson({
       "instruction": "빈칸에 알맞은 단어를 고르세요.",
       "hint": "액체의, 액체 같은 — liquid",
       "wrong_explanations": {
-        "liquidy": "구조가 안 맞아!",
+        "liquidy": "liquidy는 영어에 없는 단어야. '액체의'는 liquid가 맞아.",
         "licquid": "spelling이 틀렸어!. 정확히는 liquid이야!",
         "fluidy": "'fluid'라는 단어는 있지만, 여기서는 'liquid'가 맞아!!"
       },
@@ -2550,8 +2550,8 @@ __loadLesson({
       "hint": "수동태에서 '~에 의해'는 'by'입니다. 빈칸이 동사 자리인지, 주어 자리인지 확인하세요.",
       "wrong_explanations": {
         "1": "'사람 이름'이야. '동사'이 아니야..",
-        "2": "invent = 발명!",
-        "3": "invent = 발명!"
+        "2": "Safety glass는 단수야. 단수 주어의 수동태는 was + 과거분사.",
+        "3": "수동태는 was/were + 과거분사야. be 원형은 못 써."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -3249,7 +3249,7 @@ __loadLesson({
       "instruction": "다음 단어의 한국어 뜻을 고르세요.",
       "hint": "무엇인가를 찾아내는 행위",
       "wrong_explanations": {
-        "1": "invent = 발명!",
+        "1": "invention은 '발명품'이야. finding(발견)의 결과는 discovery(발견)가 맞아.",
         "2": "fact(사실)은 발견된 내용이지, 발견 자체가 아니야!",
         "3": "lesson(교훈)은 배운 것이야!"
       },
@@ -4148,7 +4148,7 @@ __loadLesson({
       "instruction": "다음 중 다른 한 단어를 찾으세요.",
       "hint": "발명과 관련된 단어들",
       "wrong_explanations": {
-        "0": "invent = 발명!",
+        "0": "invent(발명하다)는 create, make와 비슷한 '만들다' 뜻이야. 혼자 다른 건 discover(발견하다).",
         "2": "create(창조하다)은 답이 아니야!",
         "3": "make(만들다)은 답이 아니야!"
       },
@@ -4354,7 +4354,7 @@ __loadLesson({
       "instruction": "다음 단어를 포함하여 문장을 완성하세요. (6단어 이상)",
       "hint": "수동태는 'be + 과거분사'입니다. 주어가 동작을 당하는 상황이에요.",
       "wrong_explanations": {
-        "default": "수동태은 답이 아니야!"
+        "default": "was cleaned를 포함한 6단어 이상 문장을 써야 해. 주어 + was cleaned + 나머지 구조를 확인해 봐."
       },
       "core_sentence_id": "CS08",
       "linked_rule_ids": [
@@ -4449,7 +4449,7 @@ __loadLesson({
       "instruction": "어떤 발명품을 설명하는 3문장을 쓰세요. 수동태를 최소 1번 이상 사용하세요.",
       "hint": "발명품의 이름, 용도, 특징을 설명하고, 수동태로 '~가 만들어지다/~에 의해 ~되다'를 표현하세요.",
       "wrong_explanations": {
-        "default": "invent = 발명!"
+        "default": "발명품 하나를 골라서 수동태(be + 과거분사)를 최소 한 번 쓰고, 3문장으로 설명해야 해."
       },
       "core_sentence_id": "CS03",
       "linked_rule_ids": [
@@ -4695,5 +4695,4 @@ __loadLesson({
       "memory_tip": "although ↔ but: 하나만 써야 함! 둘 다 쓰면 100% 틀림!"
     }
   ]
-}
-);
+});
