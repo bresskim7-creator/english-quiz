@@ -1790,7 +1790,8 @@ __loadLesson({
       "hint": "드라이클리닝이 어떤 물질을 사용하는지 찾으세요.",
       "wrong_explanations": {
         "1": "💡 물질의 이름을 다시 읽어!. 무엇으로 세척합니까?",
-        "3": "💡 1800년대에 누가 발견했습니까?"
+        "3": "💡 1800년대에 누가 발견했습니까?",
+        "0": "물로'라는 전치사가 뒤에 오는데, 단어가 아니라 '뭘로, 뭔가로' 같은 감정 표현과 헷갈리기 쉬워. 여기선 '물질, 액체'를 의미하는 'water'의 구어적 표현이야."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -1820,7 +1821,8 @@ __loadLesson({
       "hint": "세 가지 발명 중 어느 것이 '우연'으로 발명되었습니까?",
       "wrong_explanations": {
         "2": "💡 드라이클리닝 발견 과정을 다시 읽어!.",
-        "3": "💡 사안전 유리는 어떤 사고로부터 시작되었습니까?"
+        "3": "💡 사안전 유리는 어떤 사고로부터 시작되었습니까?",
+        "0": "'모두 목적적으로 설계되었다'는 어색해. 문맥상 '의도적으로' 또는 '우연히' 중 하나인데, 액체 플라스틱이 우연히 남겨져서 유리가 깨져도 붙어있는 발견이야."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -1850,7 +1852,8 @@ __loadLesson({
       "hint": "안전 유리가 사용되는 장소를 찾으세요.",
       "wrong_explanations": {
         "2": "💡 텍스트에서 언급된 구체적인 사용처는?",
-        "3": "💡 안전 유리가 '어디에' 사용된다고 했습니까?"
+        "3": "💡 안전 유리가 '어디에' 사용된다고 했습니까?",
+        "0": "'건물 벽'은 '건물의 벽'이라고 해야 하는데, 소유격 처리가 없어서 어색해. 여기선 '벽'이 아니라 '표면, 액체'같은 물질을 설명하는 거야."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -1880,7 +1883,8 @@ __loadLesson({
       "hint": "텍스트에서 실제로 '말하지 않은 것'을 찾으세요.",
       "wrong_explanations": {
         "1": "💡 시간이 없었다고 명시되어 있습니다.",
-        "3": "💡 초콜릿 칩 쿠키가 맛있었다고 나와 있습니다."
+        "3": "💡 초콜릿 칩 쿠키가 맛있었다고 나와 있습니다.",
+        "2": "'초콜릿을 작은 조각으로 자르기로 결정했다'는 의도적 행동인데, 문맥상 그 과정에서 '우연히' 발견된 일들을 설명하고 있어. 의도와 우연의 뉘앙스 차이."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -1910,7 +1914,8 @@ __loadLesson({
       "hint": "'어떻게' 안전 유리가 발명되었는지 다시 읽으세요.",
       "wrong_explanations": {
         "1": "💡 유리가 '완전히' 부러졌습니까? 아니면 함께 있었습니까?",
-        "3": "💡 플라스크 '안에' 무엇이 있었습니까?"
+        "3": "💡 플라스크 '안에' 무엇이 있었습니까?",
+        "2": "'액체 플라스틱이 조각들을 한 모양으로 유지했다'는 시간상 동시에 일어난 일처럼 들리는데, 실제로는 우연히 남겨진 액체가 나중에 그 역할을 한 거야. 원인-결과의 순서가 안 맞아."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -1940,7 +1945,8 @@ __loadLesson({
       "hint": "드라이클리닝의 '발견'에 대해 다시 읽으세요.",
       "wrong_explanations": {
         "2": "💡 누가 실수로 오일을 쏟았습니까?",
-        "3": "💡 'Dry cleaning'이 이미 존재했습니까?"
+        "3": "💡 'Dry cleaning'이 이미 존재했습니까?",
+        "0": "'오일이 옷을 깨끗하게 할 수 있다는 것을 발견했다'는 과학적 발견처럼 들리는데, 여기선 사실 '쿠키 반죽에 버터나 기름이 흘렀을 때'의 상황이야. 맥락 미스매치."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -1970,7 +1976,8 @@ __loadLesson({
       "hint": "세 발명이 '모두' 어떻게 나타났는지 확인하세요.",
       "wrong_explanations": {
         "2": "💡 'Although' 부분을 다시 읽어 봐!.",
-        "3": "💡 세 번째 발명이 어떻게 발견되었습니까?"
+        "3": "💡 세 번째 발명이 어떻게 발견되었습니까?",
+        "0": "'초콜릿 칩 쿠키가 발명되었다'는 맞는 것처럼 들리지만, 정확히는 '버터가 부족해서 초콜릿으로 대체한 결과' 발명된 거야. 직접적 인과관계와 우연의 발견의 차이."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -2000,7 +2007,8 @@ __loadLesson({
       "hint": "안전 유리의 사용처에 대해 다시 읽으세요.",
       "wrong_explanations": {
         "2": "💡 텍스트는 비행기에 대해 말합니까?",
-        "3": "💡 안전 유리가 사람들을 '어떻게' 안전하게 합니까?"
+        "3": "💡 안전 유리가 사람들을 '어떻게' 안전하게 합니까?",
+        "0": "'안전 유리가 발명되었다'는 맞는 데 왜 틀렸냐고 생각할 수 있는데, 실제로는 '액체 플라스틱의 우연한 발견에서 비롯된' 응용으로 발명된 거야. 원점이 다르다는 게 핵심."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -2030,7 +2038,8 @@ __loadLesson({
       "hint": "세 예시의 공통점을 찾으세요. 우연인가요? 설계인가요?",
       "wrong_explanations": {
         "1": "💡 이 글이 '방법'을 설명합니까? 아니면 어떤 이야기를 하고 있습니까?",
-        "3": "💡 이 발명들이 정말 '계획적'이었습니까?"
+        "3": "💡 이 발명들이 정말 '계획적'이었습니까?",
+        "0": "'세 가지 중요한 화학 반응들'이라고 하면 너무 추상적이야. 실제로는 '네 가지 구체적인 발명 사건들(쿠키, 유리, 안전장치 등)'을 설명하는 거지, 화학 반응만의 일이 아니야."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -2060,7 +2069,8 @@ __loadLesson({
       "hint": "글의 마지막 메시지를 읽으세요. 독자에게 무엇을 전하려고 합니까?",
       "wrong_explanations": {
         "1": "💡 이 글이 '공부하는 방법'에 대한 것입니까?",
-        "3": "💡 이 글의 목표가 무엇입니까? 누구에게 영감을 주려는 것입니까?"
+        "3": "💡 이 글의 목표가 무엇입니까? 누구에게 영감을 주려는 것입니까?",
+        "0": "'역사 속 위대한 발명가들의 일상'이라고 하면 너무 광범위야. 여기선 '사람들이 문제를 만났을 때 어떻게 창의적으로 해결했는가'라는 구체적 사례 중심이야."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -2121,7 +2131,8 @@ __loadLesson({
       "hint": "유리가 부러졌다. 그 다음에 무엇이 일어났을까요?",
       "wrong_explanations": {
         "2": "💡 유리가 '예상대로' 행동했습니까? 아니면 '놀랍게도' 행동했습니까?",
-        "3": "💡 플라스틱은 어떤 역할을 했습니까?"
+        "3": "💡 플라스틱은 어떤 역할을 했습니까?",
+        "0": "'모든 조각들이 바닥에 흩어졌다'는 문맥상 틀렸어. 유리 플라스크가 깨졌지만 액체 플라스틱이 있어서 조각들이 '모양을 유지한 채로' 붙어 있었던 거야."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -2182,7 +2193,8 @@ __loadLesson({
       "hint": "사건의 순서: 실수 → 관찰 → 이해 → 활용을 생각하세요.",
       "wrong_explanations": {
         "2": "💡 '발견'이 되려면 먼저 '사건'이 일어나야 합니다.",
-        "3": "💡 안전유리로 사용되기 전에 무엇을 깨달아야 합니까?"
+        "3": "💡 안전유리로 사용되기 전에 무엇을 깨달아야 합니까?",
+        "0": "'(2) → (1) → (5) → (4) → (3)'의 순서는 사건 전개의 논리적 흐름과 안 맞아. 발명은 '우연한 발견 → 관찰 → 문제 인식 → 응용 → 결과'의 순서로 진행되어야 해."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -2307,7 +2319,8 @@ __loadLesson({
       "hint": "과거 사건이므로 'was' 또는 'were' + 과거분사를 찾으세요.",
       "wrong_explanations": {
         "0": "'created' = 과거분사! 여기는 다른 형태 필요해. 시간 표시를 다시 읽어!.!",
-        "3": "💡 'creating'은 동명사이지 수동태가 아닙니다."
+        "3": "💡 'creating'은 동명사이지 수동태가 아닙니다.",
+        "2": "'Safety glass has created by Mr. Benedictus in 1903'는 수동태 형태가 틀렸어. 'has been created' 또는 'was created'여야 하는데, 문법적으로 주체와 시제가 안 맞아."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2405,7 +2418,8 @@ __loadLesson({
       "hint": "수동태 형태를 확인하세요. be동사 + 과거분사가 맞는 형태입니다.",
       "wrong_explanations": {
         "1": "was는 be동사 → 수동태에 필요한 거야! 틀린 건 wrote(written이어야 해)!",
-        "3": "'him'은 기본 구조에서 옳은 표현이야!"
+        "3": "'him'은 기본 구조에서 옳은 표현이야!",
+        "2": "'(3) him'은 대명사 형태가 틀렸어. 문맥상 재귀대명사 또는 다른 형태여야 하는데, 단순히 목적격 대명사만으로는 문장이 완성 안 돼."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2470,7 +2484,8 @@ __loadLesson({
       "hint": "'Although'를 쓰면 'but'을 쓸 수 없습니다.",
       "wrong_explanations": {
         "0": "'Although'는 종속절을 만드는 접속사이야!",
-        "3": "'cookies' = 명사! 여기는 다른 형태 필요해. 문제가 없습니다.!"
+        "3": "'cookies' = 명사! 여기는 다른 형태 필요해. 문제가 없습니다.!",
+        "1": "'(2) disappointed'는 감정 형용사인데, 수동 형태와의 조합이 어색해. 'was disappointed'는 과거에 실망한 상태지, 현재의 감정 상태나 예상과 맞지 않아."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2502,7 +2517,8 @@ __loadLesson({
       "hint": "수동태 구조: be + 과거분사. 과거 사건이므로 'was' 또는 'were'를 확인하세요.",
       "wrong_explanations": {
         "0": "💡 'create'는 과거분사가 아닙니다.",
-        "3": "'was creating'은 과거 진행형이야!"
+        "3": "'was creating'은 과거 진행형이야!",
+        "2": "'had created'는 과거완료 형태인데, 문맥상 단순 과거 'created'가 더 맞아. 시간적 선행 관계가 명확하지 않은 문장에서 과거완료를 쓰면 어색해."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2599,9 +2615,9 @@ __loadLesson({
       "instruction": "다음 빈칸에 들어갈 올바른 형태를 고르세요.",
       "hint": "과거 상황이므로 'was' + 과거분사 형태를 찾으세요.",
       "wrong_explanations": {
-        "1": "discover = 발견! 발명 아님",
-        "2": "discover = 발견! 발명 아님",
-        "3": "discover = 발견! 발명 아님"
+        "1": "had discovered는 능동태야! '발견된' 거니까 수동태 was discovered!",
+        "2": "was discovering은 진행형이야! '발견되는 중'이 아니라 '발견됐다'잖아!",
+        "3": "discovered만 쓰면 능동태야! '~에 의해 발견된' 거니까 was 붙여야 해!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2633,7 +2649,8 @@ __loadLesson({
       "hint": "'by accident' = 우연히 | 'by + 행위자' = 수동태에서 '~에 의해'",
       "wrong_explanations": {
         "2": "이것은 '~에 의해'은 '행위자'를 나타내!.",
-        "3": "이것은 '~에 의해'은 '행위자'를 나타내!."
+        "3": "이것은 '~에 의해'은 '행위자'를 나타내!.",
+        "1": "'was invented by Mr. Benedictus'는 문법상 맞는 것처럼 보이지만, 문맥상 시제와 부사구의 조합이 어색해. 특정 시점의 명확한 행동을 표현할 때 다른 구조가 더 자연스러워."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2698,7 +2715,8 @@ __loadLesson({
       "hint": "시간 관계를 생각하세요. 'in 1903'은 과거입니다.",
       "wrong_explanations": {
         "2": "💡 시간 표현을 다시 읽어!. 현재가 아닙니다.",
-        "3": "💡 두 빈칸의 형태를 함께 확인해!."
+        "3": "💡 두 빈칸의 형태를 함께 확인해!.",
+        "1": "'is / from'의 조합은 불완전해. 'be from' 구조는 맞지만, 문장의 주어와 목적어 관계가 애매해서 명확한 의미 전달이 어색해."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2763,7 +2781,8 @@ __loadLesson({
       "hint": "be동사 + 과거분사 구조와 'although' 사용법을 확인하세요.",
       "wrong_explanations": {
         "0": "💡 몇 가지 오류를 찾아봐!.",
-        "3": "💡 'although'의 사용과 수동태 형태를 다시 확인해!."
+        "3": "💡 'although'의 사용과 수동태 형태를 다시 확인해!.",
+        "2": "'3군데'는 숫자 표기가 부정확해. 한국어로 쓰면 '세 군데' 또는 '3개 부분'이어야 하는데, 문맥상 수를 명확히 지정하지 않았을 때 이런 표기는 부정확해."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -3753,7 +3772,8 @@ __loadLesson({
       "hint": "Something new that someone creates",
       "wrong_explanations": {
         "2": "equipment(장비)는 여러 것의 집합이야!",
-        "3": "material(재료)는 무언가를 만드는 데 사용되는 것이야!"
+        "3": "material(재료)는 무언가를 만드는 데 사용되는 것이야!",
+        "0": "'discovery'는 '발견'이라는 명사인데, '발견하다'는 동사 역할이 필요한 문맥에서는 'discover'나 'found'여야 해."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3781,7 +3801,8 @@ __loadLesson({
       "hint": "A person who invents new things",
       "wrong_explanations": {
         "2": "scientist(과학자)은 답이 아니야!",
-        "3": "creator(창조자)는 발명가보다 포괄적이야!"
+        "3": "creator(창조자)는 발명가보다 포괄적이야!",
+        "0": "'discoverer'는 '발견자'라는 명사인데, 행동을 설명하는 동사 자리에 명사가 와서 문법적으로 어색해."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3809,7 +3830,8 @@ __loadLesson({
       "hint": "A device that produces light",
       "wrong_explanations": {
         "2": "bulb(전구)는 lamp의 부분일 뿐이야!",
-        "3": "torch(손전등)는 휴대용 조명이야!"
+        "3": "torch(손전등)는 휴대용 조명이야!",
+        "0": "'light'는 '빛'이라는 명사인데, 여기선 '가볍다'는 의미의 형용사 'light'가 필요하거나, 다른 품사 형태가 맞아."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3837,7 +3859,8 @@ __loadLesson({
       "hint": "To cause or result in something",
       "wrong_explanations": {
         "2": "come from(~에서 나오다)는 출발점을 강조해!",
-        "3": "cause(원인이 되다)는 원인만을 강조해!"
+        "3": "cause(원인이 되다)는 원인만을 강조해!",
+        "0": "'follow'는 '따르다'라는 의미인데, 문맥상 '이어지다, 결과되다'는 의미의 다른 동사가 필요해."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3865,7 +3888,8 @@ __loadLesson({
       "hint": "A substance that flows and has no fixed shape",
       "wrong_explanations": {
         "2": "oil(기름)은 특정 종류의 액체야!",
-        "3": "substance(물질)은 너무 넓은 의미야!"
+        "3": "substance(물질)은 너무 넓은 의미야!",
+        "0": "'water'는 '물'이라는 명사인데, 형용사나 동사 역할이 필요한 문맥에서는 'watery', 'washed' 같은 다른 형태가 맞아."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3893,7 +3917,8 @@ __loadLesson({
       "hint": "A person who controls or organizes something",
       "wrong_explanations": {
         "2": "leader(지도자)는 더 광범위한 역할이야!",
-        "3": "supervisor(감시자)는 감독하는 것을 강조해!"
+        "3": "supervisor(감시자)는 감독하는 것을 강조해!",
+        "0": "'boss'는 '상사, 지배자'라는 명사인데, 여기선 '주인되다, 지배하다'는 의미의 동사나 다른 품사가 필요해."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3921,7 +3946,8 @@ __loadLesson({
       "hint": "To change from solid to liquid by heating",
       "wrong_explanations": {
         "2": "dissolve(녹다)은 답이 아니야!",
-        "3": "heat(데우다)는 녹게 하는 과정일 뿐이야!"
+        "3": "heat(데우다)는 녹게 하는 과정일 뿐이야!",
+        "0": "'break'는 '깨지다'라는 동사인데, 시제나 형태가 맞지 않아. 문맥에 따라 'breaks', 'broke', 'broken' 등의 형태가 필요해."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4181,7 +4207,8 @@ __loadLesson({
       "hint": "'By chance' 다음에 오는 단어",
       "wrong_explanations": {
         "2": "'chance'은 답이 아니야!",
-        "3": "'Ruth'가 세 번째 단어야!"
+        "3": "'Ruth'가 세 번째 단어야!",
+        "0": "'discovered'는 '발견했다'는 과거형인데, 시제 문맥과 안 맞을 수 있어. 문장 구조에서 요구하는 다른 시제나 형태를 확인해야 해."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4268,7 +4295,8 @@ __loadLesson({
       "hint": "'I'm sure that'은 '~라고 확신해'라는 뜻이에요.",
       "wrong_explanations": {
         "1": "'너는 어디 출신이야?'는 대화의 맥락과 안 맞아!",
-        "3": "'너는 정말 똑똑해'는 칭찬이지만, 여기선 대회 우승에 대한 확신을 말해야 해!!"
+        "3": "'너는 정말 똑똑해'는 칭찬이지만, 여기선 대회 우승에 대한 확신을 말해야 해!!",
+        "0": "'Where are you from?'는 출신지를 묻는 표현인데, 문맥상 다른 의도의 질문이 필요할 수 있어. 질문의 목적과 상황이 안 맞는다면 다른 표현이 더 자연스러워."
       },
       "core_sentence_id": "CS02",
       "linked_rule_ids": [],
@@ -4297,7 +4325,8 @@ __loadLesson({
       "hint": "대화의 흐름을 따라가 보세요. A가 설명을 해주고, B가 확신을 표현하는 상황이에요.",
       "wrong_explanations": {
         "1": "'이건 너무 어려워'는 부정적인 표현이고, A의 설명 이후에 안 맞아!!",
-        "3": "'정말? 더 설명해 줄 수 있어?'은 답이 아니야!"
+        "3": "'정말? 더 설명해 줄 수 있어?'은 답이 아니야!",
+        "0": "'This is too difficult.'는 어려움을 표현하는 문장인데, 문맥상 다른 종류의 의견이나 반응이 필요할 수 있어. 상황과 대화 흐름에 맞는 표현인지 확인해야 해."
       },
       "core_sentence_id": "CS01",
       "linked_rule_ids": [],
@@ -4666,4 +4695,5 @@ __loadLesson({
       "memory_tip": "although ↔ but: 하나만 써야 함! 둘 다 쓰면 100% 틀림!"
     }
   ]
-});
+}
+);
