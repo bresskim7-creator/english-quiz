@@ -890,7 +890,7 @@ __loadLesson({
       "wrong_explanations": {
         "asleep": "⚡ asleep = '잠든' ≠ active. 반대!",
         "tired": "피곤한 ≠ 활발한! 뇌가 깨어나는 거야.",
-        "quiet": "quiet도 형용사지만 active가 정답."
+        "quiet": "조용한 상태? 근데 밤늦게 활동하는 뇌는 활발해야 돼! 그래서 \"quiet\"은 틀려."
       },
       "core_sentence_id": "CS06",
       "linked_rule_ids": [
@@ -2622,9 +2622,9 @@ __loadLesson({
       "instruction": "대화의 빈칸에 알맞은 응답을 고르세요.",
       "hint": "교과서의 수면 습관 조언을 떠올려보세요!",
       "wrong_explanations": {
-        "1": "대화 상황과 안 맞아!",
-        "2": "대화 상황과 안 맞아!",
-        "3": "대화 상황과 안 맞아!"
+        "1": "커피는 깨어나게 해! 자기 전에 마시면 안 돼.",
+        "2": "자기 직전 운동? 그러면 더 깨어있어!",
+        "3": "점심을 건너뛰는 게 수면이랑 무슨 상관이냐고?"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -2652,9 +2652,9 @@ __loadLesson({
       "instruction": "다음 대화에서 알 수 있는 것은?",
       "hint": "B의 말을 잘 보세요: 'I want to draw better this year.'",
       "wrong_explanations": {
-        "0": "대화 상황과 안 맞아!",
-        "2": "대화 상황과 안 맞아!",
-        "3": "대화 상황과 안 맞아!"
+        "0": "A와 B가 같은 수업? 대화에 없어! 다시 읽어.",
+        "2": "A가 그림을 잘 그린다고? 대화에 없지!",
+        "3": "B가 작년에 들었다고? 그런 건 안 나왔어!"
       },
       "core_sentence_id": "CS11",
       "linked_rule_ids": [],
@@ -2682,9 +2682,9 @@ __loadLesson({
       "instruction": "다음 대화의 빈칸에 들어갈 말로 적절하지 않은 것은?",
       "hint": "더 늦게 자면 일찍 일어날 수 있을까요? 상식과 맞지 않아요!",
       "wrong_explanations": {
-        "0": "대화 상황과 안 맞아!",
-        "1": "대화 상황과 안 맞아!",
-        "2": "대화 상황과 안 맞아!"
+        "0": "시간을 맞춰준다? 격려해 주는 게 자연스럽잖아!",
+        "1": "응원해 주는 거 맞는데, 유일한 정답은 아니야.",
+        "2": "행운을 빈다? 격려가 더 자연스러워!"
       },
       "core_sentence_id": "CS11",
       "linked_rule_ids": [],
@@ -2921,9 +2921,9 @@ __loadLesson({
       "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "if절 + 주절 구조: 사용하면 → 활발한 상태 유지",
       "wrong_explanations": {
-        "1": "뜻이 다르지! 다시 매칭해 봐.",
-        "2": "뜻이 다르지! 다시 매칭해 봐.",
-        "3": "뜻이 다르지! 다시 매칭해 봐."
+        "1": "\"gets tired\"? 원문은 활발한 상태지, 피곤한 게 아니야!",
+        "2": "\"healthy\"? 활발함 ≠ 건강함! 다른 뜻이야.",
+        "3": "\"stop using\"? 원문은 \"사용하면\"이지 \"그만두면\"이 아니야!"
       },
       "core_sentence_id": "CS06",
       "linked_rule_ids": [
@@ -3371,9 +3371,9 @@ __loadLesson({
       "instruction": "대화의 빈칸에 알맞은 응답을 고르세요.",
       "hint": "친구의 계획에 긍정적으로 반응하는 표현! Sounds + 긍정 형용사",
       "wrong_explanations": {
-        "1": "대화 상황과 안 맞아!",
-        "2": "대화 상황과 안 맞아!",
-        "3": "대화 상황과 안 맞아!"
+        "1": "끔찍하다? 요리 배우려는데 왜 나쁜 말?",
+        "2": "지루하다? 건강식을 만들려는데 지루하다고?",
+        "3": "무섭다? 긍정적인 상황에 부정적 단어!"
       },
       "core_sentence_id": "CS11",
       "linked_rule_ids": [],
@@ -3401,9 +3401,9 @@ __loadLesson({
       "instruction": "다음 대화를 읽고 답할 수 없는 질문은?",
       "hint": "대화에서 A는 질문만 하고 격려만 했어요. A 자신의 계획은 말하지 않았어요!",
       "wrong_explanations": {
-        "0": "대화 상황과 안 맞아!",
-        "1": "대화 상황과 안 맞아!",
-        "3": "대화 상황과 안 맞아!"
+        "0": "B의 계획이 정답인데 왜 고르니? 문제가 물어본 게 봤어?",
+        "1": "10권? 맞지만 이건 둘째 질문이야!",
+        "3": "A의 반응? 문제는 \"A의 계획\"을 물었어!"
       },
       "core_sentence_id": "CS11",
       "linked_rule_ids": [],
@@ -3925,9 +3925,9 @@ __loadLesson({
       "instruction": "대화의 빈칸에 알맞은 응답을 고르세요.",
       "hint": "잠을 못 자는 친구에게 교과서에서 배운 조언을 해주세요!",
       "wrong_explanations": {
-        "1": "대화 상황과 안 맞아!",
-        "2": "대화 상황과 안 맞아!",
-        "3": "대화 상황과 안 맞아!"
+        "1": "커피? 밤에 마시면 더 깨어있어! 역효과야.",
+        "2": "스크린 타임? 뇌를 더 깨우는 거잖아!",
+        "3": "초콜릿도 카페인이 들어있어! 도움이 안 돼."
       },
       "core_sentence_id": "CS06",
       "linked_rule_ids": [],
@@ -4085,9 +4085,9 @@ __loadLesson({
       "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "'일으키다'는 cause야. cure(치료하다)와 헷갈리지 마세요!",
       "wrong_explanations": {
-        "1": "뜻이 다르지! 다시 매칭해 봐.",
-        "2": "뜻이 다르지! 다시 매칭해 봐.",
-        "3": "뜻이 다르지! 다시 매칭해 봐."
+        "1": "\"cure\"? 낫게 한다는 뜻이야! \"cause\"(일으키다)와 반대야.",
+        "2": "\"prevent\"? 예방한다는 뜻! \"일으킨다\"와 다르지!",
+        "3": "\"coffee cause health\"? 원문은 수면 문제지, 건강 문제가 아니야!"
       },
       "core_sentence_id": "CS04",
       "linked_rule_ids": [],
@@ -4114,9 +4114,9 @@ __loadLesson({
       "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "if + smartphone late at night → brain + stay active",
       "wrong_explanations": {
-        "1": "뜻이 다르지! 다시 매칭해 봐.",
-        "2": "뜻이 다르지! 다시 매칭해 봐.",
-        "3": "뜻이 다르지! 다시 매칭해 봐."
+        "1": "\"eyes will stay healthy\"? 눈 건강? 원문은 뇌 상태야!",
+        "2": "\"body will feel sleepy\"? 졸린다고? 반대잖아! 활발한 상태니까.",
+        "3": "\"stop using\"? 원문은 \"사용하면 활발\"이지 \"그만두면\"이 아니야!"
       },
       "core_sentence_id": "CS06",
       "linked_rule_ids": [
@@ -4174,9 +4174,9 @@ __loadLesson({
       "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "'잠들다'는 fall asleep이야. feel sleepy(졸리다)와 달라요!",
       "wrong_explanations": {
-        "1": "뜻이 다르지! 다시 매칭해 봐.",
-        "2": "뜻이 다르지! 다시 매칭해 봐.",
-        "3": "뜻이 다르지! 다시 매칭해 봐."
+        "1": "\"feel sleepy\"? \"느낀다\"는 뜻이야! \"fall asleep\"(실제로 잠든다)과 달라.",
+        "2": "\"fall awake\"? 문법상 이상한 표현이야! \"asleep\"이 정답.",
+        "3": "\"get asleep\"? \"get\"은 안 쓰는 표현이야! \"fall\"이 정답."
       },
       "core_sentence_id": "CS09",
       "linked_rule_ids": [],
@@ -4203,9 +4203,9 @@ __loadLesson({
       "instruction": "다음 영어 문장의 의미와 같은 우리말을 고르세요.",
       "hint": "finish exercising = 운동을 끝내다, a few hours before = 몇 시간 전에",
       "wrong_explanations": {
-        "1": "뜻이 다르지! 다시 매칭해 봐.",
-        "2": "뜻이 다르지! 다시 매칭해 봐.",
-        "3": "뜻이 다르지! 다시 매칭해 봐."
+        "1": "\"start\"? 시작? 원문은 \"마칠\"(finish)이지 \"시작\"이 아니야!",
+        "2": "\"start\"? 또 시작? 끝내는 거야, 시작하는 게 아니야!",
+        "3": "\"continue\"? 계속? 운동을 마칠 거지, 계속할 게 아니야!"
       },
       "core_sentence_id": "CS10",
       "linked_rule_ids": [],
@@ -4232,9 +4232,9 @@ __loadLesson({
       "instruction": "다음 중 단어의 뜻이 올바르게 연결된 것을 고르세요.",
       "hint": "lively는 '살아있는 것처럼 활발한'이라는 뜻이야.",
       "wrong_explanations": {
-        "1": "뜻이 다르지! 다시 매칭해 봐.",
-        "2": "뜻이 다르지! 다시 매칭해 봐.",
-        "3": "뜻이 다르지! 다시 매칭해 봐."
+        "1": "\"lively\"가 \"졸린\"? 반대야! \"활기찬\"이 맞아.",
+        "2": "\"active\"가 \"조용한\"? 아니지! \"활발한\"이야.",
+        "3": "\"regular\"가 \"불규칙\"? 정반대네! \"정기적인\"이 맞아."
       },
       "core_sentence_id": "CS01a",
       "linked_rule_ids": [],
@@ -4261,9 +4261,9 @@ __loadLesson({
       "instruction": "다음 중 단어의 뜻이 올바르게 연결된 것을 고르세요.",
       "hint": "cause는 '원인' 또는 '일으키다'야.",
       "wrong_explanations": {
-        "1": "뜻이 다르지! 다시 매칭해 봐.",
-        "2": "뜻이 다르지! 다시 매칭해 봐.",
-        "3": "뜻이 다르지! 다시 매칭해 봐."
+        "1": "\"cause\"가 \"예방하다\"? 아니야! \"일으키다\"지.",
+        "2": "\"hide\"가 \"보여주다\"? 반대야! \"숨기다\"야.",
+        "3": "\"awake\"가 \"졸린\"? 정반대! \"깨어있는\"이 맞아."
       },
       "core_sentence_id": "CS04",
       "linked_rule_ids": [],
@@ -4290,9 +4290,9 @@ __loadLesson({
       "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "'I'm planning to + 동사원형'이 맞는 형태야!",
       "wrong_explanations": {
-        "1": "뜻이 다르지! 다시 매칭해 봐.",
-        "2": "뜻이 다르지! 다시 매칭해 봐.",
-        "3": "뜻이 다르지! 다시 매칭해 봐."
+        "1": "\"eat good\"? 비교급 \"better\"가 필요해! \"good\"은 기본형이야.",
+        "2": "\"planned\"? 과거시제? \"planning to eat\"은 현재 계획이잖아!",
+        "3": "\"plan eating\"? \"plan to+동사원형\"이 맞아! \"eating\"은 안 돼."
       },
       "core_sentence_id": "CS11",
       "linked_rule_ids": [],
@@ -4319,9 +4319,9 @@ __loadLesson({
       "instruction": "다음 우리말과 의미가 같은 영어 문장을 고르세요.",
       "hint": "'의문사 + to + 동사원형' 구조를 확인하세요!",
       "wrong_explanations": {
-        "1": "뜻이 다르지! 다시 매칭해 봐.",
-        "2": "뜻이 다르지! 다시 매칭해 봐.",
-        "3": "뜻이 다르지! 다시 매칭해 봐."
+        "1": "\"what doing\"? \"to\"가 빠졌잖아! \"to do\" 구조야.",
+        "2": "\"what to do it\"? \"it\" 있으면 문법 오류야!",
+        "3": "\"how to doing\"? \"to+원형\"이지 \"doing\"은 안 돼!"
       },
       "core_sentence_id": "CS13",
       "linked_rule_ids": [
