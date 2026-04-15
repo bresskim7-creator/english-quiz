@@ -1,7 +1,7 @@
 __loadLesson({
   "lesson": 1,
   "title": "Lesson 1: New Year, New Me",
-  "version": "3.7",
+  "version": "3.8",
   "build_date": "2026-03-21",
   "build_note": "v3.6 + exam_prep training_layer 재분류 (skill_focus/mixed_practice)",
   "core_sentences": [
@@ -332,7 +332,8 @@ __loadLesson({
           "livly",
           "lievly"
         ]
-      }
+      },
+      "prompt_ko": "네 몸이 활기차게 느끼기 시작해."
     },
     {
       "id": "D-CS01b-01",
@@ -435,7 +436,8 @@ __loadLesson({
           "startes",
           "satarts"
         ]
-      }
+      },
+      "prompt_ko": "네 몸이 졸리게 느끼기 시작해."
     },
     {
       "id": "D-CS02-01",
@@ -539,7 +541,8 @@ __loadLesson({
           "reguarly",
           "regularely"
         ]
-      }
+      },
+      "prompt_ko": "네 생체 시계에 귀 기울이고 규칙적으로 자."
     },
     {
       "id": "D-CS03-01",
@@ -642,7 +645,8 @@ __loadLesson({
           "helthier",
           "healthear"
         ]
-      }
+      },
+      "prompt_ko": "너는 더 건강하게 느낄 거야."
     },
     {
       "id": "D-CS04-01",
@@ -746,7 +750,8 @@ __loadLesson({
           "Caffene",
           "cafein"
         ]
-      }
+      },
+      "prompt_ko": "카페인은 수면 문제를 일으킬 수 있어."
     },
     {
       "id": "D-CS05-01",
@@ -855,7 +860,8 @@ __loadLesson({
           "suck",
           "sutch"
         ]
-      }
+      },
+      "prompt_ko": "카페인은 초콜릿, 커피, 차, 탄산음료, 에너지 음료 같은 많은 음식과 음료에 숨어 있어."
     },
     {
       "id": "D-CS06-01",
@@ -972,7 +978,8 @@ __loadLesson({
           "stey",
           "satay"
         ]
-      }
+      },
+      "prompt_ko": "밤늦게 스마트폰을 사용하면, 네 뇌가 활발한 상태를 유지할 거야."
     },
     {
       "id": "D-CS07-01",
@@ -1081,7 +1088,8 @@ __loadLesson({
           "yat",
           "yett"
         ]
-      }
+      },
+      "prompt_ko": "폰의 파란 빛도 네 뇌에게 \"야, 아직 자지 마\"라고 말할 거야."
     },
     {
       "id": "D-CS08-01",
@@ -1185,7 +1193,8 @@ __loadLesson({
           "Exercize",
           "Excercise"
         ]
-      }
+      },
+      "prompt_ko": "낮 동안 운동해."
     },
     {
       "id": "D-CS09-01",
@@ -1289,7 +1298,8 @@ __loadLesson({
           "asleap",
           "aslepp"
         ]
-      }
+      },
+      "prompt_ko": "너는 밤에 쉽게 잠들 거야."
     },
     {
       "id": "D-CS10-01",
@@ -1397,7 +1407,8 @@ __loadLesson({
           "befor",
           "befroe"
         ]
-      }
+      },
+      "prompt_ko": "취침 시간 몇 시간 전에 운동을 끝내는 것을 기억해."
     },
     {
       "id": "D-CS11-01",
@@ -1500,7 +1511,8 @@ __loadLesson({
           "plnning",
           "planeing"
         ]
-      }
+      },
+      "prompt_ko": "나는 운동을 더 할 계획이야."
     },
     {
       "id": "D-CS12-01",
@@ -1607,7 +1619,8 @@ __loadLesson({
         "can": [
           "cna"
         ]
-      }
+      },
+      "prompt_ko": "좋은데. 너는 할 수 있어!"
     },
     {
       "id": "D-CS13-01",
@@ -1721,7 +1734,8 @@ __loadLesson({
         "to": [
           "too"
         ]
-      }
+      },
+      "prompt_ko": "무엇을 해야 할지 알아보자."
     },
     {
       "id": "R001",
@@ -4910,6 +4924,434 @@ __loadLesson({
         "1": "'밤늦게 스마트폰을 쓰면 뇌에 어떤 일이 생기나?'는 본문과 맞지 않아!",
         "3": "'a few hours before bedtime'이라고 나와. 답할 수 있는 질문이야."
       }
+    },
+    {
+      "id": "CU01",
+      "type": "typed_answer",
+      "phase": "exam_prep",
+      "difficulty": "easy",
+      "keyword": "a few",
+      "instruction": "우리말과 같은 뜻이 되도록 빈칸에 알맞은 말을 쓰세요.\n\n그녀는 나에게 몇 가지 질문을 했다.\nShe asked me _______ questions.",
+      "correct_answer": "a few",
+      "accept_answers": [
+        "a few"
+      ],
+      "hint": "'몇, 약간의'라는 뜻의 두 단어를 쓰세요.",
+      "explanation": "a few = 약간의, 몇~\nShe asked me a few questions.",
+      "recovery_band": "A",
+      "test_task": "word_recall",
+      "exam_pattern": "어휘 직접쓰기",
+      "training_layer": "skill_focus",
+      "core_sentence_id": null,
+      "linked_rule_ids": []
+    },
+    {
+      "id": "CU02",
+      "type": "typed_answer",
+      "phase": "exam_prep",
+      "difficulty": "easy",
+      "keyword": "cause",
+      "instruction": "우리말과 같은 뜻이 되도록 빈칸에 알맞은 말을 쓰세요.\n\n스트레스는 병의 원인이 될 수 있다.\nStress can _______ illnesses.",
+      "correct_answer": "cause",
+      "accept_answers": [
+        "cause"
+      ],
+      "hint": "'~의 원인이 되다'라는 뜻의 동사를 쓰세요.",
+      "explanation": "cause = ~의 원인이 되다\nStress can cause illnesses.",
+      "recovery_band": "A",
+      "test_task": "word_recall",
+      "exam_pattern": "어휘 직접쓰기",
+      "training_layer": "skill_focus",
+      "core_sentence_id": null,
+      "linked_rule_ids": []
+    },
+    {
+      "id": "CU03",
+      "type": "typed_answer",
+      "phase": "exam_prep",
+      "difficulty": "easy",
+      "keyword": "awake",
+      "instruction": "우리말과 같은 뜻이 되도록 빈칸에 알맞은 말을 쓰세요.\n\n그는 밤새 깨어 있었다.\nHe was _______ all night.",
+      "correct_answer": "awake",
+      "accept_answers": [
+        "awake"
+      ],
+      "hint": "'깨어 있는'이라는 뜻의 형용사를 쓰세요.",
+      "explanation": "awake = 깨어 있는\nHe was awake all night.",
+      "recovery_band": "A",
+      "test_task": "word_recall",
+      "exam_pattern": "어휘 직접쓰기",
+      "training_layer": "skill_focus",
+      "core_sentence_id": null,
+      "linked_rule_ids": []
+    },
+    {
+      "id": "CU04",
+      "type": "typed_answer",
+      "phase": "exam_prep",
+      "difficulty": "easy",
+      "keyword": "habit",
+      "instruction": "우리말과 같은 뜻이 되도록 빈칸에 알맞은 말을 쓰세요.\n\n매일 아침 물을 마시는 것은 좋은 습관이다.\nDrinking water every morning is a good _______.",
+      "correct_answer": "habit",
+      "accept_answers": [
+        "habit"
+      ],
+      "hint": "'습관'이라는 뜻의 명사를 쓰세요.",
+      "explanation": "habit = 습관\nDrinking water every morning is a good habit.",
+      "recovery_band": "A",
+      "test_task": "word_recall",
+      "exam_pattern": "어휘 직접쓰기",
+      "training_layer": "skill_focus",
+      "core_sentence_id": null,
+      "linked_rule_ids": []
+    },
+    {
+      "id": "CU05",
+      "type": "typed_answer",
+      "phase": "exam_prep",
+      "difficulty": "easy",
+      "keyword": "lively",
+      "instruction": "우리말과 같은 뜻이 되도록 빈칸에 알맞은 말을 쓰세요.\n\n그 파티는 음악과 춤으로 매우 활기찼다.\nThe party was very _______ with music and dancing.",
+      "correct_answer": "lively",
+      "accept_answers": [
+        "lively"
+      ],
+      "hint": "'활기 넘치는, 활발한'이라는 뜻의 형용사를 쓰세요.",
+      "explanation": "lively = 활기 넘치는, 활발한\nThe party was very lively with music and dancing.",
+      "recovery_band": "A",
+      "test_task": "word_recall",
+      "exam_pattern": "어휘 직접쓰기",
+      "training_layer": "skill_focus",
+      "core_sentence_id": null,
+      "linked_rule_ids": []
+    },
+    {
+      "id": "CU06",
+      "type": "typed_answer",
+      "phase": "exam_prep",
+      "difficulty": "easy",
+      "keyword": "nap",
+      "instruction": "우리말과 같은 뜻이 되도록 빈칸에 알맞은 말을 쓰세요.\n\n나는 점심 식사 후에 낮잠을 잤다.\nI took a _______ after lunch.",
+      "correct_answer": "nap",
+      "accept_answers": [
+        "nap"
+      ],
+      "hint": "'낮잠'이라는 뜻의 명사를 쓰세요.",
+      "explanation": "nap = 낮잠\nI took a nap after lunch.",
+      "recovery_band": "A",
+      "test_task": "word_recall",
+      "exam_pattern": "어휘 직접쓰기",
+      "training_layer": "skill_focus",
+      "core_sentence_id": null,
+      "linked_rule_ids": []
+    },
+    {
+      "id": "CU07",
+      "type": "typed_answer",
+      "phase": "exam_prep",
+      "difficulty": "easy",
+      "keyword": "without",
+      "instruction": "우리말과 같은 뜻이 되도록 빈칸에 알맞은 말을 쓰세요.\n\n나는 내 친구들 없이는 살 수 없다.\nI can't live _______ my friends.",
+      "correct_answer": "without",
+      "accept_answers": [
+        "without"
+      ],
+      "hint": "'~없이'라는 뜻의 전치사를 쓰세요.",
+      "explanation": "without = ~없이\nI can't live without my friends.",
+      "recovery_band": "A",
+      "test_task": "word_recall",
+      "exam_pattern": "어휘 직접쓰기",
+      "training_layer": "skill_focus",
+      "core_sentence_id": null,
+      "linked_rule_ids": []
+    },
+    {
+      "id": "CU08",
+      "type": "typed_answer",
+      "phase": "exam_prep",
+      "difficulty": "easy",
+      "keyword": "wake up",
+      "instruction": "우리말과 같은 뜻이 되도록 빈칸에 알맞은 말을 쓰세요.\n\n나는 매일 아침 7시에 일어난다.\nI _______ at 7 o'clock every morning.",
+      "correct_answer": "wake up",
+      "accept_answers": [
+        "wake up"
+      ],
+      "hint": "'일어나다, 깨다'라는 뜻의 두 단어를 쓰세요.",
+      "explanation": "wake up = 일어나다, 깨다\nI wake up at 7 o'clock every morning.",
+      "recovery_band": "A",
+      "test_task": "word_recall",
+      "exam_pattern": "어휘 직접쓰기",
+      "training_layer": "skill_focus",
+      "core_sentence_id": null,
+      "linked_rule_ids": []
+    },
+    {
+      "id": "HWP-TB01",
+      "type": "typed_blank",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "if조건절 빈칸",
+      "instruction": "한국어 뜻에 맞게 빈칸에 알맞은 단어를 직접 입력하세요.",
+      "hint": null,
+      "wrong_explanations": null,
+      "core_sentence_id": null,
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "recovery_band": "A",
+      "test_task": "sentence_completion",
+      "page": null,
+      "drill_stage": null,
+      "is_bridge_item": true,
+      "prompt": "If you _____ me, I will finish faster.",
+      "prompt_ko": "네가 나를 도와준다면 나는 더 빨리 끝낼 것이다.",
+      "answers": [
+        "help"
+      ],
+      "accept_typos": {
+        "help": [
+          "hlep",
+          "hepl"
+        ]
+      },
+      "exam_pattern": "서술형",
+      "training_layer": "mixed_practice",
+      "source": "HWP_핵심정리_문법"
+    },
+    {
+      "id": "HWP-TB02",
+      "type": "typed_blank",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "if조건절 빈칸",
+      "instruction": "한국어 뜻에 맞게 빈칸에 알맞은 단어를 직접 입력하세요.",
+      "hint": null,
+      "wrong_explanations": null,
+      "core_sentence_id": null,
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "recovery_band": "A",
+      "test_task": "sentence_completion",
+      "page": null,
+      "drill_stage": null,
+      "is_bridge_item": true,
+      "prompt": "If I go to the store, I _____ _____ bread.",
+      "prompt_ko": "내가 상점에 간다면 나는 빵을 살 것이다.",
+      "answers": [
+        "will",
+        "buy"
+      ],
+      "accept_typos": {
+        "will": [],
+        "buy": [
+          "byu",
+          "bui"
+        ]
+      },
+      "exam_pattern": "서술형",
+      "training_layer": "mixed_practice",
+      "source": "HWP_핵심정리_문법"
+    },
+    {
+      "id": "HWP-TB03",
+      "type": "typed_blank",
+      "phase": "exam_prep",
+      "difficulty": "hard",
+      "keyword": "if조건절 빈칸",
+      "instruction": "한국어 뜻에 맞게 빈칸에 알맞은 단어를 직접 입력하세요.",
+      "hint": "if절은 현재시제, 주절은 will + 동사원형!",
+      "wrong_explanations": null,
+      "core_sentence_id": null,
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "recovery_band": "A",
+      "test_task": "sentence_completion",
+      "page": null,
+      "drill_stage": null,
+      "is_bridge_item": true,
+      "prompt": "If she _____ dinner, I _____ _____ the dishes.",
+      "prompt_ko": "그녀가 저녁 식사를 요리한다면 나는 설거지를 할 것이다.",
+      "answers": [
+        "cooks",
+        "will",
+        "do"
+      ],
+      "accept_typos": {
+        "cooks": [
+          "cook"
+        ],
+        "will": [],
+        "do": []
+      },
+      "exam_pattern": "서술형",
+      "training_layer": "mixed_practice",
+      "source": "HWP_핵심정리_문법"
+    },
+    {
+      "id": "HWP-TB04",
+      "type": "typed_blank",
+      "phase": "exam_prep",
+      "difficulty": "hard",
+      "keyword": "if조건절 빈칸",
+      "instruction": "한국어 뜻에 맞게 빈칸에 알맞은 단어를 직접 입력하세요.",
+      "hint": "if절은 현재시제, 주절은 will + 동사원형!",
+      "wrong_explanations": null,
+      "core_sentence_id": null,
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "recovery_band": "A",
+      "test_task": "sentence_completion",
+      "page": null,
+      "drill_stage": null,
+      "is_bridge_item": true,
+      "prompt": "If you _____ _____ early, you _____ _____ the sunrise.",
+      "prompt_ko": "네가 일찍 일어난다면 너는 일출을 볼 것이다.",
+      "answers": [
+        "get",
+        "up",
+        "will",
+        "see"
+      ],
+      "accept_typos": {
+        "get": [],
+        "up": [],
+        "will": [],
+        "see": [
+          "sea"
+        ]
+      },
+      "exam_pattern": "서술형",
+      "training_layer": "mixed_practice",
+      "source": "HWP_핵심정리_문법"
+    },
+    {
+      "id": "HWP-AR01",
+      "type": "arrange",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "의문사+to부정사 배열",
+      "instruction": "괄호 안의 단어를 올바른 순서로 배열하세요.",
+      "hint": "의문사 + to + 동사원형",
+      "wrong_explanations": {
+        "default": "의문사가 맨 앞, 그 다음 to, 마지막에 동사원형이야!"
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "recovery_band": "A",
+      "test_task": "chunk_arrange",
+      "page": null,
+      "sentence_ko": "그녀는 나에게 그 의자를 어떻게 고치는지 물어봤다.",
+      "sentence": "She asked me _____ the chair.",
+      "words": [
+        "to",
+        "how",
+        "fix"
+      ],
+      "answer": "how to fix",
+      "correct": 0,
+      "exam_pattern": "배열/영작",
+      "training_layer": "mixed_practice",
+      "source": "HWP_핵심정리_문법"
+    },
+    {
+      "id": "HWP-AR02",
+      "type": "arrange",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "의문사+to부정사 배열",
+      "instruction": "괄호 안의 단어를 올바른 순서로 배열하세요.",
+      "hint": "의문사 + to + 동사원형",
+      "wrong_explanations": {
+        "default": "whom이 맨 앞! whom to ask = 누구에게 물어봐야 할지"
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "recovery_band": "A",
+      "test_task": "chunk_arrange",
+      "page": null,
+      "sentence_ko": "나는 누구에게 도움을 요청해야 할지 모르겠다.",
+      "sentence": "I don't know _____ for help.",
+      "words": [
+        "to",
+        "ask",
+        "whom"
+      ],
+      "answer": "whom to ask",
+      "correct": 0,
+      "exam_pattern": "배열/영작",
+      "training_layer": "mixed_practice",
+      "source": "HWP_핵심정리_문법"
+    },
+    {
+      "id": "HWP-AR03",
+      "type": "arrange",
+      "phase": "exam_prep",
+      "difficulty": "hard",
+      "keyword": "의문사+to부정사 배열",
+      "instruction": "괄호 안의 단어를 올바른 순서로 배열하세요.",
+      "hint": "의문사 + to + 동사원형 + 나머지",
+      "wrong_explanations": {
+        "default": "where to put이 핵심! 그 뒤에 목적어(his bag)가 와야 해."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "recovery_band": "B",
+      "test_task": "chunk_arrange",
+      "page": null,
+      "sentence_ko": "그 남자는 자기 가방을 어디에 놓아야 할지 묻고 있다.",
+      "sentence": "The man is asking _____.",
+      "words": [
+        "put",
+        "where",
+        "his",
+        "to",
+        "bag"
+      ],
+      "answer": "where to put his bag",
+      "correct": 0,
+      "exam_pattern": "배열/영작",
+      "training_layer": "mixed_practice",
+      "source": "HWP_핵심정리_문법"
+    },
+    {
+      "id": "HWP-AR04",
+      "type": "arrange",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "의문사+to부정사 배열",
+      "instruction": "괄호 안의 단어를 올바른 순서로 배열하세요.",
+      "hint": "의문사 + to + 동사원형",
+      "wrong_explanations": {
+        "default": "what이 맨 앞, 그 다음 to, 마지막 buy!"
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "recovery_band": "A",
+      "test_task": "chunk_arrange",
+      "page": null,
+      "sentence_ko": "나는 엄마를 위해 무엇을 사야 할지 생각하고 있다.",
+      "sentence": "I am thinking about _____ for my mom.",
+      "words": [
+        "buy",
+        "what",
+        "to"
+      ],
+      "answer": "what to buy",
+      "correct": 0,
+      "exam_pattern": "배열/영작",
+      "training_layer": "mixed_practice",
+      "source": "HWP_핵심정리_문법"
     }
   ],
   "vocab_drill": [
@@ -4917,199 +5359,246 @@ __loadLesson({
       "id": "VD-L1-001",
       "word": "lively",
       "pos": "형용사",
-      "meaning": "활기 넘치는, 활발한"
+      "meaning": "활기 넘치는, 활발한",
+      "example": "The party was very lively with music and dancing."
     },
     {
       "id": "VD-L1-002",
       "word": "regularly",
       "pos": "부사",
-      "meaning": "규칙적으로"
+      "meaning": "규칙적으로",
+      "example": "Listen to your body clock and sleep regularly."
     },
     {
       "id": "VD-L1-003",
       "word": "healthier",
       "pos": "형용사",
-      "meaning": "더 건강한 (healthy의 비교급)"
+      "meaning": "더 건강한 (healthy의 비교급)",
+      "example": "You will feel healthier."
     },
     {
       "id": "VD-L1-004",
       "word": "cause",
       "pos": "동사",
-      "meaning": "일으키다, ~의 원인이 되다"
+      "meaning": "일으키다, ~의 원인이 되다",
+      "example": "Stress can cause illnesses."
     },
     {
       "id": "VD-L1-005",
       "word": "hide",
       "pos": "동사",
-      "meaning": "숨다, 숨어 있다 (hides)"
+      "meaning": "숨다, 숨어 있다 (hides)",
+      "example": "Caffeine can hide in many foods and drinks."
     },
     {
       "id": "VD-L1-006",
       "word": "such as",
       "pos": "숙어",
-      "meaning": "~와 같은, 예를 들어"
+      "meaning": "~와 같은, 예를 들어",
+      "example": "Caffeine hides in many foods and drinks such as chocolate, coffee, and tea."
     },
     {
       "id": "VD-L1-007",
       "word": "active",
       "pos": "형용사",
-      "meaning": "활발한, 활동적인"
+      "meaning": "활발한, 활동적인",
+      "example": "If you use your smartphone late at night, your brain will stay active."
     },
     {
       "id": "VD-L1-008",
       "word": "stay active",
       "pos": "숙어",
-      "meaning": "활발한 상태를 유지하다"
+      "meaning": "활발한 상태를 유지하다",
+      "example": "If you use your smartphone late at night, your brain will stay active."
     },
     {
       "id": "VD-L1-009",
       "word": "yet",
       "pos": "부사",
-      "meaning": "아직"
+      "meaning": "아직",
+      "example": "The blue light from the phone will tell your brain, \"Hey, don't sleep yet.\""
     },
     {
       "id": "VD-L1-010",
       "word": "fall asleep",
       "pos": "숙어",
-      "meaning": "잠들다"
+      "meaning": "잠들다",
+      "example": "You will fall asleep easily at night."
     },
     {
       "id": "VD-L1-011",
       "word": "easily",
       "pos": "부사",
-      "meaning": "쉽게"
+      "meaning": "쉽게",
+      "example": "You will fall asleep easily at night."
     },
     {
       "id": "VD-L1-012",
       "word": "remember",
       "pos": "동사",
-      "meaning": "기억하다"
+      "meaning": "기억하다",
+      "example": "I can't remember her name right now."
     },
     {
       "id": "VD-L1-013",
       "word": "finish",
       "pos": "동사",
-      "meaning": "끝내다, 마치다"
+      "meaning": "끝내다, 마치다",
+      "example": "Remember to finish exercising a few hours before bedtime."
     },
     {
       "id": "VD-L1-014",
       "word": "a few",
       "pos": "한정사",
-      "meaning": "몇, 약간의"
+      "meaning": "몇, 약간의",
+      "example": "She asked me a few questions."
     },
     {
       "id": "VD-L1-015",
       "word": "bedtime",
       "pos": "명사",
-      "meaning": "취침 시간"
+      "meaning": "취침 시간",
+      "example": "I always brush my teeth before bedtime."
     },
     {
       "id": "VD-L1-016",
       "word": "I'm planning to",
       "pos": "표현",
-      "meaning": "나는 ~할 계획이야"
+      "meaning": "나는 ~할 계획이야",
+      "example": "I'm planning to exercise more."
     },
     {
       "id": "VD-L1-017",
       "word": "find out",
       "pos": "숙어",
-      "meaning": "알아내다"
+      "meaning": "알아내다",
+      "example": "Let's find out what to do."
     },
     {
       "id": "VD-L1-018",
       "word": "habit",
       "pos": "명사",
-      "meaning": "습관"
+      "meaning": "습관",
+      "example": "Drinking water every morning is a good habit."
     },
     {
       "id": "VD-L1-019",
       "word": "pattern",
       "pos": "명사",
-      "meaning": "양식, 패턴, 규칙"
+      "meaning": "양식, 패턴, 규칙",
+      "example": "Evenings in our house follow a set pattern."
     },
     {
       "id": "VD-L1-020",
       "word": "regular",
       "pos": "형용사",
-      "meaning": "규칙적인"
+      "meaning": "규칙적인",
+      "example": "Regular exercise is important for good health."
     },
     {
       "id": "VD-L1-021",
       "word": "careful",
       "pos": "형용사",
-      "meaning": "조심하는, 주의하는"
+      "meaning": "조심하는, 주의하는",
+      "example": "Be careful when you cross the street."
     },
     {
       "id": "VD-L1-022",
       "word": "late at night",
       "pos": "숙어",
-      "meaning": "밤늦게"
+      "meaning": "밤늦게",
+      "example": "If you use your smartphone late at night, your brain will stay active."
     },
     {
       "id": "VD-L1-023",
       "word": "wake up",
       "pos": "숙어",
-      "meaning": "일어나다, 깨다"
+      "meaning": "일어나다, 깨다",
+      "example": "I wake up at 7 o'clock every morning."
     },
     {
       "id": "VD-L1-024",
       "word": "awake",
       "pos": "형용사",
-      "meaning": "깨어 있는"
+      "meaning": "깨어 있는",
+      "example": "He was awake all night."
     },
     {
       "id": "VD-L1-025",
       "word": "asleep",
       "pos": "형용사",
-      "meaning": "잠이 든"
+      "meaning": "잠이 든",
+      "example": "You will fall asleep easily at night."
     },
     {
       "id": "VD-L1-026",
       "word": "without",
       "pos": "전치사",
-      "meaning": "~없이"
+      "meaning": "~없이",
+      "example": "I can't live without my friends."
     },
     {
       "id": "VD-L1-027",
       "word": "goal",
       "pos": "명사",
-      "meaning": "목표"
+      "meaning": "목표",
+      "example": "My goal is to learn Spanish."
     },
     {
       "id": "VD-L1-028",
       "word": "nap",
       "pos": "명사",
-      "meaning": "낮잠"
+      "meaning": "낮잠",
+      "example": "I took a nap after lunch."
     },
     {
       "id": "VD-L1-029",
       "word": "comfortable",
       "pos": "형용사",
-      "meaning": "편안한"
+      "meaning": "편안한",
+      "example": "You will feel comfortable, and you will fall asleep easily."
     },
     {
       "id": "VD-L1-030",
       "word": "rest",
       "pos": "명사/동사",
-      "meaning": "휴식, 쉬다"
+      "meaning": "휴식, 쉬다",
+      "example": "A short nap in the afternoon can help you rest."
     },
     {
       "id": "VD-L1-031",
       "word": "run for",
       "pos": "숙어",
-      "meaning": "~에 출마하다"
+      "meaning": "~에 출마하다",
+      "example": "I have a goal to run for class president."
     },
     {
       "id": "VD-L1-032",
       "word": "president",
       "pos": "명사",
-      "meaning": "회장, 대통령"
+      "meaning": "회장, 대통령",
+      "example": "I have a goal to run for class president."
     },
     {
       "id": "VD-L1-033",
       "word": "what to do",
       "pos": "표현",
-      "meaning": "무엇을 해야 할지"
+      "meaning": "무엇을 해야 할지",
+      "example": "Let's find out what to do."
+    },
+    {
+      "id": "VD-L1-034",
+      "word": "leader",
+      "pos": "명사",
+      "meaning": "리더, 지도자",
+      "example": "He is a great leader of our team."
+    },
+    {
+      "id": "VD-L1-035",
+      "word": "safety",
+      "pos": "명사",
+      "meaning": "안전",
+      "example": "The school cares about the safety of students."
     }
   ],
   "grammar_rules": [

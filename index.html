@@ -869,6 +869,8 @@
         .vocab-word { font-size: 32px; font-weight: 700; color: #2F5496; }
         .vocab-meaning { font-size: 22px; font-weight: 600; color: #333; }
         .vocab-pos { font-size: 14px; color: #888; margin-top: 8px; }
+        .vocab-example { font-size: 13px; color: #666; margin-top: 10px; line-height: 1.5; font-style: italic; }
+        .vocab-highlight { background: #FFF3B0; color: #333; padding: 1px 3px; border-radius: 3px; font-style: normal; font-weight: 600; }
         .vocab-progress-bar { width: 100%; height: 6px; background: #e0e0e0; border-radius: 3px; margin-bottom: 12px; overflow: hidden; }
         .vocab-progress-fill { height: 100%; background: #4CAF50; border-radius: 3px; transition: width 0.3s; }
         .vocab-counter { font-size: 13px; color: #888; text-align: center; margin-bottom: 8px; }
@@ -3081,7 +3083,12 @@
 
         // Arrange 유형
         function showArrange(q) {
-            document.getElementById('question-text').textContent = q.sentence_ko;
+            const qText = document.getElementById('question-text');
+            let arrangeHtml = q.sentence_ko;
+            if (q.sentence) {
+                arrangeHtml += '<div style="margin-top:6px;color:#2F5496;font-size:0.95em;">' + q.sentence.replace(/_____/g, '<span style="border-bottom:2px solid #2F5496;padding:0 12px;">?</span>') + '</div>';
+            }
+            qText.innerHTML = arrangeHtml;
             const container = document.getElementById('arrange-container');
             container.style.display = 'block';
 
@@ -4177,9 +4184,14 @@
             const container = document.getElementById('typed-blank-container');
             container.style.display = 'block';
 
-            // Show prompt with blanks highlighted
+            // Show Korean prompt if available
             const promptEl = document.getElementById('typed-blank-prompt');
-            promptEl.innerHTML = q.prompt.replace(/_____/g, '<span style="border-bottom:2px solid #2F5496;padding:0 20px;color:#2F5496;font-weight:600;">?</span>');
+            let promptHtml = '';
+            if (q.prompt_ko) {
+                promptHtml += '<div style="color:#555;font-size:0.95em;margin-bottom:8px;">' + q.prompt_ko + '</div>';
+            }
+            promptHtml += q.prompt.replace(/_____/g, '<span style="border-bottom:2px solid #2F5496;padding:0 20px;color:#2F5496;font-weight:600;">?</span>');
+            promptEl.innerHTML = promptHtml;
 
             // Create input fields for each blank
             const inputsDiv = document.getElementById('typed-blank-inputs');
@@ -4431,7 +4443,13 @@
                 backHtml += '<div class="flashcard-tap-hint">탭하면 단어 보기</div>';
                 back.innerHTML = backHtml;
             } else {
-                back.innerHTML = '<div class="vocab-meaning">' + item.meaning + '</div><div class="vocab-pos">' + item.pos + '</div><div class="flashcard-tap-hint">탭하면 영어 보기</div>';
+                let engBackHtml = '<div class="vocab-meaning">' + item.meaning + '</div><div class="vocab-pos">' + item.pos + '</div>';
+                if (item.example) {
+                    const highlighted = item.example.replace(new RegExp('(' + item.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<mark class="vocab-highlight">$1</mark>');
+                    engBackHtml += '<div class="vocab-example">' + highlighted + '</div>';
+                }
+                engBackHtml += '<div class="flashcard-tap-hint">탭하면 영어 보기</div>';
+                back.innerHTML = engBackHtml;
             }
 
             // TTS: 국어는 비활성화

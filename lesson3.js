@@ -304,7 +304,8 @@ __loadLesson({
           "explian",
           "explainn"
         ]
-      }
+      },
+      "prompt_ko": "그것에 대해 더 설명해 줄 수 있어?"
     },
     {
       "id": "D-CS02-01",
@@ -407,7 +408,8 @@ __loadLesson({
           "highist",
           "highist"
         ]
-      }
+      },
+      "prompt_ko": "나는 빨간 로켓이 가장 높이 갈 거라고 확신해."
     },
     {
       "id": "D-CS03-01",
@@ -519,7 +521,8 @@ __loadLesson({
           "inventd",
           "inveted"
         ]
-      }
+      },
+      "prompt_ko": "그녀가 초콜릿 칩 쿠키를 발명했어!"
     },
     {
       "id": "D-CS04-01",
@@ -636,7 +639,8 @@ __loadLesson({
           "Thoug",
           "Thougth"
         ]
-      }
+      },
+      "prompt_ko": "처음에는 실망했지만, 그녀의 새 쿠키는 너무 맛있었다."
     },
     {
       "id": "D-CS05-01",
@@ -753,7 +757,8 @@ __loadLesson({
           "brokan",
           "brokne"
         ]
-      }
+      },
+      "prompt_ko": "유리 플라스크가 산산조각이 났지만, 조각들은 여전히 플라스크 모양을 유지하고 있었다."
     },
     {
       "id": "D-CS06-01",
@@ -857,7 +862,8 @@ __loadLesson({
           "liqudi",
           "licuid"
         ]
-      }
+      },
+      "prompt_ko": "비밀은 플라스크 안의 액체 플라스틱이었다."
     },
     {
       "id": "D-CS07-01",
@@ -960,7 +966,8 @@ __loadLesson({
           "findng",
           "fiding"
         ]
-      }
+      },
+      "prompt_ko": "이 발견은 그의 안전유리 발명으로 이어졌다."
     },
     {
       "id": "D-CS08-01",
@@ -1072,7 +1079,8 @@ __loadLesson({
           "diry",
           "dirty"
         ]
-      }
+      },
+      "prompt_ko": "식탁보의 더러운 얼룩이 램프 기름에 의해 깨끗해졌다."
     },
     {
       "id": "D-CS09-01",
@@ -1176,7 +1184,8 @@ __loadLesson({
           "discvery",
           "descobery"
         ]
-      }
+      },
+      "prompt_ko": "그의 발견은 옷을 세탁하는 새로운 방법으로 이어졌다."
     },
     {
       "id": "D-CS10-01",
@@ -1280,7 +1289,8 @@ __loadLesson({
           "wanderful",
           "wonderfl"
         ]
-      }
+      },
+      "prompt_ko": "이 놀라운 발명품들은 우연히 만들어졌다."
     },
     {
       "id": "D-CS11-01",
@@ -1384,7 +1394,8 @@ __loadLesson({
           "disappointd",
           "disapponted"
         ]
-      }
+      },
+      "prompt_ko": "일이 잘못되어도 실망하지 마."
     },
     {
       "id": "D-CS12-01",
@@ -1496,7 +1507,8 @@ __loadLesson({
           "spokne",
           "spokn"
         ]
-      }
+      },
+      "prompt_ko": "영어는 많은 나라에서 사용된다."
     },
     {
       "id": "D-CS13-01",
@@ -1613,7 +1625,8 @@ __loadLesson({
           "Thoug",
           "Thougth"
         ]
-      }
+      },
+      "prompt_ko": "실수를 하더라도 나는 포기하지 않는다."
     },
     {
       "id": "D-CS14-01",
@@ -1716,7 +1729,8 @@ __loadLesson({
           "answre",
           "anser"
         ]
-      }
+      },
+      "prompt_ko": "나는 네가 답을 찾을 수 있다고 확신해."
     },
     {
       "id": "R001",

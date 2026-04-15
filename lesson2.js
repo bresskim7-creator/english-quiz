@@ -276,7 +276,8 @@ __loadLesson({
           "wolk",
           "wakl"
         ]
-      }
+      },
+      "prompt_ko": "Bob은 Bobby에게 걷는 법을 가르쳐 준 사람이었다."
     },
     {
       "id": "D-CS02-01",
@@ -379,7 +380,8 @@ __loadLesson({
           "fot",
           "fooot"
         ]
-      }
+      },
+      "prompt_ko": "이제 한 발, 이제 다른 발."
     },
     {
       "id": "D-CS03-01",
@@ -489,7 +491,8 @@ __loadLesson({
           "blcok",
           "blok"
         ]
-      }
+      },
+      "prompt_ko": "놓을 블록이 하나 더 있어."
     },
     {
       "id": "D-CS04-01",
@@ -604,7 +607,8 @@ __loadLesson({
         "far": [
           "fer"
         ]
-      }
+      },
+      "prompt_ko": "그는 여기서 멀리 떨어진 병원에 있어."
     },
     {
       "id": "D-CS05-01",
@@ -711,7 +715,8 @@ __loadLesson({
           "tolk",
           "tak"
         ]
-      }
+      },
+      "prompt_ko": "그는 팔다리를 움직일 수 없고, 말도 할 수 없어."
     },
     {
       "id": "D-CS06-01",
@@ -827,7 +832,8 @@ __loadLesson({
           "buld",
           "biuld"
         ]
-      }
+      },
+      "prompt_ko": "Bob, 탑을 세울 시간이야!"
     },
     {
       "id": "D-CS07-01",
@@ -936,7 +942,8 @@ __loadLesson({
           "recuver",
           "recovr"
         ]
-      }
+      },
+      "prompt_ko": "그 순간, Bobby는 Bob이 곧 회복할 것이라고 깨달았다."
     },
     {
       "id": "D-CS08-01",
@@ -1039,7 +1046,8 @@ __loadLesson({
           "leened",
           "lened"
         ]
-      }
+      },
+      "prompt_ko": "Bob은 Bobby의 어깨에 기대었다."
     },
     {
       "id": "D-CS09-01",
@@ -1147,7 +1155,8 @@ __loadLesson({
           "siad",
           "seid"
         ]
-      }
+      },
+      "prompt_ko": "내가 어렸을 때, 넌 내 손을 잡고 이 말을 했어."
     },
     {
       "id": "D-CS10-01",
@@ -1250,7 +1259,8 @@ __loadLesson({
           "okey",
           "ok"
         ]
-      }
+      },
+      "prompt_ko": "내가 야구 경기를 보러 가도 괜찮을까?"
     },
     {
       "id": "D-CS11-01",
@@ -1353,7 +1363,8 @@ __loadLesson({
           "affraid",
           "afrid"
         ]
-      }
+      },
+      "prompt_ko": "유감이지만 안 돼."
     },
     {
       "id": "D-CS12-01",
@@ -1455,7 +1466,8 @@ __loadLesson({
           "tiem",
           "timme"
         ]
-      }
+      },
+      "prompt_ko": "런던은 몇 시야?"
     },
     {
       "id": "D-CS13-01",
@@ -1558,7 +1570,8 @@ __loadLesson({
           "qaurter",
           "quartar"
         ]
-      }
+      },
+      "prompt_ko": "6시 15분이야."
     },
     {
       "id": "A001",
