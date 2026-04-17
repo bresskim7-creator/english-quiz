@@ -1956,11 +1956,11 @@ __loadLesson({
       "difficulty": "medium",
       "keyword": null,
       "instruction": "다음 글을 읽고 질문에 답하세요.",
-      "hint": "드라이클리닝의 '발견'에 대해 다시 읽으세요.",
+      "hint": "Mr. Jolly가 오일을 '일부러' 썼는지 '우연히' 본 건지 확인해!",
       "wrong_explanations": {
-        "2": "💡 누가 실수로 오일을 쏟았습니까?",
-        "3": "💡 'Dry cleaning'이 이미 존재했습니까?",
-        "0": "'오일이 옷을 깨끗하게 할 수 있다는 것을 발견했다'는 과학적 발견처럼 들리는데, 여기선 사실 '쿠키 반죽에 버터나 기름이 흘렀을 때'의 상황이야. 맥락 미스매치."
+        "0": "⚡함정! 본문 첫 문장에 'accidentally spilled lamp oil' 그대로 나와. 실수로 쏟았다는 건 본문과 일치하는 내용이야. 이 문제는 '일치하지 않는 것'을 고르는 거라서 일치 보기를 고르면 안 돼!",
+        "2": "⚡함정! 본문에 'the dirty spot was clean'이 그대로 있어. 더러운 자국이 깨끗해졌다는 건 본문과 일치. '불일치' 답이 아니야!",
+        "3": "⚡함정! 마지막 문장 'the beginning of modern dry cleaning' 그대로야. 이 발견이 드라이클리닝의 시작이 됐다는 건 본문과 일치하는 내용이야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -1969,12 +1969,12 @@ __loadLesson({
       "page": [
         2
       ],
-      "sentence": "Mr. Jolly deliberately tested lamp oil on a dirty tablecloth and found it could clean the fabric. This discovery was the beginning of dry cleaning, which is now widely used around the world.\n\nQ. 다음 중 원문과 맞지 않는 것은?",
+      "sentence": "In the 1800s, a factory worker accidentally spilled lamp oil on a tablecloth. Mr. Jolly, the manager, saw that the dirty spot was clean. He realized that oil could clean clothes better than water. This surprising discovery became the beginning of modern dry cleaning.\n\nQ. 다음 중 글의 내용과 일치하지 않는 것은?",
       "choices": [
-        "오일이 옷을 깨끗하게 할 수 있다는 것을 발견했다",
-        "Mr. Jolly가 의도적으로 오일을 테스트했다",
-        "그 결과가 드라이클리닝의 시작이 되었다",
-        "지금 드라이클리닝이 널리 사용된다"
+        "공장 직원이 실수로 램프 오일을 쏟았다",
+        "Mr. Jolly가 오일을 일부러 실험했다",
+        "더러운 자국이 깨끗해졌다",
+        "이 발견이 현대 드라이클리닝의 시작이 되었다"
       ],
       "correct": 1,
       "exam_pattern": "내용 불일치",
@@ -3988,9 +3988,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어의 올바른 형태를 고르세요.",
       "hint": "mistake의 어형 변화",
       "wrong_explanations": {
-        "1": "mistaken(실수한)은 형용사야!",
-        "2": "mistakenly(실수로)은 답이 아니야!",
-        "3": "mistakes = 실수!"
+        "1": "mistaken(실수한)은 형용사야! Making 뒤엔 명사 복수형이 와야 해!",
+        "2": "mistakenly(실수로)는 부사야! 명사 자리에 부사는 못 와!",
+        "3": "mistaking은 -ing형(동사 형태)이야! Making의 목적어엔 명사 복수형이 맞아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4017,9 +4017,9 @@ __loadLesson({
       "instruction": "문맥에 맞는 단어의 올바른 형태를 고르세요.",
       "hint": "mix의 어형 변화",
       "wrong_explanations": {
-        "1": "mixture(혼합물)은 명사야!",
-        "2": "mixed(섞인)은 답이 아니야!",
-        "3": "mixing(섞은 답이 아니야!"
+        "1": "mixture(혼합물)는 명사야! had to 뒤엔 동사원형이 와야지!",
+        "2": "mixed(섞인)는 과거분사야! had to 뒤엔 동사원형이 필요해!",
+        "3": "mixing(섞는 중)은 -ing형이야! had to 뒤엔 동사원형 mix가 와야 해!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4218,11 +4218,11 @@ __loadLesson({
       "difficulty": "hard",
       "keyword": "n번째 단어 1",
       "instruction": "다음 문장에서 3번째 단어를 고르세요.",
-      "hint": "'By chance' 다음에 오는 단어",
+      "hint": "By(1) chance(2) 다음 단어",
       "wrong_explanations": {
-        "2": "'chance'은 답이 아니야!",
-        "3": "'Ruth'가 세 번째 단어야!",
-        "0": "'discovered'는 '발견했다'는 과거형인데, 시제 문맥과 안 맞을 수 있어. 문장 구조에서 요구하는 다른 시제나 형태를 확인해야 해."
+        "0": "'discovered'는 4번째 단어야! 3번째 단어를 하나 넘겼어!",
+        "2": "'a'는 5번째 단어야! 두 개 넘겼어 — 앞에서부터 천천히 세어보자!",
+        "3": "'new'는 6번째 단어야! 세 개 넘겼어 — 앞에서부터 하나씩 세어봐!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4247,11 +4247,11 @@ __loadLesson({
       "difficulty": "hard",
       "keyword": "n번째 단어 2",
       "instruction": "다음 문장에서 5번째 단어를 고르세요.",
-      "hint": "단어를 하나씩 세어보세요",
+      "hint": "Although(1) the(2) glass(3) flask(4) 다음 단어",
       "wrong_explanations": {
-        "1": "'Although'은 답이 아니야!",
-        "2": "'the'은 답이 아니야!",
-        "3": "'flask'은 답이 아니야!"
+        "0": "'glass'는 3번째 단어야! Although(1) the(2) glass(3) — 두 개 모자라!",
+        "1": "'broken'은 6번째 단어야! was(5) 다음이 broken(6) — 하나 넘겼어!",
+        "3": "'it'은 7번째 단어야! 쉼표 뒤로 넘어갔잖아 — 앞에서부터 다시 세어봐!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -4265,7 +4265,7 @@ __loadLesson({
         "was",
         "it"
       ],
-      "correct": 0,
+      "correct": 2,
       "exam_pattern": "n번째 단어",
       "training_layer": "skill_focus"
     },
@@ -4689,6 +4689,12 @@ __loadLesson({
       "word": "spill",
       "pos": "동사",
       "meaning": "엎지르다, 흘리다"
+    },
+    {
+      "id": "VD-L3-036",
+      "word": "cloth",
+      "pos": "명사",
+      "meaning": "천, 옷감 (주의: clothes=옷(복수), tablecloth=식탁보 — 셋 다 다른 단어!)"
     }
   ],
   "grammar_rules": [
