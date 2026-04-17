@@ -1801,11 +1801,11 @@ __loadLesson({
       "difficulty": "easy",
       "keyword": null,
       "instruction": "다음 글을 읽고 질문에 답하세요.",
-      "hint": "드라이클리닝이 어떤 물질을 사용하는지 찾으세요.",
+      "hint": "'Dry cleaning uses ___.' 한 문장을 다시 보자.",
       "wrong_explanations": {
-        "1": "💡 물질의 이름을 다시 읽어!. 무엇으로 세척합니까?",
-        "3": "💡 1800년대에 누가 발견했습니까?",
-        "0": "물로'라는 전치사가 뒤에 오는데, 단어가 아니라 '뭘로, 뭔가로' 같은 감정 표현과 헷갈리기 쉬워. 여기선 '물질, 액체'를 의미하는 'water'의 구어적 표현이야."
+        "0": "⚡함정! 'without water'가 바로 나와. 물로 세척한다는 건 지문과 정반대야!",
+        "1": "비눗물은 지문에 아예 나오지도 않아. 지문에 없는 단어는 정답 아님!",
+        "3": "⚡함정! 드라이클리닝이 일반 세탁과 다르다고 '특별한 약품'으로 착각하기 쉬워. 지문이 말하는 건 'oil' 딱 하나야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -1814,10 +1814,10 @@ __loadLesson({
       "page": [
         2
       ],
-      "sentence": "Can you clean clothes without water? Yes! Dry cleaning uses oil. In the 1800s, a factory worker spilled lamp oil on a tablecloth. Mr. Jolly, the manager, saw something amazing—the dirty spot was clean! He discovered that oil could clean clothes better than water. This led to modern dry cleaning.\n\nQ. 드라이클리닝은 무엇으로 옷을 세척합니까?",
+      "sentence": "Can you clean clothes without water? Yes! Dry cleaning uses oil. In the 1800s, a factory worker spilled lamp oil on a tablecloth. Mr. Jolly, the manager, saw something amazing—the dirty spot was clean! He discovered that oil could clean clothes better than water. This led to modern dry cleaning.\n\nQ. 드라이클리닝은 물 대신 무엇으로 옷을 세척합니까?",
       "choices": [
         "물로",
-        "램프 오일로",
+        "비눗물로",
         "오일로",
         "특별한 화학 약품으로"
       ],
@@ -1987,11 +1987,11 @@ __loadLesson({
       "difficulty": "medium",
       "keyword": null,
       "instruction": "다음 글을 읽고 질문에 답하세요.",
-      "hint": "세 발명이 '모두' 어떻게 나타났는지 확인하세요.",
+      "hint": "세 발명이 '어떻게' 나타났는지에 집중하세요.",
       "wrong_explanations": {
-        "2": "💡 'Although' 부분을 다시 읽어 봐!.",
-        "3": "💡 세 번째 발명이 어떻게 발견되었습니까?",
-        "0": "'초콜릿 칩 쿠키가 발명되었다'는 맞는 것처럼 들리지만, 정확히는 '버터가 부족해서 초콜릿으로 대체한 결과' 발명된 거야. 직접적 인과관계와 우연의 발견의 차이."
+        "0": "💡 지문 첫 문장을 다시 봐. 세 발명이 'came about by chance'라고 했지.",
+        "2": "💡 Ms. Wakefield는 쿠키를 만들다 일어난 사건의 주인공이야. 지문에도 이름이 나와.",
+        "3": "💡 지문 마지막 문장이 'amazing results'로 마무리되잖아. 우연이 결과로 이어졌다는 뜻이야."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -2000,12 +2000,12 @@ __loadLesson({
       "page": [
         2
       ],
-      "sentence": "All three inventions—chocolate chip cookies, safety glass, and dry cleaning—were created through planned scientific experiments. Each inventor knew exactly what they were trying to achieve and succeeded on their first attempt.\n\nQ. 다음 중 글의 내용과 맞지 않는 것은?",
+      "sentence": "Three wonderful inventions—chocolate chip cookies, safety glass, and dry cleaning—came about by chance. Ms. Wakefield, Mr. Benedictus, and Mr. Jolly did not plan these discoveries. Their accidents led to amazing results.\n\nQ. 다음 중 글의 내용과 일치하지 않는 것은?",
       "choices": [
-        "초콜릿 칩 쿠키가 발명되었다",
-        "안전 유리가 계획된 실험으로 만들어졌다",
-        "세 발명이 우연으로 나타났다",
-        "각 발명가가 최종적으로 성공했다"
+        "세 발명은 우연으로 나타났다",
+        "이 발명들은 계획된 실험의 결과이다",
+        "Ms. Wakefield는 발명가 중 한 명이다",
+        "우연한 사건이 놀라운 결과로 이어졌다"
       ],
       "correct": 1,
       "exam_pattern": "내용 불일치",
@@ -2018,11 +2018,11 @@ __loadLesson({
       "difficulty": "medium",
       "keyword": null,
       "instruction": "다음 글을 읽고 질문에 답하세요.",
-      "hint": "안전 유리의 사용처에 대해 다시 읽으세요.",
+      "hint": "안전 유리가 '어디에' 쓰이는지에 집중하세요.",
       "wrong_explanations": {
-        "2": "💡 텍스트는 비행기에 대해 말합니까?",
-        "3": "💡 안전 유리가 사람들을 '어떻게' 안전하게 합니까?",
-        "0": "'안전 유리가 발명되었다'는 맞는 데 왜 틀렸냐고 생각할 수 있는데, 실제로는 '액체 플라스틱의 우연한 발견에서 비롯된' 응용으로 발명된 거야. 원점이 다르다는 게 핵심."
+        "0": "💡 지문 두 번째 문장에 'used for car windows'라고 명시돼 있어.",
+        "1": "💡 지문 마지막 문장에 'safer from sharp pieces of glass'라고 나와.",
+        "3": "💡 지문에 'safer from sharp pieces of glass'라고 나오니까 맞는 진술이야."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -2031,14 +2031,14 @@ __loadLesson({
       "page": [
         2
       ],
-      "sentence": "Safety glass is primarily used in airplanes and buildings to protect people from accidents. Car windows do not use safety glass because they break easily and cause serious injuries.\n\nQ. 다음 중 원문과 다른 것은?",
+      "sentence": "These days, safety glass is used everywhere. For example, it is used for car windows. If there is a car accident, people are safer from sharp pieces of glass.\n\nQ. 다음 중 글의 내용과 일치하지 않는 것은?",
       "choices": [
-        "안전 유리가 발명되었다",
-        "자동차 창문이 안전 유리로 만들어진다",
-        "안전 유리는 사람들을 보호한다",
-        "예상치 못한 발견이 안전 유리를 만들었다"
+        "안전 유리는 자동차 창문에 사용된다",
+        "사고 시 안전 유리가 사람들을 더 안전하게 한다",
+        "안전 유리는 오늘날 거의 사용되지 않는다",
+        "날카로운 유리 조각으로부터 사람들을 보호한다"
       ],
-      "correct": 1,
+      "correct": 2,
       "exam_pattern": "내용 불일치",
       "training_layer": "mixed_practice"
     },
@@ -2332,7 +2332,7 @@ __loadLesson({
       "instruction": "어법상 올바른 문장을 고르세요.",
       "hint": "과거 사건이므로 'was' 또는 'were' + 과거분사를 찾으세요.",
       "wrong_explanations": {
-        "0": "'created' = 과거분사! 여기는 다른 형태 필요해. 시간 표시를 다시 읽어!.!",
+        "0": "💡 'created'만 쓰면 능동태(만들었다)가 돼! 주어가 만들어진 거니까 'was created'(수동태)로 써야 해.",
         "3": "💡 'creating'은 동명사이지 수동태가 아닙니다.",
         "2": "'Safety glass has created by Mr. Benedictus in 1903'는 수동태 형태가 틀렸어. 'has been created' 또는 'was created'여야 하는데, 문법적으로 주체와 시제가 안 맞아."
       },
@@ -2363,11 +2363,11 @@ __loadLesson({
       "difficulty": "easy",
       "keyword": "although",
       "instruction": "어법상 올바른 문장을 고르세요.",
-      "hint": "'although'(양보절) + 문장이 정확한 형태입니다. 'but'과 함께 쓸 수 없습니다.",
+      "hint": "'although'는 양보 접속사로 'but'과 함께 쓸 수 없습니다. 뒤에 바로 절이 이어져야 합니다.",
       "wrong_explanations": {
-        "1": "💡 'although'와 'but'을 함께 쓸 수 없습니다.",
-        "2": "💡 'although'는 종속절이므로 '콤마 + but'이 필요하지 않습니다.",
-        "3": "💡 'although'의 용법을 다시 확인해!."
+        "1": "💡 'although'와 'but'을 함께 쓸 수 없어! 둘 중 하나만 써야 해.",
+        "2": "💡 'even'만으로는 양보절을 만들 수 없어! 'even though'로 써야 해.",
+        "3": "💡 'despite' 뒤에는 명사(구)만 올 수 있어! 절(주어+동사)이 오려면 'although'를 써야 해."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2382,8 +2382,8 @@ __loadLesson({
       "choices": [
         "Although she was disappointed at first, her new cookies were so delicious.",
         "Although she was disappointed at first, but her new cookies were so delicious.",
-        "Although she was disappointed at first; her new cookies were so delicious.",
-        "Though she was disappointed at first, but her new cookies were so delicious."
+        "Even she was disappointed at first, her new cookies were so delicious.",
+        "Despite she was disappointed at first, her new cookies were so delicious."
       ],
       "correct": 0,
       "exam_pattern": "어법 판정",
@@ -2396,11 +2396,11 @@ __loadLesson({
       "difficulty": "easy",
       "keyword": "although",
       "instruction": "어법상 올바른 문장을 고르세요.",
-      "hint": "'Although' 구문과 주절의 형태를 확인하세요.",
+      "hint": "'although'는 양보 접속사입니다. 'but'과 함께 쓸 수 없고, 뒤에는 절이 와야 합니다.",
       "wrong_explanations": {
-        "1": "💡 'Although'에 'but'을 함께 쓰는 것은 틀렸습니다.",
-        "2": "💡 'Although'의 다음은 완전한 '명사절'이 와야 합니다.",
-        "3": "💡 이것은 'although' 용법이 아닙니다."
+        "1": "💡 'although'와 'but'을 함께 쓸 수 없어! 둘 중 하나만 써야 해.",
+        "2": "💡 'despite' 뒤에는 명사(구)만 와야 해. 절(주어+동사)이 오면 안 돼!",
+        "3": "💡 'although' 뒤 절에는 동사가 꼭 필요해! 여기서는 'was'가 빠졌어."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2413,10 +2413,10 @@ __loadLesson({
       ],
       "sentence": "다음 중 어법상 올바른 것은?",
       "choices": [
-        "Although the glass pieces scattered, they still held together in the shape of the flask.",
-        "Although the glass pieces scattered, but they still held together in the shape of the flask.",
-        "Although the glass pieces scattered. They still held together in the shape of the flask.",
-        "Although the glass pieces, they still held together in the shape of the flask."
+        "Although the glass flask was broken into pieces, they still held together in the shape of the flask.",
+        "Although the glass flask was broken into pieces, but they still held together in the shape of the flask.",
+        "Despite the glass flask was broken into pieces, they still held together in the shape of the flask.",
+        "Although the glass flask broken into pieces, they still held together in the shape of the flask."
       ],
       "correct": 0,
       "exam_pattern": "어법 판정",
@@ -2662,9 +2662,9 @@ __loadLesson({
       "instruction": "다음 중 'by'의 용법이 다른 것을 고르세요.",
       "hint": "'by accident' = 우연히 | 'by + 행위자' = 수동태에서 '~에 의해'",
       "wrong_explanations": {
-        "2": "이것은 '~에 의해'은 '행위자'를 나타내!.",
-        "3": "이것은 '~에 의해'은 '행위자'를 나타내!.",
-        "1": "'was invented by Mr. Benedictus'는 문법상 맞는 것처럼 보이지만, 문맥상 시제와 부사구의 조합이 어색해. 특정 시점의 명확한 행동을 표현할 때 다른 구조가 더 자연스러워."
+        "1": "💡 'by Mr. Benedictus'의 by는 '~에 의해'로 행위자를 나타내. 정답 'by accident'의 by는 '우연히'라는 뜻이야!",
+        "2": "💡 'by Ms. Wakefield'의 by도 '~에 의해'로 행위자를 나타내. 정답의 by와 뜻이 달라!",
+        "3": "💡 'by a famous cook'의 by도 '~에 의해'로 행위자를 나타내. 정답의 by와 뜻이 달라!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2756,33 +2756,33 @@ __loadLesson({
       "id": "G015",
       "type": "fill_blank",
       "phase": "exam_prep",
-      "difficulty": "hard",
-      "keyword": "although + 완전한 절",
-      "instruction": "다음 빈칸 (1)과 (2)에 들어갈 올바른 형태를 고르세요.",
-      "hint": "'Although + 완전한 절, 주절' 구조입니다. 'but'이 올 수 있는지 확인하세요.",
+      "difficulty": "medium",
+      "keyword": "although 접속사 선택",
+      "instruction": "다음 빈칸에 들어갈 알맞은 접속사를 고르세요.",
+      "hint": "'~에도 불구하고'라는 양보 의미를 가진 접속사를 고르세요.",
       "wrong_explanations": {
-        "1": "💡 'although'와 'but'을 함께 쓸 수 없습니다.",
-        "2": "💡 'Although'를 쓰는 경우를 다시 생각해 봐!.",
-        "3": "💡 주절의 동사 형태를 확인해!."
+        "1": "💡 'despite'는 전치사야! 뒤에 절(주어+동사)이 올 수 없어. 절이 오려면 'although'를 써야 해.",
+        "2": "💡 'because'는 인과(~이므로)야! 실망했는데 맛있다는 건 인과가 아니라 양보(~에도 불구하고) 관계야.",
+        "3": "💡 'unless'는 조건(~하지 않으면)이야! 여기는 양보(~에도 불구하고) 관계야."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
         "GR02"
       ],
       "recovery_band": "C",
-      "test_task": "pair_match",
+      "test_task": "sentence_completion",
       "page": [
         3
       ],
-      "sentence": "(1) __________ she was disappointed at first, (2) __________ her cookies were delicious.",
+      "sentence": "__________ she was disappointed at first, her cookies were delicious.",
       "choices": [
-        "Although / yet",
-        "Although / but",
-        "Because / but",
-        "If / then"
+        "Although",
+        "Despite",
+        "Because",
+        "Unless"
       ],
       "correct": 0,
-      "exam_pattern": "두 빈칸 채우기",
+      "exam_pattern": "빈칸 채우기",
       "training_layer": "mixed_practice"
     },
     {
@@ -2825,7 +2825,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "accident 사고",
-      "instruction": "문맥에 맞는 단어를 고르세요.",
+      "instruction": "본문에 나온 표현을 고르세요.",
       "hint": "예기치 않게 일어난 불행한 사건",
       "wrong_explanations": {
         "1": "mistake(실수)은 답이 아니야! 사고는 보통 더 심각해!",
@@ -2854,7 +2854,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "accidentally 실수로, 우연히",
-      "instruction": "문맥에 맞는 단어를 고르세요.",
+      "instruction": "본문에 나온 표현을 고르세요.",
       "hint": "의도하지 않은 방식으로 일어나다",
       "wrong_explanations": {
         "1": "intentionally(의도적으로)은 답이 아니야!",
@@ -2883,7 +2883,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "although 비록...이지만, ~에도 불구하고",
-      "instruction": "문맥에 맞는 단어를 고르세요.",
+      "instruction": "본문에 나온 표현을 고르세요.",
       "hint": "양보의 의미 - 반대상황을 나타내는 접속사",
       "wrong_explanations": {
         "1": "because(왜냐하면)은 답이 아니야!",
@@ -2912,7 +2912,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "bake 굽다, 베이킹하다",
-      "instruction": "문맥에 맞는 단어를 고르세요.",
+      "instruction": "본문에 나온 표현을 고르세요.",
       "hint": "오븐을 사용하여 음식을 요리하다",
       "wrong_explanations": {
         "1": "'bake'를 찾아야 해!",
@@ -2941,7 +2941,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "by chance 우연히, 우연에 의해",
-      "instruction": "문맥에 맞는 단어를 고르세요.",
+      "instruction": "본문에 나온 표현을 고르세요.",
       "hint": "의도하지 않았는데 일어나다",
       "wrong_explanations": {
         "1": "on purpose(의도적으로)은 답이 아니야!",
@@ -2970,7 +2970,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "chip 조각, 칩",
-      "instruction": "문맥에 맞는 단어를 고르세요.",
+      "instruction": "본문에 나온 표현을 고르세요.",
       "hint": "구부러진 조각, 또는 초콜릿 조각",
       "wrong_explanations": {
         "1": "piece(조각)는 더 큰 조각을 말해!",
@@ -2999,7 +2999,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "clean 깨끗한, 청소하다",
-      "instruction": "문맥에 맞는 단어를 고르세요.",
+      "instruction": "본문에 나온 표현을 고르세요.",
       "hint": "먼지나 오염이 없는 상태",
       "wrong_explanations": {
         "1": "pure(순수한)은 답이 아니야!",
@@ -3028,7 +3028,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "connect 연결하다, 이어지다",
-      "instruction": "문맥에 맞는 단어를 고르세요.",
+      "instruction": "본문에 나온 표현을 고르세요.",
       "hint": "두 개 이상의 것을 함께 묶다",
       "wrong_explanations": {
         "1": "💡 link(연결하다)는 connect와 비슷하지만 더 정보 차원에서 많이 써요.",
@@ -3057,7 +3057,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "contest 경쟁, 경기",
-      "instruction": "문맥에 맞는 단어를 고르세요.",
+      "instruction": "본문에 나온 표현을 고르세요.",
       "hint": "누가 더 나은지 겨루는 시합",
       "wrong_explanations": {
         "1": "competition(경쟁)은 내용은 같지만 formal해!",
@@ -3086,7 +3086,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "controller 조종기, 조절기",
-      "instruction": "문맥에 맞는 단어를 고르세요.",
+      "instruction": "본문에 나온 표현을 고르세요.",
       "hint": "무언가를 조종하거나 조절하기 위한 기구",
       "wrong_explanations": {
         "1": "device(장치)은 답이 아니야!",
@@ -3115,7 +3115,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "cookie 쿠키",
-      "instruction": "문맥에 맞는 단어를 고르세요.",
+      "instruction": "본문에 나온 표현을 고르세요.",
       "hint": "달콤한 구운 간식",
       "wrong_explanations": {
         "1": "cake(케이크)은 답이 아니야!",
@@ -3144,7 +3144,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "delicious 맛있는, 맛 좋은",
-      "instruction": "문맥에 맞는 단어를 고르세요.",
+      "instruction": "본문에 나온 표현을 고르세요.",
       "hint": "매우 맛이 좋은",
       "wrong_explanations": {
         "1": "good(좋은)은 더 일반적인 표현이야!",
@@ -3173,7 +3173,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "device 장치, 기구",
-      "instruction": "문맥에 맞는 단어를 고르세요.",
+      "instruction": "본문에 나온 표현을 고르세요.",
       "hint": "특정 목적을 위해 만들어진 기계",
       "wrong_explanations": {
         "1": "tool(도구)은 손으로 드은 답이 아니야!",
@@ -3202,7 +3202,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "different 다른, 서로 다른",
-      "instruction": "문맥에 맞는 단어를 고르세요.",
+      "instruction": "본문에 나온 표현을 고르세요.",
       "hint": "서로 같지 않은",
       "wrong_explanations": {
         "1": "similar(비슷한)는 다른이 아니라 같은 점이 많다는 뜻이야!!",
@@ -3231,7 +3231,7 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "disappointed 실망한, 낙담한",
-      "instruction": "문맥에 맞는 단어를 고르세요.",
+      "instruction": "본문에 나온 표현을 고르세요.",
       "hint": "기대와 다른 결과에 실망하다",
       "wrong_explanations": {
         "1": "sad(슬픈)은 답이 아니야! disappointed는 기대 때문이야!!",
@@ -3319,23 +3319,23 @@ __loadLesson({
       "difficulty": "medium",
       "keyword": "enough 충분한, 충분히",
       "instruction": "문맥에 맞는 단어를 고르세요.",
-      "hint": "필요한 양만큼 충분한",
+      "hint": "교과서 Ms. Wakefield 이야기 — '충분한 시간'은 'enough time'. 나머지는 'of'가 붙어야 해!",
       "wrong_explanations": {
-        "1": "enough(충분한)과 much(많은)은 답이 아니야!",
-        "2": "plenty(충분한)는 의미가 비슷하지만, 더 informal해!!",
-        "3": "sufficient(충분한)은 formal한 표현이야!"
+        "1": "⚡함정! 'many time'은 X야. time은 셀 수 없는 명사(불가산명사)라 many를 못 써. many는 book**s** / people처럼 셀 수 있는 것만 쓰거든.",
+        "2": "'a lot time'은 안 돼! 'a lot' 뒤에는 반드시 **of**가 필요해. 'a lot **of** time'이라야 문법 성립.",
+        "3": "'plenty time'도 똑같이 X. 'plenty' 뒤에도 반드시 **of**가 필요해. 'plenty **of** time'!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
       "recovery_band": "B",
       "test_task": "meaning_match",
       "page": 52,
-      "sentence": "I didn't have _____ time to finish the experiment.",
+      "sentence": "Ms. Wakefield didn't have _____ time to melt a chocolate bar.",
       "choices": [
         "enough",
-        "much",
-        "plenty",
-        "sufficient"
+        "many",
+        "a lot",
+        "plenty"
       ],
       "correct": 0,
       "exam_pattern": "뜻 연결",
@@ -3492,24 +3492,24 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "famous 유명한, 명성 있는",
-      "instruction": "문맥에 맞는 단어를 고르세요.",
-      "hint": "많은 사람들이 알고 있는",
+      "instruction": "본문에 나온 정확한 표현을 고르세요.",
+      "hint": "교과서 도입부 — 'In America, there was a ___ cook, Ms. Wakefield.' 딱 그 단어!",
       "wrong_explanations": {
-        "1": "popular(인기 있는)는 현재 인기를 말해!",
-        "2": "well-known(잘 알려진)은 비슷하지만 덜 formal해!",
-        "3": "special(특별한)은 독특함을 의미해!"
+        "1": "⚡함정! 'unknown'은 '무명의'야. 본문은 Ms. Wakefield를 유명한 사람으로 소개하는 문장이라 정반대!",
+        "2": "'ordinary'는 '평범한'. 본문은 특별히 유명한 요리사라고 소개하니까 어긋나.",
+        "3": "'strange'는 '이상한'. 본문 분위기·의미와 전혀 안 맞아."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
       "recovery_band": "B",
       "test_task": "meaning_match",
       "page": 50,
-      "sentence": "Ruth Graves Graves is a _____ inventor.",
+      "sentence": "In America, there was a _____ cook, Ms. Wakefield.",
       "choices": [
         "famous",
-        "popular",
-        "well-known",
-        "special"
+        "unknown",
+        "ordinary",
+        "strange"
       ],
       "correct": 0,
       "exam_pattern": "뜻 연결",
@@ -3649,7 +3649,7 @@ __loadLesson({
       "recovery_band": "B",
       "test_task": "eng_definition",
       "page": 50,
-      "sentence": "What _____ when she forgot to heat the oven?",
+      "sentence": "Unexpected things can _____ when you cook.",
       "choices": [
         "happen",
         "occur",
@@ -3765,7 +3765,7 @@ __loadLesson({
       "recovery_band": "B",
       "test_task": "eng_definition",
       "page": 50,
-      "sentence": "She _____ chocolate chip cookies.",
+      "sentence": "Ruth was the first to _____ chocolate chip cookies.",
       "choices": [
         "invent",
         "discover",
@@ -3930,9 +3930,9 @@ __loadLesson({
       "instruction": "다음 밑줄 친 단어와 같은 의미의 표현을 고르세요.",
       "hint": "A person who controls or organizes something",
       "wrong_explanations": {
-        "2": "leader(지도자)는 더 광범위한 역할이야!",
-        "3": "supervisor(감시자)는 감독하는 것을 강조해!",
-        "0": "'boss'는 '상사, 지배자'라는 명사인데, 여기선 '주인되다, 지배하다'는 의미의 동사나 다른 품사가 필요해."
+        "0": "worker(노동자)는 일을 하는 사람이야! manager는 그 사람들을 관리하는 사람이야.",
+        "2": "customer(고객)는 물건을 사는 사람이야! 공장을 관리하는 사람이 아니야.",
+        "3": "inventor(발명가)는 새로운 것을 만드는 사람이야! 사람을 조직하는 관리자와 달라."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3941,10 +3941,10 @@ __loadLesson({
       "page": 54,
       "sentence": "The factory <u>manager</u> organized the workers.",
       "choices": [
-        "boss",
+        "worker",
         "person in control",
-        "leader",
-        "supervisor"
+        "customer",
+        "inventor"
       ],
       "correct": 1,
       "exam_pattern": "같은 의미",
@@ -4473,7 +4473,7 @@ __loadLesson({
       "test_task": "free_writing",
       "page": 50,
       "prompt": "Choose any invention (chocolate chip cookies, safety glass, dry cleaning, etc.) and describe it in 3 sentences using passive voice at least once.",
-      "example_answer": "Chocolate chip cookies were invented by Ruth Graves Graves by accident. She was trying to make butter cookies when she added broken chocolate pieces to the dough. Her invention was loved by many people and became very famous all over the world.",
+      "example_answer": "Chocolate chip cookies were invented by Ms. Wakefield by accident. She didn't have enough time to melt a chocolate bar, so she broke it into small chips and mixed them into the dough. Her new cookies were loved by many people and became famous all over the world.",
       "min_words": 25,
       "exam_pattern": "자유 영작",
       "training_layer": "skill_focus"

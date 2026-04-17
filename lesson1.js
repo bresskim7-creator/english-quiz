@@ -1834,7 +1834,7 @@ __loadLesson({
       "hint": "'낮에 운동하면 밤에 쉽게 잠든다'가 이 단락의 핵심 메시지야.",
       "wrong_explanations": {
         "1": "'취침 직전에 운동을 끝내는 것이 좋다.'는 본문과 맞지 않아!",
-        "2": "이것도 본문에 나오지만, 글 전체의 핵심은 '낮 운동 → 밤에 쉽게 잠듦'이야.",
+        "2": "본문은 정반대야! 낮에 운동하면 'fall asleep easily at night'라고 했어.",
         "3": "'항상'이 아니야. 'right before bedtime'에 끝낼 때만 too awake 해진다고 했어."
       },
       "core_sentence_id": "CS08",
@@ -1846,7 +1846,7 @@ __loadLesson({
       "choices": [
         "낮에 운동하면 밤에 쉽게 잠든다.",
         "취침 직전에 운동을 끝내는 것이 좋다.",
-        "운동은 취침 몇 시간 전에 끝내야 한다.",
+        "낮에 운동해도 밤에 잠드는 것과는 관계없다.",
         "운동하면 밤에 너무 깨어있게 된다."
       ],
       "correct": 0,
@@ -1924,7 +1924,7 @@ __loadLesson({
       "wrong_explanations": {
         "0": "초콜릿엔 카페인이 있어서 오히려 'sleep problems'가 생긴대. '잘 잔다'는 정반대야.",
         "1": "'지나: 카페인은 커피에만 들어있어.'는 본문과 맞지 않아!",
-        "3": "하은 말은 추론이야. 본문은 '카페인→수면 문제'와 '에너지 음료에 카페인'을 따로 말했을 뿐이야."
+        "3": "본문에 chocolate, coffee, tea, soda, energy drinks 등 여러 음식에 카페인이 있다고 했어. 초콜릿뿐이 아니야!"
       },
       "core_sentence_id": "CS05",
       "linked_rule_ids": [],
@@ -1936,7 +1936,7 @@ __loadLesson({
         "민수: 초콜릿을 많이 먹으면 잠을 잘 잘 수 있어.",
         "지나: 카페인은 커피에만 들어있어.",
         "수호: 낮에 운동하면 밤에 쉽게 잠들 수 있어.",
-        "하은: 에너지 음료를 마시면 수면에 문제가 생길 수 있어."
+        "하은: 카페인이 들어있는 음식은 초콜릿뿐이야."
       ],
       "correct": 2,
       "exam_pattern": "내용 일치/불일치",
@@ -2038,9 +2038,9 @@ __loadLesson({
       "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: if 조건절에는 will을 쓰지 않는다는 점을 확인하세요.",
       "hint": "if절 안에서는 미래의 일이어도 현재시제를 써요!",
       "wrong_explanations": {
-        "0": "if절에 will이 붙으면 안 돼! 조건은 현재형!",
-        "1": "if절에 will이 붙으면 안 돼! 조건은 현재형!",
-        "3": "'If we hurry, we won't miss the bus.'은 어색해! 'If she will study hard, she will pass.'가 맞아."
+        "0": "이 문장은 맞아! if절에 현재형(exercise)을 잘 썼어. if+will인 2번이 어색해!",
+        "1": "이 문장도 맞아! if절에 현재형(rains)을 잘 썼어. 조건절에는 현재형을 써야 해.",
+        "3": "이 문장도 맞아! if절에 현재형(hurry)을 잘 썼어. 주절에 won't는 괜찮아!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2066,12 +2066,12 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "easy",
       "keyword": "의문사+to부정사",
-      "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: to부정사(to + 동사원형) 용법을 확인하세요.",
+      "instruction": "다음 문장들 중 문법적으로 올바른 것을 고르세요. 힌트: to부정사(to + 동사원형) 용법을 확인하세요.",
       "hint": "'의문사 + to부정사' 구조를 생각하세요: what to do, how to solve",
       "wrong_explanations": {
-        "0": "'I don't know what doing.'? 문맥에 안 맞아!",
-        "1": "'She wants to knows the answer.'? 문맥에 안 맞아!",
-        "3": "'He told me how solve it.'? 문맥에 안 맞아!"
+        "0": "💡 'what doing'은 틀려! 의문사 뒤에는 'to + 동사원형'이 와야 해. → what to do",
+        "1": "💡 'to knows'는 틀려! to 뒤에는 동사원형이 와야 해. → to know",
+        "3": "💡 'how solve'는 틀려! 의문사 뒤에 'to'가 빠졌어. → how to solve"
       },
       "core_sentence_id": "CS13",
       "linked_rule_ids": [
@@ -2096,18 +2096,17 @@ __loadLesson({
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "medium",
-      "keyword": "if절+의문사",
-      "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: if 조건절에는 will을 쓰지 않는다, to부정사(to + 동사원형) 용법을 확인하세요.",
-      "hint": "if절에 will이 들어가면 안 돼! 조건절에서는 현재형을 써야 해.",
+      "keyword": "if절 시제",
+      "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요.",
+      "hint": "if 조건절에는 will을 쓰지 않아! 현재형을 써야 해.",
       "wrong_explanations": {
-        "1": "'I want to know where to go.'은 어색해! 'If you will eat too much, you will get sick.'가 맞아.",
-        "2": "if절에 will이 붙으면 안 돼! 조건은 현재형!",
-        "3": "'Tell me when to leave.'은 어색해! 'If you will eat too much, you will get sick.'가 맞아."
+        "1": "이 문장은 맞아! if절에 현재형(study)을 잘 썼어. if+will인 0번이 어색해!",
+        "2": "이 문장도 맞아! if절에 현재형(is)을 잘 썼어.",
+        "3": "이 문장도 맞아! if절에 현재형(comes)을 잘 썼어."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
-        "GR01",
-        "GR02"
+        "GR01"
       ],
       "recovery_band": "A",
       "test_task": "grammar_judge",
@@ -2115,9 +2114,9 @@ __loadLesson({
       "sentence": "어법상 어색한 문장을 고르세요.",
       "choices": [
         "If you will eat too much, you will get sick.",
-        "I want to know where to go.",
+        "If you study hard, you will do well.",
         "If it is sunny, we will play outside.",
-        "Tell me when to leave."
+        "If she comes early, we will start the meeting."
       ],
       "correct": 0,
       "exam_pattern": "어법 판단",
@@ -2191,16 +2190,15 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "hard",
       "keyword": "to부정사 오류",
-      "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: if 조건절에는 will을 쓰지 않는다, to부정사(to + 동사원형) 용법을 확인하세요.",
+      "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요.",
       "hint": "의문사 + to + 동사원형! doing이 아니라 do가 와야 해.",
       "wrong_explanations": {
-        "0": "if절에 will이 붙으면 안 돼! 조건은 현재형!",
-        "1": "'She doesn't know how to use the app.'은 어색해! 'We learned what to doing next.'가 맞아.",
-        "3": "if절에 will이 붙으면 안 돼! 조건은 현재형!"
+        "0": "이 문장은 맞아! 'how to cook'은 의문사 + to + 동사원형으로 올바른 형태야.",
+        "1": "이 문장도 맞아! 'what to bring'은 의문사 + to + 동사원형이야.",
+        "3": "이 문장도 맞아! 'where to go'는 의문사 + to + 동사원형이야."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
-        "GR01",
         "GR02"
       ],
       "recovery_band": "B",
@@ -2208,10 +2206,10 @@ __loadLesson({
       "page": 19,
       "sentence": "어법상 어색한 문장을 고르세요.",
       "choices": [
-        "If you sleep well, you will feel lively.",
-        "She doesn't know how to use the app.",
+        "She knows how to cook well.",
+        "Tell me what to bring to the party.",
         "We learned what to doing next.",
-        "If it snows, we will make a snowman."
+        "I don't know where to go."
       ],
       "correct": 2,
       "exam_pattern": "어법 판단",
@@ -3119,9 +3117,9 @@ __loadLesson({
       "instruction": "밑줄 친 to부정사의 쓰임이 나머지와 다른 하나는?",
       "hint": "①②④는 '~하기를'(목적), ③은 '~하기 위해'(목적의 부사적 용법)야.",
       "wrong_explanations": {
-        "0": "'I want to sleep well.'? 문맥에 안 맞아!",
-        "1": "'She needs to exercise.'? 문맥에 안 맞아!",
-        "3": "'He decided to wake up early.'? 문맥에 안 맞아!"
+        "0": "💡 'want to sleep'의 to sleep은 '~하는 것'(명사적 용법, 목적어)이야. 2번만 '~하기 위해'(부사적 용법)야!",
+        "1": "💡 'needs to exercise'의 to exercise도 '~하는 것'(명사적 용법, 목적어)이야. 2번과 쓰임이 달라!",
+        "3": "💡 'decided to wake up'의 to wake up도 '~하는 것'(명사적 용법, 목적어)이야. 2번만 '~하기 위해'야!"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -3350,12 +3348,12 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": "medium",
       "keyword": "올바른 문장",
-      "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: if 조건절에는 will을 쓰지 않는다, to부정사(to + 동사원형) 용법을 확인하세요.",
-      "hint": "의문사 + to부정사 구조를 떠올려 보세요. what/how/where 뒤에 뭐가 와야 할까요?",
+      "instruction": "어법상 올바른 문장을 고르세요.",
+      "hint": "if 조건절에는 will 금지! 의문사 + to + 동사원형이 올바른 형태야.",
       "wrong_explanations": {
-        "0": "if절에 will이 붙으면 안 돼! 조건은 현재형!",
-        "2": "'She doesn't know what doing next.'은 어색해! 'I want to know how to cook.'가 맞아.",
-        "3": "'She told me where going.'은 어색해! 'I want to know how to cook.'가 맞아."
+        "0": "💡 if절에 will이 붙으면 안 돼! 'If it rains'처럼 현재형을 써야 해.",
+        "2": "💡 'what doing'은 틀려! 의문사 뒤에는 'to + 동사원형'이 와야 해. → what to do",
+        "3": "💡 'where going'은 틀려! 의문사 뒤에는 'to + 동사원형'이 와야 해. → where to go"
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -3882,7 +3880,7 @@ __loadLesson({
       "hint": "본문의 구체적인 표현을 가장 정확히 이해한 사람을 고르세요.",
       "wrong_explanations": {
         "0": "정반대! 파란 빛은 뇌를 active(활발)하게 만든다고 했어. 편안하게가 아니야.",
-        "2": "지훈 말도 맞지만, 수진이 'don't sleep yet'이라는 구체적 신호까지 정확히 옮겼어.",
+        "2": "파란 빛은 '뇌(brain)'에 신호를 보낸다고 했어. 눈에만 영향을 주는 게 아니야!",
         "3": "정반대! 'your brain will stay active'라고 했어. 뇌가 쉬는 게 아니야."
       },
       "core_sentence_id": "CS06",
@@ -3894,7 +3892,7 @@ __loadLesson({
       "choices": [
         "민호: 파란 빛은 뇌를 편안하게 해 준다.",
         "수진: 스마트폰의 파란 빛은 뇌에 '아직 자지 마'라는 신호를 보낸다.",
-        "지훈: 잘 자려면 취침 직전에 스마트폰을 사용하면 안 된다.",
+        "지훈: 스마트폰의 파란 빛은 눈에만 영향을 준다.",
         "하늘: 스마트폰을 밤에 쓰면 뇌가 쉬게 된다."
       ],
       "correct": 1,
@@ -5179,9 +5177,7 @@ __loadLesson({
         "do"
       ],
       "accept_typos": {
-        "cooks": [
-          "cook"
-        ],
+        "cooks": [],
         "will": [],
         "do": []
       },
@@ -5219,9 +5215,7 @@ __loadLesson({
         "get": [],
         "up": [],
         "will": [],
-        "see": [
-          "sea"
-        ]
+        "see": []
       },
       "exam_pattern": "서술형",
       "training_layer": "mixed_practice",
