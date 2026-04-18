@@ -1386,23 +1386,23 @@ __loadLesson({
       "phase": "exam_prep",
       "training_layer": "skill_focus",
       "score_group": "C",
-      "instruction": "(x + 1)² = ?",
+      "instruction": "(12x² − 8xy) ÷ (−4x) = ?",
       "sentence": "",
       "options": [
-        "x² + 1",
-        "x² + 2x + 1",
-        "x² + 2x",
-        "x + 2x + 1"
+        "−3x + 2y",
+        "−3x − 2y",
+        "3x − 2y",
+        "−3x² + 2xy"
       ],
-      "correct": 1,
+      "correct": 0,
       "wrong_explanations": {
-        "0": "(x + 1)² = (x + 1)(x + 1) = x² + x + x + 1 = x² + 2x + 1",
-        "2": "중간항 2x를 빼먹지 마! (x+1)² ≠ x² + 1",
-        "3": "마지막 상수항 1도 제곱돼! (x+1)² = x² + 2x + 1"
+        "1": "💡 −8xy ÷ (−4x) = +2y! 음수÷음수 = 양수야.\n📖 두 번째 항 부호 전환을 놓쳤어. 각 항을 따로 −4x로 나눠 봐.",
+        "2": "💡 12x² ÷ (−4x) = −3x! 양수÷음수 = 음수야.\n📖 첫 항에서 제수가 음수(−4x)인 걸 놓쳤어. 부호를 꼭 반영해.",
+        "3": "💡 x² ÷ x = x이지 x²가 아니야.\n📖 나눗셈은 지수를 빼는 거야. 2−1 = 1이니 x."
       },
-      "hint": "",
-      "source": "교과서 기반",
-      "explanation": "(a+b)² 하면 가운데 2ab 꼭 나와.\nx²+1이 아니라 x²+2x+1!"
+      "hint": "다항식 ÷ 단항식은 각 항을 단항식으로 나눠! 제수가 음수(−4x)라면 각 항의 부호도 뒤집혀.",
+      "source": "교과서 p.260 8번 계열",
+      "explanation": "💡 각 항을 −4x로 나눠!\n📖 12x² ÷ (−4x) = −3x (양÷음=음, 지수 2−1=1)\n📖 −8xy ÷ (−4x) = +2y (음÷음=양, x 소거)\n🔬 답: −3x + 2y"
     },
     {
       "id": "Q-19",
@@ -1799,6 +1799,12 @@ __loadLesson({
       "score_group": "C",
       "instruction": "[서술형] 2⁵ × 5⁶은 n자리 자연수이고, 가장 높은 자리의 숫자는 s이다. 이때 n + s의 값을 구하시오.",
       "sentence": "",
+      "correct": [
+        "11"
+      ],
+      "alt_correct": [
+        "11"
+      ],
       "correct_answer": "11",
       "accept_answers": [
         "11"
@@ -1840,6 +1846,13 @@ __loadLesson({
       "score_group": "C",
       "instruction": "−3x(2x − y) − (x + 3y) × (−4x) 를 계산하였을 때, x²의 계수를 a, xy의 계수를 b라고 하자. 이때 ab의 값을 구하시오.",
       "sentence": "",
+      "correct": [
+        "-30"
+      ],
+      "alt_correct": [
+        "-30",
+        "−30"
+      ],
       "correct_answer": "-30",
       "accept_answers": [
         "-30",

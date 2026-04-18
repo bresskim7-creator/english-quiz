@@ -2154,6 +2154,12 @@ __loadLesson({
       "score_group": "C",
       "instruction": "[서술형] 일차부등식 0.8x − 1/3 ≥ (8x − 11)/5 을 만족시키는 모든 자연수 x의 값의 합을 구하시오.",
       "sentence": "",
+      "correct": [
+        "3"
+      ],
+      "alt_correct": [
+        "3"
+      ],
       "correct_answer": "3",
       "accept_answers": [
         "3"
@@ -2222,6 +2228,12 @@ __loadLesson({
       "score_group": "B",
       "instruction": "일차부등식 0.1x + 0.2 ≤ 1 − 0.3x 를 풀면 x ≤ □이다. □에 들어갈 수를 구하시오.",
       "sentence": "",
+      "correct": [
+        "2"
+      ],
+      "alt_correct": [
+        "2"
+      ],
       "correct_answer": "2",
       "accept_answers": [
         "2"
@@ -2239,6 +2251,13 @@ __loadLesson({
       "score_group": "C",
       "instruction": "일차부등식 (5x)/6 + 1 ≤ x/2 − 1/3 을 풀면 x ≤ □이다. □에 들어갈 수를 구하시오.",
       "sentence": "",
+      "correct": [
+        "-4"
+      ],
+      "alt_correct": [
+        "-4",
+        "−4"
+      ],
       "correct_answer": "-4",
       "accept_answers": [
         "-4",

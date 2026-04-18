@@ -5726,6 +5726,9 @@
             }
         }
 
+        // typed_answer 스키마 계약: q.correct (string[]), q.alt_correct (string[]) 필수.
+        // correct_answer/accept_answers 등 과거 키는 읽지 않음. 신규 문항은 반드시 배열 형태의
+        // correct + alt_correct 로만 정의할 것. (math1 전체 / math2 Q-35,Q-37 / math3 Q-39,Q-42,Q-43 참조)
         function checkMathTypedAnswer() {
             const q = currentSession[currentQuestionIndex];
             const input = document.getElementById('math-typed-input');
