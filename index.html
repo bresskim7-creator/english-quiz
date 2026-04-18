@@ -3220,11 +3220,25 @@
                 return we[answer] || we[String(idx)] || q.hint || '';
             }
 
+            // 부정 프레임 판별: 불일치/답할 수 없는/흐름 관계없는/틀린/어색한/옳지 않은/적절하지 않은/나오지 않은 류
+            // → 정답 보기가 "본문과 어긋난 문장 / 답할 수 없는 질문 / 흐름 벗어난 문장 / 어법 틀린 문장"이라
+            //   기존 "✅ 정답: [content]" 및 "📖 정답 문장을 소리 내어 읽어보면..." 라벨이 오학습을 유발.
+            //   부정 프레임에서는 보기 번호만 노출하고 공통 라벨도 중립 문구로 교체.
+            function isNegativeFrame(qq) {
+                const s = (qq.instruction || '') + ' ' + (qq.sentence || '');
+                return /일치하지 않|답할 수 없|나오지 않|원문의 뜻과 다른|흐름과 관계없|흐름에서 벗어|어색한|틀린 문장|틀린 부분|옳지 않은|적절하지 않|문법적으로 다른|용법이 다른|의미가 다른|문법적으로 올바르지 않/.test(s);
+            }
+            const _isNeg = isNegativeFrame(q);
+
             if (q.type === 'fill_blank' || q.type === 'dialogue_response' || q.type === 'short_reading') {
                 const explanation = findExplanation(userAnswer, originalIdx);
                 html += '<div style="font-size:15px;color:#333;">' + explanation + '</div>';
                 if (q.choices && q.correct !== undefined) {
-                    html += '<div style="margin-top:8px;font-size:14px;color:#2F5496;font-weight:600;">✅ 정답: ' + q.choices[q.correct] + '</div>';
+                    if (_isNeg) {
+                        html += '<div style="margin-top:8px;font-size:14px;color:#2F5496;font-weight:600;">🎯 답: 보기 ' + (q.correct + 1) + '번</div>';
+                    } else {
+                        html += '<div style="margin-top:8px;font-size:14px;color:#2F5496;font-weight:600;">✅ 정답: ' + q.choices[q.correct] + '</div>';
+                    }
                 }
             } else if (q.type === 'choice_blank') {
                 const explanation = findExplanation(userAnswer, originalIdx);
@@ -3248,7 +3262,11 @@
                 }
             }
 
-            html += '<div style="font-size:13px;color:#888;margin-top:8px;border-top:1px solid #ffe0b2;padding-top:6px;">📖 정답 문장을 소리 내어 읽어보면 기억에 남아요!</div>';
+            if (_isNeg) {
+                html += '<div style="font-size:13px;color:#888;margin-top:8px;border-top:1px solid #ffe0b2;padding-top:6px;">📖 본문/문장을 다시 확인하며 어디가 다른지 직접 찾아보면 확실해져요!</div>';
+            } else {
+                html += '<div style="font-size:13px;color:#888;margin-top:8px;border-top:1px solid #ffe0b2;padding-top:6px;">📖 정답 문장을 소리 내어 읽어보면 기억에 남아요!</div>';
+            }
 
             // 영어: 오답 시 핵심문장 복습 버튼
             if (currentSubject === 'english' && q.core_sentence_id) {

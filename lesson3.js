@@ -1925,11 +1925,11 @@ __loadLesson({
       "difficulty": "medium",
       "keyword": null,
       "instruction": "다음 글을 읽고 질문에 답하세요.",
-      "hint": "'어떻게' 안전 유리가 발명되었는지 다시 읽으세요.",
+      "hint": "본문 첫 문장의 'accidentally'와 '의도적으로'의 차이를 보세요.",
       "wrong_explanations": {
-        "1": "💡 유리가 '완전히' 부러졌습니까? 아니면 함께 있었습니까?",
-        "3": "💡 플라스크 '안에' 무엇이 있었습니까?",
-        "2": "'액체 플라스틱이 조각들을 한 모양으로 유지했다'는 시간상 동시에 일어난 일처럼 들리는데, 실제로는 우연히 남겨진 액체가 나중에 그 역할을 한 거야. 원인-결과의 순서가 안 맞아."
+        "1": "💡 본문 `broke into many pieces, but they held together`와 일치해. 원문 뜻과 다른 게 아냐.",
+        "3": "💡 본문 `to make safety glass for cars`와 일치. 원문 뜻과 다른 게 아냐.",
+        "2": "💡 본문 `because of the liquid plastic inside`와 일치. 원문 뜻과 다른 게 아냐."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -1938,7 +1938,7 @@ __loadLesson({
       "page": [
         2
       ],
-      "sentence": "Benedictus intentionally dropped a glass flask to test its strength. The glass broke into many pieces, but they held together because of the liquid plastic inside. He decided to use this finding to make safety glass for cars.\n\nQ. 다음 중 원문의 뜻과 다른 것은?",
+      "sentence": "Mr. Benedictus, a French scientist, accidentally dropped a glass flask on the floor. The glass broke into many pieces, but they held together because of the liquid plastic inside. He decided to use this finding to make safety glass for cars.\n\nQ. 다음 중 원문의 뜻과 다른 것은?",
       "choices": [
         "Benedictus가 의도적으로 유리를 떨어뜨렸다",
         "유리가 부러졌지만 조각들이 함께 있었다",
@@ -2268,9 +2268,9 @@ __loadLesson({
       "instruction": "다음 글을 읽고, 글의 내용으로는 답할 수 없는 질문을 고르세요.",
       "hint": "글에서 실제로 설명하지 않은 세부 정보를 찾으세요.",
       "wrong_explanations": {
-        "0": "💡 글에서 이것이 1903년이라고 명시합니까?",
-        "2": "💡 '액체 플라스틱'이 플라스크 안에 있었다고 나와 있습니다.",
-        "3": "💡 글의 마지막 부분을 읽어!."
+        "0": "💡 본문 `a French scientist, Mr. Benedictus`에 답이 있어. 답할 수 있는 질문이라 답이 아니야.",
+        "2": "💡 본문 `the liquid plastic in the flask`에 답이 있어. 답할 수 있어.",
+        "3": "💡 본문 `used for car windows`에 답이 있어. 답할 수 있는 질문."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [],
@@ -2283,7 +2283,7 @@ __loadLesson({
       "choices": [
         "Mr. Benedictus가 프랑스 과학자입니까?",
         "그 액체 플라스틱이 원래 무엇이었습니까?",
-        "플라스크가 떨어진 이유는 무엇입니까?",
+        "플라스크 안에 있던 것은 무엇입니까?",
         "안전유리가 자동차 창문에 사용됩니까?"
       ],
       "correct": 1,
@@ -2431,9 +2431,9 @@ __loadLesson({
       "instruction": "다음 문장에서 어법상 틀린 부분을 고르세요.",
       "hint": "수동태 형태를 확인하세요. be동사 + 과거분사가 맞는 형태입니다.",
       "wrong_explanations": {
-        "1": "was는 be동사 → 수동태에 필요한 거야! 틀린 건 wrote(written이어야 해)!",
-        "3": "'him'은 기본 구조에서 옳은 표현이야!",
-        "2": "'(3) him'은 대명사 형태가 틀렸어. 문맥상 재귀대명사 또는 다른 형태여야 하는데, 단순히 목적격 대명사만으로는 문장이 완성 안 돼."
+        "1": "(2) by는 수동태의 행위자 표시로 올바른 표현. 틀린 건 (1) wrote — written이어야 해.",
+        "3": "(4) last month는 과거 시점을 나타내는 올바른 표현. 틀린 건 (1) wrote.",
+        "2": "(3) him은 by 뒤에 오는 목적격 대명사로 올바른 표현. 틀린 건 (1) wrote."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2497,9 +2497,9 @@ __loadLesson({
       "instruction": "다음 문장에서 어법상 틀린 부분을 고르세요.",
       "hint": "'Although'를 쓰면 'but'을 쓸 수 없습니다.",
       "wrong_explanations": {
-        "0": "'Although'는 종속절을 만드는 접속사이야!",
-        "3": "'cookies' = 명사! 여기는 다른 형태 필요해. 문제가 없습니다.!",
-        "1": "'(2) disappointed'는 감정 형용사인데, 수동 형태와의 조합이 어색해. 'was disappointed'는 과거에 실망한 상태지, 현재의 감정 상태나 예상과 맞지 않아."
+        "0": "(1) Although는 양보절을 이끄는 접속사로 올바르게 쓰였어. 틀린 건 (3) but — Although와 but은 같이 쓸 수 없어.",
+        "3": "(4) delicious는 `cookies were` 뒤에 오는 주격보어로 올바른 형용사. 틀린 건 (3) but.",
+        "1": "(2) disappointed는 `was + p.p.` 구조로 '실망했다'를 만드는 올바른 형태. 틀린 건 (3) but."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -2696,7 +2696,7 @@ __loadLesson({
       "hint": "'although'는 종속절을 만들고, 'but'은 등위절을 만듭니다.",
       "wrong_explanations": {
         "0": "이것은 'although'의 올바른 사용이야!",
-        "1": "이것은 'although' + 문장 형태이야!",
+        "1": "이건 `S + V, but + S + V` 등위절 구조야. Although 없이 but만 썼으니 맞는 문장. 틀린 건 (2) — Although와 but을 같이 쓴 것.",
         "3": "이것도 'although'의 올바른 사용이야!"
       },
       "core_sentence_id": null,
@@ -2794,9 +2794,9 @@ __loadLesson({
       "instruction": "다음 문장에서 어법상 틀린 부분의 개수는?",
       "hint": "be동사 + 과거분사 구조와 'although' 사용법을 확인하세요.",
       "wrong_explanations": {
-        "0": "💡 몇 가지 오류를 찾아봐!.",
-        "3": "💡 'although'의 사용과 수동태 형태를 다시 확인해!.",
-        "2": "'3군데'는 숫자 표기가 부정확해. 한국어로 쓰면 '세 군데' 또는 '3개 부분'이어야 하는데, 문맥상 수를 명확히 지정하지 않았을 때 이런 표기는 부정확해."
+        "0": "💡 오류는 2군데야. (1) `glass broken` → be동사(was) 누락, (2) `Although + but` 중복. 둘 다 틀렸어.",
+        "3": "💡 4군데는 너무 많아. 틀린 건 2곳 — (1) `glass broken`(be동사 누락), (2) `Although + but`(접속사 중복).",
+        "2": "💡 2군데만 틀렸어: (1) `glass broken` → `was broken`, (2) `Although + but`에서 but은 빠져야 해. 다른 부분은 다 맞아."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [

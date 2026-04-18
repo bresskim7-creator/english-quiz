@@ -1776,7 +1776,7 @@ __loadLesson({
       "hint": "본문에서 카페인이 숨어있는 곳을 모두 확인하세요.",
       "wrong_explanations": {
         "0": "첫 문장 'Caffeine can cause sleep problems'와 같은 내용이야. 맞는 것 말고 틀린 것을 찾아야 해.",
-        "1": "'초콜릿에도 카페인이 들어있다.'는 본문과 맞지 않아!",
+        "1": "본문 `even chocolate has caffeine`에 그대로 나와. 일치하는 내용이니까 이 문제(불일치)의 답이 아니야.",
         "3": "'energy drinks'가 카페인 목록에 나와 있어. 본문과 일치하니까 답이 아니야."
       },
       "core_sentence_id": "CS05",
@@ -1805,7 +1805,7 @@ __loadLesson({
       "hint": "본문에서 '몇 시간'이라는 구체적 수치가 나오는지 확인하세요.",
       "wrong_explanations": {
         "0": "'your brain will stay active'라고 나와 있어. 본문에서 바로 답할 수 있으니 이건 아니야.",
-        "1": "'파란 빛이 뇌에 어떤 신호를 보내나?'는 본문과 맞지 않아!",
+        "1": "본문 `The blue light ... tell your brain, \"Hey, don't sleep yet.\"`에 답이 나와 있어. 답할 수 있는 질문이야.",
         "3": "'don't use your phone right before bedtime'이라고 나와. 답이 있는 질문이야."
       },
       "core_sentence_id": "CS06",
@@ -2224,9 +2224,9 @@ __loadLesson({
       "instruction": "다음 문장들 중 문법적으로 어색한 것을 고르세요. 힌트: if 조건절에는 will을 쓰지 않는다는 점을 확인하세요.",
       "hint": "will 뒤에는 항상 동사원형! will stays → will stay",
       "wrong_explanations": {
-        "0": "'ⓐ use'은 어색해! 'ⓑ will stays'가 맞아.",
-        "2": "if절에 will이 붙으면 안 돼! 조건은 현재형!",
-        "3": "'ⓓ To sleep'은 어색해! 'ⓑ will stays'가 맞아."
+        "0": "ⓐ use는 if 조건절의 현재형이라 맞는 형태야. 틀린 건 ⓑ will stays — will 뒤에는 반드시 동사원형(stay)이 와야 해.",
+        "2": "ⓒ will tell은 주절이야(The blue light가 주어). 주절에는 will + 동사원형이 맞아. 틀린 건 ⓑ will stays.",
+        "3": "ⓓ To sleep ~은 '~하려면'이라는 부사적 용법으로 쓰인 올바른 형태야. 틀린 건 ⓑ will stays."
       },
       "core_sentence_id": "CS07",
       "linked_rule_ids": [
@@ -3473,9 +3473,9 @@ __loadLesson({
       "hint": "글의 주제는 '수면 패턴' 뜻이야. 어떤 문장이 수면과 관계없나요?",
       "wrong_explanations": {
         "0": "① '규칙적인 수면 패턴을 갖자'는 글 주제와 맞아. 어색한 건 ③ 탁구 문장이야.",
-        "1": "'②'는 본문과 맞지 않아!",
+        "1": "② `Your body clock tells you when to wake up and sleep`은 수면 주제와 직결되는 문장이야. 흐름에서 벗어난 게 아냐.",
         "3": "④ '생체 시계에 귀 기울여 규칙적으로 자자'는 수면 이야기에 맞는 문장이야.",
-        "4": "'⑤'는 본문과 맞지 않아!"
+        "4": "⑤ `You will feel healthier`도 수면 습관의 결과를 말하는 문장이라 흐름에 맞아. 벗어난 건 ③ 탁구 문장."
       },
       "core_sentence_id": "CS02",
       "linked_rule_ids": [],
@@ -3566,7 +3566,7 @@ __loadLesson({
       "hint": "본문에서 'right before bedtime'에 끝내면 어떻게 된다고 했나요?",
       "wrong_explanations": {
         "0": "'you will fall asleep easily at night'라고 했어. 본문과 일치하니까 답이 아니야.",
-        "1": "'운동 후 몸이 약간 피곤해진다.'는 본문과 맞지 않아!",
+        "1": "본문 `your body will feel a little tired`와 일치해. 일치하는 내용이니까 이 문제(불일치)의 답이 아니야.",
         "3": "'your body may feel too awake'라고 했어. 본문과 일치하니까 답이 아니야."
       },
       "core_sentence_id": "CS08",
@@ -4583,7 +4583,7 @@ __loadLesson({
       "hint": "'many foods and drinks'라고 했어요. '~에만'이라는 말이 있나 확인하세요.",
       "wrong_explanations": {
         "0": "첫 문장 'Caffeine can cause sleep problems'와 일치해. 답이 아니야.",
-        "1": "'초콜릿에도 카페인이 들어있다.'는 본문과 맞지 않아!",
+        "1": "본문 `even chocolate has caffeine`에 그대로 나와. 일치하는 내용이니까 이 문제(불일치)의 답이 아니야.",
         "3": "'energy drinks'가 카페인 목록에 있어. 본문과 일치하니까 답이 아니야."
       }
     },
@@ -4751,7 +4751,7 @@ __loadLesson({
       "hint": "선택지 하나하나를 본문에서 찾아보세요. 본문에 아예 없는 내용이 정답이야.",
       "wrong_explanations": {
         "0": "'when to wake up and sleep'라고 나와. 본문에서 바로 답할 수 있어.",
-        "1": "'카페인이 들어있는 음식에는 어떤 것이 있나?'는 본문과 맞지 않아!",
+        "1": "본문에 `chocolate, coffee, tea, soda, and energy drinks`라고 다 나와. 답할 수 있는 질문이라 답이 아니야.",
         "3": "'sleep problems'라고 나와. 답이 있는 질문이야."
       }
     },
@@ -4779,7 +4779,7 @@ __loadLesson({
       "hint": "취침 직전에 운동하면 어떻게 된다고 했는지 마지막 부분을 다시 읽어보세요.",
       "wrong_explanations": {
         "0": "'your brain will stay active'라고 했어. 본문과 일치하니까 답이 아니야.",
-        "1": "'파란 빛은 뇌에 '아직 자지 마'라는 신호를 보낸다.'는 본문과 맞지 않아!",
+        "1": "본문 `The blue light ... \"Hey, don't sleep yet.\"`와 일치. 일치하니까 답(불일치) 아냐.",
         "2": "'you will fall asleep easily at night'라고 했어. 본문과 일치해."
       }
     },
@@ -4863,7 +4863,7 @@ __loadLesson({
       "hint": "낮에 운동하면 밤에 어떻게 된다고 했나요? 'easily'를 찾아보세요.",
       "wrong_explanations": {
         "0": "'Sleeping well can give you energy'라고 했어. 본문과 일치하니까 답이 아니야.",
-        "1": "'규칙적으로 자면 더 건강해진다.'는 본문과 맞지 않아!",
+        "1": "본문 `sleep regularly. You will feel healthier`와 일치. 일치하니까 답(불일치) 아냐.",
         "3": "'even chocolate has caffeine'이라고 했어. 맞는 내용이니까 답이 아니야."
       }
     },
@@ -4919,7 +4919,7 @@ __loadLesson({
       "hint": "선택지 하나하나를 본문에서 찾아보세요. '몇 시간을 자야 하는지'가 본문에 있나요?",
       "wrong_explanations": {
         "0": "'chocolate, coffee, tea, soda, energy drinks'라고 나와. 답할 수 있어.",
-        "1": "'밤늦게 스마트폰을 쓰면 뇌에 어떤 일이 생기나?'는 본문과 맞지 않아!",
+        "1": "본문 `your brain will stay active`에 답이 있어. 답할 수 있는 질문이야.",
         "3": "'a few hours before bedtime'이라고 나와. 답할 수 있는 질문이야."
       }
     },
