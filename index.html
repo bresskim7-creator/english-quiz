@@ -1547,9 +1547,11 @@
             } else if (currentMode === 'social_concept' || currentMode === 'science_concept') {
                 const count = (QUIZ_DATA && QUIZ_DATA.concept_cards) ? QUIZ_DATA.concept_cards.length : 0;
                 el.textContent = count + '개 카드 · 약 5분';
-            } else if ((currentSubject === 'social' || currentSubject === 'science') && currentMode === 'exam_prep') {
-                const count = (QUIZ_DATA && QUIZ_DATA.exam_prep) ? Math.min(15, QUIZ_DATA.exam_prep.length) : 15;
-                el.textContent = count + '문항 · 약 10분';
+            } else if (currentMode === 'exam_prep') {
+                // STEP98 / 2026-04-19c: 전 과목 실전대비 20문항 통일
+                // 사회/과학은 QUIZ_DATA.exam_prep, 그 외는 QUIZ_DATA.questions를 쓰지만
+                // 실제 세션 생성기는 모두 20문항을 목표로 하므로 표시도 20으로 통일.
+                el.textContent = '20문항 · 약 20분';
             } else {
                 const total = QUIZ_DATA && QUIZ_DATA.questions ? Math.min(30, QUIZ_DATA.questions.length) : 30;
                 el.textContent = total + '문항 · 약 20분';
@@ -2360,23 +2362,35 @@
                 return generateKoreanExamPrepSession(examPrepQuestions);
             }
 
-            // === 영어: 기존 training_layer 기반 ===
+            // === 수학: score_group 비율 기반 20문항 (STEP97 / 2026-04-19b) ===
+            // 기존 영어 training_layer 로직은 math 문항에 training_layer가 없어 mpPick≤3만
+            // 잡혀 세션이 7~8개로 너무 작았다. math는 score_group(A/B/C) 필드가 있으므로
+            // 사회·과학 generateStudyExamSession과 유사한 비율 기반 경로로 분리한다.
+            if (currentSubject === 'math') {
+                return generateMathExamSession(examPrepQuestions);
+            }
+
+            // === 영어: 기존 training_layer 기반 — 20문항 확대 (STEP98 / 2026-04-19c) ===
+            // 변경: pcCap 4 유지, sfCap 4→8, mpCap 3→8. L1(pc=16,sf=42,mp=59): 4+8+8=20.
+            // L3(pc=0,sf=37,mp=50): 0+8+8=16 → 잔여(sf/mp)에서 4개 보충하여 20 도달.
             // training_layer 기준 분류 (없으면 mixed_practice fallback)
+            const TARGET = 20;
             const passageCheck = examPrepQuestions.filter(q => q.training_layer === 'passage_check');
             const skillFocus = examPrepQuestions.filter(q => q.training_layer === 'skill_focus');
             const mixedPractice = examPrepQuestions.filter(q =>
                 q.training_layer === 'mixed_practice' || !q.training_layer
             );
 
-            // passage_check: Stage A 우선, 4문항
+            // passage_check: Stage A 우선, 최대 4문항
             const pcStageA = passageCheck.filter(q => q.passage_stage === 'A');
             const pcOther = passageCheck.filter(q => q.passage_stage !== 'A');
             shuffleArray(pcStageA);
             shuffleArray(pcOther);
             const pcPool = pcStageA.concat(pcOther);
-            const pcPick = pcPool.slice(0, 4);
+            const pcCap = 4;
+            const pcPick = pcPool.slice(0, pcCap);
 
-            // skill_focus: 3~4문항 (score_group A 우선)
+            // skill_focus: 최대 8문항 (score_group A 우선)
             const sfSorted = [...skillFocus];
             sfSorted.sort((a, b) => {
                 const ga = a.score_group === 'A' || a.recovery_band === 'A' ? 0 : 1;
@@ -2389,24 +2403,41 @@
                 const gb = b.score_group === 'A' || b.recovery_band === 'A' ? 0 : 1;
                 return ga - gb;
             });
-            const sfTarget = Math.min(4, sfSorted.length);
-            const sfPick = sfSorted.slice(0, sfTarget);
+            const sfCap = 8;
+            const sfPick = sfSorted.slice(0, sfCap);
 
-            // mixed_practice: 2~3문항
+            // mixed_practice: 최대 8문항
             shuffleArray(mixedPractice);
-            const mpTarget = Math.min(3, mixedPractice.length);
-            const mpPick = mixedPractice.slice(0, mpTarget);
+            const mpCap = 8;
+            const mpPick = mixedPractice.slice(0, mpCap);
 
             // 세션 조합: 레이어 순서 유지, 레이어 내부만 셔플 (이미 셔플됨)
-            const session = [...pcPick, ...sfPick, ...mpPick];
+            let session = [...pcPick, ...sfPick, ...mpPick];
+
+            // TARGET 미달 시 잔여 풀(pc→sf→mp 순)에서 보충
+            if (session.length < TARGET) {
+                const usedIds = new Set(session.map(q => q.id));
+                const leftovers = [
+                    ...pcPool.slice(pcCap),
+                    ...sfSorted.slice(sfCap),
+                    ...mixedPractice.slice(mpCap)
+                ];
+                for (const q of leftovers) {
+                    if (session.length >= TARGET) break;
+                    if (!usedIds.has(q.id)) {
+                        session.push(q);
+                        usedIds.add(q.id);
+                    }
+                }
+            }
 
             // 세션이 비어있으면 기존 전체 풀에서 fallback
             if (session.length === 0) {
                 shuffleArray(examPrepQuestions);
-                return examPrepQuestions.slice(0, 10);
+                return examPrepQuestions.slice(0, TARGET);
             }
 
-            return session;
+            return session.slice(0, TARGET);
         }
 
         // 국어 실전대비 세션: passage_group 단위 묶음 출제
@@ -2440,44 +2471,97 @@
 
             const session = [];
             const usedGroups = new Set();
+            const TARGET = 20; // STEP98 / 2026-04-19c — 시험 대비 노출량 확대 (12→20)
+            const MIN_TARGET = 18; // 그룹 묶음 제약으로 20 못 채울 때 최소 보장
 
-            // passage_check 그룹 1~2개
+            // passage_check 그룹 1~3개 (단, 그룹 통째 포함 시 TARGET 초과 안 함)
             let pcCount = 0;
             for (const gk of pcGroupKeys) {
-                if (pcCount >= 2) break;
-                session.push(...pcGroups[gk]);
+                if (pcCount >= 3) break;
+                const groupItems = pcGroups[gk];
+                if (session.length + groupItems.length > TARGET) continue;
+                session.push(...groupItems);
                 usedGroups.add(gk);
                 pcCount++;
             }
 
-            // skill_focus 그룹 1~2개
+            // skill_focus 그룹 1~3개 (동일 제약)
             let sfCount = 0;
             for (const gk of sfGroupKeys) {
-                if (sfCount >= 2) break;
+                if (sfCount >= 3) break;
                 if (usedGroups.has(gk)) continue;
-                session.push(...sfGroups[gk]);
+                const groupItems = sfGroups[gk];
+                if (session.length + groupItems.length > TARGET) continue;
+                session.push(...groupItems);
                 usedGroups.add(gk);
                 sfCount++;
             }
 
-            // mixed_practice로 나머지 채움 (총 10~12문항 목표)
+            // mixed_practice로 나머지 채움 (총 TARGET 문항 목표)
             shuffleArray(mixedPractice);
             for (const q of mixedPractice) {
-                if (session.length >= 12) break;
+                if (session.length >= TARGET) break;
                 session.push(q);
             }
 
-            // 최소 10문항 미달 시 남은 풀에서 보충
-            if (session.length < 10) {
-                const remaining = examPrepQuestions.filter(q => !session.includes(q));
+            // 최소 MIN_TARGET 미달 시 남은 풀에서 보충
+            if (session.length < MIN_TARGET) {
+                const sessionIds = new Set(session.map(q => q.id));
+                const remaining = examPrepQuestions.filter(q => !sessionIds.has(q.id));
                 shuffleArray(remaining);
                 for (const q of remaining) {
-                    if (session.length >= 10) break;
+                    if (session.length >= MIN_TARGET) break;
                     session.push(q);
                 }
             }
 
             return session;
+        }
+
+        // 수학 실전대비 세션: score_group 비율 기반 20문항 (STEP97)
+        // 설계 근거: student_profile_and_learning_system_upgrade_MECE.md §5.2 문항 분류(A/B/C)
+        // 비율: A 40% / B 40% / C 20% (20문항 기준 A=8, B=8, C=4)
+        // 풀 부족 시 다른 군에서 보충, score_group이 없는 문항은 마지막 fallback.
+        // priorityScore 기준(오답 이력 우선) 정렬 후 셔플은 생략 — 사회·과학처럼 A 먼저 풀어도
+        // 학생이 "쉬운 것부터"라는 리듬으로 체감. 필요시 shuffleArray 추가 가능.
+        function generateMathExamSession(examPrepQuestions) {
+            if (!examPrepQuestions || examPrepQuestions.length === 0) return [];
+            const TARGET = 20;
+            const aTarget = Math.round(TARGET * 0.4); // 8
+            const bTarget = Math.round(TARGET * 0.4); // 8
+            const cTarget = TARGET - aTarget - bTarget; // 4
+
+            const poolA = poolByScoreGroup(examPrepQuestions, 'A');
+            const poolB = poolByScoreGroup(examPrepQuestions, 'B');
+            const poolC = poolByScoreGroup(examPrepQuestions, 'C');
+            const poolOther = examPrepQuestions.filter(q => !q.score_group);
+            shuffleArray(poolOther);
+
+            const selected = [];
+            const used = new Set();
+            const take = (pool, n) => {
+                let cnt = 0;
+                for (const q of pool) {
+                    if (cnt >= n) break;
+                    if (!used.has(q.id)) { selected.push(q); used.add(q.id); cnt++; }
+                }
+            };
+
+            take(poolA, aTarget);
+            take(poolB, bTarget);
+            take(poolC, cTarget);
+
+            // 미달 시 각 군 잔여 → other 순으로 TARGET까지 보충
+            if (selected.length < TARGET) {
+                take(poolA, TARGET);
+                take(poolB, TARGET);
+                take(poolC, TARGET);
+                take(poolOther, TARGET);
+            }
+
+            // 세션 내부 셔플 — 사회/과학 generateStudyExamSession과 동일하게 A 몰림 해제
+            shuffleArray(selected);
+            return selected.slice(0, TARGET);
         }
 
         // score_group 필터링 + 이력 기반 정렬
@@ -5184,15 +5268,16 @@
         function generateStudyExamSession() {
             const questions = QUIZ_DATA.exam_prep || [];
             if (questions.length === 0) return [];
-            // A군 우선, B군 보충, C군 후순위 — 최대 15문항
+            // A군 우선, B군 보충, C군 후순위 — 최대 20문항 (STEP98 / 2026-04-19c)
             // 각 군 내에서 priorityScore 기준 정렬 (틀린 문항 우선)
+            // 상한 변경: B 8→12, C 2→4, 최종 15→20 (시험 대비 노출량 확대)
             const aGroup = questions.filter(q => q.score_group === 'A');
             const bGroup = questions.filter(q => q.score_group === 'B');
             const cGroup = questions.filter(q => q.score_group === 'C');
             aGroup.sort((a, b) => priorityScore(b) - priorityScore(a));
             bGroup.sort((a, b) => priorityScore(b) - priorityScore(a));
             cGroup.sort((a, b) => priorityScore(b) - priorityScore(a));
-            const session = [...aGroup, ...bGroup.slice(0, 8), ...cGroup.slice(0, 2)].slice(0, 15);
+            const session = [...aGroup, ...bGroup.slice(0, 12), ...cGroup.slice(0, 4)].slice(0, 20);
             shuffleArray(session);
             return session;
         }

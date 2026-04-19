@@ -1,0 +1,1026 @@
+{
+  "project": "PA — 중2 영어 학습 앱",
+  "last_updated": "2026-04-19c (STEP98: 나머지 4경로 실전대비 20문항 확대 — 영어 L1/L3(pcCap=4/sfCap=8/mpCap=8+잔여보충), 국어 kor1(그룹상한 3/3+MIN_TARGET=18), 사회·과학 generateStudyExamSession(B 8→12/C 2→4/slice 15→20). updateSubtitle 전 exam_prep 분기 통합 '20문항·약 20분'. sw.js v103→v104. 정적/동적 검증 PASS: 영어·수학·사회·과학 세션 크기 20 고정, 국어 18~20. warmup 옵션② 유지(visible=20+unique_warmup))",
+  "label": "중2 영어+국어+수학 학습 앱 파일럿",
+  "target_date": "2026-04-27",
+  "status": "중간고사 대비 모드 (4/27-28 시험)",
+  "steps": [
+    {
+      "id": "STEP1",
+      "name": "교과서 PDF에서 Lesson 1 본문 추출",
+      "status": "completed",
+      "completed_date": "2026-03-15"
+    },
+    {
+      "id": "STEP2",
+      "name": "시험형 콘텐츠 초안 생성 (26문항)",
+      "status": "completed",
+      "completed_date": "2026-03-15"
+    },
+    {
+      "id": "STEP3",
+      "name": "PWA + Android 앱 개발",
+      "status": "completed",
+      "completed_date": "2026-03-15"
+    },
+    {
+      "id": "STEP4",
+      "name": "부모 확인용 요약 생성",
+      "status": "completed",
+      "completed_date": "2026-03-15"
+    },
+    {
+      "id": "STEP5",
+      "name": "피드백 종합 수정 (v2)",
+      "status": "completed",
+      "completed_date": "2026-03-15"
+    },
+    {
+      "id": "STEP6",
+      "name": "로그 데이터 보강 + Apps Script v3",
+      "status": "completed",
+      "completed_date": "2026-03-16"
+    },
+    {
+      "id": "STEP7",
+      "name": "교과서 PDF에서 Lesson 2 본문 추출",
+      "status": "completed",
+      "completed_date": "2026-03-19"
+    },
+    {
+      "id": "STEP8",
+      "name": "Lesson 2 시험형 콘텐츠 생성 (72문항)",
+      "status": "completed",
+      "completed_date": "2026-03-19"
+    },
+    {
+      "id": "STEP9",
+      "name": "Lesson 1 오답별 맞춤 설명 추가",
+      "status": "completed",
+      "completed_date": "2026-03-19"
+    },
+    {
+      "id": "STEP10",
+      "name": "Lesson 2 오답별 맞춤 설명 추가",
+      "status": "completed",
+      "completed_date": "2026-03-19"
+    },
+    {
+      "id": "STEP11",
+      "name": "sw.js 캐시 v3 + manifest.json 업데이트",
+      "status": "completed",
+      "completed_date": "2026-03-20"
+    },
+    {
+      "id": "STEP12",
+      "name": "중복 폴더 정리",
+      "status": "completed",
+      "completed_date": "2026-03-20"
+    },
+    {
+      "id": "STEP13",
+      "name": "영어 시스템 업그레이드 기획서 작성",
+      "status": "completed",
+      "completed_date": "2026-03-20"
+    },
+    {
+      "id": "STEP14",
+      "name": "lessons-learned.md 작성",
+      "status": "completed",
+      "completed_date": "2026-03-20"
+    },
+    {
+      "id": "STEP15",
+      "name": "152문항 전수 재분류 (Phase 1)",
+      "status": "completed",
+      "completed_date": "2026-03-20"
+    },
+    {
+      "id": "STEP16",
+      "name": "Lesson 1 arrange 16개 재설계",
+      "status": "completed",
+      "completed_date": "2026-03-20"
+    },
+    {
+      "id": "STEP17",
+      "name": "B군 보강 + dialogue_response/short_reading 신규 8문항",
+      "status": "completed",
+      "completed_date": "2026-03-20"
+    },
+    {
+      "id": "STEP18",
+      "name": "L2 full_arrange_legacy 2건 변환",
+      "status": "completed",
+      "completed_date": "2026-03-20"
+    },
+    {
+      "id": "STEP19",
+      "name": "앱 코드에 dialogue_response/short_reading 렌더링 추가",
+      "status": "completed",
+      "completed_date": "2026-03-20"
+    },
+    {
+      "id": "STEP20",
+      "name": "generateSession() 엔진 v3 + A/B 세션 타입 + 4대 메트릭",
+      "status": "completed",
+      "completed_date": "2026-03-20"
+    },
+    {
+      "id": "STEP21",
+      "name": "Apps Script v5 + L2 dialogue_response/short_reading 6문항",
+      "status": "completed",
+      "completed_date": "2026-03-20"
+    },
+    {
+      "id": "STEP22",
+      "name": "position_ask + mini_writing 신규 타입 구현",
+      "status": "completed",
+      "completed_date": "2026-03-20"
+    },
+    {
+      "id": "STEP23",
+      "name": "버그픽스 3건 + 통합세션 30문항 + A/B 제거",
+      "status": "completed",
+      "completed_date": "2026-03-20",
+      "details": "1) sent_logs 키 버그(unsentLogsKey→'sent_logs'), 2) quiz_logs 키 불일치(quiz_logs vs quiz_logs_L1 — 로그 전송 안되던 핵심 원인), 3) priorityScore 쿨다운(동일 문항 반복 방지 -40점). A/B 세션 타입 제거 → 통합 30문항 세션. 로그 수집 동적화(L1~LN 자동). sw.js v6→v8. Apps Script v5 마이그레이션 로직(11컬럼→15컬럼 기존 행 재배치) 추가."
+    },
+    {
+      "id": "STEP24",
+      "name": "모바일 로딩 버그 수정 (v15)",
+      "status": "completed",
+      "completed_date": "2026-03-21",
+      "details": "fetchJsonCompat() 폴백 순서 반전: .js(JSONP) 1순위 → .json(fetch) 2순위 → XHR 3순위. sw.js fetch 핸들러에 response.ok 체크 추가(404 캐싱 방지). 캐시 v10→v11."
+    },
+    {
+      "id": "STEP25",
+      "name": "메타데이터 병합 (core_sentences + grammar_rules + exam_pattern)",
+      "status": "completed",
+      "completed_date": "2026-03-21",
+      "details": "업로드 파일의 메타데이터를 기존 파일(21-F 수정 포함)에 병합. L1: core_sentences 14/14, grammar_rules 2개, exam_pattern 94/150. L2: core_sentences 13/13, grammar_rules 2개, exam_pattern 72/124. 21-F 수정(ID통일, required_word, 해설) 보존 확인. lesson1.js v3.5, lesson2.js v3.4, sw.js v12."
+    },
+    {
+      "id": "STEP26",
+      "name": "UI 버그 수정 (instruction 폰트 + mini_writing context)",
+      "status": "completed",
+      "completed_date": "2026-03-21",
+      "details": "instruction-text 13px→15px + white-space:pre-line. question-text에도 pre-line 추가. showMiniWriting()에 context 표시 로직. L1 W002/W004/W005에 context 데이터 추가. sw.js v13."
+    },
+    {
+      "id": "STEP27",
+      "name": "5층 커리큘럼: passage_check 병합 + training_layer 재분류 + 세션 엔진 교체",
+      "status": "completed",
+      "completed_date": "2026-03-21",
+      "details": "passage_check L1 16문항(v3.7), L2 16문항(v3.6) 병합. 기존 exam_prep을 skill_focus/mixed_practice로 재분류(L1: sf42+mp52, L2: sf24+mp48). skill_focus instruction 행동 가이드 수정(L1 42건, L2 24건). generateExamPrepSession() training_layer 기반 3단계 세션 구성으로 교체(pc4+sf4+mp3=11문항). sw.js v14."
+    },
+    {
+      "id": "STEP28",
+      "name": "품질 이슈 3건 점검 + progress.json 전체 대조",
+      "status": "completed",
+      "completed_date": "2026-03-21",
+      "details": "품질 이슈 3건 해소 확인(D-CS 재설계). index.html 전체 스캔 후 progress.json 대조: vocab_drill(L1:33, L2:27), core_sentences, grammar_rules, 문항타입 11종 누락 발견 → 보완."
+    },
+    {
+      "id": "STEP29",
+      "name": "lesson-creation-guide.md 작성 + 검증",
+      "status": "completed",
+      "completed_date": "2026-03-21",
+      "details": "신규 레슨 생성 표준 절차서 작성. 7단계 절차, 16종 데이터 JSON 스키마, ID 규칙, 품질 체크리스트 14항목 포함. lesson1/2 실제 데이터 대조 검증 완료. passage_check ID 패턴 불일치(L1: PC-A-01 vs L2: PC2-A-01) 발견 → 가이드에 주석 반영."
+    },
+    {
+      "id": "STEP30",
+      "name": "Lesson 1 전수 점검표 반영 (10건)",
+      "status": "completed",
+      "completed_date": "2026-03-22",
+      "details": "상: D-CS01a-02 quiet 해설 문맥형으로 수정, V008 세 번째 문장 'this word'→'a sentence' 재구성+해설 동기화, V020 오답지 stop→carry 교체+해설 수정. 중: D-CS06-02/V006 quiet 해설 문맥형으로 수정, G001/G008 instruction '않는다을'→'않는다는 점을' 오타 수정. 보완: W003 min_words 3→6, W008 min_words 3→8, W009 min_words 3→5, W010 min_words 3→6. lesson1.js v3.7→v3.8, 백업: lesson1_v3.7_backup.js"
+    },
+    {
+      "id": "STEP31",
+      "name": "Lesson 2 전수 점검표 반영 (14건)",
+      "status": "completed",
+      "completed_date": "2026-03-22",
+      "details": "최상: A005 Bobby→Bob 내용오류 수정, DR005 화자귀속 수정(Bob 연속대사로), E-MW-001~005 required_word 추가+min_words 상향(3→5~8). 상: G002 오답해설 '시간표현'→'목적' 수정, GR01 to_inf_adjective→to_infinitive 3가지 용법 분리, M001 애매 오답 'that is helping'→'who help'(수일치 오류형), W03 'fell down'→'piled'(교과서 원문 일치). 중: DR007 instruction '응답→반응' 변경, MW006 min_words 5→6, W08 shoulder→shoulders. lesson2.js v3.6→v3.7, 백업: lesson2_v3.6_backup2.js"
+    },
+    {
+      "id": "STEP32",
+      "name": "동그라미 instruction 전수 수정 (L1 27건 + L2 18건)",
+      "status": "completed",
+      "completed_date": "2026-03-23",
+      "details": "파일럿 중 발견: '선택지의 핵심 단어에 동그라미 치고...' instruction이 (1)질문이 아닌 학습전략 팁, (2)모바일에서 '동그라미 치라'는 표현 부적절. 수정: sentence에 질문 있는 short_reading→'다음 글을 읽고 질문에 답하세요.', 질문 없는 short_reading→test_task별 실제 시험 질문(주제/일치/불일치/빈칸 등), match→방향별 매칭 질문(한→영/영→한/어휘). lesson1.js v3.8→v3.9(27건), lesson2.js v3.7→v3.8(18건). 백업: lesson1_v3.8_backup.js, lesson2_v3.7_backup.js"
+    },
+    {
+      "id": "STEP33",
+      "name": "국어 1단원 전문가 납품 검수 + lesson_kor1.js 변환",
+      "status": "completed",
+      "completed_date": "2026-03-23",
+      "details": "v1.0 검수: 정답 100% 1번 고정(P0), wrong_feedback 없음, symbol_marks 미사용 → 수정 요청. v1.1 검수: 정답 분포 균등화(3지선다 5/6/5, 4지선다 6/6/6/6), wrong_feedback 40/40 완비, symbol_marks 17/40 적용, passage_group 규칙 100% 준수. 앱 포맷 변환: answer 1-indexed→correct 0-indexed, wrong_feedback→wrong_explanations, passage+question→sentence, reference→hint+reference_type. lesson_kor1.js(113KB) 생성."
+    },
+    {
+      "id": "STEP34",
+      "name": "국어 과목 앱 통합 (index.html + sw.js)",
+      "status": "completed",
+      "completed_date": "2026-03-23",
+      "details": "korean-integration-spec.md 기반 8개 항목 구현. 과목 선택 UI(영어/국어 토글), loadLesson 문자열 ID 지원, reference_type 5종 렌더링, symbol_marks CSS 강조, passage_group 묶음 출제 세션 엔진, 국어 vocab 확장 카드(뜻+품사+예문+유사표현), 핵심 문장 모드(core_sentences flashcard), TTS 국어 비활성화, 헤더 동적 타이틀, 로그 subject 필드, sw.js v16→v17. 백업: index_v14_backup.html."
+    },
+    {
+      "id": "STEP35",
+      "name": "choice_blank 드릴 한국어 해석 추가 (27문항)",
+      "status": "completed",
+      "completed_date": "2026-03-28",
+      "details": "파일럿 피드백: choice_blank 문항이 문맥 없이 영어만 보여줘서 여러 답이 가능한 문제. 해결: korean_full 필드(빈칸 없는 완전한 한국어 해석) 추가 → UI에서 영어 prompt 위에 파란색으로 표시. L1 14문항 + L2 13문항 = 27문항. instruction '빈칸에 알맞은 단어를 고르세요'→'한국어 뜻에 맞는 영어 단어를 고르세요' 변경. sw.js v17→v18."
+    },
+    {
+      "id": "STEP36",
+      "name": "국어 4모드 재설계 + 수행평가 모드 추가",
+      "status": "completed",
+      "completed_date": "2026-03-28",
+      "details": "국어 학습 구조 전면 재설계. 기존 3모드(단어드릴+핵심문장+실전대비) → 4모드(본문해설+개념카드+실전대비+수행평가). (1)본문해설: 3편(우리는왜첫사랑이야기를좋아할까/기차가달려간곳에는/비린내라뇨!) 섹션별 해설+확인질문. (2)개념카드: 6쌍 플립카드(말하는이vs보는이, 화자vs서술자, 1인칭주인공vs관찰자, 3인칭전지적vs관찰자, 읽기전중후, 주제vs소재). (3)실전대비: 기존40문항 유지. (4)수행평가 2탭—설명글쓰기(설명방법7종카드+찾기8문항+개요연습3개)/독서단어장(좋은예시3+나쁜vs좋은비교3+선정가이드). lesson_kor1.js v2.0(2615줄), index.html v16(3927줄). sw.js v19. 백업: lesson_kor1_v1_backup.js, index_v15_backup.html."
+    },
+    {
+      "id": "STEP37",
+      "name": "수학 과목 추가 — 유리수와 순환소수 (3모드: 개념카드+절차연습+실전문제)",
+      "status": "completed",
+      "completed_date": "2026-03-29",
+      "details": "수학 3번째 과목 추가. lesson_math1.js 신규 생성(개념카드8+절차연습12(42steps)+실전20문항, A:10/B:8/C:2). CSS-only 수학 렌더링(분수mfrac+순환소수mrep+위첨자sup, KaTeX 무사용). renderMath() 커스텀 마크업({f:a:b}, {r:digits}, {s:n}). 절차연습 상태머신(window._pdState). index.html: selectSubject('math')+수학모드셀렉터+6개 렌더러 함수. sw.js v28→v29. 백업: index_v16_backup.html."
+    },
+    {
+      "id": "STEP38",
+      "name": "오답 재도전 라운드 + 수학 보기 셔플",
+      "status": "completed",
+      "completed_date": "2026-03-29",
+      "details": "세션 종료 시 틀린 문항 재도전 기능. (1)결과 화면에 '틀린 문제 다시 풀기' 버튼(재도전 가능 문항 있을 때만 표시), (2)startRetryRound(): 틀린 문항 셔플 후 재출제(학습/열람 타입 제외), (3)finishRetryRound(): 회복률 표시(회복/미회복 구분), 재도전 로그 별도 저장(session_type:'retry'), (4)findQuestionById(): 영어/국어/수학 전 과목 대응, (5)수학 choice 보기 Fisher-Yates 셔플+origIdx 매핑(wrong_explanations 정확 참조), (6)진도바 '재도전 1/N' 표시, (7)goHome에서 retry 상태 초기화. sw.js v29→v30. 백업: index_v17_backup.html."
+    },
+    {
+      "id": "STEP39",
+      "name": "사회+과학 과목 추가 (개념정리+실전문제 2모드)",
+      "status": "completed",
+      "completed_date": "2026-03-29",
+      "details": "사회·과학 과목 앱 통합. (1)lesson_soc1.js: 국가기관과권력분립 — 개념카드27장(SC-01~SC-27, term+definition+easy_explanation+exam_tip) + 실전문제25문항(S1-E001~E025, A:14/B:11, 정답분포 7/6/6/6). (2)lesson_sci1.js: 물질의특성 — 개념카드25장(CC-01~CC-25) + 실전문제20문항(C1-E001~E020, A:9/B:10/C:1, 정답분포 5/5/5/5). (3)공유 렌더러: showStudyConceptCard(플립카드, 과목별 색상), showStudyChoice/checkStudyChoice(셔플+origIdx), generateStudyConceptSession/generateStudyExamSession(A군 우선 max15). (4)UI: 과목 버튼(사회 초록#2E7D32, 과학 파랑#1565C0), 모드셀렉터(개념정리+실전문제). (5)쉬운설명 필수: 모든 개념카드에 easy_explanation(일상 한국어). sw.js v30→v31. index.html ~5,220줄."
+    },
+    {
+      "id": "STEP40",
+      "name": "홈 화면 2단계 분리 + 사회/과학 크래시 수정",
+      "status": "completed",
+      "completed_date": "2026-03-29",
+      "details": "홈 화면 UI 리디자인. (1)1단계 과목 선택: 5개 과목 카드(📘영어/📕국어/📐수학/🏛️사회/🔬과학) 2열 그리드. (2)2단계 과목 상세: ← 뒤로+과목명, 단원선택+학습모드+학습현황(영어만). (3)사회/과학 크래시 수정: QUIZ_DATA.questions undefined 가드(loadLesson/updateModeSelector/updateSubtitle 3곳), (4)init()에서 불필요한 loadLesson(1) 제거 — 첫 화면은 과목선택이므로. (5)goHome()→subject-page, goSubjectHome()→home-page 분리. sw.js v31→v35."
+    },
+    {
+      "id": "STEP41",
+      "name": "학습 품질 개선 5종 (position_ask 수정, 설명 리라이트, SVG 시각자료, 조건 하이라이트, 오답→개념카드)",
+      "status": "completed",
+      "completed_date": "2026-03-30",
+      "details": "(1)position_ask 버그: 단어 번호 표시 제거+힌트 숨김 — 답 노출 방지. (2)사회 실전 25문항 설명 3층 리라이트: 💡직관+📖교과서+🔑한자풀이. (3)인라인 SVG 시각자료: 사회3장+과학4장+수학3장+국어2장=12장 개념카드에 추가, 3종 렌더러 visual_svg 지원. (4)조건어 하이라이트: 문제 지시문에서 부정 조건어(틀린/아닌/않는 등) 빨간색 볼드 밑줄 자동 적용. (5)오답→개념카드 연결: 사회25+과학20 문항에 linked_concept 필드 추가, 오답 시 '📚 개념 복습' 버튼→모달 팝업으로 관련 개념카드 표시. sw.js v35→v39."
+    },
+    {
+      "id": "STEP42",
+      "name": "5항목 점검 + 3층 설명 전 과목 리라이트 + 영어 핵심문장 연결",
+      "status": "completed",
+      "completed_date": "2026-03-30",
+      "details": "(1)Apps Script v7: subject 컬럼 추가(15→16컬럼), v6→v7 마이그레이션, 과목별 통계 요약. 기존 v6에서 과목 정보 누락되던 문제 해결. (2)영어 오답→핵심문장 연결: showCoreSentencePopup() 구현 — core_sentence_id 기반으로 오답 시 '📖 핵심문장 복습' 버튼 표시, 팝업에 영문+한글+TTS+짝문장+문법규칙 표시. (3)SVG 반응형: 4곳 SVG 컨테이너에 max-width:100%+svg height:auto 추가, 모바일 넘침 방지. (4)조건어 하이라이트 스타일 통일: showStudyChoice의 text-decoration-color 누락 수정. (5)3층 설명 전 과목 리라이트: 과학20(💡📖🔬)+수학20(💡📖⚠️)+국어40(💡📖📝)+영어L1 110(💡📖🗣️)+L2 88(💡📖🗣️)=278문항 exam_prep 설명 변환. 영어 drill은 의도적으로 유지. sw.js v39→v40."
+    },
+    {
+      "id": "STEP43",
+      "name": "실기기 버그수정 + 국어 4모드 복구 + 네비게이션 개선 + 체크문제 대화체 리라이트",
+      "status": "completed",
+      "completed_date": "2026-03-30",
+      "details": "(1)국어 모드선택기 수정: _isV3 예외에 korean 추가 → 4모드 정상 표시. (2)국어 passage_guides/concept_cards/perf_assessment 데이터 복구: 이전 세션에서 누락된 3개 키 전체 재생성(PG-01/02/03 + VS카드6쌍 + 수행평가). (3)practice_questions 스키마 수정: prompt→sentence, correct_answer→correct(0-indexed). (4)PG ID 수정: pg-kor1-*→PG-01/02/03 (kor1_reader.js 키 매칭). (5)수학 SVG 3장 리라이트: MC-01 소수분류(360×260), MC-03 유한소수판별(text-anchor 좌우분리), MC-05 순환소수→분수. (6)진도바 수정: index/length→(index+1)/length. (7)상단 ← 버튼 제거(그만하기와 중복). (8)browseNavButtons() 구현: 열람형 모드에 ← 이전/다음 → 인라인 네비게이션(본문해설/개념카드/수행평가/사회과학개념). (9)한계효용 chart 필드 복구. (10)PG-03 체크문제 쉬운 대화체 리라이트. (11)PG-01/PG-02 체크문제도 대화체 리라이트. sw.js v40→v46."
+    },
+    {
+      "id": "STEP44",
+      "name": "국어 2단원 콘텐츠 추가 (표현을 바라보는 다양한 시선)",
+      "status": "completed",
+      "completed_date": "2026-03-30",
+      "details": "lesson_kor2.js 신규 생성. 2-01 피동표현과인용표현 + 2-02 매체자료의재현방식. (1)본문해설 2편(PG-01 피동/인용 6섹션+3질문, PG-02 매체재현 6섹션+3질문), (2)개념카드 6쌍(능동vs피동, 접미사vs보조용언, 직접vs간접인용, 공익vs상업광고, 선택vs배제, 고정관념반영vs탈피), (3)실전대비 38문항(A:15/B:19/C:4, 정답분포10/10/10/8, 4지선다), (4)수행평가(피동인용활용글쓰기7종+연습3+개요2, 독서단어장), (5)어휘 16개, 핵심문장 10개. index.html 국어 2단원 버튼 추가. sw.js v46→v47."
+    },
+    {
+      "id": "STEP45",
+      "name": "수학 2단원 콘텐츠 추가 (문자와 식)",
+      "status": "completed",
+      "completed_date": "2026-03-30",
+      "details": "lesson_math2.js 신규 생성. 지수법칙 + 단항식의곱셈나눗셈 + 다항식의계산 전체. (1)개념카드 10장(거듭제곱기본, 지수법칙4종, 단항식곱셈/나눗셈, 동류항, 다항식덧뺄셈, 분배법칙. SVG 1장), (2)절차연습 15문제(지수법칙4, 단항식3, 다항식5, 혼합3. 각 3~6단계), (3)실전문제 33문항(A:14/B:14/C:5, 정답분포9/8/8/8, 전수 4지선다, wrong_explanations 완전). index.html 수학 1단원/2단원 버튼 분리. sw.js v47→v48."
+    },
+    {
+      "id": "STEP46",
+      "name": "사회 2단원 콘텐츠 추가 (경제생활과 선택)",
+      "status": "completed",
+      "completed_date": "2026-03-30",
+      "details": "lesson_soc2.js 신규 생성. 경제생활에서의합리적선택 + 안정적인경제생활을위한노력 + 기업의역할과기업가정신. (1)개념카드 12장, (2)실전문제 38문항(A:15/B:15/C:8, 정답분포10/10/10/8, explanation+wrong_explanations 완전). index.html 사회 1단원/2단원 버튼 분리. sw.js v48→v49."
+    },
+    {
+      "id": "STEP47",
+      "name": "과학 2단원 콘텐츠 추가 (지권의 변화)",
+      "status": "completed",
+      "completed_date": "2026-03-30",
+      "details": "lesson_sci2.js 신규 생성. 지권의구성 + 암석의종류와순환 + 대륙이동과판구조론. (1)개념카드 15장(지구계, 지구내부구조, 해양vs대륙지각, 조암광물, 화성암, 현무암vs화강암, 퇴적암, 변성암, 암석순환, 풍화, 토양, 대륙이동설, 판구조론, 판의경계, 화산대지진대), (2)실전문제 38문항(A:15/B:15/C:8, 정답분포10/10/10/8, explanation+wrong_explanations 완전). index.html 과학 1단원/2단원 버튼 분리. sw.js v49→v50."
+    },
+    {
+      "id": "STEP48",
+      "name": "중간고사 범위 분석 + 영어 L3 콘텐츠 제작",
+      "status": "completed",
+      "completed_date": "2026-03-31",
+      "note": "가정통신문으로 시험범위 확인. 영어 L3(p.44-61) 콘텐츠 148문항 제작. index.html L3 버튼 추가, sw.js v55→v56."
+    },
+    {
+      "id": "STEP49",
+      "name": "수학 3단원(부등식) 콘텐츠 제작",
+      "status": "completed",
+      "completed_date": "2026-03-31",
+      "note": "교과서 p.52-61 범위. 개념카드 8장 + 절차연습 12문제 + 실전문제 30문항. 앱에 3단원 버튼 추가. sw.js v57."
+    },
+    {
+      "id": "STEP50",
+      "name": "수학 단원 체계 교과서 기준 정비 (Ⅰ/Ⅱ-1/Ⅱ-2)",
+      "status": "completed",
+      "completed_date": "2026-03-31",
+      "note": "math1/2/3 title을 교과서 대단원 체계로 변경. 앱 버튼도 'Ⅰ. 유리수 / Ⅱ-1 식의계산 / Ⅱ-2 부등식'으로. sw.js v58."
+    },
+    {
+      "id": "STEP73",
+      "name": "lesson3.js wrong_explanations 일타강사 스타일 전면 리라이팅",
+      "status": "completed",
+      "completed_date": "2026-04-10",
+      "details": "lesson3.js의 모든 wrong_explanations를 중2 학생선수 대상 '일타강사' 스타일로 전면 리라이팅 + 버그 6건 수정. [범위] 158개 문항, wrong_explanations 27개 항목 리라이팅 + 버그 6건 수정. [버그 수정] 정답 키가 wrong_explanations에 포함된 6개 문항 제거: D-CS02-02(highest), D-CS03-02(invented), D-CS05-02(together), D-CS07-02(finding), D-CS10-02(wonderful), D-CS13-02(mistakes). [변환내용] choice_blank 형 단어 선택→공식형 리라이팅 (예: '비교급 = -er / more! 최상급 아님', 'invent = 발명!', 'together = 함께!', 'wonderful = 멋진!', 'mistakes = 실수!'). [기법] 공식형(X→Y!), 대비형(O vs X), 구어체(~야), 25자 이내 짧은 표현. [검증] node -c 구문검증 통과, 데이터 정확성 유지(키/정답/explanation 필드 미변경), JSONP 구조 보존."
+    },
+    {
+      "id": "STEP73",
+      "name": "lesson2.js wrong_explanations 일타강사 스타일 전면 리라이팅",
+      "status": "completed",
+      "completed_date": "2026-04-10",
+      "details": "lesson2.js의 모든 wrong_explanations를 중2 학생선수 대상 '일타강사' 스타일로 전면 리라이팅. [범위] 192개 템플릿 항목 (short_reading 81개 + fill_blank 71개 + match 22개 + arrange 6개 + position_ask 9개 + mini_writing 5개). [타입별 변환내용] (1) short_reading: '지문에 증거 없음'→구체적 내용 지적 (예: '⚡ 보비가 \"밀었다\"는 지문에 없어! \"Bob sneezed\"이 정답!'). (2) fill_blank: '단어 뜻이 문맥과 안 맞아'→문법적 이유 명확화 (예: '⚡ to부정사 뒤는 -ing형 아니야! \"to build\"야!'). (3) match: 관계대명사 오류 지적 (예: '⚡ which는 물건/동물용! 사람은 \"who\"여야 해!'). (4) arrange/position_ask/mini_writing: 어순/단어위치/형태 구체 설명. [기법] 공식형(X→Y!), 함정강조(⚡), 구어체(~야/~거든/~잖아), 25자 이내. [검증] node -c 구문검증 통과, 기존 구체적 해설(choice_blank 이미 타입) 보존, JSONP 구조 보존. [결과] 뻔한 템플릿 0개, 구체적 맞춤 해설 265개(전수 교체)."
+    },
+    {
+      "id": "STEP21",
+      "name": "lesson1.js 뻔한 템플릿 해설 301개 → 맞춤형 일타강사 해설로 재작성",
+      "status": "completed",
+      "completed_date": "2026-04-10T10:43:29.890061"
+    },
+    {
+      "id": "STEP73",
+      "name": "lesson2.js wrong_explanations 동일 해설 33건 → 문항별 개별 해설로 교체",
+      "status": "completed",
+      "completed_date": "2026-04-10",
+      "details": "lesson2.js의 dialogue_response 7문항(DR005/006/007, E-DR-001/002/003/004) + short_reading 26문항(R002/003, E-SR-001~008, PC2-A-01~08, PC2-B-01~04, PC2-C-01~04)에서 동일한 템플릿 해설을 문항별 개별 해설로 교체. (1) dialogue_response: 대화 맥락별 구체적 오류 지적 (선택지 의미 오류, 상황 부적절, 시제 불일치 등). (2) short_reading: 지문 내용과의 구체적 모순점 명시 + 정답 부정확한 이유 강조 + 일타강사식 구어체('~이야', '~거든', '~잖아'). (3) 스타일: 30자 이내 + '왜 틀렸는가'가 핵심. (4) 검증: node -c PASS, 33/33 수정 완료, 기존 개별화 문항은 미수정."
+    },
+    {
+      "id": "STEP74",
+      "name": "lesson_kor1.js 동일 해설 31건 → 문항별 일타강사 해설로 교체",
+      "status": "completed",
+      "completed_date": "2026-04-10",
+      "details": "국어 1단원 실전대비 50문항 중 동일 템플릿 해설 31문항을 문항별·선택지별 맞춤형 해설로 교체. passage_group 8개(read-001~005, lit-001~002, tr-001~003) 지문 맥락 반영. 읽기 전/중/후 단계 구분, 시점 개념(1인칭/전지적), 시 화자 파악 등 교과 핵심 반영. 스타일: 일타강사 구어체(~이야/~거든/~잖아), 왜 틀렸는지 직설적 지적. 검증: node -c PASS, 템플릿 잔존 0건, 정답키 오류 0건, 누락 0건. sw.js v84→v85."
+    },
+    {
+      "id": "STEP75",
+      "name": "국어 개념카드 시점 SVG 시각자료 2장 추가",
+      "status": "completed",
+      "completed_date": "2026-04-10",
+      "details": "cc-kor1-3(1인칭 주인공 vs 관찰자)과 cc-kor1-4(3인칭 전지적 vs 관찰자)에 visual_svg 필드 추가. 기존 index.html의 visual_svg 렌더링 코드 활용. 1인칭: 나=주인공 vs 나=구경꾼 위치 시각화. 3인칭: 마음속까지 보여줌(보라 말풍선) vs 겉 행동만(회색 박스) 대비. 하단 팁 박스 포함. sw.js v85→v86."
+    },
+    {
+      "id": "STEP80",
+      "name": "영어L1 부실 오답해설 78건 + L3 9건 개선 (v2)",
+      "status": "completed",
+      "completed_date": "2026-04-10"
+    },
+    {
+      "id": "STEP81",
+      "name": "중간고사 대비 전 과목 갭 분석 + 국어/과학 보강 지시문 작성",
+      "status": "completed",
+      "completed_date": "2026-04-15",
+      "note": "시험범위 재확인(가정통신문+세부평가계획). 핵심 발견: (1)전과목 선택형100점, 영어만 서논술18점. (2)과학 A/B 모두 범위(선생님 분반). 전과목 교과서 대비 문제 커버리지 분석 완료. 국어: 50문제 중 1-02 A군 6개뿐→12~15개 보강 필요. 과학: 물질특성20+빛파동25, ~5개 보강 필요. 갭분석 보고서 2건 저장. 다음 세션 지시문 작성 완료(02_Working/next-session-instruction-20260415.md)."
+    },
+    {
+      "id": "STEP82",
+      "name": "중간고사 보강: 국어 13문제 + 과학 10문제 추가",
+      "status": "completed",
+      "completed_date": "2026-04-15",
+      "details": "국어: KOR-U1-051~063 추가(1-02 A군4+B군3, 1-01 A군3+B군3), C→B 재분류 3건(029,045,048). 최종 63문제 A=25(40%) B=30(48%) C=8(13%). 수정 라운드: (1)정답분포 셔플(0편향→균등), (2)오답해설 일타강사 톤 14건 재작성, (3)B군 medium 7문제 4지선다 추가. 과학sci1: C1-E021~025 추가(25문제). sci3: L3-E026~030 추가(30문제), E026·E030 기존중복→대체. sw.js quiz-v91. Python 최종검증 통과."
+    },
+    {
+      "id": "STEP83",
+      "name": "HWP 핵심정리 어휘 반영: vocab_drill 예문+신규단어, Check Up 8문항, 카드 하이라이트",
+      "status": "completed",
+      "completed_date": "2026-04-15"
+    },
+    {
+      "id": "STEP85",
+      "name": "영어 L1/L3 전수 품질점검 + Codex 협업모델 도입",
+      "status": "completed",
+      "completed_date": "2026-04-17",
+      "note": "lesson1.js 11건, lesson3.js 22건 수정. Codex 멀티에이전트 운용 규칙 도입."
+    },
+    {
+      "id": "STEP86",
+      "name": "Codex 자문 기반 4과목 전수 품질점검 수정",
+      "status": "completed",
+      "completed_date": "2026-04-17",
+      "note": "영어 G002 instruction 통일(1건). 수학1 E003/E008/E020 조합형 전환+E004/E009 재작성(5건), 수학2 Q-11 해설(1건). 국어 U1-041 1인칭 재작성+U1-030 삭제(2건, 63→62문항). 과학3 E025 정답키+E002 보기 교체(2건). 전체 Python 검증 통과."
+    },
+    {
+      "id": "STEP87",
+      "name": "영어 시험 직전 최소 안전화 — 프레임/채점 오류 닫기",
+      "status": "completed",
+      "completed_date": "2026-04-17",
+      "note": "이번 세션 범위는 '시험 직전 최소 안전화'로 한정. lesson3.js R009 재작성(지문을 교과서 원문 'came about by chance' 기준으로 교체, 정답 1, hint/wrong_explanations 정합화). lesson3.js R010 재작성(지문을 교과서 원문 'used for car windows' 기준으로 교체, 정답 2, 질문 문구 '일치하지 않는 것은'으로 통일). lesson1.js HWP-TB03 accept_typos.cooks=[] (3인칭 단수 -s 보존), lesson1.js HWP-TB04 accept_typos.see=[] (sea 허용 제거). Node 기반 검증 스크립트(02_Working/verify_2026-04-17c.js)로 수정 타깃 4건 전부 통과. 백업: 02_Working/backup_2026-04-17c/. 이월: R003/V018/V024, 프린트어휘 4개(하드카피 재료 트랙), 서술형 하드카피 초안, mini_writing 노출 복구."
+    },
+    {
+      "id": "STEP88",
+      "name": "영어 lesson3.js 잔여 위험 3건 + W005 사실 오류 닫기",
+      "status": "completed",
+      "completed_date": "2026-04-18",
+      "note": "04-17c 이월 R003/V018/V024 + 04-18 추가 자문 W005 4건 수정. R003: 질문에 '물 대신' 추가 + 보기 '램프 오일로'→'비눗물로' 교체(oil vs lamp oil 혼선 제거, 정답 인덱스 2 유지). V018: 지문을 교과서 'Ms. Wakefield didn't have _____ time to melt a chocolate bar.'로 교체 + 보기 enough/many/a lot/plenty로 교체(time 불가산·of 부재로 enough만 문법 성립, 정답 0). V024: Ruth Graves Graves 이름 오류 제거 + 교과서 원문 'In America, there was a _____ cook, Ms. Wakefield.'로 지문 교체 + 보기 famous/unknown/ordinary/strange + **instruction을 '본문에 나온 정확한 표현을 고르세요.'로 동시 변경**(프레임 전환으로 동의어 이중 정답 해소, 정답 0). W005 example_answer: Ruth Graves Graves→Ms. Wakefield, butter cookies 구문→교과서 흐름(didn't have enough time to melt/broke it into small chips/mixed them into the dough), 수동태 2회·3문장·48단어 유지(min_words 25 충족). V018↔W005 교과서 구문 공유로 상호 강화. Node 검증 스크립트(02_Working/verify_2026-04-18.js) 4건 전부 통과, 전역 Ruth Graves/butter cookies/램프 오일로 잔여 0. 백업: 02_Working/backup_2026-04-18/."
+    },
+    {
+      "id": "STEP88b",
+      "name": "영어 lesson3.js R008 전면 재작성 + cloth 재주입 (STEP88 사후 점검 반영)",
+      "status": "completed",
+      "completed_date": "2026-04-18",
+      "note": "배포 직후 사용자 지적: (1) R008 wrong_explanations['0']이 드라이클리닝 지문인데도 쿠키 반죽 문맥으로 드리프트, (2) lesson3.js에 standalone cloth 어휘 카드 부재. 점검 결과 R008은 sentence 자체도 'deliberately tested'로 교과서('accidentally spilled')와 정반대였고 wrong_explanations 0/2/3 모두 mismatch — 전면 재작성 필요. 수정: sentence를 교과서 정합 'In the 1800s, a factory worker accidentally spilled lamp oil on a tablecloth. Mr. Jolly, the manager, saw that the dirty spot was clean. He realized that oil could clean clothes better than water. This surprising discovery became the beginning of modern dry cleaning.'로 교체, 질문 프레임 '일치하지 않는 것은?' 유지, 정답 인덱스 1('Mr. Jolly가 오일을 일부러 실험했다') 보존, wrong_explanations 0/2/3을 해당 지문 구문에 맞춰 재작성, hint도 교체. VD-L3-036 cloth 어휘 카드 신설(VD-L3-035 spill 다음에 배치) — meaning 필드에 clothes(옷)/tablecloth(식탁보)/cloth(천) 3단어 구분 주의 표기로 혼동 차단. verify_2026-04-18.js에 R008(문장/정답/wrong_explanations 키) + VD-L3-036(존재/품사/meaning cloth·clothes·tablecloth 3키워드) 체크 확장 — 전체 200 items 검증 통과, 전역 'deliberately tested'/'쿠키 반죽' 잔여 0. 2차 백업: 02_Working/backup_2026-04-18/lesson3.js.phase1.bak. 배포: sw.js는 STEP88 단계에서 이미 quiz-v93으로 bump — 파일 교체만으로 자동 갱신."
+    },
+    {
+      "id": "STEP89",
+      "name": "영어 lesson3.js V041/V042/V049/V050 정답키+wrong_explanations 4건 정리",
+      "status": "completed",
+      "completed_date": "2026-04-18",
+      "note": "사용자 후속 점검(04-18b): (1) V050 정답키 오류 — sentence 'Although the glass flask was broken, it held together.'의 5번째 단어는 was(index 2)인데 correct=0(glass, 3번째)으로 설정되어 있어 학생이 정답을 골라도 오답 처리되는 상태 → correct 0→2로 수정. wrong_explanations도 'Although/the/flask' 엉뚱 참조 + key '2'의 \"the은 답이 아니야\"가 정답 보기 자리에 앉아 있어 정답 유출 — 키 집합을 {1,2,3}→{0,1,3}로 전면 교체하고 'glass는 3번째/broken은 6번째/it은 7번째' 위치 기반 해설로 재작성. (2) V049 wrong_explanations 어긋남 — correct=1(Ruth) 자체는 맞으나 key '2'가 'chance'(choice[2]는 'a'), key '3'이 'Ruth'(choice[3]는 'new' + 정답 유출) 엉뚱 참조 → key 0/2/3을 discovered(4번째)/a(5번째)/new(6번째) 위치 해설로 재작성. (3) V041 wrong_explanations['3'] 정답 유출 — choice[3]='mistaking'인데 해설이 'mistakes = 실수!'(정답 공개) → '-ing형 동사라 Making 목적어 자리엔 명사 복수형이 맞다' 해설로 교체. 같은 김에 key '1'·'2'도 문법 이유 한 문장씩 덧붙여 일관화. (4) V042 wrong_explanations['3'] 문구 손상 — 'mixing(섞은 답이 아니야!' 닫는 괄호 누락 + 어색한 조사 → 'mixing(섞는 중)은 -ing형이야! had to 뒤엔 동사원형 mix가 와야 해!'로 교체. key '1'·'2'도 'had to 뒤엔 동사원형' 규칙으로 일관화. 검증: 02_Working/verify_2026-04-18b.js 신규 작성 — Node vm + __loadLesson 콜 캡처 방식으로 실제 객체 로드, 4문항 개별 체크 전부 PASS + 재발 방지용 nth_word(2건)/word_form(5건) 타입 전수 스캔 추가(choices[correct]와 n번째 단어 일치, wrong_explanations에 correct 키 부재, '<정답>=' 유출 패턴 스캔) — V043/V044/V045도 전부 통과. sw.js v93→v94. 백업: 02_Working/backup_2026-04-18b/lesson3.js.bak."
+    },
+    {
+      "id": "STEP90",
+      "name": "국어 lesson_kor1.js 시험범위 커버리지 공백 해소 +10문항 (064~073)",
+      "status": "completed",
+      "completed_date": "2026-04-18",
+      "note": "Codex 04-18 최종검수(00_Context/codex-advice/2026-04-18-국어-최종검수.md) 반영 + 자체 발전 검토. Codex가 지적한 2개 축(총효용/표 해석 공백 + p.53 문해력 다지기 어휘 공백)을 기반으로, 직접 교과서 p.33/39/43 '스스로 확인하기' 박스까지 전수 대조하여 커버리지 공백 추가 발굴. 신규 10건: (1) KOR-U1-064 총효용 표 해석(5접시 210) pg=read-009, (2) KOR-U1-065 총효용 빈칸 '줄어든다' pg=read-009, (3) KOR-U1-066 문해력 '객지' pg=literacy-001, (4) KOR-U1-067 문해력 '전달하였다' pg=literacy-001, (5) KOR-U1-068 문해력 '미심쩍기' pg=literacy-001, (6) KOR-U1-069 이해도 점검 5단계(한계 효용+불쾌감) pg=read-010, (7) KOR-U1-070 p.33 아빠의 꿈=태권도 사범 pg=selfcheck-p33, (8) KOR-U1-071 p.33 할머니 전화 시점=기차 출발 후 pg=selfcheck-p33, (9) KOR-U1-072 p.39 아빠 부탁=자신을 믿어 달라고 pg=selfcheck-p39, (10) KOR-U1-073 p.43 희망='나'와 연서 pg=selfcheck-p43. 제외: Codex 제시 KOR-U1-058/060/063 교체안은 하지 않고 '추가'로 진행(사용자 승인: '문제를 늘려도 되는거야'). p.39 Q3 '농사', p.52 6빈칸 통합형, Q1류 단순 진위는 학습 효율 낮아 제외. 검증: (a) 서브에이전트 독립 검증 — 교과서 원문 line 322~344(표/총효용), 326~334(이해도 점검), 1410~1462(문해력), 815~841(p.33 박스), 1030~1041(p.39 박스), 1165~1180(p.43 박스)과 정답키 line 4941~4950 전수 대조, 10건 모두 PASS. (b) 02_Working/verify_2026-04-18c.js Node vm 구조 검증 — 72건 로드/ID 중복 0/신규 10건 정답 index·값·passage_group 일치 확인 통과. 사전 존재하던 kor2-visang-u1-02-symbolism-001 group_order=1 중복(KOR-U1-043 vs KOR-U1-046)은 WARN으로 표시(신규 추가와 무관, 이번 변경 범위 외 이월). 메타: version 2.2→2.3, build_date 2026-04-15→2026-04-18, build_note 갱신, 총 62→72. sw.js v94→v95. 백업: 02_Working/backup_2026-04-18c/lesson_kor1.js.bak."
+    },
+    {
+      "id": "STEP91-1",
+      "name": "사회2 시험범위 정리 — 범위밖 9건 제거 + 해설 슬라이드 3건 교정",
+      "status": "completed",
+      "completed_date": "2026-04-18",
+      "note": "Codex 04-18 사회 최종검수(00_Context/codex-advice/2026-04-18-사회-최종검수.md) 발전적 검토 후 1단계 적용. Codex가 지적한 범위밖(p.41+ 시장/수요공급) 블록을 교과서 OCR(01_Input/260320_중2_사회2.LLM.md)로 직접 대조하여 시험범위(p.10~40) 엄수 확정. 삭제 9건: 개념카드 SC-11(시장), SC-12(가격) / 문항 S2-E008(시장정의), E009(시장유형), E014(가격결정), E017(수요/공급), E023(가격기능), E029(시장변동), E037(E017 중복형). 해설 슬라이드 교정 3건: S2-E020(시장경제 체제 → '생애주기' 오슬라이드), S2-E024(기회비용 → '5단계' 오슬라이드), S2-E027(가정 경제활동 → '시장 3대기능' 오슬라이드) — 정답 인덱스는 그대로 두고 explanation 텍스트만 재작성. 결과: concept_cards 12→10, exam_prep 38→31, version 1.0→1.1, build_date/build_note 갱신. 검증: 02_Working/verify_soc2_step1.js — 카운트/삭제ID부재/유지ID존재/해설텍스트교정/correct인덱스/wrong_explanations키일치/version·build_date/ID유일성 55 pass / 0 fail. 백업: 02_Working/backup_2026-04-18d/lesson_soc2.js.bak. sw.js quiz-v95→v96."
+    },
+    {
+      "id": "STEP91-2",
+      "name": "사회1 5축 + 사회2 4축 보강 — 직접 회수 슬롯 충원",
+      "status": "completed",
+      "completed_date": "2026-04-18",
+      "note": "Codex 자문 + 자체 발전 검토(국민투표·비례대표는 교과서/HWP에 없어 제외) 기반 2단계. 사회1 신규 5건: S1-E026 감사원(B), S1-E027 정기회/임시회(B), S1-E028 국정감사vs국정조사(A), S1-E029 권한쟁의 심판(B), S1-E030 정당 해산 심판(B). 사회2 신규 4건(STEP91-1 삭제 슬롯 충원): S2-E039 실물자산vs금융자산(A), S2-E040 분산투자(B), S2-E041 재무계획(B), S2-E042 ESG(B). 모두 4지선다 단일정답, score_group/💡📖🔑 형식/wrong_explanations 전 오답 채움. 결과: soc1 exam_prep 25→30 / version 1.0→1.1, soc2 exam_prep 31→35 / version 1.1→1.2. 검증: 02_Working/verify_soc_step2.js — 카운트/신규ID존재/STEP91-1 삭제ID 부재 유지/스키마(id/type/instruction/options/correct/score_group/💡📖🔑/wrong_explanations 키 정합)/ID유일성 96 pass / 0 fail. 분포: soc1 A=15 B=15, soc2 A=16 B=15 C=4. sw.js quiz-v96→v97."
+    },
+    {
+      "id": "STEP92",
+      "name": "과학 sci1 시험 직전 교정 — C1-E020 오기 / C1-E016 절차 단위 통일 / C1-E023 stem 고정·보기 1 교체·정답 원리형",
+      "status": "completed",
+      "completed_date": "2026-04-18",
+      "details": {
+        "codex_advice_file": "00_Context/codex-advice/2026-04-18-과학-최종검수.md",
+        "modified_ids": [
+          "C1-E020",
+          "C1-E016",
+          "C1-E023"
+        ],
+        "sci1_version": "1.1 → 1.2",
+        "sci3_version": "1.1 (무수정 유지)",
+        "sw_js_cache": "v97 → v98",
+        "scripts": [
+          "02_Working/apply_sci_2026_04_18e.py",
+          "02_Working/verify_sci_2026_04_18e.py",
+          "02_Working/verify_sci_pre_2026_04_18e.py"
+        ],
+        "backup": "02_Working/backup_2026-04-18e/",
+        "verification": "구조 + 내용 검증 PASS 6/6 (0 fail)",
+        "extended_review": "sci1 50항목 + sci3 45항목 전수. 해설 드리프트·정답 유일성·범위 외 혼입 모두 없음. C1-E018 실명(질산 칼륨) 건은 사용자 판정으로 선택 수정 보류."
+      }
+    },
+    {
+      "id": "STEP93",
+      "name": "영어 트랙 시험 직전 피드백 교정 — L1 10건 + L3 6건 wrong_explanations/sentence/choices 재작성",
+      "status": "completed",
+      "completed_date": "2026-04-18",
+      "details": {
+        "codex_advice_file": "00_Context/codex-advice/2026-04-18-영어-피드백-전수점검.md",
+        "l1_modified_ids": [
+          "R002",
+          "R003",
+          "R015",
+          "R016",
+          "PC-A-04",
+          "PC-B-02",
+          "PC-B-03",
+          "PC-C-02",
+          "PC-C-04",
+          "G008"
+        ],
+        "l3_modified_ids": [
+          "R007",
+          "R018",
+          "G005",
+          "G007",
+          "G013",
+          "G016"
+        ],
+        "scan_finding": "Codex 지적 12건 + Python 템플릿 스캔으로 4건 추가 발견(R002/R003/R015/PC-A-04). 부정 프레임(불일치/답할 수 없는/흐름 관계없는) 문항의 오답 해설에 '~는 본문과 맞지 않아!' 긍정 프레임 템플릿이 박혀 있던 10건을 프레임 맞춤 해설로 전면 교체.",
+        "r007_fix": "sentence `Benedictus intentionally dropped ...` → 교과서 원문 기반 `Édouard Bénédictus noticed that his flask had not broken into sharp pieces when it accidentally fell to the floor.` 로 전면 교체. hint + wrong_explanations 0/2/3 모두 새 본문 기준으로 동기화.",
+        "r018_fix": "choices[2] 가 '플라스크가 떨어진 이유'(본문 없음) → 동일 종류의 정답 후보(답할 수 없음)가 둘 생긴 중복 정답 문제. `What was Bénédictus's job?`(본문 없음)으로 유지하되, 나머지 0/1/3 해설을 `답할 수 있어` 프레임으로 동기화.",
+        "g008_fix": "정답 해설 톤은 유지. 오답 0/1/2 세 해설이 모두 뒤바뀌어 각 시제가 왜 지속 표현에 부적합한지 설명하도록 재작성 (현재완료 have been playing/have played 정답 축).",
+        "sw_js_cache": "v98 → v99",
+        "scripts": [
+          "02_Working/scan_english_feedback_2026_04_18f.py",
+          "02_Working/english_fixes_2026_04_18f_plan.md",
+          "02_Working/apply_english_fixes_2026_04_18f.py",
+          "02_Working/verify_english_fixes_2026_04_18f.py"
+        ],
+        "backup": "02_Working/backup_2026-04-18f/",
+        "verification": "구조(ID 유일성·correct 범위·wrong_explanations 키 정합 — int/word 스키마 자동 판별) + 기대 문자열 16건 + 부정 프레임 템플릿 오염 재스캔 PASS (0 오류). L1 edit 13건, L3 edit 19건 적용 및 pre/post-check 통과.",
+        "out_of_scope_pending": "STEP94에서 해소 — index.html showWrongExplanation() UX 구조 교정 완료"
+      }
+    },
+    {
+      "id": "STEP94",
+      "name": "index.html showWrongExplanation UX 구조 교정 — 부정 프레임 라벨 2-branch",
+      "status": "completed",
+      "completed_date": "2026-04-18",
+      "details": {
+        "trigger": "Codex 세션 마감 검토에서 '데이터는 통과, 남은 핵심 위험은 index.html 피드백 라벨 구조' 지적",
+        "problem": "showWrongExplanation()이 모든 문항에 대해 '✅ 정답: ' + q.choices[q.correct] 와 '📖 정답 문장을 소리 내어 읽어보면 기억에 남아요!' 를 무조건 붙임. 부정 프레임(불일치/답할 수 없는/흐름 관계없는/틀린 문장/어색한/적절하지 않/틀린 부분/용법이 다른/문법적으로 다른)에서는 정답 보기 = '본문과 어긋난 문장 / 답할 수 없는 질문 / 흐름 벗어난 문장 / 어법 오류 문장' 이라 학생이 틀린 진술을 정답 문장처럼 암기·낭독하는 오학습 유발.",
+        "fix_scope": "index.html showWrongExplanation() 함수 내부에 isNegativeFrame(q) helper 추가(정규식으로 instruction + sentence 검사). fill_blank / dialogue_response / short_reading 분기에 _isNeg 2-branch 삽입(긍정=기존 그대로, 부정='🎯 답: 보기 n번' — 보기 번호만, 틀린 진술 내용은 노출 안 함). 공통 📖 라벨도 2-branch(부정='📖 본문/문장을 다시 확인하며 어디가 다른지 직접 찾아보면 확실해져요!'). choice_blank/arrange/chunk_order/match 분기는 구조상 항상 긍정 프레임이라 건드리지 않음(회귀 방지).",
+        "coverage": "L1 부정 프레임 16건(R002/R003/R015/R016/G001/G003/G006/G008/G014/D005/D007/PC-A-04/PC-B-02/PC-B-03/PC-C-02/PC-C-04) + L3 부정 프레임 14건(R006~R010/R017/R018/G005/G006/G007/G012/G013/G016/W003) = 총 30건. STEP93에서 직접 해설 교정한 16건보다 넓은 범위(일치하는 UX 위험)를 구조 수준에서 한 번에 커버.",
+        "sw_js_cache": "v99 → v100",
+        "scripts": [
+          "02_Working/verify_index_ux_2026_04_18g.py",
+          "02_Working/verify_isNegativeFrame_runtime_2026_04_18g.js"
+        ],
+        "backup": "02_Working/backup_2026-04-18g/ (index.html.bak, sw.js.bak)",
+        "verification": "정적 검증(isNegativeFrame 정규식 9개 축 포함 / _isNeg 2-branch / choice_blank·arrange·chunk_order·match 분기 무변경 / 함수 외부 영역 무변경 / sw.js v100) + JS 런타임 판정 검증(L1 16건 + L3 14건 = 30건 정확 분류 / 긍정 프레임 300건 무오탐). PASS 0 오류.",
+        "residual_note_P3": "index.html line 4089 checkEnglishTypedAnswer() 는 showWrongExplanation 경로를 거치지 않고 line 4108 에서 '❌ 정답: ' + q.correct_answer 를 직접 출력. isNegativeFrame 가드 미적용. 데이터 검증(verify_isNegativeFrame_runtime 기준) 결과 영어 typed_answer/typed_blank 전체 40건(L1 26 + L3 14) 중 부정 프레임 교집합 0건 — 본 세션 범위에서 실질 영향 없음(Codex 마감 검토 확인). 신규 영어 typed_* 문항에 부정 프레임 키워드가 들어오거나 수행평가 서술형이 이 경로를 타게 될 때 _isNeg 분기 추가 필요. 구현은 5줄 분량."
+      },
+      "last_completed": "STEP94"
+    },
+    {
+      "id": "STEP95",
+      "name": "수학 최종검수 STEP95 — lesson_math2/3 데이터 + Q-18 범위 교체 + index.html 계약 주석",
+      "status": "completed",
+      "completed_date": "2026-04-18",
+      "detail": "Codex 자문 '2026-04-18 수학 최종검수' 재판정본 반영. (1) lesson_math2.js Q-18 (x+1)² → (12x²−8xy)÷(−4x) 교체 (교과서 p.260 8번 계열, Q-36의 음수 제수 대비항). (2) lesson_math2.js Q-35/Q-37 + lesson_math3.js Q-39/Q-42/Q-43 typed_answer 5건에 correct/alt_correct 스키마 추가 (기존 correct_answer/accept_answers 보존). (3) index.html checkMathTypedAnswer() 위에 스키마 계약 주석 3줄 삽입. (4) sw.js CACHE v100 → v101. 검증: verify_math_typed_schema_2026_04_18.py로 typed_answer 전수 16문항(math1 11 + math2 2 + math3 3) × 정답·오답 2시나리오 런타임 재현 PASS (0 에러). Q-18 choice 독립 검증 PASS. index.html+sw.js 변경 검증 PASS. 재판정본 핵심: Q-35/37/39 하드카피 우선 → 앱 유지 재분류 / Q-18 삭제→교체 / 스키마 정본 correct+alt_correct / 회귀 기준 정답·오답 2시나리오. 래퍼 __loadLesson({...}) 처리 및 전수 16문항 검증은 Codex 보정 2건 반영.",
+      "refs": [
+        "00_Context/codex-advice/2026-04-18-수학-최종검수.md",
+        "00_Context/codex-advice/2026-04-18-수학-최종검수-재판정.md",
+        "session-logs/session-log-2026-04-18h.md",
+        "02_Working/verify_math_typed_schema_2026_04_18.py",
+        "02_Working/backup_2026-04-18h/"
+      ]
+    },
+    {
+      "id": "STEP96",
+      "name": "hotfix: showMathChoice visual_svg 렌더 블록 추가 (Q-34 계단형 도형, Q-41 수직선 부등식) — pre-existing 렌더러 버그, sw.js v102",
+      "status": "completed",
+      "completed_date": "2026-04-19a",
+      "details": {
+        "trigger": "학생 실제 풀이 중 Q-34(math2, 도형 둘레) 화면에 도형 미표시 제보 — tablet screenshot",
+        "root_cause": "index.html showMathChoice()가 q.visual_svg를 container.innerHTML에 포함하지 않음. showMathConceptCard(line 5454)/showStudyConceptCard(line 5238)에는 동일 패턴 존재. STEP95 이전부터 있던 렌더러 버그로 STEP95와 무관.",
+        "impact_scope": "lesson_math2.js Q-34(계단형 도형 둘레, score_group=B), lesson_math3.js Q-41(수직선 위 부등식 해, score_group=A). choice 84건 중 visual_svg 보유 2건 전부.",
+        "fix": "showMathChoice(line 5621~)에 visual_svg 처리 라인 1개 + innerHTML 합성부에 visualHtml 삽입. showMathConceptCard 패턴을 그대로 이식.",
+        "sw_cache": "quiz-v101 -> quiz-v102",
+        "backup": "02_Working/backup_2026-04-19a/ (index.html.bak, sw.js.bak)",
+        "verify_script": "02_Working/verify_math_choice_visual_2026_04_19.py",
+        "verify_result": "(1) 데이터 스캔: choice 84건 중 visual_svg 보유 2건(Q-34/Q-41) (2) showMathChoice 본문 visual_svg 참조 3회 (3) innerHTML 시뮬레이션: Q-34/Q-41 <svg> 포함+치환 OK, visual_svg 없는 회귀 3건 정상 (4) showMathTypedAnswer 영향도: 현재 typed_answer 중 visual_svg 보유 0건, 향후 추가 시 동일 패턴 이식 필요 (5) sw.js CACHE_NAME=quiz-v102. 에러 0 / 경고 0. STEP95 검증(verify_math_typed_schema_2026_04_18.py)도 재실행 16/16 PASS 유지.",
+        "followups": "typed_answer에 향후 visual_svg 필요해지면 showMathTypedAnswer에도 동일 블록 이식. 실기기에서 Q-34/Q-41 실렌더 확인(사용자 작업)."
+      }
+    },
+    {
+      "id": "STEP97",
+      "name": "수학 실전대비 세션 20문항 확대 — generateMathExamSession 신설 (score_group A:B:C = 8:8:4), sw.js v103",
+      "status": "completed",
+      "completed_date": "2026-04-19b",
+      "details": {
+        "trigger": "학생 스크린샷 '수학 실전 대비 5/7' 확인 — 수학 실전대비 세션이 7~8문항으로 과소노출. 영어 L1(11), 국어(12), 사회/과학(15) 대비 격차 큼.",
+        "root_cause": "math 문항에 training_layer 필드가 없어 영어 경로의 mpPick≤3 제약만 걸려 7~8문항만 뽑힘. math2(37)/math3(43) 큰 풀이 있어도 동일.",
+        "design": "사회·과학 generateStudyExamSession과 동일한 score_group 비율 기반 경로 분리. student_profile §5.2(A/B/C 분류) 근거. A 40% / B 40% / C 20% = 8/8/4/20.",
+        "implementation": "index.html generateExamPrepSession() 내 국어 분기 직후에 `if (currentSubject === 'math') return generateMathExamSession(examPrepQuestions);` 삽입. 새 함수 generateMathExamSession()은 poolByScoreGroup(A/B/C) + poolOther + shuffleArray + slice(0, TARGET=20). 부족 시 각 군 잔여 + other로 20까지 보충.",
+        "scope": "이번 세션은 수학만 먼저(Recommended). 나머지 4경로(영어 L1/L3, 국어 kor1, 사회 soc1/2, 과학 sci1/sci3) 20문항 확대는 다음 세션.",
+        "files_modified": "90_Output/app/index.html (2곳: math 분기 삽입 + generateMathExamSession 신설), 90_Output/app/sw.js (CACHE v102→v103)",
+        "backup": "02_Working/backup_2026-04-19b/ (index.html.bak, sw.js.bak)",
+        "preparatory_reports": "02_Working/distribution_audit_2026_04_19.py+distribution_report_2026_04_19.md (전 과목 실전/훈련 분포 — phase 필드 기준), 02_Working/session_size_audit_2026_04_19.py+session_size_report_2026_04_19.md (과목별 현재 노출 문항 수 현황표)",
+        "verify_script": "02_Working/verify_math_exam_session_2026_04_19c.py (4축: [A] 정적 [B] 동적 시뮬 [C] 회귀 [D] sw.js)",
+        "verify_result": "[A] generateMathExamSession 정의/서명/math분기/국어→수학순서/TARGET=20/poolByScoreGroup/shuffleArray/slice(0,TARGET) 전부 확인. 중괄호 편집차이=백업차이 유지. [B] math1 풀=20 전수소비 A=10/B=8/C=2 세션20, math2 풀=37 A=8/B=8/C=4 세션20, math3 풀=43 A=8/B=8/C=4 세션20, 중복 0 / 유일ID=세션크기. [C] generateKoreanExamPrepSession/generateStudyExamSession 서명 무변경, STEP96 showMathChoice visual_svg 블록 유지. [D] sw.js CACHE_NAME='quiz-v103', v102 잔존 없음. 에러 0 / 경고 0 / PASS.",
+        "note_verify_v19b_vs_v19c": "초기 19b는 단순 { } 카운트 sanity check에서 false positive(문자열·템플릿 리터럴 내 }까지 집계) 1건. 백업 대조 결과 편집 전후 차이 동일(-4 유지) 확인 후, 19c에서 편집 diff 기준 검사로 교체하여 PASS.",
+        "followups": "다음 세션: 영어 L1/L3 + 국어 kor1 + 사회 soc1/2 + 과학 sci1/sci3을 20문항으로 확대. 학생 실기기에서 수학 실전 모드 노출 수 = 20 확인(사용자 작업)."
+      }
+    }
+  ],
+  "hotfix_2026-03-18": {
+    "arrange_answer_bug": "구두점 정규화 비교 함수 추가 — 15개+ arrange 문항 오답 판정 해결",
+    "auto_advance_removed": "setTimeout 자동넘김 → '다음 문항' 버튼 수동넘김으로 변경"
+  },
+  "next_steps": [
+    {
+      "name": "Apps Script v6 배포",
+      "status": "completed",
+      "completed_date": "2026-03-22",
+      "note": "v5→v6: vocab_log 분기 처리 + 요약 시트 단어 암기 통계 추가. 사용자 직접 배포 완료."
+    },
+    {
+      "name": "국어 확장 — 전문가 콘텐츠 요청서 전달",
+      "status": "completed",
+      "note": "전문가 납품 v1.0→v1.1 검수 완료. 정답위치 다양화, wrong_feedback 40문항, symbol_marks 17문항 반영 확인. lesson_kor1.js 변환 완료(40문항+18어휘+10핵심문장).",
+      "completed_date": "2026-03-23"
+    },
+    {
+      "name": "국어 확장 — 앱 코드 구현",
+      "status": "completed",
+      "completed_date": "2026-03-23",
+      "note": "korean-integration-spec.md 기반 구현 완료. (1)과목 선택 UI(영어/국어 토글+레슨 버튼 동적 교체), (2)reference_type 5종 렌더링(hint/concept/table/criteria/background), (3)symbol_marks ㉠㉡ CSS 강조, (4)passage_group 묶음 출제 세션 엔진, (5)국어 vocab 확장 카드(뜻+품사+예문+유사표현), (6)핵심 문장 모드(core_sentences 플래시카드), (7)TTS 국어 비활성화+헤더 동적 타이틀+로그 subject 필드, (8)sw.js v17 캐시. 백업: index_v14_backup.html"
+    },
+    {
+      "name": "국어 1단원 학습 구조 재설계 + 수행평가 모드",
+      "status": "completed",
+      "completed_date": "2026-03-28",
+      "note": "4모드 재설계 완료: (1)본문해설 3편(첫사랑이야기+기차가달려간곳에는+비린내라뇨), (2)개념카드 6쌍(말하는이vs보는이 등), (3)실전대비(기존40문항 유지), (4)수행평가(설명글쓰기: 설명방법7종카드+찾기8문항+개요연습3개 / 독서단어장: 좋은예시3+나쁜vs좋은3+선정가이드). lesson_kor1.js v1→v2(2615줄). index.html 4모드UI(3479→3927줄). sw.js v18→v19."
+    },
+    {
+      "name": "국어 원문 리더뷰 + 본문해설 콘텐츠 보강",
+      "status": "completed",
+      "completed_date": "2026-03-29",
+      "note": "교과서 원문 3편 추출(kor1_reader.js) → 책처럼 보이는 리더뷰 UI(Noto Serif KR, 따뜻한 종이 배경, 대사 구분, 폰트 3단계 조절) → 본문해설 '원문 읽기' 버튼 연결 → 콘텐츠 보강(PG-01 시험포인트+구조요약, PG-02 시점설명+구조요약, PG-03 문학용어+구조요약, 확인질문 각1개 추가). sw.js 업데이트 필요."
+    },
+    {
+      "name": "PG-02 원문 전문 보강",
+      "status": "completed",
+      "completed_date": "2026-03-29",
+      "note": "교과서 대조하여 소설 '기차가 달려간 곳에는' 누락 장면 전수 보충. 32→67단락. 추가된 주요 장면: 연서 주먹+뒤란, 버스, 아기안기, 성호 영어대회, 고모 용돈+짜장면, 고모/할머니 대화, 연서 엄마 뒷산, KTX 첫 탑승, 숲 동물, 마을/학교, 태권도 사범 꿈, 서울 골목 상세, 엄마 회상, 소인국 걸리버, 앞방 할아버지, 사진, 화장실, 아빠 외모 변화, 농부 이야기, 목표/술/쪽방 대화, 용수천 등목. PG-03 부가설명은 불필요하여 생략. sw.js v20→v21. 백업: kor1_reader_v1_backup.js"
+    },
+    {
+      "name": "Lesson 3 생성",
+      "status": "completed",
+      "completed_date": "2026-03-31",
+      "note": "lesson3.js 생성 완료. wrong_explanations 정답키 38건 수정."
+    },
+    {
+      "id": "STEP51",
+      "name": "중간고사 범위 정비 + 비범위 단원 숨김",
+      "status": "completed",
+      "completed_date": "2026-03-31",
+      "note": "영어L1 타이틀 수정(New Year, New Me), 국어1단원 타이틀 수정(능동적으로 읽는 힘). 비범위 단원 숨김: 국어2단원 버튼, 영어L2 버튼, 과학sci2 버튼. sw.js에서도 해당 파일 precache 주석처리."
+    },
+    {
+      "id": "STEP52",
+      "name": "과학 빛과파동(sci3) 콘텐츠 사전 준비",
+      "status": "completed",
+      "completed_date": "2026-03-31",
+      "note": "lesson_sci3.js 생성(빛과파동 1.빛 p.91-110). 개념15장(SVG 6장)+실전25문항(A:13/B:10/C:2). 앱 연결은 A/B반 확인 후 진행 예정."
+    },
+    {
+      "id": "STEP53",
+      "name": "wrong_explanations 품질 수정 (전 과목)",
+      "status": "completed",
+      "completed_date": "2026-03-31",
+      "note": "정답키가 wrong_explanations에 포함된 문제 50건 수정. lesson3.js(38건), lesson_math1.js(5건), lesson_soc2.js(7건)."
+    },
+    {
+      "id": "STEP54",
+      "name": "SVG 시각자료 추가 (과학1)",
+      "status": "completed",
+      "completed_date": "2026-03-31",
+      "note": "lesson_sci1.js에 CC-04(가열곡선 그래프), CC-16(밀도차 분리 비커) SVG 2건 추가. 전체 111장 카드 중 18장 SVG 효과적 판정, 나머지는 텍스트 충분."
+    },
+    {
+      "id": "STEP55",
+      "name": "형광펜 하이라이팅 전 과목 적용",
+      "status": "completed",
+      "completed_date": "2026-03-31",
+      "note": "국어 본문해설 <mark> 태그(kor1: 11건, kor2: 19건). index.html에 mark CSS 추가. highlightText() 함수 19개 호출 지점에 적용(개념카드 7필드, 설명방법카드 2필드, 학습개념 1필드, 수학개념 1필드, 연결개념팝업 1필드 등). sw.js v65."
+    },
+    {
+      "id": "STEP56",
+      "name": "Apps Script v8 — 5과목 19컬럼 완전 대응",
+      "status": "completed",
+      "completed_date": "2026-04-04",
+      "note": "v3~v7 스크립트가 과목 구분 없이 동작하던 문제 해결. 19컬럼(과목/단원/세션유형/3대메트릭/재도전·회복률) 완전 대응. v3/v4/v5/v6/v7 어떤 버전에서든 자동 마이그레이션. 앱 sendToGoogleSheets() 버그 2건 수정: (1) math/soc/sci 로그 수집 누락, (2) retry/recovery_rate 필드 미전송."
+    },
+    {
+      "name": "수학 개념정리 PDF — 유리수와 순환소수",
+      "status": "completed",
+      "completed_date": "2026-03-25",
+      "note": "중2 수학2 교과서 기반 AI 맞춤 개념정리 9페이지 PDF. 5파트: (1)직관적 핵심개념, (2)유한/순환 3초 판별 체크리스트+함정3, (3)순환소수→분수 빠른공식+함정2, (4)시험직전 공식카드+TOP5 함정, (5)3단계 연습문제 8개+풀이. WeasyPrint+NanumSquare 폰트. 출력: 90_Output/유리수와_순환소수_개념정리_v3.pdf"
+    },
+    {
+      "id": "STEP57",
+      "name": "전 과목 퀴즈 정답 검증 + 버그 4건 수정",
+      "status": "completed",
+      "completed_date": "2026-04-05",
+      "note": "수학: M1-E001 순환소수 표기 오류(0.{r:342}→0.3{r:42}), M1-E016 오답 2개 문제(보기③ 1/37→3/110 정답으로 교체+해설정리). 영어: D-CS03-02 중복보기(invented→discovered), V041 중복보기(mistaken→mistaking). 과학/사회/국어는 이상 없음."
+    }
+  ],
+  "app_snapshot": {
+    "date": "2026-03-31",
+    "files": {
+      "index.html": "메인 앱 — 비범위 단원 숨김 + mark CSS + highlightText 19지점 적용",
+      "lesson_math1.js": "v1.2 — M1-E001 순환소수 표기 수정 + M1-E016 보기③ 정답으로 교체",
+      "lesson1.js": "v4.0 (JSONP) — 타이틀 수정(New Year, New Me)",
+      "lesson2.js": "v3.8 (JSONP) — 비범위, 숨김 처리",
+      "lesson3.js": "v1.1 — D-CS03-02/V041 중복 보기 수정",
+      "lesson_kor1.js": "v2.2 (JSONP) — 타이틀 수정(능동적으로 읽는 힘) + mark 태그 11건",
+      "lesson_kor2.js": "v1.1 (JSONP) — mark 태그 19건 (비범위, 숨김 처리)",
+      "kor1_reader.js": "교과서 원문 3편 — PG-02 전문 보강",
+      "lesson_soc1.js": "v1.0 (JSONP) — 국가기관과권력분립 (개념27+실전25)",
+      "lesson_soc2.js": "v1.1 (JSONP) — 경제생활과시장 (wrong_explanations 7건 수정)",
+      "lesson_sci1.js": "v1.1 (JSONP) — 물질의특성 (SVG 2건 추가: CC-04, CC-16)",
+      "lesson_sci3.js": "v1.0 (JSONP) — 빛과파동(대기, A/B반 확인 후 연결)",
+      "sw.js": "캐시 v65 — 비범위 파일 주석처리",
+      "google-apps-script-v7.js": "16컬럼(과목 추가) + v6→v7 마이그레이션",
+      "google-apps-script-v8.js": "19컬럼(과목+단원+세션유형+3메트릭+재도전/회복률) + v3~v7 자동 마이그레이션 + 과목별 요약"
+    },
+    "subjects": {
+      "english": "Lesson 1, 2 — 기존 영어 학습 전체 기능 (3모드: 단어드릴+문장드릴+실전대비)",
+      "korean": "1단원+2단원 — 4모드: 본문해설 + 개념카드 + 실전대비 + 수행평가. 2단원: 피동/인용표현+매체재현(38문항)",
+      "math": "1단원 유리수와순환소수 — 3모드: 개념카드(8장) + 절차연습(12문제/42단계) + 실전문제(20문항, A:10/B:8/C:2)",
+      "social": "1단원 국가기관과권력분립 — 2모드: 개념정리(27장) + 실전문제(25문항, A:14/B:11)",
+      "science": "1단원 물질의특성 — 2모드: 개념정리(25장) + 실전문제(20문항, A:9/B:10/C:1)"
+    },
+    "modes": {
+      "english_vocab": "단어 드릴 — 플래시카드 + 최대 3라운드 재시도",
+      "english_drill": "문장 드릴 — 4단계 progression",
+      "english_exam_prep": "실전 대비 — training_layer 기반 pc4+sf4+mp3=11문항",
+      "korean_passage_guide": "본문 해설 — 3편 작품별 섹션 해설 + 확인질문",
+      "korean_concept_card": "개념 카드 — 6쌍 플립카드 (구분하기 연습)",
+      "korean_exam_prep": "실전 대비 — passage_group 묶음 10~12문항",
+      "korean_perf_assessment": "수행평가 — 설명글쓰기(설명방법7종+찾기8문항+개요3개) + 독서단어장(가이드)",
+      "math_concept": "수학 개념카드 — 8장 플립카드 (교과서 정의 + 쉬운 설명 + 시험팁)",
+      "math_procedure": "절차연습 — 12문제 다단계 풀이 (단계별 피드백, 42 steps)",
+      "math_exam_prep": "수학 실전문제 — 20문항 (choice/typed_answer, score_group A/B/C)",
+      "social_concept": "사회 개념정리 — 27장 플립카드 (용어+정의+쉬운설명+시험팁)",
+      "social_exam": "사회 실전문제 — 25문항 (A군 우선 max15, 보기 셔플)",
+      "science_concept": "과학 개념정리 — 25장 플립카드 (용어+정의+쉬운설명+시험팁)",
+      "science_exam": "과학 실전문제 — 20문항 (A군 우선 max15, 보기 셔플)"
+    },
+    "data_summary": {
+      "L1": {
+        "questions": 166,
+        "vocab_drill": 33,
+        "core_sentences": 14,
+        "grammar_rules": 2,
+        "by_phase": {
+          "drill": 56,
+          "exam_prep": 110
+        },
+        "by_training_layer": {
+          "passage_check": 16,
+          "skill_focus": 42,
+          "mixed_practice": 52
+        }
+      },
+      "L2": {
+        "questions": 140,
+        "vocab_drill": 27,
+        "core_sentences": 13,
+        "grammar_rules": 2,
+        "by_phase": {
+          "drill": 52,
+          "exam_prep": 88
+        },
+        "by_training_layer": {
+          "passage_check": 16,
+          "skill_focus": 24,
+          "mixed_practice": 48
+        }
+      }
+    },
+    "question_types": [
+      "flashcard",
+      "choice_blank",
+      "chunk_order",
+      "typed_blank",
+      "fill_blank",
+      "match",
+      "arrange",
+      "short_reading",
+      "dialogue_response",
+      "position_ask",
+      "mini_writing"
+    ],
+    "metrics": {
+      "4_pillars": [
+        "a_group_recovery",
+        "first_attempt_rate",
+        "condition_compliance (null)",
+        "arrange_success"
+      ],
+      "drill_metrics": [
+        "total_rate",
+        "drill_stage",
+        "sentences_practiced"
+      ]
+    },
+    "ui_features": [
+      "TTS (en-US, 0.85x)",
+      "사운드 효과",
+      "힌트 시스템",
+      "진도바",
+      "타이머(내부)",
+      "학습 결과 내보내기",
+      "오답 재도전 (세션 끝 1회, 보기 재셔플, 회복률 표시)",
+      "홈 2단계 (과목 카드 → 과목 상세)"
+    ]
+  },
+  "training_layer_summary": {
+    "date": "2026-03-21",
+    "design": "5층 내부 커리큘럼 (vocab_drill → sentence_drill → passage_check → skill_focus → mixed_practice)",
+    "L1": {
+      "total_all": 199,
+      "vocab_drill": 33,
+      "sentence_drill": 56,
+      "passage_check": 16,
+      "skill_focus": 42,
+      "mixed_practice": 52
+    },
+    "L2": {
+      "total_all": 167,
+      "vocab_drill": 27,
+      "sentence_drill": 52,
+      "passage_check": 16,
+      "skill_focus": 24,
+      "mixed_practice": 48
+    },
+    "session_engine": "training_layer 기반 3단계(pc4+sf4+mp3=11문항). 레이어 순서 고정, 레이어 내 셔플. 드릴은 별도 4단계 progression."
+  },
+  "classification_summary": {
+    "date": "2026-03-21",
+    "total_questions": 306,
+    "total_vocab": 60,
+    "total_all": 366,
+    "score_group": {
+      "A": 85,
+      "B": 81,
+      "C": 10
+    },
+    "session_note": "A/B 세션 타입 제거됨. exam_prep: training_layer 기반 11문항. drill: 4단계 progression.",
+    "quality_issues_pending": {
+      "total": 0
+    }
+  },
+  "pilot_analysis_results": {
+    "date": "2026-03-19",
+    "critical_findings": [
+      "arrange 문항 정답률 6% (1/17) — 심각한 설계 결함",
+      "세션 2 후 33%p 급락 — 난이도 불균형 또는 문항 변경 영향",
+      "힌트 사용 증가(-0.52 상관계수)에도 성적 미개선 — 힌트 품질 문제"
+    ]
+  },
+  "last_completed": "STEP97",
+  "updated_at": "2026-04-19b",
+  "current_step": "STEP97",
+  "completed_tasks": [
+    {
+      "step": 55,
+      "name": "STEP55: 형광펜 하이라이팅 전 과목 적용",
+      "date": "2026-03-31"
+    },
+    {
+      "step": 58,
+      "name": "STEP58: 사회 퀴즈(SOC1/SOC2) 정답 검증",
+      "date": "2026-04-06",
+      "details": "lesson_soc1.js (25문항), lesson_soc2.js (38문항) 전수 검증. 정답 인덱스, 부정형 문항, 교과 기준 완벽 검증. 63문항 모두 정상(100%). 검증 보고서: SOC_QUIZ_VALIDATION_REPORT_2026-04-06.md"
+    },
+    {
+      "id": "STEP59",
+      "name": "전과목 퀴즈 전수 검증 + 버그 수정",
+      "date": "2026-04-06",
+      "details": "전 과목 퀴즈 데이터 전수 검증 완료. 영어(L1~3), 국어(kor1~2: 78문항), 수학(math1~3: 83문항), 사회(soc1~2: 63문항) 모두 정상. 과학 9건 정답 오류 발견→수정→재검증 완료 (sci3: L3-E001,E003,E008,E009,E012,E016 / sci2: S2-E002,E037,E038). 추가 수정: (1) arrange 칩 대소문자 버그(lesson1 A001 if→If), (2) 전 유형 오답 시 정답 표시 기능 추가(index.html showWrongExplanation)."
+    },
+    {
+      "id": "STEP60",
+      "name": "앱 전체 종합검토 + 과학 wrong_explanations 정비",
+      "date": "2026-04-06",
+      "details": "3인 전문가 패널(청소년 심리·교육·학습과학) 관점 종합검토 완료. 영어 문법 5문항(G001,G003,G006,G008,G013) 정답 재검증→전부 정상 확인. 과학 sci3 6문항(L3-E001,E003,E008,E009,E012,E016)의 wrong_explanations 정비: 정답 키 제거 + 누락 오답 키 추가 + 교육적 설명 작성. sci2 3문항(S2-E002,E037,E038)은 이미 정상 확인. 전체 개선 로드맵 Phase1~3 수립(Phase1: 세션길이제한·재도전메시지심리수정, Phase2: A/B/C군 대시보드·작은승리시스템·피로감지, Phase3: 시험수행모듈·스페이스드리피티션·진행도시각화)."
+    },
+    {
+      "id": "STEP61",
+      "name": "사회/과학 오답설명(wrong_explanations) 품질 전면 개선",
+      "status": "completed",
+      "completed_date": "2026-04-06",
+      "details": "Phase1 핵심작업. (1) soc1(25문항): 분석 결과 전부 양호→수정 불필요. (2) soc2(38문항): 14문항 누락/부실 설명 교육적 내용으로 교체 + 추가 20문항 45개 짧은 설명 전부 3파트 포맷(💡📖🔬)으로 확장. S2-E018 계산 모순 발견(재료비600→총비용1900→이윤1100≠정답700) → 재료비 1000으로 수정하여 계산 정합성 확보. (3) sci1(20문항): C1-E009~E020 12문항 explanation+wrong_explanations 데이터 정렬 오류 발견(다른 문항 내용이 밀려들어옴) → 전면 재작성. (4) 3단계 검증: JSON유효성+키누락+짧은설명→ALL PASS / 서브에이전트 과학교사·사회교사 역할로 내용 정확도 재검증→sci1 12/12 정확, soc2 38/38 정확(E018 수정 포함). (5) 문제/선택지/정답인덱스 전수검증: sci1 20/20 정확, soc1 25/25 정확, soc2 38/38 정확. (6) sw.js 캐시 v71→v72 업데이트."
+    },
+    {
+      "id": "STEP62",
+      "name": "사운드 수정 + 선택지 번호중복 제거 + 과학 단원 노출 + 세션종료 버그 수정",
+      "status": "completed",
+      "completed_date": "2026-04-07",
+      "details": "(1) 사운드 시스템: AudioContext를 매 호출마다 new로 생성→싱글턴 재사용으로 변경. 모바일 브라우저 6~8개 제한 초과로 소리 끊김 해결. suspended 자동 resume + TTS voices 프리로드/캐싱 추가. (2) 선택지 번호 중복: UI가 ①②③④를 자동 부여하는데 데이터에도 ①②③④가 있어서 이중 표시. sci1(80개), sci3(100개), math1-E009(5개) 접두사 제거. math1-E004(빈칸참조)와 math3(항목참조)는 내용이라 보존. (3) 과학 단원 노출: sci1(물질의특성)+sci3(빛과파동) 시험범위에 맞게 노출. sci2(지권의변화)는 범위 밖으로 숨김. sci3에 lesson_id 추가. (4) 사회/과학 세션종료 버그: compute4Metrics()에서 QUIZ_DATA.questions.find() 호출→사회/과학은 questions키 없이 exam_prep만 있어 TypeError 크래시→findQ() 헬퍼로 questions/exam_prep/procedure_drills 통합조회. (5) 시험범위 전과목 대조검증: 가정통신문 기준 국어1단원, 사회1·2단원, 수학Ⅰ·Ⅱ-1·Ⅱ-2, 과학1·3단원, 영어L1·L3 모두 일치 확인. sw.js v72→v76."
+    },
+    {
+      "id": "STEP63",
+      "name": "영어 프린트물 반영 — 단어·문법·오류교정 drill 추가",
+      "status": "completed",
+      "completed_date": "2026-04-07",
+      "details": "(1) 프린트물 OCR 복원: 260407_중2_영어_프린트물.LLM.md를 교과서 원문 + PDF 원본 대조하여 전 항목 복원. 학생 필기와 인쇄 내용 구분 완료. (2) 중복 검증: 프린트 44단어 중 기존 앱과 중복 36개 확인, 신규 8개(L1: tired/list/for example/caffeine/soda/actively/brain, L3: cloth) 식별. (3) lesson1.js v3.8: 신규 단어 7개(CS14-20) + drill 28문항 추가. if조건절 문법연습 16문항(PC-A/B) 추가. 프린트 섹션C 복원 3문항(IF-SC) + 학생 오류 겨냥 drill 4문항(IF-ERR: 3인칭단수 -s 누락, 주절 주어 생략 교정) 추가. (4) lesson3.js v1.1: cloth 단어(CS15) + drill 5문항 추가. cloth vs clothes vs tablecloth 비교문제 포함. choice_blank/typed_blank에 clothes 함정 오답 및 일타강사식 설명 적용. (5) 설명문 전면 리라이팅: '~해요' 설명조 → 일타강사식 공식형으로 변경. 예: 'if 뒤에 will 보이면 → 무조건 틀림!', 'she/he/it 뒤 → 동사에 -s!' (6) sw.js v76→v77. GitHub push 완료."
+    },
+    {
+      "id": "STEP64",
+      "name": "영어 핵심 어휘 + 수동태 문장 보강",
+      "status": "completed",
+      "completed_date": "2026-04-08",
+      "details": "(1) Lesson 1 어휘 보강: 교과서 Self-Check(p.8~9) 기준 3개 단어 추가. body(신체, 몸), change(변하다, 바뀌다), decide(결정하다, 정하다). lesson1.js vocab_drill에 VD-L1-034~036 추가. (2) Lesson 3 어휘 보강: Self-Check(p.44~45) + 본문 기준 5개 단어 추가. shape(모양, 형태), true(참인, 사실인), mistake(실수, 오류), tablecloth(식탁보), manager(경영자, 지배인). lesson3.js vocab_drill에 VD-L3-036~040 추가. (3) Lesson 3 수동태 Core Sentences 추가: 교과서 Focus on Language(p.54) 수동태 예문 3개 추가. CS16: 'English is spoken in many countries'(현재 수동태), CS17: 'The cakes are baked every morning'(현재 수동태), CS18: 'The Kiss was painted by Gustav Klimt'(과거 수동태). 모두 GR01(수동태 규칙) 연계 및 grammar_awkward/error_correction 시험 영역 매핑. (4) 자체 검증 완료: (a) 구문검증 lesson1.js/lesson3.js 모두 syntax OK (node -c). (b) 중복확인: 신규 8개 단어 모두 고유 ID + 기존 데이터와 중복 없음 확인. (c) 철자정확성: 영어(body/change/decide/shape/true/mistake/tablecloth/manager) 및 한글 뜻 모두 정확. (d) 교과서 일치도: Self-Check 단어 및 Focus on Language 수동태 예문이 교과서 원문과 100% 일치."
+    },
+    {
+      "id": "STEP65",
+      "name": "전과목 정답 전수검사 — 오류 7건 수정",
+      "status": "completed",
+      "completed_date": "2026-04-08",
+      "details": "아이가 과학 반사법칙 문제(L3-E002)에서 정답인데 오답 처리되는 버그 신고. 원인: lesson_sci3.js의 correct 인덱스 오류(2→1 수정). 이를 계기로 전과목 11개 lesson 파일 약 296개 선택형 문항 전수검사 실시. 결과: (1) sci3 1건(L3-E002), (2) sci2 6건(S2-E020/025/027/028/031/032) 총 7건 correct 인덱스 오류 발견 및 수정. 사회/국어/영어/수학은 정상. sci3.json과 sci3.js 간 불일치도 확인(json은 정상, js만 오류). 수정 후 재검증 완료."
+    },
+    {
+      "id": "STEP66",
+      "name": "전과목 교과서 대조 검증 (시험범위표 기준)",
+      "status": "completed",
+      "completed_date": "2026-04-08",
+      "details": "시험범위표와 앱 콘텐츠 페이지별 대조. (1) 범위 밖 단원(kor2, sci2, eng L2) 이미 숨김 처리 확인. (2) 과학 sci3: 빛 파트 p.91~110 교과서 14개 핵심개념 완전 매핑 확인. (3) 과학 sci1: p.11~33,p.36~40 약 95% 커버. (4) 사회: 85%/75% 커버(문항은 exam_prep에 존재). (5) 수학: 개념 100% 커버, 단 교과서 특정 페이지 문제(p.76 8번, p.79~80 8~12번, p.81 16~17번, p.258~261) 원문 반영 미흡. (6) 국어: 80% 커버, 3인칭 시점/상징성 부족. (7) 영어: 80% 커버, 일부 어휘/수동태 부족."
+    },
+    {
+      "id": "STEP67",
+      "name": "기본 보강 (수학 활용문제 + 국어 시점 + 영어 어휘)",
+      "status": "completed",
+      "completed_date": "2026-04-08",
+      "details": "수학: 일차부등식 활용 문항 6개(Q-31~36) 추가, Q-32 정답 오류 검증에서 발견 즉시 수정(6명→7명). 국어: 시점/상징성 문항 5개(KOR-U1-041~045) 추가. 영어: L1 어휘 3개 + L3 어휘 5개 + 수동태 CS 3개 추가. 단, 수학 교과서 원문 문제 그대로 반영은 미완 — 다음 세션에서 교과서 원문 문제를 직접 추출하여 반영 필요."
+    },
+    {
+      "id": "STEP68",
+      "name": "수학 교과서 원문 문제 직접 반영",
+      "status": "completed",
+      "completed_date": "2026-04-08",
+      "details": "PDF 원본에서 수식 직접 확인하여 교과서 원문 문제 13문항 반영. (1) lesson_math3.js: Q-31(승강기 p.261 7번) Q-32(대관람차 p.76 8번) 교과서 원문으로 교체 + Q-37~43 신규 7문항(p.80 9·10번, p.81 17번 서술형, p.261 4·5·6(3)·6(4)번). (2) lesson_math2.js: Q-34~37 신규 4문항(p.80 8번 도형둘레, p.81 16번 자릿수 서술형, p.260 8(3)번 나눗셈, p.260 9번 계수ab값). 전 문항 서브에이전트 독립 검증 완료(13/13 정확). sw.js v77→v78."
+    },
+    {
+      "id": "STEP69",
+      "name": "국어/영어 교과서 원문 문제 보강",
+      "status": "completed",
+      "completed_date": "2026-04-08",
+      "details": "국어: lesson_kor1.js에 KOR-U1-046~050 추가 (5문항). 「기차가 달려간 곳에는」 상징성 심화 — 046(아빠 방 상징), 047(꽃/나무 비유), 048(냉장고 라면/소주 간접제시), 049(해바라기 상징), 050(3인칭 시점 변환 실습). 영어: lesson3.js에 PV001~005 추가 (5문항). 능동↔수동태 변환 — PV001(Klimt/The Kiss), PV002(robot/made), PV003(dishes/현재시제 복수), PV004(수동→능동/built), PV005(서술형 is threatened). 전 문항 서브에이전트 독립 검증 완료(10/10 PASS). sw.js v79→v80."
+    },
+    {
+      "id": "STEP70",
+      "name": "전과목 렌더러-타입 매칭 전수검사 + 버그 수정",
+      "status": "completed",
+      "completed_date": "2026-04-10",
+      "details": "영어 Lesson3 실전대비에서 choice 타입(PV001-004) 선택지 미표시 버그 발견. 원인: showQuestion()에 영어 choice/typed_answer 렌더러 분기 없음. 수정: showEnglishChoice() + showEnglishTypedAnswer()/checkEnglishTypedAnswer() 신규 추가. 수학: showMathChoice()/showMathTypedAnswer()에서 q.instruction을 빈 문자열로 덮어쓰던 문제 수정 — instruction 표시하도록 변경. 전 과목(영어3+국어2+수학3+과학3+사회2) 11개 파일 전수검사 완료, 추가 렌더러 누락 없음. sw.js v80→v82."
+    },
+    {
+      "id": "STEP71",
+      "name": "전과목 퀴즈 정답 전수검증 + 오류 수정",
+      "status": "completed",
+      "completed_date": "2026-04-10",
+      "details": "학생이 수학 유한소수 문제(M1-E014) 오답 판정 이상 발견하여 전과목 정답 검증 실시. [수학] M1-E014: 조건 충족값이 전부(18~99)인데 36,72만 정답 처리 → '가장 작은 A' 묻는 문제로 변경, 정답 18. Q-29: 부등식 자연수 합 15→28(선택지 오류). Q-30: 아랫변 18→12cm(교과서 원본 확인, p.61), 정답 2cm→4cm. [과학] L3-E010: 정답 '모든 거울과 렌즈'→'오목거울과 볼록렌즈'(해설과 모순 해소). [영어·국어·사회] 정답 오류 없음 확인."
+    },
+    {
+      "id": "STEP72",
+      "name": "lesson1.js wrong_explanations 일타강사 스타일 전면 리라이팅",
+      "status": "completed",
+      "completed_date": "2026-04-10",
+      "details": "영어 3개 파일(lesson1/2/3.js) wrong_explanations 총 895개를 일타강사 스타일로 전면 리라이팅. (1) 스타일 전환: 경어체(~예요/~이에요) → 구어체(~야/~거든/~잖아) + ⚡함정! 강조 + X→Y! 공식형. (2) 내용 보강: 뻔한 템플릿 해설(L1:272개, L2:194개)을 문항별 맞춤 해설로 전면 재작성. (3) 버그 수정: L2-G015 엉뚱한 문법설명→신체부위 어휘로 교체, L3 6문항 wrong_explanations 내 정답키 삭제. (4) 최종 검증: 구문3/3 PASS, 템플릿 0개, 경어체 0개. sw.js v82→v83."
+    },
+    {
+      "id": "STEP74",
+      "name": "영어 wrong_explanations 전수검증 + 누락/동일해설 수정",
+      "status": "completed",
+      "completed_date": "2026-04-10",
+      "details": "Python 검증 스크립트로 영어 3파일 전수검사. 발견: (1) lesson3.js 키 누락 29건(오답 선택 시 해설 미표시), (2) 동일 해설 반복 50건(L1:15, L2:33, L3:2 — 모든 오답에 같은 텍스트). 수정: 79건 전부 문항별 맞춤 해설로 교체. 재검증: 키누락 0건, 동일해설 0건. sw.js v83→v84."
+    },
+    {
+      "id": "STEP76",
+      "name": "과학3 정답키 10문항 수정 + 템플릿 해설 36개 교체",
+      "status": "completed",
+      "completed_date": "2026-04-10",
+      "details": "lesson_sci3.js(빛과 파동, 시험범위 A반) 실전문항 점검. (1) 정답키 오류 10문항 수정: E004(굴절각), E005(평면거울 거리), E006(오목거울 허상/실상), E007(볼록거울 정립), E014(물체의 색=반사빛), E015(검은색=모든빛 흡수), E018(직진=그림자), E019(광원 반사), E020(반사+굴절 동시), E023(RGB 합성). (2) 템플릿 해설 36개 → 일타강사 스타일 맞춤 해설로 전면 교체. (3) 해당 문항 explanation도 정답 변경에 맞춰 수정. (4) 검증: 구문OK, 템플릿잔존 0건, 오답해설 누락 0건, 정답키 범위 정상. sw.js v86→v87."
+    },
+    {
+      "id": "STEP77",
+      "name": "전 과목 정답키 전수검증 + 수학3 Q-02 수정",
+      "status": "completed",
+      "completed_date": "2026-04-10",
+      "details": "시험범위 전 과목 정답키 전수검증 실시. (1) 사회1(25문항)+사회2(38문항)=63문항 정상. (2) 과학1(20문항)+과학2(38문항)=58문항 정상. (3) 수학2(37문항) 정상. (4) 수학3(43문항) Q-02 정답키 오류 1건 발견 및 수정: 3x-4<7에서 x=-2 대입 시 -10<7 참이므로 '해이다'가 정답. correct 1→0, wrong_explanations+explanation 재작성. (5) 총 201문항 검증 완료. sw.js v87→v88."
+    },
+    {
+      "id": "STEP79",
+      "name": "수학2·3 explanation 68문항 작성",
+      "status": "completed",
+      "completed_date": "2026-04-10",
+      "details": "수학2(33문항)+수학3(35문항) explanation 신규 작성. 스타일: 걸려넘어지는 포인트 1개 + 최소 풀이. 활용문제는 한 줄에 한 생각 방식. sympy로 전 문항 수학적 검증 통과 후 반영. 기존 explanation 있던 문항(수학2 Q-34~37, 수학3 Q-02/Q-37~43)은 미변경. sw.js v88→v89."
+    },
+    {
+      "id": "STEP84",
+      "name": "영어 typed_blank 한국어 문장 제시 + HWP 문법 문제 추가",
+      "status": "completed",
+      "completed_date": "2026-04-16",
+      "details": "(1) HWP 핵심정리-문법 파일 분석: 접속사 if(의미/형태/시제규칙) + 의문사+to부정사(의미/역할/변환표) + 연습문제 8개. 앱 기존 GR01·GR02와 비교하여 이론은 이미 커버됨 확인. (2) 갭 분석: unless=if not 변환, 의문사+should 변환은 교과서에 없는 HWP 확장 내용 → 추가 불필요 판단. (3) typed_blank 한국어 문장 제시 방식 개선: 기존 41개(L1:14, L2:13, L3:14) 전부 hint 단어만 제공 → 시험 서술형과 동일한 '한국어 전체문장 → 영어 빈칸' 형식으로 변경. core_sentence text_ko와 영문 1:1 매칭 전수검토 완료 후 prompt_ko 추가. (4) HWP 신규 8문항 추가(L1): typed_blank 4개(if절 빈칸: help/will buy/cooks,will do/get up,will see) + arrange 4개(의문사+to부정사 배열: how to fix/whom to ask/where to put his bag/what to buy). (5) index.html UI 수정: showTypedBlank에 prompt_ko 표시, showArrange에 sentence 영문 프레임 표시. (6) 검증: 3파일 구문OK, ID중복 0건, prompt_ko 45개 전수확인. lesson1.js v3.7→v3.8, sw.js v91→v92."
+    },
+    {
+      "id": "STEP85",
+      "name": "영어 L1/L3 전수 품질점검 + Codex 협업모델 도입",
+      "status": "completed",
+      "completed_date": "2026-04-17",
+      "details": "Codex 멀티에이전트 협업모델 도입: CLAUDE.md에 운용 규칙 추가, 00_Context/codex-advice/ 폴더 생성. Codex 자문 3건(보기품질, 전수점검기준, 1차점검결과) 검토 후 반영. lesson1.js 11건 수정: R004·R007·R018 복수정답 보기 교체, G001·G002·G010·G011 해설 모호/오류 수정, G003·G006 규칙혼재 재작성. lesson3.js 22건 수정: G003·G004 보기 전면 교체(이중정답→단일정답), G002·G012 해설 수정, G015 pair_match→단일빈칸 단순화, V001~V015 instruction 변경(본문표현회수 명시), V029·V033 문장프레임 문법오류 수정, V039 오답 벌리기. 전체 검증 통과: L1(233문항)·L3(199문항) JSON유효/ID중복0/정답인덱스유효/해설키일치."
+    },
+    {
+      "id": "STEP98",
+      "name": "나머지 4경로 실전대비 20문항 확대 + subtitle 통일 + 워밍업 정책 명시",
+      "status": "completed",
+      "completed_date": "2026-04-19",
+      "details": "STEP97(수학)에 이어 나머지 4경로(영어 L1/L3, 국어 kor1, 사회 soc1/2, 과학 sci1/3) 실전대비 세션을 20문항으로 확대. [영어 generateExamPrepSession] pcCap=4/sfCap=8/mpCap=8, 합 20 미달 시 pc→sf→mp 잔여에서 보충, 최종 slice(0,TARGET). L1(pc=16,sf=42,mp=59): 4+8+8=20 정확. L3(pc=0,sf=37,mp=50): 0+8+8=16→잔여 4개 보충→20. [국어 generateKoreanExamPrepSession] TARGET=20/MIN_TARGET=18. passage_check 그룹 상한 2→3, skill_focus 그룹 상한 2→3, mixed 상한 12→20. 그룹 통째 포함 시 TARGET 초과 그룹은 skip(그룹 중간 잘림 방지). 100회 시뮬 결과 크기 18~20(평균 18.64). [사회·과학 generateStudyExamSession] bGroup slice 8→12, cGroup slice 2→4, 최종 slice 15→20. 4경로 전부 20 도달. [updateSubtitle] 사회/science 전용 분기(15문항·10분) 제거하고 모든 exam_prep '20문항 · 약 20분'으로 통일. [워밍업 정책] 옵션②(20+워밍업 별개 블록) 유지 — 어제 STEP97 암묵 합의 존중, 시험 1주일 전 핵심 새 문제 20개/일 노출량 보장, A:B:C 비율 안정성, 코드 위험 최소화. [검증] verify_step98_static_2026_04_19c.py 오류 0, verify_step98_dynamic_2026_04_19c.py 10경로×100회 모두 세션 크기 기대값·중복 0 PASS. warmup 0~3 시나리오 visible=20+unique 확인. sw.js v103→v104. [Codex 자문 검토] coreTarget 역산안은 비율 보존 측면에서 우월했으나 옵션①(정확히 20) 전제였음. 사용자 목적(시험 1주일 전 노출 최대화)에 맞춰 옵션② 채택, 부제·세션크기·경로 확대만 한 커밋에 반영."
+    }
+  ]
+}
