@@ -5624,6 +5624,8 @@
 
             const isMulti = Array.isArray(q.correct);
             let sentenceHtml = q.sentence ? `<div style="font-size:15px;line-height:1.7;margin-bottom:16px;white-space:pre-line;background:#FFF8E1;padding:12px;border-radius:8px;">${renderMath(q.sentence)}</div>` : '';
+            // visual_svg 도형/그림: showMathConceptCard(line 5454) 패턴과 동일. Q-34(math2 계단형 도형), Q-41(math3 수직선) 대응.
+            let visualHtml = q.visual_svg ? `<div style="margin-bottom:12px;text-align:center;overflow-x:auto;max-width:100%;">${q.visual_svg.replace(/<svg /,'<svg style="max-width:100%;height:auto;" ')}</div>` : '';
 
             // 보기 셔플 (원본 인덱스 보존)
             mathShuffleMap = q.options.map((opt, idx) => ({ origIdx: idx, opt }));
@@ -5634,7 +5636,7 @@
                 return `<button class="option-btn" style="display:block;width:100%;text-align:left;padding:12px 16px;margin-bottom:8px;border:2px solid #ddd;border-radius:10px;background:white;font-size:15px;cursor:pointer;line-height:1.5;" onclick="checkMathChoice(this, ${i})">${label} ${renderMath(item.opt)}</button>`;
             }).join('');
 
-            container.innerHTML = sentenceHtml + `<div id="math-options">${optionsHtml}</div>`;
+            container.innerHTML = sentenceHtml + visualHtml + `<div id="math-options">${optionsHtml}</div>`;
 
             document.getElementById('question-text').innerHTML = q.instruction ? renderMath(q.instruction) : '';
             document.getElementById('btn-hint').style.display = q.hint ? '' : 'none';
