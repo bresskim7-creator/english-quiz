@@ -1614,18 +1614,20 @@
                     });
                     gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.6);
                 } else {
-                    // 오답: 낮은 2음 하강 버저 (뚜뚜)
-                    gain.gain.value = 0.2;
-                    const notes = [311, 233]; // Eb4, Bb3
+                    // 오답 (2026-04-19d STEP99): 처벌형 버저 → 중립적 실패신호
+                    // sine 단3도 하강(A4→F4), 볼륨/길이/꼬리 축소.
+                    // Codex 자문: 00_Context/codex-advice/2026-04-17-영어-보기품질-및-오답음-검토.md
+                    gain.gain.value = 0.16;
+                    const notes = [440, 349]; // A4, F4 (단3도 하강)
                     notes.forEach((freq, i) => {
                         const osc = ctx.createOscillator();
-                        osc.type = 'triangle';
+                        osc.type = 'sine';
                         osc.frequency.value = freq;
                         osc.connect(gain);
-                        osc.start(ctx.currentTime + i * 0.2);
-                        osc.stop(ctx.currentTime + i * 0.2 + 0.18);
+                        osc.start(ctx.currentTime + i * 0.12);
+                        osc.stop(ctx.currentTime + i * 0.12 + 0.12);
                     });
-                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.6);
+                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.35);
                 }
             } catch(e) {
                 console.warn('[Sound] playSound 오류:', e);
