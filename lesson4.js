@@ -1,9 +1,9 @@
 __loadLesson({
   "lesson": 4,
   "title": "Lesson 4: Open the Doors to the World",
-  "version": "1.0",
+  "version": "1.1",
   "build_date": "2026-05-07",
-  "build_note": "v1.0 — L4 신규 제작. core_sentences 13 + drill 52 + exam_prep 99 (5a 46 + 5b 53) + vocab_drill 35 + grammar_rules 2. 본문: Hula, More than Just a Dance (천재 중2 영어 pp.62-79).",
+  "build_note": "v1.1 — Codex 자문 lesson4 검토 반영. G024 sentence 원문 REVIEW 3-1형 복원 (it is so~that delicious that → is so delicious that it's her favorite food, 정답 선택지를 'so delicious that'으로 변경). vocab_drill 35건 example 추가 (자동 매칭 + 본문/extracted.md 직접 인용). v1.0(037f6732) 백업 .bak-2026-05-07-pre-l4fix.",
   "core_sentences": [
     {
       "id": "CS01",
@@ -3941,11 +3941,11 @@ __loadLesson({
       "difficulty": "hard",
       "keyword": "혼합 어법",
       "instruction": "빈칸 (1), (2)에 알맞은 표현을 고르세요. (REVIEW 3-1 변형)",
-      "hint": "(1) 현재완료 부정 + never. (2) so + 형용사 + that 결과 절.",
+      "hint": "(1) 현재완료 부정은 'have + never + p.p.' 어순. (2) so + 형용사 + that 절 = '너무 ~해서 …하다' 패턴.",
       "wrong_explanations": {
-        "0": "💡 (1) 'never have'는 어순 오류, (2) 'so~so'는 짝이 안 맞아!",
-        "1": "💡 (1) 'have tried never'는 never 위치 오류!",
-        "3": "💡 (1) 'is tried'는 수동, (2) 'too~to'는 부정 결과!"
+        "1": "💡 부정어 never는 have와 p.p. 사이에 와! 'never have tried'(X) → 'have never tried'(O).",
+        "2": "💡 'have tried never'는 어색해. never의 위치는 have와 tried 사이!",
+        "3": "💡 'am tried'는 수동태고 시제도 안 맞아. 현재완료는 'have/has + p.p.'야."
       },
       "core_sentence_id": null,
       "linked_rule_ids": [
@@ -3957,14 +3957,14 @@ __loadLesson({
       "page": [
         79
       ],
-      "sentence": "I (1) _____ Spanish food before, but I heard it is (2) _____ delicious that it's her favorite.",
+      "sentence": "I'm going to visit a Spanish restaurant with my family this weekend. I (1) _____ Spanish food before, so I am a little worried. But my sister told me that Spanish food is (2) _____ it's her favorite food.",
       "choices": [
-        "(1) never have tried / (2) so~so",
-        "(1) have tried never / (2) too~to",
-        "(1) have never tried / (2) so~that",
-        "(1) is tried / (2) too~to"
+        "(1) have never tried / (2) so delicious that",
+        "(1) never have tried / (2) too delicious to",
+        "(1) have tried never / (2) delicious so that",
+        "(1) am never tried / (2) so that delicious"
       ],
-      "correct": 2,
+      "correct": 0,
       "exam_pattern": "어법 판단",
       "training_layer": "mixed_practice"
     },
@@ -4722,211 +4722,281 @@ __loadLesson({
       "id": "VD-L4-001",
       "word": "above",
       "pos": "전치사",
-      "meaning": "~보다 위에, ~위로"
+      "meaning": "~보다 위에, ~위로",
+      "example": "Hawaiians make a circle with their arms above their heads.",
+      "example_source": "본문 p.70 (R004)"
     },
     {
       "id": "VD-L4-002",
       "word": "accidentally",
       "pos": "부사",
-      "meaning": "우연히, 실수로"
+      "meaning": "우연히, 실수로",
+      "example": "It is about a boy who accidentally enters the Land of the Dead.",
+      "example_source": "본문 p.76 (R008)"
     },
     {
       "id": "VD-L4-003",
       "word": "barefoot",
       "pos": "부사",
-      "meaning": "맨발로"
+      "meaning": "맨발로",
+      "example": "Hula is always done barefoot.",
+      "example_source": "본문 p.70 (R003)"
     },
     {
       "id": "VD-L4-004",
       "word": "beg",
       "pos": "동사",
-      "meaning": "~을/를 바라다, 부탁하다"
+      "meaning": "~을/를 바라다, 부탁하다",
+      "example": "I beg your pardon? Could you say that again?",
+      "example_source": "회화 핵심표현 p.78"
     },
     {
       "id": "VD-L4-005",
       "word": "bend",
       "pos": "동사",
-      "meaning": "구부리다"
+      "meaning": "구부리다",
+      "example": "Next, bend your knees a little and step from side to side.",
+      "example_source": "본문 p.71"
     },
     {
       "id": "VD-L4-006",
       "word": "continue",
       "pos": "동사",
-      "meaning": "계속하다, 잇다"
+      "meaning": "계속하다, 잇다",
+      "example": "As a hula teacher, I always try to continue the history of Hawaii.",
+      "example_source": "본문 p.71"
     },
     {
       "id": "VD-L4-007",
       "word": "embarrassing",
       "pos": "형용사",
-      "meaning": "당황하게 하는, 당혹스러운"
+      "meaning": "당황하게 하는, 당혹스러운",
+      "example": "It was so embarrassing that I didn't want to do it again.",
+      "example_source": "예문 p.75"
     },
     {
       "id": "VD-L4-008",
       "word": "ever",
       "pos": "부사",
-      "meaning": "지금까지"
+      "meaning": "지금까지",
+      "example": "Have you ever heard of Frida Kahlo?",
+      "example_source": "본문 p.77 (R009)"
     },
     {
       "id": "VD-L4-009",
       "word": "excuse",
       "pos": "동사",
-      "meaning": "실례하다, 용서하다"
+      "meaning": "실례하다, 용서하다",
+      "example": "Excuse me, where is the Statue of Liberty?",
+      "example_source": "회화 표현 p.64"
     },
     {
       "id": "VD-L4-010",
       "word": "from side to side",
       "pos": "숙어",
-      "meaning": "좌우로"
+      "meaning": "좌우로",
+      "example": "Bend your knees a little and step from side to side.",
+      "example_source": "본문 p.71"
     },
     {
       "id": "VD-L4-011",
       "word": "generation",
       "pos": "명사",
-      "meaning": "세대"
+      "meaning": "세대",
+      "example": "Hula has passed down stories from one generation to the next.",
+      "example_source": "본문 p.69"
     },
     {
       "id": "VD-L4-012",
       "word": "gesture",
       "pos": "명사",
-      "meaning": "몸짓, 손짓"
+      "meaning": "몸짓, 손짓",
+      "example": "Every gesture in hula has a meaning.",
+      "example_source": "본문 p.70"
     },
     {
       "id": "VD-L4-013",
       "word": "hip",
       "pos": "명사",
-      "meaning": "엉덩이"
+      "meaning": "엉덩이",
+      "example": "You tell a story with your hands, feet, and hips.",
+      "example_source": "본문 p.70"
     },
     {
       "id": "VD-L4-014",
       "word": "hometown",
       "pos": "명사",
-      "meaning": "고향"
+      "meaning": "고향",
+      "example": "I want to tell you about my hometown, Busan.",
+      "example_source": "Your Turn p.66"
     },
     {
       "id": "VD-L4-015",
       "word": "hot air balloon",
       "pos": "명사",
-      "meaning": "열기구"
+      "meaning": "열기구",
+      "example": "I want to ride a hot air balloon someday.",
+      "example_source": "단어 p.63"
     },
     {
       "id": "VD-L4-016",
       "word": "knee",
       "pos": "명사",
-      "meaning": "무릎"
+      "meaning": "무릎",
+      "example": "Bend your knees a little before you start dancing.",
+      "example_source": "본문 p.71"
     },
     {
       "id": "VD-L4-017",
       "word": "landmark",
       "pos": "명사",
-      "meaning": "주요 지형지물, 랜드마크"
+      "meaning": "주요 지형지물, 랜드마크",
+      "example": "The Statue of Liberty is a famous landmark of New York.",
+      "example_source": "Landmark Collector p.67"
     },
     {
       "id": "VD-L4-018",
       "word": "mask",
       "pos": "명사",
-      "meaning": "가면, 탈"
+      "meaning": "가면, 탈",
+      "example": "Talchum is a traditional Korean mask dance.",
+      "example_source": "본문 p.73 (R006)"
     },
     {
       "id": "VD-L4-019",
       "word": "movement",
       "pos": "명사",
-      "meaning": "움직임, 동작"
+      "meaning": "움직임, 동작",
+      "example": "Hula is a language through body movements.",
+      "example_source": "본문 p.69"
     },
     {
       "id": "VD-L4-020",
       "word": "musical",
       "pos": "명사",
-      "meaning": "뮤지컬"
+      "meaning": "뮤지컬",
+      "example": "There are many musicals in New York.",
+      "example_source": "회화 p.64 (D003)"
     },
     {
       "id": "VD-L4-021",
       "word": "naturally",
       "pos": "부사",
-      "meaning": "자연스럽게"
+      "meaning": "자연스럽게",
+      "example": "While you step to the side, move your hips naturally.",
+      "example_source": "본문 p.71"
     },
     {
       "id": "VD-L4-022",
       "word": "pardon",
       "pos": "명사",
-      "meaning": "용서, 관용"
+      "meaning": "용서, 관용",
+      "example": "I beg your pardon? I didn't catch that.",
+      "example_source": "회화 핵심표현 p.78"
     },
     {
       "id": "VD-L4-023",
       "word": "pass down",
       "pos": "숙어",
-      "meaning": "~을/를 물려주다, 전하다"
+      "meaning": "~을/를 물려주다, 전하다",
+      "example": "Hawaiians have passed down their stories through hula.",
+      "example_source": "본문 p.69 (R002)"
     },
     {
       "id": "VD-L4-024",
       "word": "pretzel",
       "pos": "명사",
-      "meaning": "프레츨(매듭·하트모양의 짭짤한 빵)"
+      "meaning": "프레츨(매듭·하트모양의 짭짤한 빵)",
+      "example": "I'm waiting to buy a pretzel.",
+      "example_source": "회화 p.64 (D001)"
     },
     {
       "id": "VD-L4-025",
       "word": "salty",
       "pos": "형용사",
-      "meaning": "짠, 소금이 든"
+      "meaning": "짠, 소금이 든",
+      "example": "It's a salty type of bread.",
+      "example_source": "회화 p.64 (D001)"
     },
     {
       "id": "VD-L4-026",
       "word": "since",
       "pos": "전치사",
-      "meaning": "~부터"
+      "meaning": "~부터",
+      "example": "Hula has been a part of Hawaiian life since long ago.",
+      "example_source": "조건 영작 W003"
     },
     {
       "id": "VD-L4-027",
       "word": "solve",
       "pos": "동사",
-      "meaning": "풀다, 해결하다"
+      "meaning": "풀다, 해결하다",
+      "example": "Daniel is so smart that he can easily solve problems.",
+      "example_source": "예문 p.74"
     },
     {
       "id": "VD-L4-028",
       "word": "spirit",
       "pos": "명사",
-      "meaning": "영혼"
+      "meaning": "영혼",
+      "example": "Mexican people believe that the spirits of the dead come back to visit.",
+      "example_source": "본문 p.76"
     },
     {
       "id": "VD-L4-029",
       "word": "statue",
       "pos": "명사",
-      "meaning": "조각상"
+      "meaning": "조각상",
+      "example": "They want to visit the Statue of Liberty first.",
+      "example_source": "본문 듣기 p.64"
     },
     {
       "id": "VD-L4-030",
       "word": "step",
       "pos": "동사",
-      "meaning": "(발을) 내딛다, 디디다"
+      "meaning": "(발을) 내딛다, 디디다",
+      "example": "Step from side to side while you move your hips naturally.",
+      "example_source": "본문 p.71"
     },
     {
       "id": "VD-L4-031",
       "word": "storyteller",
       "pos": "명사",
-      "meaning": "이야기꾼"
+      "meaning": "이야기꾼",
+      "example": "You become a storyteller when you dance hula.",
+      "example_source": "본문 p.70"
     },
     {
       "id": "VD-L4-032",
       "word": "system",
       "pos": "명사",
-      "meaning": "체계"
+      "meaning": "체계",
+      "example": "The early Hawaiians didn't have a writing system.",
+      "example_source": "본문 p.69 (R001)"
     },
     {
       "id": "VD-L4-033",
       "word": "take off",
       "pos": "숙어",
-      "meaning": "(옷 등을) 벗다, ~을/를 떼어 내다"
+      "meaning": "(옷 등을) 벗다, ~을/를 떼어 내다",
+      "example": "You need to take off your shoes and socks before hula.",
+      "example_source": "본문 p.70"
     },
     {
       "id": "VD-L4-034",
       "word": "through",
       "pos": "전치사",
-      "meaning": "~을/를 통해"
+      "meaning": "~을/를 통해",
+      "example": "Hula is a language through body movements.",
+      "example_source": "본문 p.69"
     },
     {
       "id": "VD-L4-035",
       "word": "wave",
       "pos": "동사",
-      "meaning": "흔들다"
+      "meaning": "흔들다",
+      "example": "Wave your fingers while you move your arms up and down.",
+      "example_source": "본문 p.70"
     }
   ],
   "grammar_rules": [

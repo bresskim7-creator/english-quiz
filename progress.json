@@ -1,6 +1,6 @@
 {
   "project": "PA — 중2 영어 학습 앱",
-  "last_updated": "2026-05-02",
+  "last_updated": "2026-05-07T01:30:00+09:00",
   "label": "중2 영어+국어+수학 학습 앱 파일럿",
   "target_date": "2026-04-27",
   "status": "중간고사 대비 모드 (4/27-28 시험)",
@@ -1033,8 +1033,8 @@
       "힌트 사용 증가(-0.52 상관계수)에도 성적 미개선 — 힌트 품질 문제"
     ]
   },
-  "last_completed": "L2_exam_prep 1차 분할 +3 (E-DR-005·006·007: CS12×2 + CS11×1) — 88→91",
-  "updated_at": "2026-05-02",
+  "last_completed": "session_2026_05_07i_lesson4_codex_apply",
+  "updated_at": "2026-05-07T01:30:00+09:00",
   "current_step": "STEP126",
   "completed_tasks": [
     {
@@ -2815,6 +2815,116 @@
       "lesson 1·3 공통 결함 (vocab.example 누락 / source 단일값) 별도 세션 처리",
       "lesson 4 Codex 자문 의뢰 (지시문 작성 완료, 사용자 전달 후 회수 예정)",
       "5/11 정오답표 발표 후 직전 중간고사 분석 (D-4)"
+    ]
+  },
+  "session_2026_05_07i_lesson4_codex_apply": {
+    "category": "english_lesson4_codex_review_apply",
+    "task": "Codex lesson4 자문 검토 및 핫픽스 + vocab.example 35건 추가",
+    "context": {
+      "predecessor": "session_2026_05_07h_lesson2_codex_apply",
+      "trigger": "사용자: 'lesson 4 Codex 자문 검토'",
+      "codex_advice_file": "00_Context/codex-advice/2026-05-07-lesson4-review.md",
+      "memory_applied": [
+        "feedback_challenge_codex_advice (사실 확정→독립 감사→반론→판정)",
+        "feedback_self_audit_before_report (5축)",
+        "feedback_progress_json_python_only",
+        "feedback_edit_silent_truncation (Python 직접 치환)",
+        "feedback_compare_thoroughly (전수 grep)",
+        "feedback_grading_condition_audit (W001~W004 통과)",
+        "feedback_app_rendering_check (HIDDEN_TYPES 점검)",
+        "feedback_batch_work_discipline (9 task 분할)",
+        "feedback_verification_first (vocab 사전 분석)"
+      ]
+    },
+    "codex_findings_processed": {
+      "section_1_data_integrity": "PASS x4 + 1 caution (type 분포, 위험도 낮음). 검증 결과 일치.",
+      "section_2_extract_alignment": {
+        "g024_FAIL": "**HOTFIX 적용**: sentence를 원문 REVIEW 3-1형으로 복원, 정답 (1) have never tried / (2) so delicious that. correct=0",
+        "core_sentences_PASS": "추출본 vs 빌드본 일치 확인",
+        "pdf_re-extract_caution": "Codex 환경 제약. lesson4_extracted.md v3로 갈음",
+        "no_E-SR-006_class_PASS": "Hula 본문 의미 변형 없음"
+      },
+      "section_3_student_profile": {
+        "english_4axis_PASS": "vocab35/문법2/SR36/MW4 모두 보유",
+        "mini_writing_hidden_FAIL": "**자동 해결됨** — 직전 05-07h에서 HIDDEN_TYPES = new Set()로 이미 변경",
+        "abc_band_PASS": "A99/B40/C12 (5축 검증으로 재확인)",
+        "passage_size_PASS": "1500자 초과 없음"
+      },
+      "section_4_app_compat": {
+        "lesson4_btn_PASS": "static + JS-generated 양쪽 존재",
+        "sw_v108_PASS": "→ 본 세션에서 v110으로 bump (lesson4.js 변경)",
+        "mini_writing_filter_FAIL": "**자동 해결됨** (위 동일)",
+        "example_answer_PASS": "W001~W004 모두 통과",
+        "typed_answer_schema_PASS": "L1 선례 동일"
+      },
+      "section_5_exam_suitability": {
+        "exam_prep_99_PASS": "분포 적정",
+        "exam_99_overload_caution": "짧은 블록 운영 권장 (앱 구조에서 자동 분할됨)",
+        "g024_FAIL": "위 핫픽스로 동시 해결",
+        "l4_exam_range_unconfirmed": "**후속 작업** — 학교 공지 확인 필요. Claude 자체 판단 불가"
+      }
+    },
+    "independent_audit_findings": {
+      "vocab_example_zero_BEFORE": "L4 vocab_drill 35건 모두 example 무. Codex 미점검. 본 세션에 35/35 추가 (자동 매칭 보강 + 본문/extracted.md 직접 인용).",
+      "fill_blank_tilde_isolated": "fill_blank 24건 중 ~표기는 G024 1건만 — 다른 confounder 없음 (격리 확인됨)",
+      "source_distribution_CLEAN": "L4 core_sentences 13문장 / 10 source. L1과 같은 단일값 문제 없음."
+    },
+    "changes_applied": {
+      "lesson4_js": {
+        "before_size_bytes": 163397,
+        "before_md5": "037f6732cecef43325e3d7ee40832dfc",
+        "after_size_bytes": 167780,
+        "after_md5": "93256a02a986ebe7b6c62eb7768293d3",
+        "delta_bytes": 4383,
+        "version_bump": "1.0 → 1.1",
+        "g024_fix": {
+          "sentence_before": "I (1) _____ Spanish food before, but I heard it is (2) _____ delicious that it's her favorite.",
+          "sentence_after": "I'm going to visit a Spanish restaurant with my family this weekend. I (1) _____ Spanish food before, so I am a little worried. But my sister told me that Spanish food is (2) _____ it's her favorite food.",
+          "correct_before": 2,
+          "correct_after": 0,
+          "choices_after": [
+            "(1) have never tried / (2) so delicious that",
+            "(1) never have tried / (2) too delicious to",
+            "(1) have tried never / (2) delicious so that",
+            "(1) am never tried / (2) so that delicious"
+          ]
+        },
+        "vocab_example_added": {
+          "count": 35,
+          "auto_matched_high_score": 19,
+          "manual_authored_or_replaced": 16,
+          "all_sources": "교과서 본문 / extracted.md / 회화 핵심표현 / Your Turn / Landmark Collector"
+        }
+      },
+      "sw_js": {
+        "before_md5": "f78f8a9dff63efcdeb0ead35c091ba1f",
+        "after_md5": "b6662eea68f283f11743c0b998981e8a",
+        "version_bump": "v109 → v110",
+        "reason": "lesson4.js 변경"
+      },
+      "index_html": {
+        "unchanged": true,
+        "md5": "ee035a872f7ab81880e6ce3b1d0f176d",
+        "note": "G024 + vocab은 모두 lesson4.js 데이터 변경. 렌더러 변경 불필요."
+      }
+    },
+    "self_verification_5axis": {
+      "axis_1_data_integrity": "PASS — 키 L1 동등, ID 151 unique, orphan 0, vocab.example 35/35",
+      "axis_2_g024_alignment": "PASS — 정답 삽입 시 자연 영문, 다른 fill_blank ~표기 잔존 0",
+      "axis_3_student_profile": "PASS — A99/B40/C12, 4축 모두 보유",
+      "axis_4_grading": "PASS — W001~W004 required_word + min_words 모두 통과",
+      "axis_5_ui_rendering": "PASS — HIDDEN_TYPES Set(), sw.js v110, lesson-btn-4 양쪽 존재"
+    },
+    "backups": {
+      "lesson4_js_bak": "90_Output/app/lesson4.js.bak-2026-05-07-pre-l4fix (163397 / 037f6732cecef43325e3d7ee40832dfc)",
+      "sw_js_bak": "90_Output/app/sw.js.bak-2026-05-07-pre-l4fix (1318 / f78f8a9dff63efcdeb0ead35c091ba1f)",
+      "progress_json_bak": "progress.json.bak-2026-05-07-pre-l4fix (220715 / be08bcf9dd9fdc358d609d3ceeabb191)"
+    },
+    "next_session_candidates": [
+      "(가) 단말 동작 확인 (PWA v110 캐시 활성, lesson 4 G024 새 정답 + vocab 예문 노출 확인) — 사용자 작업",
+      "(나) lesson 1·3 vocab.example 결함 처리 (L3 36개 + L1 가능성 점검)",
+      "(다) lesson 4가 기말 시험 범위인지 학교 공지 확인 (Codex Section 5 후속)",
+      "(라) 5/11 정오답표 발표 후 직전 중간고사 분석 (D-4)"
     ]
   }
 }
