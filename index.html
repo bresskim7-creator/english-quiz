@@ -2286,8 +2286,8 @@
             }];
         }
 
-        // mini_writing 임시 비활성화 (시험 임박 시 하드카피로 전환 예정)
-        const HIDDEN_TYPES = new Set(['mini_writing']);
+        // mini_writing 활성화 (2026-05-07: example_answer 보강 + 채점 신뢰 확보 후 해제)
+        const HIDDEN_TYPES = new Set();
 
         function generateDrillSession() {
             if (!QUIZ_DATA || !QUIZ_DATA.core_sentences) return [];

@@ -1,16 +1,16 @@
 __loadLesson({
   "lesson": 2,
   "title": "Lesson 2: Now One Foot, Now the Other",
-  "version": "3.6",
-  "build_date": "2026-03-21",
-  "build_note": "v3.5 + exam_prep training_layer 재분류 (skill_focus/mixed_practice)",
+  "version": "3.7",
+  "build_date": "2026-05-07",
+  "build_note": "v3.6 + Codex 자문 반영: E-SR-006 본문 정합화 / C passage 발화 보강 / mini_writing example_answer 5+1개 / E-MW-003 분리(E-MW-008 추가) / source 13개 분산 / vocab example 35개 / quarter to 2문항(D014, G024-quarter) 보강",
   "core_sentences": [
     {
       "id": "CS01",
       "text_en": "Bob was the person who taught Bobby how to walk.",
       "text_ko": "Bob은 Bobby에게 걷는 법을 가르쳐 준 사람이었다.",
       "pair_id": null,
-      "source": "listen_talk_p29",
+      "source": "read_p32",
       "is_priority": true,
       "linked_rule_ids": [],
       "bridge_to_exam": [
@@ -22,7 +22,7 @@ __loadLesson({
       "text_en": "Now one foot, now the other.",
       "text_ko": "이제 한 발, 이제 다른 발.",
       "pair_id": null,
-      "source": "listen_talk_p29",
+      "source": "read_p32",
       "is_priority": true,
       "linked_rule_ids": [],
       "bridge_to_exam": [
@@ -34,7 +34,7 @@ __loadLesson({
       "text_en": "There is one more block to put.",
       "text_ko": "놓을 블록이 하나 더 있어.",
       "pair_id": null,
-      "source": "listen_talk_p29",
+      "source": "read_p32",
       "is_priority": true,
       "linked_rule_ids": [],
       "bridge_to_exam": [
@@ -46,7 +46,7 @@ __loadLesson({
       "text_en": "He is in a hospital which is far from here.",
       "text_ko": "그는 여기서 멀리 떨어진 병원에 있어.",
       "pair_id": null,
-      "source": "listen_talk_p29",
+      "source": "read_p33",
       "is_priority": true,
       "linked_rule_ids": [],
       "bridge_to_exam": [
@@ -58,7 +58,7 @@ __loadLesson({
       "text_en": "He can't move his arms and legs, and he can't talk.",
       "text_ko": "그는 팔다리를 움직일 수 없고, 말도 할 수 없어.",
       "pair_id": null,
-      "source": "listen_talk_p29",
+      "source": "read_p33",
       "is_priority": true,
       "linked_rule_ids": [],
       "bridge_to_exam": [
@@ -70,7 +70,7 @@ __loadLesson({
       "text_en": "Bob, it's time to build a tower!",
       "text_ko": "Bob, 탑을 세울 시간이야!",
       "pair_id": null,
-      "source": "listen_talk_p29",
+      "source": "read_p33",
       "is_priority": true,
       "linked_rule_ids": [],
       "bridge_to_exam": [
@@ -82,7 +82,7 @@ __loadLesson({
       "text_en": "At that moment, Bobby realized that Bob would recover soon.",
       "text_ko": "그 순간, Bobby는 Bob이 곧 회복할 것이라고 깨달았다.",
       "pair_id": null,
-      "source": "listen_talk_p29",
+      "source": "read_p34",
       "is_priority": true,
       "linked_rule_ids": [],
       "bridge_to_exam": [
@@ -94,7 +94,7 @@ __loadLesson({
       "text_en": "Bob leaned on Bobby's shoulders.",
       "text_ko": "Bob은 Bobby의 어깨에 기대었다.",
       "pair_id": null,
-      "source": "listen_talk_p29",
+      "source": "read_p35",
       "is_priority": true,
       "linked_rule_ids": [],
       "bridge_to_exam": [
@@ -106,7 +106,7 @@ __loadLesson({
       "text_en": "When I was little, you held my hands and said these words.",
       "text_ko": "내가 어렸을 때, 넌 내 손을 잡고 이 말을 했어.",
       "pair_id": null,
-      "source": "listen_talk_p29",
+      "source": "read_p35",
       "is_priority": true,
       "linked_rule_ids": [],
       "bridge_to_exam": [
@@ -118,7 +118,7 @@ __loadLesson({
       "text_en": "Is it okay if I go to see a baseball game?",
       "text_ko": "내가 야구 경기를 보러 가도 괜찮을까?",
       "pair_id": null,
-      "source": "listen_talk_p29",
+      "source": "listen_talk_p28",
       "is_priority": true,
       "linked_rule_ids": [],
       "bridge_to_exam": [
@@ -130,7 +130,7 @@ __loadLesson({
       "text_en": "I'm afraid you can't.",
       "text_ko": "유감이지만 안 돼.",
       "pair_id": null,
-      "source": "listen_talk_p29",
+      "source": "listen_talk_p28",
       "is_priority": true,
       "linked_rule_ids": [],
       "bridge_to_exam": [
@@ -154,7 +154,7 @@ __loadLesson({
       "text_en": "It's a quarter past six.",
       "text_ko": "6시 15분이야.",
       "pair_id": null,
-      "source": "listen_talk_p29",
+      "source": "listen_talk_p28",
       "is_priority": true,
       "linked_rule_ids": [],
       "bridge_to_exam": [
@@ -3183,6 +3183,35 @@ __loadLesson({
       "training_layer": "mixed_practice"
     },
     {
+      "id": "G024-quarter",
+      "type": "fill_blank",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "quarter to",
+      "instruction": "다음 문장에서 빈칸에 들어갈 알맞은 단어를 고르세요.",
+      "hint": "💡 '정시 15분 전' = 'quarter to + 정시'",
+      "wrong_explanations": {
+        "0": "'past'는 정시 '후'를 뜻해 — 2:45는 3시 직전이야!",
+        "2": "'before'는 일반 단어, 시간 표현으로는 'to'를 써.",
+        "3": "'of'는 일부 미국식, 한국 교과서는 'to'."
+      },
+      "core_sentence_id": "CS13",
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": 29,
+      "sentence": "It's two forty-five now. In other words, it's a quarter ___ three.",
+      "choices": [
+        "to",
+        "past",
+        "before",
+        "of"
+      ],
+      "correct": 0,
+      "exam_pattern": "시간 표현",
+      "training_layer": "skill_focus"
+    },
+    {
       "id": "E-SR-001",
       "type": "short_reading",
       "phase": "exam_prep",
@@ -3338,25 +3367,25 @@ __loadLesson({
       "difficulty": null,
       "keyword": null,
       "instruction": "다음 글의 내용과 일치하는 것은?",
-      "hint": "'At that moment' — 어떤 순간을 가리키는지 바로 앞 문장을 보세요.",
+      "hint": "'At that moment'는 'sneezing'이라는 회복 신호 직후의 순간이야. 첫 장면(탑 무너짐)과 헷갈리지 마!",
       "wrong_explanations": {
-        "0": "돌아왔을 때? 그건 기쁨이지만 결정적 순간은 아니야!",
-        "2": "블록을 가져왔을 때? 그건 준비 단계야. '웃음'의 원인은 재채기 소리야.",
-        "3": "작은 소리? 맞게 읽었는데! 그 소리가 '재채기'였어."
+        "0": "병원에서 돌아왔을 때? 본문에서 그건 이미 일어났어. 'At that moment'는 더 뒤를 가리켜!",
+        "1": "재채기로 탑이 무너졌을 때? 그건 첫 장면(p.33) 이야기야. 회복 장면에선 안 일어나!",
+        "2": "Bobby가 블록을 가져왔을 때? 그건 준비 단계지, 회복 신호는 그 다음에 와."
       },
       "core_sentence_id": "CS07",
       "linked_rule_ids": [],
       "recovery_band": "A",
       "test_task": null,
       "page": null,
-      "sentence": "Bobby began to build the tower. \"Okay, Bob, now the elephant block.\" Bobby carefully put the elephant block on the top. Bob sneezed, and the tower fell down. At that moment, Bobby realized that Bob would recover soon.",
+      "sentence": "Bobby came into Bob's room with the blocks. Bob's mouth made a small smile. Bobby began to build the tower. \"Okay, Bob, now the elephant block.\" Suddenly, Bob made a small sound like sneezing. At that moment, Bobby realized that Bob would recover soon.",
       "choices": [
         "Bob이 병원에서 돌아왔을 때",
         "Bob이 재채기를 해서 탑이 무너졌을 때",
         "Bobby가 블록을 가져왔을 때",
-        "Bob이 작은 소리를 냈을 때"
+        "Bob이 재채기 비슷한 작은 소리를 냈을 때"
       ],
-      "correct": 1,
+      "correct": 3,
       "exam_pattern": "내용 일치/불일치",
       "training_layer": "skill_focus"
     },
@@ -3539,6 +3568,96 @@ __loadLesson({
       "training_layer": "mixed_practice"
     },
     {
+      "id": "E-DR-005",
+      "type": "dialogue_response",
+      "phase": "exam_prep",
+      "difficulty": null,
+      "keyword": null,
+      "instruction": "다음 대화의 빈칸에 가장 알맞은 것은?",
+      "hint": "외국에 있는 친구한테 전화 걸기 전, '거기 몇 시야?'를 묻는 표현이야.",
+      "wrong_explanations": {
+        "1": "How long is it in New York?는 '얼마나 걸리냐' 같은 시간 길이를 묻는 거야. 지금 시각이 아니지.",
+        "2": "Where is New York?는 위치를 묻는 거지. 시간 안 물었잖아.",
+        "3": "Why are you in New York?는 이유를 묻는 거야. 시각이랑 상관없어."
+      },
+      "core_sentence_id": "CS12",
+      "linked_rule_ids": [],
+      "recovery_band": "A",
+      "test_task": null,
+      "page": null,
+      "sentence": "A: I want to call my friend in New York. _____\nB: It's around 7 in the evening there.\nA: Oh, then it's a good time to call.",
+      "choices": [
+        "What time is it in New York?",
+        "How long is it in New York?",
+        "Where is New York?",
+        "Why are you in New York?"
+      ],
+      "correct": 0,
+      "blank_answer": null,
+      "exam_pattern": "대화 완성",
+      "training_layer": "mixed_practice"
+    },
+    {
+      "id": "E-DR-006",
+      "type": "dialogue_response",
+      "phase": "exam_prep",
+      "difficulty": null,
+      "keyword": null,
+      "instruction": "다음 대화 중 표현이 자연스러운 것을 고르세요.",
+      "hint": "'What time is it in 도시?'와 'It's a quarter past 시각'의 정확한 짝을 찾아요.",
+      "wrong_explanations": {
+        "1": "What time it is in Seoul? → 어순이 틀렸어! What time + is + it 순이야.",
+        "2": "What is the time of Seoul? → 의미는 통하지만 한국 교과서 패턴은 'What time is it in 도시?'야.",
+        "3": "How time is it in Seoul? → 'How time'은 영어에 없는 표현이야. 시간을 묻는 건 What time."
+      },
+      "core_sentence_id": "CS12",
+      "linked_rule_ids": [],
+      "recovery_band": "A",
+      "test_task": null,
+      "page": null,
+      "sentence": "다음 대화 중 표현이 자연스러운 것을 고르세요.",
+      "choices": [
+        "A: What time is it in Seoul?\nB: It's a quarter past six.",
+        "A: What time it is in Seoul?\nB: It's six fifteen now.",
+        "A: What is the time of Seoul?\nB: It's six o'clock past quarter.",
+        "A: How time is it in Seoul?\nB: It's noon now."
+      ],
+      "correct": 0,
+      "blank_answer": null,
+      "exam_pattern": "대화 완성",
+      "training_layer": "mixed_practice"
+    },
+    {
+      "id": "E-DR-007",
+      "type": "dialogue_response",
+      "phase": "exam_prep",
+      "difficulty": null,
+      "keyword": null,
+      "instruction": "다음 대화의 빈칸에 가장 알맞은 것은?",
+      "hint": "엄마가 늦은 시간에 거절하는 표현이야. '미안하지만 안 돼'의 의미.",
+      "wrong_explanations": {
+        "0": "Sure. Have fun!은 허락하는 답이야. 엄마는 거절하고 있는 상황이라 어색해.",
+        "2": "It's a quarter past six.은 시간 답이야. 허락 여부에 대한 답이 아니지.",
+        "3": "I don't know.는 모른다는 답이야. 늦었다고 이유까지 들면서 거절한 다음에 'don't know' 하긴 어색해."
+      },
+      "core_sentence_id": "CS11",
+      "linked_rule_ids": [],
+      "recovery_band": "A",
+      "test_task": null,
+      "page": null,
+      "sentence": "Bobby: Mom, is it okay if I play computer games for one hour?\nMom: _____ It's already a quarter past ten. Time for bed.\nBobby: Okay, Mom.",
+      "choices": [
+        "Sure. Have fun!",
+        "I'm afraid you can't.",
+        "It's a quarter past six.",
+        "I don't know."
+      ],
+      "correct": 1,
+      "blank_answer": null,
+      "exam_pattern": "대화 완성",
+      "training_layer": "mixed_practice"
+    },
+    {
       "id": "E-MW-001",
       "type": "mini_writing",
       "phase": "exam_prep",
@@ -3558,7 +3677,7 @@ __loadLesson({
       "page": null,
       "required_word": "to",
       "min_words": 6,
-      "example_answer": null,
+      "example_answer": "There is one more block to put.",
       "exam_pattern": "조건 영작",
       "training_layer": "skill_focus"
     },
@@ -3582,7 +3701,7 @@ __loadLesson({
       "page": null,
       "required_word": "who",
       "min_words": 7,
-      "example_answer": null,
+      "example_answer": "Bob is the person who taught Bobby how to walk.",
       "exam_pattern": "조건 영작",
       "training_layer": "skill_focus"
     },
@@ -3592,8 +3711,8 @@ __loadLesson({
       "phase": "exam_prep",
       "difficulty": null,
       "keyword": null,
-      "instruction": "다음 문장에서 밑줄 친 부분을 어법에 맞게 고쳐 쓰세요.\n\n(1) He is in a hospital who is far from here.\n(2) There is one more block putting.",
-      "hint": "(1) hospital은 사물 → who가 아니라? (2) 명사 뒤에서 꾸며주는 to부정사!",
+      "instruction": "다음 문장에서 밑줄 친 부분을 어법에 맞게 고쳐 쓰세요.\n\nHe is in a hospital who is far from here.",
+      "hint": "hospital은 사물 → who가 아니라? 사물 선행사를 받는 관계대명사로 바꿔!",
       "wrong_explanations": {
         "default": "⚡ 핵심문장 형태가 틀렸어! 조건(동사 시제, 표현 방식)을 다시 확인해봐!"
       },
@@ -3605,8 +3724,8 @@ __loadLesson({
       "test_task": null,
       "page": null,
       "required_word": "which",
-      "min_words": 5,
-      "example_answer": null,
+      "min_words": 8,
+      "example_answer": "He is in a hospital which is far from here.",
       "exam_pattern": "문장 오류 고치기",
       "training_layer": "mixed_practice"
     },
@@ -3630,7 +3749,7 @@ __loadLesson({
       "page": null,
       "required_word": "which",
       "min_words": 8,
-      "example_answer": null,
+      "example_answer": "I went to a hospital which is far from home.",
       "exam_pattern": "조건 영작",
       "training_layer": "skill_focus"
     },
@@ -3652,9 +3771,183 @@ __loadLesson({
       "page": null,
       "required_word": "Is it okay if",
       "min_words": 7,
-      "example_answer": null,
+      "example_answer": "Is it okay if I go home now?",
       "exam_pattern": "조건 영작",
       "training_layer": "skill_focus"
+    },
+    {
+      "id": "E-MW-008",
+      "type": "mini_writing",
+      "phase": "exam_prep",
+      "difficulty": null,
+      "keyword": null,
+      "instruction": "다음 문장에서 밑줄 친 부분을 어법에 맞게 고쳐 쓰세요.\n\nThere is one more block putting.",
+      "hint": "명사(block) 뒤에서 꾸며주는 to부정사 형태로 고쳐!",
+      "wrong_explanations": {
+        "default": "⚡ 명사를 꾸미는 to부정사 형태로 고쳐야 해! 'to + 동사원형'."
+      },
+      "core_sentence_id": "CS03",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": null,
+      "required_word": "to",
+      "min_words": 6,
+      "example_answer": "There is one more block to put.",
+      "exam_pattern": "문장 오류 고치기",
+      "training_layer": "mixed_practice"
+    },
+    {
+      "id": "A007",
+      "type": "arrange",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "시간 표현 배열",
+      "instruction": "단어를 올바른 순서로 배열하세요.",
+      "hint": "'It's a quarter past + 시각' 시간 답하기 패턴이야.",
+      "wrong_explanations": {
+        "default": "⚡ 어순이 틀렸어! 'It's + a + quarter + past + 시각.' 순서를 다시 생각해봐!"
+      },
+      "core_sentence_id": "CS13",
+      "linked_rule_ids": [],
+      "recovery_band": "C",
+      "test_task": null,
+      "page": null,
+      "sentence_ko": "11시 15분이야.",
+      "words": [
+        "a",
+        "It's",
+        "past",
+        "quarter",
+        "eleven"
+      ],
+      "answer": "It's a quarter past eleven.",
+      "correct": 1,
+      "exam_pattern": "배열/영작",
+      "training_layer": "mixed_practice"
+    },
+    {
+      "id": "A008",
+      "type": "arrange",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "거절 표현 배열",
+      "instruction": "단어를 올바른 순서로 배열하세요.",
+      "hint": "'I'm afraid you can't + 동사원형' 거절 패턴.",
+      "wrong_explanations": {
+        "default": "⚡ 어순이 틀렸어! 'I'm afraid + you + can't + 동사원형' 순서야!"
+      },
+      "core_sentence_id": "CS11",
+      "linked_rule_ids": [],
+      "recovery_band": "C",
+      "test_task": null,
+      "page": null,
+      "sentence_ko": "미안하지만 너는 지금 나갈 수 없어.",
+      "words": [
+        "afraid",
+        "you",
+        "go",
+        "I'm",
+        "out",
+        "can't",
+        "now"
+      ],
+      "answer": "I'm afraid you can't go out now.",
+      "correct": 1,
+      "exam_pattern": "배열/영작",
+      "training_layer": "mixed_practice"
+    },
+    {
+      "id": "E-DR-009",
+      "type": "dialogue_response",
+      "phase": "exam_prep",
+      "difficulty": null,
+      "keyword": null,
+      "instruction": "다음 대화의 빈칸에 가장 알맞은 것은?",
+      "hint": "'30분이 지났다' → half past + 시각. 'It's' 시작이고 시각은 7시.",
+      "wrong_explanations": {
+        "0": "It's a quarter past seven은 7시 15분이라는 뜻이야. '30분'을 표현해야 하는데 quarter는 15분이지.",
+        "2": "It's seven thirty half는 영어 표현이 아니야. 'half'를 쓰려면 'half past' 형식.",
+        "3": "It's seven o'clock and half는 어색해. 30분은 'half past seven'으로 표현해."
+      },
+      "core_sentence_id": "CS13",
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": null,
+      "sentence": "A: It's already 30 minutes past seven. What time is it now?\nB: _____\nA: Oh, we're going to be late!",
+      "choices": [
+        "It's a quarter past seven.",
+        "It's half past seven.",
+        "It's seven thirty half.",
+        "It's seven o'clock and half."
+      ],
+      "correct": 1,
+      "blank_answer": null,
+      "exam_pattern": "대화 완성",
+      "training_layer": "mixed_practice"
+    },
+    {
+      "id": "E-DR-010",
+      "type": "dialogue_response",
+      "phase": "exam_prep",
+      "difficulty": null,
+      "keyword": null,
+      "instruction": "다음 대화의 빈칸에 가장 알맞은 것은?",
+      "hint": "할머니에게 전화 거는 상황. 시드니에 사는 할머니의 시각을 묻는 표현.",
+      "wrong_explanations": {
+        "0": "How time is it in Sydney?는 잘못된 영어야. 시간을 묻는 건 'What time'.",
+        "2": "When is it in Sydney?는 어색해. '몇 시'를 묻는 정확한 표현은 'What time is it in 도시?'",
+        "3": "What is the time of Sydney?는 시각보단 '시드니의 시간(개념)'을 묻는 느낌. 교과서 패턴은 'What time is it in 도시?'"
+      },
+      "core_sentence_id": "CS12",
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": null,
+      "sentence": "Bobby: I want to call Grandma in Sydney. _____\nMom: It's a quarter past nine in the morning there.\nBobby: Great, she must be awake.",
+      "choices": [
+        "How time is it in Sydney?",
+        "What time is it in Sydney?",
+        "When is it in Sydney?",
+        "What is the time of Sydney?"
+      ],
+      "correct": 1,
+      "blank_answer": null,
+      "exam_pattern": "대화 완성",
+      "training_layer": "mixed_practice"
+    },
+    {
+      "id": "E-DR-008",
+      "type": "dialogue_response",
+      "phase": "exam_prep",
+      "difficulty": null,
+      "keyword": null,
+      "instruction": "다음 대화의 빈칸 ⓐ, ⓑ에 들어갈 표현으로 가장 적절하게 짝지어진 것은?",
+      "hint": "ⓐ는 허가를 요청하는 표현, ⓑ는 거절하는 표현이야. 'Is it okay if'와 'I'm afraid you can't' 패턴.",
+      "wrong_explanations": {
+        "1": "ⓑ가 'Sure, go ahead'면 허락이야. 그런데 그 다음에 'I have to use it' 거절 이유가 따라오잖아 — 흐름이 깨져.",
+        "2": "ⓐ가 'What time is it'이면 시간을 묻는 거야. 'I borrow your bike' 같은 동사가 뒤에 못 붙어.",
+        "3": "ⓐ가 'Where is'이면 위치 질문이야. 'I borrow' 동사가 뒤에 못 붙고, ⓑ도 시간 답이라 거절이 안 돼."
+      },
+      "core_sentence_id": "CS10",
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": null,
+      "sentence": "A: ⓐ_____ I borrow your bike for an hour?\nB: ⓑ_____. I have to use it now.\nA: That's all right. Maybe later.",
+      "choices": [
+        "ⓐ Is it okay if   ⓑ I'm afraid you can't",
+        "ⓐ Is it okay if   ⓑ Sure, go ahead",
+        "ⓐ What time is it   ⓑ I'm afraid you can't",
+        "ⓐ Where is   ⓑ It's a quarter past three"
+      ],
+      "correct": 0,
+      "blank_answer": null,
+      "exam_pattern": "대화 완성",
+      "training_layer": "mixed_practice"
     },
     {
       "id": "PC2-A-01",
@@ -4005,7 +4298,7 @@ __loadLesson({
       "exam_pattern": "content_match",
       "page": 33,
       "instruction": "다음 글을 읽고 질문에 답하세요.",
-      "sentence": "Now One Foot, Now the Other\n\nBobby got his name from his grandfather, Bob. Bob was his best friend. Bob was the person who taught Bobby how to walk. \"Hold my hands, Bobby,\" Bob said. \"Now one foot, now the other.\"\n\nBob and Bobby often played with old wooden blocks. They slowly piled the blocks one by one to build a tower. \"There is one more block to put,\" Bob said. \"And that's the elephant block,\" Bobby said. Bobby carefully put the elephant block on the top. But Bob sneezed, and the tower fell. Bobby laughed and laughed.\n\nTime passed. One day, Bobby's dad looked very sad. He told Bobby, \"Bob fell ill. He is in a hospital which is far from here.\"\n\"I want to see him,\" Bobby said.\n\"You can't, Bobby,\" Mom told him. \"He can't move his arms and legs, and he can't talk. We'll just have to wait and hope that he will get better.\"\n\nBob came back home after a few months. He just lay in bed without talking or moving. After a while, Bobby came into Bob's room with the blocks.\n\"Bob, it's time to build a tower!\"\nBob's mouth made a small smile. Bobby began to build the tower.\nSuddenly, Bob made a small sound like sneezing. At that moment, Bobby realized that Bob would recover soon. And Bob did. Slowly, Bob began to talk a little and move his fingers. But he still couldn't walk.\n\nWhen the weather got nice and warm, Bob and Bobby sat side by side.\n\"You taught me how to walk. Do you remember?\" Bobby said.\nThen, Bob stood up very slowly. Bobby smiled and stood in front of Bob. Bob leaned on Bobby's shoulders.\nBobby said, \"When I was little, you held my hands and said these words.\" And Bobby added, \"Now one foot.\"\nLike magic, Bob moved one foot.\n\"Now the other.\"\nAnd Bob moved the other.\n\n위 글의 내용과 일치하지 않는 것은?",
+      "sentence": "Now One Foot, Now the Other\n\nBobby got his name from his grandfather, Bob. Bob was his best friend. Bob was the person who taught Bobby how to walk. \"Hold my hands, Bobby,\" Bob said. \"Now one foot, now the other.\"\n\nBob and Bobby often played with old wooden blocks. They slowly piled the blocks one by one to build a tower. \"There is one more block to put,\" Bob said. \"And that's the elephant block,\" Bobby said. Bobby carefully put the elephant block on the top. But Bob sneezed, and the tower fell. Bobby laughed and laughed.\n\nTime passed. One day, Bobby's dad looked very sad. He told Bobby, \"Bob fell ill. He is in a hospital which is far from here.\"\n\"I want to see him,\" Bobby said.\n\"You can't, Bobby,\" Mom told him. \"He can't move his arms and legs, and he can't talk. We'll just have to wait and hope that he will get better.\"\n\nBob came back home after a few months. He just lay in bed without talking or moving. After a while, Bobby came into Bob's room with the blocks.\n\"Bob, it's time to build a tower!\"\nBob's mouth made a small smile. Bobby began to build the tower.\n\"Okay, Bob, now the elephant block.\"\nSuddenly, Bob made a small sound like sneezing. At that moment, Bobby realized that Bob would recover soon. And Bob did. Slowly, Bob began to talk a little and move his fingers. But he still couldn't walk.\n\nWhen the weather got nice and warm, Bob and Bobby sat side by side.\n\"You taught me how to walk. Do you remember?\" Bobby said.\nThen, Bob stood up very slowly. Bobby smiled and stood in front of Bob. Bob leaned on Bobby's shoulders.\nBobby said, \"When I was little, you held my hands and said these words.\" And Bobby added, \"Now one foot.\"\nLike magic, Bob moved one foot.\n\"Now the other.\"\nAnd Bob moved the other.\n\n위 글의 내용과 일치하지 않는 것은?",
       "choices": [
         "Bob은 Bobby에게 걷는 법을 가르쳐 주었다.",
         "Bob이 아프기 전에 둘은 블록 놀이를 자주 했다.",
@@ -4033,7 +4326,7 @@ __loadLesson({
       "exam_pattern": "content_match",
       "page": 33,
       "instruction": "다음 글을 읽고 질문에 답하세요.",
-      "sentence": "Now One Foot, Now the Other\n\nBobby got his name from his grandfather, Bob. Bob was his best friend. Bob was the person who taught Bobby how to walk. \"Hold my hands, Bobby,\" Bob said. \"Now one foot, now the other.\"\n\nBob and Bobby often played with old wooden blocks. They slowly piled the blocks one by one to build a tower. \"There is one more block to put,\" Bob said. \"And that's the elephant block,\" Bobby said. Bobby carefully put the elephant block on the top. But Bob sneezed, and the tower fell. Bobby laughed and laughed.\n\nTime passed. One day, Bobby's dad looked very sad. He told Bobby, \"Bob fell ill. He is in a hospital which is far from here.\"\n\"I want to see him,\" Bobby said.\n\"You can't, Bobby,\" Mom told him. \"He can't move his arms and legs, and he can't talk. We'll just have to wait and hope that he will get better.\"\n\nBob came back home after a few months. He just lay in bed without talking or moving. After a while, Bobby came into Bob's room with the blocks.\n\"Bob, it's time to build a tower!\"\nBob's mouth made a small smile. Bobby began to build the tower.\nSuddenly, Bob made a small sound like sneezing. At that moment, Bobby realized that Bob would recover soon. And Bob did. Slowly, Bob began to talk a little and move his fingers. But he still couldn't walk.\n\nWhen the weather got nice and warm, Bob and Bobby sat side by side.\n\"You taught me how to walk. Do you remember?\" Bobby said.\nThen, Bob stood up very slowly. Bobby smiled and stood in front of Bob. Bob leaned on Bobby's shoulders.\nBobby said, \"When I was little, you held my hands and said these words.\" And Bobby added, \"Now one foot.\"\nLike magic, Bob moved one foot.\n\"Now the other.\"\nAnd Bob moved the other.\n\n위 글에서 \"Now one foot, now the other\"라는 말이 두 번 나옵니다. 각각 누가 누구에게 한 말인가요?",
+      "sentence": "Now One Foot, Now the Other\n\nBobby got his name from his grandfather, Bob. Bob was his best friend. Bob was the person who taught Bobby how to walk. \"Hold my hands, Bobby,\" Bob said. \"Now one foot, now the other.\"\n\nBob and Bobby often played with old wooden blocks. They slowly piled the blocks one by one to build a tower. \"There is one more block to put,\" Bob said. \"And that's the elephant block,\" Bobby said. Bobby carefully put the elephant block on the top. But Bob sneezed, and the tower fell. Bobby laughed and laughed.\n\nTime passed. One day, Bobby's dad looked very sad. He told Bobby, \"Bob fell ill. He is in a hospital which is far from here.\"\n\"I want to see him,\" Bobby said.\n\"You can't, Bobby,\" Mom told him. \"He can't move his arms and legs, and he can't talk. We'll just have to wait and hope that he will get better.\"\n\nBob came back home after a few months. He just lay in bed without talking or moving. After a while, Bobby came into Bob's room with the blocks.\n\"Bob, it's time to build a tower!\"\nBob's mouth made a small smile. Bobby began to build the tower.\n\"Okay, Bob, now the elephant block.\"\nSuddenly, Bob made a small sound like sneezing. At that moment, Bobby realized that Bob would recover soon. And Bob did. Slowly, Bob began to talk a little and move his fingers. But he still couldn't walk.\n\nWhen the weather got nice and warm, Bob and Bobby sat side by side.\n\"You taught me how to walk. Do you remember?\" Bobby said.\nThen, Bob stood up very slowly. Bobby smiled and stood in front of Bob. Bob leaned on Bobby's shoulders.\nBobby said, \"When I was little, you held my hands and said these words.\" And Bobby added, \"Now one foot.\"\nLike magic, Bob moved one foot.\n\"Now the other.\"\nAnd Bob moved the other.\n\n위 글에서 \"Now one foot, now the other\"라는 말이 두 번 나옵니다. 각각 누가 누구에게 한 말인가요?",
       "choices": [
         "처음: Bob → Bobby, 나중: Bobby → Bob",
         "처음: Bobby → Bob, 나중: Bob → Bobby",
@@ -4061,7 +4354,7 @@ __loadLesson({
       "exam_pattern": "title_main_idea",
       "page": 33,
       "instruction": "다음 글을 읽고 질문에 답하세요.",
-      "sentence": "Now One Foot, Now the Other\n\nBobby got his name from his grandfather, Bob. Bob was his best friend. Bob was the person who taught Bobby how to walk. \"Hold my hands, Bobby,\" Bob said. \"Now one foot, now the other.\"\n\nBob and Bobby often played with old wooden blocks. They slowly piled the blocks one by one to build a tower. \"There is one more block to put,\" Bob said. \"And that's the elephant block,\" Bobby said. Bobby carefully put the elephant block on the top. But Bob sneezed, and the tower fell. Bobby laughed and laughed.\n\nTime passed. One day, Bobby's dad looked very sad. He told Bobby, \"Bob fell ill. He is in a hospital which is far from here.\"\n\"I want to see him,\" Bobby said.\n\"You can't, Bobby,\" Mom told him. \"He can't move his arms and legs, and he can't talk. We'll just have to wait and hope that he will get better.\"\n\nBob came back home after a few months. He just lay in bed without talking or moving. After a while, Bobby came into Bob's room with the blocks.\n\"Bob, it's time to build a tower!\"\nBob's mouth made a small smile. Bobby began to build the tower.\nSuddenly, Bob made a small sound like sneezing. At that moment, Bobby realized that Bob would recover soon. And Bob did. Slowly, Bob began to talk a little and move his fingers. But he still couldn't walk.\n\nWhen the weather got nice and warm, Bob and Bobby sat side by side.\n\"You taught me how to walk. Do you remember?\" Bobby said.\nThen, Bob stood up very slowly. Bobby smiled and stood in front of Bob. Bob leaned on Bobby's shoulders.\nBobby said, \"When I was little, you held my hands and said these words.\" And Bobby added, \"Now one foot.\"\nLike magic, Bob moved one foot.\n\"Now the other.\"\nAnd Bob moved the other.\n\n위 글의 주제로 가장 적절한 것은?",
+      "sentence": "Now One Foot, Now the Other\n\nBobby got his name from his grandfather, Bob. Bob was his best friend. Bob was the person who taught Bobby how to walk. \"Hold my hands, Bobby,\" Bob said. \"Now one foot, now the other.\"\n\nBob and Bobby often played with old wooden blocks. They slowly piled the blocks one by one to build a tower. \"There is one more block to put,\" Bob said. \"And that's the elephant block,\" Bobby said. Bobby carefully put the elephant block on the top. But Bob sneezed, and the tower fell. Bobby laughed and laughed.\n\nTime passed. One day, Bobby's dad looked very sad. He told Bobby, \"Bob fell ill. He is in a hospital which is far from here.\"\n\"I want to see him,\" Bobby said.\n\"You can't, Bobby,\" Mom told him. \"He can't move his arms and legs, and he can't talk. We'll just have to wait and hope that he will get better.\"\n\nBob came back home after a few months. He just lay in bed without talking or moving. After a while, Bobby came into Bob's room with the blocks.\n\"Bob, it's time to build a tower!\"\nBob's mouth made a small smile. Bobby began to build the tower.\n\"Okay, Bob, now the elephant block.\"\nSuddenly, Bob made a small sound like sneezing. At that moment, Bobby realized that Bob would recover soon. And Bob did. Slowly, Bob began to talk a little and move his fingers. But he still couldn't walk.\n\nWhen the weather got nice and warm, Bob and Bobby sat side by side.\n\"You taught me how to walk. Do you remember?\" Bobby said.\nThen, Bob stood up very slowly. Bobby smiled and stood in front of Bob. Bob leaned on Bobby's shoulders.\nBobby said, \"When I was little, you held my hands and said these words.\" And Bobby added, \"Now one foot.\"\nLike magic, Bob moved one foot.\n\"Now the other.\"\nAnd Bob moved the other.\n\n위 글의 주제로 가장 적절한 것은?",
       "choices": [
         "할아버지와 손자 사이의 사랑과 돌봄",
         "블록 놀이의 재미와 교육적 효과",
@@ -4089,7 +4382,7 @@ __loadLesson({
       "exam_pattern": "unanswerable_question",
       "page": 33,
       "instruction": "다음 글을 읽고 질문에 답하세요.",
-      "sentence": "Now One Foot, Now the Other\n\nBobby got his name from his grandfather, Bob. Bob was his best friend. Bob was the person who taught Bobby how to walk. \"Hold my hands, Bobby,\" Bob said. \"Now one foot, now the other.\"\n\nBob and Bobby often played with old wooden blocks. They slowly piled the blocks one by one to build a tower. \"There is one more block to put,\" Bob said. \"And that's the elephant block,\" Bobby said. Bobby carefully put the elephant block on the top. But Bob sneezed, and the tower fell. Bobby laughed and laughed.\n\nTime passed. One day, Bobby's dad looked very sad. He told Bobby, \"Bob fell ill. He is in a hospital which is far from here.\"\n\"I want to see him,\" Bobby said.\n\"You can't, Bobby,\" Mom told him. \"He can't move his arms and legs, and he can't talk. We'll just have to wait and hope that he will get better.\"\n\nBob came back home after a few months. He just lay in bed without talking or moving. After a while, Bobby came into Bob's room with the blocks.\n\"Bob, it's time to build a tower!\"\nBob's mouth made a small smile. Bobby began to build the tower.\nSuddenly, Bob made a small sound like sneezing. At that moment, Bobby realized that Bob would recover soon. And Bob did. Slowly, Bob began to talk a little and move his fingers. But he still couldn't walk.\n\nWhen the weather got nice and warm, Bob and Bobby sat side by side.\n\"You taught me how to walk. Do you remember?\" Bobby said.\nThen, Bob stood up very slowly. Bobby smiled and stood in front of Bob. Bob leaned on Bobby's shoulders.\nBobby said, \"When I was little, you held my hands and said these words.\" And Bobby added, \"Now one foot.\"\nLike magic, Bob moved one foot.\n\"Now the other.\"\nAnd Bob moved the other.\n\n위 글을 읽고 답할 수 없는 질문은?",
+      "sentence": "Now One Foot, Now the Other\n\nBobby got his name from his grandfather, Bob. Bob was his best friend. Bob was the person who taught Bobby how to walk. \"Hold my hands, Bobby,\" Bob said. \"Now one foot, now the other.\"\n\nBob and Bobby often played with old wooden blocks. They slowly piled the blocks one by one to build a tower. \"There is one more block to put,\" Bob said. \"And that's the elephant block,\" Bobby said. Bobby carefully put the elephant block on the top. But Bob sneezed, and the tower fell. Bobby laughed and laughed.\n\nTime passed. One day, Bobby's dad looked very sad. He told Bobby, \"Bob fell ill. He is in a hospital which is far from here.\"\n\"I want to see him,\" Bobby said.\n\"You can't, Bobby,\" Mom told him. \"He can't move his arms and legs, and he can't talk. We'll just have to wait and hope that he will get better.\"\n\nBob came back home after a few months. He just lay in bed without talking or moving. After a while, Bobby came into Bob's room with the blocks.\n\"Bob, it's time to build a tower!\"\nBob's mouth made a small smile. Bobby began to build the tower.\n\"Okay, Bob, now the elephant block.\"\nSuddenly, Bob made a small sound like sneezing. At that moment, Bobby realized that Bob would recover soon. And Bob did. Slowly, Bob began to talk a little and move his fingers. But he still couldn't walk.\n\nWhen the weather got nice and warm, Bob and Bobby sat side by side.\n\"You taught me how to walk. Do you remember?\" Bobby said.\nThen, Bob stood up very slowly. Bobby smiled and stood in front of Bob. Bob leaned on Bobby's shoulders.\nBobby said, \"When I was little, you held my hands and said these words.\" And Bobby added, \"Now one foot.\"\nLike magic, Bob moved one foot.\n\"Now the other.\"\nAnd Bob moved the other.\n\n위 글을 읽고 답할 수 없는 질문은?",
       "choices": [
         "Bobby의 이름은 누구의 이름에서 따왔나?",
         "Bob은 병원에서 몇 개월 만에 돌아왔나?",
@@ -4103,6 +4396,35 @@ __loadLesson({
         "1": "몇 개월? 구체적인 기간은 지문에 안 나와! 이게 기술되지 않은 정보야.",
         "3": "누구에게 기대었나? Bobby의 어깨에 기대었다고 했잖아."
       }
+    },
+    {
+      "id": "D014",
+      "type": "dialogue_response",
+      "phase": "drill",
+      "drill_stage": 4,
+      "difficulty": "easy",
+      "keyword": "quarter to",
+      "instruction": "대화의 빈칸에 들어갈 가장 알맞은 표현을 고르세요.",
+      "hint": "💡 'quarter to N' = N시 15분 전 (정시 전 15분)",
+      "wrong_explanations": {
+        "0": "'past'는 정시 후. 2:45는 3시 15분 전이니까 'to'!",
+        "2": "'after'는 시간 표현으로 잘 안 써.",
+        "3": "'of'는 정시 전을 뜻하기도 하지만 교과서 표현은 'to'야."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": 28,
+      "sentence": "A: What time is the meeting?\nB: It's at a quarter ___ three. (= 2:45)",
+      "choices": [
+        "to",
+        "past",
+        "after",
+        "of"
+      ],
+      "correct": 0,
+      "exam_pattern": "시간 표현"
     }
   ],
   "vocab_drill": [
@@ -4110,163 +4432,246 @@ __loadLesson({
       "id": "VD-L2-001",
       "word": "taught",
       "pos": "동사",
-      "meaning": "가르쳤다 (teach의 과거형)"
+      "meaning": "가르쳤다 (teach의 과거형)",
+      "example": "Bob is the man _____ taught Bobby to walk."
     },
     {
       "id": "VD-L2-002",
       "word": "pile",
       "pos": "동사",
-      "meaning": "쌓다"
+      "meaning": "쌓다",
+      "example": "They slowly piled the blocks _____."
     },
     {
       "id": "VD-L2-003",
       "word": "one by one",
       "pos": "숙어",
-      "meaning": "하나씩"
+      "meaning": "하나씩",
+      "example": "They slowly piled the blocks one by one to build a tower."
     },
     {
       "id": "VD-L2-004",
       "word": "tower",
       "pos": "명사",
-      "meaning": "탑"
+      "meaning": "탑",
+      "example": "Bobby brought blocks _____ a tower with his grandfather."
     },
     {
       "id": "VD-L2-005",
       "word": "sneeze",
       "pos": "동사",
-      "meaning": "재채기하다"
+      "meaning": "재채기하다",
+      "example": "_____\"\nBob: \"There is one more block to put.\"\nBobby: _____\nBobby: \"Bob, it's time to build a tower!\"\nBob: _____\nBobby carefully put the elephant block on top, but Bob sneezed and the tower fell down."
     },
     {
       "id": "VD-L2-006",
       "word": "appear",
       "pos": "동사",
-      "meaning": "나타나다 (appears)"
+      "meaning": "나타나다 (appears)",
+      "example": "Bobby said, \"You always sneeze when the elephant block appears.\"\n\n탑이 무너진 이유는?"
     },
     {
       "id": "VD-L2-007",
       "word": "fell ill",
       "pos": "숙어",
-      "meaning": "병에 걸렸다"
+      "meaning": "병에 걸렸다",
+      "example": "Bob fell ill and went to the hospital."
     },
     {
       "id": "VD-L2-008",
       "word": "far",
       "pos": "부사",
-      "meaning": "멀리"
+      "meaning": "멀리",
+      "example": "He is in a hospital _____ is far from here."
     },
     {
       "id": "VD-L2-009",
       "word": "recover",
       "pos": "동사",
-      "meaning": "회복하다"
+      "meaning": "회복하다",
+      "example": "I want _____ my grandfather recover."
     },
     {
       "id": "VD-L2-010",
       "word": "lean",
       "pos": "동사",
-      "meaning": "기대다 (leaned)"
+      "meaning": "기대다 (leaned)",
+      "example": "Bobby's grandfather leaned on his _____."
     },
     {
       "id": "VD-L2-011",
       "word": "shoulder",
       "pos": "명사",
-      "meaning": "어깨"
+      "meaning": "어깨",
+      "example": "Grandfather started to _____ on Bobby's shoulders."
     },
     {
       "id": "VD-L2-012",
       "word": "held",
       "pos": "동사",
-      "meaning": "잡았다 (hold의 과거형)"
+      "meaning": "잡았다 (hold의 과거형)",
+      "example": "When Bobby was little, Bob held Bobby's hands and taught him to walk."
     },
     {
       "id": "VD-L2-013",
       "word": "realized",
       "pos": "동사",
-      "meaning": "깨달았다"
+      "meaning": "깨달았다",
+      "example": "At that moment, Bobby realized that Bob would recover soon."
     },
     {
       "id": "VD-L2-014",
       "word": "wooden",
       "pos": "형용사",
-      "meaning": "나무로 된"
+      "meaning": "나무로 된",
+      "example": "\"Now one foot, now the other.\"\nBob and Bobby often played with old wooden blocks."
     },
     {
       "id": "VD-L2-015",
       "word": "carefully",
       "pos": "부사",
-      "meaning": "조심스럽게"
+      "meaning": "조심스럽게",
+      "example": "_____\"\nBob: \"There is one more block to put.\"\nBobby: _____\nBobby: \"Bob, it's time to build a tower!\"\nBob: _____\nBobby carefully put the elephant block on top, but Bob sneezed and the tower fell down."
     },
     {
       "id": "VD-L2-016",
       "word": "slowly",
       "pos": "부사",
-      "meaning": "느리게, 천천히"
+      "meaning": "느리게, 천천히",
+      "example": "They slowly piled the blocks _____."
     },
     {
       "id": "VD-L2-017",
       "word": "elephant",
       "pos": "명사",
-      "meaning": "코끼리"
+      "meaning": "코끼리",
+      "example": "_____\"\nBob: \"There is one more block to put.\"\nBobby: _____\nBobby: \"Bob, it's time to build a tower!\"\nBob: _____\nBobby carefully put the elephant block on top, but Bob sneezed and the tower fell down."
     },
     {
       "id": "VD-L2-018",
       "word": "It's time to",
       "pos": "표현",
-      "meaning": "~할 시간이다"
+      "meaning": "~할 시간이다",
+      "example": "_____\"\nBob: \"There is one more block to put.\"\nBobby: _____\nBobby: \"Bob, it's time to build a tower!\"\nBob: _____\nBobby carefully put the elephant block on top, but Bob sneezed and the tower fell down."
     },
     {
       "id": "VD-L2-019",
       "word": "Is it okay if",
       "pos": "표현",
-      "meaning": "~해도 괜찮을까?"
+      "meaning": "~해도 괜찮을까?",
+      "example": "Bobby: Mom, is it okay if I play computer games for one hour?"
     },
     {
       "id": "VD-L2-020",
       "word": "I'm afraid",
       "pos": "표현",
-      "meaning": "유감이지만"
+      "meaning": "유감이지만",
+      "example": "I'm afraid you can't go out now — it's too late."
     },
     {
       "id": "VD-L2-021",
       "word": "quarter",
       "pos": "명사",
-      "meaning": "15분, 4분의 1"
+      "meaning": "15분, 4분의 1",
+      "example": "Mom: _____ It's already a quarter past ten."
     },
     {
       "id": "VD-L2-022",
       "word": "half past",
       "pos": "표현",
-      "meaning": "~시 30분"
+      "meaning": "~시 30분",
+      "example": "- <sup>B</sup> It’<sup>s</sup> half past eight."
     },
     {
       "id": "VD-L2-023",
       "word": "breeze",
       "pos": "명사",
-      "meaning": "산들바람"
+      "meaning": "산들바람",
+      "example": "The summer breeze with the smell of happiness was blowing."
     },
     {
       "id": "VD-L2-024",
       "word": "while",
       "pos": "명사/접속사",
-      "meaning": "잠시 / ~동안"
+      "meaning": "잠시 / ~동안",
+      "example": "( ② ) After a while, Bobby came into Bob's room with the blocks."
     },
     {
       "id": "VD-L2-025",
       "word": "suddenly",
       "pos": "부사",
-      "meaning": "갑자기"
+      "meaning": "갑자기",
+      "example": "\"Okay, Bob, now the elephant block.\"\nSuddenly, Bob made a small sound like sneezing."
     },
     {
       "id": "VD-L2-026",
       "word": "lay",
       "pos": "동사",
-      "meaning": "누워 있었다 (lie의 과거형)"
+      "meaning": "누워 있었다 (lie의 과거형)",
+      "example": "( ① ) He just lay in bed without talking or moving."
     },
     {
       "id": "VD-L2-027",
       "word": "block",
       "pos": "명사",
-      "meaning": "블록, 나무 조각"
+      "meaning": "블록, 나무 조각",
+      "example": "Bobby brought blocks _____ a tower with his grandfather."
+    },
+    {
+      "id": "VD-L2-028",
+      "word": "journey",
+      "pos": "명사",
+      "meaning": "여행",
+      "example": "Their journey to recovery was long but full of love."
+    },
+    {
+      "id": "VD-L2-029",
+      "word": "laugh",
+      "pos": "동사",
+      "meaning": "웃다",
+      "example": "Bobby laughed."
+    },
+    {
+      "id": "VD-L2-030",
+      "word": "magic",
+      "pos": "명사",
+      "meaning": "마법, 마술",
+      "example": "Bobby said, \"When I was little, you held my hands and said these words.\" And Bobby added, \"Now one foot.\"\nLike magic, Bob moved one foot."
+    },
+    {
+      "id": "VD-L2-031",
+      "word": "half",
+      "pos": "명사",
+      "meaning": "반, 30분",
+      "example": "- <sup>B</sup> It’<sup>s</sup> half past eight."
+    },
+    {
+      "id": "VD-L2-032",
+      "word": "past",
+      "pos": "전치사/명사",
+      "meaning": "지나서 / 과거",
+      "example": "Mom: _____ It's already a quarter past ten."
+    },
+    {
+      "id": "VD-L2-033",
+      "word": "add",
+      "pos": "동사",
+      "meaning": "(말을) 덧붙이다, 추가하다",
+      "example": "Bobby said, \"When I was little, you held my hands and said these words.\" And Bobby added, \"Now one foot.\"\nLike magic, Bob moved one foot."
+    },
+    {
+      "id": "VD-L2-034",
+      "word": "blow",
+      "pos": "동사",
+      "meaning": "불다",
+      "example": "The summer _____ with the smell of happiness was blowing."
+    },
+    {
+      "id": "VD-L2-035",
+      "word": "word",
+      "pos": "명사",
+      "meaning": "말",
+      "example": "Bobby said, \"When I was little, you held my hands and said these words.\" And Bobby added, \"Now one foot.\"\nLike magic, Bob moved one foot."
     }
   ],
   "grammar_rules": [
