@@ -863,7 +863,7 @@
         .flashcard-buttons { display: flex; gap: 12px; margin-top: 16px; }
         .flashcard-btn { flex: 1; padding: 14px; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
         .flashcard-btn.know { background: #e8f5e9; color: #2e7d32; }
-        .flashcard-btn.dont-know { background: #fce4ec; color: #c62828; }
+        .flashcard-btn.dont-know { background: #FFF3E0; color: #E65100; }
 
         /* Vocab Drill */
         .vocab-word { font-size: 32px; font-weight: 700; color: #2F5496; }
@@ -871,6 +871,13 @@
         .vocab-pos { font-size: 14px; color: #888; margin-top: 8px; }
         .vocab-example { font-size: 13px; color: #666; margin-top: 10px; line-height: 1.5; font-style: italic; }
         .vocab-highlight { background: #FFF3B0; color: #333; padding: 1px 3px; border-radius: 3px; font-style: normal; font-weight: 600; }
+        /* Phase B (2026-05-09): Example block — EN + 직역 + 자연 번역 */
+        .vocab-example-block { background: #F5F8FF; border-left: 3px solid #2F5496; border-radius: 6px; padding: 10px 12px; margin-top: 12px; text-align: left; width: 100%; box-sizing: border-box; }
+        .vocab-example-line { font-size: 13px; color: #333; line-height: 1.55; font-style: italic; }
+        .vocab-example-line.ko-chunk { color: #444; font-style: normal; margin-top: 8px; padding-top: 8px; border-top: 0.5px solid #C8D4E8; }
+        .vocab-example-line.ko-natural { color: #1565C0; font-style: normal; margin-top: 8px; padding-top: 8px; border-top: 0.5px solid #C8D4E8; }
+        .vocab-example-label { font-size: 10px; font-weight: 600; color: #888; margin-bottom: 2px; display: block; font-style: normal; }
+        .vocab-target-ko { color: #B86700; font-weight: 700; }
         .vocab-progress-bar { width: 100%; height: 6px; background: #e0e0e0; border-radius: 3px; margin-bottom: 12px; overflow: hidden; }
         .vocab-progress-fill { height: 100%; background: #4CAF50; border-radius: 3px; transition: width 0.3s; }
         .vocab-counter { font-size: 13px; color: #888; text-align: center; margin-bottom: 8px; }
@@ -1431,8 +1438,8 @@
                     </div>
                 </div>
                 <div class="flashcard-buttons" id="flashcard-buttons" style="display:none;">
-                    <button class="flashcard-btn know" onclick="handleFlashcardAnswer(true)">알겠어요 ✓</button>
-                    <button class="flashcard-btn dont-know" onclick="handleFlashcardAnswer(false)">모르겠어요 ✗</button>
+                    <button class="flashcard-btn know" onclick="handleFlashcardAnswer(true)">외웠어 ✓</button>
+                    <button class="flashcard-btn dont-know" onclick="handleFlashcardAnswer(false)">한번 더 볼래</button>
                 </div>
             </div>
 
@@ -1468,8 +1475,8 @@
                     </div>
                 </div>
                 <div class="flashcard-buttons" id="vocab-buttons" style="display:none;">
-                    <button class="flashcard-btn know" onclick="handleVocabAnswer(true)">알아요 ✓</button>
-                    <button class="flashcard-btn dont-know" onclick="handleVocabAnswer(false)">모르겠어요 ✗</button>
+                    <button class="flashcard-btn know" onclick="handleVocabAnswer(true)">외웠어 ✓</button>
+                    <button class="flashcard-btn dont-know" onclick="handleVocabAnswer(false)">한번 더 볼래</button>
                 </div>
             </div>
             <div id="vocab-result-area" style="display:none;"></div>
@@ -3570,6 +3577,9 @@
             // 뒷면: text
             back.innerHTML = '<div style="font-size:17px;line-height:1.8;color:#333;">' + q.cs_text + '</div><div class="flashcard-tap-hint">탭하면 유형 보기</div>';
 
+            // Phase A (2026-05-09): Auto-size card so longer cs_text doesn't overlap buttons
+            autoSizeFlipCard(scene, card, front, back);
+
             let flipped = false;
             scene.onclick = function() {
                 flipped = !flipped;
@@ -4053,6 +4063,9 @@
             buttons.style.display = 'none';
             document.querySelectorAll('.flashcard-btn').forEach(b => { b.disabled = false; });
 
+            // Phase A (2026-05-09): Auto-size card so longer back doesn't overlap buttons
+            autoSizeFlipCard(scene, card, front, back);
+
             // TTS: 카드 나타나면 즉시 영어 문장 읽어주기 (국어는 제외)
             if (currentSubject !== 'korean') {
                 setTimeout(() => speakEnglish(q.prompt_en), 300);
@@ -4475,6 +4488,22 @@
         // =========================================================
         // Vocab Drill Engine
         // =========================================================
+        // Phase A·B (2026-05-09): Helpers for example block rendering and auto-sized flip card
+        function markBoldKo(text) {
+            if (!text) return '';
+            return text.replace(/\*\*([^*]+)\*\*/g, '<strong class="vocab-target-ko">$1</strong>');
+        }
+        function autoSizeFlipCard(sceneEl, cardEl, frontEl, backEl) {
+            if (!sceneEl || !cardEl || !frontEl || !backEl) return;
+            requestAnimationFrame(() => {
+                const fH = frontEl.scrollHeight;
+                const bH = backEl.scrollHeight;
+                const h = Math.max(fH, bH, 180);
+                sceneEl.style.minHeight = h + 'px';
+                cardEl.style.minHeight = h + 'px';
+            });
+        }
+
         let vocabDrillList = [];      // current round words (shuffled)
         let vocabDrillIndex = 0;
         let vocabDrillResults = {};   // { "VD-L1-001": true/false, ... }
@@ -4552,11 +4581,22 @@
                 let engBackHtml = '<div class="vocab-meaning">' + item.meaning + '</div><div class="vocab-pos">' + item.pos + '</div>';
                 if (item.example) {
                     const highlighted = item.example.replace(new RegExp('(' + item.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<mark class="vocab-highlight">$1</mark>');
-                    engBackHtml += '<div class="vocab-example">' + highlighted + '</div>';
+                    engBackHtml += '<div class="vocab-example-block">';
+                    engBackHtml += '<span class="vocab-example-label">EN</span>';
+                    engBackHtml += '<div class="vocab-example-line">' + highlighted + '</div>';
+                    if (item.example_ko_chunk) {
+                        engBackHtml += '<div class="vocab-example-line ko-chunk"><span class="vocab-example-label">직역</span>' + markBoldKo(item.example_ko_chunk) + '</div>';
+                    }
+                    if (item.example_ko) {
+                        engBackHtml += '<div class="vocab-example-line ko-natural"><span class="vocab-example-label">자연 번역</span>' + markBoldKo(item.example_ko) + '</div>';
+                    }
+                    engBackHtml += '</div>';
                 }
                 engBackHtml += '<div class="flashcard-tap-hint">탭하면 영어 보기</div>';
                 back.innerHTML = engBackHtml;
             }
+            // Phase A (2026-05-09): Auto-size card to fit example block / longer back content
+            autoSizeFlipCard(scene, card, front, back);
 
             // TTS: 국어는 비활성화
             if (currentSubject !== 'korean') {
@@ -4602,8 +4642,8 @@
                 area.innerHTML = `
                     <div class="vocab-round-msg">
                         <h3>라운드 ${vocabDrillRound} 완료!</h3>
-                        <p>알아요: ${totalKnown}개 / 모르겠어요: ${unknownItems.length}개</p>
-                        <button class="vocab-retry-btn" onclick="retryVocabDrill()">모르겠어요 ${unknownItems.length}개 다시 도전</button>
+                        <p>외웠어: ${totalKnown}개 / 한번 더: ${unknownItems.length}개</p>
+                        <button class="vocab-retry-btn" onclick="retryVocabDrill()">한번 더 볼 ${unknownItems.length}개 다시 도전</button>
                         <button class="vocab-done-btn" onclick="finishVocabDrill()">여기서 마치기</button>
                     </div>
                 `;

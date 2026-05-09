@@ -4724,7 +4724,9 @@ __loadLesson({
       "pos": "전치사",
       "meaning": "~보다 위에, ~위로",
       "example": "Hawaiians make a circle with their arms above their heads.",
-      "example_source": "본문 p.70 (R004)"
+      "example_source": "본문 p.70 (R004)",
+      "example_ko_chunk": "하와이 사람들은 / 만든다 / 원을 / 그들의 팔로 / 머리 **위로**.",
+      "example_ko": "하와이 사람들은 머리 **위로** 두 팔을 들어 원을 만든다."
     },
     {
       "id": "VD-L4-002",
@@ -4732,7 +4734,9 @@ __loadLesson({
       "pos": "부사",
       "meaning": "우연히, 실수로",
       "example": "It is about a boy who accidentally enters the Land of the Dead.",
-      "example_source": "본문 p.76 (R008)"
+      "example_source": "본문 p.76 (R008)",
+      "example_ko_chunk": "그것은 / ~에 관한 것이다 / 한 소년에 / **우연히** / 죽음의 땅에 들어가게 된.",
+      "example_ko": "그것은 **우연히** 죽음의 땅에 들어가게 된 한 소년에 관한 이야기이다."
     },
     {
       "id": "VD-L4-003",
@@ -4740,7 +4744,9 @@ __loadLesson({
       "pos": "부사",
       "meaning": "맨발로",
       "example": "Hula is always done barefoot.",
-      "example_source": "본문 p.70 (R003)"
+      "example_source": "본문 p.70 (R003)",
+      "example_ko_chunk": "훌라는 / 늘 / 추어진다 / **맨발로**.",
+      "example_ko": "훌라는 늘 **맨발로** 춘다."
     },
     {
       "id": "VD-L4-004",
@@ -4748,7 +4754,9 @@ __loadLesson({
       "pos": "동사",
       "meaning": "~을/를 바라다, 부탁하다",
       "example": "I beg your pardon? Could you say that again?",
-      "example_source": "회화 핵심표현 p.78"
+      "example_source": "회화 핵심표현 p.78",
+      "example_ko_chunk": null,
+      "example_ko": "**다시 한 번 말씀해 주시겠어요**? 다시 말해 주실래요?"
     },
     {
       "id": "VD-L4-005",
@@ -4756,7 +4764,9 @@ __loadLesson({
       "pos": "동사",
       "meaning": "구부리다",
       "example": "Next, bend your knees a little and step from side to side.",
-      "example_source": "본문 p.71"
+      "example_source": "본문 p.71",
+      "example_ko_chunk": "다음으로, / **구부려** / 무릎을 / 약간 / 그리고 발걸음을 옮겨라 / 좌우로.",
+      "example_ko": "다음으로, 무릎을 살짝 **구부리고** 좌우로 발을 디뎌라."
     },
     {
       "id": "VD-L4-006",
@@ -4764,7 +4774,9 @@ __loadLesson({
       "pos": "동사",
       "meaning": "계속하다, 잇다",
       "example": "As a hula teacher, I always try to continue the history of Hawaii.",
-      "example_source": "본문 p.71"
+      "example_source": "본문 p.71",
+      "example_ko_chunk": "훌라 선생님으로서, / 나는 / 늘 / 노력한다 / **이어 가려고** / 하와이의 역사를.",
+      "example_ko": "훌라 선생님으로서, 나는 늘 하와이의 역사를 **이어 가려고** 노력한다."
     },
     {
       "id": "VD-L4-007",
@@ -4772,7 +4784,9 @@ __loadLesson({
       "pos": "형용사",
       "meaning": "당황하게 하는, 당혹스러운",
       "example": "It was so embarrassing that I didn't want to do it again.",
-      "example_source": "예문 p.75"
+      "example_source": "예문 p.75",
+      "example_ko_chunk": "그것은 / 너무 / **당혹스러워서** / 나는 / 원하지 않았다 / 그것을 다시 하기를.",
+      "example_ko": "그게 너무 **당혹스러워서** 나는 다시 하고 싶지 않았다."
     },
     {
       "id": "VD-L4-008",
@@ -4780,7 +4794,9 @@ __loadLesson({
       "pos": "부사",
       "meaning": "지금까지",
       "example": "Have you ever heard of Frida Kahlo?",
-      "example_source": "본문 p.77 (R009)"
+      "example_source": "본문 p.77 (R009)",
+      "example_ko_chunk": "너 / **들어 본 적** 있니 / 프리다 칼로에 대해?",
+      "example_ko": "프리다 칼로에 대해 **들어 본 적** 있니?"
     },
     {
       "id": "VD-L4-009",
@@ -4788,7 +4804,9 @@ __loadLesson({
       "pos": "동사",
       "meaning": "실례하다, 용서하다",
       "example": "Excuse me, where is the Statue of Liberty?",
-      "example_source": "회화 표현 p.64"
+      "example_source": "회화 표현 p.64",
+      "example_ko_chunk": "**실례합니다**, / 어디 있나요 / 자유의 여신상은?",
+      "example_ko": "**실례합니다**, 자유의 여신상은 어디에 있나요?"
     },
     {
       "id": "VD-L4-010",
@@ -4796,7 +4814,9 @@ __loadLesson({
       "pos": "숙어",
       "meaning": "좌우로",
       "example": "Bend your knees a little and step from side to side.",
-      "example_source": "본문 p.71"
+      "example_source": "본문 p.71",
+      "example_ko_chunk": "구부려라 / 무릎을 / 약간 / 그리고 발걸음을 옮겨라 / **좌우로**.",
+      "example_ko": "무릎을 살짝 구부리고 **좌우로** 발을 디뎌라."
     },
     {
       "id": "VD-L4-011",
@@ -4804,7 +4824,9 @@ __loadLesson({
       "pos": "명사",
       "meaning": "세대",
       "example": "Hula has passed down stories from one generation to the next.",
-      "example_source": "본문 p.69"
+      "example_source": "본문 p.69",
+      "example_ko_chunk": "훌라는 / 전해 왔다 / 이야기들을 / 한 **세대**에서 / 다음 세대로.",
+      "example_ko": "훌라는 한 **세대**에서 다음 세대로 이야기들을 전해 왔다."
     },
     {
       "id": "VD-L4-012",
@@ -4812,7 +4834,9 @@ __loadLesson({
       "pos": "명사",
       "meaning": "몸짓, 손짓",
       "example": "Every gesture in hula has a meaning.",
-      "example_source": "본문 p.70"
+      "example_source": "본문 p.70",
+      "example_ko_chunk": "모든 / **몸짓**은 / 훌라에서 / 가지고 있다 / 의미를.",
+      "example_ko": "훌라의 모든 **몸짓**은 의미를 가지고 있다."
     },
     {
       "id": "VD-L4-013",
@@ -4820,7 +4844,9 @@ __loadLesson({
       "pos": "명사",
       "meaning": "엉덩이",
       "example": "You tell a story with your hands, feet, and hips.",
-      "example_source": "본문 p.70"
+      "example_source": "본문 p.70",
+      "example_ko_chunk": "너는 / 이야기를 한다 / 너의 손과 / 발과 / **엉덩이**로.",
+      "example_ko": "너는 손과 발과 **엉덩이**로 이야기를 한다."
     },
     {
       "id": "VD-L4-014",
@@ -4828,7 +4854,9 @@ __loadLesson({
       "pos": "명사",
       "meaning": "고향",
       "example": "I want to tell you about my hometown, Busan.",
-      "example_source": "Your Turn p.66"
+      "example_source": "Your Turn p.66",
+      "example_ko_chunk": "나는 / 말해 주고 싶다 / 너에게 / 나의 **고향** / 부산에 대해.",
+      "example_ko": "나는 너에게 나의 **고향** 부산에 대해 말해 주고 싶다."
     },
     {
       "id": "VD-L4-015",
@@ -4836,7 +4864,9 @@ __loadLesson({
       "pos": "명사",
       "meaning": "열기구",
       "example": "I want to ride a hot air balloon someday.",
-      "example_source": "단어 p.63"
+      "example_source": "단어 p.63",
+      "example_ko_chunk": "나는 / 타고 싶다 / **열기구**를 / 언젠가.",
+      "example_ko": "나는 언젠가 **열기구**를 타고 싶다."
     },
     {
       "id": "VD-L4-016",
@@ -4844,7 +4874,9 @@ __loadLesson({
       "pos": "명사",
       "meaning": "무릎",
       "example": "Bend your knees a little before you start dancing.",
-      "example_source": "본문 p.71"
+      "example_source": "본문 p.71",
+      "example_ko_chunk": "구부려라 / 너의 **무릎**을 / 약간 / 네가 춤추기 시작하기 전에.",
+      "example_ko": "춤을 추기 시작하기 전에 **무릎**을 살짝 구부려라."
     },
     {
       "id": "VD-L4-017",
@@ -4852,7 +4884,9 @@ __loadLesson({
       "pos": "명사",
       "meaning": "주요 지형지물, 랜드마크",
       "example": "The Statue of Liberty is a famous landmark of New York.",
-      "example_source": "Landmark Collector p.67"
+      "example_source": "Landmark Collector p.67",
+      "example_ko_chunk": "자유의 여신상은 / 유명한 / **랜드마크** / 뉴욕의.",
+      "example_ko": "자유의 여신상은 뉴욕의 유명한 **랜드마크**이다."
     },
     {
       "id": "VD-L4-018",
@@ -4860,7 +4894,9 @@ __loadLesson({
       "pos": "명사",
       "meaning": "가면, 탈",
       "example": "Talchum is a traditional Korean mask dance.",
-      "example_source": "본문 p.73 (R006)"
+      "example_source": "본문 p.73 (R006)",
+      "example_ko_chunk": "탈춤은 / 전통적인 / 한국의 / **가면** 춤이다.",
+      "example_ko": "탈춤은 한국의 전통 **가면** 춤이다."
     },
     {
       "id": "VD-L4-019",
@@ -4868,7 +4904,9 @@ __loadLesson({
       "pos": "명사",
       "meaning": "움직임, 동작",
       "example": "Hula is a language through body movements.",
-      "example_source": "본문 p.69"
+      "example_source": "본문 p.69",
+      "example_ko_chunk": "훌라는 / 하나의 언어이다 / 몸의 **움직임**을 통한.",
+      "example_ko": "훌라(hula)는 몸의 **움직임**으로 표현하는 언어이다."
     },
     {
       "id": "VD-L4-020",
@@ -4876,7 +4914,9 @@ __loadLesson({
       "pos": "명사",
       "meaning": "뮤지컬",
       "example": "There are many musicals in New York.",
-      "example_source": "회화 p.64 (D003)"
+      "example_source": "회화 p.64 (D003)",
+      "example_ko_chunk": "~이 있다 / 많은 / **뮤지컬**이 / 뉴욕에.",
+      "example_ko": "뉴욕에는 많은 **뮤지컬**이 있다."
     },
     {
       "id": "VD-L4-021",
@@ -4884,7 +4924,9 @@ __loadLesson({
       "pos": "부사",
       "meaning": "자연스럽게",
       "example": "While you step to the side, move your hips naturally.",
-      "example_source": "본문 p.71"
+      "example_source": "본문 p.71",
+      "example_ko_chunk": "네가 / 발을 옮기는 동안 / 옆으로, / 움직여라 / 너의 엉덩이를 / **자연스럽게**.",
+      "example_ko": "옆으로 발을 옮기면서 엉덩이를 **자연스럽게** 움직여라."
     },
     {
       "id": "VD-L4-022",
@@ -4892,7 +4934,9 @@ __loadLesson({
       "pos": "명사",
       "meaning": "용서, 관용",
       "example": "I beg your pardon? I didn't catch that.",
-      "example_source": "회화 핵심표현 p.78"
+      "example_source": "회화 핵심표현 p.78",
+      "example_ko_chunk": null,
+      "example_ko": "**다시 한 번 말씀해 주시겠어요**? 잘 못 들었어요."
     },
     {
       "id": "VD-L4-023",
@@ -4900,7 +4944,9 @@ __loadLesson({
       "pos": "숙어",
       "meaning": "~을/를 물려주다, 전하다",
       "example": "Hawaiians have passed down their stories through hula.",
-      "example_source": "본문 p.69 (R002)"
+      "example_source": "본문 p.69 (R002)",
+      "example_ko_chunk": "하와이 사람들은 / **전해 왔다** / 그들의 이야기를 / 훌라를 통해.",
+      "example_ko": "하와이 사람들은 훌라를 통해 자신의 이야기를 **전해 왔다**."
     },
     {
       "id": "VD-L4-024",
@@ -4908,7 +4954,9 @@ __loadLesson({
       "pos": "명사",
       "meaning": "프레츨(매듭·하트모양의 짭짤한 빵)",
       "example": "I'm waiting to buy a pretzel.",
-      "example_source": "회화 p.64 (D001)"
+      "example_source": "회화 p.64 (D001)",
+      "example_ko_chunk": "나는 / 기다리고 있다 / 사기 위해 / **프레츨**을.",
+      "example_ko": "나는 **프레츨**을 사려고 기다리고 있다."
     },
     {
       "id": "VD-L4-025",
@@ -4916,7 +4964,9 @@ __loadLesson({
       "pos": "형용사",
       "meaning": "짠, 소금이 든",
       "example": "It's a salty type of bread.",
-      "example_source": "회화 p.64 (D001)"
+      "example_source": "회화 p.64 (D001)",
+      "example_ko_chunk": "그것은 / **짠** / 종류의 / 빵이다.",
+      "example_ko": "그것은 **짠** 종류의 빵이다."
     },
     {
       "id": "VD-L4-026",
@@ -4924,7 +4974,9 @@ __loadLesson({
       "pos": "전치사",
       "meaning": "~부터",
       "example": "Hula has been a part of Hawaiian life since long ago.",
-      "example_source": "조건 영작 W003"
+      "example_source": "조건 영작 W003",
+      "example_ko_chunk": "훌라는 / 한 부분이 되어 왔다 / 하와이 사람들의 삶의 / 오래 **전부터**.",
+      "example_ko": "훌라는 오래 **전부터** 하와이 사람들의 삶의 한 부분이 되어 왔다."
     },
     {
       "id": "VD-L4-027",
@@ -4932,7 +4984,9 @@ __loadLesson({
       "pos": "동사",
       "meaning": "풀다, 해결하다",
       "example": "Daniel is so smart that he can easily solve problems.",
-      "example_source": "예문 p.74"
+      "example_source": "예문 p.74",
+      "example_ko_chunk": "다니엘은 / 너무 / 똑똑해서 / 그는 / 쉽게 / **풀 수 있다** / 문제들을.",
+      "example_ko": "다니엘은 너무 똑똑해서 문제들을 쉽게 **풀 수 있다**."
     },
     {
       "id": "VD-L4-028",
@@ -4940,7 +4994,9 @@ __loadLesson({
       "pos": "명사",
       "meaning": "영혼",
       "example": "Mexican people believe that the spirits of the dead come back to visit.",
-      "example_source": "본문 p.76"
+      "example_source": "본문 p.76",
+      "example_ko_chunk": "멕시코 사람들은 / 믿는다 / 죽은 사람의 **영혼**들이 / 돌아온다고 / 방문하기 위해.",
+      "example_ko": "멕시코 사람들은 죽은 사람의 **영혼**이 방문하기 위해 돌아온다고 믿는다."
     },
     {
       "id": "VD-L4-029",
@@ -4948,7 +5004,9 @@ __loadLesson({
       "pos": "명사",
       "meaning": "조각상",
       "example": "They want to visit the Statue of Liberty first.",
-      "example_source": "본문 듣기 p.64"
+      "example_source": "본문 듣기 p.64",
+      "example_ko_chunk": "그들은 / 방문하고 싶어 한다 / 자유의 **여신상**을 / 먼저.",
+      "example_ko": "그들은 자유의 **여신상**을 먼저 방문하고 싶어 한다."
     },
     {
       "id": "VD-L4-030",
@@ -4956,7 +5014,9 @@ __loadLesson({
       "pos": "동사",
       "meaning": "(발을) 내딛다, 디디다",
       "example": "Step from side to side while you move your hips naturally.",
-      "example_source": "본문 p.71"
+      "example_source": "본문 p.71",
+      "example_ko_chunk": "**디뎌라** / 좌우로 / 네가 움직이는 동안 / 너의 엉덩이를 / 자연스럽게.",
+      "example_ko": "엉덩이를 자연스럽게 움직이면서 좌우로 발을 **디뎌라**."
     },
     {
       "id": "VD-L4-031",
@@ -4964,7 +5024,9 @@ __loadLesson({
       "pos": "명사",
       "meaning": "이야기꾼",
       "example": "You become a storyteller when you dance hula.",
-      "example_source": "본문 p.70"
+      "example_source": "본문 p.70",
+      "example_ko_chunk": "너는 / ~이 된다 / **이야기꾼**이 / 네가 / 훌라를 출 때.",
+      "example_ko": "네가 훌라를 출 때 너는 **이야기꾼**이 된다."
     },
     {
       "id": "VD-L4-032",
@@ -4972,7 +5034,9 @@ __loadLesson({
       "pos": "명사",
       "meaning": "체계",
       "example": "The early Hawaiians didn't have a writing system.",
-      "example_source": "본문 p.69 (R001)"
+      "example_source": "본문 p.69 (R001)",
+      "example_ko_chunk": "초기 하와이 사람들은 / 가지고 있지 않았다 / 문자 **체계**를.",
+      "example_ko": "초기 하와이 사람들에게는 문자 **체계**가 없었다."
     },
     {
       "id": "VD-L4-033",
@@ -4980,7 +5044,9 @@ __loadLesson({
       "pos": "숙어",
       "meaning": "(옷 등을) 벗다, ~을/를 떼어 내다",
       "example": "You need to take off your shoes and socks before hula.",
-      "example_source": "본문 p.70"
+      "example_source": "본문 p.70",
+      "example_ko_chunk": "너는 / 필요가 있다 / **벗을** / 너의 신발과 양말을 / 훌라 전에.",
+      "example_ko": "훌라를 추기 전에 너는 신발과 양말을 **벗어야** 한다."
     },
     {
       "id": "VD-L4-034",
@@ -4988,7 +5054,9 @@ __loadLesson({
       "pos": "전치사",
       "meaning": "~을/를 통해",
       "example": "Hula is a language through body movements.",
-      "example_source": "본문 p.69"
+      "example_source": "본문 p.69",
+      "example_ko_chunk": "훌라는 / 하나의 언어이다 / 몸의 움직임을 **통한**.",
+      "example_ko": "훌라는 몸의 움직임을 **통한** 하나의 언어이다."
     },
     {
       "id": "VD-L4-035",
@@ -4996,7 +5064,9 @@ __loadLesson({
       "pos": "동사",
       "meaning": "흔들다",
       "example": "Wave your fingers while you move your arms up and down.",
-      "example_source": "본문 p.70"
+      "example_source": "본문 p.70",
+      "example_ko_chunk": "**흔들어라** / 너의 손가락을 / 네가 움직이는 동안 / 너의 팔을 / 위아래로.",
+      "example_ko": "팔을 위아래로 움직이면서 손가락을 **흔들어라**."
     }
   ],
   "grammar_rules": [

@@ -1,9 +1,9 @@
 __loadLesson({
   "lesson": 2,
   "title": "Lesson 2: Now One Foot, Now the Other",
-  "version": "3.7",
-  "build_date": "2026-05-07",
-  "build_note": "v3.6 + Codex 자문 반영: E-SR-006 본문 정합화 / C passage 발화 보강 / mini_writing example_answer 5+1개 / E-MW-003 분리(E-MW-008 추가) / source 13개 분산 / vocab example 35개 / quarter to 2문항(D014, G024-quarter) 보강",
+  "version": "3.8",
+  "build_date": "2026-05-09",
+  "build_note": "v3.7 + L2 vocab_drill 35개 example/example_source/example_ko_chunk/example_ko 보강 (L4 동등 품질). example 빈칸·HTML태그·대화체 제거, 본문 자연 문장으로 정비.",
   "core_sentences": [
     {
       "id": "CS01",
@@ -4433,245 +4433,350 @@ __loadLesson({
       "word": "taught",
       "pos": "동사",
       "meaning": "가르쳤다 (teach의 과거형)",
-      "example": "Bob is the man _____ taught Bobby to walk."
+      "example": "Bob was the person who taught Bobby how to walk.",
+      "example_source": "본문 p.32",
+      "example_ko_chunk": "Bob은 / 사람이었다 / **가르쳐 준** / Bobby에게 / 어떻게 걷는지를.",
+      "example_ko": "Bob은 Bobby에게 걷는 법을 **가르쳐 준** 사람이었다."
     },
     {
       "id": "VD-L2-002",
       "word": "pile",
       "pos": "동사",
       "meaning": "쌓다",
-      "example": "They slowly piled the blocks _____."
+      "example": "They slowly piled the blocks one by one to build a tower.",
+      "example_source": "본문 p.33",
+      "example_ko_chunk": "그들은 / 천천히 / **쌓았다** / 블록들을 / 하나씩 / 탑을 짓기 위해.",
+      "example_ko": "그들은 탑을 쌓기 위해 블록을 하나씩 천천히 **쌓았다**."
     },
     {
       "id": "VD-L2-003",
       "word": "one by one",
       "pos": "숙어",
       "meaning": "하나씩",
-      "example": "They slowly piled the blocks one by one to build a tower."
+      "example": "They slowly piled the blocks one by one to build a tower.",
+      "example_source": "본문 p.33",
+      "example_ko_chunk": "그들은 / 천천히 / 쌓았다 / 블록들을 / **하나씩** / 탑을 짓기 위해.",
+      "example_ko": "그들은 탑을 쌓기 위해 블록을 **하나씩** 천천히 쌓았다."
     },
     {
       "id": "VD-L2-004",
       "word": "tower",
       "pos": "명사",
       "meaning": "탑",
-      "example": "Bobby brought blocks _____ a tower with his grandfather."
+      "example": "Bob, it's time to build a tower!",
+      "example_source": "본문 p.34",
+      "example_ko_chunk": "Bob, / 시간이야 / 짓기에 / **탑을**!",
+      "example_ko": "Bob, **탑**을 세울 시간이야!"
     },
     {
       "id": "VD-L2-005",
       "word": "sneeze",
       "pos": "동사",
       "meaning": "재채기하다",
-      "example": "_____\"\nBob: \"There is one more block to put.\"\nBobby: _____\nBobby: \"Bob, it's time to build a tower!\"\nBob: _____\nBobby carefully put the elephant block on top, but Bob sneezed and the tower fell down."
+      "example": "But Bob sneezed, and the tower fell.",
+      "example_source": "본문 p.33",
+      "example_ko_chunk": "하지만 / Bob이 / **재채기를 했다**, / 그리고 / 탑이 / 무너졌다.",
+      "example_ko": "그런데 Bob이 **재채기를 했고**, 탑이 무너졌다."
     },
     {
       "id": "VD-L2-006",
       "word": "appear",
       "pos": "동사",
       "meaning": "나타나다 (appears)",
-      "example": "Bobby said, \"You always sneeze when the elephant block appears.\"\n\n탑이 무너진 이유는?"
+      "example": "You always sneeze when the elephant block appears.",
+      "example_source": "본문 p.33",
+      "example_ko_chunk": "당신은 / 늘 / 재채기를 한다 / 코끼리 블록이 / **나타날** 때.",
+      "example_ko": "코끼리 블록이 **나타날** 때마다 할아버지는 늘 재채기를 해."
     },
     {
       "id": "VD-L2-007",
       "word": "fell ill",
       "pos": "숙어",
       "meaning": "병에 걸렸다",
-      "example": "Bob fell ill and went to the hospital."
+      "example": "Bob fell ill.",
+      "example_source": "본문 p.34",
+      "example_ko_chunk": "Bob이 / **병에 걸리셨다**.",
+      "example_ko": "Bob이 **병에 걸리셨어**."
     },
     {
       "id": "VD-L2-008",
       "word": "far",
       "pos": "부사",
       "meaning": "멀리",
-      "example": "He is in a hospital _____ is far from here."
+      "example": "He is in a hospital which is far from here.",
+      "example_source": "본문 p.34",
+      "example_ko_chunk": "그는 / 있어 / 병원에 / **멀리** 떨어진 / 여기서.",
+      "example_ko": "그는 여기서 **멀리** 떨어진 병원에 있어."
     },
     {
       "id": "VD-L2-009",
       "word": "recover",
       "pos": "동사",
       "meaning": "회복하다",
-      "example": "I want _____ my grandfather recover."
+      "example": "At that moment, Bobby realized that Bob would recover soon.",
+      "example_source": "본문 p.34",
+      "example_ko_chunk": "그 순간, / Bobby는 / 깨달았다 / Bob이 / **회복할 것이라고** / 곧.",
+      "example_ko": "그 순간, Bobby는 Bob이 곧 **회복할** 것이라고 깨달았다."
     },
     {
       "id": "VD-L2-010",
       "word": "lean",
       "pos": "동사",
       "meaning": "기대다 (leaned)",
-      "example": "Bobby's grandfather leaned on his _____."
+      "example": "Bob leaned on Bobby's shoulders.",
+      "example_source": "본문 p.35",
+      "example_ko_chunk": "Bob은 / **기대었다** / Bobby의 어깨에.",
+      "example_ko": "Bob은 Bobby의 어깨에 **기대었다**."
     },
     {
       "id": "VD-L2-011",
       "word": "shoulder",
       "pos": "명사",
       "meaning": "어깨",
-      "example": "Grandfather started to _____ on Bobby's shoulders."
+      "example": "Bob leaned on Bobby's shoulders.",
+      "example_source": "본문 p.35",
+      "example_ko_chunk": "Bob은 / 기대었다 / Bobby의 / **어깨에**.",
+      "example_ko": "Bob은 Bobby의 **어깨**에 기대었다."
     },
     {
       "id": "VD-L2-012",
       "word": "held",
       "pos": "동사",
       "meaning": "잡았다 (hold의 과거형)",
-      "example": "When Bobby was little, Bob held Bobby's hands and taught him to walk."
+      "example": "When I was little, you held my hands and said these words.",
+      "example_source": "본문 p.35",
+      "example_ko_chunk": "내가 / 어렸을 때, / 당신은 / **잡았어요** / 내 손을 / 그리고 / 말했어요 / 이 말을.",
+      "example_ko": "내가 어렸을 때, 당신은 내 손을 **잡고** 이 말을 했어요."
     },
     {
       "id": "VD-L2-013",
       "word": "realized",
       "pos": "동사",
       "meaning": "깨달았다",
-      "example": "At that moment, Bobby realized that Bob would recover soon."
+      "example": "At that moment, Bobby realized that Bob would recover soon.",
+      "example_source": "본문 p.34",
+      "example_ko_chunk": "그 순간, / Bobby는 / **깨달았다** / Bob이 / 회복할 것이라고 / 곧.",
+      "example_ko": "그 순간, Bobby는 Bob이 곧 회복할 것이라고 **깨달았다**."
     },
     {
       "id": "VD-L2-014",
       "word": "wooden",
       "pos": "형용사",
       "meaning": "나무로 된",
-      "example": "\"Now one foot, now the other.\"\nBob and Bobby often played with old wooden blocks."
+      "example": "Bob and Bobby often played with old wooden blocks.",
+      "example_source": "본문 p.33",
+      "example_ko_chunk": "Bob과 Bobby는 / 자주 / 가지고 놀았다 / 오래된 / **나무로 된** / 블록을.",
+      "example_ko": "Bob과 Bobby는 오래된 **나무로 된** 블록을 가지고 자주 놀았다."
     },
     {
       "id": "VD-L2-015",
       "word": "carefully",
       "pos": "부사",
       "meaning": "조심스럽게",
-      "example": "_____\"\nBob: \"There is one more block to put.\"\nBobby: _____\nBobby: \"Bob, it's time to build a tower!\"\nBob: _____\nBobby carefully put the elephant block on top, but Bob sneezed and the tower fell down."
+      "example": "Bobby carefully put the elephant block on the top.",
+      "example_source": "본문 p.33",
+      "example_ko_chunk": "Bobby는 / **조심스럽게** / 놓았다 / 코끼리 블록을 / 맨 위에.",
+      "example_ko": "Bobby는 코끼리 블록을 맨 위에 **조심스럽게** 올렸다."
     },
     {
       "id": "VD-L2-016",
       "word": "slowly",
       "pos": "부사",
       "meaning": "느리게, 천천히",
-      "example": "They slowly piled the blocks _____."
+      "example": "They slowly piled the blocks one by one to build a tower.",
+      "example_source": "본문 p.33",
+      "example_ko_chunk": "그들은 / **천천히** / 쌓았다 / 블록들을 / 하나씩 / 탑을 짓기 위해.",
+      "example_ko": "그들은 탑을 쌓기 위해 블록을 **천천히** 하나씩 쌓았다."
     },
     {
       "id": "VD-L2-017",
       "word": "elephant",
       "pos": "명사",
       "meaning": "코끼리",
-      "example": "_____\"\nBob: \"There is one more block to put.\"\nBobby: _____\nBobby: \"Bob, it's time to build a tower!\"\nBob: _____\nBobby carefully put the elephant block on top, but Bob sneezed and the tower fell down."
+      "example": "And that's the elephant block.",
+      "example_source": "본문 p.33",
+      "example_ko_chunk": "그리고 / 그것은 / **코끼리** 블록이야.",
+      "example_ko": "그리고 그게 **코끼리** 블록이야."
     },
     {
       "id": "VD-L2-018",
       "word": "It's time to",
       "pos": "표현",
       "meaning": "~할 시간이다",
-      "example": "_____\"\nBob: \"There is one more block to put.\"\nBobby: _____\nBobby: \"Bob, it's time to build a tower!\"\nBob: _____\nBobby carefully put the elephant block on top, but Bob sneezed and the tower fell down."
+      "example": "Bob, it's time to build a tower!",
+      "example_source": "본문 p.34",
+      "example_ko_chunk": "Bob, / **시간이야** / 짓기에 / 탑을!",
+      "example_ko": "Bob, 탑을 **세울 시간이야**!"
     },
     {
       "id": "VD-L2-019",
       "word": "Is it okay if",
       "pos": "표현",
       "meaning": "~해도 괜찮을까?",
-      "example": "Bobby: Mom, is it okay if I play computer games for one hour?"
+      "example": "Is it okay if I go to see a baseball game?",
+      "example_source": "본문 p.28 (Listen & Talk)",
+      "example_ko_chunk": "**괜찮을까요** / **만약** / 내가 / 야구 경기를 보러 가도?",
+      "example_ko": "**만약** 야구 경기를 보러 **가도 괜찮을까요**?"
     },
     {
       "id": "VD-L2-020",
       "word": "I'm afraid",
       "pos": "표현",
       "meaning": "유감이지만",
-      "example": "I'm afraid you can't go out now — it's too late."
+      "example": "I'm afraid you can't.",
+      "example_source": "본문 p.26 (Study Points)",
+      "example_ko_chunk": "**유감이지만** / 너는 / 안 돼.",
+      "example_ko": "**유감이지만** 안 돼."
     },
     {
       "id": "VD-L2-021",
       "word": "quarter",
       "pos": "명사",
       "meaning": "15분, 4분의 1",
-      "example": "Mom: _____ It's already a quarter past ten."
+      "example": "It's a quarter past six.",
+      "example_source": "본문 p.28 (Listen & Talk)",
+      "example_ko_chunk": "이다 / **15분(quarter)** / 지나서 / 6시.",
+      "example_ko": "6시 **15분**이야 (= 6시를 지나서 15분)."
     },
     {
       "id": "VD-L2-022",
       "word": "half past",
       "pos": "표현",
       "meaning": "~시 30분",
-      "example": "- <sup>B</sup> It’<sup>s</sup> half past eight."
+      "example": "It's half past eight.",
+      "example_source": "본문 p.29 (Listen & Talk)",
+      "example_ko_chunk": "이다 / **30분 지난** / 8시.",
+      "example_ko": "8시 **30분**이야 (= 8시를 지나 30분 = half past)."
     },
     {
       "id": "VD-L2-023",
       "word": "breeze",
       "pos": "명사",
       "meaning": "산들바람",
-      "example": "The summer breeze with the smell of happiness was blowing."
+      "example": "The summer breeze with the smell of happiness was blowing.",
+      "example_source": "본문 p.35",
+      "example_ko_chunk": "여름 / **산들바람**이 / 행복의 향기와 함께 / 불고 있었다.",
+      "example_ko": "행복의 향기를 머금은 여름 **산들바람**이 불고 있었다."
     },
     {
       "id": "VD-L2-024",
       "word": "while",
       "pos": "명사/접속사",
       "meaning": "잠시 / ~동안",
-      "example": "( ② ) After a while, Bobby came into Bob's room with the blocks."
+      "example": "After a while, Bobby came into Bob's room with the blocks.",
+      "example_source": "본문 p.34",
+      "example_ko_chunk": "**잠시 후**, / Bobby는 / 들어왔다 / Bob의 방에 / 블록들과 함께.",
+      "example_ko": "**잠시 후**, Bobby는 블록을 들고 Bob의 방에 들어왔다."
     },
     {
       "id": "VD-L2-025",
       "word": "suddenly",
       "pos": "부사",
       "meaning": "갑자기",
-      "example": "\"Okay, Bob, now the elephant block.\"\nSuddenly, Bob made a small sound like sneezing."
+      "example": "Suddenly, Bob made a small sound like sneezing.",
+      "example_source": "본문 p.34",
+      "example_ko_chunk": "**갑자기**, / Bob이 / 냈다 / 작은 소리를 / 재채기 같은.",
+      "example_ko": "**갑자기**, Bob이 재채기 같은 작은 소리를 냈다."
     },
     {
       "id": "VD-L2-026",
       "word": "lay",
       "pos": "동사",
       "meaning": "누워 있었다 (lie의 과거형)",
-      "example": "( ① ) He just lay in bed without talking or moving."
+      "example": "He just lay in bed without talking or moving.",
+      "example_source": "본문 p.34",
+      "example_ko_chunk": "그는 / 그저 / **누워 있었다** / 침대에 / 말하거나 움직이지 않은 채.",
+      "example_ko": "그는 말도 움직임도 없이 침대에 그저 **누워 있었다**."
     },
     {
       "id": "VD-L2-027",
       "word": "block",
       "pos": "명사",
       "meaning": "블록, 나무 조각",
-      "example": "Bobby brought blocks _____ a tower with his grandfather."
+      "example": "There is one more block to put.",
+      "example_source": "본문 p.33",
+      "example_ko_chunk": "있다 / 하나 더 / **블록이** / 놓을.",
+      "example_ko": "놓을 **블록**이 하나 더 있어."
     },
     {
       "id": "VD-L2-028",
       "word": "journey",
       "pos": "명사",
       "meaning": "여행",
-      "example": "Their journey to recovery was long but full of love."
+      "example": "Lesson 2: The Journey with My Family",
+      "example_source": "단원 제목 p.27",
+      "example_ko_chunk": null,
+      "example_ko": "Lesson 2: 내 가족과 함께한 **여행**"
     },
     {
       "id": "VD-L2-029",
       "word": "laugh",
       "pos": "동사",
       "meaning": "웃다",
-      "example": "Bobby laughed."
+      "example": "Bobby laughed and laughed.",
+      "example_source": "본문 p.33",
+      "example_ko_chunk": "Bobby는 / **웃었다** / 그리고 또 웃었다.",
+      "example_ko": "Bobby는 **웃고** 또 웃었다."
     },
     {
       "id": "VD-L2-030",
       "word": "magic",
       "pos": "명사",
       "meaning": "마법, 마술",
-      "example": "Bobby said, \"When I was little, you held my hands and said these words.\" And Bobby added, \"Now one foot.\"\nLike magic, Bob moved one foot."
+      "example": "Like magic, Bob moved one foot.",
+      "example_source": "본문 p.35",
+      "example_ko_chunk": "**마법처럼**, / Bob은 / 움직였다 / 한 발을.",
+      "example_ko": "**마법처럼**, Bob이 한 발을 움직였다."
     },
     {
       "id": "VD-L2-031",
       "word": "half",
       "pos": "명사",
       "meaning": "반, 30분",
-      "example": "- <sup>B</sup> It’<sup>s</sup> half past eight."
+      "example": "It's half past eight.",
+      "example_source": "본문 p.29 (Listen & Talk)",
+      "example_ko_chunk": "이다 / **30분(half)** / 지나서 / 8시.",
+      "example_ko": "8시 **30분**이야 (= 반 시간 지난 = half past)."
     },
     {
       "id": "VD-L2-032",
       "word": "past",
       "pos": "전치사/명사",
       "meaning": "지나서 / 과거",
-      "example": "Mom: _____ It's already a quarter past ten."
+      "example": "It's a quarter past six.",
+      "example_source": "본문 p.28 (Listen & Talk)",
+      "example_ko_chunk": "이다 / 15분 / **지나서** / 6시.",
+      "example_ko": "6시를 **지나서** 15분이야 (= 6시 15분)."
     },
     {
       "id": "VD-L2-033",
       "word": "add",
       "pos": "동사",
       "meaning": "(말을) 덧붙이다, 추가하다",
-      "example": "Bobby said, \"When I was little, you held my hands and said these words.\" And Bobby added, \"Now one foot.\"\nLike magic, Bob moved one foot."
+      "example": "And Bobby added, 'Now one foot.'",
+      "example_source": "본문 p.35",
+      "example_ko_chunk": "그리고 / Bobby는 / **덧붙였다**, / '이제 한 발.'",
+      "example_ko": "그리고 Bobby는 '이제 한 발'이라고 **덧붙였다**."
     },
     {
       "id": "VD-L2-034",
       "word": "blow",
       "pos": "동사",
       "meaning": "불다",
-      "example": "The summer _____ with the smell of happiness was blowing."
+      "example": "The summer breeze with the smell of happiness was blowing.",
+      "example_source": "본문 p.35",
+      "example_ko_chunk": "여름 산들바람이 / 행복의 향기와 함께 / **불고 있었다**.",
+      "example_ko": "행복의 향기를 머금은 여름 산들바람이 **불고 있었다**."
     },
     {
       "id": "VD-L2-035",
       "word": "word",
       "pos": "명사",
       "meaning": "말",
-      "example": "Bobby said, \"When I was little, you held my hands and said these words.\" And Bobby added, \"Now one foot.\"\nLike magic, Bob moved one foot."
+      "example": "When I was little, you held my hands and said these words.",
+      "example_source": "본문 p.35",
+      "example_ko_chunk": "내가 / 어렸을 때, / 당신은 / 잡았어요 / 내 손을 / 그리고 / 말했어요 / 이 **말을**.",
+      "example_ko": "내가 어렸을 때, 당신은 내 손을 잡고 이 **말**을 했어요."
     }
   ],
   "grammar_rules": [
