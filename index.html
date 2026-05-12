@@ -249,6 +249,18 @@
             cursor: not-allowed;
         }
 
+        .choice-btn.multi-selected {
+            background-color: #E3F2FD;
+            border-color: #1a73e8;
+            color: #1565C0;
+            font-weight: 700;
+        }
+
+        .choice-btn.multi-selected::before {
+            content: '✔ ';
+            color: #1a73e8;
+        }
+
         /* Arrange 스타일 */
         .arrange-container {
             margin-bottom: 16px;
@@ -1242,6 +1254,147 @@
             background: #f0e8d8;
         }
 
+
+        /* Paragraph Order (06b A-3) 스타일 */
+        .paragraph-order-container {
+            margin-bottom: 16px;
+        }
+
+        .intro-paragraph {
+            background: linear-gradient(135deg, #E3F2FD, #F1F8E9);
+            border-left: 4px solid #1a73e8;
+            padding: 14px 16px;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 14px;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #1565C0;
+            font-weight: 500;
+        }
+
+        .paragraphs-selected {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 12px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border: 2px dashed #ddd;
+            min-height: 60px;
+            margin-bottom: 12px;
+        }
+
+        .paragraphs-available {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .paragraph-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 12px 14px;
+            background-color: #ffffff;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 14px;
+            line-height: 1.6;
+            cursor: pointer;
+            text-align: left;
+            width: 100%;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+        }
+
+        .paragraph-card:hover:not(.used):not(:disabled) {
+            border-color: #1a73e8;
+            background-color: #F5F9FF;
+        }
+
+        .paragraph-card.used {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        .paragraph-card .pc-label {
+            display: inline-block;
+            min-width: 30px;
+            padding: 2px 6px;
+            background-color: #1a73e8;
+            color: white;
+            border-radius: 4px;
+            font-weight: 700;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .paragraph-card .pc-text {
+            flex: 1;
+        }
+
+        .paragraph-card.correct {
+            background-color: #E8F5E9;
+            border-color: #4CAF50;
+        }
+
+        .paragraph-card.correct .pc-label {
+            background-color: #4CAF50;
+        }
+
+        .paragraph-card.incorrect {
+            background-color: #FFEBEE;
+            border-color: #F44336;
+        }
+
+        .paragraph-card.incorrect .pc-label {
+            background-color: #F44336;
+        }
+
+        .selected-paragraph-card {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 10px;
+            background-color: #e3f2fd;
+            border-radius: 6px;
+            font-size: 13px;
+            line-height: 1.5;
+            border: 1px solid #90caf9;
+        }
+
+        .selected-paragraph-card .spc-order {
+            font-weight: 700;
+            color: #1565C0;
+            min-width: 22px;
+        }
+
+        .selected-paragraph-card .spc-label {
+            font-weight: 700;
+            color: #1a73e8;
+            min-width: 28px;
+        }
+
+        .selected-paragraph-card .spc-text {
+            flex: 1;
+            font-size: 12px;
+            color: #555;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .selected-paragraph-card .remove-paragraph-btn {
+            background: none;
+            border: none;
+            color: #2196F3;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 0;
+        }
+
+
 </style>
 </head>
 <body>
@@ -1418,6 +1571,13 @@
                 <div class="available-words" id="available-words"></div>
             </div>
 
+            <!-- Paragraph Order (06b A-3) -->
+            <div id="paragraph-order-container" class="paragraph-order-container" style="display: none;">
+                <div id="paragraph-order-intro" class="intro-paragraph"></div>
+                <div id="paragraph-order-selected" class="paragraphs-selected"></div>
+                <div id="paragraph-order-available" class="paragraphs-available"></div>
+            </div>
+
             <!-- Match -->
             <div id="match-container" class="match-options" style="display: none;"></div>
 
@@ -1537,7 +1697,7 @@
         }
 
         // 고부하 문항 타입 (§7.4 Rule 4: 2개 연속 금지)
-        const HIGH_LOAD_TASKS = new Set(['anchor_arrange', 'chunk_arrange', 'mini_rebuild', 'mini_writing']);
+        const HIGH_LOAD_TASKS = new Set(['anchor_arrange', 'chunk_arrange', 'mini_rebuild', 'mini_writing', 'paragraph_order', 'dialogue_order']);
 
         function updateSubtitle() {
             // 버튼 제거됨 — 모드 선택 시 바로 시작하므로 subtitle info만 업데이트
@@ -2094,6 +2254,9 @@
         async function selectAndStart(mode) {
             try {
                 selectMode(mode);
+                if (mode === 'exam_prep') {
+                    await showExamProcModalIfNeeded();
+                }
                 await startSession();
             } catch (e) {
                 console.error('selectAndStart error:', e);
@@ -2857,6 +3020,7 @@
             // 컨테이너 모두 숨기기 (B-6)
             document.getElementById('fill-blank-container').style.display = 'none';
             document.getElementById('arrange-container').style.display = 'none';
+            document.getElementById('paragraph-order-container').style.display = 'none';
             document.getElementById('match-container').style.display = 'none';
             document.getElementById('writing-container').style.display = 'none';
             document.getElementById('flashcard-container').style.display = 'none';
@@ -2901,6 +3065,8 @@
                 showChoiceBlank(q);
             } else if (q.type === 'chunk_order') {
                 showChunkOrder(q);
+            } else if (q.type === 'paragraph_order' || q.type === 'dialogue_order') {
+                showParagraphOrder(q);
             } else if (q.type === 'typed_blank') {
                 showTypedBlank(q);
             } else if (q.type === 'fill_blank' || q.type === 'position_ask') {
@@ -3338,13 +3504,23 @@
             } else if (q.type === 'choice_blank') {
                 const explanation = findExplanation(userAnswer, originalIdx);
                 html += '<div style="font-size:15px;color:#333;">' + explanation + '</div>';
-                if (q.choices && q.correct !== undefined) {
+                // [06b A-1] 다중정답: q.answer_indices 우선
+                if (Array.isArray(q.answer_indices) && q.choices) {
+                    const correctList = q.answer_indices.map(i => q.choices[i]).join(', ');
+                    html += '<div style="margin-top:8px;font-size:14px;color:#2F5496;font-weight:600;">✅ 정답: ' + correctList + '</div>';
+                } else if (q.choices && q.correct !== undefined) {
                     html += '<div style="margin-top:8px;font-size:14px;color:#2F5496;font-weight:600;">✅ 정답: ' + q.choices[q.correct] + '</div>';
                 }
             } else if (q.type === 'chunk_order') {
                 const explanation = we['default'] || q.hint || '';
                 html += '<div style="font-size:15px;color:#333;">' + explanation + '</div>';
                 html += '<div style="margin-top:8px;font-size:14px;color:#2F5496;font-weight:600;">✅ 정답: ' + (q.answer || '') + '</div>';
+            } else if (q.type === 'paragraph_order' || q.type === 'dialogue_order') {
+                // [06b A-3] paragraph_order / [5/12j] dialogue_order — 정답 순서 표시
+                const explanation = we['default'] || q.hint || '';
+                html += '<div style="font-size:15px;color:#333;">' + explanation + '</div>';
+                const correctOrder = (q.answer || []).map(a => String(a).replace(/[()\s]/g, '')).join(' → ');
+                html += '<div style="margin-top:8px;font-size:14px;color:#2F5496;font-weight:600;">✅ 정답 순서: ' + correctOrder + '</div>';
             } else if (q.type === 'arrange') {
                 const explanation = we['default'] || q.hint || '';
                 html += '<div style="font-size:15px;color:#333;">' + explanation + '</div>';
@@ -3371,6 +3547,55 @@
                         <button onclick="showCoreSentencePopup('${cs.id}')" style="display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border:2px solid #2F5496;border-radius:10px;background:#E3F2FD;color:#1565C0;font-size:14px;font-weight:600;cursor:pointer;">📖 핵심문장 복습: ${cs.text_en.substring(0, 30)}${cs.text_en.length > 30 ? '...' : ''}</button>
                     </div>`;
                 }
+            }
+
+            box.innerHTML = html;
+            afterEl.after(box);
+        }
+
+        // [06b A-1 + Codex Q1] 다중정답 전용 wrong explanation —
+        // 잘못 고른 오답 인덱스 + 놓친 정답 인덱스를 각각 나열, 각 인덱스의 wrong_explanations[String(idx)] 표시
+        function showWrongExplanationMulti(q, afterEl, selectedSet, correctSet) {
+            const box = document.createElement('div');
+            box.className = 'wrong-explanation';
+            box.style.cssText = 'background:linear-gradient(135deg,#fff8e1,#fff3e0);border-left:4px solid #FF9800;border-radius:0 10px 10px 0;padding:14px 16px;margin-top:12px;font-size:15px;color:#333;line-height:1.8;';
+
+            const we = q.wrong_explanations || {};
+            const choices = q.choices || [];
+            let html = '<div style="font-weight:700;color:#e65100;margin-bottom:8px;font-size:16px;">🎓 선생님 설명</div>';
+
+            const wrongSelected = [...selectedSet].filter(i => !correctSet.has(i)).sort((a, b) => a - b);
+            const missedCorrect = [...correctSet].filter(i => !selectedSet.has(i)).sort((a, b) => a - b);
+
+            if (wrongSelected.length > 0) {
+                html += '<div style="margin-top:6px;font-size:14px;color:#C62828;font-weight:600;">❌ 잘못 고른 보기:</div>';
+                wrongSelected.forEach(idx => {
+                    const text = choices[idx] || ('보기 ' + (idx + 1));
+                    const explanation = we[String(idx)] || we[text] || '';
+                    html += '<div style="margin:4px 0 4px 12px;font-size:14px;color:#333;">• ' +
+                            text + (explanation ? '<br><span style="color:#666;font-size:13px;">→ ' + explanation + '</span>' : '') +
+                            '</div>';
+                });
+            }
+
+            if (missedCorrect.length > 0) {
+                html += '<div style="margin-top:10px;font-size:14px;color:#1565C0;font-weight:600;">⚠️ 놓친 정답:</div>';
+                missedCorrect.forEach(idx => {
+                    const text = choices[idx] || ('보기 ' + (idx + 1));
+                    const explanation = we[String(idx)] || we[text] || '';
+                    html += '<div style="margin:4px 0 4px 12px;font-size:14px;color:#333;">• ' +
+                            text + (explanation ? '<br><span style="color:#666;font-size:13px;">→ ' + explanation + '</span>' : '') +
+                            '</div>';
+                });
+            }
+
+            // 정답 전체 표시 (요약)
+            const correctList = [...correctSet].sort((a, b) => a - b).map(i => choices[i]).join(', ');
+            html += '<div style="margin-top:10px;font-size:14px;color:#2F5496;font-weight:600;">✅ 정답: ' + correctList + '</div>';
+
+            // hint
+            if (q.hint) {
+                html += '<div style="font-size:13px;color:#888;margin-top:8px;border-top:1px solid #ffe0b2;padding-top:6px;">💡 ' + q.hint + '</div>';
             }
 
             box.innerHTML = html;
@@ -4114,8 +4339,51 @@
             container.style.display = 'grid';
             container.innerHTML = '';
 
+            // [06b A-1] 다중정답 모드 감지 (q.answer_indices 배열)
+            const isMulti = Array.isArray(q.answer_indices) && q.answer_indices.length > 0;
+
             const shuffled = q.choices.map((choice, idx) => ({ choice, idx }));
             shuffleArray(shuffled);
+
+            if (isMulti) {
+                // 다중정답: 체크박스형 토글 + 정답 개수 안내 + 제출 버튼
+                const need = q.answer_indices.length;
+                const info = document.createElement('div');
+                info.style.cssText = 'grid-column:1/-1;background:#FFF8E1;border-left:4px solid #FFA726;padding:10px 14px;margin-bottom:8px;border-radius:0 8px 8px 0;font-size:14px;color:#5D4037;font-weight:600;';
+                info.textContent = '✏️ 정답 ' + need + '개를 모두 고른 뒤 제출하세요';
+                container.appendChild(info);
+
+                const selectedSet = new Set();
+                const correctSet = new Set(q.answer_indices);
+
+                shuffled.forEach((item) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'choice-btn';
+                    btn.textContent = item.choice;
+                    btn.dataset.origIdx = item.idx;
+                    btn.onclick = () => {
+                        if (btn.disabled) return;
+                        if (btn.classList.contains('multi-selected')) {
+                            btn.classList.remove('multi-selected');
+                            selectedSet.delete(item.idx);
+                        } else {
+                            btn.classList.add('multi-selected');
+                            selectedSet.add(item.idx);
+                        }
+                    };
+                    container.appendChild(btn);
+                });
+
+                const submitBtn = document.createElement('button');
+                submitBtn.id = 'multi-answer-submit';
+                submitBtn.textContent = '제출';
+                submitBtn.style.cssText = 'grid-column:1/-1;padding:14px;margin-top:8px;background:#1a73e8;color:white;border:none;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;';
+                submitBtn.onclick = () => handleChoiceBlankMultiAnswer(q, selectedSet, correctSet);
+                container.appendChild(submitBtn);
+                return;
+            }
+
+            // 단일정답: 기존 로직
             // Map correct_index through shuffle (correct 필드도 fallback)
             const correctIdx = q.correct_index != null ? q.correct_index : q.correct;
             const newCorrect = shuffled.findIndex(x => x.idx === correctIdx);
@@ -4140,6 +4408,37 @@
             recordAnswer(q, isCorrect);
             if (!isCorrect) {
                 showWrongExplanation(q, document.getElementById('fill-blank-container'), userChoice);
+            }
+            showNextButton();
+        }
+
+        // [06b A-1] 다중정답 채점 — Set 엄격 일치 (부분점수 없음)
+        function handleChoiceBlankMultiAnswer(q, selectedSet, correctSet) {
+            const isCorrect = selectedSet.size === correctSet.size &&
+                              [...selectedSet].every(i => correctSet.has(i));
+
+            const buttons = document.querySelectorAll('#fill-blank-container .choice-btn');
+            buttons.forEach(btn => {
+                btn.disabled = true;
+                const origIdx = parseInt(btn.dataset.origIdx, 10);
+                if (isNaN(origIdx)) return;
+                if (correctSet.has(origIdx)) {
+                    btn.classList.add('correct');
+                } else if (selectedSet.has(origIdx)) {
+                    btn.classList.add('incorrect');
+                }
+            });
+            const submitBtn = document.getElementById('multi-answer-submit');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = '0.5';
+                submitBtn.style.cursor = 'not-allowed';
+            }
+
+            recordAnswer(q, isCorrect);
+            if (!isCorrect) {
+                // [06b A-1 + Codex Q1] 다중정답 전용 wrong explanation — 인덱스별 해설 표시
+                showWrongExplanationMulti(q, document.getElementById('fill-blank-container'), selectedSet, correctSet);
             }
             showNextButton();
         }
@@ -4297,6 +4596,134 @@
             }, 100);
         }
 
+        // Paragraph Order renderer (06b A-3) — chunk_order 모방, paragraphs 셔플
+        function showParagraphOrder(q) {
+            document.getElementById('question-text').textContent = q.prompt_ko || q.instruction || '';
+
+            const container = document.getElementById('paragraph-order-container');
+            container.style.display = 'block';
+
+            // intro
+            const introEl = document.getElementById('paragraph-order-intro');
+            if (q.intro_paragraph_en) {
+                introEl.style.display = 'block';
+                introEl.textContent = q.intro_paragraph_en;
+            } else {
+                introEl.style.display = 'none';
+                introEl.textContent = '';
+            }
+
+            const selectedDiv = document.getElementById('paragraph-order-selected');
+            const availableDiv = document.getElementById('paragraph-order-available');
+            selectedDiv.innerHTML = '<div style="color:#999;font-size:13px;padding:8px 0;">👆 아래 문단을 순서대로 탭하세요</div>';
+            availableDiv.innerHTML = '';
+
+            // skip 미허용 (난이도 보존)
+            document.getElementById('btn-skip').style.display = 'none';
+
+            // paragraphs 셔플
+            const shuffled = [...q.paragraphs];
+            shuffleArray(shuffled);
+
+            const selected = [];
+
+            // label 정규화: '(A)' → 'A', 'A' → 'A'
+            function normalizeLabel(lbl) {
+                return String(lbl || '').replace(/[()\s]/g, '');
+            }
+
+            shuffled.forEach((p, idx) => {
+                const card = document.createElement('button');
+                card.className = 'paragraph-card';
+                card.dataset.label = normalizeLabel(p.label);
+                card.dataset.idx = idx;
+
+                const labelSpan = document.createElement('span');
+                labelSpan.className = 'pc-label';
+                labelSpan.textContent = normalizeLabel(p.label);
+
+                const textSpan = document.createElement('span');
+                textSpan.className = 'pc-text';
+                textSpan.textContent = p.text_en || p.text || '';
+
+                card.appendChild(labelSpan);
+                card.appendChild(textSpan);
+
+                card.onclick = () => {
+                    if (card.disabled || card.classList.contains('used')) return;
+                    selected.push({ label: normalizeLabel(p.label), text: p.text_en || p.text || '', cardRef: card, idx });
+                    card.classList.add('used');
+                    updateSelectedParagraphs();
+                };
+                availableDiv.appendChild(card);
+            });
+
+            function updateSelectedParagraphs() {
+                selectedDiv.innerHTML = '';
+                selected.forEach((item, selIdx) => {
+                    const tag = document.createElement('div');
+                    tag.className = 'selected-paragraph-card';
+
+                    const orderEl = document.createElement('span');
+                    orderEl.className = 'spc-order';
+                    orderEl.textContent = (selIdx + 1) + '.';
+
+                    const labelEl = document.createElement('span');
+                    labelEl.className = 'spc-label';
+                    labelEl.textContent = item.label;
+
+                    const textEl = document.createElement('span');
+                    textEl.className = 'spc-text';
+                    const preview = item.text.length > 60 ? item.text.substring(0, 60) + '…' : item.text;
+                    textEl.textContent = preview;
+
+                    const removeBtn = document.createElement('button');
+                    removeBtn.className = 'remove-paragraph-btn';
+                    removeBtn.textContent = '×';
+                    removeBtn.onclick = (e) => {
+                        e.stopPropagation();
+                        selected.splice(selIdx, 1);
+                        if (item.cardRef) item.cardRef.classList.remove('used');
+                        updateSelectedParagraphs();
+                    };
+
+                    tag.appendChild(orderEl);
+                    tag.appendChild(labelEl);
+                    tag.appendChild(textEl);
+                    tag.appendChild(removeBtn);
+                    selectedDiv.appendChild(tag);
+                });
+            }
+
+            // 자동 채점: 모든 paragraph 배치되면 비교
+            if (arrangeCheckInterval) clearInterval(arrangeCheckInterval);
+            arrangeCheckInterval = setInterval(() => {
+                if (selected.length === q.paragraphs.length) {
+                    clearInterval(arrangeCheckInterval);
+                    arrangeCheckInterval = null;
+
+                    const userAnswer = selected.map(s => s.label).join('-');
+                    const correct = (q.answer || []).map(a => String(a).replace(/[()\s]/g, '')).join('-');
+                    const isCorrect = userAnswer === correct;
+
+                    // 카드 색칠
+                    document.querySelectorAll('#paragraph-order-available .paragraph-card').forEach(card => {
+                        card.disabled = true;
+                        if (card.classList.contains('used')) {
+                            card.classList.add(isCorrect ? 'correct' : 'incorrect');
+                        }
+                    });
+                    document.querySelectorAll('.remove-paragraph-btn').forEach(b => b.disabled = true);
+
+                    recordAnswer(q, isCorrect);
+                    if (!isCorrect) {
+                        showWrongExplanation(q, container, userAnswer);
+                    }
+                    showNextButton();
+                }
+            }, 100);
+        }
+
         // Typed Blank renderer
         function showTypedBlank(q) {
             document.getElementById('question-text').textContent = '';
@@ -4397,8 +4824,18 @@
         function getCorrectSentence(q) {
             // B-9: Drill types
             if (q.type === 'flashcard') return q.prompt_en || '';
-            if (q.type === 'choice_blank') return q.prompt ? q.prompt.replace('_____', q.answer || '') : '';
+            if (q.type === 'choice_blank') {
+                // [06b A-1] 다중정답
+                if (Array.isArray(q.answer_indices) && q.choices) {
+                    return q.answer_indices.map(i => q.choices[i]).join(', ');
+                }
+                return q.prompt ? q.prompt.replace('_____', q.answer || '') : '';
+            }
             if (q.type === 'chunk_order') return q.answer || '';
+            if (q.type === 'paragraph_order' || q.type === 'dialogue_order') {
+                // [06b A-3] / [5/12j dialogue_order]
+                return (q.answer || []).map(a => String(a).replace(/[()\s]/g, '')).join(' → ');
+            }
             if (q.type === 'typed_blank') {
                 let result = q.prompt || '';
                 (q.answers || []).forEach(a => { result = result.replace('_____', a); });
@@ -4542,6 +4979,30 @@
             showVocabCard();
         }
 
+        // vocab 형광펜 정규식: 단어 변이형(s/es/ed/d/ing/en) + 명시적 inflections(불규칙) 모두 매칭
+        function buildVocabHighlightRegex(item) {
+            const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            // backward-compat: 문자열로 호출된 경우
+            const rawWord = (typeof item === 'string') ? item : ((item && item.word) || '');
+            const inflections = (item && Array.isArray(item.inflections)) ? item.inflections : [];
+            const parts = rawWord.trim().split(/\s+/);
+            if (parts.length === 0 || !parts[0]) return /a^/g; // never match
+            const inflect = '(?:e?s|ed|d|ing|en)?';
+            let basePattern;
+            if (parts.length === 1) {
+                basePattern = esc(parts[0]) + inflect;
+            } else {
+                const first = esc(parts[0]);
+                const rest = parts.slice(1).map(esc).join('\\s+');
+                basePattern = first + inflect + '\\s+' + rest;
+            }
+            const inflPats = inflections
+                .filter(s => typeof s === 'string' && s.trim())
+                .map(s => esc(s.trim()).replace(/\s+/g, '\\s+'));
+            const all = [basePattern].concat(inflPats);
+            return new RegExp('\\b(' + all.join('|') + ')\\b', 'gi');
+        }
+
         function showVocabCard() {
             if (vocabDrillIndex >= vocabDrillList.length) {
                 finishVocabRound();
@@ -4580,7 +5041,7 @@
             } else {
                 let engBackHtml = '<div class="vocab-meaning">' + item.meaning + '</div><div class="vocab-pos">' + item.pos + '</div>';
                 if (item.example) {
-                    const highlighted = item.example.replace(new RegExp('(' + item.word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi'), '<mark class="vocab-highlight">$1</mark>');
+                    const highlighted = item.example.replace(buildVocabHighlightRegex(item), '<mark class="vocab-highlight">$1</mark>');
                     engBackHtml += '<div class="vocab-example-block">';
                     engBackHtml += '<span class="vocab-example-label">EN</span>';
                     engBackHtml += '<div class="vocab-example-line">' + highlighted + '</div>';
@@ -5492,6 +5953,54 @@
 
             overlay.appendChild(popup);
             document.body.appendChild(overlay);
+        }
+
+        // 시험 풀이 절차 모달 (EXAM-PROC grammar_rule) — 영어 exam_prep 시작 시 하루 1회 표시
+        function showExamProcModalIfNeeded() {
+            return new Promise(resolve => {
+                const grammarRules = QUIZ_DATA.grammar_rules || [];
+                const proc = grammarRules.find(r => r.id === 'EXAM-PROC');
+                if (!proc) return resolve();
+                const todayStr = (typeof today === 'function') ? today() : new Date().toISOString().slice(0,10);
+                const key = 'exam_proc_shown_' + todayStr;
+                if (localStorage.getItem(key)) return resolve();
+
+                const overlay = document.createElement('div');
+                overlay.id = 'exam-proc-overlay';
+                overlay.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.65);z-index:9998;display:flex;align-items:center;justify-content:center;padding:16px;';
+
+                const popup = document.createElement('div');
+                popup.style.cssText = 'background:white;border-radius:16px;max-width:480px;width:100%;max-height:88vh;overflow-y:auto;padding:22px;box-shadow:0 8px 32px rgba(0,0,0,0.35);position:relative;';
+                const ruleHtml = (proc.rule_ko || '').replace(/\n/g, '<br>');
+                popup.innerHTML = `
+                    <div style="font-size:12px;color:#C62828;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">시험 풀이 절차</div>
+                    <div style="font-size:19px;font-weight:700;color:#1565C0;margin-bottom:12px;line-height:1.4;">시험 직전 5가지만 떠올려!</div>
+                    <div style="background:#FFF8E1;border-left:4px solid #FFC107;border-radius:6px;padding:11px 13px;font-size:14px;line-height:1.7;color:#333;margin-bottom:12px;">${ruleHtml}</div>
+                    <div style="background:#E8F5E9;border-radius:8px;padding:10px 12px;font-size:13.5px;line-height:1.5;color:#2E7D32;margin-bottom:10px;">
+                        <div style="font-weight:700;margin-bottom:4px;">★ 외워두기</div>
+                        <div>${proc.memory_tip || ''}</div>
+                    </div>
+                    ${proc.example_correct ? `<div style="background:#E3F2FD;border-radius:8px;padding:9px 12px;font-size:12.5px;line-height:1.5;color:#0D47A1;margin-bottom:7px;"><div style="font-weight:700;margin-bottom:3px;">✓ 잘한 예</div><div>${proc.example_correct}</div></div>` : ''}
+                    ${proc.example_wrong ? `<div style="background:#FFEBEE;border-radius:8px;padding:9px 12px;font-size:12.5px;line-height:1.5;color:#B71C1C;margin-bottom:14px;"><div style="font-weight:700;margin-bottom:3px;">✗ 함정</div><div>${proc.example_wrong}</div></div>` : ''}
+                    <div style="display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;">
+                        <button id="exam-proc-skip" style="padding:9px 14px;border:1px solid #BBB;border-radius:8px;background:white;color:#666;font-size:13px;cursor:pointer;">오늘 다시 보지 않기</button>
+                        <button id="exam-proc-ok" style="padding:9px 18px;border:none;border-radius:8px;background:#1565C0;color:white;font-size:14px;font-weight:600;cursor:pointer;">확인하고 시작</button>
+                    </div>
+                `;
+                overlay.appendChild(popup);
+                document.body.appendChild(overlay);
+
+                const close = () => {
+                    try { localStorage.setItem(key, '1'); } catch(e){}
+                    overlay.remove();
+                    document.removeEventListener('keydown', escHandler);
+                    resolve();
+                };
+                function escHandler(e){ if (e.key === 'Escape') close(); }
+                popup.querySelector('#exam-proc-ok').onclick = close;
+                popup.querySelector('#exam-proc-skip').onclick = close;
+                document.addEventListener('keydown', escHandler);
+            });
         }
 
         // 영어 핵심문장 복습 팝업

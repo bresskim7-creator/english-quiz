@@ -1,9 +1,9 @@
 __loadLesson({
   "lesson": 2,
   "title": "Lesson 2: Now One Foot, Now the Other",
-  "version": "3.8",
-  "build_date": "2026-05-09",
-  "build_note": "v3.7 + L2 vocab_drill 35개 example/example_source/example_ko_chunk/example_ko 보강 (L4 동등 품질). example 빈칸·HTML태그·대화체 제거, 본문 자연 문장으로 정비.",
+  "version": "3.15",
+  "build_date": "2026-05-12",
+  "build_note": "v3.15 — L2 본문 일치/불일치형 5장 추가 (5/12h 보강)",
   "core_sentences": [
     {
       "id": "CS01",
@@ -4425,6 +4425,1133 @@ __loadLesson({
       ],
       "correct": 0,
       "exam_pattern": "시간 표현"
+    },
+    {
+      "id": "PC2-CLOZE-001",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "easy",
+      "recovery_band": "A",
+      "core_sentence_id": "CS01",
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "exam_pattern": "본문 빈칸",
+      "page": [
+        32
+      ],
+      "instruction": "다음 본문의 빈칸에 알맞은 표현을 고르세요.",
+      "sentence": "Bobby got his name from his grandfather, Bob. Bob was his best friend. Bob was the person _____ taught Bobby how to walk.\n\n빈칸에 들어갈 말로 알맞은 것은?",
+      "choices": [
+        "which",
+        "what",
+        "who",
+        "where"
+      ],
+      "correct": 2,
+      "hint": "선행사 'person'(사람) + 주격. 사람 선행사용 관계대명사는?",
+      "wrong_explanations": {
+        "0": "💡 which는 사물 선행사용이야. person은 사람!",
+        "1": "💡 what은 선행사 없는 관계대명사. 'person'이 선행사로 있어!",
+        "3": "💡 where는 장소 관계부사야. 사람 뒤에는 못 와!"
+      }
+    },
+    {
+      "id": "PC2-CLOZE-002",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "easy",
+      "recovery_band": "A",
+      "core_sentence_id": "CS04",
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "exam_pattern": "본문 빈칸",
+      "page": [
+        33
+      ],
+      "instruction": "다음 본문의 빈칸에 알맞은 표현을 고르세요.",
+      "sentence": "Time passed. One day, Bobby's dad looked very sad. He told Bobby, \"Bob fell ill. He is in a hospital _____ is far from here.\"\n\n빈칸에 들어갈 말로 알맞은 것은?",
+      "choices": [
+        "who",
+        "what",
+        "which",
+        "whose"
+      ],
+      "correct": 2,
+      "hint": "선행사 'hospital'(사물) + 주격. 사물 선행사용 관계대명사는?",
+      "wrong_explanations": {
+        "0": "💡 who는 사람 선행사용. hospital은 사물!",
+        "1": "💡 what은 선행사 없는 관계대명사야.",
+        "3": "💡 whose는 소유격. 의미상 어색해."
+      }
+    },
+    {
+      "id": "PC2-CLOZE-003",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "B",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "recovery_band": "A",
+      "core_sentence_id": "CS06",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "exam_pattern": "본문 빈칸",
+      "page": [
+        34
+      ],
+      "instruction": "다음 본문의 빈칸에 알맞은 표현을 고르세요.",
+      "sentence": "Bob came back home after a few months. He just lay in bed without talking or moving. After a while, Bobby came into Bob's room with the blocks.\n\n\"Bob, it's time _____ a tower!\"\n\n빈칸에 들어갈 말로 알맞은 것은?",
+      "choices": [
+        "build",
+        "building",
+        "built",
+        "to build"
+      ],
+      "correct": 3,
+      "hint": "'It's time + ___' 패턴. 동사를 어떻게 변형?",
+      "wrong_explanations": {
+        "0": "💡 build(동사원형) 단독은 안 돼. 'it's time + to부정사' 형식!",
+        "1": "💡 building(동명사)도 안 돼. 'it's time + to + 동사원형'!",
+        "2": "💡 built(과거형)는 자리 자체가 어색해. to + 동사원형 자리!"
+      }
+    },
+    {
+      "id": "PC2-CLOZE-004",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "B",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "recovery_band": "B",
+      "core_sentence_id": "CS07",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "exam_pattern": "본문 빈칸",
+      "page": [
+        34
+      ],
+      "instruction": "다음 본문의 빈칸에 알맞은 표현을 고르세요.",
+      "sentence": "Suddenly, Bob made a small sound like sneezing. At that moment, Bobby realized _____ Bob would recover soon. And Bob did.\n\n빈칸에 들어갈 말로 알맞은 것은?",
+      "choices": [
+        "what",
+        "that",
+        "who",
+        "which"
+      ],
+      "correct": 1,
+      "hint": "'realized ___ 주어 + 동사' — 명사절 도입 접속사.",
+      "wrong_explanations": {
+        "0": "💡 what은 명사절을 도입하지만 뒤에 빠진 성분이 있어야 해. 여기는 완전한 문장이야.",
+        "2": "💡 who는 사람 관계대명사. 명사절 도입이 아니야.",
+        "3": "💡 which는 사물 관계대명사. 명사절 도입이 아니야."
+      }
+    },
+    {
+      "id": "PC2-CLOZE-005",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "easy",
+      "recovery_band": "A",
+      "core_sentence_id": null,
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "exam_pattern": "본문 빈칸",
+      "page": [
+        33
+      ],
+      "instruction": "다음 본문의 빈칸에 알맞은 표현을 고르세요.",
+      "sentence": "\"Bob fell ill. He is in a hospital which is far from here.\"\n\n\"I want _____ him,\" Bobby said.\n\n빈칸에 들어갈 말로 알맞은 것은?",
+      "choices": [
+        "see",
+        "seeing",
+        "to see",
+        "saw"
+      ],
+      "correct": 2,
+      "hint": "'want + ___' 패턴. want 뒤에 오는 형태는?",
+      "wrong_explanations": {
+        "0": "💡 see(동사원형) 단독은 안 돼. 'want + to부정사'!",
+        "1": "💡 seeing(동명사)도 안 돼. want는 to부정사를 목적어로!",
+        "3": "💡 saw(과거형)는 자리 자체가 어색해."
+      }
+    },
+    {
+      "id": "Q-MULTI-AWK-L2-001",
+      "type": "choice_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "choice_blank",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "관계대명사 who/which 어색함 다중정답",
+      "instruction": "앞 뒤 관계가 어색한 문장을 모두 고르세요. (정답 2개)",
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "page": 33,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번은 자연스러움. 사람(person)을 who로 받음 — L2 GR02 그대로.",
+        "Bob is the person who taught Bobby how to walk.": "①번은 자연스러움. 사람(person)을 who로 받음 — L2 GR02 그대로.",
+        "1": "②번이 어색. hospital(사물)은 who로 받을 수 없음 → which/that 필요. L2 본문 'He is in a hospital which is far from here.' 변형 함정.",
+        "He is in a hospital who is far from here.": "②번이 어색. hospital(사물)은 who로 받을 수 없음 → which/that 필요. L2 본문 'He is in a hospital which is far from here.' 변형 함정.",
+        "2": "③번은 자연스러움. 사람(man) + who.",
+        "The man who lives next door is kind.": "③번은 자연스러움. 사람(man) + who.",
+        "3": "④번이 어색. friend(사람)는 which로 받을 수 없음 → who/that 필요.",
+        "I have a friend which can speak three languages.": "④번이 어색. friend(사람)는 which로 받을 수 없음 → who/that 필요.",
+        "4": "⑤번은 자연스러움. 사람(doctor) + who.",
+        "Bobby met a doctor who helped his grandfather.": "⑤번은 자연스러움. 사람(doctor) + who."
+      },
+      "choices": [
+        "Bob is the person who taught Bobby how to walk.",
+        "He is in a hospital who is far from here.",
+        "The man who lives next door is kind.",
+        "I have a friend which can speak three languages.",
+        "Bobby met a doctor who helped his grandfather."
+      ],
+      "answer_indices": [
+        1,
+        3
+      ],
+      "prompt": "다음 ①~⑤ 중 어색한 두 문장을 고르세요."
+    },
+    {
+      "id": "Q-MULTI-AWK-L2-002",
+      "type": "choice_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "choice_blank",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "to부정사 용법 어색함 다중정답",
+      "instruction": "앞 뒤 관계가 어색한 문장을 모두 고르세요. (정답 2개)",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "page": 32,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번은 자연스러움. decided + to부정사.",
+        "Bobby decided to help his grandfather walk again.": "①번은 자연스러움. decided + to부정사.",
+        "1": "②번은 자연스러움. block + to부정사(형용사적 용법). L2 CS03 직접 인용.",
+        "There is one more block to put on the tower.": "②번은 자연스러움. block + to부정사(형용사적 용법). L2 CS03 직접 인용.",
+        "2": "③번이 어색. wanted 뒤에 'to walk'가 와야 함. wanted walk(원형) 불가.",
+        "Bob wanted walk again with Bobby's help.": "③번이 어색. wanted 뒤에 'to walk'가 와야 함. wanted walk(원형) 불가.",
+        "3": "④번이 어색. 'it's time to + 동사원형' 형식. building(동명사) 불가. L2 CS06 직접 변형 함정.",
+        "It's time to building a tower together.": "④번이 어색. 'it's time to + 동사원형' 형식. building(동명사) 불가. L2 CS06 직접 변형 함정.",
+        "4": "⑤번은 자연스러움. how to + 동사원형 (의문사 to부정사).",
+        "Bobby learned how to take care of his grandfather.": "⑤번은 자연스러움. how to + 동사원형 (의문사 to부정사)."
+      },
+      "choices": [
+        "Bobby decided to help his grandfather walk again.",
+        "There is one more block to put on the tower.",
+        "Bob wanted walk again with Bobby's help.",
+        "It's time to building a tower together.",
+        "Bobby learned how to take care of his grandfather."
+      ],
+      "answer_indices": [
+        2,
+        3
+      ],
+      "prompt": "다음 ①~⑤ 중 어색한 두 문장을 고르세요."
+    },
+    {
+      "id": "Q-MULTI-AWK-L2-003",
+      "type": "choice_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "choice_blank",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "관계대명사 + 동사 일치 어색함",
+      "instruction": "앞 뒤 관계가 어색한 문장을 모두 고르세요. (정답 2개)",
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "page": 33,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번은 자연스러움. 단수 boy(who) + is sitting.",
+        "The boy who is sitting there is my brother.": "①번은 자연스러움. 단수 boy(who) + is sitting.",
+        "1": "②번이 어색. girl(단수) → who plays (3인칭 단수 -s). play 불가.",
+        "I know a girl who play the violin every day.": "②번이 어색. girl(단수) → who plays (3인칭 단수 -s). play 불가.",
+        "2": "③번은 자연스러움. book(단수) + which is.",
+        "This is the book which is very interesting.": "③번은 자연스러움. book(단수) + which is.",
+        "3": "④번이 어색. dog(단수) → which runs. run 불가.",
+        "He has a dog which run fast.": "④번이 어색. dog(단수) → which runs. run 불가.",
+        "4": "⑤번은 자연스러움. song(단수) + that makes.",
+        "She likes the song that makes her happy.": "⑤번은 자연스러움. song(단수) + that makes."
+      },
+      "choices": [
+        "The boy who is sitting there is my brother.",
+        "I know a girl who play the violin every day.",
+        "This is the book which is very interesting.",
+        "He has a dog which run fast.",
+        "She likes the song that makes her happy."
+      ],
+      "answer_indices": [
+        1,
+        3
+      ],
+      "prompt": "다음 ①~⑤ 중 어색한 두 문장을 고르세요."
+    },
+    {
+      "id": "Q-MULTI-AWK-L2-004",
+      "type": "choice_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "choice_blank",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "to부정사 vs 동명사 구분",
+      "instruction": "앞 뒤 관계가 어색한 문장을 모두 고르세요. (정답 2개)",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "page": 34,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번은 자연스러움. enjoy + V-ing.",
+        "Bobby enjoyed walking with his grandfather.": "①번은 자연스러움. enjoy + V-ing.",
+        "1": "②번이 어색. hope는 to부정사를 목적어로 받음. hoped to recover 필요.",
+        "Bob hoped recovering soon after the practice.": "②번이 어색. hope는 to부정사를 목적어로 받음. hoped to recover 필요.",
+        "2": "③번은 자연스러움. need + to부정사.",
+        "They needed to build the tower together.": "③번은 자연스러움. need + to부정사.",
+        "3": "④번이 어색. finish는 동명사를 목적어로 받음. finished doing 필요.",
+        "Bobby finished to do his homework.": "④번이 어색. finish는 동명사를 목적어로 받음. finished doing 필요.",
+        "4": "⑤번은 자연스러움. want + to부정사. L2 본문 패턴.",
+        "I want to visit Bob in the hospital.": "⑤번은 자연스러움. want + to부정사. L2 본문 패턴."
+      },
+      "choices": [
+        "Bobby enjoyed walking with his grandfather.",
+        "Bob hoped recovering soon after the practice.",
+        "They needed to build the tower together.",
+        "Bobby finished to do his homework.",
+        "I want to visit Bob in the hospital."
+      ],
+      "answer_indices": [
+        1,
+        3
+      ],
+      "prompt": "다음 ①~⑤ 중 어색한 두 문장을 고르세요."
+    },
+    {
+      "id": "Q-PARA-ORDER-L2-001",
+      "type": "paragraph_order",
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "test_task": "paragraph_order",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "L2 본문 변형 — Bob/Bobby 걷기 교습",
+      "instruction": "다음에 이어질 글의 순서로 가장 적절한 것은?",
+      "linked_rule_ids": [
+        "GR01",
+        "GR02"
+      ],
+      "page": 32,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "default": "intro에서 'When Bobby was little'(어린 시절 회상) → (A) 'Years later, Bob was in a hospital'(세월이 흘러 Bob이 병원에 있는 시점) → (B) 'But one day, Bobby decided to help him walk again'(전환 시점·반전) → (C) 'At that moment'(그 순간 회복 결과) 시간 흐름 순."
+      },
+      "intro_paragraph_en": "Bob was the person who taught Bobby how to walk. When Bobby was little, Bob held his hands and said, \"Now one foot, now the other.\"",
+      "paragraphs": [
+        {
+          "label": "(B)",
+          "text_en": "Years later, Bob was in a hospital which was far from Bobby's home. He couldn't move his arms and legs, and he couldn't talk."
+        },
+        {
+          "label": "(A)",
+          "text_en": "But one day, Bobby decided to help him walk again. \"Bob, it's time to build a tower!\" Bobby said with a big smile."
+        },
+        {
+          "label": "(C)",
+          "text_en": "At that moment, Bobby realized that Bob would recover soon. Bob leaned on Bobby's shoulders and slowly took one step, then another."
+        }
+      ],
+      "answer": [
+        "B",
+        "A",
+        "C"
+      ],
+      "prompt_ko": "다음에 이어질 글의 순서로 가장 적절한 것은?"
+    },
+    {
+      "id": "Q-PARA-ORDER-L2-002",
+      "type": "paragraph_order",
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "test_task": "paragraph_order",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "관계대명사 활용 — 친구 이야기",
+      "instruction": "다음에 이어질 글의 순서로 가장 적절한 것은?",
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "page": 33,
+      "recovery_band": "B",
+      "wrong_explanations": {
+        "default": "intro에서 친구 소개 → (A) 문제 상황(시험·고민) → (B) 친구가 도움(노트 줌) → (C) 결과·교훈. 사건 흐름 순."
+      },
+      "intro_paragraph_en": "I have a friend who is special to me. Her name is Mina, and she is the person who always helps me when I have problems.",
+      "paragraphs": [
+        {
+          "label": "(A)",
+          "text_en": "Last year, I had a difficult exam which made me very nervous. I couldn't sleep well for many nights."
+        },
+        {
+          "label": "(C)",
+          "text_en": "Mina noticed my worry. She gave me a notebook which had her own study notes inside."
+        },
+        {
+          "label": "(B)",
+          "text_en": "Thanks to the notes that she shared, I passed the exam easily. Now I know what a true friend means."
+        }
+      ],
+      "answer": [
+        "A",
+        "C",
+        "B"
+      ],
+      "prompt_ko": "다음에 이어질 글의 순서로 가장 적절한 것은?"
+    },
+    {
+      "id": "Q-PARA-ORDER-L2-003",
+      "type": "paragraph_order",
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "test_task": "paragraph_order",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "to부정사 활용 — 학생선수 일상",
+      "instruction": "다음에 이어질 글의 순서로 가장 적절한 것은?",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "page": 35,
+      "recovery_band": "B",
+      "wrong_explanations": {
+        "default": "intro에서 '쉽지 않다' 문제 제기 → 해결책 First/Second/Last 순."
+      },
+      "intro_paragraph_en": "It is not easy to be a student athlete. You have to train every day and study at night.",
+      "paragraphs": [
+        {
+          "label": "(C)",
+          "text_en": "First, plan your time to use every minute well. Write down what you need to do for school and for training."
+        },
+        {
+          "label": "(A)",
+          "text_en": "Second, find a way to rest. Even short breaks help you to focus better when you study."
+        },
+        {
+          "label": "(B)",
+          "text_en": "Last, don't forget to ask for help. Teachers and coaches are there to support you."
+        }
+      ],
+      "answer": [
+        "C",
+        "A",
+        "B"
+      ],
+      "prompt_ko": "다음에 이어질 글의 순서로 가장 적절한 것은?"
+    },
+    {
+      "id": "Q-CLOZE-L2-001",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "test_task": "short_reading",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "L2 본문 빈칸 — Bob 소개",
+      "instruction": "다음 본문의 빈칸에 알맞은 표현을 고르세요.",
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "page": 32,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번 which — 사물 선행사용. person(사람)에는 불가.",
+        "which": "①번 which — 사물 선행사용. person(사람)에는 불가.",
+        "1": "②번 what — 선행사 없는 관계대명사. 'person'이라는 선행사가 있으면 불가.",
+        "what": "②번 what — 선행사 없는 관계대명사. 'person'이라는 선행사가 있으면 불가.",
+        "2": "③번이 정답 — person(사람) + who. L2 CS01 직접 회수.",
+        "who": "③번이 정답 — person(사람) + who. L2 CS01 직접 회수.",
+        "3": "④번 where — 장소의 관계부사. person 뒤 불가.",
+        "where": "④번 where — 장소의 관계부사. person 뒤 불가.",
+        "4": "⑤번 when — 시간의 관계부사. person 뒤 불가.",
+        "when": "⑤번 when — 시간의 관계부사. person 뒤 불가."
+      },
+      "choices": [
+        "which",
+        "what",
+        "who",
+        "where",
+        "when"
+      ],
+      "correct": 2,
+      "sentence": "Bob was the person _____ taught Bobby how to walk. When Bobby was a small child, Bob held his hands and slowly walked beside him. \"Now one foot, now the other,\" Bob would say with a smile. Bobby never forgot those words."
+    },
+    {
+      "id": "Q-CLOZE-L2-002",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "test_task": "short_reading",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "L2 본문 빈칸 — 병원 소개",
+      "instruction": "다음 본문의 빈칸에 알맞은 표현을 고르세요.",
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "page": 33,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번 who — 사람 선행사용. hospital(사물)에는 불가.",
+        "who": "①번 who — 사람 선행사용. hospital(사물)에는 불가.",
+        "1": "②번 what — 선행사 없는 관계대명사.",
+        "what": "②번 what — 선행사 없는 관계대명사.",
+        "2": "③번이 정답 — hospital(사물) + which. L2 CS04 직접 회수.",
+        "which": "③번이 정답 — hospital(사물) + which. L2 CS04 직접 회수.",
+        "3": "④번 whose — 소유격 관계대명사. 의미상 부적합.",
+        "whose": "④번 whose — 소유격 관계대명사. 의미상 부적합.",
+        "4": "⑤번 whom — 사람의 목적격 관계대명사. hospital에 불가.",
+        "whom": "⑤번 whom — 사람의 목적격 관계대명사. hospital에 불가."
+      },
+      "choices": [
+        "who",
+        "what",
+        "which",
+        "whose",
+        "whom"
+      ],
+      "correct": 2,
+      "sentence": "After Bob's accident, he was in a hospital _____ was far from Bobby's house. Bobby visited him every weekend. Bob couldn't move his arms and legs, and he couldn't talk at first. Bobby felt sad but didn't give up hope."
+    },
+    {
+      "id": "Q-CLOZE-L2-003",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "test_task": "short_reading",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "L2 본문 빈칸 — 탑 쌓기 시간",
+      "instruction": "다음 본문의 빈칸에 알맞은 표현을 고르세요.",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "page": 32,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번 build — 동사원형. 'it's time + to부정사' 형식 위반.",
+        "build": "①번 build — 동사원형. 'it's time + to부정사' 형식 위반.",
+        "1": "②번 building — 동명사. 'it's time + to부정사' 위반.",
+        "building": "②번 building — 동명사. 'it's time + to부정사' 위반.",
+        "2": "③번 built — 과거형. to부정사 자리에 동사 과거형 불가.",
+        "built": "③번 built — 과거형. to부정사 자리에 동사 과거형 불가.",
+        "3": "④번이 정답 — 'it's time + to + 동사원형'. L2 CS06 직접 회수.",
+        "to build": "④번이 정답 — 'it's time + to + 동사원형'. L2 CS06 직접 회수.",
+        "4": "⑤번 to building — to + 동명사 불가. to부정사는 to + 동사원형.",
+        "to building": "⑤번 to building — to + 동명사 불가. to부정사는 to + 동사원형."
+      },
+      "choices": [
+        "build",
+        "building",
+        "built",
+        "to build",
+        "to building"
+      ],
+      "correct": 3,
+      "sentence": "Bobby looked at his grandfather and said, \"Bob, it's time _____ a tower!\" Bob smiled weakly. There was one more block to put on top, and Bobby believed that Bob could do it. Together, they began to build, one block at a time."
+    },
+    {
+      "id": "Q-CLOZE-L2-004",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "test_task": "short_reading",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "L2 본문 빈칸 — 깨달음의 순간",
+      "instruction": "다음 본문의 빈칸에 알맞은 표현을 고르세요.",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "page": 34,
+      "recovery_band": "B",
+      "wrong_explanations": {
+        "0": "①번 what — '무엇'의 의문사. realized 뒤 명사절 도입에는 부적합.",
+        "what": "①번 what — '무엇'의 의문사. realized 뒤 명사절 도입에는 부적합.",
+        "1": "②번이 정답 — realized + that절(명사절 접속사). L2 CS07 직접 회수.",
+        "that": "②번이 정답 — realized + that절(명사절 접속사). L2 CS07 직접 회수.",
+        "2": "③번 who — 사람 관계대명사. 이 자리는 명사절.",
+        "who": "③번 who — 사람 관계대명사. 이 자리는 명사절.",
+        "3": "④번 which — 사물 관계대명사. 명사절 아님.",
+        "which": "④번 which — 사물 관계대명사. 명사절 아님.",
+        "4": "⑤번 where — 장소 관계부사.",
+        "where": "⑤번 where — 장소 관계부사."
+      },
+      "choices": [
+        "what",
+        "that",
+        "who",
+        "which",
+        "where"
+      ],
+      "correct": 1,
+      "sentence": "At that moment, Bobby realized _____ Bob would recover soon. He saw new strength in his grandfather's eyes. Bobby's heart filled with hope. He decided to come every day and help Bob practice walking."
+    },
+    {
+      "id": "Q-CLOZE-L2-005",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "test_task": "short_reading",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "L2 본문 빈칸 — 어깨 기댐",
+      "instruction": "다음 본문의 빈칸에 알맞은 표현을 고르세요.",
+      "linked_rule_ids": [
+        "GR01",
+        "GR02"
+      ],
+      "page": 35,
+      "recovery_band": "B",
+      "wrong_explanations": {
+        "0": "①번 hold — 동사원형. 'it's my turn + to부정사' 형식.",
+        "hold": "①번 hold — 동사원형. 'it's my turn + to부정사' 형식.",
+        "1": "②번 holding — 동명사. 'turn + to부정사' 그대로 적용.",
+        "holding": "②번 holding — 동명사. 'turn + to부정사' 그대로 적용.",
+        "2": "③번이 정답 — 'turn + to + 동사원형'. L2 CS08·CS09 분위기 회수.",
+        "to hold": "③번이 정답 — 'turn + to + 동사원형'. L2 CS08·CS09 분위기 회수.",
+        "3": "④번 held — 과거형.",
+        "held": "④번 held — 과거형.",
+        "4": "⑤번 holds — 3인칭 단수 현재.",
+        "holds": "⑤번 holds — 3인칭 단수 현재."
+      },
+      "choices": [
+        "hold",
+        "holding",
+        "to hold",
+        "held",
+        "holds"
+      ],
+      "correct": 2,
+      "sentence": "Bob leaned on Bobby's shoulders. \"When you were little, I held your hands and said these words. Now it's my turn _____ your hands and learn to walk again,\" Bob whispered. Bobby smiled, and they slowly took the first step together."
+    },
+    {
+      "id": "Q-GRAM-L2-001",
+      "type": "fill_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "fill_blank",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "to부정사 — 목적 용법",
+      "instruction": "어법상 적절한 표현을 고르세요.",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "page": 32,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번 see — 동사원형 단독 부적합.",
+        "see": "①번 see — 동사원형 단독 부적합.",
+        "1": "②번 seeing — 동명사. 목적의 의미로 부적합 (여기는 '~하기 위해').",
+        "seeing": "②번 seeing — 동명사. 목적의 의미로 부적합 (여기는 '~하기 위해').",
+        "2": "③번이 정답 — to부정사 부사적 용법(목적). '~하기 위해 갔다'.",
+        "to see": "③번이 정답 — to부정사 부사적 용법(목적). '~하기 위해 갔다'.",
+        "3": "④번 saw — 과거형. 본동사가 'went'라 또 동사 올 수 없음.",
+        "saw": "④번 saw — 과거형. 본동사가 'went'라 또 동사 올 수 없음.",
+        "4": "⑤번 for see — for 뒤에는 동사원형 불가. for seeing(동명사)이 맞으나 어색.",
+        "for see": "⑤번 for see — for 뒤에는 동사원형 불가. for seeing(동명사)이 맞으나 어색."
+      },
+      "choices": [
+        "see",
+        "seeing",
+        "to see",
+        "saw",
+        "for see"
+      ],
+      "correct": 2,
+      "sentence": "Bobby went to the hospital _____ his grandfather."
+    },
+    {
+      "id": "Q-GRAM-L2-002",
+      "type": "fill_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "fill_blank",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "to부정사 — 형용사적 용법",
+      "instruction": "어법상 적절한 표현을 고르세요.",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "page": 32,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번 put — 동사원형 단독 부적합 (앞에 명사 block 수식 필요).",
+        "put": "①번 put — 동사원형 단독 부적합 (앞에 명사 block 수식 필요).",
+        "1": "②번 putting — 동명사. block 수식에 부적합.",
+        "putting": "②번 putting — 동명사. block 수식에 부적합.",
+        "2": "③번이 정답 — to부정사 형용사적 용법. block(앞 명사) 수식. L2 CS03 직접 회수.",
+        "to put": "③번이 정답 — to부정사 형용사적 용법. block(앞 명사) 수식. L2 CS03 직접 회수.",
+        "3": "④번 puts — 3인칭 단수 현재.",
+        "puts": "④번 puts — 3인칭 단수 현재.",
+        "4": "⑤번 to putting — to + 동명사 불가.",
+        "to putting": "⑤번 to putting — to + 동명사 불가."
+      },
+      "choices": [
+        "put",
+        "putting",
+        "to put",
+        "puts",
+        "to putting"
+      ],
+      "correct": 2,
+      "sentence": "There is one more block _____ on the tower."
+    },
+    {
+      "id": "Q-GRAM-L2-003",
+      "type": "fill_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "fill_blank",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "의문사 + to부정사",
+      "instruction": "어법상 적절한 표현을 고르세요.",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "page": 32,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번 what to walk — '무엇을 걷는지' 의미 불명.",
+        "what": "①번 what to walk — '무엇을 걷는지' 의미 불명.",
+        "1": "②번이 정답 — 'how + to부정사' = '~하는 방법을 가르치다'. L2 CS01 직접 회수.",
+        "how": "②번이 정답 — 'how + to부정사' = '~하는 방법을 가르치다'. L2 CS01 직접 회수.",
+        "2": "③번 which to walk — '어느 것을 걷는지' 의미 불명.",
+        "which": "③번 which to walk — '어느 것을 걷는지' 의미 불명.",
+        "3": "④번 where to walk — '어디로 걷는지' 가능하지만 본문 맥락은 '걷는 방법'.",
+        "where": "④번 where to walk — '어디로 걷는지' 가능하지만 본문 맥락은 '걷는 방법'.",
+        "4": "⑤번 when to walk — '언제 걷는지' 의미 다름.",
+        "when": "⑤번 when to walk — '언제 걷는지' 의미 다름."
+      },
+      "choices": [
+        "what",
+        "how",
+        "which",
+        "where",
+        "when"
+      ],
+      "correct": 1,
+      "sentence": "Bob taught Bobby _____ to walk slowly and safely."
+    },
+    {
+      "id": "Q-GRAM-L2-004",
+      "type": "fill_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "fill_blank",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "관계대명사 — 사람 선행사",
+      "instruction": "어법상 적절한 표현을 고르세요.",
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "page": 32,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번 which — 사물에만 사용. person(사람)에 불가.",
+        "which": "①번 which — 사물에만 사용. person(사람)에 불가.",
+        "1": "②번 what — 선행사 포함하는 관계대명사. 'person'이라는 선행사가 이미 있으면 불가.",
+        "what": "②번 what — 선행사 포함하는 관계대명사. 'person'이라는 선행사가 이미 있으면 불가.",
+        "2": "③번 where — 장소의 관계부사.",
+        "where": "③번 where — 장소의 관계부사.",
+        "3": "④번이 정답 — 사람(person) + 주격 who. L2 CS01 직접 회수.",
+        "who": "④번이 정답 — 사람(person) + 주격 who. L2 CS01 직접 회수.",
+        "4": "⑤번 whose — 소유격 관계대명사. 'taught'가 동사이므로 주격 자리.",
+        "whose": "⑤번 whose — 소유격 관계대명사. 'taught'가 동사이므로 주격 자리."
+      },
+      "choices": [
+        "which",
+        "what",
+        "where",
+        "who",
+        "whose"
+      ],
+      "correct": 3,
+      "sentence": "Bob is the person _____ taught Bobby how to walk."
+    },
+    {
+      "id": "Q-GRAM-L2-005",
+      "type": "fill_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "fill_blank",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "관계대명사 — 사물 선행사",
+      "instruction": "어법상 적절한 표현을 고르세요.",
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "page": 33,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번 who — 사람에만 사용. hospital(사물)에 불가.",
+        "who": "①번 who — 사람에만 사용. hospital(사물)에 불가.",
+        "1": "②번 whose — 소유격. 의미상 부적합.",
+        "whose": "②번 whose — 소유격. 의미상 부적합.",
+        "2": "③번이 정답 — 사물(hospital) + 주격 which. L2 CS04 직접 회수.",
+        "which": "③번이 정답 — 사물(hospital) + 주격 which. L2 CS04 직접 회수.",
+        "3": "④번 whom — 사람 목적격.",
+        "whom": "④번 whom — 사람 목적격.",
+        "4": "⑤번 what — 선행사 없을 때 사용.",
+        "what": "⑤번 what — 선행사 없을 때 사용."
+      },
+      "choices": [
+        "who",
+        "whose",
+        "which",
+        "whom",
+        "what"
+      ],
+      "correct": 2,
+      "sentence": "He is in a hospital _____ is far from here."
+    },
+    {
+      "id": "Q-GRAM-L2-006",
+      "type": "fill_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "fill_blank",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "관계대명사 — that (사람/사물 공용)",
+      "instruction": "어법상 적절한 문장을 고르세요. (어법상 모두 맞는 경우 ⑤를 선택)",
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "page": 33,
+      "recovery_band": "B",
+      "wrong_explanations": {
+        "0": "①번 — book(사물) + who 불가. that 또는 which.",
+        "The book who is on the desk is mine.": "①번 — book(사물) + who 불가. that 또는 which.",
+        "1": "②번 — man(사람) + which 불가. that 또는 who.",
+        "The man which is talking is my teacher.": "②번 — man(사람) + which 불가. that 또는 who.",
+        "2": "③번이 정답 — dog(사물·동물) + that(공용 관계대명사) + runs(3인칭 단수).",
+        "The dog that runs fast is my pet.": "③번이 정답 — dog(사물·동물) + that(공용 관계대명사) + runs(3인칭 단수).",
+        "3": "④번 — girl(사람) + whom 불가(주격 자리). who 또는 that 필요.",
+        "The girl whom plays the piano is Mina.": "④번 — girl(사람) + whom 불가(주격 자리). who 또는 that 필요.",
+        "4": "⑤번 — ①②④가 틀리므로 모두 맞음 불가.",
+        "모두 어법상 맞음": "⑤번 — ①②④가 틀리므로 모두 맞음 불가."
+      },
+      "choices": [
+        "The book who is on the desk is mine.",
+        "The man which is talking is my teacher.",
+        "The dog that runs fast is my pet.",
+        "The girl whom plays the piano is Mina.",
+        "모두 어법상 맞음"
+      ],
+      "correct": 2,
+      "sentence": "다음 중 어법상 옳은 문장을 고르세요."
+    },
+    {
+      "id": "Q-PASSIVE-L2-001",
+      "type": "choice_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "choice_blank",
+      "difficulty": "B",
+      "recovery_band": "A",
+      "is_bridge_item": false,
+      "hint": "Bobby는 가르치는 사람이 아니라 가르침 받는 대상. by Bob 단서.",
+      "core_sentence_id": "CS01",
+      "exam_pattern": "과거 수동 + by",
+      "keyword": "과거 수동 - was taught",
+      "instruction": "빈칸에 알맞은 것을 고르세요.",
+      "linked_rule_ids": [
+        "GR-PASSIVE"
+      ],
+      "page": null,
+      "prompt": "Bobby _____ how to walk by Bob.",
+      "choices": [
+        "teaches",
+        "taught",
+        "was teach",
+        "was taught"
+      ],
+      "correct": 3,
+      "correct_index": 3,
+      "wrong_explanations": {
+        "0": "teaches: 현재 능동 — 'Bobby가 가르친다'. 의미상·시제상 모두 부적합.",
+        "teaches": "teaches: 현재 능동 — 'Bobby가 가르친다'. 의미상·시제상 모두 부적합.",
+        "1": "taught: 과거 능동 — 'Bobby가 가르쳤다'. by Bob 단서와 정면 충돌.",
+        "taught": "taught: 과거 능동 — 'Bobby가 가르쳤다'. by Bob 단서와 정면 충돌.",
+        "2": "was teach: 'be + 동사원형'은 수동태 형식 아님. p.p.가 필요.",
+        "was teach": "was teach: 'be + 동사원형'은 수동태 형식 아님. p.p.가 필요.",
+        "3": "was taught: 정답. 과거 수동 'was + p.p.(taught)'. by Bob과 정합.",
+        "was taught": "was taught: 정답. 과거 수동 'was + p.p.(taught)'. by Bob과 정합."
+      }
+    },
+    {
+      "id": "Q-PASSIVE-L2-002",
+      "type": "chunk_order",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "chunk_order",
+      "difficulty": "B",
+      "recovery_band": "A",
+      "is_bridge_item": false,
+      "hint": "주어 + was + p.p. + by + 사람 어순",
+      "core_sentence_id": "CS08",
+      "exam_pattern": "능동→수동 변환 arrange",
+      "keyword": "과거 수동 어순 arrange",
+      "instruction": "한국어 의미에 맞게 단어를 배열하세요.",
+      "linked_rule_ids": [
+        "GR-PASSIVE"
+      ],
+      "page": null,
+      "prompt_ko": "Bob은 Bobby에 의해 부축받았다.",
+      "chunks": [
+        "Bob",
+        "was",
+        "supported",
+        "by",
+        "Bobby"
+      ],
+      "answer": "Bob was supported by Bobby",
+      "wrong_explanations": {
+        "default": "과거 수동 어순: 주어(Bob) + was + p.p.(supported) + by + 행위자(Bobby). 'support' 동사원형 X, p.p. 'supported' 필수."
+      }
+    },
+    {
+      "id": "E-SR-L2-MATCH-01",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "short_reading",
+      "difficulty": "B",
+      "recovery_band": "A",
+      "is_bridge_item": false,
+      "hint": "본문에서 Bob과 Bobby가 어떻게 만났는지 자세히 보세요.",
+      "core_sentence_id": "CS01",
+      "exam_pattern": "내용 일치/불일치",
+      "keyword": "L2 본문 일치 - Bob/Bobby 관계",
+      "instruction": "다음 글의 내용과 일치하는 것은?",
+      "linked_rule_ids": [],
+      "page": 32,
+      "sentence": "Bobby was named after his grandfather, Bob. When Bobby was little, Bob held his hands and said, \"Now one foot, now the other.\" Bob taught Bobby how to walk step by step. Bobby loved Bob very much.",
+      "choices": [
+        "Bob은 Bobby의 아빠이다.",
+        "Bobby는 Bob의 이름을 따서 이름이 지어졌다.",
+        "Bobby는 혼자서 걷는 법을 배웠다.",
+        "Bobby는 Bob을 싫어했다."
+      ],
+      "correct": 1,
+      "correct_index": 1,
+      "wrong_explanations": {
+        "0": "Bob은 Bobby의 할아버지(grandfather). 'named after his grandfather, Bob' 명시.",
+        "2": "Bob이 'taught Bobby how to walk' — Bobby는 Bob에게서 배웠다.",
+        "3": "본문 마지막 'Bobby loved Bob very much' — 매우 사랑했다."
+      }
+    },
+    {
+      "id": "E-SR-L2-MATCH-02",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "short_reading",
+      "difficulty": "B",
+      "recovery_band": "A",
+      "is_bridge_item": false,
+      "hint": "탑을 쌓다 무너뜨리는 장면이 누구의 행동인지 자세히.",
+      "core_sentence_id": "CS06",
+      "exam_pattern": "내용 일치/불일치",
+      "keyword": "L2 본문 일치 - 블록 탑 쌓기",
+      "instruction": "다음 글의 내용과 일치하지 않는 것은?",
+      "linked_rule_ids": [],
+      "page": 32,
+      "sentence": "Bob and Bobby often played with old wooden blocks. They slowly piled the blocks one by one to build a tower. \"There is one more block to put,\" said Bob. But just then, Bob sneezed loudly. The tower fell down. Bobby and Bob laughed together.",
+      "choices": [
+        "Bob과 Bobby는 자주 나무 블록으로 놀았다.",
+        "그들은 천천히 블록을 쌓아 탑을 만들었다.",
+        "Bobby가 재채기를 해서 탑이 무너졌다.",
+        "탑이 무너지고 나서 둘은 함께 웃었다."
+      ],
+      "correct": 2,
+      "correct_index": 2,
+      "wrong_explanations": {
+        "0": "본문 첫 문장 'Bob and Bobby often played with old wooden blocks' 일치.",
+        "1": "'They slowly piled the blocks one by one to build a tower' 일치.",
+        "3": "본문 마지막 'Bobby and Bob laughed together' 일치."
+      }
+    },
+    {
+      "id": "E-SR-L2-MATCH-03",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "short_reading",
+      "difficulty": "B",
+      "recovery_band": "A",
+      "is_bridge_item": false,
+      "hint": "Bob의 상태와 위치를 자세히 확인하세요.",
+      "core_sentence_id": "CS04",
+      "exam_pattern": "내용 일치/불일치",
+      "keyword": "L2 본문 일치 - 병원에 있는 Bob",
+      "instruction": "다음 글의 내용과 일치하는 것은?",
+      "linked_rule_ids": [],
+      "page": 33,
+      "sentence": "Years later, Bob was in a hospital which was far from Bobby's home. He couldn't move his arms and legs, and he couldn't talk. Bobby visited Bob every weekend. He brought the old wooden blocks with him.",
+      "choices": [
+        "Bob의 병원은 Bobby의 집과 가까웠다.",
+        "Bob은 팔과 다리를 움직일 수 있었다.",
+        "Bobby는 주말마다 Bob을 찾아갔다.",
+        "Bobby는 새 블록을 가지고 갔다."
+      ],
+      "correct": 2,
+      "correct_index": 2,
+      "wrong_explanations": {
+        "0": "'a hospital which was far from Bobby's home' — 멀리 떨어진 병원.",
+        "1": "'He couldn't move his arms and legs' — 움직일 수 없었다.",
+        "3": "'the old wooden blocks' — 새 블록이 아니라 오래된 블록."
+      }
+    },
+    {
+      "id": "E-SR-L2-MATCH-04",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "short_reading",
+      "difficulty": "B",
+      "recovery_band": "A",
+      "is_bridge_item": false,
+      "hint": "Bobby가 Bob에게 무엇을 가르치려 했는지 자세히 보세요.",
+      "core_sentence_id": "CS09",
+      "exam_pattern": "내용 일치/불일치",
+      "keyword": "L2 본문 일치 - 역할 바꿈",
+      "instruction": "다음 글의 내용과 일치하지 않는 것은?",
+      "linked_rule_ids": [],
+      "page": 33,
+      "sentence": "Bobby placed the blocks on Bob's bed. \"Bob, it's time to build a tower!\" said Bobby. Bob smiled a little. \"When I was little, you held my hands and said these words: Now one foot, now the other.\" Bobby's eyes filled with tears.",
+      "choices": [
+        "Bobby는 블록을 Bob의 침대 위에 놓았다.",
+        "Bob은 Bobby의 말에 작게 미소를 지었다.",
+        "Bobby는 어렸을 때 Bob이 자신에게 했던 말을 떠올렸다.",
+        "Bobby는 눈물을 흘리지 않았다."
+      ],
+      "correct": 3,
+      "correct_index": 3,
+      "wrong_explanations": {
+        "0": "'Bobby placed the blocks on Bob's bed' 일치.",
+        "1": "'Bob smiled a little' 일치.",
+        "2": "Bobby가 'When I was little, you held my hands and said these words' — 어린 시절 Bob의 말을 인용."
+      }
+    },
+    {
+      "id": "E-SR-L2-MATCH-05",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "short_reading",
+      "difficulty": "B",
+      "recovery_band": "A",
+      "is_bridge_item": false,
+      "hint": "마지막 장면에서 Bob의 반응을 자세히.",
+      "core_sentence_id": "CS07",
+      "exam_pattern": "내용 일치/불일치",
+      "keyword": "L2 본문 일치 - 마지막 회복 장면",
+      "instruction": "다음 글의 내용과 일치하는 것은?",
+      "linked_rule_ids": [],
+      "page": 34,
+      "sentence": "Bobby finished the tower on Bob's bed. \"There is one more block to put,\" Bobby said quietly. Then Bob made a small sound, like a tiny sneeze. The tower fell down. Bobby smiled with tears. At that moment, he realized that Bob would recover soon.",
+      "choices": [
+        "Bobby가 재채기를 해서 탑이 무너졌다.",
+        "Bob이 작은 소리를 내자 탑이 무너졌다.",
+        "Bobby는 슬퍼서 울기만 했다.",
+        "Bob의 상태는 더 나빠질 거라고 Bobby는 생각했다."
+      ],
+      "correct": 1,
+      "correct_index": 1,
+      "wrong_explanations": {
+        "0": "'Bob made a small sound, like a tiny sneeze' — Bob의 재채기 비슷한 소리.",
+        "2": "'Bobby smiled with tears' — 눈물과 함께 미소.",
+        "3": "마지막 'Bob would recover soon' — 곧 나아질 거라 생각."
+      }
     }
   ],
   "vocab_drill": [
@@ -4777,6 +5904,109 @@ __loadLesson({
       "example_source": "본문 p.35",
       "example_ko_chunk": "내가 / 어렸을 때, / 당신은 / 잡았어요 / 내 손을 / 그리고 / 말했어요 / 이 **말을**.",
       "example_ko": "내가 어렸을 때, 당신은 내 손을 잡고 이 **말**을 했어요."
+    },
+    {
+      "id": "VD-L2-036",
+      "word": "build",
+      "pos": "동사",
+      "meaning": "짓다, 만들다 (탑·집·시스템 등을)",
+      "example": "It's time to build a tower!",
+      "example_source": "본문 p.32",
+      "example_ko_chunk": "이제 시간이야 / 탑을 **짓는**.",
+      "example_ko": "이제 탑을 **세울** 시간이야!"
+    },
+    {
+      "id": "VD-L2-037",
+      "word": "hospital",
+      "pos": "명사",
+      "meaning": "병원",
+      "example": "He is in a hospital which is far from here.",
+      "example_source": "본문 p.33",
+      "example_ko_chunk": "그는 / 있어 / **병원**에 / 멀리 떨어진 / 여기서.",
+      "example_ko": "그는 여기서 멀리 떨어진 **병원**에 있어."
+    },
+    {
+      "id": "VD-L2-038",
+      "word": "grandfather",
+      "pos": "명사",
+      "meaning": "할아버지",
+      "example": "Bobby helped his grandfather walk again.",
+      "example_source": "본문 p.34 변형",
+      "example_ko_chunk": "Bobby는 / 도왔다 / 그의 **할아버지**가 / 걷는 것을 / 다시.",
+      "example_ko": "Bobby는 **할아버지**가 다시 걷도록 도왔다."
+    },
+    {
+      "id": "VD-L2-039",
+      "word": "sad",
+      "pos": "형용사",
+      "meaning": "슬픈",
+      "example": "Bobby felt sad when Bob was in the hospital.",
+      "example_source": "본문 p.33 응용",
+      "example_ko_chunk": "Bobby는 / 느꼈다 / **슬프게** / Bob이 / 있을 때 / 병원에.",
+      "example_ko": "Bobby는 Bob이 병원에 있을 때 **슬펐다**."
+    },
+    {
+      "id": "VD-L2-040",
+      "word": "curious",
+      "pos": "형용사",
+      "meaning": "호기심 많은, 궁금해하는",
+      "example": "Bobby was curious about how his grandfather had taught him to walk.",
+      "example_source": "본문 응용",
+      "example_ko_chunk": "Bobby는 / **궁금했다** / 어떻게 / 그의 할아버지가 / 가르쳤는지 / 그에게 / 걷는 법을.",
+      "example_ko": "Bobby는 할아버지가 자신에게 걷는 법을 어떻게 가르쳤는지 **궁금했다**."
+    },
+    {
+      "id": "VD-L2-041",
+      "word": "step",
+      "pos": "명사",
+      "meaning": "걸음, 한 발짝",
+      "example": "Bob slowly took one step, then another.",
+      "example_source": "본문 p.35 변형",
+      "example_ko_chunk": "Bob은 / 천천히 / 내디뎠다 / 한 **걸음**을 / 그 다음 / 또 한 걸음을.",
+      "example_ko": "Bob은 천천히 한 **걸음**, 그 다음 또 한 걸음을 내디뎠다."
+    },
+    {
+      "id": "VD-L2-042",
+      "word": "smile",
+      "pos": "명사·동사",
+      "meaning": "미소, 미소 짓다",
+      "example": "Bob smiled at Bobby with a weak smile.",
+      "example_source": "본문 p.34 변형",
+      "example_ko_chunk": "Bob은 / **미소 지었다** / Bobby에게 / 약한 **미소**로.",
+      "example_ko": "Bob은 약한 **미소**로 Bobby에게 **미소 지었다**."
+    },
+    {
+      "id": "VD-L2-043",
+      "word": "story",
+      "pos": "명사",
+      "meaning": "이야기",
+      "example": "The story of Bob and Bobby is a beautiful one.",
+      "example_source": "본문 응용",
+      "example_ko_chunk": "Bob과 Bobby의 / **이야기**는 / 이다 / 아름다운 / 것.",
+      "example_ko": "Bob과 Bobby의 **이야기**는 아름답다."
+    },
+    {
+      "id": "VD-L2-044",
+      "word": "without",
+      "pos": "전치사",
+      "meaning": "~없이",
+      "example": "Bob couldn't move without Bobby's help.",
+      "example_source": "본문 응용",
+      "example_ko_chunk": "Bob은 / 움직일 수 없었다 / Bobby의 도움 **없이**.",
+      "example_ko": "Bob은 Bobby의 도움 **없이는** 움직일 수 없었다."
+    },
+    {
+      "id": "VD-L2-045",
+      "word": "bring",
+      "pos": "동사",
+      "meaning": "가져오다, 데려오다",
+      "example": "Bobby brought a snack for his grandfather.",
+      "example_source": "본문 응용",
+      "example_ko_chunk": "Bobby는 / **가져왔다** / 간식을 / 그의 할아버지를 위해.",
+      "example_ko": "Bobby는 할아버지를 위해 간식을 **가져왔다**.",
+      "inflections": [
+        "brought"
+      ]
     }
   ],
   "grammar_rules": [
@@ -4795,6 +6025,14 @@ __loadLesson({
       "example_correct": "He is in a hospital which is far from here. (hospital ← which is far from here)",
       "example_wrong": "He is in a hospital who is far from here. (×hospital은 사물이라 who 못 씀)",
       "memory_tip": "사람=who, 사물=which, 둘 다 되면=that!"
+    },
+    {
+      "id": "EXAM-PROC",
+      "name": "exam_procedure",
+      "rule_ko": "1) 모든 문항 첫 줄을 끝까지 읽는다. '모두 고르세요'·'(정답 N개)'·'일치하지 않는 것' 같은 조건을 본문보다 먼저.\n2) '(정답 2개)'·'모두 고르면' 보이면 빈칸 옆에 '◆2' 표시. 답 적기 전에 2개 다 골랐는지 한 번 더 확인.\n3) 시제 부사구(yesterday·ago·since·for·last year)를 보면 동그라미. 현재완료는 yesterday/ago와 결합 불가.\n4) 'so + 형/부 + that'은 '너무 ~해서 ~하다'. 원인-결과 관계가 맞는지 확인.\n5) 관계대명사: 사람=who/that, 사물=which/that. 동물도 사물 취급.\n6) 글의 순서 (A)(B)(C): 본문(intro) 지시어·시간 부사구가 어느 (A)/(B)/(C)에서 받는지 표시.\n7) 본문 일치형(7·10·12·13·15·16·18·20·21번)이 많다. 본문 한 번에 끝까지 읽고 옵션 비교. 다시 읽기 X.\n8) OMR: 답안 작성은 마지막 5분에 한 번에. 다중정답은 두 칸 다 칠한 뒤 한 번 더 확인.",
+      "example_correct": "19번 보면 '앞 뒤 관계가 어색한 문장을 모두 고르면? (정답 2개)' — '◆2' 표시 → 5개 중 2개 골라 ②, ④ 답안 칸 둘 다 칠하기.",
+      "example_wrong": "'어색한 것은?'으로 잘못 읽고 1개만 골라 0점. 중간고사 4·5·19·24번 -8점 손실의 직접 원인.",
+      "memory_tip": "★ 첫 줄 끝까지 → ◆2 표시 → 시제 부사구 동그라미 → 본문 한 번에 → OMR 마지막 5분"
     }
   ]
 });

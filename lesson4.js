@@ -1,9 +1,9 @@
 __loadLesson({
   "lesson": 4,
   "title": "Lesson 4: Open the Doors to the World",
-  "version": "1.1",
-  "build_date": "2026-05-07",
-  "build_note": "v1.1 — Codex 자문 lesson4 검토 반영. G024 sentence 원문 REVIEW 3-1형 복원 (it is so~that delicious that → is so delicious that it's her favorite food, 정답 선택지를 'so delicious that'으로 변경). vocab_drill 35건 example 추가 (자동 매칭 + 본문/extracted.md 직접 인용). v1.0(037f6732) 백업 .bak-2026-05-07-pre-l4fix.",
+  "version": "1.9",
+  "build_date": "2026-05-12",
+  "build_note": "v1.7 — L4 GR-PASSIVE drill 4장 추가 (5/12h 보강)",
   "core_sentences": [
     {
       "id": "CS01",
@@ -4119,6 +4119,130 @@ __loadLesson({
       "training_layer": "mixed_practice"
     },
     {
+        "id": "E-DR-L4-AWK-01",
+        "type": "dialogue_response",
+        "phase": "exam_prep",
+        "difficulty": "medium",
+        "keyword": "Pardon? 응답 어색 판별",
+        "instruction": "다음 대화가 자연스럽지 않은 것은?",
+        "hint": "Pardon?은 '뭐라고?'라는 반복 요청. 감사/허락 응답이 자연스러운가?",
+        "wrong_explanations": {
+          "0": "💡 'Hot Dog Heaven은 맛있는 핫도그로 유명해'는 famous for 표현이 자연스러운 응답이야.",
+          "2": "💡 'Italy는 피자와 파스타로 유명해'는 famous for 질문에 famous for 답 — 자연스러워.",
+          "3": "💡 'Sounds good!'은 제안에 대한 동의 응답. 일상 대화로 자연스러워."
+        },
+        "core_sentence_id": "CS07",
+        "linked_rule_ids": [],
+        "recovery_band": "A",
+        "test_task": "dialogue_response",
+        "page": 65,
+        "sentence": "자연스럽지 않은 대화를 고르세요.",
+        "choices": [
+          "A: Do you know Hot Dog Heaven?\nB: It's famous for delicious hot dogs.",
+          "A: I love this pizza. Where is it from?\nB: Pardon? Thanks a lot!",
+          "A: What is Italy famous for?\nB: It's famous for pizza and pasta.",
+          "A: I'm hungry. Let's get some food.\nB: Sounds good!"
+        ],
+        "correct": 1,
+        "correct_index": 1,
+        "blank_answer": null,
+        "exam_pattern": "대화 어색 판별",
+        "training_layer": "skill_focus"
+      },
+    {
+        "id": "E-DR-L4-AWK-02",
+        "type": "dialogue_response",
+        "phase": "exam_prep",
+        "difficulty": "medium",
+        "keyword": "What is X famous for? 응답 어색 판별",
+        "instruction": "다음 대화가 자연스럽지 않은 것은?",
+        "hint": "'What is X famous for?'는 '무엇으로 유명한가?' 질문. 위치/지리 응답이 자연스러운가?",
+        "wrong_explanations": {
+          "0": "💡 'France는 에펠탑으로 유명해' — famous for 질문에 famous for 답. 자연.",
+          "1": "💡 'Pardon? 못 들었어' 다음 'I said + 원래 문장'으로 다시 말하기 — 회화 단원 정형 흐름.",
+          "3": "💡 'Yeah, 정말 재밌었어'는 영화 감상 공유 응답. 일상 대화로 자연."
+        },
+        "core_sentence_id": "CS11",
+        "linked_rule_ids": [],
+        "recovery_band": "A",
+        "test_task": "dialogue_response",
+        "page": 67,
+        "sentence": "자연스럽지 않은 대화를 고르세요.",
+        "choices": [
+          "A: What is France famous for?\nB: It's famous for the Eiffel Tower.",
+          "A: Pardon? I didn't hear you.\nB: I said I want to go to France.",
+          "A: What is India famous for?\nB: India is in Asia, next to China.",
+          "A: That's an interesting movie.\nB: Yeah, I really enjoyed it."
+        ],
+        "correct": 2,
+        "correct_index": 2,
+        "blank_answer": null,
+        "exam_pattern": "대화 어색 판별",
+        "training_layer": "skill_focus"
+      },
+    {
+        "id": "E-DR-L4-AWK-03",
+        "type": "dialogue_response",
+        "phase": "exam_prep",
+        "difficulty": "medium",
+        "keyword": "I beg your pardon? 응답 어색 판별",
+        "instruction": "다음 대화가 자연스럽지 않은 것은?",
+        "hint": "'I beg your pardon?'은 격식 있는 반복 요청. '천만에' 응답이 자연스러운가?",
+        "wrong_explanations": {
+          "1": "💡 'New York은 브로드웨이 뮤지컬로 유명해' 응답. 본문 CS09 정형 패턴.",
+          "2": "💡 'Pardon? 다시 말해줄래?' 다음 'I said + 본래 문장'으로 응답 — 회화 본문 정형.",
+          "3": "💡 'I love tteokbokki' 음식 취향 공유 응답. 일상 대화로 자연."
+        },
+        "core_sentence_id": "CS06",
+        "linked_rule_ids": [],
+        "recovery_band": "A",
+        "test_task": "dialogue_response",
+        "page": 64,
+        "sentence": "자연스럽지 않은 대화를 고르세요.",
+        "choices": [
+          "A: I'd like to visit the Louvre Museum.\nB: I beg your pardon? You're welcome!",
+          "A: New York is famous for Broadway musicals.\nB: Wow, I want to see one someday.",
+          "A: Pardon? Could you say that again?\nB: I said the Louvre Museum.",
+          "A: What's your favorite snack?\nB: I love tteokbokki."
+        ],
+        "correct": 0,
+        "correct_index": 0,
+        "blank_answer": null,
+        "exam_pattern": "대화 어색 판별",
+        "training_layer": "skill_focus"
+      },
+    {
+        "id": "E-DR-L4-AWK-04",
+        "type": "dialogue_response",
+        "phase": "exam_prep",
+        "difficulty": "medium",
+        "keyword": "I said + 문장 응답 어색 판별",
+        "instruction": "다음 대화가 자연스럽지 않은 것은?",
+        "hint": "Pardon?을 듣고 다시 말할 때는 'I said + 원래 문장' (과거 말함). 현재진행형 'I'm saying'이 자연스러운가?",
+        "wrong_explanations": {
+          "0": "💡 'It's famous for the Mona Lisa' → 'Louvre Museum이구나' 응답. 본문 CS10 정형.",
+          "1": "💡 'Pardon?' 다음 'I said I want to visit India' — 본문 CS08 그대로의 자연 흐름.",
+          "2": "💡 'What is Brazil famous for?' → 'Christ the Redeemer로 유명해' — D010 본문 패턴 일치."
+        },
+        "core_sentence_id": "CS08",
+        "linked_rule_ids": [],
+        "recovery_band": "A",
+        "test_task": "dialogue_response",
+        "page": 67,
+        "sentence": "자연스럽지 않은 대화를 고르세요.",
+        "choices": [
+          "A: It's famous for the Mona Lisa.\nB: Oh, the Louvre Museum!",
+          "A: Pardon?\nB: I said I want to visit India.",
+          "A: What is Brazil famous for?\nB: It's famous for Christ the Redeemer.",
+          "A: I beg your pardon?\nB: I'm saying India."
+        ],
+        "correct": 3,
+        "correct_index": 3,
+        "blank_answer": null,
+        "exam_pattern": "대화 어색 판별",
+        "training_layer": "skill_focus"
+      },
+    {
       "id": "A004",
       "type": "arrange",
       "phase": "exam_prep",
@@ -4715,7 +4839,1268 @@ __loadLesson({
       "training_layer": "skill_focus",
       "core_sentence_id": null,
       "linked_rule_ids": []
-    }
+    },
+    {
+      "id": "PC4-MATCH-001",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "easy",
+      "recovery_band": "A",
+      "core_sentence_id": "CS01",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "exam_pattern": "본문 일치",
+      "page": [
+        68,
+        69
+      ],
+      "instruction": "다음 글의 내용과 일치하는 것은?",
+      "sentence": "Aloha! Welcome to Hawaii! Aloha means \"hello\" or \"goodbye\" in the Hawaiian language. I'm Malia, and I'm your hula teacher for today.\n\nHula is a traditional dance from Hawaii, and it has been a part of Hawaiian life for a long time. The early Hawaiians didn't have a writing system, so they used hula to tell stories.",
+      "choices": [
+        "Aloha는 영어로 'thank you'를 뜻한다.",
+        "Hula는 최근에 시작된 새로운 춤이다.",
+        "Hula는 오랫동안 하와이 사람들의 삶의 일부였다.",
+        "초기 하와이인들은 문자가 있었지만 hula로 이야기를 전했다.",
+        "Malia는 hula 수업을 듣는 학생이다."
+      ],
+      "correct": 2,
+      "hint": "본문 두 번째 문단 첫 문장에서 hula가 얼마나 오래된 춤인지 확인.",
+      "wrong_explanations": {
+        "0": "💡 본문 'hello or goodbye'야. thank you 아냐!",
+        "1": "💡 'for a long time' — 오래된 춤. 새로운 춤 아냐!",
+        "3": "💡 'didn't have a writing system' — 문자가 없었기 때문에 hula로 이야기를 전한 거야!",
+        "4": "💡 'I'm your hula teacher' — Malia는 선생님이야!"
+      }
+    },
+    {
+      "id": "PC4-MATCH-002",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "recovery_band": "A",
+      "core_sentence_id": "CS04",
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "exam_pattern": "본문 일치하지 않는 것",
+      "page": [
+        70
+      ],
+      "instruction": "다음 글의 내용과 일치하지 않는 것은?",
+      "sentence": "Now it's time to dance! Remember that you become a storyteller when you dance hula. You tell a story with your hands, feet, and hips. Oh, you need to take off your shoes and socks! Hula is always done barefoot.\n\nLet's start with the hand gestures. To show \"rain,\" wave your hands up and down. This gesture is called ua in the Hawaiian language, and it means \"rain.\" What about the sun? Hawaiians make a circle with their arms above their heads. That's ka la, the \"sun.\" These gestures are so simple that you can easily remember them.",
+      "choices": [
+        "훌라를 출 때 신발과 양말을 벗어야 한다.",
+        "훌라는 항상 맨발로 한다.",
+        "ua는 '비'를 뜻하는 손동작이다.",
+        "ka la는 '비'를 뜻하는 손동작이다.",
+        "훌라 손동작은 매우 단순해서 쉽게 기억할 수 있다."
+      ],
+      "correct": 3,
+      "hint": "두 손동작의 뜻을 정확히 구분. ua와 ka la가 각각 무엇?",
+      "wrong_explanations": {
+        "0": "💡 'take off your shoes and socks' — 본문 그대로 일치!",
+        "1": "💡 'always done barefoot' — 본문 그대로 일치!",
+        "2": "💡 'ua ... it means \"rain\"' — 본문 그대로 일치!",
+        "4": "💡 'so simple that you can easily remember' — 본문 그대로 일치!"
+      }
+    },
+    {
+      "id": "PC4-MATCH-003",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "B",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "recovery_band": "A",
+      "core_sentence_id": "CS05",
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "exam_pattern": "본문 일치",
+      "page": [
+        71
+      ],
+      "instruction": "다음 글의 내용과 일치하는 것은?",
+      "sentence": "Well, time's up! That's all for today. Remember that hula is not just a dance. Hula is a language and a way of storytelling, so it is important to Hawaiians. As a hula teacher, I always try to continue the history and culture of Hawaii. If you want to learn more, come to my next class. Everyone is welcome. Aloha!",
+      "choices": [
+        "Malia는 hula 수업의 학생이다.",
+        "Hula는 단지 춤일 뿐 다른 의미는 없다.",
+        "Hula는 하나의 언어이자 이야기를 전하는 방법이라서 하와이인들에게 중요하다.",
+        "Malia는 하와이의 역사와 문화에 관심이 없다.",
+        "다음 수업에 오려면 미리 예약해야 한다."
+      ],
+      "correct": 2,
+      "hint": "본문 핵심 문장: hula가 왜 하와이인들에게 중요한가?",
+      "wrong_explanations": {
+        "0": "💡 'As a hula teacher' — Malia는 선생님이야!",
+        "1": "💡 'not just a dance' — 그저 춤이 아니라 언어이자 이야기 전달 방법!",
+        "3": "💡 'try to continue the history and culture' — 오히려 이어가려고 노력해!",
+        "4": "💡 'Everyone is welcome' — 누구나 환영이지 예약 얘기 없어!"
+      }
+    },
+    {
+      "id": "PC4-MATCH-004",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "B",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "recovery_band": "B",
+      "core_sentence_id": "CS12",
+      "linked_rule_ids": [
+        "GR01",
+        "GR02"
+      ],
+      "exam_pattern": "본문 일치하지 않는 것",
+      "page": [
+        76
+      ],
+      "instruction": "다음 글의 내용과 일치하지 않는 것은?",
+      "sentence": "Have you ever watched Coco? It is about a boy who accidentally enters the Land of the Dead. From this movie, I learned about the Mexican holiday, the Day of the Dead. Mexican people believe that the spirits of the dead come back to visit their families during this time. The movie was so fun and interesting that I wanted to learn more about Mexican culture.",
+      "choices": [
+        "Coco는 한 소년이 우연히 죽은 자의 땅에 들어가는 이야기이다.",
+        "필자는 영화를 통해 멕시코 명절인 '죽은 자의 날'을 알게 되었다.",
+        "필자는 영화가 재미없어서 멕시코 문화에 흥미를 갖지 못했다.",
+        "멕시코 사람들은 '죽은 자의 날'에 죽은 가족의 영혼이 돌아온다고 믿는다.",
+        "글쓴이는 'Have you ever watched Coco?'라는 질문으로 글을 시작한다."
+      ],
+      "correct": 2,
+      "hint": "필자가 영화에 대해 어떻게 느꼈는지 본문 마지막 문장 확인.",
+      "wrong_explanations": {
+        "0": "💡 'a boy who accidentally enters the Land of the Dead' — 본문 그대로!",
+        "1": "💡 'I learned about the Mexican holiday, the Day of the Dead' — 본문 그대로!",
+        "3": "💡 'spirits of the dead come back to visit their families' — 본문 그대로!",
+        "4": "💡 본문 첫 문장이 'Have you ever watched Coco?'야!"
+      }
+    },
+    {
+      "id": "PC4-MATCH-005",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "easy",
+      "recovery_band": "A",
+      "core_sentence_id": "CS02",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "exam_pattern": "본문 일치",
+      "page": [
+        78
+      ],
+      "instruction": "다음 글의 내용과 일치하는 것은?",
+      "sentence": "Welcome to my Talchum class! Have you heard of Talchum before? Talchum is a traditional Korean mask dance. It has been a part of Korean culture for a long time. It is still performed during special days. Talchum has music, dance, and stories in it. In this class, you'll learn about different types of masks and get a chance to experience some dance movements. Let's dive into the exciting world of Talchum!",
+      "choices": [
+        "Talchum은 한국의 전통 가면 춤이다.",
+        "Talchum은 현대에 처음 만들어진 춤이다.",
+        "Talchum은 더 이상 어디에서도 공연되지 않는다.",
+        "Talchum에는 음악만 있고 이야기는 없다.",
+        "이 수업에서는 가면 종류만 배우고 동작은 가르치지 않는다."
+      ],
+      "correct": 0,
+      "hint": "본문 두 번째 문장에서 Talchum이 어떤 종류의 춤인지 확인.",
+      "wrong_explanations": {
+        "1": "💡 'for a long time' — 오래된 전통 춤!",
+        "2": "💡 'still performed during special days' — 여전히 공연되고 있어!",
+        "3": "💡 'music, dance, and stories' — 음악·춤·이야기 모두 포함!",
+        "4": "💡 'experience some dance movements' — 동작도 체험!"
+      }
+    },
+    {
+      "id": "Q-MULTI-AWK-L4-001",
+      "type": "choice_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "choice_blank",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "현재완료 시제 어색함 (since/for/ago)",
+      "instruction": "앞 뒤 관계가 어색한 문장을 모두 고르세요. (정답 2개)",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "page": 69,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번은 자연스러움. L4 CS01 직접 인용. has been + for + 기간.",
+        "Hula has been a part of Hawaiian life for a long time.": "①번은 자연스러움. L4 CS01 직접 인용. has been + for + 기간.",
+        "1": "②번이 어색. since + 시점(과거 특정 시점) — 'three years ago'는 부사구라 since와 함께 사용 불가. 'for three years' 또는 'since 2023'.",
+        "I have studied English since three years ago.": "②번이 어색. since + 시점(과거 특정 시점) — 'three years ago'는 부사구라 since와 함께 사용 불가. 'for three years' 또는 'since 2023'.",
+        "2": "③번은 자연스러움. has lived + for + 기간.",
+        "She has lived in Seoul for five years.": "③번은 자연스러움. has lived + for + 기간.",
+        "3": "④번이 어색. 현재완료 + ago 불가. 'visited Japan two months ago' (단순과거) 또는 'have visited Japan' (시점 없이).",
+        "We have visited Japan two months ago.": "④번이 어색. 현재완료 + ago 불가. 'visited Japan two months ago' (단순과거) 또는 'have visited Japan' (시점 없이).",
+        "4": "⑤번은 자연스러움. since + 시점(2020) — 정확한 용법.",
+        "They have known each other since 2020.": "⑤번은 자연스러움. since + 시점(2020) — 정확한 용법."
+      },
+      "choices": [
+        "Hula has been a part of Hawaiian life for a long time.",
+        "I have studied English since three years ago.",
+        "She has lived in Seoul for five years.",
+        "We have visited Japan two months ago.",
+        "They have known each other since 2020."
+      ],
+      "answer_indices": [
+        1,
+        3
+      ],
+      "prompt": "다음 ①~⑤ 중 어색한 두 문장을 고르세요."
+    },
+    {
+      "id": "Q-MULTI-AWK-L4-002",
+      "type": "choice_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "choice_blank",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "현재완료 vs 단순과거",
+      "instruction": "앞 뒤 관계가 어색한 문장을 모두 고르세요. (정답 2개)",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "page": 79,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번은 자연스러움. L4 CS03 직접 인용. 경험의 현재완료.",
+        "I have traveled to Gangneung with my grandmother.": "①번은 자연스러움. L4 CS03 직접 인용. 경험의 현재완료.",
+        "1": "②번이 어색. yesterday(과거 특정 시점) + 현재완료 불가. 'went to school yesterday' (단순과거).",
+        "She has gone to school yesterday.": "②번이 어색. yesterday(과거 특정 시점) + 현재완료 불가. 'went to school yesterday' (단순과거).",
+        "2": "③번은 자연스러움. L4 CS12 직접 인용. 경험의 'ever' + 현재완료.",
+        "Have you ever watched Coco?": "③번은 자연스러움. L4 CS12 직접 인용. 경험의 'ever' + 현재완료.",
+        "3": "④번이 어색. 두 문제 — 'have ate'은 have eaten (p.p.) 필요 + last weekend(과거 시점)와 현재완료 불가.",
+        "I have ate sushi last weekend.": "④번이 어색. 두 문제 — 'have ate'은 have eaten (p.p.) 필요 + last weekend(과거 시점)와 현재완료 불가.",
+        "4": "⑤번은 자연스러움. just + 현재완료 (완료 용법).",
+        "He has just finished his homework.": "⑤번은 자연스러움. just + 현재완료 (완료 용법)."
+      },
+      "choices": [
+        "I have traveled to Gangneung with my grandmother.",
+        "She has gone to school yesterday.",
+        "Have you ever watched Coco?",
+        "I have ate sushi last weekend.",
+        "He has just finished his homework."
+      ],
+      "answer_indices": [
+        1,
+        3
+      ],
+      "prompt": "다음 ①~⑤ 중 어색한 두 문장을 고르세요."
+    },
+    {
+      "id": "Q-MULTI-AWK-L4-003",
+      "type": "choice_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "choice_blank",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "so~that 어색함 (의미 혼란)",
+      "instruction": "앞 뒤 관계가 어색한 문장을 모두 고르세요. (정답 2개)",
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "page": 70,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번은 자연스러움. L4 CS04 직접 인용.",
+        "These gestures are so simple that you can easily remember them.": "①번은 자연스러움. L4 CS04 직접 인용.",
+        "1": "②번이 어색. 의미 충돌 — 'so boring that...twice' 부자연스러움. 지루하면 다시 안 봄. 'so interesting that I watched it twice' 가 자연.",
+        "The movie was so boring that I watched it twice.": "②번이 어색. 의미 충돌 — 'so boring that...twice' 부자연스러움. 지루하면 다시 안 봄. 'so interesting that I watched it twice' 가 자연.",
+        "2": "③번은 자연스러움. 피곤하면 일찍 자는 결과 자연.",
+        "He was so tired that he went to bed early.": "③번은 자연스러움. 피곤하면 일찍 자는 결과 자연.",
+        "3": "④번이 어색. 의미 충돌 — '쉬운 시험인데 아무도 통과 못 함' 모순. 'so difficult that nobody passed' 가 자연.",
+        "The test was so easy that nobody passed it.": "④번이 어색. 의미 충돌 — '쉬운 시험인데 아무도 통과 못 함' 모순. 'so difficult that nobody passed' 가 자연.",
+        "4": "⑤번은 자연스러움. 친절 → 모두가 좋아하는 결과 자연.",
+        "She is so kind that everyone likes her.": "⑤번은 자연스러움. 친절 → 모두가 좋아하는 결과 자연."
+      },
+      "choices": [
+        "These gestures are so simple that you can easily remember them.",
+        "The movie was so boring that I watched it twice.",
+        "He was so tired that he went to bed early.",
+        "The test was so easy that nobody passed it.",
+        "She is so kind that everyone likes her."
+      ],
+      "answer_indices": [
+        1,
+        3
+      ],
+      "prompt": "다음 ①~⑤ 중 어색한 두 문장을 고르세요."
+    },
+    {
+      "id": "Q-MULTI-AWK-L4-004",
+      "type": "choice_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "choice_blank",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "so~that 어순 어색",
+      "instruction": "앞 뒤 관계가 어색한 문장을 모두 고르세요. (정답 2개)",
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "page": 71,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번은 자연스러움. so + 형용사 + that 정확.",
+        "Hula is so important that Hawaiians teach it to children.": "①번은 자연스러움. so + 형용사 + that 정확.",
+        "1": "②번이 어색. 'so a hot day' 어순 불가 → 'so hot a day' 또는 'such a hot day'. so 뒤에는 형용사가 바로 옴.",
+        "It was so a hot day that we couldn't go out.": "②번이 어색. 'so a hot day' 어순 불가 → 'so hot a day' 또는 'such a hot day'. so 뒤에는 형용사가 바로 옴.",
+        "2": "③번은 자연스러움. so + 형용사(delicious) + that.",
+        "The food was so delicious that I ate everything.": "③번은 자연스러움. so + 형용사(delicious) + that.",
+        "3": "④번이 어색. 'fastly'는 단어 자체가 틀림. fast는 부사 그대로 'so fast that'.",
+        "He runs so fastly that no one can catch him.": "④번이 어색. 'fastly'는 단어 자체가 틀림. fast는 부사 그대로 'so fast that'.",
+        "4": "⑤번은 자연스러움. so + 형용사(interesting) + that.",
+        "The story is so interesting that I want to read it again.": "⑤번은 자연스러움. so + 형용사(interesting) + that."
+      },
+      "choices": [
+        "Hula is so important that Hawaiians teach it to children.",
+        "It was so a hot day that we couldn't go out.",
+        "The food was so delicious that I ate everything.",
+        "He runs so fastly that no one can catch him.",
+        "The story is so interesting that I want to read it again."
+      ],
+      "answer_indices": [
+        1,
+        3
+      ],
+      "prompt": "다음 ①~⑤ 중 어색한 두 문장을 고르세요."
+    },
+    {
+      "id": "Q-PARA-ORDER-L4-001",
+      "type": "paragraph_order",
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "test_task": "paragraph_order",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "L4 본문 변형 — 훌라",
+      "instruction": "다음에 이어질 글의 순서로 가장 적절한 것은?",
+      "linked_rule_ids": [
+        "GR01",
+        "GR02"
+      ],
+      "page": 69,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "default": "intro에서 훌라 정의(이야기를 전달하는 춤) → (A) 손짓의 의미 소개 → (B) 구체 예시(파도·해) → (C) 결론(언어이자 이야기 방법)."
+      },
+      "intro_paragraph_en": "Hula has been a part of Hawaiian life for a long time. It is a special dance that tells stories with the body.",
+      "paragraphs": [
+        {
+          "label": "(B)",
+          "text_en": "Each hand movement has a meaning. These gestures are so simple that you can easily remember them."
+        },
+        {
+          "label": "(C)",
+          "text_en": "For example, when dancers wave their hands like waves, they are showing the ocean. When they move their hands up, they mean the sun."
+        },
+        {
+          "label": "(A)",
+          "text_en": "Hula is a language and a way of storytelling, so it is important to Hawaiians. It is more than just a beautiful dance."
+        }
+      ],
+      "answer": [
+        "B",
+        "C",
+        "A"
+      ],
+      "prompt_ko": "다음에 이어질 글의 순서로 가장 적절한 것은?"
+    },
+    {
+      "id": "Q-PARA-ORDER-L4-002",
+      "type": "paragraph_order",
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "test_task": "paragraph_order",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "영화 추천 — 현재완료 활용",
+      "instruction": "다음에 이어질 글의 순서로 가장 적절한 것은?",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "page": 76,
+      "recovery_band": "B",
+      "wrong_explanations": {
+        "default": "intro에서 영화 소개 → (A) 영화의 영향 → (B) 영향 받은 후 행동 → (C) 현재의 꿈."
+      },
+      "intro_paragraph_en": "Have you ever watched Coco? It is a Pixar movie about Mexican culture.",
+      "paragraphs": [
+        {
+          "label": "(C)",
+          "text_en": "The movie was so fun and interesting that I wanted to learn more about Mexican culture."
+        },
+        {
+          "label": "(B)",
+          "text_en": "After watching it, I read books and visited websites about Mexico. I have learned many things since then."
+        },
+        {
+          "label": "(A)",
+          "text_en": "Now I dream of traveling to Mexico one day to see the real Day of the Dead festival."
+        }
+      ],
+      "answer": [
+        "C",
+        "B",
+        "A"
+      ],
+      "prompt_ko": "다음에 이어질 글의 순서로 가장 적절한 것은?"
+    },
+    {
+      "id": "Q-PARA-ORDER-L4-003",
+      "type": "paragraph_order",
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "test_task": "paragraph_order",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "so~that — 여행 경험담",
+      "instruction": "다음에 이어질 글의 순서로 가장 적절한 것은?",
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "page": 70,
+      "recovery_band": "B",
+      "wrong_explanations": {
+        "default": "intro 도착·총평 → 첫째 날(A) → 둘째 날(B) → 총결론(C). 시간순."
+      },
+      "intro_paragraph_en": "Last summer, my family traveled to Paris. The city is so beautiful that we wanted to stay longer.",
+      "paragraphs": [
+        {
+          "label": "(A)",
+          "text_en": "We visited the Louvre Museum on the first day. The museum is so big that we got lost twice."
+        },
+        {
+          "label": "(B)",
+          "text_en": "On the second day, we went to the Eiffel Tower. The view from the top was so amazing that we forgot the cold wind."
+        },
+        {
+          "label": "(C)",
+          "text_en": "Paris was so wonderful that my family decided to come back next year."
+        }
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "prompt_ko": "다음에 이어질 글의 순서로 가장 적절한 것은?"
+    },
+    {
+      "id": "Q-CONTENT-MATCH-L4-001",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "test_task": "short_reading",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "L4 본문 일치 — 훌라 소개",
+      "instruction": "다음 글의 내용과 일치하는 것은?",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "page": 69,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번 — 'a long time' 표현으로 보아 새 것이 아님.",
+        "Hula is a new dance in Hawaiian culture.": "①번 — 'a long time' 표현으로 보아 새 것이 아님.",
+        "1": "②번 — '이야기 전달 방법'이라 명시. 춤만이 아님.",
+        "Hula is only a dance, not a way of storytelling.": "②번 — '이야기 전달 방법'이라 명시. 춤만이 아님.",
+        "2": "③번 — 'so simple that you can easily remember' 그 반대.",
+        "Hula gestures are too difficult for beginners.": "③번 — 'so simple that you can easily remember' 그 반대.",
+        "3": "④번이 정답 — 'has been'(현재완료 계속) + 'is taught today' 본문 직접 매칭.",
+        "Hula has long been important to Hawaiian life and is taught in schools today.": "④번이 정답 — 'has been'(현재완료 계속) + 'is taught today' 본문 직접 매칭.",
+        "4": "⑤번 — 'taught in many schools' 본문과 반대.",
+        "Hula is no longer taught in Hawaiian schools.": "⑤번 — 'taught in many schools' 본문과 반대."
+      },
+      "choices": [
+        "Hula is a new dance in Hawaiian culture.",
+        "Hula is only a dance, not a way of storytelling.",
+        "Hula gestures are too difficult for beginners.",
+        "Hula has long been important to Hawaiian life and is taught in schools today.",
+        "Hula is no longer taught in Hawaiian schools."
+      ],
+      "correct": 3,
+      "sentence": "Hula has been a part of Hawaiian life for a long time. It is more than just a dance — it is a language and a way of storytelling. Each gesture has its own meaning. These gestures are so simple that you can easily remember them. Today, hula is taught in many schools in Hawaii."
+    },
+    {
+      "id": "Q-CONTENT-MATCH-L4-002",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "test_task": "short_reading",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "L4 본문 일치 — 탈춤",
+      "instruction": "다음 글의 내용과 일치하지 않는 것은?",
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "page": 73,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번은 일치. '전통적인 한국 가면 춤' 본문 그대로.",
+        "Talchum is a Korean mask dance.": "①번은 일치. '전통적인 한국 가면 춤' 본문 그대로.",
+        "1": "②번은 일치. L4 CS02 직접 인용.",
+        "Talchum has been a part of Korean culture for a long time.": "②번은 일치. L4 CS02 직접 인용.",
+        "2": "③번이 일치하지 않음(정답) — 본문은 '사람들이 가면을 썼다(wore masks)' 명시. 반대 진술.",
+        "People did not wear masks when they performed talchum.": "③번이 일치하지 않음(정답) — 본문은 '사람들이 가면을 썼다(wore masks)' 명시. 반대 진술.",
+        "3": "④번은 일치. so~that 구문 그대로.",
+        "Talchum stories were enjoyed by everyone.": "④번은 일치. so~that 구문 그대로.",
+        "4": "⑤번은 일치. 'performed at festivals and in theaters' 그대로.",
+        "Talchum is still performed today.": "⑤번은 일치. 'performed at festivals and in theaters' 그대로."
+      },
+      "choices": [
+        "Talchum is a Korean mask dance.",
+        "Talchum has been a part of Korean culture for a long time.",
+        "People did not wear masks when they performed talchum.",
+        "Talchum stories were enjoyed by everyone.",
+        "Talchum is still performed today."
+      ],
+      "correct": 2,
+      "sentence": "Talchum is a traditional Korean mask dance. It has been a part of Korean culture for a long time. In the past, people wore masks and acted out stories. The stories were so interesting that everyone enjoyed watching them. Today, talchum is performed at festivals and in theaters."
+    },
+    {
+      "id": "Q-CONTENT-MATCH-L4-003",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "test_task": "short_reading",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "L4 본문 일치 — 강릉 여행",
+      "instruction": "다음 글의 내용과 일치하는 것은?",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "page": 79,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번 — 'three times' 본문과 반대.",
+        "The writer has never been to Gangneung.": "①번 — 'three times' 본문과 반대.",
+        "1": "②번 — 'beaches and fresh seafood' 본문과 다름.",
+        "Gangneung is known for its mountains.": "②번 — 'beaches and fresh seafood' 본문과 다름.",
+        "2": "③번이 정답 — L4 CS03 직접 인용 + 횟수 'three times' 본문 매칭.",
+        "The writer has traveled to Gangneung with her grandmother three times.": "③번이 정답 — L4 CS03 직접 인용 + 횟수 'three times' 본문 매칭.",
+        "3": "④번 — 'changed a lot' 본문과 반대.",
+        "The writer's grandmother said the city has not changed.": "④번 — 'changed a lot' 본문과 반대.",
+        "4": "⑤번 — 'want to go back' 본문과 반대.",
+        "The writer doesn't want to visit Gangneung again.": "⑤번 — 'want to go back' 본문과 반대."
+      },
+      "choices": [
+        "The writer has never been to Gangneung.",
+        "Gangneung is known for its mountains.",
+        "The writer has traveled to Gangneung with her grandmother three times.",
+        "The writer's grandmother said the city has not changed.",
+        "The writer doesn't want to visit Gangneung again."
+      ],
+      "correct": 2,
+      "sentence": "I have traveled to Gangneung with my grandmother three times. Gangneung is famous for its beautiful beaches and fresh seafood. My grandmother said that the city has changed a lot since she was young. We have visited the Ojukheon House and the Coffee Street together. I want to go back next summer."
+    },
+    {
+      "id": "Q-CONTENT-MATCH-L4-004",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "test_task": "short_reading",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "L4 본문 일치 — 코코 영화",
+      "instruction": "다음 글의 내용과 일치하지 않는 것은?",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "page": 76,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번은 일치. 'Pixar animated movie' 그대로.",
+        "Coco is a Pixar movie.": "①번은 일치. 'Pixar animated movie' 그대로.",
+        "1": "②번이 일치하지 않음(정답) — 'a boy named Miguel who loves music' 본문은 음악을 좋아한다고 명시. 반대 진술.",
+        "Miguel, the main character, hates music.": "②번이 일치하지 않음(정답) — 'a boy named Miguel who loves music' 본문은 음악을 좋아한다고 명시. 반대 진술.",
+        "2": "③번은 일치. 'so fun and interesting' 본문 그대로.",
+        "The writer found the movie fun and interesting.": "③번은 일치. 'so fun and interesting' 본문 그대로.",
+        "3": "④번은 일치. 'wanted to learn more about Mexican culture' 그대로.",
+        "The movie made the writer curious about Mexican culture.": "④번은 일치. 'wanted to learn more about Mexican culture' 그대로.",
+        "4": "⑤번은 일치. 'After watching it, I read about the Day of the Dead' 그대로.",
+        "The writer read about the Day of the Dead after watching the movie.": "⑤번은 일치. 'After watching it, I read about the Day of the Dead' 그대로."
+      },
+      "choices": [
+        "Coco is a Pixar movie.",
+        "Miguel, the main character, hates music.",
+        "The writer found the movie fun and interesting.",
+        "The movie made the writer curious about Mexican culture.",
+        "The writer read about the Day of the Dead after watching the movie."
+      ],
+      "correct": 1,
+      "sentence": "Have you ever watched Coco? It is a famous Pixar animated movie. The story is about a boy named Miguel who loves music. The movie was so fun and interesting that I wanted to learn more about Mexican culture. After watching it, I read about the Day of the Dead, a special holiday in Mexico."
+    },
+    {
+      "id": "Q-CONTENT-MATCH-L4-005",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "test_task": "short_reading",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "L4 본문 일치 — 뉴욕·인도 대화",
+      "instruction": "다음 글의 내용과 일치하는 것은?",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "page": 64,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번 — 'have watched three musicals' 본문과 반대.",
+        "Lisa has never been to a Broadway musical.": "①번 — 'have watched three musicals' 본문과 반대.",
+        "1": "②번 — 'wanted to visit India' 본문은 가본 적 없다고 암시.",
+        "Tom has visited India many times.": "②번 — 'wanted to visit India' 본문은 가본 적 없다고 암시.",
+        "2": "③번이 정답 — L4 CS09 직접 인용 + 횟수 매칭.",
+        "Lisa has watched three musicals in New York.": "③번이 정답 — L4 CS09 직접 인용 + 횟수 매칭.",
+        "3": "④번 — 인도는 Taj Mahal로 유명. 뉴욕이 Broadway.",
+        "India is famous for Broadway musicals.": "④번 — 인도는 Taj Mahal로 유명. 뉴욕이 Broadway.",
+        "4": "⑤번 — 'plan a trip together' 같이 가기로 한 것.",
+        "Lisa and Tom will travel separately next year.": "⑤번 — 'plan a trip together' 같이 가기로 한 것."
+      },
+      "choices": [
+        "Lisa has never been to a Broadway musical.",
+        "Tom has visited India many times.",
+        "Lisa has watched three musicals in New York.",
+        "India is famous for Broadway musicals.",
+        "Lisa and Tom will travel separately next year."
+      ],
+      "correct": 2,
+      "sentence": "Lisa and Tom are talking about famous places. Lisa says, \"New York is famous for Broadway musicals. I have watched three musicals there.\" Tom says, \"That sounds great. I have always wanted to visit India. India is famous for the Taj Mahal.\" They decided to plan a trip together next year."
+    },
+    {
+      "id": "Q-PASSIVE-L4-001",
+      "type": "choice_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "choice_blank",
+      "difficulty": "B",
+      "recovery_band": "A",
+      "is_bridge_item": false,
+      "hint": "주어(Hula)는 가르치는 주체가 아니라 가르침을 받는 대상 → 수동태 필요",
+      "core_sentence_id": "",
+      "exam_pattern": "현재 수동",
+      "keyword": "현재 수동 - is taught",
+      "instruction": "빈칸에 알맞은 것을 고르세요.",
+      "linked_rule_ids": [
+        "GR-PASSIVE"
+      ],
+      "page": null,
+      "prompt": "Hula _____ in schools across Hawaii today.",
+      "choices": [
+        "is teach",
+        "is teaching",
+        "is taught",
+        "teach"
+      ],
+      "correct": 2,
+      "correct_index": 2,
+      "wrong_explanations": {
+        "0": "is teach: 수동태는 'be + 과거분사(p.p.)'. 'teach'는 동사원형이라 형식 불일치.",
+        "is teach": "is teach: 수동태는 'be + 과거분사(p.p.)'. 'teach'는 동사원형이라 형식 불일치.",
+        "1": "is teaching: 진행형(능동) — 'Hula가 가르치고 있다'는 의미가 됨. 훌라는 대상이지 주체가 아님.",
+        "is teaching": "is teaching: 진행형(능동) — 'Hula가 가르치고 있다'는 의미가 됨. 훌라는 대상이지 주체가 아님.",
+        "2": "is taught: 정답. 'be + p.p.' 현재 수동. 'Hula는 가르쳐진다'.",
+        "is taught": "is taught: 정답. 'be + p.p.' 현재 수동. 'Hula는 가르쳐진다'.",
+        "3": "teach: 동사원형 단독으로 시제·주어 표시 없음. 'Hula teaches'가 되어도 의미 모순.",
+        "teach": "teach: 동사원형 단독으로 시제·주어 표시 없음. 'Hula teaches'가 되어도 의미 모순."
+      }
+    },
+    {
+      "id": "Q-PASSIVE-L4-002",
+      "type": "choice_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "choice_blank",
+      "difficulty": "B",
+      "recovery_band": "A",
+      "is_bridge_item": false,
+      "hint": "'by Leonardo da Vinci' 단서. 모나리자는 과거에 그려진 대상.",
+      "core_sentence_id": "",
+      "exam_pattern": "과거 수동 + by",
+      "keyword": "과거 수동 - was painted",
+      "instruction": "빈칸에 알맞은 것을 고르세요.",
+      "linked_rule_ids": [
+        "GR-PASSIVE"
+      ],
+      "page": null,
+      "prompt": "The Mona Lisa _____ by Leonardo da Vinci.",
+      "choices": [
+        "paints",
+        "painted",
+        "was painted",
+        "is painted"
+      ],
+      "correct": 2,
+      "correct_index": 2,
+      "wrong_explanations": {
+        "0": "paints: 현재 능동 — '모나리자가 그린다'가 되어 의미 모순.",
+        "paints": "paints: 현재 능동 — '모나리자가 그린다'가 되어 의미 모순.",
+        "1": "painted: 과거 능동 — '모나리자가 그렸다'가 되어 의미 모순. by 단서로 보아 수동 필요.",
+        "painted": "painted: 과거 능동 — '모나리자가 그렸다'가 되어 의미 모순. by 단서로 보아 수동 필요.",
+        "2": "was painted: 정답. 과거 수동 'was + p.p.'. 'by Leonardo da Vinci'와 정합.",
+        "was painted": "was painted: 정답. 과거 수동 'was + p.p.'. 'by Leonardo da Vinci'와 정합.",
+        "3": "is painted: 현재 수동 — Da Vinci는 16세기 인물. 시제 부적합 (과거 사건).",
+        "is painted": "is painted: 현재 수동 — Da Vinci는 16세기 인물. 시제 부적합 (과거 사건)."
+      }
+    },
+    {
+      "id": "Q-PASSIVE-L4-003",
+      "type": "choice_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "choice_blank",
+      "difficulty": "B",
+      "recovery_band": "A",
+      "is_bridge_item": false,
+      "hint": "주어 'tourists'는 끌리는 주체가 아니라 끌림을 당하는 대상 → 수동",
+      "core_sentence_id": "",
+      "exam_pattern": "현재 수동 by",
+      "keyword": "현재 수동 - are attracted",
+      "instruction": "빈칸에 알맞은 것을 고르세요.",
+      "linked_rule_ids": [
+        "GR-PASSIVE"
+      ],
+      "page": null,
+      "prompt": "Many tourists _____ by Hawaiian culture every year.",
+      "choices": [
+        "attract",
+        "attracts",
+        "are attract",
+        "are attracted"
+      ],
+      "correct": 3,
+      "correct_index": 3,
+      "wrong_explanations": {
+        "0": "attract: 동사원형, 시제·수일치 없음. by 단서로 보아 수동 필요.",
+        "attract": "attract: 동사원형, 시제·수일치 없음. by 단서로 보아 수동 필요.",
+        "1": "attracts: 현재 능동 단수 — 'tourists가 ~를 끌어들인다'. 주어와 by 단서 충돌.",
+        "attracts": "attracts: 현재 능동 단수 — 'tourists가 ~를 끌어들인다'. 주어와 by 단서 충돌.",
+        "2": "are attract: 'be + 동사원형'은 수동태 형식 아님. p.p.가 필요.",
+        "are attract": "are attract: 'be + 동사원형'은 수동태 형식 아님. p.p.가 필요.",
+        "3": "are attracted: 정답. 복수주어(tourists)+현재 수동 'are + p.p.'.",
+        "are attracted": "are attracted: 정답. 복수주어(tourists)+현재 수동 'are + p.p.'."
+      }
+    },
+    {
+      "id": "Q-PASSIVE-L4-004",
+      "type": "choice_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "choice_blank",
+      "difficulty": "B",
+      "recovery_band": "A",
+      "is_bridge_item": false,
+      "hint": "for centuries(수백 년간) → 현재완료. 그리고 Hula는 행위 대상 → 현재완료 수동",
+      "core_sentence_id": "CS01",
+      "exam_pattern": "현재완료 수동 (has been + p.p.)",
+      "keyword": "현재완료 수동 - has been performed",
+      "instruction": "빈칸에 알맞은 것을 고르세요.",
+      "linked_rule_ids": [
+        "GR-PASSIVE",
+        "GR01"
+      ],
+      "page": null,
+      "prompt": "Hula _____ for centuries by Hawaiians.",
+      "choices": [
+        "has performed",
+        "have performed",
+        "has been performed",
+        "was performed"
+      ],
+      "correct": 2,
+      "correct_index": 2,
+      "wrong_explanations": {
+        "0": "has performed: 현재완료 능동 — 'Hula가 ~를 공연해왔다'. Hula는 사람·주체가 아님.",
+        "has performed": "has performed: 현재완료 능동 — 'Hula가 ~를 공연해왔다'. Hula는 사람·주체가 아님.",
+        "1": "have performed: 주어 단수(Hula)인데 have(복수) — 수일치 오류 + 능동.",
+        "have performed": "have performed: 주어 단수(Hula)인데 have(복수) — 수일치 오류 + 능동.",
+        "2": "has been performed: 정답. 현재완료 수동 'has been + p.p.'. for centuries와 정합.",
+        "has been performed": "has been performed: 정답. 현재완료 수동 'has been + p.p.'. for centuries와 정합.",
+        "3": "was performed: 단순 과거 수동 — for centuries(수백 년 지속)와 시제 충돌.",
+        "was performed": "was performed: 단순 과거 수동 — for centuries(수백 년 지속)와 시제 충돌."
+      }
+    },
+    {
+      "id": "Q-PASSIVE-L4-005",
+      "type": "chunk_order",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "chunk_order",
+      "difficulty": "B",
+      "recovery_band": "A",
+      "is_bridge_item": false,
+      "hint": "수동태 어순: 주어 + be + p.p. + by + 사람",
+      "core_sentence_id": "",
+      "exam_pattern": "능동→수동 변환 arrange",
+      "keyword": "현재 수동 어순 arrange",
+      "instruction": "한국어 의미에 맞게 단어를 배열하세요.",
+      "linked_rule_ids": [
+        "GR-PASSIVE"
+      ],
+      "page": null,
+      "prompt_ko": "그 춤은 모든 사람에 의해 즐겨진다.",
+      "chunks": [
+        "The dance",
+        "is",
+        "enjoyed",
+        "by",
+        "everyone"
+      ],
+      "answer": "The dance is enjoyed by everyone",
+      "wrong_explanations": {
+        "default": "수동태 표준 어순: 주어(The dance) + be 동사(is) + 과거분사(enjoyed) + by + 행위자(everyone). 'enjoy'를 동사원형으로 두면 안 됨, p.p. 'enjoyed' 필수."
+      }
+    },
+    {
+      "id": "Q-PASSIVE-L4-006",
+      "type": "chunk_order",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "chunk_order",
+      "difficulty": "B",
+      "recovery_band": "A",
+      "is_bridge_item": false,
+      "hint": "be known for = ~으로 유명하다 (수동태 관용 표현)",
+      "core_sentence_id": "CS09",
+      "exam_pattern": "be known for 어순",
+      "keyword": "be known for arrange",
+      "instruction": "한국어 의미에 맞게 단어를 배열하세요.",
+      "linked_rule_ids": [
+        "GR-PASSIVE"
+      ],
+      "page": null,
+      "prompt_ko": "강릉은 그 산으로 유명하다.",
+      "chunks": [
+        "Gangneung",
+        "is",
+        "known",
+        "for",
+        "its mountains"
+      ],
+      "answer": "Gangneung is known for its mountains",
+      "wrong_explanations": {
+        "default": "'be known for'는 '~으로 유명하다' 수동태 관용 표현. 'is + known' 어순 + 'for' 전치사 (by가 아님!)."
+      }
+    },
+    {
+      "id": "Q-PASSIVE-L4-007",
+      "type": "choice_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "choice_blank",
+      "difficulty": "B",
+      "recovery_band": "A",
+      "is_bridge_item": false,
+      "hint": "주어 'gestures'는 기억의 대상. 'by visitors' 단서.",
+      "core_sentence_id": "CS04",
+      "exam_pattern": "현재 수동 by",
+      "keyword": "현재 수동 - are remembered",
+      "instruction": "빈칸에 알맞은 것을 고르세요.",
+      "linked_rule_ids": [
+        "GR-PASSIVE"
+      ],
+      "page": null,
+      "prompt": "Hula gestures _____ easily by visitors.",
+      "choices": [
+        "remember",
+        "remembers",
+        "are remembering",
+        "are remembered"
+      ],
+      "correct": 3,
+      "correct_index": 3,
+      "wrong_explanations": {
+        "0": "remember: 동사원형, 시제 없음 + 능동 의미라 by 단서와 충돌.",
+        "remember": "remember: 동사원형, 시제 없음 + 능동 의미라 by 단서와 충돌.",
+        "1": "remembers: 단수 현재 능동, 주어가 복수(gestures)라 수일치 오류 + 의미 충돌.",
+        "remembers": "remembers: 단수 현재 능동, 주어가 복수(gestures)라 수일치 오류 + 의미 충돌.",
+        "2": "are remembering: 진행형 능동 — '제스처가 기억하고 있다'는 의미 모순.",
+        "are remembering": "are remembering: 진행형 능동 — '제스처가 기억하고 있다'는 의미 모순.",
+        "3": "are remembered: 정답. 복수주어 + 현재 수동 'are + p.p.'. 'by visitors'와 정합.",
+        "are remembered": "are remembered: 정답. 복수주어 + 현재 수동 'are + p.p.'. 'by visitors'와 정합."
+      }
+    },
+    {
+      "id": "W-PASSIVE-L4-001",
+      "type": "mini_writing",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "mini_writing",
+      "difficulty": "B",
+      "recovery_band": "A",
+      "is_bridge_item": false,
+      "hint": "주어(The Mona Lisa) + was + p.p.(painted) + by + 사람",
+      "core_sentence_id": "",
+      "exam_pattern": "과거 수동 영작",
+      "keyword": "수동태 영작 - was painted by",
+      "instruction": "다음 한국어 문장을 영어로 쓰세요. 'painted by'를 반드시 포함하세요.",
+      "linked_rule_ids": [
+        "GR-PASSIVE"
+      ],
+      "page": null,
+      "korean_full": "모나리자는 레오나르도 다빈치에 의해 그려졌다.",
+      "example_answer": "The Mona Lisa was painted by Leonardo da Vinci.",
+      "required_word": "painted by",
+      "min_words": 7,
+      "wrong_explanations": {
+        "default": "수동태 영작 핵심: 주어(The Mona Lisa) + be 과거(was) + 과거분사(painted) + by + 행위자(Leonardo da Vinci). 동사 'paint'를 그대로 두면 안 됨, p.p. 'painted'로 변환."
+      }
+    },
+    {
+      "id": "W-PASSIVE-L4-002",
+      "type": "mini_writing",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "mini_writing",
+      "difficulty": "B",
+      "recovery_band": "A",
+      "is_bridge_item": false,
+      "hint": "주어(Hula) + is + p.p.(taught) + in + 장소",
+      "core_sentence_id": "",
+      "exam_pattern": "현재 수동 영작",
+      "keyword": "수동태 영작 - is taught",
+      "instruction": "다음 한국어 문장을 영어로 쓰세요. 'is taught'를 반드시 포함하세요.",
+      "linked_rule_ids": [
+        "GR-PASSIVE"
+      ],
+      "page": null,
+      "korean_full": "훌라는 하와이의 학교에서 가르쳐진다.",
+      "example_answer": "Hula is taught in schools in Hawaii.",
+      "required_word": "is taught",
+      "min_words": 7,
+      "wrong_explanations": {
+        "default": "현재 수동: 주어(Hula) + is + p.p.(taught) + in + 장소(schools in Hawaii). 'teach'를 동사원형 그대로 두면 안 됨."
+      }
+    },
+    {
+      "id": "W-PASSIVE-L4-003",
+      "type": "mini_writing",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "mini_writing",
+      "difficulty": "B",
+      "recovery_band": "A",
+      "is_bridge_item": false,
+      "hint": "현재완료 수동 = has/have + been + p.p. (GR01 + GR-PASSIVE 결합)",
+      "core_sentence_id": "CS02",
+      "exam_pattern": "현재완료 수동 영작",
+      "keyword": "현재완료 수동 영작 - has been loved",
+      "instruction": "다음 한국어 문장을 영어로 쓰세요. 'has been'을 반드시 포함하세요.",
+      "linked_rule_ids": [
+        "GR-PASSIVE",
+        "GR01"
+      ],
+      "page": null,
+      "korean_full": "탈춤은 오랫동안 한국 문화의 일부로 사랑받아 왔다.",
+      "example_answer": "Talchum has been loved as part of Korean culture for a long time.",
+      "required_word": "has been",
+      "min_words": 9,
+      "wrong_explanations": {
+        "default": "현재완료 수동 = 'has/have + been + p.p.' 세 단어 모두 필요. 'has loved'(능동)는 의미 모순, 'is loved'(현재 수동)는 시제 충돌."
+      }
+    },
+    {
+      "id": "W-PASSIVE-L4-004",
+      "type": "mini_writing",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "mini_writing",
+      "difficulty": "B",
+      "recovery_band": "A",
+      "is_bridge_item": false,
+      "hint": "능동의 목적어(Coco)가 수동의 주어. 'made by' 형식.",
+      "core_sentence_id": "CS12",
+      "exam_pattern": "능동→수동 변환 영작",
+      "keyword": "수동태 변환 - was made by",
+      "instruction": "다음 능동태 문장을 수동태로 바꾸세요: 'Pixar made Coco in 2017.'",
+      "linked_rule_ids": [
+        "GR-PASSIVE"
+      ],
+      "page": null,
+      "korean_full": "(능동) Pixar made Coco in 2017. → (수동) ?",
+      "example_answer": "Coco was made by Pixar in 2017.",
+      "required_word": "was made",
+      "min_words": 6,
+      "wrong_explanations": {
+        "default": "능동→수동 변환 3단계: ① 능동 목적어(Coco)를 수동 주어로, ② 동사 'made'를 'was made'로 (be + p.p.), ③ 능동 주어(Pixar) 앞에 'by'."
+      }
+    },
+    {
+      "id": "D-PASSIVE-01",
+      "type": "flashcard",
+      "phase": "drill",
+      "drill_stage": 1,
+      "training_layer": "skill_focus",
+      "test_task": "flashcard",
+      "difficulty": "B",
+      "recovery_band": "A",
+      "is_bridge_item": false,
+      "hint": "be + p.p. 형식의 현재 수동태",
+      "core_sentence_id": "",
+      "exam_pattern": "수동태 표제 문장",
+      "keyword": "수동태 표제 - is taught (현재 수동)",
+      "instruction": "다음 문장을 소리 내어 읽어보세요.",
+      "linked_rule_ids": [
+        "GR-PASSIVE"
+      ],
+      "page": null,
+      "prompt_en": "Hula is taught in schools today.",
+      "prompt_ko": "훌라는 오늘날 학교에서 가르쳐진다.",
+      "grammar_note": "be + p.p. 형식(is + taught) = 현재 수동태. 주어 'Hula'는 가르치는 주체가 아니라 대상.",
+      "wrong_explanations": {}
+    },
+    {
+      "id": "D-PASSIVE-02",
+      "type": "choice_blank",
+      "phase": "drill",
+      "drill_stage": 2,
+      "training_layer": "skill_focus",
+      "test_task": "choice_blank",
+      "difficulty": "B",
+      "recovery_band": "A",
+      "is_bridge_item": false,
+      "hint": "현재 수동 = be + p.p.",
+      "core_sentence_id": "",
+      "exam_pattern": "수동태 빈칸",
+      "keyword": "수동태 drill 빈칸 - taught",
+      "instruction": "빈칸에 알맞은 말을 고르세요.",
+      "linked_rule_ids": [
+        "GR-PASSIVE"
+      ],
+      "page": null,
+      "prompt": "Hula is _____ in schools today.",
+      "choices": [
+        "teach",
+        "teaching",
+        "taught",
+        "teaches"
+      ],
+      "correct": 2,
+      "correct_index": 2,
+      "answer": "taught",
+      "wrong_explanations": {
+        "0": "teach: 동사원형 — 수동태엔 과거분사(p.p.) 필요.",
+        "teach": "teach: 동사원형 — 수동태엔 과거분사(p.p.) 필요.",
+        "1": "teaching: 현재분사(-ing) — 진행형이지 수동태 형식 아님.",
+        "teaching": "teaching: 현재분사(-ing) — 진행형이지 수동태 형식 아님.",
+        "2": "taught: 정답. 'teach'의 과거분사. 'is + taught' = 현재 수동.",
+        "taught": "taught: 정답. 'teach'의 과거분사. 'is + taught' = 현재 수동.",
+        "3": "teaches: 단수 현재 능동 — 'is teaches' 자체가 영어에서 불가능한 형태."
+      }
+    },
+    {
+      "id": "D-PASSIVE-03",
+      "type": "chunk_order",
+      "phase": "drill",
+      "drill_stage": 3,
+      "training_layer": "skill_focus",
+      "test_task": "chunk_order",
+      "difficulty": "B",
+      "recovery_band": "A",
+      "is_bridge_item": false,
+      "hint": "수동태 어순: 주어 + be + p.p. + 부가어",
+      "core_sentence_id": "",
+      "exam_pattern": "수동태 어순 배열",
+      "keyword": "수동태 drill 청크 - Hula is taught",
+      "instruction": "조각을 올바른 순서로 배열하세요.",
+      "linked_rule_ids": [
+        "GR-PASSIVE"
+      ],
+      "page": null,
+      "prompt_ko": "훌라는 오늘날 학교에서 가르쳐진다.",
+      "chunks": [
+        "Hula",
+        "is taught",
+        "in schools",
+        "today"
+      ],
+      "answer": "Hula is taught in schools today",
+      "wrong_explanations": {
+        "default": "수동태 어순: 주어(Hula) + be 동사 + 과거분사(is taught) + 장소(in schools) + 시간(today). 'is taught'는 한 덩어리로 묶임."
+      }
+    },
+    {
+      "id": "D-PASSIVE-04",
+      "type": "typed_blank",
+      "phase": "drill",
+      "drill_stage": 4,
+      "training_layer": "skill_focus",
+      "test_task": "typed_blank",
+      "difficulty": "B",
+      "recovery_band": "A",
+      "is_bridge_item": false,
+      "hint": "be + p.p. 두 단어 모두 입력",
+      "core_sentence_id": "",
+      "exam_pattern": "수동태 직접 입력",
+      "keyword": "수동태 drill 직접 입력 - is taught",
+      "instruction": "빈칸에 알맞은 단어를 직접 입력하세요.",
+      "linked_rule_ids": [
+        "GR-PASSIVE"
+      ],
+      "page": null,
+      "prompt": "Hula _____ _____ in schools today.",
+      "prompt_ko": "훌라는 오늘날 학교에서 가르쳐진다.",
+      "answers": [
+        "is",
+        "taught"
+      ],
+      "accept_typos": {
+        "taught": [
+          "taght",
+          "tought"
+        ]
+      },
+      "wrong_explanations": {}
+    },
+    {
+        "id": "Q-DLG-ORDER-L4-001",
+        "type": "dialogue_order",
+        "phase": "exam_prep",
+        "training_layer": "skill_focus",
+        "test_task": "dialogue_order",
+        "difficulty": "B",
+        "is_bridge_item": false,
+        "hint": "Paris의 Louvre Museum 앞 대화. 'I beg your pardon?'은 못 알아들었을 때 응답.",
+        "core_sentence_id": "CS10",
+        "exam_pattern": "대화 순서 배열",
+        "keyword": "Louvre Museum 5문장 대화 (CS10 REVIEW p78)",
+        "instruction": "다음 대화를 올바른 순서로 배열하세요.",
+        "linked_rule_ids": [],
+        "page": 78,
+        "recovery_band": "A",
+        "wrong_explanations": {
+          "default": "정답 순서: (a) Louvre Museum 발견 → (b) 못 알아들음(반복요청) → (c) 다시 말하기 → (d) Mona Lisa로 유명 → (e) 가보고 싶다는 동의. L4 본문 p78 REVIEW의 대화 흐름 그대로."
+        },
+        "intro_paragraph_en": null,
+        "paragraphs": [
+          {
+            "label": "(b)",
+            "text_en": "I beg your pardon?"
+          },
+          {
+            "label": "(d)",
+            "text_en": "It's famous for the Mona Lisa."
+          },
+          {
+            "label": "(a)",
+            "text_en": "I can't believe I'm in Paris. Look! That's the Louvre Museum!"
+          },
+          {
+            "label": "(e)",
+            "text_en": "Oh, right! I've always wanted to see it."
+          },
+          {
+            "label": "(c)",
+            "text_en": "I said the Louvre Museum."
+          }
+        ],
+        "answer": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e"
+        ],
+        "prompt_ko": "다음 대화를 올바른 순서로 배열하세요. (Paris의 Louvre Museum 앞 대화)"
+      },
+    {
+        "id": "Q-DLG-ORDER-L4-002",
+        "type": "dialogue_order",
+        "phase": "exam_prep",
+        "training_layer": "skill_focus",
+        "test_task": "dialogue_order",
+        "difficulty": "B",
+        "is_bridge_item": false,
+        "hint": "India 여행 이야기. 속삭임 → 못 알아들음(Pardon?) → 다시 말하기 → 무엇으로 유명한지 질문 → 답.",
+        "core_sentence_id": "CS08",
+        "exam_pattern": "대화 순서 배열",
+        "keyword": "India Taj Mahal 5문장 대화 (CS08·CS11 본문 p67)",
+        "instruction": "다음 대화를 올바른 순서로 배열하세요.",
+        "linked_rule_ids": [],
+        "page": 67,
+        "recovery_band": "A",
+        "wrong_explanations": {
+          "default": "정답 순서: (a) 속삭임으로 첫 발화 → (b) 못 알아들음(Pardon?) → (c) 다시 말하기 → (d) 유명한 것 질문 → (e) 답변. L4 listen_talk p67 본문 흐름 그대로."
+        },
+        "intro_paragraph_en": null,
+        "paragraphs": [
+          {
+            "label": "(c)",
+            "text_en": "I said I want to visit India."
+          },
+          {
+            "label": "(e)",
+            "text_en": "It's famous for the Taj Mahal."
+          },
+          {
+            "label": "(a)",
+            "text_en": "(whispering) I want to visit India."
+          },
+          {
+            "label": "(b)",
+            "text_en": "Pardon?"
+          },
+          {
+            "label": "(d)",
+            "text_en": "What is India famous for?"
+          }
+        ],
+        "answer": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e"
+        ],
+        "prompt_ko": "다음 대화를 올바른 순서로 배열하세요. (India Taj Mahal 대화)"
+      }
   ],
   "vocab_drill": [
     {
@@ -5067,6 +6452,106 @@ __loadLesson({
       "example_source": "본문 p.70",
       "example_ko_chunk": "**흔들어라** / 너의 손가락을 / 네가 움직이는 동안 / 너의 팔을 / 위아래로.",
       "example_ko": "팔을 위아래로 움직이면서 손가락을 **흔들어라**."
+    },
+    {
+      "id": "VD-L4-036",
+      "word": "famous",
+      "pos": "형용사",
+      "meaning": "유명한 (be famous for: ~로 유명하다)",
+      "example": "New York is famous for Broadway musicals.",
+      "example_source": "본문 p.64",
+      "example_ko_chunk": "뉴욕은 / **유명하다** / 브로드웨이 뮤지컬로.",
+      "example_ko": "뉴욕은 브로드웨이 뮤지컬로 **유명하다**."
+    },
+    {
+      "id": "VD-L4-037",
+      "word": "dance",
+      "pos": "명사·동사",
+      "meaning": "춤, 춤추다",
+      "example": "Hula is a special dance that tells stories with the body.",
+      "example_source": "본문 p.69 변형",
+      "example_ko_chunk": "훌라는 / 이다 / 특별한 **춤** / 이야기를 전달하는 / 몸으로.",
+      "example_ko": "훌라는 몸으로 이야기를 전달하는 특별한 **춤**이다."
+    },
+    {
+      "id": "VD-L4-038",
+      "word": "visit",
+      "pos": "동사",
+      "meaning": "방문하다, 찾아가다",
+      "example": "I have visited Gangneung three times.",
+      "example_source": "본문 p.79 응용",
+      "example_ko_chunk": "나는 / **방문한 적 있다** / 강릉을 / 세 번.",
+      "example_ko": "나는 강릉을 세 번 **방문한 적이 있다**."
+    },
+    {
+      "id": "VD-L4-039",
+      "word": "believe",
+      "pos": "동사",
+      "meaning": "믿다",
+      "example": "I believe that hula tells the soul of Hawaii.",
+      "example_source": "본문 응용",
+      "example_ko_chunk": "나는 / **믿는다** / 훌라가 / 전한다는 것을 / 하와이의 영혼을.",
+      "example_ko": "나는 훌라가 하와이의 영혼을 전한다고 **믿는다**."
+    },
+    {
+      "id": "VD-L4-040",
+      "word": "easily",
+      "pos": "부사",
+      "meaning": "쉽게",
+      "example": "These gestures are so simple that you can easily remember them.",
+      "example_source": "본문 p.70",
+      "example_ko_chunk": "이 손짓들은 / 너무 단순해서 / 너는 / **쉽게** / 기억할 수 있다 / 그것들을.",
+      "example_ko": "이 손짓들은 너무 단순해서 너는 그것들을 **쉽게** 기억할 수 있다."
+    },
+    {
+      "id": "VD-L4-041",
+      "word": "beautiful",
+      "pos": "형용사",
+      "meaning": "아름다운",
+      "example": "Hula is more than just a beautiful dance.",
+      "example_source": "본문 응용",
+      "example_ko_chunk": "훌라는 / 이상이다 / 단순히 **아름다운** 춤 / 그.",
+      "example_ko": "훌라는 단순히 **아름다운** 춤 이상이다."
+    },
+    {
+      "id": "VD-L4-042",
+      "word": "culture",
+      "pos": "명사",
+      "meaning": "문화",
+      "example": "Talchum has been a part of Korean culture for a long time.",
+      "example_source": "본문 p.73",
+      "example_ko_chunk": "탈춤은 / 일부였다 / 한국 **문화**의 / 오랜 시간 동안.",
+      "example_ko": "탈춤은 오랜 시간 동안 한국 **문화**의 일부였다."
+    },
+    {
+      "id": "VD-L4-043",
+      "word": "traditional",
+      "pos": "형용사",
+      "meaning": "전통의, 전통적인",
+      "example": "Talchum is a traditional Korean mask dance.",
+      "example_source": "본문 p.73",
+      "example_ko_chunk": "탈춤은 / 이다 / **전통적인** 한국 가면 춤.",
+      "example_ko": "탈춤은 **전통적인** 한국 가면 춤이다."
+    },
+    {
+      "id": "VD-L4-044",
+      "word": "simple",
+      "pos": "형용사",
+      "meaning": "단순한, 간단한",
+      "example": "These gestures are so simple that everyone can learn them.",
+      "example_source": "본문 p.70 변형",
+      "example_ko_chunk": "이 손짓들은 / 너무 **단순해서** / 모두가 / 배울 수 있다 / 그것들을.",
+      "example_ko": "이 손짓들은 너무 **단순해서** 모두가 배울 수 있다."
+    },
+    {
+      "id": "VD-L4-045",
+      "word": "remember",
+      "pos": "동사",
+      "meaning": "기억하다",
+      "example": "You can easily remember these hula gestures.",
+      "example_source": "본문 p.70",
+      "example_ko_chunk": "너는 / 쉽게 / **기억할 수 있다** / 이 훌라 손짓들을.",
+      "example_ko": "너는 이 훌라 손짓들을 쉽게 **기억할 수 있다**."
     }
   ],
   "grammar_rules": [
@@ -5085,6 +6570,22 @@ __loadLesson({
       "example_correct": "These gestures are so simple that you can easily remember them.",
       "example_wrong": "These gestures are so simple you can easily remember them.",
       "memory_tip": "so랑 that은 짝꿍! that 빠뜨리면 100% 틀림! so 뒤엔 형용사/부사만!"
+    },
+    {
+      "id": "EXAM-PROC",
+      "name": "exam_procedure",
+      "rule_ko": "1) 모든 문항 첫 줄을 끝까지 읽는다. '모두 고르세요'·'(정답 N개)'·'일치하지 않는 것' 같은 조건을 본문보다 먼저.\n2) '(정답 2개)'·'모두 고르면' 보이면 빈칸 옆에 '◆2' 표시. 답 적기 전에 2개 다 골랐는지 한 번 더 확인.\n3) 시제 부사구(yesterday·ago·since·for·last year)를 보면 동그라미. 현재완료는 yesterday/ago와 결합 불가.\n4) 'so + 형/부 + that'은 '너무 ~해서 ~하다'. 원인-결과 관계가 맞는지 확인.\n5) 관계대명사: 사람=who/that, 사물=which/that. 동물도 사물 취급.\n6) 글의 순서 (A)(B)(C): 본문(intro) 지시어·시간 부사구가 어느 (A)/(B)/(C)에서 받는지 표시.\n7) 본문 일치형(7·10·12·13·15·16·18·20·21번)이 많다. 본문 한 번에 끝까지 읽고 옵션 비교. 다시 읽기 X.\n8) OMR: 답안 작성은 마지막 5분에 한 번에. 다중정답은 두 칸 다 칠한 뒤 한 번 더 확인.",
+      "example_correct": "19번 보면 '앞 뒤 관계가 어색한 문장을 모두 고르면? (정답 2개)' — '◆2' 표시 → 5개 중 2개 골라 ②, ④ 답안 칸 둘 다 칠하기.",
+      "example_wrong": "'어색한 것은?'으로 잘못 읽고 1개만 골라 0점. 중간고사 4·5·19·24번 -8점 손실의 직접 원인.",
+      "memory_tip": "★ 첫 줄 끝까지 → ◆2 표시 → 시제 부사구 동그라미 → 본문 한 번에 → OMR 마지막 5분"
+    },
+    {
+      "id": "GR-PASSIVE",
+      "name": "passive_voice",
+      "rule_ko": "수동태 = be + 과거분사(p.p.)(+by ~). '~에 의해 ~되다' 의미. be 동사는 시제별로 바뀐다.\n① 현재: am/is/are + p.p. (예: Hula is taught.)\n② 과거: was/were + p.p. (예: The Mona Lisa was painted by Da Vinci.)\n③ 현재완료: have/has been + p.p. (예: Talchum has been loved for centuries.) → GR01 현재완료와 결합!\n능동→수동 변환 핵심: 능동의 목적어(○)가 수동의 주어가 되고, 능동의 동사가 'be + p.p.'로 변하며, 능동의 주어는 'by + 사람'으로 뒤로 간다.",
+      "example_correct": "Hula is taught in schools today. (현재) / The Mona Lisa was painted by Da Vinci. (과거) / Hula has been performed for centuries. (현재완료)",
+      "example_wrong": "Hula is teach in schools. (×동사원형 'teach'가 아니라 p.p. 'taught') / Mona Lisa was paint by Da Vinci. (×'paint'가 아니라 p.p. 'painted')",
+      "memory_tip": "★ be + p.p. + by — '동사 형태(p.p.)'와 'by ~' 두 가지 신호. 동사가 -ed/불규칙 p.p.로 바뀌었나? 'by + 사람'이 뒤에 붙는가? 둘 다 체크."
     }
   ]
 });
