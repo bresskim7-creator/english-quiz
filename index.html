@@ -3254,8 +3254,51 @@
             container.style.display = 'grid';
             container.innerHTML = '';
 
+            // [12 F-1] 다중정답 모드 감지 — short_reading 확장 (choice_blank 동일 패턴)
+            const isMulti = Array.isArray(q.answer_indices) && q.answer_indices.length > 0;
+
             const shuffled = q.choices.map((choice, idx) => ({ choice, idx }));
             shuffleArray(shuffled);
+
+            if (isMulti) {
+                // 다중정답: 체크박스형 토글 + 정답 개수 안내 + 제출 버튼
+                const need = q.answer_indices.length;
+                const info = document.createElement('div');
+                info.style.cssText = 'grid-column:1/-1;background:#FFF8E1;border-left:4px solid #FFA726;padding:10px 14px;margin-bottom:8px;border-radius:0 8px 8px 0;font-size:14px;color:#5D4037;font-weight:600;';
+                info.textContent = '✏️ 정답 ' + need + '개를 모두 고른 뒤 제출하세요';
+                container.appendChild(info);
+
+                const selectedSet = new Set();
+                const correctSet = new Set(q.answer_indices);
+
+                shuffled.forEach((item) => {
+                    const btn = document.createElement('button');
+                    btn.className = 'choice-btn';
+                    btn.textContent = item.choice;
+                    btn.dataset.origIdx = item.idx;
+                    btn.onclick = () => {
+                        if (btn.disabled) return;
+                        if (btn.classList.contains('multi-selected')) {
+                            btn.classList.remove('multi-selected');
+                            selectedSet.delete(item.idx);
+                        } else {
+                            btn.classList.add('multi-selected');
+                            selectedSet.add(item.idx);
+                        }
+                    };
+                    container.appendChild(btn);
+                });
+
+                const submitBtn = document.createElement('button');
+                submitBtn.id = 'multi-answer-submit';
+                submitBtn.textContent = '제출';
+                submitBtn.style.cssText = 'grid-column:1/-1;padding:14px;margin-top:8px;background:#1a73e8;color:white;border:none;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;';
+                submitBtn.onclick = () => handleChoiceBlankMultiAnswer(q, selectedSet, correctSet);
+                container.appendChild(submitBtn);
+                return;
+            }
+
+            // 단일정답: 기존 로직
             const newCorrect = shuffled.findIndex(x => x.idx === q.correct);
 
             shuffled.forEach((item, idx) => {
@@ -6450,4 +6493,14 @@
                 feedback.innerHTML += `<div style="background:#F5F5F5;padding:12px;border-radius:8px;margin-top:8px;font-size:14px;line-height:1.6;white-space:pre-line;">📝 ${renderMath(q.explanation)}</div>`;
             }
 
-            recordA
+            // [Codex 2026-05-13 index-tail-restore] Restored truncated tail from the last known-good index backup.
+            recordAnswer(q, isCorrect);
+            showNextButton();
+        }
+
+        // 앱 시작
+        // [Codex 2026-05-13 index-tail-restore] Keep this marker so coworkers can identify the recovery patch.
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>
