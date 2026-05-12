@@ -1,7 +1,7 @@
 __loadLesson({
   "lesson": 2,
   "title": "Lesson 2: Now One Foot, Now the Other",
-  "version": "3.15",
+  "version": "3.16",
   "build_date": "2026-05-12",
   "build_note": "v3.15 — L2 본문 일치/불일치형 5장 추가 (5/12h 보강)",
   "core_sentences": [
@@ -3361,34 +3361,34 @@ __loadLesson({
       "training_layer": "skill_focus"
     },
     {
-      "id": "E-SR-006",
-      "type": "short_reading",
-      "phase": "exam_prep",
-      "difficulty": null,
-      "keyword": null,
-      "instruction": "다음 글의 내용과 일치하는 것은?",
-      "hint": "'At that moment'는 'sneezing'이라는 회복 신호 직후의 순간이야. 첫 장면(탑 무너짐)과 헷갈리지 마!",
-      "wrong_explanations": {
-        "0": "병원에서 돌아왔을 때? 본문에서 그건 이미 일어났어. 'At that moment'는 더 뒤를 가리켜!",
-        "1": "재채기로 탑이 무너졌을 때? 그건 첫 장면(p.33) 이야기야. 회복 장면에선 안 일어나!",
-        "2": "Bobby가 블록을 가져왔을 때? 그건 준비 단계지, 회복 신호는 그 다음에 와."
+        "id": "E-SR-006",
+        "type": "short_reading",
+        "phase": "exam_prep",
+        "difficulty": null,
+        "keyword": null,
+        "instruction": "다음 글에서 'At that moment'가 가리키는 순간으로 가장 적절한 것은?",
+        "hint": "'At that moment'는 'sneezing'이라는 회복 신호 직후의 순간이야. 첫 장면(탑 무너짐)과 헷갈리지 마!",
+        "wrong_explanations": {
+          "0": "병원에서 돌아왔을 때? 본문에서 그건 이미 일어났어. 'At that moment'는 더 뒤를 가리켜!",
+          "1": "재채기로 탑이 무너졌을 때? 그건 첫 장면(p.33) 이야기야. 회복 장면에선 안 일어나!",
+          "2": "Bobby가 블록을 가져왔을 때? 그건 준비 단계지, 회복 신호는 그 다음에 와."
+        },
+        "core_sentence_id": "CS07",
+        "linked_rule_ids": [],
+        "recovery_band": "A",
+        "test_task": null,
+        "page": null,
+        "sentence": "Bobby came into Bob's room with the blocks. Bob's mouth made a small smile. Bobby began to build the tower. \"Okay, Bob, now the elephant block.\" Suddenly, Bob made a small sound like sneezing. At that moment, Bobby realized that Bob would recover soon.",
+        "choices": [
+          "Bob이 병원에서 돌아왔을 때",
+          "Bob이 재채기를 해서 탑이 무너졌을 때",
+          "Bobby가 블록을 가져왔을 때",
+          "Bob이 재채기 비슷한 작은 소리를 냈을 때"
+        ],
+        "correct": 3,
+        "exam_pattern": "시점 추론",
+        "training_layer": "skill_focus"
       },
-      "core_sentence_id": "CS07",
-      "linked_rule_ids": [],
-      "recovery_band": "A",
-      "test_task": null,
-      "page": null,
-      "sentence": "Bobby came into Bob's room with the blocks. Bob's mouth made a small smile. Bobby began to build the tower. \"Okay, Bob, now the elephant block.\" Suddenly, Bob made a small sound like sneezing. At that moment, Bobby realized that Bob would recover soon.",
-      "choices": [
-        "Bob이 병원에서 돌아왔을 때",
-        "Bob이 재채기를 해서 탑이 무너졌을 때",
-        "Bobby가 블록을 가져왔을 때",
-        "Bob이 재채기 비슷한 작은 소리를 냈을 때"
-      ],
-      "correct": 3,
-      "exam_pattern": "내용 일치/불일치",
-      "training_layer": "skill_focus"
-    },
     {
       "id": "E-SR-007",
       "type": "short_reading",
