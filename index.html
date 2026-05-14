@@ -1738,8 +1738,8 @@
         let hintUsedThisQuestion = false;
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
-        const BUILD_VERSION = '2026-05-14 v129';
-        const APP_CACHE_NAME = 'quiz-v129';
+        const BUILD_VERSION = '2026-05-14 v130';
+        const APP_CACHE_NAME = 'quiz-v130';
 
         function safeSetItem(key, value) {
             try {
@@ -5050,7 +5050,8 @@
                 type: q.type,
                 difficulty: q.difficulty || (q.phase === 'drill' ? 'drill' : ''),
                 keyword: q.keyword || q.core_sentence_id || q.id,
-                score_group: q.score_group || q.recovery_band || '',
+                score_group: q.score_group || '',
+                recovery_band: q.recovery_band || '',
                 test_task: q.test_task || q.type || '',
                 time_sec: elapsed,
                 hint_used: hintUsedThisQuestion,
@@ -5583,6 +5584,8 @@
                 percentage: percentage,
                 duration_sec: sessionDuration,
                 weak: weakKeywords.join(', '),
+                score_group: collectAnswerMeta(sessionAnswers, 'score_group'),
+                recovery_band: collectAnswerMeta(sessionAnswers, 'recovery_band'),
                 type_breakdown: typeBreakdown,
                 hint_count: hintCount,
                 metrics: metrics,
@@ -5681,6 +5684,8 @@
                     const q2 = findQuestionById(a.id);
                     return (q2 ? getWeakLabel(q2) : '') || a.keyword || a.id;
                 }).join(', '),
+                score_group: collectAnswerMeta(sessionAnswers, 'score_group'),
+                recovery_band: collectAnswerMeta(sessionAnswers, 'recovery_band'),
                 type_breakdown: '',
                 hint_count: sessionAnswers.filter(a => a.hint_used).length,
                 metrics: null,
@@ -5740,6 +5745,15 @@
             if (!id || !QUIZ_DATA || !QUIZ_DATA.concept_cards) return id || '';
             const card = QUIZ_DATA.concept_cards.find(c => c && c.id === id);
             return card ? (card.term || card.title || card.concept || id) : id;
+        }
+
+        function collectAnswerMeta(answers, key) {
+            const seen = new Set();
+            (answers || []).forEach(a => {
+                const v = a && a[key];
+                if (v !== '' && v != null) seen.add(String(v));
+            });
+            return Array.from(seen).join(', ');
         }
 
         function getWeakLabel(q) {
@@ -5808,6 +5822,8 @@
                     partial: log.partial ? 'Y' : 'N',
                     retry: log.retry ? 'Y' : 'N',
                     recovery_rate: log.recovery_rate != null ? log.recovery_rate : '',
+                    score_group: log.score_group || '',
+                    recovery_band: log.recovery_band || '',
                     timestamp: log.timestamp
                 };
 
