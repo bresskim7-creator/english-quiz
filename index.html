@@ -954,6 +954,9 @@
         .mode-btn.active { background: #2F5496; color: white; }
         .mode-btn:disabled { opacity: 0.4; cursor: not-allowed; }
         .mode-btn .mode-desc { display: block; font-size: 11px; font-weight: 400; opacity: 0.7; margin-top: 4px; }
+        .exam-perf-mode-btn { border-color: #4B5563 !important; color: #4B5563 !important; white-space: normal; }
+        .exam-perf-mode-btn.active { background: #4B5563 !important; color: white !important; border-color: #4B5563 !important; }
+        .exam-perf-frame { margin: 8px 0 12px; padding: 8px 10px; border-left: 4px solid #4B5563; background: #F3F4F6; border-radius: 0 8px 8px 0; font-size: 12px; font-weight: 700; color: #374151; }
         /* 국어 모드 셀렉터: 2x2 그리드 */
         #korean-mode-selector { flex-wrap: wrap; width: 90%; max-width: 320px; }
         #korean-mode-selector .mode-btn { flex: 0 0 calc(50% - 5px); white-space: normal; border-color: #6B4C9A; color: #6B4C9A; font-size: 14px; padding: 14px 8px; }
@@ -1480,6 +1483,10 @@
                 <button onclick="saveWebhookUrl()" style="margin-top:8px;padding:8px 16px;background:#2F5496;color:white;border:none;border-radius:6px;font-size:13px;cursor:pointer;">저장</button>
                 <button onclick="document.getElementById('webhook-settings').style.display='none';document.getElementById('webhook-settings-toggle').style.display='block';" style="margin-top:8px;margin-left:4px;padding:8px 16px;background:#f0f0f0;border:1px solid #ddd;border-radius:6px;font-size:13px;cursor:pointer;color:#666;">닫기</button>
                 <div id="webhook-status" style="font-size:11px;color:#4CAF50;margin-top:4px;"></div>
+                <label style="font-size:12px;color:#666;display:block;margin-top:12px;margin-bottom:4px;">시험 D-day</label>
+                <input type="date" id="exam-dday-input" onchange="saveExamDday()"
+                       style="width:100%;padding:10px;border:1px solid #ddd;border-radius:6px;font-size:13px;box-sizing:border-box;" />
+                <div id="exam-dday-status" style="font-size:11px;color:#777;margin-top:4px;"></div>
                 <div class="ops-diagnostics" id="ops-diagnostics">
                     <div class="ops-diag-row"><span>앱 버전</span><strong id="diag-build-version">-</strong></div>
                     <div class="ops-diag-row"><span>캐시명</span><strong id="diag-cache-name">-</strong></div>
@@ -1738,8 +1745,8 @@
         let hintUsedThisQuestion = false;
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
-        const BUILD_VERSION = '2026-05-14 v130';
-        const APP_CACHE_NAME = 'quiz-v130';
+        const BUILD_VERSION = '2026-05-14 v131';
+        const APP_CACHE_NAME = 'quiz-v131';
 
         function safeSetItem(key, value) {
             try {
@@ -2035,6 +2042,58 @@
             setText('diag-last-send', getLastSendTime());
         }
 
+
+
+        function getExamDday() {
+            return localStorage.getItem('pa_exam_dday') || '';
+        }
+
+        function getExamDdayDiff() {
+            const raw = getExamDday();
+            if (!raw) return null;
+            const target = new Date(raw + 'T00:00:00');
+            if (Number.isNaN(target.getTime())) return null;
+            const now = new Date();
+            const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            return Math.ceil((target.getTime() - todayStart.getTime()) / 86400000);
+        }
+
+        function isExamPerfWindow() {
+            const diff = getExamDdayDiff();
+            return diff != null && diff >= 0 && diff <= 7;
+        }
+
+        function updateExamDdayUi() {
+            const input = document.getElementById('exam-dday-input');
+            const status = document.getElementById('exam-dday-status');
+            const saved = getExamDday();
+            if (input) input.value = saved;
+            if (status) {
+                const diff = getExamDdayDiff();
+                if (!saved || diff == null) {
+                    status.textContent = '시험 D-day를 입력하면 D-7부터 시험 수행 모드가 보입니다.';
+                    status.style.color = '#777';
+                } else if (diff < 0) {
+                    status.textContent = '시험일이 지났습니다. 다음 시험일을 다시 입력하세요.';
+                    status.style.color = '#C62828';
+                } else if (diff <= 7) {
+                    status.textContent = 'D-' + diff + ' · 시험 수행 모드 노출 중';
+                    status.style.color = '#2E7D32';
+                } else {
+                    status.textContent = 'D-' + diff + ' · D-7부터 자동 노출';
+                    status.style.color = '#777';
+                }
+            }
+            if (QUIZ_DATA) renderExamPerfModeButton();
+        }
+
+        function saveExamDday() {
+            const input = document.getElementById('exam-dday-input');
+            const value = input ? input.value : '';
+            if (value) localStorage.setItem('pa_exam_dday', value);
+            else localStorage.removeItem('pa_exam_dday');
+            updateExamDdayUi();
+        }
         function resendLogsNow() {
             retransmitUnsentLogs();
             setTimeout(updateOpsDiagnostics, 800);
@@ -2062,6 +2121,7 @@
         let sessionAnswers = [];
         let questionHistory = {};
         let currentSessionMeta = null; // 세션 메타 (type, lesson, metrics)
+        let examPerfSessionMetrics = null;
 
         // 오답 재도전 상태
         let retryMode = false;
@@ -2413,13 +2473,16 @@
                     document.getElementById('mode-preparing-msg').style.display = 'block';
                 }
             }
+            renderExamPerfModeButton();
         }
 
         // B-2: Select learning mode
         function selectMode(mode) {
             currentMode = mode;
             document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
-            if (mode === 'drill') {
+            if (mode === 'exam_perf') {
+                document.querySelectorAll('.exam-perf-mode-btn').forEach(btn => btn.classList.add('active'));
+            } else if (mode === 'drill') {
                 document.getElementById('mode-btn-drill')?.classList.add('active');
             } else if (mode === 'vocab') {
                 document.getElementById('mode-btn-vocab')?.classList.add('active');
@@ -2475,6 +2538,7 @@
             }
             retransmitUnsentLogs();
             updateOpsDiagnostics();
+            updateExamDdayUi();
         }
 
         // localStorage 키 헬퍼: 국어는 quiz_history_kor1, 영어는 quiz_history_L1
@@ -2654,6 +2718,7 @@
         // mini_writing 비활성 (2026-05-14: PA 기말 = 5과목 선택형 100점 체계, mini_writing 점수 기여 0)
         // 학습 가치는 인정되나 기말 시점 슬롯 누수 차단 우선
         const HIDDEN_TYPES = new Set(['mini_writing']);
+        const HIDDEN_MODES_OUTSIDE_EXAM_WINDOW = new Set(['exam_perf']);
 
         function generateDrillSession() {
             if (!QUIZ_DATA || !QUIZ_DATA.core_sentences) return [];
@@ -2992,6 +3057,149 @@
             return result;
         }
 
+
+        function getExamPerfVariantKeys(q) {
+            const variants = q && q.exam_perf_variants ? q.exam_perf_variants : {};
+            return Object.keys(variants).filter(key => variants[key] && variants[key].active);
+        }
+
+        function getExamPerfQuestionPool() {
+            if (!QUIZ_DATA) return [];
+            const pools = [];
+            if (Array.isArray(QUIZ_DATA.questions)) pools.push(QUIZ_DATA.questions);
+            if (Array.isArray(QUIZ_DATA.exam_prep)) pools.push(QUIZ_DATA.exam_prep);
+            const seen = new Set();
+            const result = [];
+            pools.forEach(pool => {
+                pool.forEach(q => {
+                    if (!q || typeof q !== 'object') return;
+                    if (seen.has(q.id)) return;
+                    seen.add(q.id);
+                    if (getExamPerfVariantKeys(q).length > 0) result.push(q);
+                });
+            });
+            return result;
+        }
+
+        function hasExamPerfVariants() {
+            return getExamPerfQuestionPool().length > 0;
+        }
+
+        function getExamPerfModeContainer() {
+            const map = {
+                english: 'english-mode-selector',
+                korean: 'korean-mode-selector',
+                math: 'math-mode-selector',
+                social: 'social-mode-selector',
+                science: 'science-mode-selector'
+            };
+            return document.getElementById(map[currentSubject] || 'english-mode-selector');
+        }
+
+        function renderExamPerfModeButton() {
+            document.querySelectorAll('.exam-perf-mode-btn').forEach(btn => btn.remove());
+            const hiddenModes = HIDDEN_MODES_OUTSIDE_EXAM_WINDOW || new Set();
+            if (hiddenModes.has('exam_perf') && !isExamPerfWindow()) return;
+
+            const container = getExamPerfModeContainer();
+            if (!container) return;
+
+            const ready = hasExamPerfVariants();
+            document.getElementById('mode-selector-container').style.display = 'block';
+            document.getElementById('mode-preparing-msg').style.display = 'none';
+            container.style.display = 'flex';
+
+            const btn = document.createElement('button');
+            btn.className = 'mode-btn exam-perf-mode-btn';
+            btn.id = 'mode-exam-perf';
+            btn.disabled = !ready;
+            btn.innerHTML = ready
+                ? '시험 수행<span class="mode-desc">조건·OMR·시간</span>'
+                : '시험 수행<span class="mode-desc">준비 중</span>';
+            if (ready) {
+                btn.onclick = () => selectAndStart('exam_perf');
+            }
+            container.appendChild(btn);
+            if (currentMode === 'exam_perf') btn.classList.add('active');
+        }
+
+        function prepareExamPerfQuestion(q) {
+            const copy = { ...q };
+            const variants = q.exam_perf_variants || {};
+            const keys = getExamPerfVariantKeys(q);
+            copy._exam_perf = true;
+            copy._exam_perf_variants = keys;
+            copy._exam_condition_trap = !!(variants.condition_trap && variants.condition_trap.active);
+            copy._exam_omr = !!(variants.omr_marking && variants.omr_marking.active);
+            copy._exam_time_limit = variants.time_pressure && variants.time_pressure.active
+                ? Number(variants.time_pressure.seconds || 0)
+                : 0;
+            if (copy._exam_condition_trap && variants.condition_trap.prompt_modifier) {
+                const original = copy.instruction || '';
+                copy.instruction = variants.condition_trap.prompt_modifier + (original ? ' · ' + original : '');
+            }
+            return copy;
+        }
+
+        function generateExamPerfSession() {
+            const pool = getExamPerfQuestionPool();
+            if (pool.length === 0) return [];
+            const shuffled = [...pool];
+            shuffleArray(shuffled);
+            return shuffled.slice(0, Math.min(10, shuffled.length)).map(prepareExamPerfQuestion);
+        }
+
+        function resetExamPerfMetrics() {
+            examPerfSessionMetrics = {
+                condition_miss: 0,
+                omr_miss: 0,
+                timed_total: 0,
+                timed_ok: 0
+            };
+        }
+
+        function updateExamPerfMetrics(q, isCorrect, elapsed) {
+            if (!q || !q._exam_perf) return;
+            if (!examPerfSessionMetrics) resetExamPerfMetrics();
+            if (q._exam_condition_trap && !isCorrect) {
+                examPerfSessionMetrics.condition_miss++;
+            }
+            if (q._exam_omr && !isCorrect) {
+                examPerfSessionMetrics.omr_miss++;
+            }
+            if (q._exam_time_limit) {
+                examPerfSessionMetrics.timed_total++;
+                if (elapsed <= q._exam_time_limit) examPerfSessionMetrics.timed_ok++;
+            }
+        }
+
+        function getExamPerfLogFields() {
+            if (!examPerfSessionMetrics) {
+                return { condition_miss: '', omr_miss: '', time_complete: '' };
+            }
+            return {
+                condition_miss: examPerfSessionMetrics.condition_miss || 0,
+                omr_miss: examPerfSessionMetrics.omr_miss || 0,
+                time_complete: examPerfSessionMetrics.timed_total > 0
+                    ? (examPerfSessionMetrics.timed_ok >= examPerfSessionMetrics.timed_total ? 'Y' : 'N')
+                    : ''
+            };
+        }
+
+        function renderExamPerfQuestionFrame(q) {
+            document.querySelectorAll('.exam-perf-frame').forEach(el => el.remove());
+            if (!q || !q._exam_perf) return;
+            const chips = [];
+            if (q._exam_condition_trap) chips.push('조건 먼저');
+            if (q._exam_omr) chips.push('OMR 번호 확인');
+            if (q._exam_time_limit) chips.push(q._exam_time_limit + '초');
+            const frame = document.createElement('div');
+            frame.className = 'exam-perf-frame';
+            frame.textContent = '시험 수행 · ' + chips.join(' · ');
+            const instrEl = document.getElementById('instruction-text');
+            if (instrEl) instrEl.insertAdjacentElement('afterend', frame);
+        }
+
         // 세션 시작
         let sessionStartTime = null;
         let questionStartTime = null;
@@ -3004,6 +3212,33 @@
             // Vocab drill: separate flow
             if (currentMode === 'vocab') {
                 startVocabDrill();
+                return;
+            }
+
+            if (currentMode === 'exam_perf') {
+                if (!isExamPerfWindow()) {
+                    alert('시험 수행 모드는 시험 D-day 7일 전부터 열립니다.');
+                    return;
+                }
+                resetExamPerfMetrics();
+                currentSession = generateExamPerfSession();
+                if (!currentSession || currentSession.length === 0) {
+                    alert('이 과목은 시험 수행 문항을 준비 중입니다.');
+                    return;
+                }
+                currentQuestionIndex = 0;
+                sessionAnswers = [];
+                sessionStartTime = Date.now();
+                currentSessionMeta = {
+                    type: 'exam_perf',
+                    lesson: currentLesson,
+                    mode: currentMode,
+                    size: currentSession.length,
+                    score_groups: currentSession.map(q => q.score_group || q.recovery_band || '')
+                };
+                document.querySelector('.header-title').textContent = getHeaderTitle('시험 수행');
+                showPage('quiz-page');
+                showQuestion();
                 return;
             }
 
@@ -3096,6 +3331,7 @@
             const q = currentSession[currentQuestionIndex];
             const progress = ((currentQuestionIndex + 1) / currentSession.length) * 100;
             questionStartTime = Date.now();
+            document.querySelectorAll('.exam-perf-frame').forEach(el => el.remove());
 
             document.getElementById('progress-fill').style.width = progress + '%';
             const retryLabel = retryMode ? '재도전 ' : '';
@@ -3201,6 +3437,8 @@
                 showEnglishTypedAnswer(q);
             }
 
+            renderExamPerfQuestionFrame(q);
+
             // Vocab hint: show unknown words that appear in this question
             showVocabHint(q);
         }
@@ -3259,6 +3497,12 @@
             setTimeout(() => btn.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 150);
         }
 
+
+
+        function getExamPerfChoiceLabel(q, item, displayIdx) {
+            if (q && q._exam_omr) return (displayIdx + 1) + '. ' + item.choice;
+            return item.choice;
+        }
         // Fill Blank 유형
         function showFillBlank(q) {
             document.getElementById('question-text').textContent = q.sentence;
@@ -3274,7 +3518,7 @@
             shuffled.forEach((item, idx) => {
                 const btn = document.createElement('button');
                 btn.className = 'choice-btn';
-                btn.textContent = item.choice;
+                btn.textContent = getExamPerfChoiceLabel(q, item, idx);
                 btn.onclick = () => handleFillBlankAnswer(q, idx, newCorrect);
                 container.appendChild(btn);
             });
@@ -3298,7 +3542,7 @@
             shuffled.forEach((item, idx) => {
                 const btn = document.createElement('button');
                 btn.className = 'choice-btn';
-                btn.textContent = item.choice;
+                btn.textContent = getExamPerfChoiceLabel(q, item, idx);
                 btn.onclick = () => handleChoiceAnswer(q, idx, newCorrect, shuffled[idx].idx);
                 container.appendChild(btn);
             });
@@ -3376,10 +3620,10 @@
                 const selectedSet = new Set();
                 const correctSet = new Set(q.answer_indices);
 
-                shuffled.forEach((item) => {
+                shuffled.forEach((item, idx) => {
                     const btn = document.createElement('button');
                     btn.className = 'choice-btn';
-                    btn.textContent = item.choice;
+                    btn.textContent = getExamPerfChoiceLabel(q, item, idx);
                     btn.dataset.origIdx = item.idx;
                     btn.onclick = () => {
                         if (btn.disabled) return;
@@ -3409,7 +3653,7 @@
             shuffled.forEach((item, idx) => {
                 const btn = document.createElement('button');
                 btn.className = 'choice-btn';
-                btn.textContent = item.choice;
+                btn.textContent = getExamPerfChoiceLabel(q, item, idx);
                 btn.onclick = () => handleChoiceAnswer(q, idx, newCorrect, shuffled[idx].idx);
                 container.appendChild(btn);
             });
@@ -3590,7 +3834,7 @@
             shuffled.forEach((item, idx) => {
                 const btn = document.createElement('button');
                 btn.className = 'match-option';
-                btn.textContent = item.choice;
+                btn.textContent = getExamPerfChoiceLabel(q, item, idx);
                 btn.onclick = () => handleMatchAnswer(q, idx, newCorrect);
                 container.appendChild(btn);
             });
@@ -3799,7 +4043,7 @@
             shuffled.forEach((item, idx) => {
                 const btn = document.createElement('button');
                 btn.className = 'choice-btn';
-                btn.textContent = item.choice;
+                btn.textContent = getExamPerfChoiceLabel(q, item, idx);
                 btn.onclick = () => handleChoiceAnswer(q, idx, newCorrect, shuffled[idx].idx);
                 container.appendChild(btn);
             });
@@ -4504,10 +4748,10 @@
                 const selectedSet = new Set();
                 const correctSet = new Set(q.answer_indices);
 
-                shuffled.forEach((item) => {
+                shuffled.forEach((item, idx) => {
                     const btn = document.createElement('button');
                     btn.className = 'choice-btn';
-                    btn.textContent = item.choice;
+                    btn.textContent = getExamPerfChoiceLabel(q, item, idx);
                     btn.dataset.origIdx = item.idx;
                     btn.onclick = () => {
                         if (btn.disabled) return;
@@ -4539,7 +4783,7 @@
             shuffled.forEach((item, idx) => {
                 const btn = document.createElement('button');
                 btn.className = 'choice-btn';
-                btn.textContent = item.choice;
+                btn.textContent = getExamPerfChoiceLabel(q, item, idx);
                 btn.onclick = () => handleChoiceBlankAnswer(q, idx, newCorrect, item.choice);
                 container.appendChild(btn);
             });
@@ -4606,7 +4850,7 @@
             shuffled.forEach((item, idx) => {
                 const btn = document.createElement('button');
                 btn.className = 'choice-btn';
-                btn.textContent = item.choice;
+                btn.textContent = getExamPerfChoiceLabel(q, item, idx);
                 btn.onclick = () => handleChoiceBlankAnswer(q, idx, newCorrect, item.choice);
                 container.appendChild(btn);
             });
@@ -5044,6 +5288,7 @@
                 setTimeout(() => speakEnglish(getCorrectSentence(q)), 500);
             }
             const elapsed = questionStartTime ? Math.round((Date.now() - questionStartTime) / 1000) : 0;
+            updateExamPerfMetrics(q, isCorrect, elapsed);
             sessionAnswers.push({
                 id: q.id,
                 correct: isCorrect,
@@ -5055,6 +5300,9 @@
                 test_task: q.test_task || q.type || '',
                 time_sec: elapsed,
                 hint_used: hintUsedThisQuestion,
+                exam_perf: q._exam_perf ? 'Y' : '',
+                exam_perf_variants: q._exam_perf_variants ? q._exam_perf_variants.join('|') : '',
+                time_limit_sec: q._exam_time_limit || '',
                 phase: q.phase || ''
             });
 
@@ -5417,6 +5665,10 @@
             // Check if this is a drill session
             const isDrillSession = currentMode === 'drill';
 
+            if (currentMode === 'exam_perf') {
+                return { mode: 'exam_perf', ...getExamPerfLogFields() };
+            }
+
             if (isDrillSession) {
                 // Drill-specific metrics
                 const totalCorrect = answers.filter(a => a.correct).length;
@@ -5573,6 +5825,7 @@
             const hintCount = sessionAnswers.filter(a => a.hint_used).length;
 
             const metrics = compute4Metrics(sessionAnswers);
+            const examPerfFields = getExamPerfLogFields();
 
             const log = {
                 lesson: currentLesson || 1,
@@ -5589,6 +5842,9 @@
                 type_breakdown: typeBreakdown,
                 hint_count: hintCount,
                 metrics: metrics,
+                condition_miss: examPerfFields.condition_miss,
+                omr_miss: examPerfFields.omr_miss,
+                time_complete: examPerfFields.time_complete,
                 details: sessionAnswers.map(a =>
                     a.id + (a.correct ? '✓' : '✗') + a.time_sec + 's' + (a.hint_used ? '💡' : '')
                 ).join(', '),
@@ -5822,6 +6078,9 @@
                     partial: log.partial ? 'Y' : 'N',
                     retry: log.retry ? 'Y' : 'N',
                     recovery_rate: log.recovery_rate != null ? log.recovery_rate : '',
+                    condition_miss: log.condition_miss != null ? log.condition_miss : '',
+                    omr_miss: log.omr_miss != null ? log.omr_miss : '',
+                    time_complete: log.time_complete || '',
                     score_group: log.score_group || '',
                     recovery_band: log.recovery_band || '',
                     timestamp: log.timestamp
@@ -5892,13 +6151,34 @@
                 // 로그도 부분 저장
                 if (sessionAnswers.length > 0) {
                     const totalCorrect = sessionAnswers.filter(a => a.correct).length;
+                    const sessionDuration = sessionStartTime ? Math.round((Date.now() - sessionStartTime) / 1000) : 0;
+                    const typeStats = {};
+                    sessionAnswers.forEach(a => {
+                        if (!typeStats[a.type]) typeStats[a.type] = { total: 0, correct: 0 };
+                        typeStats[a.type].total++;
+                        if (a.correct) typeStats[a.type].correct++;
+                    });
+                    const typeBreakdown = Object.entries(typeStats).map(([t, st]) => t + ':' + st.correct + '/' + st.total).join(', ');
+                    const examPerfFields = getExamPerfLogFields();
                     const log = {
                         lesson: currentLesson || 1,
                         subject: currentSubject,
                         date: today(),
+                        session_type: currentSessionMeta ? currentSessionMeta.type : sessionType,
                         total: sessionAnswers.length,
                         correct: totalCorrect,
                         percentage: Math.round((totalCorrect / sessionAnswers.length) * 100),
+                        duration_sec: sessionDuration,
+                        weak: sessionAnswers.filter(a => !a.correct).map(a => a.keyword || a.id).join(', '),
+                        score_group: collectAnswerMeta(sessionAnswers, 'score_group'),
+                        recovery_band: collectAnswerMeta(sessionAnswers, 'recovery_band'),
+                        type_breakdown: typeBreakdown,
+                        hint_count: sessionAnswers.filter(a => a.hint_used).length,
+                        metrics: compute4Metrics(sessionAnswers),
+                        condition_miss: examPerfFields.condition_miss,
+                        omr_miss: examPerfFields.omr_miss,
+                        time_complete: examPerfFields.time_complete,
+                        details: sessionAnswers.map(a => a.id + (a.correct ? '✓' : '✗') + a.time_sec + 's' + (a.hint_used ? '💡' : '')).join(', '),
                         questions: sessionAnswers,
                         timestamp: new Date().toISOString(),
                         partial: true
@@ -6524,7 +6804,8 @@
 
             let optionsHtml = mathShuffleMap.map((item, i) => {
                 const label = String.fromCharCode(0x2460 + i); // ①②③④⑤
-                return `<button class="option-btn" style="display:block;width:100%;text-align:left;padding:12px 16px;margin-bottom:8px;border:2px solid #ddd;border-radius:10px;background:white;font-size:15px;cursor:pointer;line-height:1.5;" onclick="checkMathChoice(this, ${i})">${label} ${renderMath(item.opt)}</button>`;
+                const shown = q._exam_omr ? ((i + 1) + '. ' + renderMath(item.opt)) : (label + ' ' + renderMath(item.opt));
+                return `<button class="option-btn" style="display:block;width:100%;text-align:left;padding:12px 16px;margin-bottom:8px;border:2px solid #ddd;border-radius:10px;background:white;font-size:15px;cursor:pointer;line-height:1.5;" onclick="checkMathChoice(this, ${i})">${shown}</button>`;
             }).join('');
 
             container.innerHTML = sentenceHtml + visualHtml + `<div id="math-options">${optionsHtml}</div>`;

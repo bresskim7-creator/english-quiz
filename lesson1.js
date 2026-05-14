@@ -1,9 +1,9 @@
 __loadLesson({
   "lesson": 1,
   "title": "Lesson 1: New Year, New Me",
-  "version": "3.8",
-  "build_date": "2026-03-21",
-  "build_note": "v3.6 + exam_prep training_layer 재분류 (skill_focus/mixed_practice)",
+  "version": "3.81",
+  "build_date": "2026-05-12",
+  "build_note": "v3.81 — grammar_rules +1 (EXAM-PROC 시험 풀이 절차 메타 카드, 단원 무관 공통)",
   "core_sentences": [
     {
       "id": "CS01a",
@@ -1764,7 +1764,24 @@ __loadLesson({
       ],
       "correct": 1,
       "exam_pattern": "내용 일치/불일치",
-      "training_layer": "skill_focus"
+      "training_layer": "skill_focus",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건을 먼저 확인하세요"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 45
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
     },
     {
       "id": "R002",
@@ -1793,7 +1810,24 @@ __loadLesson({
       ],
       "correct": 2,
       "exam_pattern": "내용 일치/불일치",
-      "training_layer": "skill_focus"
+      "training_layer": "skill_focus",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": false,
+          "prompt_modifier": "조건을 먼저 확인하세요"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 45
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
     },
     {
       "id": "R003",
@@ -1851,7 +1885,24 @@ __loadLesson({
       ],
       "correct": 0,
       "exam_pattern": "내용 일치/불일치",
-      "training_layer": "skill_focus"
+      "training_layer": "skill_focus",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건을 먼저 확인하세요"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 45
+        },
+        "omr_marking": {
+          "active": false
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
     },
     {
       "id": "R005",
@@ -2058,7 +2109,24 @@ __loadLesson({
       ],
       "correct": 2,
       "exam_pattern": "어법 판단",
-      "training_layer": "skill_focus"
+      "training_layer": "skill_focus",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건을 먼저 확인하세요"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 40
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
     },
     {
       "id": "G002",
@@ -5611,6 +5679,14 @@ __loadLesson({
       "example_correct": "Let's find out what to do.",
       "example_wrong": "Let's find out what to doing.",
       "memory_tip": "의문사 + to + 동사원형! -ing 붙이거나 to 빼면 틀림!"
+    },
+    {
+      "id": "EXAM-PROC",
+      "name": "exam_procedure",
+      "rule_ko": "1) 모든 문항 첫 줄을 끝까지 읽는다. '모두 고르세요'·'(정답 N개)'·'일치하지 않는 것' 같은 조건을 본문보다 먼저.\n2) '(정답 2개)'·'모두 고르면' 보이면 빈칸 옆에 '◆2' 표시. 답 적기 전에 2개 다 골랐는지 한 번 더 확인.\n3) 시제 부사구(yesterday·ago·since·for·last year)를 보면 동그라미. 현재완료는 yesterday/ago와 결합 불가.\n4) 'so + 형/부 + that'은 '너무 ~해서 ~하다'. 원인-결과 관계가 맞는지 확인.\n5) 관계대명사: 사람=who/that, 사물=which/that. 동물도 사물 취급.\n6) 글의 순서 (A)(B)(C): 본문(intro) 지시어·시간 부사구가 어느 (A)/(B)/(C)에서 받는지 표시.\n7) 본문 일치형(7·10·12·13·15·16·18·20·21번)이 많다. 본문 한 번에 끝까지 읽고 옵션 비교. 다시 읽기 X.\n8) OMR: 답안 작성은 마지막 5분에 한 번에. 다중정답은 두 칸 다 칠한 뒤 한 번 더 확인.",
+      "example_correct": "19번 보면 '앞 뒤 관계가 어색한 문장을 모두 고르면? (정답 2개)' — '◆2' 표시 → 5개 중 2개 골라 ②, ④ 답안 칸 둘 다 칠하기.",
+      "example_wrong": "'어색한 것은?'으로 잘못 읽고 1개만 골라 0점. 중간고사 4·5·19·24번 -8점 손실의 직접 원인.",
+      "memory_tip": "★ 첫 줄 끝까지 → ◆2 표시 → 시제 부사구 동그라미 → 본문 한 번에 → OMR 마지막 5분"
     }
   ]
 });

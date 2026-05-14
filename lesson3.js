@@ -1,9 +1,9 @@
 __loadLesson({
   "lesson": 3,
   "title": "Lesson 3: New Ideas Bring Big Changes",
-  "version": "1.0",
-  "build_date": "2026-03-31",
-  "build_note": "v1.0 — 중간고사 범위 L3 신규 제작. 4모드 drill + exam_prep.",
+  "version": "1.1",
+  "build_date": "2026-05-12",
+  "build_note": "v1.1 — vocab_drill 36 카드 example/example_source/example_ko_chunk/example_ko 4필드 보강 (본문 직접 인용 30 + 본문 응용 6). VD-L3-028 (lead to) inflections=['led to'] 추가. L3 학습 인프라 갭 해소.",
   "core_sentences": [
     {
       "id": "CS01",
@@ -1761,7 +1761,24 @@ __loadLesson({
       ],
       "correct": 0,
       "exam_pattern": "내용 일치",
-      "training_layer": "skill_focus"
+      "training_layer": "skill_focus",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건을 먼저 확인하세요"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 45
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
     },
     {
       "id": "R002",
@@ -1792,7 +1809,24 @@ __loadLesson({
       ],
       "correct": 1,
       "exam_pattern": "내용 일치",
-      "training_layer": "skill_focus"
+      "training_layer": "skill_focus",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": false,
+          "prompt_modifier": "조건을 먼저 확인하세요"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 45
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
     },
     {
       "id": "R003",
@@ -2453,7 +2487,24 @@ __loadLesson({
       ],
       "correct": 0,
       "exam_pattern": "어법 오류 찾기",
-      "training_layer": "skill_focus"
+      "training_layer": "skill_focus",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건을 먼저 확인하세요"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 40
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
     },
     {
       "id": "G006",
@@ -2486,7 +2537,24 @@ __loadLesson({
       ],
       "correct": 0,
       "exam_pattern": "어법 오류 찾기",
-      "training_layer": "skill_focus"
+      "training_layer": "skill_focus",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건을 먼저 확인하세요"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 40
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
     },
     {
       "id": "G007",
@@ -4484,217 +4552,364 @@ __loadLesson({
       "id": "VD-L3-001",
       "word": "accident",
       "pos": "명사",
-      "meaning": "사고"
+      "meaning": "사고",
+      "example": "If there is a car accident, people are safer from sharp pieces of glass.",
+      "example_source": "본문 p.52 (Finding Safety in Glass)",
+      "example_ko_chunk": "자동차 사고가 / 일어나면 / 사람들은 / **사고**로부터 더 안전하다 / 날카로운 유리 조각들로부터.",
+      "example_ko": "자동차 **사고**가 났을 때, 사람들은 날카로운 유리 조각으로부터 더 안전하다."
     },
     {
       "id": "VD-L3-002",
       "word": "accidentally",
       "pos": "부사",
-      "meaning": "우연히, 실수로"
+      "meaning": "우연히, 실수로",
+      "example": "He accidentally hit the glass flask, and it fell on the floor.",
+      "example_source": "본문 p.52 (Finding Safety in Glass)",
+      "example_ko_chunk": "그는 / **실수로** / 유리 플라스크를 쳤다 / 그러자 그것이 / 바닥에 떨어졌다.",
+      "example_ko": "그는 **실수로** 유리 플라스크를 쳤고, 그것이 바닥에 떨어졌다."
     },
     {
       "id": "VD-L3-003",
       "word": "although",
       "pos": "접속사",
-      "meaning": "~이지만, ~에도 불구하고"
+      "meaning": "~이지만, ~에도 불구하고",
+      "example": "Although the chips remained in the cookies, she was not disappointed.",
+      "example_source": "본문 p.51 (A New Cookie Star)",
+      "example_ko_chunk": "**비록** / 초콜릿 조각들이 / 쿠키 안에 남아 있었지만 / 그녀는 / 실망하지 않았다.",
+      "example_ko": "**비록** 초콜릿 조각들이 쿠키 안에 남아 있었지만, 그녀는 실망하지 않았다."
     },
     {
       "id": "VD-L3-004",
       "word": "bake",
       "pos": "동사",
-      "meaning": "굽다"
+      "meaning": "굽다",
+      "example": "She wanted to bake chocolate cookies.",
+      "example_source": "본문 p.51 (A New Cookie Star)",
+      "example_ko_chunk": "그녀는 / 원했다 / **굽기를** / 초콜릿 쿠키를.",
+      "example_ko": "그녀는 초콜릿 쿠키를 **굽고** 싶어 했다."
     },
     {
       "id": "VD-L3-005",
       "word": "by chance",
       "pos": "구",
-      "meaning": "우연히"
+      "meaning": "우연히",
+      "example": "These wonderful inventions came by chance.",
+      "example_source": "본문 p.53 (Dry Cleaning)",
+      "example_ko_chunk": "이 멋진 발명품들은 / 생겨났다 / **우연히**.",
+      "example_ko": "이 멋진 발명품들은 **우연히** 생겨났다."
     },
     {
       "id": "VD-L3-006",
       "word": "chip",
       "pos": "명사",
-      "meaning": "조각, 칩"
+      "meaning": "조각, 칩",
+      "example": "She cut a chocolate bar into small chips.",
+      "example_source": "본문 p.51 (A New Cookie Star)",
+      "example_ko_chunk": "그녀는 / 잘랐다 / 초콜릿 막대를 / 작은 **조각들로**.",
+      "example_ko": "그녀는 초콜릿 막대를 작은 **조각들**로 잘랐다."
     },
     {
       "id": "VD-L3-007",
       "word": "contest",
       "pos": "명사",
-      "meaning": "대회"
+      "meaning": "대회",
+      "example": "He won the science contest with his invention.",
+      "example_source": "본문 응용 (L3 발명 주제)",
+      "example_ko_chunk": "그는 / 우승했다 / 과학 **대회에서** / 그의 발명품으로.",
+      "example_ko": "그는 자신의 발명품으로 과학 **대회**에서 우승했다."
     },
     {
       "id": "VD-L3-008",
       "word": "controller",
       "pos": "명사",
-      "meaning": "조종 장치"
+      "meaning": "조종 장치",
+      "example": "Juwon invented a new controller for the game.",
+      "example_source": "본문 응용 (L3 발명 주제, 교과서 Beyond Reading 인용)",
+      "example_ko_chunk": "주원이는 / 발명했다 / 새로운 **조종 장치를** / 게임용.",
+      "example_ko": "주원이는 게임용 새로운 **조종 장치**를 발명했다."
     },
     {
       "id": "VD-L3-009",
       "word": "cookie",
       "pos": "명사",
-      "meaning": "쿠키"
+      "meaning": "쿠키",
+      "example": "She invented chocolate chip cookies!",
+      "example_source": "본문 p.51 (A New Cookie Star)",
+      "example_ko_chunk": "그녀는 / 발명했다 / 초콜릿 칩 **쿠키를!**",
+      "example_ko": "그녀는 초콜릿 칩 **쿠키**를 발명했다!"
     },
     {
       "id": "VD-L3-010",
       "word": "delicious",
       "pos": "형용사",
-      "meaning": "맛있는"
+      "meaning": "맛있는",
+      "example": "Her new cookies were so delicious.",
+      "example_source": "본문 p.51 (A New Cookie Star)",
+      "example_ko_chunk": "그녀의 새로운 쿠키는 / 너무 **맛있었다**.",
+      "example_ko": "그녀의 새로운 쿠키는 너무 **맛있었다**."
     },
     {
       "id": "VD-L3-011",
       "word": "device",
       "pos": "명사",
-      "meaning": "장치, 기기"
+      "meaning": "장치, 기기",
+      "example": "I want to invent a useful device.",
+      "example_source": "본문 p.55 (Beyond Reading, Words Plus)",
+      "example_ko_chunk": "나는 / 원한다 / 발명하기를 / 유용한 **장치를**.",
+      "example_ko": "나는 유용한 **장치**를 발명하고 싶다."
     },
     {
       "id": "VD-L3-012",
       "word": "different",
       "pos": "형용사",
-      "meaning": "다른"
+      "meaning": "다른",
+      "example": "Dry cleaning is a different way to clean clothes.",
+      "example_source": "본문 응용 (L3 Dry Cleaning 주제)",
+      "example_ko_chunk": "드라이클리닝은 / **다른** 방법이다 / 옷을 세탁하는.",
+      "example_ko": "드라이클리닝은 옷을 세탁하는 **다른** 방법이다."
     },
     {
       "id": "VD-L3-013",
       "word": "dirty",
       "pos": "형용사",
-      "meaning": "더러운"
+      "meaning": "더러운",
+      "example": "The dirty spot on the tablecloth was cleaned by the lamp oil.",
+      "example_source": "본문 p.53 (Dry Cleaning)",
+      "example_ko_chunk": "**더러운** 얼룩이 / 식탁보 위의 / 깨끗해졌다 / 등잔 기름에 의해.",
+      "example_ko": "식탁보 위의 **더러운** 얼룩이 등잔 기름에 의해 깨끗해졌다."
     },
     {
       "id": "VD-L3-014",
       "word": "disappointed",
       "pos": "형용사",
-      "meaning": "실망한"
+      "meaning": "실망한",
+      "example": "When things go wrong, don't be disappointed.",
+      "example_source": "본문 p.53 (Dry Cleaning)",
+      "example_ko_chunk": "일이 / 잘못되어도 / **실망하지** 마라.",
+      "example_ko": "일이 잘못되어도 **실망하지** 마라."
     },
     {
       "id": "VD-L3-015",
       "word": "discovery",
       "pos": "명사",
-      "meaning": "발견"
+      "meaning": "발견",
+      "example": "His discovery led to a new way of cleaning clothes.",
+      "example_source": "본문 p.53 (Dry Cleaning)",
+      "example_ko_chunk": "그의 **발견은** / 이어졌다 / 새로운 방법으로 / 옷을 세탁하는.",
+      "example_ko": "그의 **발견**은 옷을 세탁하는 새로운 방법으로 이어졌다."
     },
     {
       "id": "VD-L3-016",
       "word": "dough",
       "pos": "명사",
-      "meaning": "반죽"
+      "meaning": "반죽",
+      "example": "She mixed them with her dough and put the cookie dough into the oven.",
+      "example_source": "본문 p.51 (A New Cookie Star)",
+      "example_ko_chunk": "그녀는 / 그것들을 섞었다 / 그녀의 **반죽과** / 그리고 / 쿠키 **반죽을** 넣었다 / 오븐 안에.",
+      "example_ko": "그녀는 그것들을 자신의 **반죽**에 섞었고, 쿠키 **반죽**을 오븐에 넣었다."
     },
     {
       "id": "VD-L3-017",
       "word": "enough",
       "pos": "형용사",
-      "meaning": "충분한"
+      "meaning": "충분한",
+      "example": "She didn't have enough time to melt chocolate.",
+      "example_source": "본문 p.51 (A New Cookie Star)",
+      "example_ko_chunk": "그녀는 / 가지지 않았다 / **충분한** 시간을 / 초콜릿을 녹일.",
+      "example_ko": "그녀는 초콜릿을 녹일 **충분한** 시간이 없었다."
     },
     {
       "id": "VD-L3-018",
       "word": "everywhere",
       "pos": "부사",
-      "meaning": "어디에나"
+      "meaning": "어디에나",
+      "example": "These days, we can find safety glass everywhere.",
+      "example_source": "본문 p.52 (Finding Safety in Glass)",
+      "example_ko_chunk": "요즘에는 / 우리는 / 찾을 수 있다 / 안전유리를 / **어디에서나**.",
+      "example_ko": "요즘에는 우리가 **어디에서나** 안전유리를 찾을 수 있다."
     },
     {
       "id": "VD-L3-019",
       "word": "expect",
       "pos": "동사",
-      "meaning": "기대하다, 예상하다"
+      "meaning": "기대하다, 예상하다",
+      "example": "Ms. Wakefield didn't expect her cookies to become famous.",
+      "example_source": "본문 응용 (Cookie Star 이야기 연장)",
+      "example_ko_chunk": "Wakefield 부인은 / **예상하지** 않았다 / 자신의 쿠키가 / 유명해질 것을.",
+      "example_ko": "Wakefield 부인은 자신의 쿠키가 유명해질 것을 **예상하지** 못했다."
     },
     {
       "id": "VD-L3-020",
       "word": "experiment",
       "pos": "명사",
-      "meaning": "실험"
+      "meaning": "실험",
+      "example": "Mr. Benedictus was doing an experiment in his lab.",
+      "example_source": "본문 응용 (Safety Glass 이야기 연장)",
+      "example_ko_chunk": "Benedictus 씨는 / 하고 있었다 / **실험을** / 그의 실험실에서.",
+      "example_ko": "Benedictus 씨는 실험실에서 **실험**을 하고 있었다."
     },
     {
       "id": "VD-L3-021",
       "word": "explain",
       "pos": "동사",
-      "meaning": "설명하다"
+      "meaning": "설명하다",
+      "example": "Mr. Jolly tried to explain his discovery.",
+      "example_source": "본문 응용 (Dry Cleaning 이야기 연장)",
+      "example_ko_chunk": "Jolly 씨는 / 노력했다 / **설명하려고** / 자신의 발견을.",
+      "example_ko": "Jolly 씨는 자신의 발견을 **설명하려고** 노력했다."
     },
     {
       "id": "VD-L3-022",
       "word": "factory",
       "pos": "명사",
-      "meaning": "공장"
+      "meaning": "공장",
+      "example": "The factory manager, Mr. Jolly, looked at the tablecloth and found something.",
+      "example_source": "본문 p.53 (Dry Cleaning)",
+      "example_ko_chunk": "**공장** 관리자인 / Jolly 씨가 / 식탁보를 봤다 / 그리고 / 무언가를 발견했다.",
+      "example_ko": "**공장** 관리자인 Jolly 씨가 식탁보를 보고 무언가를 발견했다."
     },
     {
       "id": "VD-L3-023",
       "word": "famous",
       "pos": "형용사",
-      "meaning": "유명한"
+      "meaning": "유명한",
+      "example": "In America, there was a famous cook, Ms. Wakefield.",
+      "example_source": "본문 p.51 (A New Cookie Star)",
+      "example_ko_chunk": "미국에 / 한 **유명한** 요리사가 있었다 / Wakefield 부인이라는.",
+      "example_ko": "미국에 Wakefield 부인이라는 **유명한** 요리사가 있었다."
     },
     {
       "id": "VD-L3-024",
       "word": "finding",
       "pos": "명사",
-      "meaning": "발견(물)"
+      "meaning": "발견(물)",
+      "example": "This finding led to his invention of safety glass.",
+      "example_source": "본문 p.52 (Finding Safety in Glass)",
+      "example_ko_chunk": "이 **발견은** / 이어졌다 / 그의 발명으로 / 안전유리의.",
+      "example_ko": "이 **발견**은 그의 안전유리 발명으로 이어졌다."
     },
     {
       "id": "VD-L3-025",
       "word": "flask",
       "pos": "명사",
-      "meaning": "플라스크"
+      "meaning": "플라스크",
+      "example": "The secret was the liquid plastic in the flask.",
+      "example_source": "본문 p.52 (Finding Safety in Glass)",
+      "example_ko_chunk": "비밀은 / 액체 플라스틱이었다 / **플라스크** 안의.",
+      "example_ko": "비밀은 **플라스크** 안의 액체 플라스틱이었다."
     },
     {
       "id": "VD-L3-026",
       "word": "invention",
       "pos": "명사",
-      "meaning": "발명(품)"
+      "meaning": "발명(품)",
+      "example": "She invented chocolate chip cookies, and her invention became famous.",
+      "example_source": "본문 응용 (Cookie Star 이야기 + Beyond Reading)",
+      "example_ko_chunk": "그녀는 / 초콜릿 칩 쿠키를 발명했다 / 그리고 / 그녀의 **발명품은** / 유명해졌다.",
+      "example_ko": "그녀는 초콜릿 칩 쿠키를 발명했고, 그녀의 **발명품**은 유명해졌다."
     },
     {
       "id": "VD-L3-027",
       "word": "lamp",
       "pos": "명사",
-      "meaning": "램프, 등"
+      "meaning": "램프, 등",
+      "example": "A factory worker in France spilled lamp oil on a tablecloth.",
+      "example_source": "본문 p.53 (Dry Cleaning)",
+      "example_ko_chunk": "한 공장 노동자가 / 프랑스의 / 흘렸다 / **등잔** 기름을 / 식탁보 위에.",
+      "example_ko": "프랑스의 한 공장 노동자가 식탁보 위에 **등잔** 기름을 흘렸다."
     },
     {
       "id": "VD-L3-028",
       "word": "lead to",
       "pos": "구",
-      "meaning": "~로 이어지다"
+      "meaning": "~로 이어지다",
+      "example": "His discovery led to a new way of cleaning clothes.",
+      "example_source": "본문 p.53 (Dry Cleaning)",
+      "example_ko_chunk": "그의 발견은 / **이어졌다** / 새로운 방법으로 / 옷을 세탁하는.",
+      "example_ko": "그의 발견은 옷을 세탁하는 새로운 방법으로 **이어졌다**.",
+      "inflections": [
+        "led to"
+      ]
     },
     {
       "id": "VD-L3-029",
       "word": "liquid",
       "pos": "형용사/명사",
-      "meaning": "액체; 액체의"
+      "meaning": "액체; 액체의",
+      "example": "The secret was the liquid plastic in the flask.",
+      "example_source": "본문 p.52 (Finding Safety in Glass)",
+      "example_ko_chunk": "비밀은 / **액체** 플라스틱이었다 / 플라스크 안의.",
+      "example_ko": "비밀은 플라스크 안의 **액체** 플라스틱이었다."
     },
     {
       "id": "VD-L3-030",
       "word": "melt",
       "pos": "동사",
-      "meaning": "녹다, 녹이다"
+      "meaning": "녹다, 녹이다",
+      "example": "She didn't have enough time to melt chocolate.",
+      "example_source": "본문 p.51 (A New Cookie Star)",
+      "example_ko_chunk": "그녀는 / 가지지 않았다 / 충분한 시간을 / 초콜릿을 **녹일**.",
+      "example_ko": "그녀는 초콜릿을 **녹일** 충분한 시간이 없었다."
     },
     {
       "id": "VD-L3-031",
       "word": "piece",
       "pos": "명사",
-      "meaning": "조각"
+      "meaning": "조각",
+      "example": "Although the glass flask was broken into pieces, they still held together in the shape of the flask.",
+      "example_source": "본문 p.52 (Finding Safety in Glass)",
+      "example_ko_chunk": "비록 / 유리 플라스크가 / 깨졌지만 / **조각들로** / 그것들은 / 여전히 함께 붙어 있었다 / 플라스크 모양으로.",
+      "example_ko": "비록 유리 플라스크가 **조각들**로 깨졌지만, 그것들은 여전히 플라스크 모양으로 함께 붙어 있었다."
     },
     {
       "id": "VD-L3-032",
       "word": "remain",
       "pos": "동사",
-      "meaning": "남아 있다"
+      "meaning": "남아 있다",
+      "example": "Although the chips remained in the cookies, she was not disappointed.",
+      "example_source": "본문 p.51 (A New Cookie Star)",
+      "example_ko_chunk": "비록 / 초콜릿 조각들이 / 쿠키 안에 **남아 있었지만** / 그녀는 / 실망하지 않았다.",
+      "example_ko": "비록 초콜릿 조각들이 쿠키 안에 **남아 있었지만**, 그녀는 실망하지 않았다."
     },
     {
       "id": "VD-L3-033",
       "word": "safety",
       "pos": "명사",
-      "meaning": "안전"
+      "meaning": "안전",
+      "example": "This finding led to his invention of safety glass.",
+      "example_source": "본문 p.52 (Finding Safety in Glass)",
+      "example_ko_chunk": "이 발견은 / 이어졌다 / 그의 발명으로 / **안전** 유리의.",
+      "example_ko": "이 발견은 그의 **안전** 유리 발명으로 이어졌다."
     },
     {
       "id": "VD-L3-034",
       "word": "secret",
       "pos": "명사",
-      "meaning": "비밀"
+      "meaning": "비밀",
+      "example": "The secret was the liquid plastic in the flask.",
+      "example_source": "본문 p.52 (Finding Safety in Glass)",
+      "example_ko_chunk": "**비밀은** / 액체 플라스틱이었다 / 플라스크 안의.",
+      "example_ko": "**비밀**은 플라스크 안의 액체 플라스틱이었다."
     },
     {
       "id": "VD-L3-035",
       "word": "spill",
       "pos": "동사",
-      "meaning": "엎지르다, 흘리다"
+      "meaning": "엎지르다, 흘리다",
+      "example": "A factory worker in France spilled lamp oil on a tablecloth.",
+      "example_source": "본문 p.53 (Dry Cleaning)",
+      "example_ko_chunk": "한 공장 노동자가 / 프랑스의 / **흘렸다** / 등잔 기름을 / 식탁보 위에.",
+      "example_ko": "프랑스의 한 공장 노동자가 식탁보 위에 등잔 기름을 **흘렸다**."
     },
     {
       "id": "VD-L3-036",
       "word": "cloth",
       "pos": "명사",
-      "meaning": "천, 옷감 (주의: clothes=옷(복수), tablecloth=식탁보 — 셋 다 다른 단어!)"
+      "meaning": "천, 옷감 (주의: clothes=옷(복수), tablecloth=식탁보 — 셋 다 다른 단어!)",
+      "example": "A piece of cloth was used to clean the dirty spot.",
+      "example_source": "본문 응용 (Dry Cleaning 주제, cloth vs clothes 구분)",
+      "example_ko_chunk": "한 조각의 / **천이** / 사용되었다 / 더러운 얼룩을 / 닦기 위해.",
+      "example_ko": "더러운 얼룩을 닦기 위해 한 조각의 **천**이 사용되었다."
     }
   ],
   "grammar_rules": [
@@ -4713,6 +4928,14 @@ __loadLesson({
       "example_correct": "Although the test was difficult, Jane passed it.",
       "example_wrong": "Although the test was difficult, but Jane passed it.",
       "memory_tip": "although ↔ but: 하나만 써야 함! 둘 다 쓰면 100% 틀림!"
+    },
+    {
+      "id": "EXAM-PROC",
+      "name": "exam_procedure",
+      "rule_ko": "1) 모든 문항 첫 줄을 끝까지 읽는다. '모두 고르세요'·'(정답 N개)'·'일치하지 않는 것' 같은 조건을 본문보다 먼저.\n2) '(정답 2개)'·'모두 고르면' 보이면 빈칸 옆에 '◆2' 표시. 답 적기 전에 2개 다 골랐는지 한 번 더 확인.\n3) 시제 부사구(yesterday·ago·since·for·last year)를 보면 동그라미. 현재완료는 yesterday/ago와 결합 불가.\n4) 'so + 형/부 + that'은 '너무 ~해서 ~하다'. 원인-결과 관계가 맞는지 확인.\n5) 관계대명사: 사람=who/that, 사물=which/that. 동물도 사물 취급.\n6) 글의 순서 (A)(B)(C): 본문(intro) 지시어·시간 부사구가 어느 (A)/(B)/(C)에서 받는지 표시.\n7) 본문 일치형(7·10·12·13·15·16·18·20·21번)이 많다. 본문 한 번에 끝까지 읽고 옵션 비교. 다시 읽기 X.\n8) OMR: 답안 작성은 마지막 5분에 한 번에. 다중정답은 두 칸 다 칠한 뒤 한 번 더 확인.",
+      "example_correct": "19번 보면 '앞 뒤 관계가 어색한 문장을 모두 고르면? (정답 2개)' — '◆2' 표시 → 5개 중 2개 골라 ②, ④ 답안 칸 둘 다 칠하기.",
+      "example_wrong": "'어색한 것은?'으로 잘못 읽고 1개만 골라 0점. 중간고사 4·5·19·24번 -8점 손실의 직접 원인.",
+      "memory_tip": "★ 첫 줄 끝까지 → ◆2 표시 → 시제 부사구 동그라미 → 본문 한 번에 → OMR 마지막 5분"
     }
   ]
 });

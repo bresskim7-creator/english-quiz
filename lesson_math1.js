@@ -767,7 +767,24 @@ __loadLesson({
         "3": "💡 패턴의 길이를 세어봐. 581이 계속 반복되는지, 아니면 더 짧은 패턴인지.\n📖 순환마디 찾기: 소수점 아래를 반복되는 최소 단위로 분해. 1.581581... = 1.{r:581}.\n⚠️ 학생 실수: 순환마디를 의도적으로 '짧게' 자르기. 정확한 반복 패턴을 찾지 않으면 안 돼."
       },
       "hint": "순환마디는 '반복되는 가장 짧은 패턴'이야. 각 보기에서 실제로 반복되는 부분을 찾아봐.",
-      "source": "교과서 단원마무리 1번"
+      "source": "교과서 단원마무리 1번",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": false,
+          "prompt_modifier": "조건을 먼저 확인하세요"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 45
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
     },
     {
       "id": "M1-E002",
@@ -791,7 +808,24 @@ __loadLesson({
       },
       "hint": "각 분수를 기약분수로 만들고, 분모를 소인수분해해봐. 2와 5만 있는 걸 찾아!",
       "explanation": "💡 먼저 9/15를 약분해. 최대공약수는 3이야. 그러면 3/5가 돼.\n📖 분모가 5 = 5¹이니까 유한소수 조건을 만족. 유한소수 = 분모의 소인수가 2^a × 5^b 형태.\n⚠️ 학생 실수: 약분을 빠뜨리고 분모 15를 바로 소인수분해하면 3×5가 나와서 '순환소수'라고 판단하기.",
-      "source": "교과서 기본 유형"
+      "source": "교과서 기본 유형",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": false,
+          "prompt_modifier": "조건을 먼저 확인하세요"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 45
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
     },
     {
       "id": "M1-E003",
@@ -816,7 +850,24 @@ __loadLesson({
         "4": "💡 ㄴ이 틀려! 순환소수는 무한소수의 한 종류야.\n📖 순환소수: 소수점 아래 숫자가 끝없이 반복 → 무한히 이어짐 → 무한소수.\n⚠️ '순환'='반복'이지 '유한'이 아님."
       },
       "hint": "각 보기를 하나씩 참/거짓 판단해봐. 순환소수와 무한소수의 관계를 생각해.",
-      "source": "교과서 단원마무리 15번"
+      "source": "교과서 단원마무리 15번",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건을 먼저 확인하세요"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 60
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
     },
     {
       "id": "M1-E004",
@@ -839,7 +890,24 @@ __loadLesson({
         "3": "💡 7/125에서 분자에 8을 곱하면 56이야. 78이 아니야.\n📖 125 × 8 = 1000, 7 × 8 = 56. 답: 56/1000 = 0.056.\n⚠️ 곱셈을 다시 확인: 7 × 8 = 56."
       },
       "hint": "125 = 5³이야. 5³ × 2³ = 10³ = 1000. 분자에도 2³ = 8을 곱해봐.",
-      "source": "교과서 단원마무리 3번"
+      "source": "교과서 단원마무리 3번",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": false,
+          "prompt_modifier": "조건을 먼저 확인하세요"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 45
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
     },
     {
       "id": "M1-E005",
@@ -919,7 +987,24 @@ __loadLesson({
       },
       "hint": "각 분수를 기약분수로 만들고 분모를 소인수분해해봐. 2와 5만 있으면 유한, 다른 게 있으면 순환.",
       "explanation": "💡 기약분수 → 분모 소인수분해 → 2,5만 있으면 유한, 아니면 순환\n📖 ㄱ. 5/36: 분모 36=2²×3² → 3 있음 → 순환 ✓\nㄴ. 7/8: 분모 2³ → 유한\nㄷ. 11/30: 분모 2×3×5 → 3 있음 → 순환 ✓\nㄹ. 12/96 → 1/8: 분모 2³ → 유한\n⚠️ ㄹ에서 약분 안 하고 판단하면 틀림!",
-      "source": "교과서 기본 유형"
+      "source": "교과서 기본 유형",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건을 먼저 확인하세요"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 60
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
     },
     {
       "id": "M1-E009",
@@ -943,7 +1028,24 @@ __loadLesson({
       },
       "hint": "100x - 10x = ?x, 104.444... - 10.444... = ?",
       "explanation": "💡 순환소수 분수화의 핵심: 소수 부분이 같은 두 식을 빼서 소수를 없앤다.\n📖 100x = 104.444...\n10x = 10.444...\n빼면: 90x = 94 → x = {f:94:90} = {f:47:45}\n⚠️ 비순환 부분(0)이 1자리, 순환 부분(4)이 1자리 → 10²과 10¹을 곱해서 뺀다.",
-      "source": "교과서 단원마무리 8번"
+      "source": "교과서 단원마무리 8번",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": false,
+          "prompt_modifier": "조건을 먼저 확인하세요"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 60
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
     },
     {
       "id": "M1-E010",
@@ -1005,7 +1107,24 @@ __loadLesson({
       ],
       "hint": "비순환 2자리(47) + 순환 1자리(3)이면, 어떤 두 식을 빼야 할까?",
       "explanation": "💡 구조를 정확히 파악: 비순환은 '4'(1자리), '7'(1자리=총 2자리), 순환은 '3'(1자리).\n📖 비순환 2자리를 모두 넘으려면 100x, 순환까지 포함하려면 1000x. 그래서 1000x - 100x = 900x → 소수 부분 소거.\n⚠️ 학생 실수: 100x - 10x = 90x를 사용. 이러면 소수점 아래가 맞지 않음. 비순환 길이를 무시했기 때문.",
-      "source": "교과서 단원마무리 9번 유형"
+      "source": "교과서 단원마무리 9번 유형",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건을 먼저 확인하세요"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 60
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
     },
     {
       "id": "M1-E013",
@@ -1166,7 +1285,24 @@ __loadLesson({
       },
       "hint": "각 분수를 먼저 기약분수로 만들어봐! 15/6 = 5/2, 22/55 = 2/5가 돼.",
       "explanation": "💡 모든 분수를 기약분수로 → 분모 소인수분해 → 2,5만? (yes→유한, no→순환)\n📖 ㄱ. 7/4: 분모 4=2² → 유한 ✓\nㄴ. 15/6 → 5/2: 분모 2 → 유한 ✓\nㄷ. 13/15: 분모 3×5 → 3 있음 → 순환 ✗\nㄹ. 22/55 → 2/5: 분모 5 → 유한 ✓\nㅁ. 5/60 → 1/12: 분모 2²×3 → 3 있음 → 순환 ✗\n⚠️ 약분이 필요한 ㄴ, ㄹ, ㅁ를 놓치는 게 가장 흔한 실수.",
-      "source": "교과서 기본 유형"
+      "source": "교과서 기본 유형",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건을 먼저 확인하세요"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 60
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
     }
   ],
   "_isV3": true,

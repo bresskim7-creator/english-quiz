@@ -1,4 +1,4 @@
-const CACHE_NAME = 'quiz-v129';
+const CACHE_NAME = 'quiz-v131';
 // [Codex 2026-05-13 index-tail-restore] Force clients to replace the previously cached truncated index.html.
 const PRECACHE_URLS = [
   './',
