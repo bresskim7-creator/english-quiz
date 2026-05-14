@@ -639,6 +639,43 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
             border: 1px solid #e0e0e0;
         }
+        .ops-diagnostics {
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            font-size: 12px;
+            color: #555;
+        }
+        .ops-diag-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            line-height: 1.4;
+        }
+        .ops-diag-row strong {
+            color: #2F5496;
+            font-weight: 700;
+            text-align: right;
+            word-break: break-all;
+        }
+        .ops-diag-actions {
+            display: flex;
+            gap: 6px;
+            margin-top: 6px;
+        }
+        .ops-diag-actions button {
+            flex: 1;
+            padding: 8px 6px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #f7f7f7;
+            color: #444;
+            font-size: 12px;
+            cursor: pointer;
+        }
         
         /* position_ask: 단어 위치 표시 */
         .position-sentence {
@@ -1434,7 +1471,7 @@
                     <div class="subject-card-sub">1·3단원</div>
                 </div>
             </div>
-            <div id="webhook-settings-toggle" style="font-size:12px;color:#999;cursor:pointer;text-align:center;margin-top:24px;" onclick="document.getElementById('webhook-settings').style.display='block';this.style.display='none';">⚙️ 설정</div>
+            <div id="webhook-settings-toggle" style="font-size:12px;color:#999;cursor:pointer;text-align:center;margin-top:24px;" onclick="document.getElementById('webhook-settings').style.display='block';this.style.display='none';updateOpsDiagnostics();">⚙️ 설정</div>
             <div class="webhook-settings" id="webhook-settings" style="display:none;">
                 <div class="stats-title">설정</div>
                 <label style="font-size:12px;color:#666;display:block;margin-bottom:4px;">Google Sheets 웹훅 URL</label>
@@ -1443,6 +1480,18 @@
                 <button onclick="saveWebhookUrl()" style="margin-top:8px;padding:8px 16px;background:#2F5496;color:white;border:none;border-radius:6px;font-size:13px;cursor:pointer;">저장</button>
                 <button onclick="document.getElementById('webhook-settings').style.display='none';document.getElementById('webhook-settings-toggle').style.display='block';" style="margin-top:8px;margin-left:4px;padding:8px 16px;background:#f0f0f0;border:1px solid #ddd;border-radius:6px;font-size:13px;cursor:pointer;color:#666;">닫기</button>
                 <div id="webhook-status" style="font-size:11px;color:#4CAF50;margin-top:4px;"></div>
+                <div class="ops-diagnostics" id="ops-diagnostics">
+                    <div class="ops-diag-row"><span>앱 버전</span><strong id="diag-build-version">-</strong></div>
+                    <div class="ops-diag-row"><span>캐시명</span><strong id="diag-cache-name">-</strong></div>
+                    <div class="ops-diag-row"><span>SW 상태</span><strong id="diag-sw-status">-</strong></div>
+                    <div class="ops-diag-row"><span>미전송 퀴즈</span><strong id="diag-unsent-quiz">-</strong></div>
+                    <div class="ops-diag-row"><span>미전송 단어</span><strong id="diag-unsent-vocab">-</strong></div>
+                    <div class="ops-diag-row"><span>마지막 전송</span><strong id="diag-last-send">-</strong></div>
+                    <div class="ops-diag-actions">
+                        <button onclick="resendLogsNow()">로그 재전송</button>
+                        <button onclick="forceRefreshApp()">강제 새로고침</button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -1689,11 +1738,92 @@
         let hintUsedThisQuestion = false;
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
+        const BUILD_VERSION = '2026-05-14 v129';
+        const APP_CACHE_NAME = 'quiz-v129';
+
+        function safeSetItem(key, value) {
+            try {
+                localStorage.setItem(key, value);
+                return true;
+            } catch (err) {
+                console.warn('[localStorage-set-fail]', key, err && err.message);
+                pruneOldestQuizLogsForQuota();
+                try {
+                    localStorage.setItem(key, value);
+                    return true;
+                } catch (retryErr) {
+                    console.warn('[localStorage-set-retry-fail]', key, retryErr && retryErr.message);
+                    alert('앱 저장 공간이 부족합니다. 설정에서 로그 재전송 후 강제 새로고침을 실행해 주세요.');
+                    return false;
+                }
+            }
+        }
+
+        function compactStoredQuizLog(log) {
+            if (!log || typeof log !== 'object') return log;
+            const compact = { ...log };
+            if (Array.isArray(log.questions)) compact.question_count = log.questions.length;
+            delete compact.questions;
+            delete compact.details;
+            compact.compacted = true;
+            return compact;
+        }
+
+        function compactSentLogEntry(timestamp) {
+            getQuizLogStorageKeys().forEach(k => {
+                const items = JSON.parse(localStorage.getItem(k) || '[]');
+                let changed = false;
+                const next = items.map(log => {
+                    if (log && log.timestamp === timestamp && (log.questions || log.details)) {
+                        changed = true;
+                        return compactStoredQuizLog(log);
+                    }
+                    return log;
+                });
+                if (changed) {
+                    try { localStorage.setItem(k, JSON.stringify(next)); } catch (_) {}
+                }
+            });
+        }
+
+        function pruneOldSentLogs(days) {
+            const cutoff = Date.now() - days * 24 * 60 * 60 * 1000;
+            const sent = JSON.parse(localStorage.getItem('sent_logs') || '[]');
+            const kept = sent.filter(ts => {
+                const t = Date.parse(ts);
+                return !Number.isFinite(t) || t >= cutoff;
+            });
+            if (kept.length !== sent.length) {
+                try { localStorage.setItem('sent_logs', JSON.stringify(kept)); } catch (_) {}
+            }
+        }
+
+        function pruneOldestQuizLogsForQuota() {
+            const entries = [];
+            getQuizLogStorageKeys().forEach(k => {
+                const items = JSON.parse(localStorage.getItem(k) || '[]');
+                items.forEach((log, idx) => {
+                    entries.push({ key: k, idx, ts: Date.parse(log && log.timestamp || '') || 0, log });
+                });
+            });
+            entries.sort((a, b) => a.ts - b.ts);
+            const targets = entries.slice(0, Math.min(10, entries.length));
+            const touched = new Set();
+            targets.forEach(entry => {
+                const items = JSON.parse(localStorage.getItem(entry.key) || '[]');
+                if (items[entry.idx]) {
+                    items[entry.idx] = compactStoredQuizLog(items[entry.idx]);
+                    try { localStorage.setItem(entry.key, JSON.stringify(items)); } catch (_) {}
+                    touched.add(entry.key);
+                }
+            });
+            return touched.size;
+        }
 
         // 세션 타입 선택 (하위호환 — 로그에 기록용으로 유지)
         function selectSessionType(type) {
             sessionType = type;
-            localStorage.setItem('session_type', type);
+            safeSetItem('session_type', type);
         }
 
         // 고부하 문항 타입 (§7.4 Rule 4: 2개 연속 금지)
@@ -1754,7 +1884,7 @@
 
         function toggleMute() {
             isMuted = !isMuted;
-            localStorage.setItem('sound_muted', isMuted);
+            safeSetItem('sound_muted', isMuted);
             document.getElementById('mute-toggle').textContent = isMuted ? '🔇' : '🔊';
             // 음소거 해제 시 AudioContext 확실히 깨우기
             if (!isMuted) getAudioCtx();
@@ -1852,10 +1982,74 @@
         function saveWebhookUrl() {
             const url = document.getElementById('webhook-input').value.trim();
             if (url) {
-                localStorage.setItem('webhook_url', url);
+                safeSetItem('webhook_url', url);
                 document.getElementById('webhook-status').textContent = '✓ 저장되었습니다';
                 setTimeout(() => { document.getElementById('webhook-status').textContent = ''; }, 2000);
+                flushVocabQueue();
+                updateOpsDiagnostics();
             }
+        }
+
+        function getQuizLogStorageKeys() {
+            const keys = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const k = localStorage.key(i);
+                if (k === 'quiz_logs' || (k && (k.startsWith('quiz_logs_L') || k.startsWith('quiz_logs_kor') || k.startsWith('quiz_logs_math') || k.startsWith('quiz_logs_soc') || k.startsWith('quiz_logs_sci')))) {
+                    keys.push(k);
+                }
+            }
+            return keys;
+        }
+
+        function getUnsentQuizLogCount() {
+            const sent = new Set(JSON.parse(localStorage.getItem('sent_logs') || '[]'));
+            const seen = new Set();
+            let count = 0;
+            getQuizLogStorageKeys().forEach(k => {
+                const items = JSON.parse(localStorage.getItem(k) || '[]');
+                items.forEach(log => {
+                    if (!log || !log.timestamp || seen.has(log.timestamp)) return;
+                    seen.add(log.timestamp);
+                    if (!sent.has(log.timestamp)) count++;
+                });
+            });
+            return count;
+        }
+
+        function getLastSendTime() {
+            const sent = JSON.parse(localStorage.getItem('sent_logs') || '[]');
+            const vocabLast = localStorage.getItem('vocab_last_send');
+            return vocabLast || sent[sent.length - 1] || '-';
+        }
+
+        function updateOpsDiagnostics() {
+            const setText = (id, value) => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = value;
+            };
+            setText('diag-build-version', BUILD_VERSION);
+            setText('diag-cache-name', APP_CACHE_NAME);
+            setText('diag-sw-status', navigator.serviceWorker && navigator.serviceWorker.controller ? '활성' : '미등록');
+            setText('diag-unsent-quiz', String(getUnsentQuizLogCount()));
+            setText('diag-unsent-vocab', String(JSON.parse(localStorage.getItem('pending_vocab_log') || '[]').length));
+            setText('diag-last-send', getLastSendTime());
+        }
+
+        function resendLogsNow() {
+            retransmitUnsentLogs();
+            setTimeout(updateOpsDiagnostics, 800);
+        }
+
+        async function forceRefreshApp() {
+            if ('serviceWorker' in navigator) {
+                const regs = await navigator.serviceWorker.getRegistrations();
+                await Promise.all(regs.map(r => r.unregister()));
+            }
+            if ('caches' in window) {
+                const keys = await caches.keys();
+                await Promise.all(keys.map(k => caches.delete(k)));
+            }
+            location.reload();
         }
         // 외부 JSON 로드용 변수
         let QUIZ_DATA = null;
@@ -2280,6 +2474,7 @@
                 navigator.serviceWorker.register('sw.js').catch(() => {});
             }
             retransmitUnsentLogs();
+            updateOpsDiagnostics();
         }
 
         // localStorage 키 헬퍼: 국어는 quiz_history_kor1, 영어는 quiz_history_L1
@@ -2297,7 +2492,7 @@
 
         // 문항 이력 저장
         function saveQuestionHistory() {
-            localStorage.setItem(historyKey(), JSON.stringify(questionHistory));
+            safeSetItem(historyKey(), JSON.stringify(questionHistory));
         }
 
         // 학습 현황 업데이트
@@ -2322,8 +2517,8 @@
         }
 
         // =========================================================
-        // 세션 생성 엔진 v3 — score_group 기반 풀링 + 블록 배치 4규칙
-        // 기획서 v2.1 §5.4, §7.1~§7.4 구현
+        // 세션 생성 엔진 v4 — 분류 운영 제거 + 블록 배치 4규칙
+        // 2026-05-14: score_group/recovery_band 메타는 보존하되 세션 운영에서는 무시
         // =========================================================
 
         // 어제 틀린 문항 추출 (간격 반복 워밍업용)
@@ -2385,7 +2580,7 @@
 
         function setDrillStage(stage) {
             const key = `drill_progress_L${currentLesson}`;
-            localStorage.setItem(key, String(stage));
+            safeSetItem(key, String(stage));
         }
 
         // 본문 해설 모드: 각 작품별 해설 선택 화면 + 섹션 표시
@@ -2456,8 +2651,9 @@
             }];
         }
 
-        // mini_writing 활성화 (2026-05-07: example_answer 보강 + 채점 신뢰 확보 후 해제)
-        const HIDDEN_TYPES = new Set();
+        // mini_writing 비활성 (2026-05-14: PA 기말 = 5과목 선택형 100점 체계, mini_writing 점수 기여 0)
+        // 학습 가치는 인정되나 기말 시점 슬롯 누수 차단 우선
+        const HIDDEN_TYPES = new Set(['mini_writing']);
 
         function generateDrillSession() {
             if (!QUIZ_DATA || !QUIZ_DATA.core_sentences) return [];
@@ -2536,10 +2732,9 @@
                 return generateKoreanExamPrepSession(examPrepQuestions);
             }
 
-            // === 수학: score_group 비율 기반 20문항 (STEP97 / 2026-04-19b) ===
+            // === 수학: 단순 무작위 20문항 (2026-05-14: score_group 운영 제거) ===
             // 기존 영어 training_layer 로직은 math 문항에 training_layer가 없어 mpPick≤3만
-            // 잡혀 세션이 7~8개로 너무 작았다. math는 score_group(A/B/C) 필드가 있으므로
-            // 사회·과학 generateStudyExamSession과 유사한 비율 기반 경로로 분리한다.
+            // 잡혀 세션이 7~8개로 너무 작다. 수학은 별도 20문항 경로로 분리한다.
             if (currentSubject === 'math') {
                 return generateMathExamSession(examPrepQuestions);
             }
@@ -2564,19 +2759,9 @@
             const pcCap = 4;
             const pcPick = pcPool.slice(0, pcCap);
 
-            // skill_focus: 최대 8문항 (score_group A 우선)
+            // skill_focus: 최대 8문항 (2026-05-14: A군 우선 정렬 제거 → 단순 무작위)
             const sfSorted = [...skillFocus];
-            sfSorted.sort((a, b) => {
-                const ga = a.score_group === 'A' || a.recovery_band === 'A' ? 0 : 1;
-                const gb = b.score_group === 'A' || b.recovery_band === 'A' ? 0 : 1;
-                return ga - gb;
-            });
             shuffleArray(sfSorted);
-            sfSorted.sort((a, b) => {
-                const ga = a.score_group === 'A' || a.recovery_band === 'A' ? 0 : 1;
-                const gb = b.score_group === 'A' || b.recovery_band === 'A' ? 0 : 1;
-                return ga - gb;
-            });
             const sfCap = 8;
             const sfPick = sfSorted.slice(0, sfCap);
 
@@ -2692,55 +2877,18 @@
             return session;
         }
 
-        // 수학 실전대비 세션: score_group 비율 기반 20문항 (STEP97)
-        // 설계 근거: student_profile_and_learning_system_upgrade_MECE.md §5.2 문항 분류(A/B/C)
-        // 비율: A 40% / B 40% / C 20% (20문항 기준 A=8, B=8, C=4)
-        // 풀 부족 시 다른 군에서 보충, score_group이 없는 문항은 마지막 fallback.
-        // priorityScore 기준(오답 이력 우선) 정렬 후 셔플은 생략 — 사회·과학처럼 A 먼저 풀어도
-        // 학생이 "쉬운 것부터"라는 리듬으로 체감. 필요시 shuffleArray 추가 가능.
+        // 수학 실전대비 세션: 단순 무작위 20문항 (2026-05-14: A/B/C 운영 제거)
         function generateMathExamSession(examPrepQuestions) {
             if (!examPrepQuestions || examPrepQuestions.length === 0) return [];
             const TARGET = 20;
-            const aTarget = Math.round(TARGET * 0.4); // 8
-            const bTarget = Math.round(TARGET * 0.4); // 8
-            const cTarget = TARGET - aTarget - bTarget; // 4
-
-            const poolA = poolByScoreGroup(examPrepQuestions, 'A');
-            const poolB = poolByScoreGroup(examPrepQuestions, 'B');
-            const poolC = poolByScoreGroup(examPrepQuestions, 'C');
-            const poolOther = examPrepQuestions.filter(q => !q.score_group);
-            shuffleArray(poolOther);
-
-            const selected = [];
-            const used = new Set();
-            const take = (pool, n) => {
-                let cnt = 0;
-                for (const q of pool) {
-                    if (cnt >= n) break;
-                    if (!used.has(q.id)) { selected.push(q); used.add(q.id); cnt++; }
-                }
-            };
-
-            take(poolA, aTarget);
-            take(poolB, bTarget);
-            take(poolC, cTarget);
-
-            // 미달 시 각 군 잔여 → other 순으로 TARGET까지 보충
-            if (selected.length < TARGET) {
-                take(poolA, TARGET);
-                take(poolB, TARGET);
-                take(poolC, TARGET);
-                take(poolOther, TARGET);
-            }
-
-            // 세션 내부 셔플 — 사회/과학 generateStudyExamSession과 동일하게 A 몰림 해제
-            shuffleArray(selected);
-            return selected.slice(0, TARGET);
+            const pool = [...examPrepQuestions];
+            shuffleArray(pool);
+            return pool.slice(0, TARGET);
         }
 
-        // score_group 필터링 + 이력 기반 정렬
+        // [DEPRECATED 2026-05-14] 세션 생성 단순화로 호출처 없음. 데이터 메타 호환을 위해 함수만 보존.
         function poolByScoreGroup(questions, group) {
-            const pool = questions.filter(q => q.score_group === group);
+            const pool = questions.filter(q => Object.is(q.score_group, group));
             shuffleArray(pool); // 먼저 셔플 후 안정 정렬로 우선도 반영
             pool.sort((a, b) => priorityScore(b) - priorityScore(a));
             return pool;
@@ -2755,45 +2903,10 @@
             const questions = QUIZ_DATA.questions;
             const TARGET = 30; // 목표 문항 수
 
-            // === 1. score_group별 풀 구성 (전체 문항 대상) ===
-            const poolA = poolByScoreGroup(questions, 'A');
-            const poolB = poolByScoreGroup(questions, 'B');
-            const poolC = poolByScoreGroup(questions, 'C');
-
-            const selected = [];
-            const usedIds = new Set();
-            const pick = (pool, count) => {
-                let picked = 0;
-                for (const q of pool) {
-                    if (picked >= count) break;
-                    if (!usedIds.has(q.id)) {
-                        selected.push(q);
-                        usedIds.add(q.id);
-                        picked++;
-                    }
-                }
-                return picked;
-            };
-
-            // === 통합 세션: A → B → C 순서로 채우기 ===
-            // A군(기본 개념) 40% + B군(응용) 40% + C군(심화) 20%
-            const aTarget = Math.round(TARGET * 0.4);
-            const bTarget = Math.round(TARGET * 0.4);
-            const cTarget = TARGET - aTarget - bTarget;
-
-            pick(poolA, aTarget);
-            pick(poolB, bTarget);
-            pick(poolC, cTarget);
-
-            // 목표 미달 시 남은 풀에서 보충
-            if (selected.length < TARGET) {
-                pick(poolA, TARGET);
-                pick(poolB, TARGET);
-                pick(poolC, TARGET);
-            }
-
-            // 총 문항 수가 TARGET보다 적으면 있는 만큼만
-            const session = selected.slice(0, Math.min(TARGET, questions.length));
+            // 2026-05-14: 레거시 통합 세션의 A/B/C 풀링 제거 → 전체 풀 단순 무작위
+            const pool = [...questions];
+            shuffleArray(pool);
+            const session = pool.slice(0, Math.min(TARGET, questions.length));
 
             // === 2. 블록 배치 규칙 적용 ===
             const ordered = applyBlockRules(session, 'A');
@@ -2818,16 +2931,8 @@
             const isHighLoad = q => HIGH_LOAD_TASKS.has(q.test_task);
             const isLowLoad = q => ['word_recall', 'meaning_match', 'sentence_completion'].includes(q.test_task);
 
-            // score_group 우선도 (A군 선행)
-            const groupPri = q => ({ A: 0, B: 1, C: 2 }[q.score_group] || 1);
-
-            // --- 정렬: A군 선행 + 난이도 순 ---
-            const sorted = [...items].sort((a, b) => {
-                // A군 우선
-                if (groupPri(a) !== groupPri(b)) return groupPri(a) - groupPri(b);
-                // 같은 그룹 내에서는 쉬운 것 먼저
-                return diffScore(a) - diffScore(b);
-            });
+            // 2026-05-14: A군 선행 정렬 제거 → 난이도 순만 유지 (block rules 1·3·4는 유지)
+            const sorted = [...items].sort((a, b) => diffScore(a) - diffScore(b));
 
             // --- Rule 1: 첫 문항 = 가장 쉬운 것 (이미 sorted[0]) ---
             // --- Rule 3: 마지막 문항 = 쉬운 것 (low load 문항 찾기) ---
@@ -2845,7 +2950,7 @@
             }
 
             // --- Rule 2: arrange 계열은 후반부에 배치 ---
-            // 이미 A군 선행으로 자연스럽게 반영됨 (arrange는 대부분 B/C군)
+            // 현재 구현은 난이도 순 + 고부하 연속 방지만 적용한다.
 
             // --- Rule 4: 고부하 타입 2개 연속 금지 ---
             const result = enforceNoConsecutiveHighLoad(sorted);
@@ -5194,7 +5299,7 @@
                     };
                 }
             });
-            localStorage.setItem('vocab_results', JSON.stringify(vocabResults));
+            safeSetItem('vocab_results', JSON.stringify(vocabResults));
 
             // Calculate final stats
             const totalAll = QUIZ_DATA.vocab_drill.length;
@@ -5230,15 +5335,51 @@
             sendVocabToGoogleSheets();
         }
 
-        function sendVocabToGoogleSheets() {
-            const webhookUrl = localStorage.getItem('webhook_url');
-            if (!webhookUrl) return;
+        function enqueueVocabRow(row) {
+            const q = JSON.parse(localStorage.getItem('pending_vocab_log') || '[]');
+            q.push(row);
+            safeSetItem('pending_vocab_log', JSON.stringify(q));
+        }
 
-            const rows = [];
+        function flushVocabQueue() {
+            const webhookUrl = localStorage.getItem('webhook_url');
+            if (!webhookUrl) return Promise.resolve(false);
+
+            const q = JSON.parse(localStorage.getItem('pending_vocab_log') || '[]');
+            if (!q.length) return Promise.resolve(true);
+
+            const remaining = [];
+            return Promise.allSettled(q.map(row =>
+                fetch(webhookUrl, {
+                    method: 'POST',
+                    body: JSON.stringify(row)
+                }).then(async r => {
+                    if (!r.ok) throw new Error('HTTP ' + r.status);
+                    const text = await r.text();
+                    let body = null;
+                    try { body = JSON.parse(text); } catch (_) {}
+                    if (body && body.ok === false) throw new Error(body.error || 'apps-script reject');
+                    if (body && body.status && body.status !== 'ok') throw new Error(body.error || body.status);
+                }).catch(err => {
+                    console.warn('[vocab-log-send-fail]', err && err.message);
+                    remaining.push(row);
+                })
+            )).then(() => {
+                safeSetItem('pending_vocab_log', JSON.stringify(remaining));
+                if (remaining.length < q.length) {
+                    try { safeSetItem('vocab_last_send', new Date().toISOString()); } catch (_) {}
+                }
+                return remaining.length === 0;
+            });
+        }
+
+        function sendVocabToGoogleSheets() {
+            if (!QUIZ_DATA || !QUIZ_DATA.vocab_drill) return;
+
             const now = new Date().toISOString();
             QUIZ_DATA.vocab_drill.forEach(item => {
                 if (vocabDrillResults[item.id] !== undefined) {
-                    rows.push({
+                    enqueueVocabRow({
                         sheet: 'vocab_log',
                         timestamp: now,
                         lesson: currentLesson,
@@ -5249,23 +5390,15 @@
                     });
                 }
             });
-
-            // Send in batch
-            rows.forEach(row => {
-                fetch(webhookUrl, {
-                    method: 'POST',
-                    body: JSON.stringify(row)
-                }).catch(() => {});
-            });
+            flushVocabQueue();
         }
 
         // 세션 종료
         // =========================================================
-        // 4대 메트릭 계산 (§9.1)
-        // 1) A군 회수율: A군 문항 정답률
-        // 2) 첫 시도 정답률: 힌트 없이 맞춘 비율
-        // 3) 조건 준수율: (Phase 1에서는 placeholder)
-        // 4) arrange 성공률: arrange 계열 정답률
+        // 3대 메트릭 계산 (§9.1)
+        // 1) 첫 시도 정답률: 힌트 없이 맞춘 비율
+        // 2) 조건 준수율: (Phase 1에서는 placeholder)
+        // 3) arrange 성공률: arrange 계열 정답률
         // =========================================================
         // B-11: Drill metrics (MVP minimal)
         function compute4Metrics(answers) {
@@ -5298,15 +5431,6 @@
                 };
             }
 
-            // A군 문항만 필터
-            const aGroupAnswers = answers.filter(a => {
-                const q = findQ(a.id);
-                return q && (q.score_group === 'A' || q.recovery_band === 'A');
-            });
-            const aGroupCorrect = aGroupAnswers.filter(a => a.correct).length;
-            const aGroupRate = aGroupAnswers.length > 0
-                ? Math.round((aGroupCorrect / aGroupAnswers.length) * 100) : null;
-
             // 첫 시도 정답률 (힌트 미사용 + 정답)
             const noHintCorrect = answers.filter(a => a.correct && !a.hint_used).length;
             const firstAttemptRate = answers.length > 0
@@ -5321,23 +5445,11 @@
             const arrangeRate = arrangeAnswers.length > 0
                 ? Math.round((arrangeCorrect / arrangeAnswers.length) * 100) : null;
 
-            // C군 별도 기록 (§5.4: 핵심 메트릭에 미반영)
-            const cGroupAnswers = answers.filter(a => {
-                const q = findQ(a.id);
-                return q && q.score_group === 'C';
-            });
-            const cGroupRate = cGroupAnswers.length > 0
-                ? Math.round((cGroupAnswers.filter(a => a.correct).length / cGroupAnswers.length) * 100) : null;
-
             return {
-                a_group_recovery: aGroupRate,
-                a_group_count: aGroupAnswers.length,
                 first_attempt_rate: firstAttemptRate,
                 condition_compliance: conditionRate,
                 arrange_success: arrangeRate,
-                arrange_count: arrangeAnswers.length,
-                c_group_separate: cGroupRate,
-                c_group_count: cGroupAnswers.length
+                arrange_count: arrangeAnswers.length
             };
         }
 
@@ -5413,7 +5525,7 @@
                 missed.forEach(q => {
                     const item = document.createElement('div');
                     item.className = 'missed-question-item';
-                    const keyword = q.keyword || q.prompt_en || q.prompt || q.id;
+                    const keyword = getWeakLabel(q) || q.prompt_en || q.prompt || q.id;
                     const answer = q.blank_answer || q.answer || (q.choices && q.correct_index != null ? q.choices[q.correct_index] : '') || (q.choices && q.correct != null ? q.choices[q.correct] : '') || (q.options && q.correct != null ? q.options[q.correct] : '') || '';
                     item.innerHTML = `<div class="missed-keyword">${keyword}</div><div class="missed-answer">정답: ${answer}</div>`;
                     list.appendChild(item);
@@ -5442,7 +5554,7 @@
             // 로그 저장 및 전송
             const weakKeywords = sessionAnswers.filter(a => !a.correct).map(a => {
                 const q2 = findQuestionById(a.id);
-                return q2 ? q2.keyword : a.id;
+                return (q2 ? getWeakLabel(q2) : '') || a.keyword || a.id;
             });
 
             const sessionDuration = sessionStartTime ? Math.round((Date.now() - sessionStartTime) / 1000) : 0;
@@ -5485,7 +5597,7 @@
             const logsKey = (typeof currentLesson === 'string' && isNaN(currentLesson)) ? `quiz_logs_${currentLesson}` : `quiz_logs_L${currentLesson}`;
             const logs = JSON.parse(localStorage.getItem(logsKey) || '[]');
             logs.push(log);
-            localStorage.setItem(logsKey, JSON.stringify(logs));
+            safeSetItem(logsKey, JSON.stringify(logs));
 
             // Drill stage progression check
             if (currentMode === 'drill') {
@@ -5543,7 +5655,7 @@
                 if (!q) return;
                 const item = document.createElement('div');
                 item.className = 'missed-question-item';
-                const keyword = q.keyword || q.prompt_en || q.prompt || q.id;
+                const keyword = getWeakLabel(q) || q.prompt_en || q.prompt || q.id;
                 const status = a.correct ? '✅ 회복' : '❌ 미회복';
                 const statusClass = a.correct ? 'retry-item-recovered' : 'retry-item-still-wrong';
                 item.innerHTML = `<div class="missed-keyword">${keyword}</div><div class="${statusClass}">${status}</div>`;
@@ -5567,7 +5679,7 @@
                 duration_sec: retryDuration,
                 weak: sessionAnswers.filter(a => !a.correct).map(a => {
                     const q2 = findQuestionById(a.id);
-                    return q2 ? q2.keyword : a.id;
+                    return (q2 ? getWeakLabel(q2) : '') || a.keyword || a.id;
                 }).join(', '),
                 type_breakdown: '',
                 hint_count: sessionAnswers.filter(a => a.hint_used).length,
@@ -5585,7 +5697,7 @@
             const logsKey = (typeof currentLesson === 'string' && isNaN(currentLesson)) ? `quiz_logs_${currentLesson}` : `quiz_logs_L${currentLesson}`;
             const logs = JSON.parse(localStorage.getItem(logsKey) || '[]');
             logs.push(retryLog);
-            localStorage.setItem(logsKey, JSON.stringify(logs));
+            safeSetItem(logsKey, JSON.stringify(logs));
 
             // 상태 초기화
             retryMode = false;
@@ -5624,10 +5736,34 @@
             return null;
         }
 
+        function resolveConceptLabel(id) {
+            if (!id || !QUIZ_DATA || !QUIZ_DATA.concept_cards) return id || '';
+            const card = QUIZ_DATA.concept_cards.find(c => c && c.id === id);
+            return card ? (card.term || card.title || card.concept || id) : id;
+        }
+
+        function getWeakLabel(q) {
+            if (!q) return '';
+            if (q.keyword) return q.keyword;
+            if (q.concept) return q.concept;
+            if (Array.isArray(q.linked_concept) && q.linked_concept.length) {
+                return q.linked_concept.map(resolveConceptLabel).filter(Boolean).join('/');
+            }
+            if (q.concept_id) return resolveConceptLabel(q.concept_id);
+            if (q.concept_card_id) return resolveConceptLabel(q.concept_card_id);
+            if (q.subunit) return q.subunit;
+            if (q.passage_group) return q.passage_group;
+            if (q.category) return q.category;
+            if (q.test_task) return q.test_task;
+            if (q.type) return q.type;
+            return q.id || '';
+        }
+
         // Google Sheets 전송
         async function sendToGoogleSheets() {
             const webhookUrl = localStorage.getItem('webhook_url');
             if (!webhookUrl) return;
+            pruneOldSentLogs(90);
 
             // 모든 레슨 로그 자동 수집 (L1, L2, L3, ... 무제한)
             const allLogs = [];
@@ -5664,6 +5800,7 @@
                     weak: log.weak || '',
                     type_breakdown: log.type_breakdown || '',
                     hint_count: log.hint_count || 0,
+                    // 2026-05-14: metrics에서 a_group_recovery 제거됨 → 빈 값 자동 전송 (Apps Script v10 컬럼 호환 유지)
                     a_group_recovery: m.a_group_recovery != null ? m.a_group_recovery : '',
                     first_attempt_rate: m.first_attempt_rate != null ? m.first_attempt_rate : '',
                     arrange_success: m.arrange_success != null ? m.arrange_success : '',
@@ -5677,16 +5814,26 @@
                 fetch(webhookUrl, {
                     method: 'POST',
                     body: JSON.stringify(data)
-                }).then(() => {
+                }).then(async r => {
+                    if (!r.ok) throw new Error('HTTP ' + r.status);
+                    const text = await r.text();
+                    let body = null;
+                    try { body = JSON.parse(text); } catch (_) {}
+                    if (body && body.ok === false) throw new Error(body.error || 'apps-script reject');
+                    if (body && body.status && body.status !== 'ok') throw new Error(body.error || body.status);
                     sentKeys.push(key);
-                    localStorage.setItem('sent_logs', JSON.stringify(sentKeys));
-                }).catch(() => {});
+                    safeSetItem('sent_logs', JSON.stringify(sentKeys));
+                    compactSentLogEntry(key);
+                }).catch(err => {
+                    console.warn('[log-send-fail]', key, err && err.message);
+                });
             });
         }
 
         // 미전송 로그 재전송
         function retransmitUnsentLogs() {
             sendToGoogleSheets();
+            flushVocabQueue();
         }
 
         // 결과 내보내기
@@ -5743,7 +5890,7 @@
                     const quitLogsKey = (typeof currentLesson === 'string' && isNaN(currentLesson)) ? `quiz_logs_${currentLesson}` : `quiz_logs_L${currentLesson}`;
                     const logs = JSON.parse(localStorage.getItem(quitLogsKey) || '[]');
                     logs.push(log);
-                    localStorage.setItem(quitLogsKey, JSON.stringify(logs));
+                    safeSetItem(quitLogsKey, JSON.stringify(logs));
                 }
                 // arrange interval 정리
                 if (arrangeCheckInterval) {
@@ -5816,18 +5963,10 @@
         function generateStudyExamSession() {
             const questions = QUIZ_DATA.exam_prep || [];
             if (questions.length === 0) return [];
-            // A군 우선, B군 보충, C군 후순위 — 최대 20문항 (STEP98 / 2026-04-19c)
-            // 각 군 내에서 priorityScore 기준 정렬 (틀린 문항 우선)
-            // 상한 변경: B 8→12, C 2→4, 최종 15→20 (시험 대비 노출량 확대)
-            const aGroup = questions.filter(q => q.score_group === 'A');
-            const bGroup = questions.filter(q => q.score_group === 'B');
-            const cGroup = questions.filter(q => q.score_group === 'C');
-            aGroup.sort((a, b) => priorityScore(b) - priorityScore(a));
-            bGroup.sort((a, b) => priorityScore(b) - priorityScore(a));
-            cGroup.sort((a, b) => priorityScore(b) - priorityScore(a));
-            const session = [...aGroup, ...bGroup.slice(0, 12), ...cGroup.slice(0, 4)].slice(0, 20);
-            shuffleArray(session);
-            return session;
+            // 2026-05-14: A/B/C 그룹별 추출 제거 → 단순 무작위 20문항
+            const pool = [...questions];
+            shuffleArray(pool);
+            return pool.slice(0, 20);
         }
 
         // 사회/과학 개념카드 렌더러
@@ -6089,7 +6228,7 @@
                 document.body.appendChild(overlay);
 
                 const close = () => {
-                    try { localStorage.setItem(key, '1'); } catch(e){}
+                    try { safeSetItem(key, '1'); } catch(e){}
                     overlay.remove();
                     document.removeEventListener('keydown', escHandler);
                     resolve();

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'quiz-v127';
+const CACHE_NAME = 'quiz-v129';
 // [Codex 2026-05-13 index-tail-restore] Force clients to replace the previously cached truncated index.html.
 const PRECACHE_URLS = [
   './',
@@ -41,6 +41,13 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
+  // v128: non-GET requests must bypass Cache API. POST webhook requests cannot be cached.
+  if (event.request.method !== 'GET') return;
+
+  // v128: external origins such as Apps Script webhooks are never app-cache entries.
+  const reqUrl = new URL(event.request.url);
+  if (reqUrl.origin !== self.location.origin) return;
+
   event.respondWith(
     fetch(event.request)
       .then(response => {
