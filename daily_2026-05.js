@@ -1,7 +1,7 @@
 window.__loadDailyMonth("2026-05", {
-  "schema_version": 1,
+  "schema_version": 1.1,
   "month": "2026-05",
-  "updated_at": "2026-05-24T09:04:23+09:00",
+  "updated_at": "2026-05-24T10:58:06+09:00",
   "days": {
     "2026-05-25": {
       "id": "2026-05-25",
@@ -89,10 +89,13 @@ window.__loadDailyMonth("2026-05", {
         "model": "claude-sonnet-4-6",
         "web_search_used": true
       },
-      "schema_version": 1,
+      "schema_version": 1.1,
       "sensitivity": "sensitive",
       "review_status": "seed",
-      "render_min_version": 1
+      "render_min_version": 1.1,
+      "image_url": null,
+      "image_credit": null,
+      "image_fallback": "category_svg_news"
     },
     "2026-05-26": {
       "id": "2026-05-26",
@@ -172,10 +175,13 @@ window.__loadDailyMonth("2026-05", {
         "model": "claude-sonnet-4-6",
         "web_search_used": true
       },
-      "schema_version": 1,
+      "schema_version": 1.1,
       "sensitivity": "normal",
       "review_status": "seed",
-      "render_min_version": 1
+      "render_min_version": 1.1,
+      "image_url": null,
+      "image_credit": null,
+      "image_fallback": "category_svg_baseball"
     },
     "2026-05-27": {
       "id": "2026-05-27",
@@ -255,10 +261,17 @@ window.__loadDailyMonth("2026-05", {
         "model": "claude-sonnet-4-6",
         "web_search_used": true
       },
-      "schema_version": 1,
+      "schema_version": 1.1,
       "sensitivity": "normal",
       "review_status": "seed",
-      "render_min_version": 1
+      "render_min_version": 1.1,
+      "image_url": "https://www.korea.kr/newsWeb/resources/attaches/2016.06/07/20160607130211210_AXPQI101.jpg",
+      "image_credit": {
+        "source": "정책브리핑",
+        "url": "https://www.korea.kr/news/policyNewsView.do?newsId=148816400",
+        "license": "fair_use"
+      },
+      "image_fallback": "category_svg_calendar"
     },
     "2026-05-28": {
       "id": "2026-05-28",
@@ -338,10 +351,13 @@ window.__loadDailyMonth("2026-05", {
         "model": "claude-sonnet-4-6",
         "web_search_used": true
       },
-      "schema_version": 1,
+      "schema_version": 1.1,
       "sensitivity": "normal",
       "review_status": "seed",
-      "render_min_version": 1
+      "render_min_version": 1.1,
+      "image_url": null,
+      "image_credit": null,
+      "image_fallback": "category_svg_general"
     },
     "2026-05-29": {
       "id": "2026-05-29",
@@ -421,10 +437,13 @@ window.__loadDailyMonth("2026-05", {
         "model": "claude-sonnet-4-6",
         "web_search_used": true
       },
-      "schema_version": 1,
+      "schema_version": 1.1,
       "sensitivity": "normal",
       "review_status": "seed",
-      "render_min_version": 1
+      "render_min_version": 1.1,
+      "image_url": null,
+      "image_credit": null,
+      "image_fallback": "category_svg_news"
     },
     "2026-05-30": {
       "id": "2026-05-30",
@@ -508,10 +527,17 @@ window.__loadDailyMonth("2026-05", {
         "model": "claude-sonnet-4-6",
         "web_search_used": true
       },
-      "schema_version": 1,
+      "schema_version": 1.1,
       "sensitivity": "normal",
       "review_status": "seed",
-      "render_min_version": 1
+      "render_min_version": 1.1,
+      "image_url": "https://wimg.kyeongin.com/news/cms/2026/05/13/news-p.v1.20260513.a42dc3ac52024540ad2944db20f8b350_P2.jpg",
+      "image_credit": {
+        "source": "경인일보",
+        "url": "https://www.kyeongin.com/article/1763568",
+        "license": "fair_use"
+      },
+      "image_fallback": "category_svg_baseball"
     },
     "2026-05-31": {
       "id": "2026-05-31",
@@ -595,10 +621,17 @@ window.__loadDailyMonth("2026-05", {
         "model": "claude-sonnet-4-6",
         "web_search_used": true
       },
-      "schema_version": 1,
+      "schema_version": 1.1,
       "sensitivity": "normal",
       "review_status": "seed",
-      "render_min_version": 1
+      "render_min_version": 1.1,
+      "image_url": "https://cdn.hdhy.co.kr/news/photo/202405/20691_28370_534.png",
+      "image_credit": {
+        "source": "현대해양",
+        "url": "https://www.hdhy.co.kr/news/articleView.html?idxno=20691",
+        "license": "fair_use"
+      },
+      "image_fallback": "category_svg_calendar"
     }
   }
 });
