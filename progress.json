@@ -1,9 +1,9 @@
 {
   "project": "PA — 중2 영어 학습 앱",
-  "last_updated": "2026-05-07T01:30:00+09:00",
-  "label": "중2 영어+국어+수학 학습 앱 파일럿",
-  "target_date": "2026-04-27",
-  "status": "중간고사 대비 모드 (4/27-28 시험)",
+  "last_updated": "2026-05-24",
+  "label": "중2 5과목 학습 앱 (영어+국어+수학+사회+과학)",
+  "target_date": null,
+  "status": "STEP133 발주서 작성 완료 2026-05-24: '오늘의 한 장' 큐 모델 + 스킬화 + 이미지정책 v2 명문화 통합 발주서. Claude Code 실작업 대기. STEP133 in_progress 유지.",
   "steps": [
     {
       "id": "STEP1",
@@ -765,6 +765,121 @@
         "본인 학생용 1차 시안 수준 — 페이지·문항 매핑 정확도는 다음 세션에서 보강"
       ],
       "next_session_pickup": "02_Working/01~05_*_핵심함정정리_v1.md → if부터 SVG 발행, 양식 fix 검증 후 4개 일괄"
+    },
+    {
+      "id": "STEP125",
+      "name": "\"오늘의 한 장\" 코너 신설 — 인프라 + 앱 UI",
+      "status": "completed",
+      "completed_date": "2026-05-23",
+      "notes": "PA 학습앱 홈에 6번째 카드 '오늘의 한 장' 추가. Cowork 스케줄 태스크(매주 토18·일09·월03 멱등 3회)로 다음 주 7일치 자동 생성하는 구조. 관련 파일: 02_Working/daily_one_page/{FORMAT_SPEC.md, calendar.json, rotation.json, SCHEDULE_PROMPT.md}, 90_Output/app/index.html(+10.4KB JS +6.7KB CSS), sw.js v131→v132, 90_Output/app/daily/{index.js, README.md}. 백업: index.html.bak-pre-daily-20260523-210144, sw.js.bak-pre-daily-20260523-210144. 다음 단계: Cowork 스케줄 등록 + 시드 7장 생성 + 사용자 검수."
+    },
+    {
+      "id": "STEP126",
+      "name": "\"오늘의 한 장\" 시드 7장 작성 (2026-05-25~31)",
+      "status": "completed",
+      "completed_date": "2026-05-24",
+      "notes": "이번 주 월~일 7장 콘텐츠 일괄 생성 후 daily/ 폴더에 저장. 카테고리 분포: 시사 2(스타벅스 5·18 조롱, 호르무즈 해협), 야구 2(KBO 5월 결산, 최정 21시즌), 캘린더 2(현충일·호국보훈, 바다의 날), 일반상식 1(장마 원리). 본문 합 812~876자 범위로 분량 가이드 통과. 서브에이전트 2개 병렬(A조 3장, B조 4장) 위임 후 메인이 검증·통합. 5/26 출처에서 나무위키 1건 제거 → KBO 공식 + 경인일보 2건으로 정리. daily/index.js 7장 등록, rotation.json history·category_count 갱신. 다음 단계: Cowork 스케줄 태스크 등록(SCHEDULE_PROMPT.md), 사용자 첫 콘텐츠 검수, 안드로이드 동기화 확인."
+    },
+    {
+      "id": "STEP127",
+      "name": "Codex 자문 → v2 재설계 발주 + 3-agent 분담 재편",
+      "status": "completed",
+      "completed_date": "2026-05-24",
+      "notes": "Codex 자문(2026-05-24-daily-one-page-design-review.md) 정독·사실확정 3건 모두 적중 (next Monday 버그·v132 daily 없음·Android assets daily 없음). v1 필수 5건(B 월별 묶음/스케줄 버그/fallback 3단계/SW 캐시/스키마 버전) 발주서 작성: 00_Context/claude-code-orders/2026-05-24-daily-v2-redesign.md. 사용자 결단: v132 동결(작업 제외), Android wrapper 미반영(사용자는 PWA 사용). 메모리 갱신: project_codex_actual_worker → 3-agent 분담(Cowork Claude 대화·발주, Codex 자문, Claude Code 실작업). 다음 세션: Claude Code 작업 완료 보고 검토 + spot-check + GitHub 업로드 체크리스트 + Cowork 스케줄 등록 안내. [완료 2026-05-24] v2 재설계 5건 모두 적용: 월별 묶음(daily_2026-05.js) + 스키마 v1 + SCHEDULE_PROMPT 14일 윈도우 + 앱 fallback 3단계(pa_daily_last_success) + SW v133 daily 정규화 캐시 + FORMAT_SPEC v2. 시드 7장 출처 5/25 2→4개 확장(동아일보·파이낸셜뉴스 추가)."
+    },
+    {
+      "id": "STEP128",
+      "name": "운영 결단: app-v132 동결, 90_Output/app이 단일 운영본",
+      "status": "completed",
+      "completed_date": "2026-05-24",
+      "notes": "app-v132(Axis4 후보)는 daily v2 코너 미반영 상태. 사용자 결단으로 v132 동결 — 향후 배포는 90_Output/app(현재 단일 운영본)에서만. v132 재개 시 daily v2 이식 별도 작업."
+    },
+    {
+      "id": "STEP129",
+      "name": "운영 결단: Android wrapper(app-android/) daily 미반영",
+      "status": "completed",
+      "completed_date": "2026-05-24",
+      "notes": "app-android/app/src/main/assets/www/는 2026-05-14 스냅샷으로 동결. 사용자는 PWA/GitHub Pages로 사용. 향후 APK 재배포 결단 시 90_Output/app → assets/www 동기화 + APK rebuild·reinstall 별도 작업 필요. Codex 자문 2026-05-24-daily-one-page-design-review.md §우려4 참조."
+    },
+    {
+      "id": "STEP130",
+      "name": "Codex 자문 사이클 1·2·3차 follow-up (BASE_MONDAY 멱등성, stale verify, 표현 정정, harness argparse 일반화)",
+      "status": "completed",
+      "completed_date": "2026-05-25",
+      "notes": "발주서 3건: codex-findings-fix → codex-followup → codex-followup2. 각 라운드 5/5 또는 8/8 PASS. SCHEDULE_PROMPT BASE_MONDAY 고정 14일 윈도우 적용. verify harness 2개 (_verify_daily_v2 / _verify_codex_findings_fix) 정합."
+    },
+    {
+      "id": "STEP131",
+      "name": "5/25 첫 콘텐츠 검수 + O 문항 해설 14건 보강 + O·X 해설 의무화 규칙",
+      "status": "completed",
+      "completed_date": "2026-05-25",
+      "notes": "발주서 2건: daily-o-explanations → schedule-prompt-ox-rule. 7장 × O 문항 2개 = 14건 explanation 추가. SCHEDULE_PROMPT.md §3 #7 + FORMAT_SPEC.md 3곳 동기화. _fill_o_explanations.py 보존."
+    },
+    {
+      "id": "STEP132",
+      "name": "헤더 이미지 시스템 + 글자 16px (v1.1)",
+      "status": "completed",
+      "completed_date": "2026-05-25",
+      "notes": "발주서: daily-images-and-fontsize. 스키마 v1 → v1.1 (image_url, image_credit, image_fallback 3필드 추가). CSS 11클래스 갱신(3 main 16px + 8 보조 +1px). 시드 7장 중 3장 OG/lead 이미지 매핑(5/27 정책브리핑, 5/30 경인일보, 5/31 현대해양), 4장 SVG fallback. WebFetch og:image 손실 발견 → 본문 lead 이미지 우회 SCHEDULE_PROMPT에 명문화. 검증 7/7 PASS. 2차 GitHub push 완료."
+    },
+    {
+      "id": "STEP133",
+      "name": "운영 결단: 스케줄 → 스킬화 전환 (다음 세션 작업)",
+      "status": "in_progress",
+      "completed_date": null,
+      "notes": "사용자 결단: Cowork scheduled task 폐기, 스킬만 채택. 사용자가 필요할 때 자연어로 호출. 큐(Queue) 모델: '오늘' 탭 = 안 본 카드 1장씩 순서대로. 본다 기준 = 하단까지 스크롤. 다음 세션에서 통합 발주서 작성 예정. 모바일 검수 결과 받은 후 확정."
+    },
+    {
+      "id": "STEP134",
+      "name": "이미지 재탐색·매핑 보강 (5/25 주간경향·5/26 경인일보 R·5/29 국민일보)",
+      "status": "completed",
+      "completed_date": "2026-05-24",
+      "details": {
+        "trigger": "사용자 모바일 검수 — 5/25,26,28,29 fallback 박스만 보임 보고",
+        "method": "Claude in Chrome — 10개 원천 URL og:image 추출 + 4개 이미지 직접 스크린샷 시각 검증",
+        "decisions": {
+          "2026-05-25": "주간경향 P1.png (스타벅스 공식 탱크데이/나수데이 프로모션 광고. 탱크 직접 묘사 아님)",
+          "2026-05-26": "경인일보 R.jpg (SSG 최정 article — 5/30 P2와 같은 article 다른 사이즈)",
+          "2026-05-28": "fallback 유지 (브런치 default share / kma og 없음 — 유효 후보 부재)",
+          "2026-05-29": "국민일보 (호르무즈 지도 + 이란 국기 + 컨테이너선)"
+        },
+        "result": "매핑률 3/7 (43%) → 6/7 (86%)",
+        "files_changed": [
+          "90_Output/app/daily_2026-05.js",
+          "90_Output/app/daily_index.js (version_key 20260524-2200 → 20260524-1035)",
+          "90_Output/app/sw.js (CACHE_NAME v133 → v134)"
+        ],
+        "license": "all fair_use (원천 매체 OG)",
+        "push_status": "사용자 push 대기"
+      }
+    },
+    {
+      "id": "STEP135",
+      "name": "이미지 정책 풀기: 5/26 톱스타뉴스 순위표, 5/28 아주경제 광화문 우산 (매핑률 100%)",
+      "status": "completed",
+      "completed_date": "2026-05-24",
+      "details": {
+        "trigger": "사용자 의문: '구글 이미지 검색에서 장마 치면 나오는 이미지 쓰면 안 되는거야?'",
+        "policy_change": "원천 기사 OG만 → 구글 이미지 검색 자유. fair_use 라이선스 운영은 동일.",
+        "decisions": {
+          "2026-05-26": "톱스타뉴스 16059090_1920243_1523_crop.png (2026.05.12 KBO 팀 순위 표지 — 5월 순위 토픽 직결, kyeongin SSG최정 R.jpg에서 교체)",
+          "2026-05-28": "아주경제 (via 네이트뉴스) 20260506143204498233.jpg (광화문 + 우산 — 비 묘사 직관적)"
+        },
+        "result": "매핑률 6/7 (86%) → 7/7 (100%)",
+        "files_changed": [
+          "90_Output/app/daily_2026-05.js",
+          "90_Output/app/daily_index.js (version_key 20260524-1035 → 20260524-1100)",
+          "90_Output/app/sw.js (CACHE_NAME v134 → v135)"
+        ],
+        "push_status": "사용자 push 대기"
+      }
+    },
+    {
+      "id": "STEP136",
+      "name": "STEP133 큐 모델 + 스킬화 발주서 작성 (Claude Code 실작업 대기)",
+      "status": "completed",
+      "completed_date": "2026-05-24",
+      "notes": "발주서: 00_Context/claude-code-orders/2026-05-24-queue-and-skillification.md. 사용자 결단 7건 반영 (FIFO, 하단스크롤, 배지 둘다, 탭 '한 장'/'지난 글', archive=읽음만, 큐와 독립, 자동트리거 폐기, 이미지정책 v2). STEP133은 Claude Code 실작업 후 completed 처리."
     }
   ],
   "hotfix_2026-03-18": {
@@ -778,114 +893,260 @@
       "input": "02_Working/01~05_*_핵심함정정리_v1.md (5개 .md 정독 완료)",
       "output_target": "90_Output/260426_영어_although_정리_v1/ 또는 별도 폴더",
       "format": "A4 세로 SVG, although v1·v2 양식 fix 적용",
-      "verification": "xmllint + verify_overflow + 사용자 시각 검토 (if부터 우선)"
+      "verification": "xmllint + verify_overflow + 사용자 시각 검토 (if부터 우선)",
+      "axis2_reviewed_date": "2026-05-14",
+      "status": "deferred",
+      "deferred_date": "2026-05-14",
+      "defer_reason": "Midterm closed; revisit only if finals scope requires this hardcopy/SVG material."
     },
     {
       "name": "Apps Script v6 배포",
       "status": "completed",
       "completed_date": "2026-03-22",
-      "note": "v5→v6: vocab_log 분기 처리 + 요약 시트 단어 암기 통계 추가. 사용자 직접 배포 완료."
+      "note": "v5→v6: vocab_log 분기 처리 + 요약 시트 단어 암기 통계 추가. 사용자 직접 배포 완료.",
+      "axis2_reviewed_date": "2026-05-14",
+      "archived_after_midterm": "2026-05-14"
     },
     {
       "name": "국어 확장 — 전문가 콘텐츠 요청서 전달",
       "status": "completed",
       "note": "전문가 납품 v1.0→v1.1 검수 완료. 정답위치 다양화, wrong_feedback 40문항, symbol_marks 17문항 반영 확인. lesson_kor1.js 변환 완료(40문항+18어휘+10핵심문장).",
-      "completed_date": "2026-03-23"
+      "completed_date": "2026-03-23",
+      "axis2_reviewed_date": "2026-05-14",
+      "archived_after_midterm": "2026-05-14"
     },
     {
       "name": "국어 확장 — 앱 코드 구현",
       "status": "completed",
       "completed_date": "2026-03-23",
-      "note": "korean-integration-spec.md 기반 구현 완료. (1)과목 선택 UI(영어/국어 토글+레슨 버튼 동적 교체), (2)reference_type 5종 렌더링(hint/concept/table/criteria/background), (3)symbol_marks ㉠㉡ CSS 강조, (4)passage_group 묶음 출제 세션 엔진, (5)국어 vocab 확장 카드(뜻+품사+예문+유사표현), (6)핵심 문장 모드(core_sentences 플래시카드), (7)TTS 국어 비활성화+헤더 동적 타이틀+로그 subject 필드, (8)sw.js v17 캐시. 백업: index_v14_backup.html"
+      "note": "korean-integration-spec.md 기반 구현 완료. (1)과목 선택 UI(영어/국어 토글+레슨 버튼 동적 교체), (2)reference_type 5종 렌더링(hint/concept/table/criteria/background), (3)symbol_marks ㉠㉡ CSS 강조, (4)passage_group 묶음 출제 세션 엔진, (5)국어 vocab 확장 카드(뜻+품사+예문+유사표현), (6)핵심 문장 모드(core_sentences 플래시카드), (7)TTS 국어 비활성화+헤더 동적 타이틀+로그 subject 필드, (8)sw.js v17 캐시. 백업: index_v14_backup.html",
+      "axis2_reviewed_date": "2026-05-14",
+      "archived_after_midterm": "2026-05-14"
     },
     {
       "name": "국어 1단원 학습 구조 재설계 + 수행평가 모드",
       "status": "completed",
       "completed_date": "2026-03-28",
-      "note": "4모드 재설계 완료: (1)본문해설 3편(첫사랑이야기+기차가달려간곳에는+비린내라뇨), (2)개념카드 6쌍(말하는이vs보는이 등), (3)실전대비(기존40문항 유지), (4)수행평가(설명글쓰기: 설명방법7종카드+찾기8문항+개요연습3개 / 독서단어장: 좋은예시3+나쁜vs좋은3+선정가이드). lesson_kor1.js v1→v2(2615줄). index.html 4모드UI(3479→3927줄). sw.js v18→v19."
+      "note": "4모드 재설계 완료: (1)본문해설 3편(첫사랑이야기+기차가달려간곳에는+비린내라뇨), (2)개념카드 6쌍(말하는이vs보는이 등), (3)실전대비(기존40문항 유지), (4)수행평가(설명글쓰기: 설명방법7종카드+찾기8문항+개요연습3개 / 독서단어장: 좋은예시3+나쁜vs좋은3+선정가이드). lesson_kor1.js v1→v2(2615줄). index.html 4모드UI(3479→3927줄). sw.js v18→v19.",
+      "axis2_reviewed_date": "2026-05-14",
+      "archived_after_midterm": "2026-05-14"
     },
     {
       "name": "국어 원문 리더뷰 + 본문해설 콘텐츠 보강",
       "status": "completed",
       "completed_date": "2026-03-29",
-      "note": "교과서 원문 3편 추출(kor1_reader.js) → 책처럼 보이는 리더뷰 UI(Noto Serif KR, 따뜻한 종이 배경, 대사 구분, 폰트 3단계 조절) → 본문해설 '원문 읽기' 버튼 연결 → 콘텐츠 보강(PG-01 시험포인트+구조요약, PG-02 시점설명+구조요약, PG-03 문학용어+구조요약, 확인질문 각1개 추가). sw.js 업데이트 필요."
+      "note": "교과서 원문 3편 추출(kor1_reader.js) → 책처럼 보이는 리더뷰 UI(Noto Serif KR, 따뜻한 종이 배경, 대사 구분, 폰트 3단계 조절) → 본문해설 '원문 읽기' 버튼 연결 → 콘텐츠 보강(PG-01 시험포인트+구조요약, PG-02 시점설명+구조요약, PG-03 문학용어+구조요약, 확인질문 각1개 추가). sw.js 업데이트 필요.",
+      "axis2_reviewed_date": "2026-05-14",
+      "archived_after_midterm": "2026-05-14"
     },
     {
       "name": "PG-02 원문 전문 보강",
       "status": "completed",
       "completed_date": "2026-03-29",
-      "note": "교과서 대조하여 소설 '기차가 달려간 곳에는' 누락 장면 전수 보충. 32→67단락. 추가된 주요 장면: 연서 주먹+뒤란, 버스, 아기안기, 성호 영어대회, 고모 용돈+짜장면, 고모/할머니 대화, 연서 엄마 뒷산, KTX 첫 탑승, 숲 동물, 마을/학교, 태권도 사범 꿈, 서울 골목 상세, 엄마 회상, 소인국 걸리버, 앞방 할아버지, 사진, 화장실, 아빠 외모 변화, 농부 이야기, 목표/술/쪽방 대화, 용수천 등목. PG-03 부가설명은 불필요하여 생략. sw.js v20→v21. 백업: kor1_reader_v1_backup.js"
+      "note": "교과서 대조하여 소설 '기차가 달려간 곳에는' 누락 장면 전수 보충. 32→67단락. 추가된 주요 장면: 연서 주먹+뒤란, 버스, 아기안기, 성호 영어대회, 고모 용돈+짜장면, 고모/할머니 대화, 연서 엄마 뒷산, KTX 첫 탑승, 숲 동물, 마을/학교, 태권도 사범 꿈, 서울 골목 상세, 엄마 회상, 소인국 걸리버, 앞방 할아버지, 사진, 화장실, 아빠 외모 변화, 농부 이야기, 목표/술/쪽방 대화, 용수천 등목. PG-03 부가설명은 불필요하여 생략. sw.js v20→v21. 백업: kor1_reader_v1_backup.js",
+      "axis2_reviewed_date": "2026-05-14",
+      "archived_after_midterm": "2026-05-14"
     },
     {
       "name": "Lesson 3 생성",
       "status": "completed",
       "completed_date": "2026-03-31",
-      "note": "lesson3.js 생성 완료. wrong_explanations 정답키 38건 수정."
+      "note": "lesson3.js 생성 완료. wrong_explanations 정답키 38건 수정.",
+      "axis2_reviewed_date": "2026-05-14",
+      "archived_after_midterm": "2026-05-14"
     },
     {
       "id": "STEP51",
       "name": "중간고사 범위 정비 + 비범위 단원 숨김",
       "status": "completed",
       "completed_date": "2026-03-31",
-      "note": "영어L1 타이틀 수정(New Year, New Me), 국어1단원 타이틀 수정(능동적으로 읽는 힘). 비범위 단원 숨김: 국어2단원 버튼, 영어L2 버튼, 과학sci2 버튼. sw.js에서도 해당 파일 precache 주석처리."
+      "note": "영어L1 타이틀 수정(New Year, New Me), 국어1단원 타이틀 수정(능동적으로 읽는 힘). 비범위 단원 숨김: 국어2단원 버튼, 영어L2 버튼, 과학sci2 버튼. sw.js에서도 해당 파일 precache 주석처리.",
+      "axis2_reviewed_date": "2026-05-14",
+      "archived_after_midterm": "2026-05-14"
     },
     {
       "id": "STEP52",
       "name": "과학 빛과파동(sci3) 콘텐츠 사전 준비",
       "status": "completed",
       "completed_date": "2026-03-31",
-      "note": "lesson_sci3.js 생성(빛과파동 1.빛 p.91-110). 개념15장(SVG 6장)+실전25문항(A:13/B:10/C:2). 앱 연결은 A/B반 확인 후 진행 예정."
+      "note": "lesson_sci3.js 생성(빛과파동 1.빛 p.91-110). 개념15장(SVG 6장)+실전25문항(A:13/B:10/C:2). 앱 연결은 A/B반 확인 후 진행 예정.",
+      "axis2_reviewed_date": "2026-05-14",
+      "archived_after_midterm": "2026-05-14"
     },
     {
       "id": "STEP53",
       "name": "wrong_explanations 품질 수정 (전 과목)",
       "status": "completed",
       "completed_date": "2026-03-31",
-      "note": "정답키가 wrong_explanations에 포함된 문제 50건 수정. lesson3.js(38건), lesson_math1.js(5건), lesson_soc2.js(7건)."
+      "note": "정답키가 wrong_explanations에 포함된 문제 50건 수정. lesson3.js(38건), lesson_math1.js(5건), lesson_soc2.js(7건).",
+      "axis2_reviewed_date": "2026-05-14",
+      "archived_after_midterm": "2026-05-14"
     },
     {
       "id": "STEP54",
       "name": "SVG 시각자료 추가 (과학1)",
       "status": "completed",
       "completed_date": "2026-03-31",
-      "note": "lesson_sci1.js에 CC-04(가열곡선 그래프), CC-16(밀도차 분리 비커) SVG 2건 추가. 전체 111장 카드 중 18장 SVG 효과적 판정, 나머지는 텍스트 충분."
+      "note": "lesson_sci1.js에 CC-04(가열곡선 그래프), CC-16(밀도차 분리 비커) SVG 2건 추가. 전체 111장 카드 중 18장 SVG 효과적 판정, 나머지는 텍스트 충분.",
+      "axis2_reviewed_date": "2026-05-14",
+      "archived_after_midterm": "2026-05-14"
     },
     {
       "id": "STEP55",
       "name": "형광펜 하이라이팅 전 과목 적용",
       "status": "completed",
       "completed_date": "2026-03-31",
-      "note": "국어 본문해설 <mark> 태그(kor1: 11건, kor2: 19건). index.html에 mark CSS 추가. highlightText() 함수 19개 호출 지점에 적용(개념카드 7필드, 설명방법카드 2필드, 학습개념 1필드, 수학개념 1필드, 연결개념팝업 1필드 등). sw.js v65."
+      "note": "국어 본문해설 <mark> 태그(kor1: 11건, kor2: 19건). index.html에 mark CSS 추가. highlightText() 함수 19개 호출 지점에 적용(개념카드 7필드, 설명방법카드 2필드, 학습개념 1필드, 수학개념 1필드, 연결개념팝업 1필드 등). sw.js v65.",
+      "axis2_reviewed_date": "2026-05-14",
+      "archived_after_midterm": "2026-05-14"
     },
     {
       "id": "STEP56",
       "name": "Apps Script v8 — 5과목 19컬럼 완전 대응",
       "status": "completed",
       "completed_date": "2026-04-04",
-      "note": "v3~v7 스크립트가 과목 구분 없이 동작하던 문제 해결. 19컬럼(과목/단원/세션유형/3대메트릭/재도전·회복률) 완전 대응. v3/v4/v5/v6/v7 어떤 버전에서든 자동 마이그레이션. 앱 sendToGoogleSheets() 버그 2건 수정: (1) math/soc/sci 로그 수집 누락, (2) retry/recovery_rate 필드 미전송."
+      "note": "v3~v7 스크립트가 과목 구분 없이 동작하던 문제 해결. 19컬럼(과목/단원/세션유형/3대메트릭/재도전·회복률) 완전 대응. v3/v4/v5/v6/v7 어떤 버전에서든 자동 마이그레이션. 앱 sendToGoogleSheets() 버그 2건 수정: (1) math/soc/sci 로그 수집 누락, (2) retry/recovery_rate 필드 미전송.",
+      "axis2_reviewed_date": "2026-05-14",
+      "archived_after_midterm": "2026-05-14"
     },
     {
       "name": "수학 개념정리 PDF — 유리수와 순환소수",
       "status": "completed",
       "completed_date": "2026-03-25",
-      "note": "중2 수학2 교과서 기반 AI 맞춤 개념정리 9페이지 PDF. 5파트: (1)직관적 핵심개념, (2)유한/순환 3초 판별 체크리스트+함정3, (3)순환소수→분수 빠른공식+함정2, (4)시험직전 공식카드+TOP5 함정, (5)3단계 연습문제 8개+풀이. WeasyPrint+NanumSquare 폰트. 출력: 90_Output/유리수와_순환소수_개념정리_v3.pdf"
+      "note": "중2 수학2 교과서 기반 AI 맞춤 개념정리 9페이지 PDF. 5파트: (1)직관적 핵심개념, (2)유한/순환 3초 판별 체크리스트+함정3, (3)순환소수→분수 빠른공식+함정2, (4)시험직전 공식카드+TOP5 함정, (5)3단계 연습문제 8개+풀이. WeasyPrint+NanumSquare 폰트. 출력: 90_Output/유리수와_순환소수_개념정리_v3.pdf",
+      "axis2_reviewed_date": "2026-05-14",
+      "archived_after_midterm": "2026-05-14"
     },
     {
       "id": "STEP57",
       "name": "전 과목 퀴즈 정답 검증 + 버그 4건 수정",
       "status": "completed",
       "completed_date": "2026-04-05",
-      "note": "수학: M1-E001 순환소수 표기 오류(0.{r:342}→0.3{r:42}), M1-E016 오답 2개 문제(보기③ 1/37→3/110 정답으로 교체+해설정리). 영어: D-CS03-02 중복보기(invented→discovered), V041 중복보기(mistaken→mistaking). 과학/사회/국어는 이상 없음."
+      "note": "수학: M1-E001 순환소수 표기 오류(0.{r:342}→0.3{r:42}), M1-E016 오답 2개 문제(보기③ 1/37→3/110 정답으로 교체+해설정리). 영어: D-CS03-02 중복보기(invented→discovered), V041 중복보기(mistaken→mistaking). 과학/사회/국어는 이상 없음.",
+      "axis2_reviewed_date": "2026-05-14",
+      "archived_after_midterm": "2026-05-14"
+    },
+    {
+      "id": "AXIS2-R1",
+      "name": "Axis2 R1 webhook device verification",
+      "status": "pending_user_natural_session",
+      "priority": "high",
+      "added_date": "2026-05-14",
+      "note": "After v130 GitHub/Apps Script deployment and Android APK refresh if installed, run one real device session; confirm Sheet 21-column log, summary, weak labels, and vocab headers.",
+      "last_checked": "2026-05-14"
+    },
+    {
+      "id": "AXIS2-LATENCY",
+      "name": "Axis2 content latency remeasurement",
+      "status": "pending_natural_observation",
+      "priority": "high",
+      "added_date": "2026-05-14",
+      "note": "Current PA learning-log xlsx latest valid log date is 2026-05-06; rows after 2026-05-14 = 0, so 5/12+ card-id latency cannot be measured yet.",
+      "last_checked": "2026-05-14"
+    },
+    {
+      "id": "AXIS2-F10",
+      "name": "Axis2 score_group/recovery_band payload decision",
+      "status": "deployed_pending_natural_log",
+      "priority": "high",
+      "added_date": "2026-05-14",
+      "note": "Included in Axis3 v131 deployment. Natural student session still needed to confirm meaningful score_group/recovery_band values in live 24-column log.",
+      "implemented_date": "2026-05-14",
+      "deployed_date": "2026-05-14"
+    },
+    {
+      "id": "AXIS2-KOR1",
+      "name": "Axis2 kor1 structure and multi-answer follow-up",
+      "status": "blocked_scope_alignment",
+      "priority": "medium",
+      "added_date": "2026-05-14",
+      "note": "No lesson_kor1.js change. Official Korean finals unit scope is still unconfirmed; proceed only after scope sheet/notice confirms kor1 inclusion.",
+      "last_checked": "2026-05-14"
+    },
+    {
+      "id": "AXIS2-WEEKLY",
+      "name": "Axis2 weekly report leading indicators",
+      "status": "manual_sendweeklyreport_passed_pending_auto",
+      "priority": "medium",
+      "added_date": "2026-05-14",
+      "note": "User confirmed sendWeeklyReport manual execution succeeded after v131/GAS redeploy. Next scheduled automatic send remains natural verification.",
+      "implemented_date": "2026-05-14",
+      "deployed_date": "2026-05-14"
+    },
+    {
+      "id": "AXIS2-V130-DEPLOY",
+      "name": "Deploy Axis2 follow-up v130",
+      "status": "superseded_and_closed_by_axis3_v131",
+      "priority": "high",
+      "added_date": "2026-05-14",
+      "note": "Axis2 v130 deploy is superseded by Axis3 v131. Deploy the v131 bundle instead; it includes the Axis2 score_group/recovery_band and weekly signal changes.",
+      "superseded_date": "2026-05-14"
+    },
+    {
+      "id": "AXIS2-KOR1-SCOPE",
+      "name": "Confirm official Korean finals scope before kor1 content work",
+      "status": "pending_user",
+      "priority": "medium",
+      "added_date": "2026-05-14",
+      "note": "Provide school final-exam Korean unit scope/notice. Current evaluation plan confirms selected-response format only, not unit scope."
+    },
+    {
+      "id": "AXIS3-V131-DEPLOY",
+      "name": "Deploy Axis3 v131 PWA and GAS v11 behavior",
+      "status": "completed",
+      "priority": "high",
+      "added_date": "2026-05-14",
+      "note": "User confirmed GitHub Pages v131 upload, Apps Script redeploy, and sendWeeklyReport manual run succeeded.",
+      "completed_date": "2026-05-14",
+      "completed_note": "사용자 PC에서 GitHub Pages 업로드(index.html + sw.js + lesson1/3/math1.js) + Apps Script v10 → v11 재배포 + sendWeeklyReport 1회 수동 실행 완료. 학생 단말 강제 새로고침 + D-day 입력은 AXIS3-DDAY-VERIFY로 분리."
+    },
+    {
+      "id": "AXIS3-DDAY-VERIFY",
+      "name": "Axis3 D-day input and D-7 mode exposure verification",
+      "status": "pending_natural_device_check",
+      "priority": "high",
+      "added_date": "2026-05-14",
+      "note": "Axis3 is closed; verify naturally on student device when D-day is entered and date falls within D-7~D-day."
+    },
+    {
+      "id": "AXIS3-R1",
+      "name": "Axis3 natural exam_perf session and webhook verification",
+      "status": "pending_natural_session",
+      "priority": "high",
+      "added_date": "2026-05-14",
+      "note": "Axis3 is closed; after one real exam_perf session, confirm 24-column Sheet values for 조건읽기실수, OMR실수, 시간내완주."
+    },
+    {
+      "id": "AXIS3-WEEKLY-AUTO",
+      "name": "2026-05-17 sendWeeklyReport 자동 발송 + 전조신호 시트 신규 5×3 셀 검증",
+      "status": "pending_natural_scheduled_send",
+      "created_date": "2026-05-14",
+      "note": "Manual sendWeeklyReport passed. Confirm next scheduled automatic run and 전조신호 sheet after natural trigger."
+    },
+    {
+      "id": "AXIS4-DEPLOY",
+      "name": "Deploy Axis4 v132 split app after AXIS3 natural-verification gate",
+      "status": "blocked_by_axis3_natural_verification",
+      "priority": "high",
+      "added_date": "2026-05-14",
+      "note": "app-v132 structure split and GAS v11 candidate passed Node/GAS/smoke checks. Do not replace 90_Output/app until AXIS3-DDAY-VERIFY, AXIS3-R1, and AXIS3-WEEKLY-AUTO are completed or user explicitly narrows the gate. When deploy gate opens, follow 00_Context/axis4-deploy-runbook-2026-05-14.md; GitHub upload targets are 9 changed PWA files, including 7 newly introduced PWA files. Do not upload google-apps-script-v11.js or .bak-axis4-* files to GitHub Pages.",
+      "depends_on": [
+        "AXIS3-DDAY-VERIFY",
+        "AXIS3-R1",
+        "AXIS3-WEEKLY-AUTO"
+      ],
+      "candidate_path": "90_Output/app-v132",
+      "deploy_runbook": "00_Context/axis4-deploy-runbook-2026-05-14.md"
     }
   ],
   "app_snapshot": {
-    "date": "2026-03-31",
+    "date": "2026-05-14",
     "files": {
-      "index.html": "메인 앱 — 비범위 단원 숨김 + mark CSS + highlightText 19지점 적용",
-      "lesson_math1.js": "v1.2 — M1-E001 순환소수 표기 수정 + M1-E016 보기③ 정답으로 교체",
-      "lesson1.js": "v4.0 (JSONP) — 타이틀 수정(New Year, New Me)",
+      "index.html": "v131 - exam_perf router, D-day input, D-7 mode exposure, 24-column webhook payload",
+      "lesson_math1.js": "v1.2 + exam_perf_variants metadata 8문항",
+      "lesson1.js": "v4.0 (JSONP) + exam_perf_variants metadata 4문항",
       "lesson2.js": "v3.8 (JSONP) — 비범위, 숨김 처리",
-      "lesson3.js": "v1.1 — D-CS03-02/V041 중복 보기 수정",
+      "lesson3.js": "v1.1 + exam_perf_variants metadata 4문항",
       "lesson_kor1.js": "v2.2 (JSONP) — 타이틀 수정(능동적으로 읽는 힘) + mark 태그 11건",
       "lesson_kor2.js": "v1.1 (JSONP) — mark 태그 19건 (비범위, 숨김 처리)",
       "kor1_reader.js": "교과서 원문 3편 — PG-02 전문 보강",
@@ -893,16 +1154,18 @@
       "lesson_soc2.js": "v1.1 (JSONP) — 경제생활과시장 (wrong_explanations 7건 수정)",
       "lesson_sci1.js": "v1.1 (JSONP) — 물질의특성 (SVG 2건 추가: CC-04, CC-16)",
       "lesson_sci3.js": "v1.0 (JSONP) — 빛과파동(대기, A/B반 확인 후 연결)",
-      "sw.js": "캐시 v65 — 비범위 파일 주석처리",
+      "sw.js": "cache quiz-v131",
       "google-apps-script-v7.js": "16컬럼(과목 추가) + v6→v7 마이그레이션",
-      "google-apps-script-v8.js": "19컬럼(과목+단원+세션유형+3메트릭+재도전/회복률) + v3~v7 자동 마이그레이션 + 과목별 요약"
+      "google-apps-script-v8.js": "19컬럼(과목+단원+세션유형+3메트릭+재도전/회복률) + v3~v7 자동 마이그레이션 + 과목별 요약",
+      "google-apps-script-v10.js": "v11 behavior in v10 file - 24-column log, 19/21-column auto migration, exam_perf profile signals, leading-signals xlsx sheet",
+      "app-android assets": "unchanged from v130; Axis3 PWA/GitHub Pages path only. APK sync deferred unless native app is used."
     },
     "subjects": {
-      "english": "Lesson 1, 2 — 기존 영어 학습 전체 기능 (3모드: 단어드릴+문장드릴+실전대비)",
-      "korean": "1단원+2단원 — 4모드: 본문해설 + 개념카드 + 실전대비 + 수행평가. 2단원: 피동/인용표현+매체재현(38문항)",
-      "math": "1단원 유리수와순환소수 — 3모드: 개념카드(8장) + 절차연습(12문제/42단계) + 실전문제(20문항, A:10/B:8/C:2)",
-      "social": "1단원 국가기관과권력분립 — 2모드: 개념정리(27장) + 실전문제(25문항, A:14/B:11)",
-      "science": "1단원 물질의특성 — 2모드: 개념정리(25장) + 실전문제(20문항, A:9/B:10/C:1)"
+      "english": "Lesson 1/3 중심 — 단어드릴+문장드릴+실전대비 + D-7 시험 수행 모드(영어 메타 8문항)",
+      "korean": "1단원+2단원 — 기존 4모드 유지 + 시험 수행 인프라 준비 중(메타 0문항)",
+      "math": "1단원 유리수와순환소수 — 개념카드+절차연습+실전문제 + D-7 시험 수행 모드(수학 메타 8문항)",
+      "social": "1·2단원 — 기존 2모드 유지 + 시험 수행 인프라 준비 중(메타 0문항)",
+      "science": "1·3단원 — 기존 2모드 유지 + 시험 수행 인프라 준비 중(메타 0문항)"
     },
     "modes": {
       "english_vocab": "단어 드릴 — 플래시카드 + 최대 3라운드 재시도",
@@ -918,7 +1181,8 @@
       "social_concept": "사회 개념정리 — 27장 플립카드 (용어+정의+쉬운설명+시험팁)",
       "social_exam": "사회 실전문제 — 25문항 (A군 우선 max15, 보기 셔플)",
       "science_concept": "과학 개념정리 — 25장 플립카드 (용어+정의+쉬운설명+시험팁)",
-      "science_exam": "과학 실전문제 — 20문항 (A군 우선 max15, 보기 셔플)"
+      "science_exam": "과학 실전문제 — 20문항 (A군 우선 max15, 보기 셔플)",
+      "exam_perf": "시험 수행 — 시험 D-day D-7~D-day에만 자동 노출. exam_perf_variants 문항으로 조건읽기·OMR·시간내완주 지표 기록"
     },
     "data_summary": {
       "L1": {
@@ -950,6 +1214,50 @@
           "skill_focus": 24,
           "mixed_practice": 48
         }
+      },
+      "exam_perf_variants": {
+        "english": {
+          "lesson1": [
+            "R001",
+            "R002",
+            "R004",
+            "G001"
+          ],
+          "lesson3": [
+            "R001",
+            "R002",
+            "G005",
+            "G006"
+          ],
+          "total": 8
+        },
+        "math": {
+          "lesson_math1": [
+            "M1-E001",
+            "M1-E002",
+            "M1-E003",
+            "M1-E004",
+            "M1-E008",
+            "M1-E009",
+            "M1-E012",
+            "M1-E020"
+          ],
+          "total": 8
+        },
+        "korean": {
+          "total": 0,
+          "status": "준비 중"
+        },
+        "social": {
+          "total": 0,
+          "status": "준비 중"
+        },
+        "science": {
+          "total": 0,
+          "status": "준비 중"
+        },
+        "total": 16,
+        "active_variants_3plus_total": 9
       }
     },
     "question_types": [
@@ -976,6 +1284,11 @@
         "total_rate",
         "drill_stage",
         "sentences_practiced"
+      ],
+      "exam_perf": [
+        "condition_miss",
+        "omr_miss",
+        "time_complete"
       ]
     },
     "ui_features": [
@@ -986,7 +1299,8 @@
       "타이머(내부)",
       "학습 결과 내보내기",
       "오답 재도전 (세션 끝 1회, 보기 재셔플, 회복률 표시)",
-      "홈 2단계 (과목 카드 → 과목 상세)"
+      "홈 2단계 (과목 카드 → 과목 상세)",
+      "시험 D-day 입력 + D-7 자동 노출 시험 수행 모드"
     ]
   },
   "training_layer_summary": {
@@ -1033,9 +1347,9 @@
       "힌트 사용 증가(-0.52 상관계수)에도 성적 미개선 — 힌트 품질 문제"
     ]
   },
-  "last_completed": "session_2026_05_07i_lesson4_codex_apply",
-  "updated_at": "2026-05-07T01:30:00+09:00",
-  "current_step": "STEP126",
+  "last_completed": "session_2026_05_25_v1_1_images_fontsize",
+  "updated_at": "2026-05-24T10:04:37+00:00",
+  "current_step": "v1.1 push 완료, 사용자 모바일 검수 대기. 검수 통과 시 다음 발주: 스킬화('오늘의 한 장 만들어') + 큐 모델(안 본 카드 순서대로 1장씩) + 미열람 추적(localStorage). Cowork scheduled task는 폐기.",
   "completed_tasks": [
     {
       "step": 55,
@@ -1299,6 +1613,18 @@
         "session-logs/session-log-2026-04-29.md (다음 세션 지시문 포함)"
       ],
       "next_session_action": "lesson2.js vocab_drill +8개 추가 → Python 검증 → progress.json 업데이트 → (시간 남으면) hidden 해제"
+    },
+    {
+      "id": "AXIS2-FOLLOWUP-2026-05-14",
+      "name": "Axis2 follow-up 4 items: LATENCY/F10/KOR1/WEEKLY",
+      "date": "2026-05-14",
+      "details": "F10/WEEKLY implemented as v130 pending user deploy; LATENCY remains natural-observation pending; KOR1 content blocked pending official Korean finals scope; Android assets synced."
+    },
+    {
+      "id": "AXIS3",
+      "name": "Axis3 시험 수행 모듈 v131 구현",
+      "date": "2026-05-14",
+      "details": "D-day 입력, D-7 자동 노출, exam_perf 세션 라우터, 영어/수학 variants 16문항, GAS 24컬럼, 신규 전조 지표 3종. 배포와 단말 자연 검증은 AXIS3-* next_steps로 이월."
     }
   ],
   "session_2026_04_26_5문법": {
@@ -1809,7 +2135,7 @@
     "status": "pending",
     "next_session_first_action": "Step 1: 01_Input/260303_중2_영어_천재.LLM.md에서 L4 본문 영역(p.69~78 추정) 정제하여 02_Working/lesson4_extracted.md 작성. 서브에이전트 위임 권장."
   },
-  "last_session_end": "2026-05-02 (1차~8차+보강 통합 — L4 Step 1 완료, 다음: Step 2 core_sentences)",
+  "last_session_end": "2026-05-14 Axis3 series closed after user-confirmed v131 deployment, Apps Script redeploy, and sendWeeklyReport manual success. Natural verification items remain open.",
   "session_2026_05_02_L4_step1_extract": {
     "datetime": "2026-05-02 (7th run, same day continuation)",
     "step": "L4 풀세트 Step 1 — OCR 추출본 작성",
@@ -2926,5 +3252,1787 @@
       "(다) lesson 4가 기말 시험 범위인지 학교 공지 확인 (Codex Section 5 후속)",
       "(라) 5/11 정오답표 발표 후 직전 중간고사 분석 (D-4)"
     ]
+  },
+  "session_2026_05_07j_midterm_exam_import": {
+    "session_id": "2026-05-07j_midterm_exam_import",
+    "completed_at": "2026-05-07T03:50+09:00",
+    "summary": "26년 1학기 중간고사 시험지 9개 PDF 1차 정독 + 분석 준비 노트 작성",
+    "scope": {
+      "원본_pdf": "01_Input/260507_26년_1학기_기출문제/ (5과목 2학년 + 4과목 3학년 = 9개)",
+      "추출_텍스트": "02_Working/exam_2026_1st_midterm/g{학년}_{과목}.txt (PA 직접 관련 5과목)",
+      "분석_노트": "02_Working/exam_2026_1st_midterm/00_README.md"
+    },
+    "key_findings": {
+      "정답_시험지에_포함됨": "각 시험지 마지막 쪽에 선택형/서술형 정답 모두 표기. '5/11 정오답표 발표'의 의미를 사용자에게 확인 필요 (점수표? 정답 확정?). 학생 OMR/서술형 답안 사본 별도 입수 필수",
+      "영어_출제_분포": "L2(수면·건강) 약 10문항 + L4(발명) 약 10문항 + 회화 4~5 + 문법(수동태/Although/셀수있는명사) 7. PA가 4월말 일괄 보강한 두 단원이 정확히 시험 범위와 일치",
+      "L1_L3_거의_미출제": "L1은 16번 Hans 자전거 정도, L3는 미출제로 추정. 다음 vocab.example 보강 작업의 우선순위 재검토 가능"
+    },
+    "deliverables": [
+      "g2_eng.txt / g2_국어.txt / g2_수학.txt / g2_사회.txt / g2_과학.txt (총 5과목 추출)",
+      "g3_과학.txt / g3_수학.txt / g3_역사.txt / g3_영어.txt (3학년 4과목, 참고용)",
+      "00_README.md — 1차 정독 결과 + PA L2/L4 매핑 + 5/11 분석 체크리스트"
+    ],
+    "next_session_first_actions": [
+      "[질문] '정오답표 5/11'의 정확한 의미 (점수표 vs 정답 확정표)",
+      "[수집] 학생 OMR 마킹 사본 + 서술형 답안지 사본",
+      "[분석] 영어 30문항 정오답 매트릭스 → 영역별·Lesson별·A/B/C군별 정답률 → PA 앱 보강 작업 목록",
+      "[가능시] 4과목 1차 정답률만 빠르게"
+    ],
+    "applied_memory": [
+      "feedback_pdftotext_first — 9개 PDF 모두 텍스트 레이어 양호, pdftotext 직독",
+      "feedback_compare_thoroughly — 5과목 전수 추출 후 PA 영어 우선",
+      "feedback_progress_json_python_only — Python json.load/dump + .bak (진행 중)",
+      "feedback_self_audit_before_report — 5/11 본격 분석 전 체크리스트화"
+    ]
+  },
+  "session_2026_05_09_l4_vocab_ko_draft_review": {
+    "session_date": "2026-05-09",
+    "session_type": "Lesson 4 vocab example Korean draft review",
+    "scope": "02_Working/l4_vocab_example_ko_draft_2026-05-09.json (app not applied)",
+    "result": {
+      "items_checked": 35,
+      "ids_match_lesson4_vocab": true,
+      "bold_marker_check": "PASS",
+      "app_files_changed": false
+    },
+    "decisions": {
+      "VD-L4-004_beg": "KEEP ? idiom whole-expression rendering for I beg your pardon?",
+      "VD-L4-022_pardon": "KEEP ? idiom whole-expression rendering for I beg your pardon?",
+      "VD-L4-026_since": "KEEP current-complete Korean rendering: ? ??? ?? ??",
+      "VD-L4-018_mask": "KEEP ?? to avoid circular ??=?? wording",
+      "remaining_items": "No major semantic or student-recovery issue found"
+    },
+    "session_log": "session-logs/session-log-2026-05-09.md",
+    "next_step": "If applying to app, merge draft fields into 90_Output/app/lesson4.js and bump sw.js cache version."
+  },
+  "session_2026_05_09_l4_phaseAB_apply": {
+    "session_date": "2026-05-09",
+    "session_type": "Phase A·B UI changes + L4 vocab example_ko 35 applied",
+    "scope": "90_Output/app/index.html (CSS + JS) + 90_Output/app/lesson4.js (data) + 02_Working/l4_vocab_example_ko_draft_2026-05-09.json (3건 수정 반영)",
+    "context": "직전 세션 05_09 리뷰에서 L4 35개 톤 검수 통과 (3건 수정: L4-004/022 띄어쓰기, L4-026 현재완료 의미 보강, L4-018 유지). 이번 세션은 그 드래프트의 본 코드 적용 작업.",
+    "phase_A_layout": {
+      "issue": "사용자 스크린샷 — vocab card 뒷면(예문 포함) 콘텐츠가 .flashcard-scene min-height 180px를 넘어 흘러내려 아래 버튼과 시각적으로 겹침",
+      "fix": "autoSizeFlipCard(scene, card, front, back) 헬퍼 추가 — requestAnimationFrame 안에서 scrollHeight 측정 후 max(front, back, 180)을 scene/card minHeight에 inline 적용",
+      "applied_at": [
+        "showVocabCard (line ~4599)",
+        "showFlashcard (line ~4067)",
+        "showKorCoreSentence (line ~3581)"
+      ]
+    },
+    "phase_A_buttons": {
+      "tone_change": "존댓말('알아요/모르겠어요') → 반말('외웠어/한번 더 볼래') 학생 본인 시점",
+      "places": [
+        "vocab-buttons know/dont-know (단어 드릴)",
+        "flashcard-buttons know/dont-know (핵심표현)",
+        "vocab-result text: '알아요: X / 모르겠어요: Y' → '외웠어: X / 한번 더: Y'",
+        "vocab-retry-btn: '모르겠어요 X 다시 도전' → '한번 더 볼 X 다시 도전'"
+      ],
+      "color_change": ".flashcard-btn.dont-know 분홍(#fce4ec/#c62828) → 앰버(#FFF3E0/#E65100) — '한번 더'는 오답이 아닌 학습 의지 표현이라 빨강 대신 주황"
+    },
+    "phase_B_example_block": {
+      "css_added": [
+        ".vocab-example-block (연한 파랑 배경 + 좌측 굵은 라인 + 좌측 정렬)",
+        ".vocab-example-line / .ko-chunk / .ko-natural (3축 분리)",
+        ".vocab-example-label (10px 회색 라벨: EN/직역/자연 번역)",
+        ".vocab-target-ko (대상 단어 진한 갈색 굵게)"
+      ],
+      "render_logic": "showVocabCard English 분기에서 example_ko_chunk 있으면 3줄(EN+직역+자연), 없으면 2줄(EN+자연). markBoldKo()로 **target** → <strong class='vocab-target-ko'>",
+      "data_fields_new": "example_ko_chunk (직역, optional null), example_ko (자연 번역, always)"
+    },
+    "data_l4_applied": {
+      "items": 35,
+      "items_3line": 33,
+      "items_2line_idiom": 2,
+      "idiom_ids": [
+        "VD-L4-004",
+        "VD-L4-022"
+      ],
+      "json_parses_after_apply": true,
+      "field_completeness": "all 35 have both example_ko and example_ko_chunk (chunk null for 2 idioms)"
+    },
+    "files_changed": {
+      "index.html": {
+        "before_bytes": 283629,
+        "after_bytes": 286369,
+        "delta": "+2,740"
+      },
+      "lesson4.js": {
+        "before_bytes": 167780,
+        "after_bytes": 174655,
+        "delta": "+6,875"
+      }
+    },
+    "backups": [
+      "90_Output/app/index.html.bak-2026-05-09-pre-phaseAB",
+      "90_Output/app/lesson4.js.bak-2026-05-09-pre-l4-example-ko"
+    ],
+    "self_audit_3axis": {
+      "노출성": "L4 단어 드릴에서 신규 example_ko 노출 확인 (Python 시뮬 3건 spot-check)",
+      "코드_정합성": "node -c 통과(JS syntax error 없음), markBoldKo·autoSizeFlipCard 정의 + 3곳 호출",
+      "데이터_정합성": "vocab_drill JSON 파싱 OK, 35/35 example_ko 채워짐, 2개 idiom만 chunk null"
+    },
+    "known_issue_pre_existing": {
+      "id": "VD-L4-023",
+      "desc": "타깃 'pass down' vs 예문 'passed down'(과거분사) — EN 형광펜 정규식 리터럴 매칭이라 미매칭. 35개 중 1건. 사전부터 있던 제약, 이번 작업이 도입한 게 아님. 별도 task 후보.",
+      "scope_to_fix": "showVocabCard EN 형광펜 정규식을 단어 변이형까지 확장 또는 데이터에 inflection 정보 추가"
+    },
+    "next_session_first_tasks": [
+      "(1) 사용자가 실기 앱에서 L4 단어 드릴 직접 확인 — 카드 자동 확장·예문 박스·3줄 렌더링·버튼 톤 모두 의도대로 보이는지",
+      "(2) L2 35개 example_ko 작성 + 적용 (같은 톤·구조)",
+      "(3) (선택) VD-L4-023 EN 형광펜 매칭 이슈 처리"
+    ],
+    "session_log": "session-logs/session-log-2026-05-09-phaseAB.md"
+  },
+  "session_2026_05_09_l2_vocab_ko_apply": {
+    "session_date": "2026-05-09",
+    "session_type": "L2 vocab_drill 35개 example 정리 + example_ko/example_ko_chunk/example_source 보강 (L4 동등 품질)",
+    "scope": "90_Output/app/lesson2.js (vocab_drill 35개 전수) + 메타 version 3.7→3.8",
+    "context": "직전 phaseAB 세션에서 L4 vocab 35개 example_ko 작업 완료. 이번 세션은 동일 구조를 L2에 적용. 단, L2의 기존 example 필드는 빈칸(_____)·다중 줄 대화체·HTML <sup> 태그 등 시험 stem 형태 잔존 — 단순 한국어 추가가 아니라 본문 자연 문장으로 example 자체를 정비하는 풀 업그레이드 진행.",
+    "before_state": {
+      "vocab_drill": 35,
+      "example_field": "빈칸 stem / 대화체 / HTML 태그 혼재 (학습용 자연 문장 아님)",
+      "example_source": "없음",
+      "example_ko": "없음",
+      "example_ko_chunk": "없음"
+    },
+    "after_state": {
+      "vocab_drill": 35,
+      "example_field": "본문 p.32~35(스토리) + p.28~29(Listen & Talk) + p.26(Study Points) + p.27(단원 제목)에서 자연 문장 추출",
+      "example_source": "35개 모두 부여 (예: '본문 p.34', '본문 p.28 (Listen & Talk)', '단원 제목 p.27')",
+      "example_ko": "35개 모두 작성 (자연 번역, **타겟 단어** 강조)",
+      "example_ko_chunk": "34개 작성 + VD-L2-028 journey만 null (단원 제목 단편이라 청크 분해 부적합)"
+    },
+    "page_mapping": {
+      "p.26": "I'm afraid (Study Points)",
+      "p.27": "journey (단원 제목)",
+      "p.28": "Is it okay if / quarter / past (Listen & Talk)",
+      "p.29": "half past / half (Listen & Talk)",
+      "p.32": "taught",
+      "p.33": "pile / one by one / sneeze / appear / wooden / carefully / slowly / elephant / block / laugh",
+      "p.34": "tower / fell ill / far / recover / It's time to / while / suddenly / lay / realized",
+      "p.35": "lean / shoulder / held / breeze / magic / add / blow / word"
+    },
+    "translation_convention": {
+      "chunk": "슬래시(/)로 분리한 직역, **타겟 단어** 강조",
+      "ko_natural": "자연 번역, **타겟 단어** 강조",
+      "phrase_words": "다단어 표현(Is it okay if 등)은 핵심 한국어 두 부분 모두 굵게 처리 — 예: '**만약** 야구 경기를 보러 **가도 괜찮을까요**?'",
+      "time_expression": "변환적 어휘(quarter/half past)는 '**15분(quarter)**'처럼 영단어 병기"
+    },
+    "files_changed": {
+      "lesson2.js": {
+        "before_bytes": 176773,
+        "after_bytes": 183084,
+        "delta": "+6,311"
+      }
+    },
+    "backups": [
+      "90_Output/app/lesson2_v37_pre_vocab_ko_backup.js"
+    ],
+    "verification": {
+      "json_parses": true,
+      "node_require_OK": true,
+      "vocab_drill_count": 35,
+      "version_bumped": "3.7 → 3.8",
+      "example_ko_present_count": 35,
+      "example_ko_chunk_null_count": 1,
+      "spot_checks_3": [
+        "VD-L2-001 taught — Bob was the person who taught Bobby how to walk. / Bob은 Bobby에게 걷는 법을 **가르쳐 준** 사람이었다.",
+        "VD-L2-019 Is it okay if — Is it okay if I go to see a baseball game? / **만약** 야구 경기를 보러 **가도 괜찮을까요**?",
+        "VD-L2-028 journey — Lesson 2: The Journey with My Family / Lesson 2: 내 가족과 함께한 **여행** (chunk null)"
+      ],
+      "render_pipeline": "index.html showVocabCard 영어 분기는 lesson-agnostic — example_ko_chunk/example_ko 자동 노출. 코드 변경 불필요.",
+      "english_highlight_regex": "기존 정규식이 다단어 표현(Is it okay if / fell ill / It's time to / half past)도 모두 매칭 (특수문자 escape 처리 OK, ' apostrophe 영향 없음)"
+    },
+    "known_issue_pre_existing": {
+      "id": "VD-L4-023 (직전 세션 노트와 동일)",
+      "desc": "EN 형광펜 매칭 이슈 — L2 vocab은 동일 이슈 0건 추정 (대부분 단어 base form 그대로 등장. 추후 발견 시 별도 처리)."
+    },
+    "self_audit_3axis": {
+      "노출성": "showVocabCard 분기에서 example_ko_chunk·example_ko 직접 사용 확인 (line ~4587-4592)",
+      "코드_정합성": "node require 통과, vocab_drill 35개 매칭, version 3.8 반영",
+      "데이터_정합성": "35개 id·word 기존과 일치, meaning·pos 보존, example만 자연 문장으로 재작성"
+    },
+    "next_session_first_tasks": [
+      "(1) 사용자가 실기 앱에서 L2 단어 드릴 직접 확인 — 35개 카드에서 직역+자연 번역 둘 다 제대로 노출되는지, 시간 표현(quarter/half past)이 어색하지 않은지",
+      "(2) [선택] L1/L3 vocab.example 누락 보강 — 우선순위 낮음, 중간고사 범위 밖",
+      "(3) [선택] sw.js 캐시 버전 bump (lesson2.js 변경분 강제 갱신) — 사용자 단말 캐시 회수 시"
+    ],
+    "session_log": "session-logs/session-log-2026-05-09-l2-vocab-ko.md"
+  },
+  "session_2026_05_11_midterm_analysis_and_finals_plan": {
+    "date": "2026-05-11",
+    "title": "중간고사 정오답 분석 + 기말 대비 PA 콘텐츠 보강 마스터플랜 [DEPRECATED 후 재분석 — 단원 매핑 정정]",
+    "context": "이전 세션이 정오답표 OX 추출까지 완료. 본 세션은 영어 정밀 분석 + 갭 분석 + 보강 마스터플랜 + 신규 콘텐츠 드래프트 18개.",
+    "scope": {
+      "in_scope": [
+        "영어 (13개 오답 + 서·논술 5/18)",
+        "L2/L4 가정 (기말 범위 미공지)"
+      ],
+      "out_of_scope": [
+        "수행평가 (발명품 소개 — 별도 논의)",
+        "다른 4과목 (이번 분석 제외)"
+      ]
+    },
+    "scores": {
+      "english_total": "42/100",
+      "selected": "37/82 (13개 오답 / 24문항)",
+      "essay": "5/18 (개별 분포 미상)"
+    },
+    "loss_by_area": {
+      "grammar": 15,
+      "L2_reading": 10,
+      "L4_reading": 10,
+      "conversation": 10,
+      "essay": 13,
+      "total": 58
+    },
+    "weak_points_prioritized": [
+      {
+        "rank": 1,
+        "name": "수동태 (be+p.p.+by)",
+        "loss": 17,
+        "tier": "A"
+      },
+      {
+        "rank": 2,
+        "name": "Although 역접 개념",
+        "loss": 11,
+        "tier": "A"
+      },
+      {
+        "rank": 3,
+        "name": "다중정답 시험 형식",
+        "loss": 8,
+        "tier": "A"
+      },
+      {
+        "rank": 4,
+        "name": "many/much 가산/불가산",
+        "loss": 4,
+        "tier": "A"
+      },
+      {
+        "rank": 5,
+        "name": "빈칸 추론 정·반 판단",
+        "loss": 6,
+        "tier": "B"
+      },
+      {
+        "rank": 6,
+        "name": "글/대화 순서",
+        "loss": 8,
+        "tier": "B"
+      },
+      {
+        "rank": 7,
+        "name": "finish + V-ing 동명사",
+        "loss": 4,
+        "tier": "B"
+      },
+      {
+        "rank": 8,
+        "name": "단편 어휘 동의어",
+        "loss": 3,
+        "tier": "C"
+      }
+    ],
+    "content_gap_findings": {
+      "Although_L2": "0회 (시험 출제 단원에 미노출)",
+      "Although_L4": "0회",
+      "Although_L3": "97회 (진도 전)",
+      "passive_voice_L4": "8회 단어만, 변환 훈련 0",
+      "many_much_all_lessons": "0회 (학습앱에 패턴 자체 없음)",
+      "L4_mini_writing_count": 4
+    },
+    "deliverables": [
+      "02_Working/260511_정오답분석/02_english_analysis.md",
+      "02_Working/260511_정오답분석/03_curriculum_gap_and_plan.md",
+      "02_Working/260511_정오답분석/04_content_samples_draft.json",
+      "artifact: english-midterm-2026-1st-analysis",
+      "artifact: pa-finals-prep-tracker",
+      "02_Working/260511_정오답분석/05_l1_l3_app_content_audit.md (신규)",
+      "02·03·04 DEPRECATED 마킹",
+      "04 truncation 복구 + .truncated-bak 보존"
+    ],
+    "draft_content_summary": {
+      "grammar_rules_new": [
+        "GR-PASSIVE",
+        "GR-ALTHOUGH",
+        "GR-EXAM-PROCEDURE"
+      ],
+      "questions_new_count": 9,
+      "mini_writing_new_count": 6,
+      "total_items": 18,
+      "_note": "본 코드 적용 전 드래프트. 사용자 검토 단계."
+    },
+    "schedule": {
+      "1주 (5/11~5/17)": "A-1 수동태 (L4) + A-3 절차 카드",
+      "2주 (5/18~5/24)": "A-2 Although (L4) + A-4 many/much (L2)",
+      "3주 (5/25~5/31)": "A 보강 (L2 수동태·Although) + B-1 시작",
+      "4주 (6/1~6/7)": "B-2 글·대화 순서 변형",
+      "5주 (6/8~6/14)": "B-3 세부 매칭 + C 흐름",
+      "6~7주 (6/15~)": "통합 점검 + 실기 검증 + 부족분 보강"
+    },
+    "next_session_first_task": "A-1 수동태 (L4) 드래프트 검토 → 본 코드 적용 (GR-PASSIVE + Q×6 + W×4). 손실 17점으로 최대.",
+    "pending": [
+      "서·논술 개별 점수 분포 — 학교 채점지 사본 입수 가능 여부 확인",
+      "기말 범위 공지 (학교 정식 공지)",
+      "sw.js 캐시 v111 → v112 bump (L2 5/9 변경분 + 신규 콘텐츠 동시)",
+      "VD-L4-023 EN 형광펜 미매칭 (pass down/passed down)"
+    ],
+    "session_log": "session-logs/session-log-2026-05-11.md",
+    "correction_2026_05_11_session_end": {
+      "trigger": "사용자 두 차례 지적: (1) 'L2, L4에서도 수동태와 although가 있었어?', (2) '너 중간고사 범위도 몰라? 자료 확인해봐!'",
+      "official_source": "01_Input/2026학년도 2 3학년 1학기 중간고사 및 학생 유의 사항 안내 가정통신문.LLM.md 「시험범위표(2학년) 영어」",
+      "confirmed_facts": {
+        "중간_범위_공식": "Lesson 1. New Year, New Me (p.8~25) + Lesson 3. New Ideas Bring Big Changes (p.44~61) + 수업 학습지 전부",
+        "기말_범위_사용자정보": "L2 + L4",
+        "기말_일정": "2026-07-01 시행 예정",
+        "pa_app_단원_매칭": {
+          "L1": "New Year, New Me (수면·건강 자기관리, GR01 if_present_rule / GR02 wh_to_infinitive)",
+          "L2": "Now One Foot, Now the Other (GR01 to_infinitive / GR02 relative_pronoun_subject)",
+          "L3": "New Ideas Bring Big Changes (발명, GR01 passive_voice / GR02 although_clause)",
+          "L4": "Open the Doors to the World (GR01 present_perfect / GR02 so_that_construction)"
+        },
+        "5_07_매핑_오류": "5/7 세션이 시험 본문을 L2(수면)+L4(발명)으로 매핑한 게 잘못. 본문은 L1(수면)+L3(발명)이었음"
+      },
+      "deprecated_artifacts": {
+        "02_english_analysis.md": "DEPRECATED 헤더 추가. 약점 진단 8개·손실 점수는 유효, 단 단원 매핑 잘못",
+        "03_curriculum_gap_and_plan.md": "DEPRECATED 헤더 추가. 전제(기말=L2/L4)는 사용자 정보로 결과적 맞음, 단 중간 매핑 오류로 전체 논리 흔들림",
+        "04_content_samples_draft.json": "_DEPRECATED 키 추가. Edit truncation 발생해 Python 복구. .truncated-bak 보존"
+      },
+      "new_audit_05": {
+        "path": "02_Working/260511_정오답분석/05_l1_l3_app_content_audit.md",
+        "key_findings": {
+          "다중정답_형식": "L1·L3 모두 0개. 시험 4·5·19·24번 8점 손실 직접 원인",
+          "Although_어색함_판별": "L3 Although 97회 등장, 그러나 시험 19번형 '어색한 것 다중정답' 형식 0개",
+          "수동태_능동→수동_변환": "L3 mini_writing 5개 중 수동 3개. 변환 명시 instruction 부족",
+          "L3_arrange": "0개 (시험 11번 본문이 L3인데 형식 부재)",
+          "wrong_explanations": "L1 255%, L3 157% — 단서 마킹 인프라 풍부"
+        }
+      },
+      "weak_points_reclassified_for_finals": {
+        "단원_문법_기말_범위_밖": [
+          "Although (L3)",
+          "수동태 (L3)",
+          "many/much (L3 등장)",
+          "finish+V-ing (L1)"
+        ],
+        "시험_형식_단원_무관_재출제_확실": [
+          "다중정답",
+          "빈칸 정·반 판단",
+          "글의 순서",
+          "단편 어휘 동의어"
+        ],
+        "L2_L4_핵심_문법_기말_출제_주력": [
+          "to부정사 (L2)",
+          "주격 관계대명사 (L2)",
+          "현재완료 (L4)",
+          "so~that (L4)"
+        ]
+      }
+    },
+    "next_session_first_task_updated": [
+      "1. L2/L4 정밀 점검 (L1/L3 점검과 동일 작업, 단원만 변경)",
+      "2. 다중정답 인프라 작업 (UI/스키마 + answer_indices 키)",
+      "3. artifact 2종 새로 작성 (단원 매핑 정정·기말 기준)",
+      "4. 시험 풀이 절차 카드"
+    ],
+    "pending_updated": [
+      "artifact 2종 새로 작성 (다음 세션, 단원 매핑 정정)",
+      "다중정답 인프라 작업 결정",
+      "기말 평가 계획 — 수행평가 발명품 소개 (별도 논의)",
+      "서·논술 개별 점수 분포 (학교 채점지 입수 가능 여부)"
+    ]
+  },
+  "session_2026_05_12_L2_L4_audit": {
+    "date": "2026-05-12",
+    "focus": "L2/L4 PA 앱 콘텐츠 정밀 점검 (기말 7/1 대비) + 보강 드래프트 31개 + 인프라 스펙 메모",
+    "predecessor": "session-log-2026-05-11.md (L1/L3 점검 + 단원 매핑 정정)",
+    "inputs": [
+      "90_Output/app/lesson2.js (v3.8, 151문항)",
+      "90_Output/app/lesson4.js (v1.1, 151문항)",
+      "02_Working/exam_2026_1st_midterm/g2_eng.txt",
+      "01_Input/2026학년도 2 3학년 1학기 중간고사 및 학생 유의 사항 안내 가정통신문.LLM.md",
+      "02_Working/260511_정오답분석/05_l1_l3_app_content_audit.md"
+    ],
+    "outputs": [
+      "02_Working/260511_정오답분석/06_l2_l4_app_content_audit.md (≈11KB) — 6축 점검 보고서",
+      "02_Working/260511_정오답분석/06b_infra_spec.md (≈8KB) — 인프라 작업 스펙 메모",
+      "02_Working/260511_정오답분석/07_l2_l4_content_samples_draft.json (≈39KB) — 31개 보강 드래프트",
+      "session-logs/session-log-2026-05-12.md"
+    ],
+    "key_findings": [
+      "🔴 시험 형식 부재 3종 (다중정답·문단(A)(B)(C)순서·어색함 다중정답) — L1·L2·L3·L4 전 단원 공통. 한 번 만들면 모든 단원 활용",
+      "🟠 L2가 L4보다 약점: 본문 빈칸형 0개, 어법 빈칸 2개 (L4는 본문 빈칸 24, 어법 11)",
+      "🟠 L4 본문 일치형 short_reading 1개만 — 시험 본문 일치 다수 출제 형식 대비 부족",
+      "🟢 핵심 문법 콘텐츠 양 풍부: L2 GR01·GR02 38카드, L4 GR01·GR02 74카드 (특히 L4 현재완료 45개)",
+      "🟢 wrong_explanations 밀도 충분: L2 200%, L4 196%",
+      "단원 매핑 오류 재발 방지로 lesson*.js 첫 50줄 + GR01·GR02 박제 선행 ✓"
+    ],
+    "draft_31_breakdown": {
+      "Q-MULTI-AWK-L2-*": "4 (관계대명사·to부정사 어색함 다중정답)",
+      "Q-MULTI-AWK-L4-*": "4 (현재완료·so~that 어색함 다중정답)",
+      "Q-PARA-ORDER-L2-*": "3 (Bob/Bobby 본문 변형 등)",
+      "Q-PARA-ORDER-L4-*": "3 (훌라 본문 변형 등)",
+      "Q-CONTENT-MATCH-L4-*": "5 (본문 일치 short_reading)",
+      "Q-CLOZE-L2-*": "5 (본문 빈칸 short_reading)",
+      "Q-GRAM-L2-*": "6 (to부정사·관계대명사 어법 빈칸)",
+      "GR-EXAM-PROC": "1 (시험 풀이 절차 카드, 공통)"
+    },
+    "verification_3axes_passed": true,
+    "self_audit_findings_resolved": [
+      "paragraph_order 정답 패턴 모두 A-B-C로 일정 → 6가지 패턴 다양화로 수정 완료 (B-A-C, A-C-B, C-A-B, B-C-A, C-B-A, A-B-C)",
+      "다중정답 정답 인덱스 일정 패턴 → UI 셔플 render 권장 메모로 cover (_meta.rendering_recommendations)"
+    ],
+    "next_session_first_actions": [
+      "⭐1 다중정답 인프라 적용 (스키마+UI+채점) — 06b §1 참고",
+      "⭐2 paragraph_order 신규 type 도입 (render+switch+sw.js v112) — 06b §2 참고",
+      "3 sw.js v111→v112 bump (5/9 L2 변경분 미반영 이월 동시 처리)",
+      "4 07 드래프트 31개 카드 lesson2.js·lesson4.js 적용",
+      "5 단말 실기 검증 + 기존 단일정답·arrange 회귀 점검"
+    ],
+    "open_items_inherited": [
+      "sw.js v111 → v112 bump (5/11 미해결 이월)",
+      "VD-L4-023 EN 형광펜 미매칭 (5/11 미해결 이월)",
+      "artifact 2종(`english-midterm-2026-1st-analysis`, `pa-finals-prep-tracker`) 갱신 — 인프라 적용 후"
+    ],
+    "memories_applied": [
+      "feedback_verification_first",
+      "feedback_compare_thoroughly",
+      "feedback_app_rendering_check",
+      "feedback_self_audit_before_report",
+      "feedback_edit_silent_truncation",
+      "feedback_progress_json_python_only",
+      "feedback_challenge_codex_advice (사용자 '흔들리지 않는거지' 압박에 자체 검증 재진행)"
+    ],
+    "phase4_real_application": {
+      "trigger": "사용자 지적 — 방향만 잡고 실제 일 못함",
+      "directive_shift": "목적=점수 상향. 06/07/06b는 후순위 자산화. L2/L4 voca·문장 드릴 기본기 우선.",
+      "work_completed": "L2/L4 vocab_drill +10씩 적용 (lesson*.js 실제 변경)",
+      "l2": "v3.8 → v3.9, VD-L2-036~045 (build/hospital/grandfather/sad/curious/step/smile/story/without/bring)",
+      "l4": "v1.1 → v1.2, VD-L4-036~045 (famous/dance/visit/believe/easily/beautiful/culture/traditional/simple/remember)",
+      "next_session_first": "sw.js v111→v112 bump + 단말 실기 검증"
+    }
+  },
+  "session_2026_05_12_b_finals_phase1_apply": {
+    "date": "2026-05-12",
+    "focus": "기말 7/1 대비 1차 적용 — sw.js bump + L2 본문 빈칸 5장 + L4 본문 일치 5장 + EXAM-PROC 메타 카드",
+    "predecessor": "session_2026_05_12_L2_L4_audit + session-log-2026-05-12.md (방향 재정렬: 본문 친숙도·시험 절차 우선)",
+    "inputs": [
+      "02_Working/260511_정오답분석/06_l2_l4_app_content_audit.md",
+      "02_Working/260511_정오답분석/07_l2_l4_content_samples_draft.json (드래프트, passage 누락·정답 무근거 발견)",
+      "01_Input/260303_중2_영어_천재.pdf (pdftotext -layout 직추출)"
+    ],
+    "outputs": [
+      "90_Output/app/sw.js v112 → v113 (캐시 무효화)",
+      "90_Output/app/lesson2.js v3.9 → v3.10 → v3.11 (+5836+1536 bytes, short_reading 27→32, grammar_rules 2→3)",
+      "90_Output/app/lesson4.js v1.2 → v1.3 → v1.4 (+8963+1476 bytes, short_reading 36→41, grammar_rules 2→3)",
+      "02_Working/260511_정오답분석/08_textbook_passages_L2_L4.md — L2/L4 본문 정리",
+      "02_Working/260511_정오답분석/09_l2_cloze_short_reading_5cards.json — L2 본문 빈칸 5장",
+      "02_Working/260511_정오답분석/10_l4_match_short_reading_5cards.json — L4 본문 일치 5장",
+      "session-logs/session-log-2026-05-12b.md"
+    ],
+    "key_findings": [
+      "sw.js bump 5/12 로그 표기 오류 — 직전 'v111→v112 미해결'은 5/9 phaseAB에서 이미 v112로 갔던 것. 실제 작업은 v112→v113.",
+      "07 드래프트 10개(Q-CLOZE-L2-* + Q-CONTENT-MATCH-L4-*) 모두 passage 누락 + 정답·오답 진술 본문 무근거 (Miguel·three times·is taught in schools·festivals and theaters·it's my turn to hold 등). 사용자가 5/12 후반에 지적한 '형식만 맞추면 X, 문제가 문제다워야'의 실체.",
+      "본문은 260303_중2_영어_천재.LLM.md OCR 품질 매우 나쁨 — pdftotext -layout으로 직접 추출(메모리 feedback_pdftotext_first 적용)",
+      "PA 앱 grammar_rules는 학생 화면에 직접 노출 약함 (core_sentences 팝업 부수 표시). EXAM-PROC 효과 극대화 위해 후속 세션에 시험 직전 모드 UI 추가 필요"
+    ],
+    "applied_cards": {
+      "PC2-CLOZE-001 ~ 005": "L2 본문 빈칸 5장. CS01·CS04·CS06·CS07 + 'I want to see him' 회수. 시험 14번형 회수.",
+      "PC4-MATCH-001 ~ 005": "L4 본문 일치 5장. CS01(Hula 도입)·CS04(Hula 동작)·CS05(Hula 마무리)·CS12(Coco)·CS02(Talchum) 회수. 시험 7·10·12·15·18번형.",
+      "EXAM-PROC (L2·L4 grammar_rules 공통)": "시험 풀이 절차 메타 카드 — 다중정답 첫 줄 확인·시제 부사구·관계대명사·OMR 등 8단계."
+    },
+    "verification_passed": [
+      "톱레벨 키 동일·기존 questions 무변경 확인",
+      "5+5 새 카드 모두 필수 필드·correct 범위·wrong_explanations 키 정합 (정답 인덱스 제외 모든 옵션 키 매칭)",
+      "PA 앱 노출 메커니즘 확인: HIDDEN_TYPES 빈 세트, passage_check Stage A 우선 4픽 로직, vocab_drill 필터 자연 수용",
+      "sw.js bump 검증: PRECACHE_URLS에 lesson2.js·lesson4.js 포함, activate 핸들러 v113 외 캐시 삭제 + clients.claim"
+    ],
+    "deferred_to_next_session": [
+      "07 드래프트 잔여 21장(Q-MULTI-AWK 8·Q-PARA-ORDER 6·Q-GRAM-L2 6·기 사용 1) — 다중정답·문단순서 인프라 선행",
+      "다중정답·paragraph_order 인프라 적용 (index.html UI + 채점 로직)",
+      "EXAM-PROC 시험 직전 모드 UI 모달 — 학생 노출 강화",
+      "VD-L4-023 EN 형광펜 미매칭",
+      "artifact 2종 갱신(`pa-finals-prep-tracker` L2/L4 매핑)"
+    ],
+    "memories_applied": [
+      "feedback_no_user_validation_handoff (신규 — 단말 검증 떠넘기지 않고 코드 차원 자체 검증)",
+      "feedback_decide_and_proceed (신규 — 의사결정 위임 사안 자체 결단, 단계별 게이트 X)",
+      "feedback_pdftotext_first (사전 OCR 신뢰 금지, pdf 직추출)",
+      "feedback_app_rendering_check (HIDDEN_TYPES·passage_check·필터 grep 의무)",
+      "feedback_progress_json_python_only (json.load → 수정 → dump + .bak)",
+      "feedback_self_audit_before_report ('B안 최선' 질문에 자체 재검증 후 정직하게 정정)",
+      "feedback_verification_first (Python 검증으로 카드 정합성 점검 후 적용)"
+    ]
+  },
+  "session_2026_05_12_c_exam_proc_modal_and_vocab_inflect": {
+    "date": "2026-05-12",
+    "focus": "EXAM-PROC 학생 노출 모달 + L1·L3 EXAM-PROC 자산 동기화 + vocab 형광펜 정규식 변이형 확장 (VD-L4-023 해결)",
+    "predecessor": "session_2026_05_12_b_finals_phase1_apply + session-log-2026-05-12b.md (본문 친숙도 10장 + EXAM-PROC L2·L4 자산)",
+    "inputs": [
+      "90_Output/app/index.html (Task 7·9 변경 대상)",
+      "90_Output/app/lesson1.js, lesson3.js (EXAM-PROC 자산 동기화 대상)",
+      "90_Output/app/lesson4.js vocab_drill VD-L4-023 (형광펜 미매칭 진단 대상)"
+    ],
+    "outputs": [
+      "90_Output/app/index.html — showExamProcModalIfNeeded 함수 추가 + selectAndStart hook (+4130 bytes), buildVocabHighlightRegex 헬퍼 + 형광펜 호출 (+734 bytes)",
+      "90_Output/app/sw.js v113 → v114 → v115 (두 번 bump, Task 7+9 묶음 캐시 갱신)",
+      "90_Output/app/lesson1.js v3.80 → v3.81 (grammar_rules EXAM-PROC 추가)",
+      "90_Output/app/lesson3.js v1.00 → v1.01 (grammar_rules EXAM-PROC 추가)",
+      "session-logs/session-log-2026-05-12c.md"
+    ],
+    "tasks_completed": {
+      "Task 7": "EXAM-PROC 학생 노출 모달 — selectAndStart에서 exam_prep 모드 진입 시 grammar_rules EXAM-PROC 있고 localStorage 'exam_proc_shown_YYYY-MM-DD' 없으면 모달 표시. '확인하고 시작'/'오늘 다시 보지 않기'/ESC 모두 같은 동작(닫고 키 저장). 하루 1회 제한. 영어 단원 전체(L1·L3·L2·L4) EXAM-PROC 자산 동기화로 일관 노출.",
+      "Task 9": "VD-L4-023 'pass down' → example 'passed down' 형광펜 미매칭 해결. buildVocabHighlightRegex 헬퍼 함수: 단일 단어는 (s/es/ed/d/ing/en) 접미사 옵션, phrasal verb는 첫 단어만 변이형. \\b word boundary 추가로 더 정확. 모든 vocab 카드 혜택."
+    },
+    "tasks_deferred": {
+      "Task 8 (artifact 2종 갱신)": "이번 세션 스킵, 다음 세션 이월. 5/11 매핑 오류(L2=수면/L4=발명) 기반이라 부분 정정 불가, 거의 전체 재작성 분량. 학생 학습 효과 0인 관리자 자산이라 우선순위 낮음. 신규 artifact 생성 또는 폐기 결정 별도 세션."
+    },
+    "key_findings": [
+      "PA 앱 grammar_rules는 직접 노출 메커니즘 부재 — core_sentences 팝업 부수 표시만. EXAM-PROC 효과 위해 별도 모달 신규 추가 필수였음.",
+      "vocab 형광펜 정규식 한계: 정규 변이형(s/ed/ing 등) 외 불규칙 과거형(built/went/gone)은 잡지 못함. 별도 inflections 데이터 필드 추가 작업으로 이월.",
+      "sw.js 두 번 bump (v114 → v115): Task 7 후 v114, Task 9 추가 변경 후 v115. 단말 단일 새로고침으로 둘 다 받기 위한 캐시 갱신.",
+      "L1·L3 EXAM-PROC 자산 동기화: 이전엔 L2·L4(기말 범위)에만 추가했으나, 영어 단원 전체에 일관 모달 노출 위해 L1·L3에도 추가. 기말은 L2/L4지만 학생이 어느 영어 단원 들어가도 시험 절차 떠올리게."
+    ],
+    "verification_passed": [
+      "sw.js v115 diff: 1행만 변경, byte 1318 동일 ✓",
+      "index.html showExamProcModalIfNeeded 정의·호출 grep 양쪽 ✓ (line 2098 호출, 5501 정의)",
+      "buildVocabHighlightRegex 정의·호출 grep 양쪽 ✓",
+      "lesson1.js/lesson3.js EXAM-PROC 카드 reload+parse 통과, grammar_rules count 2→3 ✓",
+      "VD-L4-023 케이스 단위 테스트: 'pass down' 정규식이 'passed down' 매칭 ✓",
+      "일반 단어 케이스: build/builds/building 매칭 ✓, built 불일치 (불규칙 한계 인지)",
+      "EXAM-PROC 모달 안전성: grammar_rules에 EXAM-PROC 없거나 localStorage 키 있으면 즉시 resolve — 비영어 단원·재방문 안전"
+    ],
+    "deferred_to_next_session": [
+      "Task 8 artifact 2종 — 5/11 매핑 오류 기반, 거의 재작성. 신규 생성 또는 폐기 결정",
+      "불규칙 과거형 매칭 — lesson*.js vocab_drill에 inflections 필드 신설(예: ['built','built']) + buildVocabHighlightRegex 확장",
+      "07 드래프트 잔여 21장 (Q-MULTI-AWK 8 / Q-PARA-ORDER 6 / Q-GRAM-L2 6) — 다중정답·paragraph_order 인프라 선행"
+    ],
+    "memories_applied": [
+      "feedback_no_user_validation_handoff — 단말 검증 떠넘기지 않고 sw.js·index.html 정합성 자체 검증 + 단위 테스트",
+      "feedback_decide_and_proceed — Task 8 artifact는 작업 범위 자체가 큰 결정이라 결단해서 이월. 단계별 게이트 만들지 않음",
+      "feedback_edit_silent_truncation — index.html은 Python 직접 치환·append + byte delta 검증",
+      "feedback_progress_json_python_only — json.load → 수정 → dump + .bak-2026-05-12c",
+      "feedback_app_rendering_check — selectAndStart hook + showVocabCard 호출 두 곳 모두 grep 검증",
+      "feedback_compare_thoroughly — sw.js diff·byte·grep, index.html 정의/호출 양방향 grep, lesson*.js reload+parse"
+    ]
+  },
+  "session_2026_05_12_d_vocab_inflections": {
+    "date": "2026-05-12",
+    "focus": "vocab_drill 형광펜 매칭 강화 — VD-L2-045 (bring) inflections 데이터 + buildVocabHighlightRegex 확장",
+    "predecessor": "session_2026_05_12_c_exam_proc_modal_and_vocab_inflect + session-log-2026-05-12c.md",
+    "inputs": [
+      "90_Output/app/lesson1.js · lesson2.js · lesson4.js vocab_drill (lesson3는 example 누락 36개라 점검 대상 외)",
+      "90_Output/app/index.html buildVocabHighlightRegex"
+    ],
+    "outputs": [
+      "90_Output/app/lesson2.js v3.11 → v3.12 (VD-L2-045 inflections=['brought'] 추가)",
+      "90_Output/app/index.html buildVocabHighlightRegex 확장 (객체 인자 + inflections 매칭 + backward-compat)",
+      "90_Output/app/sw.js v115 → v116",
+      "session-logs/session-log-2026-05-12d.md"
+    ],
+    "diagnosis": {
+      "전수 점검": "L1(35) + L2(45) + L4(45) = 125 카드 (lesson3 36개는 example 누락이라 점검 대상 외, 별도 이슈)",
+      "미매칭 카드": "1개 — VD-L2-045 'bring' → example의 'brought' (불규칙 과거형)",
+      "사용자 보고 VD-L4-023": "직전 5/12c 세션에서 buildVocabHighlightRegex 정규식 fallback으로 이미 해결"
+    },
+    "scope_decision": "1개 카드(VD-L2-045)만 inflections 추가 + 정규식만 확장. 다른 124 카드는 손대지 않음. feedback_batch_work_discipline 적용 — 한 번에 너무 많이 건드리지 않음.",
+    "applied": {
+      "VD-L2-045": "inflections: ['brought']",
+      "buildVocabHighlightRegex": "객체 인자 받음. word 기본 변형형(s/es/ed/d/ing/en) + inflections 배열 모두 OR. 다단어 phrase 공백 \\s+ 정규화. 빈 word/inflections 안전 처리. 문자열 인자 backward-compat 유지."
+    },
+    "verification_passed": [
+      "전수 vocab_drill 재검증: 125 카드 모두 매칭 1개 이상 ✓ (미매칭 1 → 0)",
+      "단위 테스트 6 케이스 통과: VD-L2-045 brought / VD-L4-023 passed down / backward-compat 문자열 / 다단어 inflections (went/gone) + 정규식 fallback 공존 / 빈 word 안전 / 빈 문자열·None inflections 안전",
+      "lesson2.js reload + parse 통과, 기존 데이터 무변경 확인 (VD-L2-045 외 카드 동일)",
+      "index.html grep: buildVocabHighlightRegex(item) 호출부 변경 + inflections·inflPats 등장 ✓",
+      "sw.js diff: 1행만 변경, byte 1318 동일 ✓"
+    ],
+    "deferred_to_next_session": [
+      "lesson3.js vocab_drill 36 카드 example 누락 — 별도 보강 작업",
+      "다른 동사 카드의 잠재 변형형(example에 word 어간이 있지만 정규식이 다른 부분만 매칭하는 케이스) 정밀 점검 — 사전 도입 시 가능",
+      "Task 8 artifact 2종 결정 (5/11 매핑 오류 기반 폐기 vs 신규)"
+    ],
+    "memories_applied": [
+      "feedback_verification_first — Python 시뮬로 전수 미매칭 카드 목록 확정 후 그 카드들만 수정 + 재검증",
+      "feedback_batch_work_discipline — 1 카드만 손대고 나머지 124는 무변경. 정규식 확장으로 미래 케이스 cover",
+      "feedback_compare_thoroughly — 전체 4 lesson 점검 후 lesson3 example 누락도 발견",
+      "feedback_decide_and_proceed — '1개만 fix vs 전체 동사 카드 inflections 채움' 중 1개만 fix로 결단",
+      "feedback_no_user_validation_handoff — 6가지 단위 테스트로 자체 검증, 단말 검증 안내 없음",
+      "feedback_edit_silent_truncation — index.html은 Python으로 변경 후 grep 검증",
+      "feedback_progress_json_python_only — json.load/dump + .bak"
+    ]
+  },
+  "session_2026_05_12_e_l3_vocab_example_boost": {
+    "date": "2026-05-12",
+    "focus": "L3 vocab_drill example 누락 36 카드 일괄 보강 + VD-L3-028 (lead to) inflections",
+    "predecessor": "session_2026_05_12_d_vocab_inflections + session-log-2026-05-12d.md",
+    "inputs": [
+      "01_Input/260303_중2_영어_천재.pdf (pdftotext -layout)",
+      "L3 본문 영역 p.50-55 (Wonderful Inventions / New Ideas Bring Big Changes)",
+      "90_Output/app/lesson3.js v1.00 (vocab_drill 36 카드, example 4필드 누락)"
+    ],
+    "outputs": [
+      "02_Working/260511_정오답분석/11_l3_vocab_example_boost.json — 36 카드 4필드 + 1 inflections 드래프트",
+      "90_Output/app/lesson3.js v1.00 → v1.1 (36 카드 example/example_source/example_ko_chunk/example_ko 보강 + VD-L3-028 inflections=['led to'])",
+      "90_Output/app/sw.js v116 → v117",
+      "session-logs/session-log-2026-05-12e.md"
+    ],
+    "boost_breakdown": {
+      "본문 직접 인용": "30 카드 (Cookie Star 9 + Safety Glass 8 + Dry Cleaning 8 + Beyond Reading 1 + 기타 4)",
+      "본문 응용": "6 카드 (contest·controller·different·expect·explain·cloth) — L3 발명/Dry Cleaning 주제 유지",
+      "inflections 추가": "VD-L3-028 'lead to' → ['led to'] (불규칙 과거형)"
+    },
+    "verification_passed": [
+      "lesson3.js byte delta +12734 (165702 → 178436), reload+parse 통과",
+      "36 카드 모두 example/example_source/example_ko_chunk/example_ko 4필드 보유 ✓",
+      "기존 톱레벨 키 (vocab_drill 외) 무변경 확인",
+      "JS Node로 buildVocabHighlightRegex 시뮬: L3 36 카드 모두 매칭 (problems: 0)",
+      "VD-L3-028: 'lead to' 정규식 + 'led to' inflections OR 매칭 — 'His discovery led to a new way of cleaning clothes.' 정상 매칭 (Node 검증)",
+      "Python 시뮬은 re.escape가 공백 escape하는 버전 차이로 inflections 매칭 못 잡음 — JS 동작과 별개 (Node 검증으로 확정). 실제 단말은 정상",
+      "L3 vocab_drill 노출: HIDDEN_TYPES 빈 세트 + vocab_drill 필터 로직(.length/.filter)에 자연 수용 ✓"
+    ],
+    "deferred_to_next_session": [
+      "다중정답·paragraph_order 인프라 (06b §1·§2)",
+      "07 드래프트 잔여 21장 (인프라 후)",
+      "artifact 2종 결정 (폐기 vs 신규)"
+    ],
+    "memories_applied": [
+      "feedback_pdftotext_first — PDF 직추출로 L3 본문 발췌 (사전 OCR된 .md 신뢰 X)",
+      "feedback_verification_first — JSON 드래프트 → Python 적용 → JS Node 시뮬 재검증 (Python 시뮬 한계 인지)",
+      "feedback_no_user_validation_handoff — JS Node 직접 시뮬로 자체 검증, 단말 검증 안내 X",
+      "feedback_compare_thoroughly — 톱레벨 키 + 모든 카드 4필드 + inflections 매칭까지 3축 점검",
+      "feedback_edit_silent_truncation — lesson3.js는 Python json.load → 수정 → dump",
+      "feedback_progress_json_python_only — json.load/dump + .bak-2026-05-12e",
+      "feedback_subagent_no_hallucinate — 본문 응용 6 카드는 '본문 응용' 표기 + L3 주제 일관 (발명·드라이클리닝)"
+    ],
+    "tech_note": "Python re.escape가 공백을 escape하는 동작 차이로 인해 Python 시뮬은 phrasal verb + inflections 케이스에서 false negative 발생. 향후 시뮬용 코드는 esc 후 백슬래시-공백 또는 공백 모두 \\\\s+로 치환하는 보정 필요. 단말 JS 동작은 정상이라 학생 영향 없음."
+  },
+  "session_2026_05_12_f_06b_infra_and_07_cards": {
+    "date": "2026-05-12",
+    "session_seq": "f",
+    "focus": "06b 인프라 작업 (다중정답 + paragraph_order) + 07 드래프트 30장 lesson*.js 삽입",
+    "predecessor": "session_2026_05_12_e_l3_vocab_example_boost",
+    "inputs": [
+      "02_Working/260511_정오답분석/06b_infra_spec.md",
+      "02_Working/260511_정오답분석/07_l2_l4_content_samples_draft.json",
+      "02_Working/260511_정오답분석/codex-request-260512-schema-mapping.md (Codex 자문 요청)"
+    ],
+    "outputs": {
+      "index.html": "v117 → 다중정답·paragraph_order 인프라 + 다중정답 wrong handler 추가 (296425 → 310168 bytes, +13743)",
+      "sw.js": "v117 → v118",
+      "lesson2.js": "v3.12 → v3.13 (+18 questions: 4 multi + 3 paragraph_order + 5 cloze + 6 grammar)",
+      "lesson4.js": "v1.4 → v1.5 (+12 questions: 4 multi + 3 paragraph_order + 5 content_match)"
+    },
+    "infra_changes": {
+      "multi_answer (A-1)": {
+        "scheme": "answer_indices: [int] 배열, 단일정답 카드는 기존 answer_index/correct 유지",
+        "render": "showChoiceBlank에 isMulti 분기 추가 (체크박스형 토글 + 정답 개수 안내 + 제출 버튼)",
+        "grading": "handleChoiceBlankMultiAnswer — Set 엄격 일치 (부분점수 X). 시뮬 9/9 통과",
+        "wrong_explanation": "showWrongExplanationMulti 신규 — 잘못 고른 오답 + 놓친 정답 각각 나열, 인덱스/텍스트 키 둘 다 시도 (Codex Q1 반영)"
+      },
+      "paragraph_order (A-3)": {
+        "scheme": "intro_paragraph_en + paragraphs[{label, text_en}] + answer[String]",
+        "render": "showParagraphOrder 신규 함수, paragraph-order-container HTML+CSS, label 정규화 ('(A)'→'A')",
+        "grading": "userAnswer.join('-') === correct.join('-'). 시뮬 14/14 통과 (6가지 정답 패턴 + 라벨 정규화)",
+        "wrong_explanation": "we['default'] 키 사용",
+        "high_load": "HIGH_LOAD_TASKS에 paragraph_order 추가"
+      }
+    },
+    "codex_advice_applied": {
+      "request_file": "02_Working/260511_정오답분석/codex-request-260512-schema-mapping.md",
+      "key_decisions": [
+        "Q1 — wrong_explanations 변환: short_reading 숫자 키, fill_blank/choice_blank 단일은 숫자+텍스트 키 둘 다, paragraph_order는 {default}, 다중정답은 핸들러 보강",
+        "Q2 — EXAM-PROC: 신규 추가 SKIP, 기존 갱신도 SKIP (학생 행동 차이 미미)",
+        "Q3 — test_task=type는 유지, type cap은 후속 PR",
+        "Q4 — _note는 적용본에서 삭제",
+        "★ phase=drill_a/b/c는 어디에도 매칭 안 됨 (큰 위험 발견) → 전 카드 phase='exam_prep' 강제, training_layer는 카드 type/ID별 분기"
+      ]
+    },
+    "training_layer_distribution_new_cards": {
+      "L2": {
+        "passage_check": 0,
+        "skill_focus": 10,
+        "mixed_practice": 8
+      },
+      "L4": {
+        "passage_check": 5,
+        "skill_focus": 4,
+        "mixed_practice": 3
+      }
+    },
+    "verification": {
+      "multi_answer_sim": "9/9 통과 (단일 회귀 2 + 다중 정확/부족/초과/순서/빈/3개 7)",
+      "paragraph_order_sim": "14/14 통과 (6 패턴 + 라벨 정규화 + chunk_order 회귀)",
+      "integration_audit": "오류 0, 경고 0. 노출성·exam_prep 분류·채점·wrong_explanations·필수 키 5축 모두 통과"
+    },
+    "skipped": {
+      "GR-EXAM-PROC": "07 드래프트의 GR-EXAM-PROC은 기존 EXAM-PROC와 본문 거의 동일 → 신규 추가·갱신 모두 SKIP"
+    },
+    "scripts": [
+      "apply_multi_answer_infra.py (작업 1 원본)",
+      "apply_paragraph_order_infra.py (작업 2)",
+      "apply_multi_wrong_handler.py (작업 1 보강)",
+      "verify_multi_answer.js / verify_paragraph_order.js (시뮬)",
+      "insert_07_cards.py (변환·삽입)",
+      "integration_audit.py (통합 검증)"
+    ],
+    "backup_files": [
+      "90_Output/app/index.html.bak-pre-infra-260512-20260512-033310",
+      "90_Output/app/sw.js.bak-pre-infra-260512-20260512-033310",
+      "90_Output/app/lesson2.js.bak-pre-infra-260512-20260512-033310",
+      "90_Output/app/lesson4.js.bak-pre-infra-260512-20260512-033310",
+      "progress.json.bak-260512f"
+    ],
+    "next": [
+      "단말 실기 검증 (사용자 몫): 다중정답 체크박스 UX, paragraph_order 셔플 시각, EXAM-PROC 모달 회귀",
+      "필요 시 paragraph_order type cap 적용 (mixed_practice 8 중 paragraph_order 최대 N)",
+      "07 드래프트 31장 본문 자체 콘텐츠 품질 검증 (정답 단일성·함정 합리성)"
+    ]
+  },
+  "session_2026_05_12_g_a1_passive": {
+    "date": "2026-05-12",
+    "session_seq": "g",
+    "focus": "A-1 수동태 카드 적용 — 03번 마스터플랜 A군 1순위. 손실 점수 17점 회수 직접.",
+    "predecessor": "session_2026_05_12_f_06b_infra_and_07_cards",
+    "context": "사용자 지적: '실전 문제 형식이 중요한 게 아니라 그걸 풀기 위한 기본 단계 개선점이 중요'. 5/12f까지 06b 인프라(다중정답·문단순서)만 다뤄왔으나, 진정한 기본 단계 = 03번 §3 A군 마스터플랜의 학습 내용 차원(수동태·Although·many/much·다중정답 절차).",
+    "critical_finding": "03번 마스터플랜의 자연 문맥 키 자체가 잘못된 단원 가정 위에 있었음 — L2를 수면 단원으로, L4를 발명 단원으로 가정. 실제는 L2='Now One Foot, Now the Other'(Bob/Bobby 걷기/병원), L4='Open the Doors to the World'(훌라/하와이/문화). 03번의 자연 문맥(microwave/caffeine/dry cleaning)을 그대로 썼다면 본문 부재 카드가 됨. lesson*.js 직접 그렙으로 자연 문맥 키 재추출 (L4 수동태 자연 등장 12개 확인).",
+    "outputs": {
+      "lesson4.js": "v1.5 → v1.6. grammar_rules +1 (GR-PASSIVE), questions +11 (Q-PASSIVE-L4-001~007 + W-PASSIVE-L4-001~004)",
+      "lesson2.js": "v3.13 → v3.14. questions +2 (Q-PASSIVE-L2-001, 002)"
+    },
+    "card_distribution": {
+      "GR-PASSIVE (L4 grammar_rules)": "수동태 시제별 변환 표 + L4 본문 기반 예문 (Hula is taught, Mona Lisa was painted, Talchum has been loved). GR01(현재완료)과 linked.",
+      "L4 Q-PASSIVE 7장": [
+        "Q-PASSIVE-L4-001: 현재 수동 (Hula is taught)",
+        "Q-PASSIVE-L4-002: 과거 수동 + by (Mona Lisa was painted)",
+        "Q-PASSIVE-L4-003: 현재 수동 by (tourists are attracted)",
+        "Q-PASSIVE-L4-004: 현재완료 수동 (Hula has been performed) — GR01과 결합",
+        "Q-PASSIVE-L4-005: 능동→수동 변환 arrange (The dance is enjoyed by everyone)",
+        "Q-PASSIVE-L4-006: be known for arrange (Gangneung is known for its mountains)",
+        "Q-PASSIVE-L4-007: 현재 수동 (Hula gestures are remembered)"
+      ],
+      "L4 W-PASSIVE 4장": [
+        "W-PASSIVE-L4-001: 모나리자 영작 (was painted by)",
+        "W-PASSIVE-L4-002: 훌라 영작 (is taught)",
+        "W-PASSIVE-L4-003: 탈춤 영작 (has been loved) — 현재완료 수동",
+        "W-PASSIVE-L4-004: 능동→수동 변환 (Coco was made by Pixar)"
+      ],
+      "L2 Q-PASSIVE 2장": [
+        "Q-PASSIVE-L2-001: 과거 수동 (Bobby was taught by Bob) — CS01 변형",
+        "Q-PASSIVE-L2-002: 능동→수동 arrange (Bob was supported by Bobby) — CS08 의미 정합"
+      ]
+    },
+    "verification": {
+      "draft_sanity": "verify_passive_draft.py — 오류 0, 경고 0 (mini_writing min_words/required_word 모두 example_answer 직접 통과)",
+      "integration_5축": "integration_audit_passive.py — 오류 0, 경고 0. 노출성·exam_prep 분류(L2 2/2 sf, L4 11/11 sf)·채점·wrong_explanations·필수 키 모두 통과",
+      "정합성": "core_sentences, vocab_drill 동일 보존 확인 (변경된 건 questions·grammar_rules만)"
+    },
+    "decisions_taken": [
+      "03번 자연 문맥 키 폐기 (단원 가정 오류) → lesson*.js 본문 직접 추출 기반 재작성",
+      "L2 카드 분량 03번 권장 3~4 → 2로 축소 (본문에 수동태 자연 문맥 0개 — 인위적 비중 최소화)",
+      "GR-PASSIVE는 L4에만 1장 추가 (L2엔 추가 X — 사실상 GR-PASSIVE는 단원 무관 공통 개념)",
+      "능동→수동 변환은 chunk_order + mini_writing 두 형식으로 (체크·생산 모두 훈련)"
+    ],
+    "scripts": [
+      "12_passive_cards_draft.json (드래프트)",
+      "verify_passive_draft.py (사전 검증)",
+      "insert_passive_cards.py (삽입)",
+      "integration_audit_passive.py (5축 검증)"
+    ],
+    "backup_files": [
+      "lesson2.js.bak-pre-passive-260512g-20260512-042109",
+      "lesson4.js.bak-pre-passive-260512g-20260512-042109",
+      "progress.json.bak-260512g"
+    ],
+    "next": [
+      "단말 실기 검증 (사용자 몫): 수동태 카드 풀이 흐름 — choice_blank 4종, chunk_order 2종, mini_writing 4종",
+      "A-2 Although 어색함 판별 — 본문에 Although가 L2/L4 둘 다 0회 등장이라 외부 문맥 또는 SKIP 결단 필요",
+      "A-4 many/much — L1 단원이 적합 가능 (lesson1.js의 자연 문맥 분석 필요)"
+    ]
+  },
+  "session_2026_05_12_h_finals_strength_boost": {
+    "date": "2026-05-12",
+    "session_seq": "h",
+    "focus": "기말 대비 L2·L4 강도 보강 — ⭐1 L4 GR-PASSIVE drill 단계 카드 4장 + ⭐2 L2 본문 일치형 5장",
+    "predecessor": "session_2026_05_12_g_a1_passive",
+    "context": "사용자 지적 ('중간고사 약점이 곧 기말 대비가 아니다 — Although·many/much는 L2/L4 본문 정합 0이라 후순위')에 따라 기말 대비 진정한 우선순위 재설정. (가) 핵심 문법 회수 강도 + (나) 본문 일치형/빈칸 강도 점검 결과 두 갭 발견: L4 GR-PASSIVE drill 0장(GR01 58·GR02 37 대비 부족), L2 본문 일치형 4장(L4 11장 대비 부족).",
+    "audit_findings": {
+      "L4_GR_PASSIVE_drill": "5/12g에서 exam_prep 11장만 추가, drill 단계 0장 — 단계별 회수 동선 미완성",
+      "L2_short_reading_match": "일치형 4장(L4 11장 대비 적음)",
+      "vocab_drill_example_en": "L2·L4 둘 다 0/45 — 후속 PR",
+      "L4_dialogue": "CS06~CS11 회화 약함(5~7장 회수) — 후속 PR"
+    },
+    "outputs": {
+      "lesson4.js": "v1.6 → v1.7. questions +4 (D-PASSIVE-01~04: flashcard+choice_blank+chunk_order+typed_blank). 'Hula is taught in schools today.' 한 문장 4단계 회수",
+      "lesson2.js": "v3.14 → v3.15. questions +5 (E-SR-L2-MATCH-01~05: 본문 일치/불일치형 short_reading). Bob/Bobby/병원/탑 다섯 단락"
+    },
+    "card_details": {
+      "L4_GR_PASSIVE_drill_4": [
+        "D-PASSIVE-01 flashcard (drill_stage 1): 'Hula is taught in schools today' 노출",
+        "D-PASSIVE-02 choice_blank (drill_stage 2): is _____ 빈칸 4지선다",
+        "D-PASSIVE-03 chunk_order (drill_stage 3): 청크 4개 어순 배열",
+        "D-PASSIVE-04 typed_blank (drill_stage 4): _____ _____ 직접 입력 (is, taught)"
+      ],
+      "L2_match_5": [
+        "E-SR-L2-MATCH-01 (일치, CS01): Bobby가 Bob 이름을 따서 명명",
+        "E-SR-L2-MATCH-02 (불일치, CS06): 블록 탑/Bob 재채기 함정",
+        "E-SR-L2-MATCH-03 (일치, CS04): 병원 거리/Bob 상태/방문/오래된 블록",
+        "E-SR-L2-MATCH-04 (불일치, CS09): 역할 바꿈/Bobby 눈물 함정",
+        "E-SR-L2-MATCH-05 (일치, CS07): 마지막 회복 신호 장면"
+      ]
+    },
+    "verification": {
+      "draft_sanity": "오류 0, 경고 0",
+      "integration_5축": "노출성 OK, phase 분기(L4 drill 4/4·L2 exam_prep 5/5), 채점 9/9, core_sentences·vocab_drill 변경 없음, L2 exam_prep skill_focus 5/5 분류"
+    },
+    "backup_files": [
+      "lesson2.js.bak-pre-boost-260512h-20260512-045435",
+      "lesson4.js.bak-pre-boost-260512h-20260512-045435",
+      "progress.json.bak-260512h"
+    ],
+    "scripts": [
+      "audit_L2_L4_finals_prep.py (강도 점검)",
+      "13_finals_strength_boost_draft.json (드래프트)"
+    ],
+    "next": [
+      "단말 실기 검증 (사용자 몫): 5/12g 수동태 13장 + 5/12h 신규 9장 흐름",
+      "L4 회화 보강 (CS06~CS11 dialogue_response 4~6장) — 약점 잔여",
+      "vocab_drill example_en 보강 (L2·L4 45장+45장) — 큰 작업, 분할 필요",
+      "수행평가(발명품 소개) 45% 대비 — 03번 §1.3 제외로 표기됐지만 비중 최대"
+    ]
+  },
+  "session_2026_05_12_i_l4_dialogue_awk": {
+    "date": "2026-05-12",
+    "session_seq": "i",
+    "focus": "L4 회화 보강 — 어색 대화 단일정답 4장 (5/12h 약점 잔여 'L4 회화 4~6장' 진입)",
+    "predecessor": "session_2026_05_12_h_finals_strength_boost",
+    "context": "5/12h 약점 잔여 항목 진입. 사용자 지시 '기출 직접 확인'에 따라 영어 기출 4건(2024 2-1 기말 32번, 2025 1-2 기말 16번, 2024 2-2 중간 7번, 학생 학교 2026 중간 17·20번) 회화 영역 출제 패턴 직접 분석 → '대화 어색 단일정답'이 회화 영역 압도적 1순위 패턴 확정. 06번 audit §2.3에서 L4 어색 대화 단일정답 형식 0개 갭(L2 E-DR-003 1개만) 직격.",
+    "audit_findings": {
+      "exam_pattern_in_past_papers": "2024 2-1 기말 32번/2025 1-2 기말 16번 모두 5개 짧은 대화 중 어색 1개 단일정답 동일 패턴",
+      "PA_app_gap": "L4 dialogue_response 10장 모두 빈칸 4지선다(choice_blank 변형), 어색 판별 형식 0개",
+      "L2_pattern_reference": "lesson2.js E-DR-003 '다음 대화가 자연스럽지 않은 것은?' 단일정답 형식 정확 모방 가능",
+      "cs_distribution_after": "CS06: 1→2, CS07: 2→3, CS08: 1→2, CS11: 2→3 (각 어색 함정의 핵심 표현 cs_id 분산)"
+    },
+    "design_decision": {
+      "selected_form": "단일정답 (다중정답 인프라 0이므로)",
+      "card_count": "4장 (대화 순서 2장은 본문 5문장 분절 검증 부담으로 보류)",
+      "recovery_band": "A (시험 직격 패턴이라 회수 우선순위 상)",
+      "training_layer": "skill_focus",
+      "exam_pattern_new": "대화 어색 판별 (기존 '대화 완성'과 분리)"
+    },
+    "outputs": {
+      "lesson4.js": "v1.7 → v1.8. questions +4 (E-DR-L4-AWK-01~04: 어색 대화 단일정답 4장)"
+    },
+    "card_details": {
+      "L4_dialogue_awkward_4": [
+        "E-DR-L4-AWK-01 (CS07, correct=1): Pardon? 응답으로 'Thanks a lot' 함정",
+        "E-DR-L4-AWK-02 (CS11, correct=2): What is India famous for? → 위치/지리 응답 함정",
+        "E-DR-L4-AWK-03 (CS06, correct=0): I beg your pardon? → 'You're welcome' 함정",
+        "E-DR-L4-AWK-04 (CS08, correct=3): I beg your pardon? → 'I'm saying India' 진행형 함정"
+      ]
+    },
+    "verification": {
+      "draft_sanity": "오류 0, 경고 0 (verify_l4_awk_draft.py)",
+      "integration_5axis": "오류 0, 경고 1(HIDDEN_TYPES 정규식 매칭 못함이지만 grep으로 Set 빈 것 확인). phase 분기 4/4, 채점 정답 4/4, exam_pattern 신규 분류 4/4, ID 중복 0, core_sentences·vocab_drill 해시 불변"
+    },
+    "backup_files": [
+      "lesson4.js.bak-pre-awk-260512i-20260512-063803",
+      "progress.json.bak-260512i"
+    ],
+    "scripts": [
+      "14_l4_dialogue_awkward_draft.json (드래프트)",
+      "verify_l4_awk_draft.py (사전 검증)",
+      "insert_l4_awk_cards.py (백업+삽입)",
+      "integration_audit_l4_awk.py (통합 5축 검증)",
+      "update_progress_l4_awk.py (인라인 실행으로 우회)"
+    ],
+    "evidence_sources": [
+      "01_Input/기출문제/영어/2024학년도 2학년 1학기 기말고사(영어).LLM.md (32번)",
+      "01_Input/기출문제/영어/2025학년도 1학년 2학기 기말고사(영어).LLM.md (16번)",
+      "02_Working/260511_정오답분석/02_english_analysis.md (학생 학교 회화 영역 약점)",
+      "02_Working/260511_정오답분석/06_l2_l4_app_content_audit.md §2.3 (L4 어색 대화 0개 갭)",
+      "90_Output/app/lesson2.js E-DR-003 (PA 앱 어색 대화 단일정답 패턴 박제)"
+    ],
+    "next": [
+      "단말 실기 검증 (사용자 몫): 신규 L4 회화 어색 4장 실제 풀이 — 특히 어색 함정 인지 + 자연 응답 3개 식별 정확성",
+      "대화 순서 카드 2장 추가 검토 (17번형, L4 회화 본문 5문장 분절 검증 선행)",
+      "vocab_drill example_en 보강 (L2 0/45 + L4 0/45) — 큰 작업, 분할 필요",
+      "수행평가(발명품 소개) 45% 대비 — 03번 §1.3 제외로 표기됐지만 비중 최대"
+    ]
+  },
+  "session_2026_05_12_j_dialogue_order_and_vocab_audit": {
+    "date": "2026-05-12",
+    "session_seq": "j",
+    "focus": "L4 대화 순서 2장 신규 type dialogue_order 도입 + vocab_drill 시험 대비 적합성 점검(5/12h 진단 오류 정정)",
+    "predecessor": "session_2026_05_12_i_l4_dialogue_awk",
+    "context": "사용자 지시 '대화 순서 카드 2장 추가 + vocab_drill 보강 모두 작업해'. 두 작업 사전 점검 결과: (1) L4 회화 본문 5문장 자연 시퀀스 Louvre/India 2개 확인. (2) vocab_drill의 5/12h 진단 'example_en L2 0/45 + L4 0/45'은 PA 앱이 사용하지 않는 필드를 카운트한 진단 오류 — example 필드는 5/12d~5/12e에서 이미 100% 완비.",
+    "vocab_drill_audit": {
+      "finding": "5/12h 표기 'example_en 보강 필요'는 진단 오류",
+      "evidence": [
+        "L2/L4 vocab_drill 키 union에 example_en 없음 (example만 존재)",
+        "index.html grep 'example_en' 0건 — UI 미사용 필드",
+        "L2 example 45/45 채움, L4 example 45/45 채움 (5/12d~5/12e 완료)",
+        "word↔example 형광펜 매칭: L2 45/45, L4 45/45 자동 매칭 또는 inflections로 100% 작동"
+      ],
+      "conclusion": "vocab_drill 시험 대비에 적합. 추가 보강 불필요. example 필드(본문 정합 영문) + example_ko·example_ko_chunk·example_source 풍부"
+    },
+    "dialogue_order_decision": {
+      "user_choice": "신규 type dialogue_order 도입",
+      "implementation": "UI 코드 변경 최소화 — paragraph_order 함수 재활용. type 등록만 추가(3곳: HIGH_LOAD_TASKS + showQuestion 분기 + 정답표시 분기 + getCorrectAnswerStr)",
+      "card_count": "2장 (Louvre p78 + India p67)",
+      "label_style": "(a)~(e) 5개 소문자 (학생 학교 17번 정합)",
+      "recovery_band": "A",
+      "exam_pattern": "대화 순서 배열"
+    },
+    "outputs": {
+      "lesson4.js": "v1.8 → v1.9. questions +2 (Q-DLG-ORDER-L4-001 Louvre, Q-DLG-ORDER-L4-002 India)",
+      "index.html": "dialogue_order type 4곳 등록 (HIGH_LOAD_TASKS + showQuestion + 정답표시 + getCorrectAnswerStr)",
+      "sw.js": "CACHE_NAME 'quiz-v118' → 'quiz-v119' bump. 5/12j index.html 4곳 변경 + 5/11 이월분 한 번에 반영"
+    },
+    "card_details": {
+      "L4_dialogue_order_2": [
+        "Q-DLG-ORDER-L4-001 (CS10, p78): Louvre Museum 5문장 — 발견→반복요청→다시말하기→Mona Lisa famous for→동의",
+        "Q-DLG-ORDER-L4-002 (CS08, p67): India 5문장 — 속삭임→Pardon?→I said→What famous for?→Taj Mahal"
+      ]
+    },
+    "verification": {
+      "vocab_audit": "L2/L4 각 45장 5축 점검 — example 100% / example_source 100% / example_ko/chunk 100% / word-example 자동매칭 100% / example_en은 미사용 필드 확인",
+      "dialogue_order_5axis": "오류 0 경고 0. type 등록 4곳 / phase·training_layer 2/2 / paragraphs 라벨=answer 라벨 / core_sentences·vocab_drill 해시 불변 / ID 중복 0"
+    },
+    "backup_files": [
+      "lesson4.js.bak-pre-dlgorder-260512j-20260512-070257",
+      "progress.json.bak-260512j"
+    ],
+    "scripts": [
+      "15_l4_dialogue_order_draft.json (드래프트)",
+      "인라인 Python (삽입 + 검증, Edit silent truncation 회피)"
+    ],
+    "evidence_sources": [
+      "01_Input/기출문제/영어/2024학년도 2학년 1학기 기말고사(영어).LLM.md (17번형 확인)",
+      "02_Working/260511_정오답분석/02_english_analysis.md (학생 학교 17번 -4점)",
+      "90_Output/app/lesson4.js D005·D006·D007·D010 (L4 회화 본문 5문장 시퀀스 박제)",
+      "90_Output/app/index.html showParagraphOrder 함수 (재활용 대상)"
+    ],
+    "next": [
+      "단말 실기 검증 (사용자 몫): 5/12i 어색 4장 + 5/12j 대화 순서 2장 = 신규 6장 실제 풀이 흐름",
+      "수행평가(발명품 소개) 45% 대비 — 큰 후순위 잔여",
+      "(선택) 어색 대화 추가 + 대화 순서 추가 변형 — 시험 직전 마지막 보강"
+    ],
+    "push_status": {
+      "pushed_at": "2026-05-12",
+      "pushed_files": [
+        "90_Output/app/lesson2.js (v3.15)",
+        "90_Output/app/lesson4.js (v1.9)",
+        "90_Output/app/index.html (dialogue_order 4곳)",
+        "90_Output/app/sw.js (v118→v119)"
+      ],
+      "cumulative_cards_deployed": "5/12g~j 누적 — L4 +23장(수동태 13 + drill 4 + 어색 4 + 대화 순서 2) + L2 +5장(본문 일치 5)",
+      "device_reload_required": "학생 폰 PWA 재로드 시 sw.js v119가 모든 PRECACHE_URLS 재캐시"
+    }
+  },
+  "session_2026_05_12_k_esr006_instruction_fix": {
+    "date": "2026-05-12",
+    "session_seq": "k",
+    "focus": "E-SR-006 instruction-choices 미스매치 수정 + PA 앱 전수 점검",
+    "predecessor": "session_2026_05_12_j_dialogue_order_and_vocab_audit",
+    "context": "사용자 스크린샷 보고: E-SR-006의 instruction이 '다음 글의 내용과 일치하는 것은?'인데 choices는 '~한 것은 언제?' 시점 형식. 명백한 미스매치. 사용자 지시 '이런 이슈가 더 있는지 철저히 확인' → PA 전수 3차 점검.",
+    "audit_findings": {
+      "전수_점검_범위": "lesson1.js (182) + lesson2.js (181) + lesson3.js (148) + lesson4.js (189) = 700 questions. short_reading + dialogue_response + choice_blank + choice + study_choice 카드 전체",
+      "1차_FACT_vs_TIME_REASON": "1건 (E-SR-006)",
+      "2차_정답_시점_종결": "2건 (E-SR-006 + R016 false positive)",
+      "3차_종결_혼재": "4건 모두 false positive (R007·PC2-C-02·R001·R009 — generic instruction + 본문 내부 질문)",
+      "5_12_작업물_정합": "E-SR-L2-MATCH-01~05 (5/12h), E-DR-L4-AWK-01~04 (5/12i), Q-DLG-ORDER-L4-001~002 (5/12j) 모두 정합 확인",
+      "최종_미스매치": "E-SR-006 1건 (5/12 이전 작업)"
+    },
+    "fix": {
+      "card_id": "E-SR-006",
+      "before_instruction": "다음 글의 내용과 일치하는 것은?",
+      "after_instruction": "다음 글에서 'At that moment'가 가리키는 순간으로 가장 적절한 것은?",
+      "before_exam_pattern": "내용 일치/불일치",
+      "after_exam_pattern": "시점 추론",
+      "choices_wrong_explanations_hint_unchanged": "원래 설계가 시점 질문이었으므로 그대로 유지"
+    },
+    "outputs": {
+      "lesson2.js": "v3.15 → v3.16. E-SR-006 instruction + exam_pattern 수정 (Δ +79 bytes)",
+      "sw.js": "CACHE_NAME v119 → v120 (학생 단말 재캐시 강제)"
+    },
+    "backup_files": [
+      "lesson2.js.bak-pre-esr006fix-260512k-20260512-074455",
+      "progress.json.bak-260512k"
+    ],
+    "next": [
+      "push 필요: lesson2.js v3.16 + sw.js v120",
+      "단말 실기 검증 (사용자 몫)"
+    ]
+  },
+  "session_2026_05_12_l_exam_proc_modal_v2": {
+    "date": "2026-05-12",
+    "session_seq": "l",
+    "focus": "EXAM-PROC 모달 가시성 개선 v2 — memory_tip stepper + rule_ko 카드화",
+    "predecessor": "session_2026_05_12_k_esr006_instruction_fix",
+    "context": "사용자 보고: '주의할 점 모달 가시성이 낮음'. 현재(5/12c v1)는 8단계 rule_ko가 한 노란 박스로 압축 + memory_tip 5단계가 한 줄 화살표로 표시 — 시각 단계감 약함. UI 재설계.",
+    "design_v2": {
+      "header": "🎯 라벨 + 22px 큰 헤더 + 부제 1줄",
+      "stepper": "memory_tip 5단계를 ①~⑤ 배지 + 그라데이션 카드 + ▼ 화살표로 시각화 (가장 눈에 띄게)",
+      "details": "rule_ko 8단계는 <details> 펼침 안 카드 형식 (학생이 빠르게 닫을 수 있되 필요하면 펼침)",
+      "examples": "잘한 예/함정은 작은 박스 (보조 자료)",
+      "buttons": "큰 사이즈 + 그라데이션 (확인 시작 강조)"
+    },
+    "outputs": {
+      "index.html": "showExamProcModalIfNeeded 함수 전체 교체 (3891 → 6833 bytes, Δ +3089 bytes)",
+      "sw.js": "CACHE_NAME v120 → v121"
+    },
+    "verification": "node -c 문법 검사 통과, 실제 호출 에러 없음. stepper·details·examples·버튼 모두 렌더 로직 검증.",
+    "backup_files": [
+      "index.html.bak-pre-modalfix-260512l-20260512-075758",
+      "progress.json.bak-260512l"
+    ],
+    "next": [
+      "push 필요: index.html + sw.js v121",
+      "단말 실기 검증 — 모달 시각 가시성 개선 체감 확인"
+    ]
+  },
+  "session_2026_05_12_m_5subjects_diagnosis_and_korean_audit": {
+    "date": "2026-05-12",
+    "session_seq": "m",
+    "focus": "5과목 정오답표 1차 진단 + 국어 정밀 분석 + PA 앱 국어 콘텐츠 갭 진단",
+    "predecessor": "session_2026_05_12_l_exam_proc_modal_v2",
+    "context": "사용자 요청: '정오답표를 보고 과목별로 왜 점수가 이렇게 나왔는지 정리'. 5/11 영어 정밀 분석 후속. 5과목 전체 정오답표(01_ox_extracted.json) 1차 진단 → 사용자 선택으로 국어 정밀 분석 → PA 앱 국어 콘텐츠 실측까지.",
+    "step1_1st_diagnosis": {
+      "scope": "5과목 (국어/사회/수학/과학/영어)",
+      "method": "OX/배점/오답 번호만으로 가능한 패턴 진단. 시험지 본문 매핑 없음.",
+      "key_findings": [
+        "국어 43·영어 42 = 구조적 무너짐. 과학 87 = 안정. 수학 66·사회 62 = 중간 (후반·고배점 누수).",
+        "공통 패턴 3개: 후반·고배점 누수(4과목), 다중정답 약과목에서만 깨짐(과학 2/2 ↔ 영어 3/4·국어 1/1 부분일치 0점), 연속 오답 클러스터(국어 4개·영어 4개·사회 4개).",
+        "수학 배점 합 99점 vs 메타 100점 = 1점 차이 (OCR/기재 의심)."
+      ],
+      "outputs": [
+        "02_Working/260512_5과목진단/diagnose.py",
+        "02_Working/260512_5과목진단/01_diagnosis_raw.json",
+        "02_Working/260512_5과목진단/02_first_diagnosis_5subjects.md (≈10KB)"
+      ]
+    },
+    "step2_korean_analysis": {
+      "scope": "국어 16개 오답 1:1 본문 매핑",
+      "method": "pdftotext -layout으로 시험지 PDF 직독 → OX 1:1 매핑 → 영역별 손실 점수 분류.",
+      "structure": "Q1-7(비문학 소나기+한계효용), Q8-11(같은 책 다른 글), Q12-14(읽기 메타), Q15-22(소설 KTX·아빠), Q23-24(소설 다른 단락), Q25(시점 이론), Q26-29(함민복「비린내라뇨!」시)",
+      "area_losses": {
+        "비문학-구조": "-13점 (Q1·2·3·4 첫 지문 4연속 오답)",
+        "비문학-메타": "-8점 (Q5·13)",
+        "비문학-추론적용": "-7점 (Q9·10)",
+        "문학-소설": "-18점 (Q16·19·20·21·22 — 단순 Q15·17·18은 정답)",
+        "문학-시": "-11점 (Q26·27·28)"
+      },
+      "verification": "영역 손실 합 = 13+8+7+18+11 = 57 = 100-43 ✓",
+      "key_findings": [
+        "1~5번 5연속 오답의 정체 = 모두 글 전체 구조·요약·문단 매칭 문항. 어휘·어법 아님.",
+        "비문학 첫 지문(소나기+한계효용) 7/7 모두 오답 (Q1·2·3·4·5·9·10) = -21점.",
+        "다중정답 5문항 중 1개만 정답 (영어와 동일 패턴). 영어 12점 + 국어 15점 = 27점 형식 손실.",
+        "문학 단순 문항(15·17·18) 다 맞고 종합·구조 문항(16·19·20·21·22) 5연속 오답. 비문학과 동일 구조.",
+        "MECE 학생 프로필 3축(요약 구조 취약 + 시험 형식 미숙 + 회복 시스템 부재) 모두 직접 입증됨."
+      ],
+      "outputs": [
+        "02_Working/260512_5과목진단/korean_exam.txt (pdftotext 추출본)",
+        "02_Working/260512_5과목진단/03_korean_qa_mapping.json",
+        "02_Working/260512_5과목진단/04_korean_analysis.md (≈12KB)"
+      ]
+    },
+    "step3_app_audit": {
+      "scope": "PA 앱 국어 콘텐츠(lesson_kor1.js, lesson_kor2.js) 실측 — 시험 약점 4축 보유 현황",
+      "method": "JSON 파싱 + 키워드 grep + instruction 분포 분석.",
+      "content_summary": {
+        "kor1": "국어 1단원 능동적으로 읽는 힘 (1-01 읽기 점검·조정 + 1-02 말하는 이·보는 이). questions 72.",
+        "kor2": "국어 2단원 표현을 바라보는 다양한 시선 (피동 + 인용). questions 38. 중간 무관.",
+        "format": "questions 110/110 type=short_reading 단일. instruction 64.5%가 '다음 글을 읽고 질문에 답하세요.' 동일."
+      },
+      "key_findings": [
+        "❌ 비문학 글 구조 형식 (문단별·글의 구성·3부분) — 0건",
+        "❌ 소설 사건 순서 배열 (arrange) — 0건",
+        "❌ 부정형 '적절하지 않은' — 0건 (시험 6문항 부정형)",
+        "❌ 다중정답 인프라 (answer_indices·answers) — 0건 (영어와 공통 A군)",
+        "🟡 시 화자/시점 콘텐츠 양 풍부 ('말하는 이' 49회·'시점' 123회) — 단 형식이 short_reading 단일이라 시험 회수 효과 낮음"
+      ],
+      "priority": "A-1 다중정답 인프라(영·국 공통, 42점) · A-2 부정형 문항(-21점) · A-3 비문학 글 구조(-13점) · A-4 소설 사건 순서(-6점)",
+      "outputs": [
+        "02_Working/260512_5과목진단/05_korean_app_content_audit.md (≈8KB)"
+      ]
+    },
+    "backup_files": [
+      "progress.json.bak-260512m-20260512-093037"
+    ],
+    "verification": "5/12 작업 모두 자체 검증 완료. 영역 손실 합 = 메타 점수 100% 정합. wrong list 재계산 = 정오답표 표기 100% 일치 (5과목).",
+    "unresolved": [
+      "국어 기말 범위 (가정통신문에 영어만 명시) — kor2(피동/인용) 출제 여부 확인 필요",
+      "국어 교과서 출판사 — kor1 build_note 'visang'(비상) 표기 vs 학교 실제 사용 확인 필요",
+      "수학 만점 1점 차이 (배점 합 99 / 메타 100) — 정오답표 원본 재확인 가능",
+      "영어 서·논술 5문항 개별 점수 — 정오답표 미공개",
+      "사회·수학 정밀 분석은 보류 (사용자 결정 시 진행)"
+    ],
+    "next": [
+      "다음 세션 첫 작업 후보 1: 국어 기말 범위 확인 → A-1/A-2 보강 결정",
+      "다음 세션 첫 작업 후보 2: 다중정답 인프라 통합 작업 (영·국 공통)",
+      "다음 세션 첫 작업 후보 3: A-2 부정형 문항 시범 드래프트 3~5개",
+      "다음 세션 첫 작업 후보 4: 사회/수학 정밀 분석 (선택)"
+    ]
+  },
+  "session_2026_05_12_n_kor2_wrong_explanations": {
+    "date": "2026-05-12",
+    "session_seq": "n",
+    "focus": "PA 앱 kor2(국어 2단원) wrong_explanations 38개 일괄 작성 — B-1",
+    "predecessor": "session_2026_05_12_m_5subjects_diagnosis_and_korean_audit",
+    "context": "사용자 요청: '국어 2단원을 준비하는게 합리적이지 않을까?' (기말 범위 미공개, 진도 순서 추정). 5/12 m kor2 audit 후속. 보강 우선순위 B-1(wrong_explanations 38개 일괄)로 결단.",
+    "step1_kor2_audit_deep": {
+      "scope": "lesson_kor2.js 38문항 정밀 audit + 본문 정합 grep",
+      "outputs": [
+        "02_Working/260512_kor2_audit/01_kor2_audit_report.md (≈9KB)",
+        "02_Working/260512_kor2_audit/kor2_full_pp62-99.txt (pdftotext 추출본, 1867줄)",
+        "02_Working/260512_kor2_audit/lesson_kor2_parsed.json"
+      ],
+      "key_findings": [
+        "type=short_reading 38/38 단일 (5/12 m 결론 재확인).",
+        "wrong_explanations 38/38 전부 비어있음 (kor1·영어와 대조).",
+        "difficulty/phase/training_layer 38/38 단일값 — 변별 없음.",
+        "Distractor 재사용 심각: '주어가 스스로 행동한 것이다' 11회, '원래 말의 형식을 유지하면서 내용만 바꾼 것이다' 10회, '위의 모든 설명이 맞다' 8회, '모든 정보를 빠짐없이 전달한 것이다' 6회. 152 choices 중 39회 중복(25.6%).",
+        "본문 갭 매트릭스 16개 학습 요소 중 🔴 I5(인용 효과) 0문항·M5(고정 관념·사회상 비판) 2문항, 🟡 P2(피동 접미사) 3·P6(이중 피동) 3.",
+        "subunit 분류 오류 5건 발견 (KOR2-E003·E007·E009·E011·E032). B-1 작업과 별개로 남김.",
+        "노출성 점검: HIDDEN_TYPES empty, kor2 버튼 정상 노출(index.html:1989) — 노출 문제 없음."
+      ]
+    },
+    "step2_textbook_source": {
+      "scope": "교과서 PDF 직독",
+      "source_pdf": "01_Input/260315_중2_국어1_비상.pdf (200p, p.62~99=2단원, CaptureOnTouch 스캔)",
+      "extraction": "pdftotext -layout p.62~99 → kor2_full_pp62-99.txt (1867줄). 본문 양호, 측면 메모 일부 손상.",
+      "structure": "2-01 피동·인용 p.62~79 / 2-02 매체 자료의 재현 방식 p.80~99"
+    },
+    "step3_poc_iteration": {
+      "v1": "kor1 스타일 따라 작성. 사용자 피드백: '더 쉽게 풀어주는게 좋겠어'.",
+      "v2_simplification": [
+        "메타 표현 제거: '정의 설명'→'뜻풀이', '변환'→'바뀜', '행위 주체'→'한 사람'",
+        "한자어 풀어쓰기: '객관적'→'공정해 보이게', '의제 설정'→'이게 중요해라고 알리는 효과'",
+        "추상 어휘 학생 일상어로: '관점이 반영'→'만든 사람 생각이 들어가'"
+      ],
+      "tone": "반말, 50~80자, '[오답 요점]? [본문 근거]. [정답 강조]!' 패턴, emoji 없음"
+    },
+    "step4_patch": {
+      "target_file": "90_Output/app/lesson_kor2.js",
+      "method": "Python json.loads → wrong_explanations 38개 주입 → 새 직렬화 (메모리 원칙: Edit 도구 큰 한국어 파일 위험)",
+      "size_change": "97949 → 109975 bytes (+12026 bytes)",
+      "verification": "재파싱 38/38 채워짐 확인. 114개 오답 항목 평균 37.2자, 최소 15, 최대 56자.",
+      "cache": "sw.js CACHE_NAME quiz-v121 → quiz-v122 (단말 갱신)"
+    },
+    "backup_files": [
+      "90_Output/app/lesson_kor2.js.bak-pre-we-260512n-20260512-115256",
+      "90_Output/app/sw.js.bak-pre-v122-260512n-*",
+      "progress.json.bak-260512n-*"
+    ],
+    "verification": "검증 4축 통과: ① qid 매칭 38/38 ② 키=오답 인덱스(정답 제외) 0 오류 ③ 길이 적정(15~56자) ④ 재파싱 38/38 채워짐.",
+    "unresolved_carried_over": [
+      "subunit 분류 오류 5건 (KOR2-E003·E007·E009·E011·E032) — B-1과 별도 정정 필요",
+      "Distractor 재사용 4종 (39회) — B-2 별도 작업",
+      "K군 신규 문항 (M5 고정 관념·I5 인용 효과·P2 접미사·P6 이중 피동) — 별도 작업",
+      "F군 시험 형식 4축 (다중정답 인프라·부정형 표준·서술형 type) — 영·국 공통 별도 작업",
+      "기말 범위 공식 공지 미공개 (가정통신문은 중간 안내)",
+      "사회·수학 정밀 분석 보류"
+    ],
+    "next": [
+      "단말 캐시 갱신 후 사용자 단말 확인 (옵션, 일상 검증)",
+      "B-2 Distractor 재사용 정리 (별도 세션)",
+      "subunit 분류 오류 5건 정정 (소규모 작업)",
+      "K군 신규 문항 작성 진입 (별도 세션, 본문 정합 grep 선행)",
+      "F군 다중정답 인프라 통합 (영·국 공통, 별도 세션)"
+    ]
+  },
+  "session_2026_05_12_o_kor2_subunit_distractor": {
+    "date": "2026-05-12",
+    "session_seq": "o",
+    "focus": "PA 앱 kor2 후속 정리 — subunit 오류 정정 + B-2 distractor 재사용 35건 제거",
+    "predecessor": "session_2026_05_12_n_kor2_wrong_explanations",
+    "context": "5/12 n에서 B-1(wrong_explanations) 완료 후 카운트. 사용자 추천 요청에 1순위(subunit 정정) → 2순위(B-2 distractor) 묶음으로 결단·진행.",
+    "step1_subunit_audit": {
+      "scope": "5건 후보(KOR2-E003·E007·E009·E011·E032) 본문 키워드 정합 검증",
+      "method": "lesson_kor2_parsed.json 문항별 instruction/sentence/choices/explanation 종합 + 키워드 사전(피동·인용 vs 매체) 점수화",
+      "result": "E003·E007·E009·E011은 모두 피동 영역으로 명확 → 2-02 → 2-01. E032(뉴스 헤드라인·의제설정)는 매체 영역 명확 → 2-02 유지. 따라서 audit 5건 중 실제 정정은 4건만.",
+      "rationale_E032": "본문 인용 요소 0, 매체 의제설정 명백. audit 메모 '인용/매체 경계'는 보수적 카운트였음.",
+      "extra_check": "키워드 점수로 38문항 전수 재점검 → 추가 오류 없음."
+    },
+    "step2_subunit_patch": {
+      "target_file": "90_Output/app/lesson_kor2.js",
+      "changes": [
+        "KOR2-E003: 2-02 → 2-01 (피동 격조사)",
+        "KOR2-E007: 2-02 → 2-01 (이중피동)",
+        "KOR2-E009: 2-02 → 2-01 (피동 화용적 효과)",
+        "KOR2-E011: 2-02 → 2-01 (피동 심리적 효과)"
+      ],
+      "method": "Python json.loads → q['subunit'] 수정 → 재직렬화 (메모리 원칙)",
+      "size_change": "109975 → 109976 bytes (+1 byte, subunit 값 길이 동일)",
+      "subunit_dist_after": "2-01: 25 / 2-02: 13 (이전 21/17)",
+      "exposure_check": "subunit 키는 lesson_*.js 데이터 라벨 전용. 채점·UI·필터 코드에서 참조 0건. 노출 영향 없음. HIDDEN_TYPES empty 유지, kor2 버튼 정상 노출."
+    },
+    "step3_distractor_analysis": {
+      "scope": "B-2 — 상위 4종 재사용 distractor 35건 의미 보존 + 표현 다양화",
+      "groups": {
+        "A_능동정의": "'주어가 스스로 행동한 것이다' 11회 → 11종 변형 (능동의 정의 함정 유지)",
+        "B_직접인용정의": "'원래 말의 형식을 유지하면서 내용만 바꾼 것이다' 10회 → 10종 변형 (직접 인용 정의 함정 유지)",
+        "C_모두정답": "'위의 모든 설명이 맞다' 8회 → 8종 변형 (전부 정답 함정 유지)",
+        "D_완전전달": "'모든 정보를 빠짐없이 전달한 것이다' 6회 → 6종 변형 (객관적 완전 전달 오해 함정 유지)"
+      },
+      "replacement_spec": "outputs/kor2_distractor_replacement_v1.json",
+      "self_audit": "새 텍스트 35종 모두 유니크(중복 0), 정답 충돌 0, 같은 문항 내 중복 0"
+    },
+    "step4_distractor_patch": {
+      "target_file": "90_Output/app/lesson_kor2.js",
+      "method": "Python json.loads → choices[idx] 텍스트 치환 35건 → 재직렬화",
+      "size_change": "109976 → 109950 bytes (-26 bytes, 반복 표현 압축 해제)",
+      "verification_4axis": [
+        "qid 1:1 매칭 38/38 ✓",
+        "correct 인덱스 유효성 OK ✓",
+        "wrong_explanations 38/38 보존 ✓",
+        "원본 4종 잔존 0회 ✓ / 새 distractor 35/35 적용 ✓",
+        "중복률 25.6%(39/152) → 2.6%(4/152) ✓ (목표 ≤10% 초과)"
+      ],
+      "residual_dup": "잔여 중복 2건(각 2회: '거짓말을 하는 것', '제작자의 의도 없이 현실을 그대로 보여준 것이다') — 5/12 m audit에서 이미 본 항목, 작업 범위 밖."
+    },
+    "step5_cache": {
+      "sw_js": "quiz-v122 → quiz-v123 (subunit + distractor 통합 반영)"
+    },
+    "backup_files": [
+      "90_Output/app/lesson_kor2.js.bak-pre-subunit-260512o-20260512-120432",
+      "90_Output/app/lesson_kor2.js.bak-pre-distract-260512o-20260512-120813",
+      "90_Output/app/sw.js.bak-pre-v123-260512o-20260512-120450",
+      "progress.json.bak-260512o-20260512-120849"
+    ],
+    "self_audit_3axis": {
+      "노출성": "HIDDEN_TYPES empty, kor2 lesson 버튼(index.html:1989) 정상. subunit 변경은 데이터 라벨 전용으로 노출 영향 0.",
+      "채점_정합": "correct 인덱스 보존 38/38. distractor 텍스트만 치환, 정답 위치·인덱스 불변. 채점 로직 변경 없음.",
+      "UI_정합": "choices 텍스트 렌더링만 변경. wrong_explanations 키(인덱스) 보존으로 오답 설명 매핑 그대로."
+    },
+    "unresolved_carried_over": [
+      "K군 신규 문항 (M5 고정 관념·I5 인용 효과·P2 접미사·P6 이중 피동) — 별도 세션, 본문 정합 grep 선행",
+      "F군 시험 형식 4축 (다중정답 인프라·부정형 표준·서술형 type) — 영·국 공통, 5/11 영어 A-1과 묶음",
+      "기말 범위 공식 공지 미공개",
+      "사회·수학 정밀 분석 보류"
+    ],
+    "next": [
+      "단말 캐시 갱신 후 사용자 단말 확인 (옵션)",
+      "K군 신규 문항 작성 (별도 세션)",
+      "F군 다중정답 인프라 통합 (별도 세션)"
+    ]
+  },
+  "session_2026_05_12_p_multi_short_reading_infra": {
+    "completed": "2026-05-12",
+    "title": "F군 인프라: short_reading 다중정답 분기 확장",
+    "summary": "index.html showShortReading에 isMulti 분기 추가. q.answer_indices 보유 시 체크박스 토글 + 정답 N개 안내 + 제출 버튼. 채점은 기존 handleChoiceBlankMultiAnswer 재사용 (DOM 동일, type-agnostic 확인). 영어 choice_blank 인프라(5/12 g)와 동일 패턴.",
+    "scope": [
+      "국어 lesson_kor1·lesson_kor2 short_reading 38+72문항"
+    ],
+    "verification": {
+      "회귀_안전": "kor1 72 + kor2 38 = 110문항 모두 answer_indices 미보유 → isMulti=false → 기존 단일정답 분기",
+      "인프라_10축_PASS": [
+        "isMulti detection",
+        "multi branch return",
+        "submit button call",
+        "single fallback",
+        "multi info banner",
+        "multi marker tag",
+        "multi grader type-agnostic",
+        "Set equality",
+        "wrong-expl type-agnostic",
+        "sw.js v124"
+      ]
+    },
+    "files_changed": [
+      "90_Output/app/index.html (showShortReading 분기 추가 [12 F-1] 태그)",
+      "90_Output/app/sw.js (v123 → v124)"
+    ],
+    "backups": [
+      "index.html.bak-pre-multi-sr-260512p-20260512-122934",
+      "progress.json.bak-260512p-20260512-123135"
+    ],
+    "followups": [
+      "kor2 다중정답 콘텐츠 변환 (B-2 잔여 distractor 중 다중정답 형식 적합 항목 발굴)",
+      "K군 신규 문항 (M5·I5·P2·P6)",
+      "영어 lesson1·lesson3에 다중정답 추가 검토 (5/12 g L2·L4 이후)"
+    ]
+  },
+  "session_2026_05_12_q_jusulhyung_scope_correction": {
+    "completed": "2026-05-12",
+    "title": "서술형 type 인프라 검토 → 사용자 지적 후 정정 (작업 자체 제거)",
+    "summary": "F군 시험 형식 4축 4번 '서술형 type 인프라'를 검토하려다가 사용자 '국어에서 서술형을 왜해??' 질문으로 평가 계획서 직접 확인. 국어 지필(중간+기말) 모두 선택형 100점, 서·논술 0. 영어도 동일(5/11 확인됨). mini_writing 인프라는 점수 기여도 0인 학습 보조 도구. F군 4축에서 '서술형 type' 항목 자체를 제거.",
+    "source": "01_Input/260325_26년_2학년1학기_교과별세부평가계획.txt — 국어 기말고사 (30%): 선택형 100점",
+    "f_axis_corrected": {
+      "1_다중정답": "완료 (5/12 g 영어 + 5/12 p 국어)",
+      "2_부정형": "별도 인프라 X — 다중정답 + instruction으로 처리",
+      "3_글의_순서": "검토 필요 — chunk_order 영어엔 있음, 국어 적용 여부 별도",
+      "4_서술형": "제거 — 시험 형식 정합 0"
+    },
+    "memory_added": "project_exam_format_paper_only.md",
+    "files_changed": [],
+    "violation": "feedback_official_scope_first — 5/12 m·n에서 영어 서·논술 손실을 국어 F군으로 확장 추측, 출처 확인 없이 인프라 검토 시작.",
+    "followups": [
+      "F군 3번 글의 순서: 국어 적용 여부 검토 (시험 형식 정합 우선)",
+      "kor2 콘텐츠 변환 (다중정답 PoC 적합 문항 발굴)",
+      "K군 신규 문항 (M5·I5·P2·P6)",
+      "사회·수학 정밀 분석 (5/12 m부터 보류)"
+    ],
+    "correction_after_user_recheck": {
+      "user_question": "중간고사 때 영어 서술 있었잖아. 기말은 서술형 없는거 확실해?",
+      "fact_check": "평가 계획서 영어 줄: 중간 선택형 82 + 서논술 18 / 기말 선택형 100. 첫 정정에서 영어 중간 예외를 빠뜨렸음.",
+      "corrected_memory": "project_exam_format_paper_only.md — 5과목 일반화 → 기말 5과목 + 영어 중간 예외 명시"
+    }
+  },
+  "session_2026_05_12_r_f_axis_closure": {
+    "completed": "2026-05-12",
+    "title": "F군 시험 형식 인프라 정비 최종 종결",
+    "summary": "F군 3번 '글의 순서' 국어 적용 가능성 검토. 국어 기출 5개 중 순서 나열 1건만 발견(25년 2-1 중간 14번), 5지선다 단일정답 형식. 영어 paragraph_order/arrange 드래그드롭 인프라와 형식 정합 0. 기존 short_reading으로 충분. 인프라 작업 불필요. F군 4축 인프라 정비 100% 종결.",
+    "evidence": "01_Input/기출문제/국어/2025학년도 2학년 1학기 중간고사(국어).LLM.md L272 — 14번 시간순 배열 5지선다",
+    "f_axis_final": {
+      "1_다중정답": "✅ 완료 (5/12 g 영어 + 5/12 p 국어)",
+      "2_부정형": "✅ 인프라 충분 (다중정답 + instruction)",
+      "3_글의_순서": "❌ 국어 인프라 불필요 (기출 = 단일정답 5지선다)",
+      "4_서술형": "❌ 제거 (기말 시험 정합 0)"
+    },
+    "remaining": "F군 인프라 작업 0건. 잔여는 콘텐츠 작업만.",
+    "followups": [
+      "kor2 다중정답 콘텐츠 변환 (38문항 중 적합 후보 발굴)",
+      "kor1 다중정답 콘텐츠 추가 검토",
+      "영어 lesson1·lesson3 다중정답 추가 검토",
+      "K군 신규 문항 (M5·I5·P2·P6) — 본문 정합 grep 선행",
+      "사회·수학 정밀 분석 (5/12 m부터 보류)"
+    ],
+    "files_changed": []
+  },
+  "session_2026_05_12_s_kor2_multi_poc": {
+    "completed": "2026-05-12",
+    "title": "kor2 다중정답 콘텐츠 PoC 1건 (KOR2-E034) — F군 인프라 콘텐츠 활용 시작",
+    "summary": "5/12 r에서 F군 인프라 정비 종결 후, 인프라 활용 콘텐츠 변환 PoC 1건. 국어 기출 5개 다중정답 형식 grep 결과 2025 2-1 기말에 4건(정답 2개) 출제 패턴 확인 — PA 학생 같은 학년/학기 기말 정합 강함. KOR2-E034 '시각 재현 왜곡 사례'를 보기 4→5개 확장 + 정답 1→2개 재설계. 본문(kor2 p.84·89 매체 단원) 핵심 표현 '선택하거나 배제' 정합 검증 완료. 4축 검증 PASS, 회귀 37문항 영향 0.",
+    "format_alignment": {
+      "기출_2025_2_1_기말_다중정답_4건": [
+        "11번 (정답 2개)",
+        "20번 (정답 2개)",
+        "21번 (정답 2개)",
+        "25번 (정답 2개)"
+      ],
+      "PA_학생_2026_2_1_기말_정합": "동일 학년/학기/평가 → 출제 가능성 매우 높음"
+    },
+    "patch_detail": {
+      "qid": "KOR2-E034",
+      "subunit": "2-02 매체 자료의 재현 방식",
+      "instruction_old": "다음 중 시각 재현의 왜곡 사례는?",
+      "instruction_new": "광고나 매체에서 현실을 왜곡되게 재현하는 방식에 해당하는 것을 모두 고르면? (정답 2개)",
+      "choices_5": [
+        "[0] 모든 정보를 정확하게 전달하는 것 — 오답",
+        "[1] 특정 정보를 과장하거나 생략하는 것 — ✅ 정답 (원본 유지)",
+        "[2] 거짓말을 하는 것 — 오답",
+        "[3] 특정 부분을 선택하거나 배제하는 것 — ✅ 정답 (본문 p.84 직접 표현 정합)",
+        "[4] 사실을 사실보다 더 멋있게 꾸미는 것 — 오답 (광고 효과 함정)"
+      ],
+      "answer_indices": [
+        1,
+        3
+      ],
+      "correct_fallback": 1
+    },
+    "verification": {
+      "회귀": "kor2 38문항 중 37건 단일정답 유지 (choices=4, correct in range), KOR2-E034 1건만 다중 진입",
+      "다중정답_정합": "answer_indices in range, WE keys = non-answer indices, instruction '모두 고르' 포함, choices=5"
+    },
+    "files_changed": [
+      "90_Output/app/lesson_kor2.js (KOR2-E034 변환, 다중정답 1건)",
+      "90_Output/app/sw.js (v124 → v125)"
+    ],
+    "backups": [
+      "lesson_kor2.js.bak-pre-e034-multi-260512s-20260512-131314",
+      "progress.json.bak-260512s-20260512-131354"
+    ],
+    "followups": [
+      "단말 실기 검증 (PoC 작동·UX 확인)",
+      "결과 양호 시 2~3건 추가 변환 (KOR2-E029 고정관념·E031 배제·E018 인용 변환 요소)",
+      "K군 신규 문항 (M5·I5·P2·P6)",
+      "kor1 다중정답 콘텐츠 변환 (국어 기말 범위 확인 후)"
+    ]
+  },
+  "session_2026_05_12_s2_kor2_multi_e029_e031": {
+    "completed": "2026-05-12",
+    "title": "kor2 다중정답 변환 추가 2건 (KOR2-E029 고정관념 + E031 배제)",
+    "summary": "5/12 s에서 KOR2-E034 PoC 1건 적용 후, '계속해' 결단으로 매체 단원 핵심 개념 2건 추가 변환. 본문 p.84·88·89·90 정합 검증 후 5번째 보기·추가 정답 도출. KOR2-E029=인종+성 고정관념 정답 2개, KOR2-E031=손세정제 광고 부작용 배제 정답 2개. 4축 검증 PASS, kor2 다중정답 총 3건(8%), 단일정답 회귀 35건 영향 0.",
+    "patches": {
+      "KOR2-E029": {
+        "subunit": "2-02 매체",
+        "instruction_old": "다음 중 고정관념을 강화하는 표현은?",
+        "instruction_new": "다음 중 광고나 매체에서 고정 관념을 강화하는 표현에 해당하는 것을 모두 고르면? (정답 2개)",
+        "answer_indices": [
+          0,
+          1
+        ],
+        "정답": [
+          "[0] 흑인 캐릭터만 범죄자로 표현하기 — 인종 고정관념 (본문 p.89 6분야 정합)",
+          "[1] 여성이 항상 약하고 보조적인 역할만 하기 — 성 고정관념"
+        ],
+        "신규_distractor": "[4] 고정 관념에서 벗어난 모습을 보여주기 — 반대 개념 함정 (본문 '깨뜨리기도 함' 정합)"
+      },
+      "KOR2-E031": {
+        "subunit": "2-02 매체",
+        "instruction_old": "다음 중 배제의 예는?",
+        "instruction_new": "다음 중 매체 자료에서 '배제'에 해당하는 예를 모두 고르면? (정답 2개)",
+        "answer_indices": [
+          1,
+          2
+        ],
+        "정답": [
+          "[1] 광고에서 제품의 부작용 정보를 보여주지 않는 것 — 본문 손세정제 광고 직접 정합",
+          "[2] 광고에서 장점만 강조하고 단점은 빼는 것 — 본문 동일 사례 변형"
+        ],
+        "변경": "원본 [1] '장애인 주인공' 정답은 본문 정합 약함 → 제거. [3] 메타 함정 → 다른 distractor로",
+        "신규_distractor": "[4] 다양한 인물을 균형 있게 보여주는 것 — 반대 함정"
+      }
+    },
+    "verification": {
+      "4축_PASS": true,
+      "회귀": "단일정답 35건 (choices=4, correct in range) 영향 0",
+      "다중정답_3건": [
+        "KOR2-E029 ai=[0,1]",
+        "KOR2-E031 ai=[1,2]",
+        "KOR2-E034 ai=[1,3]"
+      ],
+      "WE_키_정합": "모든 다중정답 WE keys = non-answer 인덱스 (3,3,3건)"
+    },
+    "files_changed": [
+      "90_Output/app/lesson_kor2.js (E029·E031 변환)",
+      "90_Output/app/sw.js (v125 → v126)"
+    ],
+    "backups": [
+      "lesson_kor2.js.bak-pre-e029-e031-multi-260512s-20260512-132840",
+      "progress.json.bak-260512s2-20260512-132924"
+    ],
+    "kor2_multi_coverage": "38문항 중 3건 (7.9%). 매체 단원(2-02) 13문항 중 3건 (23%)",
+    "followups": [
+      "단말 실기 검증",
+      "kor2 추가 변환 후보 (피동·인용 단원 2-01에서): KOR2-E018 인용 변환 요소(보기 재설계 큰 부담), KOR2-E021 직접/간접 인용 차이",
+      "kor1 다중정답 변환 (국어 기말 범위 확인 후)",
+      "K군 신규 문항 (M5·I5·P2·P6)",
+      "사회·수학 정밀 분석"
+    ]
+  },
+  "session_2026_05_13_a_index_tail_restore": {
+    "completed": "2026-05-13",
+    "title": "index.html ?? ?? ?? ? ?? ?? ?? ?? hotfix",
+    "trigger": "??? ??: ???? ??? ?? ???? ???? ??.",
+    "root_cause": "90_Output/app/index.html? checkMathTypedAnswer() ?? ??? 'recordA'?? ?? inline script? Unexpected end of input?? ?? ??. selectSubject()? ???? ?? ? ?? ?? onclick? ????.",
+    "scope": [
+      "?? index.html ?? ??? ????, ?? ??? ?? ???? ??",
+      "?? ?? ?? ??? ?? sw.js CACHE_NAME quiz-v126 -> quiz-v127"
+    ],
+    "cowork_markers": [
+      "index.html: [Codex 2026-05-13 index-tail-restore] ?? 2?",
+      "sw.js: [Codex 2026-05-13 index-tail-restore] ?? 1?"
+    ],
+    "files_changed": [
+      "90_Output/app/index.html",
+      "90_Output/app/sw.js",
+      "progress.json",
+      "session-logs/session-log-2026-05-13.md"
+    ],
+    "backups": [
+      "90_Output/app/index.html.bak-broken-pre-tail-restore-260513-20260513-072202",
+      "90_Output/app/sw.js.bak-pre-v127-tail-restore-260513-20260513-072347",
+      "progress.json.bak-260513-index-tail-restore-20260513-072508"
+    ],
+    "verification": [
+      "index.html inline script vm parse PASS (failed=0)",
+      "recordA truncation residue ??, </script></body></html> ?? ??",
+      "Node smoke: english/korean/math/social/science selectSubject -> subject-page active PASS",
+      "node --check sw.js PASS",
+      "90_Output/app *.js 45? node --check PASS"
+    ],
+    "notes": [
+      "?? ??? lesson_kor2.js ???? ???? ??? index.html ?? ?? ??.",
+      "?? ?? ??? index.html.bak-pre-infra-260512-20260512-033310."
+    ]
+  },
+  "session_2026_05_14_a_app_ops_review": {
+    "completed": "2026-05-14",
+    "title": "App operations review - content excluded",
+    "scope": [
+      "90_Output/app/index.html",
+      "90_Output/app/sw.js",
+      "90_Output/app/manifest.json",
+      "90_Output/google-apps-script*.js",
+      "90_Output/app-android/"
+    ],
+    "verification": [
+      "index.html inline script VM parse PASS",
+      "node --check sw.js PASS",
+      "90_Output/app/*.js current files node --check PASS",
+      "lesson JSONP parse PASS, unknown handled type 0",
+      "Headless Chrome mobile smoke PASS: 5 subjects enter subject-page; representative modes start",
+      "PWA service worker quiz-v127 registration/cache PASS; offline science subject entry PASS"
+    ],
+    "findings": [
+      "google-apps-script.js is still v3 while google-apps-script-v10.js is the current 5-subject/19-column/vocab-capable script",
+      "quiz log sending should check response.ok before sent_logs; vocab_log needs a retry queue",
+      "sw.js should bypass cache for non-GET and cross-origin webhook requests",
+      "app lacks visible version/cache diagnostics and force-refresh control",
+      "app-android has build artifacts but no app/src/main or app/build.gradle, so rebuild source is missing in this folder",
+      "manifest.json naming still describes English Lesson 1-2 only",
+      "localStorage logs can grow without compaction"
+    ],
+    "outputs": [
+      "00_Context/codex-advice/app-ops-review-2026-05-14.md",
+      "session-logs/session-log-2026-05-14.md"
+    ],
+    "files_changed": [
+      "00_Context/codex-advice/app-ops-review-2026-05-14.md",
+      "session-logs/session-log-2026-05-14.md",
+      "progress.json"
+    ],
+    "app_code_changed": false,
+    "content_changed": false,
+    "next_recommended": [
+      "Confirm Apps Script v10 as the deployed canonical receiver",
+      "Add response.ok handling and retry queue for vocab_log",
+      "Add GET-only cache guard in sw.js",
+      "Add app version/cache status/force refresh control to settings",
+      "Restore or regenerate Android wrapper source"
+    ]
+  },
+  "session_2026_05_14_b_app_ops_implementation": {
+    "completed": "2026-05-14",
+    "title": "App operations hardening implementation",
+    "scope": [
+      "Apps Script canonical labeling",
+      "Android WebView wrapper source reconstruction",
+      "quiz log response validation",
+      "vocab_log retry queue",
+      "service worker GET/origin guard and quiz-v128",
+      "diagnostic settings UI",
+      "manifest naming update",
+      "localStorage quota and log compaction guard"
+    ],
+    "files_changed": [
+      "90_Output/google-apps-script.js",
+      "90_Output/세팅_가이드.md",
+      "90_Output/app/index.html",
+      "90_Output/app/sw.js",
+      "90_Output/app/manifest.json",
+      "90_Output/app-android/app/build.gradle",
+      "90_Output/app-android/app/src/main/AndroidManifest.xml",
+      "90_Output/app-android/app/src/main/java/com/jhlearn/english1/MainActivity.java",
+      "00_Context/file-map.md"
+    ],
+    "reports": [
+      "00_Context/codex-advice/app-ops-step1-apps-script-2026-05-14.md",
+      "00_Context/codex-advice/app-ops-step2-android-2026-05-14.md",
+      "00_Context/codex-advice/app-ops-step3-log-retry-2026-05-14.md",
+      "00_Context/codex-advice/app-ops-step4-sw-2026-05-14.md",
+      "00_Context/codex-advice/app-ops-step5-diag-ui-2026-05-14.md",
+      "00_Context/codex-advice/app-ops-step6-manifest-quotas-2026-05-14.md",
+      "00_Context/codex-advice/app-ops-result-2026-05-14.md"
+    ],
+    "verification": [
+      "node --check sw.js PASS",
+      "index inline script VM parse PASS",
+      "app js syntax PASS",
+      "lesson/reader js parse PASS files=41",
+      "manifest JSON parse PASS",
+      "Android source structure restored",
+      "Android XML parse PASS",
+      "Android assets-runtime synced with current PWA files"
+    ],
+    "limitations": [
+      "Browser smoke not completed because Chrome execution approval was blocked by usage limit after retry",
+      "Android assembleDebug not run because gradle and gradle wrapper are unavailable in this folder",
+      "Folder is not a git repository; timestamp backups used instead of commits"
+    ],
+    "backups": [
+      "90_Output/google-apps-script.js.bak-step1-20260514-063658",
+      "00_Context/file-map.md.bak-step1-20260514-063658",
+      "90_Output/세팅_가이드.md.bak-step1-20260514-063658",
+      "90_Output/app/index.html.bak-step3-log-retry-20260514-064128",
+      "90_Output/app/sw.js.bak-step4-v128-20260514-064304",
+      "90_Output/app/index.html.bak-step5-diag-ui-20260514-064343",
+      "90_Output/app/index.html.bak-step6-storage-20260514-064808",
+      "90_Output/app/manifest.json.bak-step6-20260514-064808"
+    ]
+  },
+  "session_2026_05_14_axis2_data_loop": {
+    "completed": "2026-05-14",
+    "title": "Axis2 data/log loop audit and residual ops closure",
+    "summary": "Precheck passed; vocab_log v6/v10 header migration added; summary labels corrected; non-English weak labels added; sheet/log gaps, content loop, weekly report, webhook guide, and progress cleanup reported.",
+    "reports": [
+      "00_Context/codex-advice/axis2-ready-2026-05-14.md",
+      "00_Context/codex-advice/axis2-step1-sheet1-2026-05-14.md",
+      "00_Context/codex-advice/axis2-step2-vocab-log-2026-05-14.md",
+      "00_Context/codex-advice/axis2-step3-summary-labels-2026-05-14.md",
+      "00_Context/codex-advice/axis2-step4-weak-multisubject-2026-05-14.md",
+      "00_Context/codex-advice/axis2-step5-log-empty-cols-2026-05-14.md",
+      "00_Context/codex-advice/axis2-step6-content-loop-2026-05-14.md",
+      "00_Context/codex-advice/axis2-step7-weekly-report-2026-05-14.md",
+      "00_Context/codex-advice/axis2-step8-webhook-verify-guide-2026-05-14.md",
+      "00_Context/codex-advice/axis2-step9-progress-2026-05-14.md",
+      "00_Context/codex-advice/axis2-result-2026-05-14.md"
+    ],
+    "files_changed": [
+      "90_Output/google-apps-script-v10.js",
+      "90_Output/app/index.html",
+      "90_Output/app/sw.js",
+      "progress.json"
+    ],
+    "next": [
+      "Device webhook verification after v129 refresh",
+      "Confirm whether to add score_group/recovery_band payload column",
+      "Confirm finals scope before kor1 structural content follow-up"
+    ]
+  },
+  "session_2026_05_14_axis2_followup_4items": {
+    "completed": "2026-05-14",
+    "title": "Axis2 follow-up: LATENCY, F10, KOR1, WEEKLY",
+    "summary": "LATENCY cannot be measured because no logs exist after 2026-05-14; F10 and WEEKLY implemented in v130; KOR1 blocked pending official Korean finals scope; Android local assets synced because MainActivity loads android_asset/www/index.html.",
+    "reports": [
+      "00_Context/codex-advice/axis2-followup-step1-latency-2026-05-14.md",
+      "00_Context/codex-advice/axis2-followup-step2-f10-2026-05-14.md",
+      "00_Context/codex-advice/axis2-followup-step3-kor1-2026-05-14.md",
+      "00_Context/codex-advice/axis2-followup-step4-weekly-2026-05-14.md",
+      "00_Context/codex-advice/axis2-followup-step5-progress-2026-05-14.md",
+      "00_Context/codex-advice/axis2-followup-result-2026-05-14.md"
+    ],
+    "files_changed": [
+      "90_Output/app/index.html",
+      "90_Output/app/sw.js",
+      "90_Output/google-apps-script-v10.js",
+      "90_Output/app-android/app/src/main/assets/www/index.html",
+      "90_Output/app-android/app/src/main/assets/www/sw.js",
+      "90_Output/app-android/app/src/main/assets/www/manifest.json",
+      "progress.json",
+      "session-logs/session-log-2026-05-14.md"
+    ],
+    "deployment_pending": [
+      "GitHub Pages manual upload",
+      "Apps Script v10 redeploy",
+      "Android APK rebuild/reinstall if native app is used",
+      "Manual sendWeeklyReport test after Apps Script redeploy",
+      "Natural device session for AXIS2-R1/LATENCY verification"
+    ]
+  },
+  "session_2026_05_14_axis3_exam_perf": {
+    "status": "completed_pending_deploy",
+    "date": "2026-05-14",
+    "summary": "Axis3 §6 STEP 1~11 executed by Codex. Added exam_perf metadata for English/math, upgraded GAS to 24-column v11 behavior, implemented v131 D-day-gated 시험 수행 mode and logging, and wrote step reports under 00_Context/codex-advice.",
+    "changed_files": [
+      "90_Output/app/index.html",
+      "90_Output/app/sw.js",
+      "90_Output/app/lesson1.js",
+      "90_Output/app/lesson3.js",
+      "90_Output/app/lesson_math1.js",
+      "90_Output/google-apps-script-v10.js",
+      "progress.json"
+    ],
+    "reports": [
+      "00_Context/codex-advice/axis3-step1-ready-2026-05-14.md",
+      "00_Context/codex-advice/axis3-step2-9.6-overdesign-audit-2026-05-14.md",
+      "00_Context/codex-advice/axis3-step3-9.2-english-vocab-audit-2026-05-14.md",
+      "00_Context/codex-advice/axis3-step4-9.5-soc-sci-audit-2026-05-14.md",
+      "00_Context/codex-advice/axis3-step5-failure-audit-summary-2026-05-14.md",
+      "00_Context/codex-advice/axis3-step6-exam-perf-design-2026-05-14.md",
+      "00_Context/codex-advice/axis3-step7-content-variants-2026-05-14.md",
+      "00_Context/codex-advice/axis3-step8-gas-v11-2026-05-14.md",
+      "00_Context/codex-advice/axis3-step9-app-v131-2026-05-14.md",
+      "00_Context/codex-advice/axis3-step10-verification-2026-05-14.md",
+      "00_Context/codex-advice/axis3-step11-progress-runbook-2026-05-14.md",
+      "00_Context/codex-advice/axis3-result-2026-05-14.md"
+    ],
+    "verification": {
+      "node_check_gas": "PASS",
+      "node_check_sw": "PASS",
+      "index_inline_vm_parse": "PASS",
+      "progress_json_reload": "PASS",
+      "lesson_jsonp_parse": "PASS",
+      "lesson_metadata_only_diff": "PASS",
+      "node_vm_smoke": "PASS: D-3 English/Math exposed and session pools generated; other subjects preparing; D-20 hidden; metric hook checked"
+    },
+    "deployment": {
+      "status": "user_confirmed_completed",
+      "confirmed_date": "2026-05-14",
+      "github_pages": "uploaded v131 bundle",
+      "apps_script": "redeployed with 24-column v11 behavior",
+      "sendWeeklyReport_manual": "PASS"
+    }
+  },
+  "session_2026_05_14_axis3_closed": {
+    "status": "closed",
+    "date": "2026-05-14",
+    "summary": "Axis3 implementation, deployment, Apps Script redeploy, and manual weekly report verification are complete. Remaining AXIS3-DDAY-VERIFY, AXIS3-R1, and AXIS3-WEEKLY-AUTO are natural verification items, not blockers for closing the axis.",
+    "open_natural_verifications": [
+      "AXIS3-DDAY-VERIFY",
+      "AXIS3-R1",
+      "AXIS3-WEEKLY-AUTO",
+      "AXIS2-R1",
+      "AXIS2-LATENCY",
+      "AXIS2-KOR1"
+    ]
+  },
+  "session_2026_05_14_axis4_code_structure": {
+    "status": "completed_deploy_held",
+    "date": "2026-05-14",
+    "summary": "Axis4 code-structure work completed in app-v132 only. CSS and inline JS were split, deprecated upload/GAS v3 files moved to _legacy, GAS v11 candidate filename/version aligned, migration rows unified, and lesson files left unchanged.",
+    "changed_files": [
+      "00_Context/file-map.md",
+      "90_Output/_legacy/axis4-step3-20260514/",
+      "90_Output/app-v132/index.html",
+      "90_Output/app-v132/style.css",
+      "90_Output/app-v132/app-core.js",
+      "90_Output/app-v132/app-loader.js",
+      "90_Output/app-v132/app-session.js",
+      "90_Output/app-v132/app-questions.js",
+      "90_Output/app-v132/app-logging.js",
+      "90_Output/app-v132/app-study-math.js",
+      "90_Output/app-v132/sw.js",
+      "90_Output/app-v132/google-apps-script-v11.js",
+      "00_Context/codex-advice/axis4_smoke_node.js"
+    ],
+    "reports": [
+      "00_Context/codex-advice/axis4-step1-ready-2026-05-14.md",
+      "00_Context/codex-advice/axis4-step2-filemap-lessonmeta-2026-05-14.md",
+      "00_Context/codex-advice/axis4-step3-legacy-move-2026-05-14.md",
+      "00_Context/codex-advice/axis4-step4-app-v132-init-2026-05-14.md",
+      "00_Context/codex-advice/axis4-step5-css-split-2026-05-14.md",
+      "00_Context/codex-advice/axis4-step6-js-split-2026-05-14.md",
+      "00_Context/codex-advice/axis4-step7-gas-v11-filename-2026-05-14.md",
+      "00_Context/codex-advice/axis4-step8-migrate-unify-2026-05-14.md",
+      "00_Context/codex-advice/axis4-step9-lesson-meta-2026-05-14.md",
+      "00_Context/codex-advice/axis4-step10-gate-check-2026-05-14.md",
+      "00_Context/codex-advice/axis4-step11-deploy-2026-05-14.md",
+      "00_Context/codex-advice/axis4-result-2026-05-14.md"
+    ],
+    "verification": [
+      "node --check sw.js PASS",
+      "node --check google-apps-script-v11.js PASS",
+      "node --check app-*.js PASS",
+      "manifest JSON parse PASS",
+      "lesson/reader JS parse PASS",
+      "axis4_smoke_node PASS: five subject sessions plus exam_perf metrics",
+      "GAS migrateLogRow cases PASS"
+    ],
+    "deployment_gate": {
+      "decision": "hold",
+      "reason": "AXIS3 natural verification items are still pending",
+      "pending": [
+        "AXIS3-DDAY-VERIFY",
+        "AXIS3-R1",
+        "AXIS3-WEEKLY-AUTO"
+      ]
+    },
+    "deploy_runbook": "00_Context/axis4-deploy-runbook-2026-05-14.md",
+    "runbook_fix_2026_05_15": {
+      "summary": "Clarified deploy runbook upload wording: 9 changed PWA upload targets, 7 new PWA files, 8 split assets fetched by the app. Explicitly excluded google-apps-script-v11.js and .bak-axis4-* files from GitHub Pages upload.",
+      "files_changed": [
+        "00_Context/axis4-deploy-runbook-2026-05-14.md",
+        "00_Context/file-map.md",
+        "progress.json",
+        "session-logs/session-log-2026-05-15.md"
+      ]
+    }
   }
 }

@@ -1043,7 +1043,39 @@
         .subject-card.math { border-color: #D4760A; color: #D4760A; }
         .subject-card.social { border-color: #2E7D32; color: #2E7D32; }
         .subject-card.science { border-color: #1565C0; color: #1565C0; }
-        .subject-card.daily { border-color: #C2185B; color: #C2185B; background: linear-gradient(135deg, #fff 60%, #fce4ec 100%); }
+        .subject-card.daily { border-color: #C2185B; color: #C2185B; background: linear-gradient(135deg, #fff 60%, #fce4ec 100%); position: relative; }
+        .daily-unread-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            min-width: 22px;
+            height: 22px;
+            padding: 0 6px;
+            background: #E03E3E;
+            color: #fff;
+            border-radius: 11px;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 22px;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .daily-tab-badge {
+            display: inline-block;
+            min-width: 18px;
+            height: 18px;
+            padding: 0 5px;
+            margin-left: 4px;
+            background: #E03E3E;
+            color: #fff;
+            border-radius: 9px;
+            font-size: 11px;
+            font-weight: 600;
+            line-height: 18px;
+            text-align: center;
+            vertical-align: middle;
+            box-sizing: border-box;
+        }
 
         /* ===== 오늘의 한 장 (daily-page) ===== */
         .daily-page-wrap { padding: 0 4px 24px; }
@@ -1658,6 +1690,7 @@
                     <div class="subject-card-icon">📰</div>
                     <div class="subject-card-name">오늘의 한 장</div>
                     <div class="subject-card-sub">아침 독해</div>
+                    <div class="daily-unread-badge" id="home-daily-unread-badge" style="display:none;">0</div>
                 </div>
             </div>
             <div id="webhook-settings-toggle" style="font-size:12px;color:#999;cursor:pointer;text-align:center;margin-top:24px;" onclick="document.getElementById('webhook-settings').style.display='block';this.style.display='none';updateOpsDiagnostics();">⚙️ 설정</div>
@@ -1803,8 +1836,8 @@
                     <div class="daily-header-date" id="daily-header-date">—</div>
                 </div>
                 <div class="daily-tabs">
-                    <div class="daily-tab active" id="daily-tab-today" onclick="showDailyTab('today')">오늘</div>
-                    <div class="daily-tab" id="daily-tab-archive" onclick="showDailyTab('archive')">지난 1장</div>
+                    <div class="daily-tab active" id="daily-tab-today" onclick="showDailyTab('today')">한 장 <span class="daily-tab-badge" id="page-daily-unread-badge" style="display:none;">0</span></div>
+                    <div class="daily-tab" id="daily-tab-archive" onclick="showDailyTab('archive')">지난 글</div>
                 </div>
                 <div id="daily-today-view"></div>
                 <div id="daily-archive-view" style="display:none;"></div>
@@ -2491,6 +2524,8 @@
             QUIZ_DATA = null;
             document.querySelector('.header-title').textContent = '오늘의 학습';
             showPage('home-page');
+            // STEP133: 홈 진입 시 미열람 배지 즉시 갱신
+            try { updateDailyUnreadBadges(); } catch (e) {}
         }
 
         // ===== 오늘의 한 장 (daily) — v2 monthly-bundle + 3-stage fallback =====
@@ -2500,6 +2535,7 @@
         var DAILY_MONTH_CACHE = {};
         var DAILY_INDEX_LOADED = false;
         var DAILY_LAST_SUCCESS_KEY = 'pa_daily_last_success';
+        var PA_DAILY_READ_IDS_KEY = 'pa_daily_read_ids';
 
         function getTodayDateStr() {
             const d = new Date();
@@ -2536,6 +2572,72 @@
                 if (!obj || !obj.date || !obj.data) return null;
                 return obj;
             } catch (e) { return null; }
+        }
+
+        // ===== 큐 모델 (STEP133, 2026-05-24) =====
+        function loadDailyReadIds() {
+            try {
+                const raw = localStorage.getItem(PA_DAILY_READ_IDS_KEY);
+                if (!raw) return [];
+                const arr = JSON.parse(raw);
+                return Array.isArray(arr) ? arr : [];
+            } catch (e) { return []; }
+        }
+
+        function markDailyAsRead(dateStr) {
+            if (!dateStr) return;
+            const ids = loadDailyReadIds();
+            if (ids.indexOf(dateStr) !== -1) return;
+            ids.push(dateStr);
+            try {
+                localStorage.setItem(PA_DAILY_READ_IDS_KEY, JSON.stringify(ids));
+            } catch (e) { /* quota / private mode — silent */ }
+            updateDailyUnreadBadges();
+        }
+
+        function pickNextQueueDate() {
+            // FIFO: 날짜 오름차순으로 첫 미열람 카드. 미래 날짜는 큐에서 제외.
+            const today = getTodayDateStr();
+            const readIds = loadDailyReadIds();
+            const list = (DAILY_INDEX_DATA || []).slice();
+            list.sort(function(a, b) { return (a.date || '').localeCompare(b.date || ''); });
+            for (let i = 0; i < list.length; i++) {
+                const d = list[i].date;
+                if (!d) continue;
+                if (d > today) continue;
+                if (readIds.indexOf(d) !== -1) continue;
+                return d;
+            }
+            return null;
+        }
+
+        function getDailyUnreadCount() {
+            const today = getTodayDateStr();
+            const readIds = loadDailyReadIds();
+            const list = (DAILY_INDEX_DATA || []);
+            let n = 0;
+            for (let i = 0; i < list.length; i++) {
+                const d = list[i].date;
+                if (!d) continue;
+                if (d > today) continue;
+                if (readIds.indexOf(d) !== -1) continue;
+                n++;
+            }
+            return n;
+        }
+
+        function updateDailyUnreadBadges() {
+            const n = getDailyUnreadCount();
+            const homeBadge = document.getElementById('home-daily-unread-badge');
+            const pageBadge = document.getElementById('page-daily-unread-badge');
+            if (homeBadge) {
+                if (n > 0) { homeBadge.textContent = String(n); homeBadge.style.display = ''; }
+                else { homeBadge.style.display = 'none'; }
+            }
+            if (pageBadge) {
+                if (n > 0) { pageBadge.textContent = String(n); pageBadge.style.display = ''; }
+                else { pageBadge.style.display = 'none'; }
+            }
         }
 
         function loadDailyIndexJsonp() {
@@ -2617,51 +2719,31 @@
             return null;
         }
 
+        // STEP133 (2026-05-24): 큐 모델 — 오래된 미열람 카드 1장씩 FIFO 노출.
+        // 기존 4-stage 날짜 fallback은 폐기 (pickMostRecentPastFromIndex / loadDailyLastSuccess는 호환 보존).
         async function loadDailyToday() {
             const today = getTodayDateStr();
             document.getElementById('daily-header-date').textContent = today + ' (' + getWeekdayKo(today) + ')';
+
             await loadDailyIndexJsonp();
+            updateDailyUnreadBadges();
 
-            // Stage 1: today
-            const todayData = await tryLoadDailyDate(today);
-            if (todayData) {
-                DAILY_TODAY_DATA = todayData;
-                saveDailyLastSuccess(today, todayData);
-                renderDailyToday(todayData, { date: today, isToday: true });
-                return;
-            }
-
-            // Stage 2: localStorage last_success
-            const stored = loadDailyLastSuccess();
-            if (stored && stored.data && stored.date) {
-                DAILY_TODAY_DATA = stored.data;
-                renderDailyToday(stored.data, {
-                    date: stored.date,
-                    isToday: false,
-                    badge: { kind: 'warn', text: '⚠️ 오프라인/준비 안 됨 — 마지막 성공: ' + stored.date }
-                });
-                return;
-            }
-
-            // Stage 3: most recent past from index
-            const past = pickMostRecentPastFromIndex(today);
-            if (past) {
-                const pastData = await tryLoadDailyDate(past.date);
-                if (pastData) {
-                    DAILY_TODAY_DATA = pastData;
-                    renderDailyToday(pastData, {
-                        date: past.date,
-                        isToday: false,
-                        badge: { kind: 'error', text: '🚫 오늘 콘텐츠 없음 — ' + past.date + ' 글로 대체' },
-                        ops: 'daily_' + today.slice(0, 7) + '.js[' + today + '] missing'
-                    });
+            const nextDate = pickNextQueueDate();
+            if (nextDate) {
+                const data = await tryLoadDailyDate(nextDate);
+                if (data) {
+                    DAILY_TODAY_DATA = data;
+                    saveDailyLastSuccess(nextDate, data);
+                    renderDailyToday(data, { date: nextDate, isToday: nextDate === today, fromQueue: true });
+                    updateDailyUnreadBadges();
                     return;
                 }
+                // index에는 있는데 month 파일 load 실패 — 빈 큐 처리로 폴백
             }
 
-            // Stage 4: empty placeholder
             DAILY_TODAY_DATA = null;
-            renderDailyEmpty(today);
+            renderDailyQueueEmpty();
+            updateDailyUnreadBadges();
         }
 
         async function loadDailyByDate(dateStr) {
@@ -2670,10 +2752,11 @@
             const data = await tryLoadDailyDate(dateStr);
             if (data) {
                 DAILY_TODAY_DATA = data;
-                renderDailyToday(data, { date: dateStr, isToday: dateStr === getTodayDateStr() });
+                // archive 경로 — fromQueue=false. 옵저버 미부착, read 처리 안 함.
+                renderDailyToday(data, { date: dateStr, isToday: dateStr === getTodayDateStr(), fromQueue: false });
             } else {
                 DAILY_TODAY_DATA = null;
-                renderDailyEmpty(dateStr);
+                renderDailyArchiveItemEmpty(dateStr);
             }
         }
 
@@ -2689,18 +2772,96 @@
             document.getElementById('daily-archive-view').style.display = (name === 'archive') ? '' : 'none';
         }
 
-        function renderDailyEmpty(dateStr) {
+        // STEP133 (2026-05-24): 큐가 비었을 때 ("다 봤어요!") - 큐 모델 빈 상태
+        function renderDailyQueueEmpty() {
             const view = document.getElementById('daily-today-view');
             view.innerHTML = '<div class="daily-empty">'
-                + '<div class="daily-empty-icon">📭</div>'
-                + '<div><b>' + dailyEscapeHtml(dateStr) + '</b> 콘텐츠가 아직 준비되지 않았어요.</div>'
-                + '<div style="margin-top:6px;font-size:12px;">매주 토·일·월 새벽에 다음 2주치가 미리 만들어집니다.</div>'
+                + '<div class="daily-empty-icon">🎉</div>'
+                + '<div>다 봤어요!</div>'
+                + '<div style="margin-top:6px;font-size:13px;color:#666;">새 글은 매주 토·일·월 새벽에 준비됩니다.</div>'
+                + '<div style="margin-top:6px;font-size:12px;color:#999;">"지난 글" 탭에서 읽었던 카드를 다시 볼 수 있어요.</div>'
                 + '</div>';
         }
 
+        // STEP133: archive에서 특정 날짜 카드를 열었으나 month 파일 로드 실패 시 — 별도 메시지
+        function renderDailyArchiveItemEmpty(dateStr) {
+            const view = document.getElementById('daily-today-view');
+            view.innerHTML = '<div class="daily-empty">'
+                + '<div class="daily-empty-icon">📭</div>'
+                + '<div><b>' + dailyEscapeHtml(dateStr) + '</b> 콘텐츠 파일을 불러올 수 없어요.</div>'
+                + '</div>';
+        }
+
+        // STEP133: IntersectionObserver — 카드 하단 sentinel이 화면에 들어오면 read 처리
+        var _dailyReadObserver = null;
+        var _dailyReadScrollHandler = null;
+
+        function attachReadObserver(dateStr) {
+            // 이전 옵저버 / 스크롤 핸들러 정리
+            if (_dailyReadObserver) {
+                try { _dailyReadObserver.disconnect(); } catch (e) {}
+                _dailyReadObserver = null;
+            }
+            if (_dailyReadScrollHandler) {
+                window.removeEventListener('scroll', _dailyReadScrollHandler);
+                _dailyReadScrollHandler = null;
+            }
+            if (!dateStr) return;
+            const sentinel = document.getElementById('daily-read-sentinel');
+            if (!sentinel) return;
+            if (typeof IntersectionObserver === 'undefined') {
+                attachScrollFallback(dateStr);
+                return;
+            }
+            _dailyReadObserver = new IntersectionObserver(function(entries) {
+                for (let i = 0; i < entries.length; i++) {
+                    if (entries[i].isIntersecting) {
+                        markDailyAsRead(dateStr);
+                        if (_dailyReadObserver) { _dailyReadObserver.disconnect(); _dailyReadObserver = null; }
+                        showReadConfirmedToast();
+                        break;
+                    }
+                }
+            }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+            _dailyReadObserver.observe(sentinel);
+        }
+
+        function attachScrollFallback(dateStr) {
+            _dailyReadScrollHandler = function() {
+                const sentinel = document.getElementById('daily-read-sentinel');
+                if (!sentinel) return;
+                const rect = sentinel.getBoundingClientRect();
+                if (rect.top <= window.innerHeight) {
+                    markDailyAsRead(dateStr);
+                    window.removeEventListener('scroll', _dailyReadScrollHandler);
+                    _dailyReadScrollHandler = null;
+                    showReadConfirmedToast();
+                }
+            };
+            window.addEventListener('scroll', _dailyReadScrollHandler, { passive: true });
+        }
+
+        function showReadConfirmedToast() {
+            let t = document.getElementById('daily-read-toast');
+            if (!t) {
+                t = document.createElement('div');
+                t.id = 'daily-read-toast';
+                t.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#2F5496;color:#fff;padding:8px 16px;border-radius:18px;font-size:13px;z-index:9999;opacity:0;transition:opacity .2s;pointer-events:none;';
+                document.body.appendChild(t);
+            }
+            t.textContent = '읽음 처리됨';
+            t.style.opacity = '1';
+            setTimeout(function() { t.style.opacity = '0'; }, 2400);
+        }
+
         function renderDailyToday(d, ctx) {
-            if (!d) { renderDailyEmpty((ctx && ctx.date) || getTodayDateStr()); return; }
             ctx = ctx || {};
+            if (!d) {
+                // 큐에서 들어왔으면 큐 빈 상태, archive 경로면 해당 날짜 미존재 상태
+                if (ctx.fromQueue) renderDailyQueueEmpty();
+                else renderDailyArchiveItemEmpty(ctx.date || getTodayDateStr());
+                return;
+            }
             const view = document.getElementById('daily-today-view');
             let html = '';
 
@@ -2806,10 +2967,21 @@
             }
 
             html += '</div>';
+            // STEP133: 카드 하단 sentinel — 화면에 들어오면 read 처리 (큐 경로만)
+            html += '<div id="daily-read-sentinel" style="height:1px;"></div>';
             view.innerHTML = html;
 
             if (d && d.schema_version && d.schema_version > 1.1) {
                 console.warn('[daily] schema_version', d.schema_version, '> renderer 1.1. 일부 필드가 표시되지 않을 수 있음.');
+            }
+
+            // archive 경로에서는 옵저버를 부착하지 않는다 (read 처리 안 함).
+            if (ctx.fromQueue) {
+                attachReadObserver(ctx.date);
+            } else {
+                // 이전에 부착됐을 수 있는 옵저버를 정리 (탭 전환 등으로 잔존 방지)
+                if (_dailyReadObserver) { try { _dailyReadObserver.disconnect(); } catch (e) {} _dailyReadObserver = null; }
+                if (_dailyReadScrollHandler) { window.removeEventListener('scroll', _dailyReadScrollHandler); _dailyReadScrollHandler = null; }
             }
         }
 
@@ -2824,11 +2996,16 @@
 
         function renderDailyArchive() {
             const view = document.getElementById('daily-archive-view');
-            const list = (DAILY_INDEX_DATA || []).slice();
+            // STEP133: 읽음 처리된 카드만 노출. 미열람·미래 카드는 archive에 안 보임 (큐 모델 강제).
+            const readIds = loadDailyReadIds();
+            const list = (DAILY_INDEX_DATA || []).filter(function(item) {
+                return item && item.date && readIds.indexOf(item.date) !== -1;
+            });
             if (!list.length) {
                 view.innerHTML = '<div class="daily-empty">'
                     + '<div class="daily-empty-icon">🗂️</div>'
-                    + '<div>아직 지난 콘텐츠가 없어요.</div>'
+                    + '<div>아직 읽은 글이 없어요.</div>'
+                    + '<div style="margin-top:6px;font-size:12px;">"한 장" 탭에서 카드를 끝까지 읽으면 여기에 모입니다.</div>'
                     + '</div>';
                 return;
             }
@@ -3111,6 +3288,10 @@
             retransmitUnsentLogs();
             updateOpsDiagnostics();
             updateExamDdayUi();
+            // STEP133: 초기 진입 시 미열람 배지를 위해 daily index를 백그라운드 prefetch
+            try {
+                loadDailyIndexJsonp().then(function() { updateDailyUnreadBadges(); });
+            } catch (e) {}
         }
 
         // localStorage 키 헬퍼: 국어는 quiz_history_kor1, 영어는 quiz_history_L1
