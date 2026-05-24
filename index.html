@@ -1043,6 +1043,154 @@
         .subject-card.math { border-color: #D4760A; color: #D4760A; }
         .subject-card.social { border-color: #2E7D32; color: #2E7D32; }
         .subject-card.science { border-color: #1565C0; color: #1565C0; }
+        .subject-card.daily { border-color: #C2185B; color: #C2185B; background: linear-gradient(135deg, #fff 60%, #fce4ec 100%); }
+
+        /* ===== 오늘의 한 장 (daily-page) ===== */
+        .daily-page-wrap { padding: 0 4px 24px; }
+        .daily-header {
+            display: flex; align-items: center; gap: 8px;
+            padding: 10px 8px 14px; border-bottom: 1px solid #eee; margin-bottom: 16px;
+        }
+        .daily-back-btn {
+            border: none; background: transparent; font-size: 22px; color: #555;
+            padding: 4px 8px; cursor: pointer;
+        }
+        .daily-header-title { flex: 1; font-size: 17px; font-weight: 700; color: #222; }
+        .daily-header-date { font-size: 12px; color: #888; }
+        .daily-tabs {
+            display: flex; gap: 0; border-bottom: 1px solid #eee; margin-bottom: 14px;
+        }
+        .daily-tab {
+            flex: 1; padding: 10px 4px; text-align: center; font-size: 14px;
+            color: #888; cursor: pointer; border-bottom: 2px solid transparent;
+        }
+        .daily-tab.active { color: #C2185B; border-bottom-color: #C2185B; font-weight: 700; }
+
+        .daily-card {
+            background: #fff; border: 1px solid #eee; border-radius: 12px;
+            padding: 18px 16px; margin-bottom: 14px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        }
+        .daily-chapter-label {
+            font-size: 12px; color: #888; font-weight: 600;
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 8px;
+        }
+        .daily-category-pill {
+            font-size: 11px; padding: 2px 8px; border-radius: 10px;
+            background: #fce4ec; color: #C2185B; font-weight: 600;
+        }
+        .daily-title {
+            font-size: 19px; font-weight: 800; color: #222; line-height: 1.35;
+            margin: 4px 0 6px;
+        }
+        .daily-subtitle { font-size: 13px; color: #666; margin-bottom: 12px; }
+
+        .daily-leadq {
+            background: #f3f6fb; border-left: 3px solid #2F5496;
+            padding: 10px 12px; border-radius: 0 6px 6px 0;
+            font-size: 13px; color: #2F5496; margin-bottom: 10px;
+        }
+        .daily-leadq strong { display: block; font-size: 11px; margin-bottom: 4px; color: #555; }
+        .daily-whytoday {
+            background: #fffaf0; border-left: 3px solid #D4760A;
+            padding: 8px 12px; border-radius: 0 6px 6px 0;
+            font-size: 12px; color: #8a5800; margin-bottom: 16px;
+        }
+        .daily-whytoday strong { color: #555; margin-right: 6px; }
+
+        .daily-section { margin-bottom: 14px; }
+        .daily-section-heading {
+            display: flex; align-items: center; gap: 6px;
+            font-size: 15px; font-weight: 700; color: #222;
+            border-bottom: 1px solid #eee; padding-bottom: 4px; margin-bottom: 6px;
+        }
+        .daily-section-icon { font-size: 16px; }
+        .daily-section-body { font-size: 14px; line-height: 1.65; color: #333; }
+
+        .daily-vocab-box {
+            background: #fff7ed; border: 1px solid #fcd9b5; border-radius: 8px;
+            padding: 12px; margin-bottom: 12px;
+        }
+        .daily-vocab-title { font-size: 12px; color: #8a5800; font-weight: 700; margin-bottom: 8px; }
+        .daily-vocab-item { padding: 6px 0; border-bottom: 1px dashed #f0d8b5; }
+        .daily-vocab-item:last-child { border-bottom: none; }
+        .daily-vocab-ko { font-weight: 700; color: #D4760A; font-size: 14px; }
+        .daily-vocab-en { font-size: 12px; color: #888; margin-left: 6px; }
+        .daily-vocab-desc { font-size: 13px; color: #444; margin-top: 2px; line-height: 1.5; }
+
+        .daily-ox-box {
+            background: #f3f6fb; border: 1px solid #d0d9e8; border-radius: 8px;
+            padding: 12px; margin-bottom: 12px;
+        }
+        .daily-ox-title { font-size: 12px; color: #2F5496; font-weight: 700; margin-bottom: 8px; }
+        .daily-ox-item {
+            display: flex; align-items: flex-start; gap: 8px; padding: 6px 0;
+            border-bottom: 1px dashed #d8e0ed; cursor: pointer;
+        }
+        .daily-ox-item:last-child { border-bottom: none; }
+        .daily-ox-mark {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 24px; height: 24px; border: 1.5px solid #aaa; border-radius: 50%;
+            font-size: 12px; font-weight: 700; color: #aaa; flex-shrink: 0;
+        }
+        .daily-ox-item.revealed.correct .daily-ox-mark { border-color: #2E7D32; color: #2E7D32; background: #e8f5e9; }
+        .daily-ox-item.revealed.wrong .daily-ox-mark { border-color: #C62828; color: #C62828; background: #ffebee; }
+        .daily-ox-text { flex: 1; font-size: 13px; line-height: 1.5; color: #333; }
+        .daily-ox-explain {
+            font-size: 12px; color: #C62828; margin-top: 4px;
+            display: none; line-height: 1.5;
+        }
+        .daily-ox-item.revealed .daily-ox-explain { display: block; }
+
+        .daily-summary {
+            background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
+            padding: 12px; margin-bottom: 12px;
+        }
+        .daily-summary-title { font-size: 12px; color: #2E7D32; font-weight: 700; margin-bottom: 6px; }
+        .daily-summary-body { font-size: 14px; color: #1b5e20; line-height: 1.6; }
+        .daily-summary-keywords { font-size: 11px; color: #555; margin-top: 6px; }
+
+        .daily-sources {
+            font-size: 11px; color: #888; margin-top: 12px;
+            padding-top: 10px; border-top: 1px dashed #ddd;
+        }
+        .daily-sources-title { font-weight: 700; margin-bottom: 4px; }
+        .daily-sources a { color: #2F5496; text-decoration: none; word-break: break-all; }
+        .daily-sources a:hover { text-decoration: underline; }
+
+        .daily-archive-list { padding: 8px 0; }
+        .daily-archive-item {
+            display: flex; align-items: center; gap: 10px;
+            padding: 12px 10px; border-bottom: 1px solid #eee; cursor: pointer;
+        }
+        .daily-archive-item:hover { background: #fafafa; }
+        .daily-archive-date { font-size: 12px; color: #888; min-width: 70px; }
+        .daily-archive-cat {
+            font-size: 10px; padding: 2px 6px; border-radius: 8px;
+            background: #fce4ec; color: #C2185B; font-weight: 600; min-width: 40px; text-align: center;
+        }
+        .daily-archive-title { flex: 1; font-size: 13px; color: #333; line-height: 1.4; }
+
+        .daily-empty {
+            padding: 40px 20px; text-align: center; color: #888; font-size: 13px;
+            line-height: 1.6;
+        }
+        .daily-empty-icon { font-size: 36px; margin-bottom: 10px; }
+        .daily-badge {
+            margin: 8px 0 12px 0;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+        .daily-badge-warn { background: #fff8db; color: #6b5300; border: 1px solid #f3d36b; }
+        .daily-badge-error { background: #fde4e1; color: #8a1d10; border: 1px solid #f0a89e; }
+        .daily-ops-note {
+            font-size: 11px; color: #999; margin-bottom: 8px; font-family: monospace;
+            background: #f5f5f5; padding: 4px 8px; border-radius: 4px;
+        }
 
         /* ===== 과목 상세 화면 (2단계) ===== */
         .subject-detail-header {
@@ -1473,6 +1621,11 @@
                     <div class="subject-card-name">과학</div>
                     <div class="subject-card-sub">1·3단원</div>
                 </div>
+                <div class="subject-card daily" onclick="selectSubject('daily')">
+                    <div class="subject-card-icon">📰</div>
+                    <div class="subject-card-name">오늘의 한 장</div>
+                    <div class="subject-card-sub">아침 독해</div>
+                </div>
             </div>
             <div id="webhook-settings-toggle" style="font-size:12px;color:#999;cursor:pointer;text-align:center;margin-top:24px;" onclick="document.getElementById('webhook-settings').style.display='block';this.style.display='none';updateOpsDiagnostics();">⚙️ 설정</div>
             <div class="webhook-settings" id="webhook-settings" style="display:none;">
@@ -1605,6 +1758,23 @@
                     <span class="stat-label">단어 암기율</span>
                     <span class="stat-value"><span id="stat-vocab">—</span></span>
                 </div>
+            </div>
+        </div>
+
+        <!-- 오늘의 한 장 (daily-page) -->
+        <div id="daily-page" class="page">
+            <div class="daily-page-wrap">
+                <div class="daily-header">
+                    <button class="daily-back-btn" onclick="goSubjectHome()">←</button>
+                    <div class="daily-header-title">오늘의 한 장</div>
+                    <div class="daily-header-date" id="daily-header-date">—</div>
+                </div>
+                <div class="daily-tabs">
+                    <div class="daily-tab active" id="daily-tab-today" onclick="showDailyTab('today')">오늘</div>
+                    <div class="daily-tab" id="daily-tab-archive" onclick="showDailyTab('archive')">지난 1장</div>
+                </div>
+                <div id="daily-today-view"></div>
+                <div id="daily-archive-view" style="display:none;"></div>
             </div>
         </div>
 
@@ -2227,6 +2397,15 @@
         async function selectSubject(subject) {
             currentSubject = subject;
 
+            // 데일리 코너는 별도 페이지로 직행
+            if (subject === 'daily') {
+                document.querySelector('.header-title').textContent = '오늘의 한 장';
+                showPage('daily-page');
+                await loadDailyToday();
+                await loadDailyArchive();
+                return;
+            }
+
             // 과목 상세 제목 업데이트
             const subjectNames = { english: '영어', korean: '국어', math: '수학', social: '사회', science: '과학' };
             document.getElementById('subject-detail-title').textContent = subjectNames[subject] || subject;
@@ -2280,6 +2459,348 @@
             document.querySelector('.header-title').textContent = '오늘의 학습';
             showPage('home-page');
         }
+
+        // ===== 오늘의 한 장 (daily) — v2 monthly-bundle + 3-stage fallback =====
+        var DAILY_TODAY_DATA = null;
+        var DAILY_INDEX_DATA = null;
+        var DAILY_INDEX_META = null;
+        var DAILY_MONTH_CACHE = {};
+        var DAILY_INDEX_LOADED = false;
+        var DAILY_LAST_SUCCESS_KEY = 'pa_daily_last_success';
+
+        function getTodayDateStr() {
+            const d = new Date();
+            const y = d.getFullYear();
+            const m = String(d.getMonth() + 1).padStart(2, '0');
+            const day = String(d.getDate()).padStart(2, '0');
+            return y + '-' + m + '-' + day;
+        }
+        function getWeekdayKo(dateStr) {
+            const d = new Date(dateStr + 'T00:00:00');
+            return ['일','월','화','수','목','금','토'][d.getDay()];
+        }
+        function dailyEscapeHtml(s) {
+            if (s == null) return '';
+            return String(s)
+                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+        }
+
+        function saveDailyLastSuccess(dateStr, data) {
+            try {
+                localStorage.setItem(DAILY_LAST_SUCCESS_KEY, JSON.stringify({
+                    date: dateStr,
+                    saved_at: new Date().toISOString(),
+                    data: data
+                }));
+            } catch (e) { /* quota / private mode — silent */ }
+        }
+        function loadDailyLastSuccess() {
+            try {
+                const raw = localStorage.getItem(DAILY_LAST_SUCCESS_KEY);
+                if (!raw) return null;
+                const obj = JSON.parse(raw);
+                if (!obj || !obj.date || !obj.data) return null;
+                return obj;
+            } catch (e) { return null; }
+        }
+
+        function loadDailyIndexJsonp() {
+            return new Promise((resolve) => {
+                if (DAILY_INDEX_LOADED) { resolve(); return; }
+                window.__loadDailyIndex = function(list, meta) {
+                    delete window.__loadDailyIndex;
+                    DAILY_INDEX_DATA = list || [];
+                    DAILY_INDEX_META = meta || null;
+                    DAILY_INDEX_LOADED = true;
+                    resolve();
+                };
+                // First load: pure path (SW normalises). Later cache-bust handled by SW.
+                const url = './daily_index.js';
+                const s = document.createElement('script');
+                s.src = url;
+                s.onerror = function() {
+                    delete window.__loadDailyIndex;
+                    DAILY_INDEX_DATA = [];
+                    DAILY_INDEX_META = null;
+                    DAILY_INDEX_LOADED = true;
+                    resolve();
+                };
+                document.head.appendChild(s);
+                setTimeout(function() {
+                    if (window.__loadDailyIndex) {
+                        delete window.__loadDailyIndex;
+                        DAILY_INDEX_DATA = [];
+                        DAILY_INDEX_META = null;
+                        DAILY_INDEX_LOADED = true;
+                        resolve();
+                    }
+                }, 5000);
+            });
+        }
+
+        function loadDailyMonth(month) {
+            return new Promise((resolve) => {
+                if (DAILY_MONTH_CACHE[month]) { resolve(DAILY_MONTH_CACHE[month]); return; }
+                const v = (DAILY_INDEX_META && DAILY_INDEX_META.version_key) || 'v1';
+                window.__loadDailyMonth = function(m, payload) {
+                    delete window.__loadDailyMonth;
+                    if (m && payload) DAILY_MONTH_CACHE[m] = payload;
+                    resolve(DAILY_MONTH_CACHE[month] || null);
+                };
+                const url = './daily_' + month + '.js?v=' + encodeURIComponent(v);
+                const s = document.createElement('script');
+                s.src = url;
+                s.onerror = function() {
+                    delete window.__loadDailyMonth;
+                    resolve(null);
+                };
+                document.head.appendChild(s);
+                setTimeout(function() {
+                    if (window.__loadDailyMonth) {
+                        delete window.__loadDailyMonth;
+                        resolve(DAILY_MONTH_CACHE[month] || null);
+                    }
+                }, 5000);
+            });
+        }
+
+        async function tryLoadDailyDate(dateStr) {
+            if (!dateStr || dateStr.length < 7) return null;
+            const month = dateStr.slice(0, 7);
+            const monthPayload = await loadDailyMonth(month);
+            if (!monthPayload || !monthPayload.days) return null;
+            const day = monthPayload.days[dateStr];
+            return day || null;
+        }
+
+        function pickMostRecentPastFromIndex(todayStr) {
+            const list = (DAILY_INDEX_DATA || []).slice();
+            list.sort(function(a, b) { return (b.date || '').localeCompare(a.date || ''); });
+            for (let i = 0; i < list.length; i++) {
+                const it = list[i];
+                if (it && it.date && it.date < todayStr) return it;
+            }
+            return null;
+        }
+
+        async function loadDailyToday() {
+            const today = getTodayDateStr();
+            document.getElementById('daily-header-date').textContent = today + ' (' + getWeekdayKo(today) + ')';
+            await loadDailyIndexJsonp();
+
+            // Stage 1: today
+            const todayData = await tryLoadDailyDate(today);
+            if (todayData) {
+                DAILY_TODAY_DATA = todayData;
+                saveDailyLastSuccess(today, todayData);
+                renderDailyToday(todayData, { date: today, isToday: true });
+                return;
+            }
+
+            // Stage 2: localStorage last_success
+            const stored = loadDailyLastSuccess();
+            if (stored && stored.data && stored.date) {
+                DAILY_TODAY_DATA = stored.data;
+                renderDailyToday(stored.data, {
+                    date: stored.date,
+                    isToday: false,
+                    badge: { kind: 'warn', text: '⚠️ 오프라인/준비 안 됨 — 마지막 성공: ' + stored.date }
+                });
+                return;
+            }
+
+            // Stage 3: most recent past from index
+            const past = pickMostRecentPastFromIndex(today);
+            if (past) {
+                const pastData = await tryLoadDailyDate(past.date);
+                if (pastData) {
+                    DAILY_TODAY_DATA = pastData;
+                    renderDailyToday(pastData, {
+                        date: past.date,
+                        isToday: false,
+                        badge: { kind: 'error', text: '🚫 오늘 콘텐츠 없음 — ' + past.date + ' 글로 대체' },
+                        ops: 'daily_' + today.slice(0, 7) + '.js[' + today + '] missing'
+                    });
+                    return;
+                }
+            }
+
+            // Stage 4: empty placeholder
+            DAILY_TODAY_DATA = null;
+            renderDailyEmpty(today);
+        }
+
+        async function loadDailyByDate(dateStr) {
+            document.getElementById('daily-header-date').textContent = dateStr + ' (' + getWeekdayKo(dateStr) + ')';
+            await loadDailyIndexJsonp();
+            const data = await tryLoadDailyDate(dateStr);
+            if (data) {
+                DAILY_TODAY_DATA = data;
+                renderDailyToday(data, { date: dateStr, isToday: dateStr === getTodayDateStr() });
+            } else {
+                DAILY_TODAY_DATA = null;
+                renderDailyEmpty(dateStr);
+            }
+        }
+
+        async function loadDailyArchive() {
+            await loadDailyIndexJsonp();
+            renderDailyArchive();
+        }
+
+        function showDailyTab(name) {
+            document.getElementById('daily-tab-today').classList.toggle('active', name === 'today');
+            document.getElementById('daily-tab-archive').classList.toggle('active', name === 'archive');
+            document.getElementById('daily-today-view').style.display = (name === 'today') ? '' : 'none';
+            document.getElementById('daily-archive-view').style.display = (name === 'archive') ? '' : 'none';
+        }
+
+        function renderDailyEmpty(dateStr) {
+            const view = document.getElementById('daily-today-view');
+            view.innerHTML = '<div class="daily-empty">'
+                + '<div class="daily-empty-icon">📭</div>'
+                + '<div><b>' + dailyEscapeHtml(dateStr) + '</b> 콘텐츠가 아직 준비되지 않았어요.</div>'
+                + '<div style="margin-top:6px;font-size:12px;">매주 토·일·월 새벽에 다음 2주치가 미리 만들어집니다.</div>'
+                + '</div>';
+        }
+
+        function renderDailyToday(d, ctx) {
+            if (!d) { renderDailyEmpty((ctx && ctx.date) || getTodayDateStr()); return; }
+            ctx = ctx || {};
+            const view = document.getElementById('daily-today-view');
+            let html = '';
+
+            if (ctx.badge && ctx.badge.text) {
+                const kindCls = ctx.badge.kind === 'error' ? 'daily-badge-error' : 'daily-badge-warn';
+                html += '<div class="daily-badge ' + kindCls + '">' + dailyEscapeHtml(ctx.badge.text) + '</div>';
+            }
+            if (ctx.ops) {
+                html += '<div class="daily-ops-note" data-ops="' + dailyEscapeHtml(ctx.ops) + '">' + dailyEscapeHtml(ctx.ops) + '</div>';
+            }
+
+            html += '<div class="daily-card">';
+            html += '<div class="daily-chapter-label">'
+                + '<span>' + dailyEscapeHtml(d.chapter_label || '') + '</span>'
+                + '<span class="daily-category-pill">' + dailyEscapeHtml(d.category || '') + '</span>'
+                + '</div>';
+            html += '<div class="daily-title">' + dailyEscapeHtml(d.title || '') + '</div>';
+            if (d.subtitle) html += '<div class="daily-subtitle">' + dailyEscapeHtml(d.subtitle) + '</div>';
+            if (d.lead_question) {
+                html += '<div class="daily-leadq"><strong>읽기 전 질문</strong>' + dailyEscapeHtml(d.lead_question) + '</div>';
+            }
+            if (d.why_today) {
+                html += '<div class="daily-whytoday"><strong>왜 오늘?</strong>' + dailyEscapeHtml(d.why_today) + '</div>';
+            }
+
+            (d.sections || []).forEach(function(sec) {
+                html += '<div class="daily-section">'
+                    + '<div class="daily-section-heading">'
+                    + '<span class="daily-section-icon">' + dailyEscapeHtml(sec.icon || '📝') + '</span>'
+                    + dailyEscapeHtml(sec.heading || '')
+                    + '</div>'
+                    + '<div class="daily-section-body">' + dailyEscapeHtml(sec.body || '') + '</div>'
+                    + '</div>';
+            });
+
+            if (d.vocabulary && d.vocabulary.length) {
+                html += '<div class="daily-vocab-box">';
+                html += '<div class="daily-vocab-title">📒 오늘의 핵심 어휘</div>';
+                d.vocabulary.forEach(function(v) {
+                    html += '<div class="daily-vocab-item">'
+                        + '<span class="daily-vocab-ko">' + dailyEscapeHtml(v.ko || '') + '</span>'
+                        + '<span class="daily-vocab-en">' + dailyEscapeHtml(v.en || '') + '</span>'
+                        + '<div class="daily-vocab-desc">' + dailyEscapeHtml(v.desc || '') + '</div>'
+                        + '</div>';
+                });
+                html += '</div>';
+            }
+
+            if (d.ox_check && d.ox_check.length) {
+                html += '<div class="daily-ox-box">';
+                html += '<div class="daily-ox-title">✅ 3초 상식 체크 (탭하면 정답)</div>';
+                d.ox_check.forEach(function(ox, i) {
+                    html += '<div class="daily-ox-item" data-answer="' + dailyEscapeHtml(ox.answer || '') + '" '
+                        + 'onclick="revealOx(this)">'
+                        + '<span class="daily-ox-mark">?</span>'
+                        + '<div class="daily-ox-text">'
+                        + dailyEscapeHtml(ox.statement || '')
+                        + (ox.explanation ? '<div class="daily-ox-explain">▸ ' + dailyEscapeHtml(ox.explanation) + '</div>' : '')
+                        + '</div>'
+                        + '</div>';
+                });
+                html += '</div>';
+            }
+
+            if (d.one_line_summary) {
+                html += '<div class="daily-summary">'
+                    + '<div class="daily-summary-title">📝 한 줄 요약</div>'
+                    + '<div class="daily-summary-body">' + dailyEscapeHtml(d.one_line_summary) + '</div>';
+                if (d.summary_keywords) {
+                    html += '<div class="daily-summary-keywords">' + dailyEscapeHtml(d.summary_keywords) + '</div>';
+                }
+                html += '</div>';
+            }
+
+            if (d.sources && d.sources.length) {
+                html += '<div class="daily-sources">';
+                html += '<div class="daily-sources-title">출처</div>';
+                d.sources.forEach(function(src) {
+                    const url = src.url || '';
+                    const title = src.title || url;
+                    html += '<div>· <a href="' + dailyEscapeHtml(url) + '" target="_blank" rel="noopener">'
+                        + dailyEscapeHtml(title) + '</a></div>';
+                });
+                html += '</div>';
+            }
+
+            html += '</div>';
+            view.innerHTML = html;
+
+            if (d && d.schema_version && d.schema_version > 1) {
+                console.warn('[daily] schema_version', d.schema_version, '> renderer 1. 일부 필드가 표시되지 않을 수 있음.');
+            }
+        }
+
+        function revealOx(el) {
+            const answer = el.getAttribute('data-answer');
+            const mark = el.querySelector('.daily-ox-mark');
+            mark.textContent = answer || '?';
+            el.classList.add('revealed');
+            if (answer === 'O') el.classList.add('correct');
+            else if (answer === 'X') el.classList.add('wrong');
+        }
+
+        function renderDailyArchive() {
+            const view = document.getElementById('daily-archive-view');
+            const list = (DAILY_INDEX_DATA || []).slice();
+            if (!list.length) {
+                view.innerHTML = '<div class="daily-empty">'
+                    + '<div class="daily-empty-icon">🗂️</div>'
+                    + '<div>아직 지난 콘텐츠가 없어요.</div>'
+                    + '</div>';
+                return;
+            }
+            list.sort(function(a, b) { return (b.date || '').localeCompare(a.date || ''); });
+
+            let html = '<div class="daily-archive-list">';
+            list.forEach(function(item) {
+                html += '<div class="daily-archive-item" onclick="openArchiveItem(\'' + dailyEscapeHtml(item.date || '') + '\')">'
+                    + '<div class="daily-archive-date">' + dailyEscapeHtml(item.date || '') + '</div>'
+                    + '<div class="daily-archive-cat">' + dailyEscapeHtml(item.category || '') + '</div>'
+                    + '<div class="daily-archive-title">' + dailyEscapeHtml(item.title || '') + '</div>'
+                    + '</div>';
+            });
+            html += '</div>';
+            view.innerHTML = html;
+        }
+
+        async function openArchiveItem(dateStr) {
+            showDailyTab('today');
+            await loadDailyByDate(dateStr);
+            window.scrollTo(0, 0);
+        }
+
 
         // Lesson 선택
         async function selectLesson(lessonNumber) {

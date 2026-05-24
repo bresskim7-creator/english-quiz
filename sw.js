@@ -1,4 +1,5 @@
-const CACHE_NAME = 'quiz-v131';
+const CACHE_NAME = 'quiz-v133';
+// v133 (2026-05-24): daily v2 — monthly bundle + normalised cache for daily_*.js & daily_index.js
 // [Codex 2026-05-13 index-tail-restore] Force clients to replace the previously cached truncated index.html.
 const PRECACHE_URLS = [
   './',
@@ -24,6 +25,26 @@ const PRECACHE_URLS = [
   './lesson_sci3.js'
 ];
 
+// v133: daily v2 — paths that must be cached under a query-stripped (normalised) key.
+// daily_index.js and daily_YYYY-MM.js use ?v=<version_key> for cache-busting, but the
+// service worker stores them under the bare path so offline fallback can find them.
+function isDailyV2Path(pathname) {
+  if (pathname.endsWith('/daily_index.js')) return true;
+  return /\/daily_\d{4}-\d{2}\.js$/.test(pathname);
+}
+
+function normalisedDailyRequest(reqUrl, origRequest) {
+  // Strip query string for cache key; preserve other Request properties.
+  const cleanUrl = reqUrl.origin + reqUrl.pathname;
+  return new Request(cleanUrl, {
+    method: 'GET',
+    headers: origRequest.headers,
+    mode: 'same-origin',
+    credentials: origRequest.credentials,
+    redirect: 'follow'
+  });
+}
+
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => cache.addAll(PRECACHE_URLS))
@@ -47,6 +68,24 @@ self.addEventListener('fetch', event => {
   // v128: external origins such as Apps Script webhooks are never app-cache entries.
   const reqUrl = new URL(event.request.url);
   if (reqUrl.origin !== self.location.origin) return;
+
+  // v133: daily v2 normalised-key branch.
+  // Network-first; on success cache under query-less key. On failure serve normalised cache.
+  if (isDailyV2Path(reqUrl.pathname)) {
+    const cacheKey = normalisedDailyRequest(reqUrl, event.request);
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          if (response && response.ok) {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(cacheKey, clone));
+          }
+          return response;
+        })
+        .catch(() => caches.match(cacheKey).then(hit => hit || caches.match(event.request)))
+    );
+    return;
+  }
 
   event.respondWith(
     fetch(event.request)
