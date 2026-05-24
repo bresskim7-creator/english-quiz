@@ -1,7 +1,7 @@
 window.__loadDailyMonth("2026-05", {
   "schema_version": 1.1,
   "month": "2026-05",
-  "updated_at": "2026-05-24T10:58:06+09:00",
+  "updated_at": "2026-05-24T10:35:00+09:00",
   "days": {
     "2026-05-25": {
       "id": "2026-05-25",
@@ -93,8 +93,12 @@ window.__loadDailyMonth("2026-05", {
       "sensitivity": "sensitive",
       "review_status": "seed",
       "render_min_version": 1.1,
-      "image_url": null,
-      "image_credit": null,
+      "image_url": "https://img.khan.co.kr/weekly/2026/05/18/news-p.v1.20260518.85b7b186f0df49888f066602b850b5ab_P1.png",
+      "image_credit": {
+        "source": "주간경향",
+        "url": "https://weekly.khan.co.kr/article/202605181604001",
+        "license": "fair_use"
+      },
       "image_fallback": "category_svg_news"
     },
     "2026-05-26": {
@@ -179,8 +183,12 @@ window.__loadDailyMonth("2026-05", {
       "sensitivity": "normal",
       "review_status": "seed",
       "render_min_version": 1.1,
-      "image_url": null,
-      "image_credit": null,
+      "image_url": "https://wimg.kyeongin.com/news/cms/2026/05/13/news-p.v1.20260513.a42dc3ac52024540ad2944db20f8b350_R.jpg",
+      "image_credit": {
+        "source": "경인일보",
+        "url": "https://www.kyeongin.com/article/1763568",
+        "license": "fair_use"
+      },
       "image_fallback": "category_svg_baseball"
     },
     "2026-05-27": {
@@ -441,8 +449,12 @@ window.__loadDailyMonth("2026-05", {
       "sensitivity": "normal",
       "review_status": "seed",
       "render_min_version": 1.1,
-      "image_url": null,
-      "image_credit": null,
+      "image_url": "https://image.kmib.co.kr/online_image/2026/0305/2026030420080549833_1772622485_1772612390.jpg",
+      "image_credit": {
+        "source": "국민일보",
+        "url": "https://www.kmib.co.kr/article/view_amp.asp?arcid=1772612390",
+        "license": "fair_use"
+      },
       "image_fallback": "category_svg_news"
     },
     "2026-05-30": {

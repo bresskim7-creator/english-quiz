@@ -1,4 +1,5 @@
-const CACHE_NAME = 'quiz-v133';
+const CACHE_NAME = 'quiz-v134';
+// v134 (2026-05-24): daily 5/25,26,29 image_url 매핑 보강 (3/7 → 6/7). 주간경향·경인일보·국민일보 fair_use OG.
 // v133 (2026-05-24): daily v2 — monthly bundle + normalised cache for daily_*.js & daily_index.js
 // [Codex 2026-05-13 index-tail-restore] Force clients to replace the previously cached truncated index.html.
 const PRECACHE_URLS = [
