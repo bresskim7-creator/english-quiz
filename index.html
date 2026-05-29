@@ -1981,8 +1981,8 @@
         let hintUsedThisQuestion = false;
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
-        const BUILD_VERSION = '2026-05-14 v131';
-        const APP_CACHE_NAME = 'quiz-v131';
+        const BUILD_VERSION = '2026-05-25 v132';
+        const APP_CACHE_NAME = 'quiz-v132';
 
         function safeSetItem(key, value) {
             try {
@@ -4641,7 +4641,7 @@
                 html += '<div style="font-size:15px;color:#333;">' + explanation + '</div>';
                 if (q.choices && q.correct !== undefined) {
                     if (_isNeg) {
-                        html += '<div style="margin-top:8px;font-size:14px;color:#2F5496;font-weight:600;">🎯 답: 보기 ' + (q.correct + 1) + '번</div>';
+                        html += '<div style="margin-top:8px;font-size:14px;color:#2F5496;font-weight:600;">🎯 골라야 할 보기: ' + q.choices[q.correct] + '</div>';
                     } else {
                         html += '<div style="margin-top:8px;font-size:14px;color:#2F5496;font-weight:600;">✅ 정답: ' + q.choices[q.correct] + '</div>';
                     }
@@ -6344,11 +6344,19 @@
         }
 
         function flushVocabQueue() {
+            // v132: 동시 호출 차단 + reserve-before-fetch (race 중복 방지)
+            if (_vocabFlushInFlight) return Promise.resolve(false);
+
             const webhookUrl = localStorage.getItem('webhook_url');
             if (!webhookUrl) return Promise.resolve(false);
 
             const q = JSON.parse(localStorage.getItem('pending_vocab_log') || '[]');
             if (!q.length) return Promise.resolve(true);
+
+            _vocabFlushInFlight = true;
+
+            // 큐를 즉시 비움 — fetch 도중 새 row enqueue돼도 다음 flush 차례
+            safeSetItem('pending_vocab_log', JSON.stringify([]));
 
             const remaining = [];
             return Promise.allSettled(q.map(row =>
@@ -6367,11 +6375,20 @@
                     remaining.push(row);
                 })
             )).then(() => {
-                safeSetItem('pending_vocab_log', JSON.stringify(remaining));
+                // 실패 row만 큐 복귀 — 그 사이 enqueue된 새 row와 병합
+                const currentQ = JSON.parse(localStorage.getItem('pending_vocab_log') || '[]');
+                safeSetItem('pending_vocab_log', JSON.stringify([...currentQ, ...remaining]));
                 if (remaining.length < q.length) {
                     try { safeSetItem('vocab_last_send', new Date().toISOString()); } catch (_) {}
                 }
+                _vocabFlushInFlight = false;
                 return remaining.length === 0;
+            }).catch(err => {
+                // 예상 못한 에러 — 원본 큐 복구
+                const currentQ = JSON.parse(localStorage.getItem('pending_vocab_log') || '[]');
+                safeSetItem('pending_vocab_log', JSON.stringify([...currentQ, ...q]));
+                _vocabFlushInFlight = false;
+                throw err;
             });
         }
 
@@ -6782,80 +6799,105 @@
             return q.id || '';
         }
 
+        // v132: 동시 송신 차단 mutex (race 중복 방지)
+        let _sendInFlight = false;
+        let _vocabFlushInFlight = false;
+
         // Google Sheets 전송
         async function sendToGoogleSheets() {
-            const webhookUrl = localStorage.getItem('webhook_url');
-            if (!webhookUrl) return;
-            pruneOldSentLogs(90);
+            if (_sendInFlight) return;  // 동시 호출 차단
+            _sendInFlight = true;
 
-            // 모든 레슨 로그 자동 수집 (L1, L2, L3, ... 무제한)
-            const allLogs = [];
-            for (let i = 0; i < localStorage.length; i++) {
-                const k = localStorage.key(i);
-                if (k === 'quiz_logs' || k.startsWith('quiz_logs_L') || k.startsWith('quiz_logs_kor') || k.startsWith('quiz_logs_math') || k.startsWith('quiz_logs_soc') || k.startsWith('quiz_logs_sci')) {
-                    const items = JSON.parse(localStorage.getItem(k) || '[]');
-                    items.forEach(log => allLogs.push(log));
+            try {
+                const webhookUrl = localStorage.getItem('webhook_url');
+                if (!webhookUrl) return;
+                pruneOldSentLogs(90);
+
+                // 모든 레슨 로그 자동 수집 (L1, L2, L3, ... 무제한)
+                const allLogs = [];
+                for (let i = 0; i < localStorage.length; i++) {
+                    const k = localStorage.key(i);
+                    if (k === 'quiz_logs' || k.startsWith('quiz_logs_L') || k.startsWith('quiz_logs_kor') || k.startsWith('quiz_logs_math') || k.startsWith('quiz_logs_soc') || k.startsWith('quiz_logs_sci')) {
+                        const items = JSON.parse(localStorage.getItem(k) || '[]');
+                        items.forEach(log => allLogs.push(log));
+                    }
                 }
-            }
-            // timestamp 기준 중복 제거
-            const seen = new Set();
-            const logs = allLogs.filter(log => {
-                if (seen.has(log.timestamp)) return false;
-                seen.add(log.timestamp);
-                return true;
-            });
-            const sentKeys = JSON.parse(localStorage.getItem('sent_logs') || '[]');
-
-            logs.forEach((log, idx) => {
-                const key = log.timestamp;
-                if (sentKeys.includes(key)) return;
-
-                const m = log.metrics || {};
-                const data = {
-                    lesson: log.lesson || currentLesson || 1,
-                    subject: log.subject || 'english',
-                    date: log.date,
-                    session_type: log.session_type || '',
-                    total: log.total,
-                    correct: log.correct,
-                    percentage: log.percentage,
-                    duration_sec: log.duration_sec || 0,
-                    weak: log.weak || '',
-                    type_breakdown: log.type_breakdown || '',
-                    hint_count: log.hint_count || 0,
-                    // 2026-05-14: metrics에서 a_group_recovery 제거됨 → 빈 값 자동 전송 (Apps Script v10 컬럼 호환 유지)
-                    a_group_recovery: m.a_group_recovery != null ? m.a_group_recovery : '',
-                    first_attempt_rate: m.first_attempt_rate != null ? m.first_attempt_rate : '',
-                    arrange_success: m.arrange_success != null ? m.arrange_success : '',
-                    details: log.details || '',
-                    partial: log.partial ? 'Y' : 'N',
-                    retry: log.retry ? 'Y' : 'N',
-                    recovery_rate: log.recovery_rate != null ? log.recovery_rate : '',
-                    condition_miss: log.condition_miss != null ? log.condition_miss : '',
-                    omr_miss: log.omr_miss != null ? log.omr_miss : '',
-                    time_complete: log.time_complete || '',
-                    score_group: log.score_group || '',
-                    recovery_band: log.recovery_band || '',
-                    timestamp: log.timestamp
-                };
-
-                fetch(webhookUrl, {
-                    method: 'POST',
-                    body: JSON.stringify(data)
-                }).then(async r => {
-                    if (!r.ok) throw new Error('HTTP ' + r.status);
-                    const text = await r.text();
-                    let body = null;
-                    try { body = JSON.parse(text); } catch (_) {}
-                    if (body && body.ok === false) throw new Error(body.error || 'apps-script reject');
-                    if (body && body.status && body.status !== 'ok') throw new Error(body.error || body.status);
-                    sentKeys.push(key);
-                    safeSetItem('sent_logs', JSON.stringify(sentKeys));
-                    compactSentLogEntry(key);
-                }).catch(err => {
-                    console.warn('[log-send-fail]', key, err && err.message);
+                // timestamp 기준 중복 제거
+                const seen = new Set();
+                const logs = allLogs.filter(log => {
+                    if (seen.has(log.timestamp)) return false;
+                    seen.add(log.timestamp);
+                    return true;
                 });
-            });
+                const sentKeys = JSON.parse(localStorage.getItem('sent_logs') || '[]');
+
+                // v132: reserve-before-fetch — fetch 발사 직전 sentKeys에 reserve, 실패 시 catch에서 revert
+                const fetches = [];
+                logs.forEach((log, idx) => {
+                    const key = log.timestamp;
+                    if (sentKeys.includes(key)) return;
+
+                    // RESERVE IMMEDIATELY (race 방어)
+                    sentKeys.push(key);
+
+                    const m = log.metrics || {};
+                    const data = {
+                        lesson: log.lesson || currentLesson || 1,
+                        subject: log.subject || 'english',
+                        date: log.date,
+                        session_type: log.session_type || '',
+                        total: log.total,
+                        correct: log.correct,
+                        percentage: log.percentage,
+                        duration_sec: log.duration_sec || 0,
+                        weak: log.weak || '',
+                        type_breakdown: log.type_breakdown || '',
+                        hint_count: log.hint_count || 0,
+                        // 2026-05-14: metrics에서 a_group_recovery 제거됨 → 빈 값 자동 전송 (Apps Script v10 컬럼 호환 유지)
+                        a_group_recovery: m.a_group_recovery != null ? m.a_group_recovery : '',
+                        first_attempt_rate: m.first_attempt_rate != null ? m.first_attempt_rate : '',
+                        arrange_success: m.arrange_success != null ? m.arrange_success : '',
+                        details: log.details || '',
+                        partial: log.partial ? 'Y' : 'N',
+                        retry: log.retry ? 'Y' : 'N',
+                        recovery_rate: log.recovery_rate != null ? log.recovery_rate : '',
+                        condition_miss: log.condition_miss != null ? log.condition_miss : '',
+                        omr_miss: log.omr_miss != null ? log.omr_miss : '',
+                        time_complete: log.time_complete || '',
+                        score_group: log.score_group || '',
+                        recovery_band: log.recovery_band || '',
+                        timestamp: log.timestamp
+                    };
+
+                    const p = fetch(webhookUrl, {
+                        method: 'POST',
+                        body: JSON.stringify(data)
+                    }).then(async r => {
+                        if (!r.ok) throw new Error('HTTP ' + r.status);
+                        const text = await r.text();
+                        let body = null;
+                        try { body = JSON.parse(text); } catch (_) {}
+                        if (body && body.ok === false) throw new Error(body.error || 'apps-script reject');
+                        if (body && body.status && body.status !== 'ok') throw new Error(body.error || body.status);
+                        compactSentLogEntry(key);
+                    }).catch(err => {
+                        console.warn('[log-send-fail]', key, err && err.message);
+                        // REVERT reservation
+                        const i2 = sentKeys.indexOf(key);
+                        if (i2 >= 0) sentKeys.splice(i2, 1);
+                    });
+                    fetches.push(p);
+                });
+
+                // 즉시 sentKeys 저장 (reserve 보존 — fetch 중 새로고침돼도 reservation 유지)
+                safeSetItem('sent_logs', JSON.stringify(sentKeys));
+
+                // 모든 fetch 완료 후 sentKeys 다시 저장 (revert 반영)
+                await Promise.allSettled(fetches);
+                safeSetItem('sent_logs', JSON.stringify(sentKeys));
+            } finally {
+                _sendInFlight = false;
+            }
         }
 
         // 미전송 로그 재전송

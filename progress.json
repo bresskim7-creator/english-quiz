@@ -1,9 +1,9 @@
 {
   "project": "PA — 중2 영어 학습 앱",
-  "last_updated": "2026-05-24",
+  "last_updated": "2026-05-29T14:45:00+09:00",
   "label": "중2 5과목 학습 앱 (영어+국어+수학+사회+과학)",
   "target_date": null,
-  "status": "STEP133 발주서 작성 완료 2026-05-24: '오늘의 한 장' 큐 모델 + 스킬화 + 이미지정책 v2 명문화 통합 발주서. Claude Code 실작업 대기. STEP133 in_progress 유지.",
+  "status": "2026-05-29: 부정프레임 정답라벨 셔플버그 (b)내용표시 구현 완료·검증 완료. Claude Code 라벨변경은 정확했으나 3개 사본 끝부분 silent truncation 발생 → Cowork에서 꼬리 복구·재검증 완료. 수동 브라우저 확인만 잔여.",
   "steps": [
     {
       "id": "STEP1",
@@ -825,9 +825,9 @@
     {
       "id": "STEP133",
       "name": "운영 결단: 스케줄 → 스킬화 전환 (다음 세션 작업)",
-      "status": "in_progress",
-      "completed_date": null,
-      "notes": "사용자 결단: Cowork scheduled task 폐기, 스킬만 채택. 사용자가 필요할 때 자연어로 호출. 큐(Queue) 모델: '오늘' 탭 = 안 본 카드 1장씩 순서대로. 본다 기준 = 하단까지 스크롤. 다음 세션에서 통합 발주서 작성 예정. 모바일 검수 결과 받은 후 확정."
+      "status": "completed",
+      "completed_date": "2026-05-25",
+      "notes": "Claude Code 실작업 + Codex 검증 + Cowork 독립 감사 + 사용자 모바일 검수 통과. 산출: index.html 큐 모델, sw.js v136, .claude/skills/pa-daily-card/SKILL.md, SCHEDULE_PROMPT.md ARCHIVED. 발주서: 00_Context/claude-code-orders/2026-05-24-queue-and-skillification.md"
     },
     {
       "id": "STEP134",
@@ -880,6 +880,118 @@
       "status": "completed",
       "completed_date": "2026-05-24",
       "notes": "발주서: 00_Context/claude-code-orders/2026-05-24-queue-and-skillification.md. 사용자 결단 7건 반영 (FIFO, 하단스크롤, 배지 둘다, 탭 '한 장'/'지난 글', archive=읽음만, 큐와 독립, 자동트리거 폐기, 이미지정책 v2). STEP133은 Claude Code 실작업 후 completed 처리."
+    },
+    {
+      "id": "STEP137",
+      "name": "STEP133 모바일 검수 통과 + closure (큐 1장 노출 + 배지 + 읽음 + 재진입 + 탭 + 지난 글 필터)",
+      "status": "completed",
+      "completed_date": "2026-05-25",
+      "notes": "사용자 모바일 검수 결과: 5/25 첫 카드 FIFO 노출, 미열람 배지 표시·감소, 하단 스크롤→토스트→재진입 시 다음 카드 노출, 탭 '한 장'/'지난 글' 명칭, 지난 글 탭 읽음 카드만 노출. 모두 정상."
+    },
+    {
+      "id": "STEP138",
+      "title": "회전 시스템 한계 진단 + A+B 결단 + 발주서 2건 작성 (7장 생성 + 시스템 개선)",
+      "status": "completed",
+      "completed_at": "2026-05-25T16:47:13+09:00",
+      "category": "daily-one-page",
+      "summary": "Cowork Claude 세션. 사용자 발화 \"오늘의 한 장 만들어\"로 시작. 직접 실행 안 함 — 3-agent 분담대로 Claude Code 발주서 2건 작성. (1) 7장 생성 발주서: 2026-06-01~07, daily_2026-06.js 신규 + daily_index.js·rotation.json 갱신. 6/1 시사(삼성총파업)·6/4 시사(AI스마트글래스)·6/6 캘린더(조기게양, 5/27 묵념과 짝) 등. (2) 회전 시스템 개선 발주서 (A+B 조합): rotation.json 28일 망각·캘린더 반복 무방비 한계 해결. A=daily_index.js 전체를 큐레이션 컨텍스트에 로드(장기 회피), B=calendar.json에 covered_angles 필드 도입(캘린더 반복 각도 누적, 시드 4건 backfill 5/27·5/31·6/5·6/6). SKILL.md·FORMAT_SPEC.md 갱신 포함. 검증 8/8 + fresh-round 1년 후 dry-run + Codex 자문(선택). 선행 발주서 완료 후 실행 권장 명시.",
+      "artifacts": [
+        "00_Context/claude-code-orders/2026-05-25-daily-2026-06-week1.md",
+        "00_Context/claude-code-orders/2026-05-25-rotation-system-A-plus-B.md",
+        "session-logs/session-log-2026-05-25-v.md"
+      ],
+      "user_decisions": [
+        "실행 주체: Claude Code 발주 (Cowork Claude 직접 실행 안 함)",
+        "6/6 차별화 각도: C 조기 게양",
+        "회전 시스템 해결: A+B 조합 (C 별도 시트 보류)",
+        "발주 순서: 7장 먼저 → 회전 시스템 다음",
+        "시사 주제 6/1·6/4: Cowork Claude 추천 그대로 채택"
+      ],
+      "open_tasks": [
+        "Claude Code: 발주서 1 (7장 생성) 처리 → 검증 10/10 → 보고",
+        "Claude Code: 발주서 2 (회전 시스템 개선) 처리 → 검증 8/8 + dry-run → 보고",
+        "Cowork Claude (다음 세션): 7장 콘텐츠 spot-check, 이미지 매핑률, 광고·정치 톤 회피, 시스템 작동 검증"
+      ]
+    },
+    {
+      "id": "STEP139",
+      "title": "회전 시스템 발주 시리즈 (7장 생성·fix·A+B·SKILL.md 오판/복구) Cowork 검수",
+      "date": "2026-05-25",
+      "status": "completed",
+      "summary": "STEP138 발주서 2건(7장 생성 + 회전 A+B)을 Claude Code가 처리한 결과를 Cowork Claude가 3차 검수.\n(1) 7장 생성(6/1~6/7): fact-check 1건 적발 — 6/2 본문 '롯데의 오재원' → 실제 '한화의 오재원'. fix 발주서 작성·처리·재검수 PASS.\n(2) 이미지 보강 4/4 (6/4 ZDNet·6/5 Wikimedia·6/6 행안부 다이어그램·6/7 Wikimedia). 6/6 시각 적합성 사용자 직접 확인 통과.\n(3) 회전 시스템 A+B: calendar.json covered_angles 도입 + 시드 4건 backfill + SKILL.md/FORMAT_SPEC.md v1.2 갱신. 검증 8/8 → 11/11 강화.\n(4) **SKILL.md 손상 오판 사건**: Cowork bash mount stale로 SKILL.md가 잘림처럼 보임(13808 bytes/224 lines/decode FAIL) → 긴급 복구 발주서 작성 → Claude Code 회고에서 환경 불일치 지적, 실제로는 SKILL.md 정상(15930 bytes/270 lines). 메모리 feedback_env_mismatch_precheck 정면 위반. Read 도구 = primary 원칙 미준수.\n(5) 부가가치: 복구 발주가 잘못된 진단이었지만 CRLF→LF 통일·검증 11항목 강화·방어 절차 표준화 확보. Claude Code 회고가 정확하고 솔직했음.\n(6) 메모리 강화: feedback_env_mismatch_precheck 누적 6회 + 큰 한국어 .md 위험 파일 포함. feedback_order_factcheck_required 신설(발주서 §5 fact-check 의무).\n산출물: 발주서 3건(week1·week1-fix·fix-skill-truncation), 7장 카드 + 이미지 4장 + 회전 시스템 v1.2.",
+      "files": [
+        "90_Output/app/daily_2026-06.js",
+        "90_Output/app/daily_index.js",
+        "02_Working/daily_one_page/rotation.json",
+        "02_Working/daily_one_page/calendar.json",
+        "02_Working/daily_one_page/FORMAT_SPEC.md",
+        ".claude/skills/pa-daily-card/SKILL.md",
+        "02_Working/daily_one_page/_verify_daily_2026-06.py",
+        "02_Working/daily_one_page/_verify_rotation_system_v2.py",
+        "02_Working/daily_one_page/_apply_rotation_system_v2.py",
+        "02_Working/daily_one_page/_apply_skill_format_updates.py",
+        "02_Working/daily_one_page/_apply_skill_updates_v2.py",
+        "00_Context/claude-code-orders/2026-05-25-daily-2026-06-week1.md",
+        "00_Context/claude-code-orders/2026-05-25-daily-2026-06-week1-fix.md",
+        "00_Context/claude-code-orders/2026-05-25-rotation-system-A-plus-B.md",
+        "00_Context/claude-code-orders/2026-05-25-rotation-system-A-plus-B-fix-skill-truncation.md"
+      ],
+      "memory_updates": [
+        "feedback_env_mismatch_precheck: 누적 4→6회, 큰 한국어 .md 위험 파일 포함, Cowork Claude 본인 위반 사례 박제",
+        "feedback_order_factcheck_required: 신설 — 발주서 §5에 'WebSearch fact-check 1라운드' 의무"
+      ],
+      "next_actions": [
+        "다음 '오늘의 한 장 만들어' 호출 시 v1.2 회전 시스템 자동 작동 확인",
+        "1년 후 시점(2027-05-25경) 현충일 카드 만들 때 covered_angles 회피 실작동 검증",
+        "다음 발주서 §5에 fact-check 항목 항상 포함"
+      ]
+    },
+    {
+      "id": "STEP140",
+      "title": "webhook 중복 전송 버그 진단 + fix 발주서 작성",
+      "date": "2026-05-25",
+      "status": "completed",
+      "summary": "사용자 '본 작업 재개 확인' 지시 → next_steps 분석 → '자연 흐름 대기' 가정이 실제 자료와 충돌 확인.\n(1) 01_Input/PA_학습기록.xlsx 전수 검사: 로그 시트 415건 중 39 중복 그룹(~45행, ~11%), 단어로그 351건 중 14 중복 그룹(~15행). 가장 극단 5/05 동일 payload 4회, 5/24 retry 2회. 과목·세션유형·단원 무관.\n(2) 사용자 확인: 5/25 새벽 4건은 대회 전 짧은 학습으로 정상. 5/12~5/22 단어로그 살아있고 학생은 단어 위주 학습 중. 세션 로그 갭은 의도된 행동, 인프라 버그 아님.\n(3) 원인 진단: 클라이언트 race condition. sendToGoogleSheets()는 sentKeys.push가 fetch .then 안에 있고, flushVocabQueue()는 큐를 fetch 후 비움. in-flight 동안 retransmitUnsentLogs()(페이지 init·세션 종료·수동 버튼·webhook 저장 4경로) 재호출 시 같은 row 또 fetch. Apps Script doPost는 무조건 appendRow, dedup 0.\n(4) Fix 발주서 작성: 2026-05-25-webhook-duplicate-transmission-fix.md. ①서버 측 dedup(timestamp 키 / 4튜플 키), ②클라이언트 reserve-before-fetch + mutex, ③기존 데이터 cleanup(60행 제거), ④검증 5축(서버 testDedup, 시트 전수, read-after-write strict decode, 사용자 시각, fact-check).\n(5) 발주서는 메모리 feedback_order_factcheck_required + feedback_env_mismatch_precheck + feedback_edit_silent_truncation 준수.",
+      "files": [
+        "00_Context/claude-code-orders/2026-05-25-webhook-duplicate-transmission-fix.md",
+        "01_Input/PA_학습기록.xlsx (진단 입력)",
+        "90_Output/app/index.html (수정 대상)",
+        "90_Output/google-apps-script-v10.js (수정 대상)"
+      ],
+      "memory_updates": [],
+      "next_actions": [
+        "사용자가 v12 vs google-apps-script-v12.js 버전 결정 (A: 기존 파일 갱신 / B: 새 파일)",
+        "Claude Code에 발주서 전달 → 실작업",
+        "v12 배포 후 사용자가 cleanupDuplicateLogRows()·cleanupDuplicateVocabRows() 1회 실행",
+        "01_Input/PA_학습기록.xlsx 재다운로드 → Claude Code가 _verify_no_duplicates.py 재실행 → 중복 0건 확인",
+        "수정 후 Cowork 검수: 발주 가이드 vs 실제 코드 일치 + fact-check 결과 보고 확인"
+      ]
+    },
+    {
+      "id": "STEP141",
+      "title": "webhook 중복 전송 fix 검수 사이클 + cleanup·test 함수 삭제 + 최종 검증",
+      "date": "2026-05-25",
+      "status": "completed",
+      "summary": "STEP140 발주서를 Claude Code가 처리한 결과를 Cowork Claude가 검수.\n(1) 보고 검수 8축 PASS: 환경 일치(byte/md5/line) ✓, doPost dedup line 104~118 ✓, handleVocabLog dedup line 450~468 ✓, cleanup·test 4함수 line 1351~1473 ✓, index.html mutex line 6803-6804 ✓, sendToGoogleSheets reserve-before-fetch line 6840 ✓, flushVocabQueue 큐 즉시 비우기 line 6359 ✓, _verify_no_duplicates.py baseline 재현 415/39 + 351/14 ✓.\n(2) 발주서 §3.4 'v135→v136' vs 실제 BUILD_VERSION v131 모순 적발: Claude Code가 실제값 기준 v131→v132 정정 후 회고에 명시. 메모리 feedback_order_factcheck_required 정확 작동.\n(3) Apps Script editor 배포 + 검증 4축 실행 (사용자 직접): testDedup PASS (duplicate_timestamp), testVocabDedup PASS (duplicate_vocab_row), cleanupDuplicateLogRows 중복 43행 제거·372행 보존, cleanupDuplicateVocabRows 중복 15행 제거(1차)·0행 제거(2차) 멱등성 확인·336행 보존.\n(4) cleanup·test 4함수 코드 삭제 (재실행 방지): google-apps-script-v10.js line 1348~1474 블록 Edit 도구로 삭제 + 헤더 line 13~15 cleanup 주석을 실행 완료/제거됨 노트로 갱신. 사용자가 디스크 파일 그대로 GAS editor에 paste·재배포 완료.\n(5) **본 세션 메모리 feedback_env_mismatch_precheck 7회째 위반**: bash mount이 google-apps-script-v10.js (1280 lines stale) + index.html (7692 lines stale) + xlsx (BadZipFile partial)를 잘못 보여줌 → Cowork Claude가 'silent truncation 응급 상황'으로 단정 + 복구 발주서 제안까지 작성 → 사용자가 '실제 화일 직접 본거 맞아??' 지적 → Read cross-check로 정정. 직전 6차 메모리 강화하고도 본 세션 또 위반.\n(6) xlsx mount stale 회복 불가 → 사용자가 'PA_학습기록_post_cleanup.xlsx'로 새 이름 저장 → 새 path로 mount 즉시 인식 → 최종 검증 PASS: 로그 데이터 372/빈 행 43/중복 0, 단어로그 데이터 336/빈 행 15/중복 0. cleanup Logger 보고값과 글자 그대로 일치.\n(7) 메모리 갱신: feedback_env_mismatch_precheck 누적 6→7회 + 7차 박제 + .js·.xlsx 위험 파일 추가 + Cowork 또 위반 박제.",
+      "files": [
+        "00_Context/claude-code-orders/2026-05-25-webhook-duplicate-transmission-fix.md",
+        "90_Output/google-apps-script-v10.js (v12 + cleanup/test 삭제 정리)",
+        "90_Output/app/index.html (v132 mutex+reserve-before-fetch)",
+        "02_Working/_verify_no_duplicates.py",
+        "_apply_webhook_dedup_fix.py",
+        "90_Output/google-apps-script-v10.js.bak-pre-v12-202605251830",
+        "90_Output/app/index.html.bak-pre-dedup-fix-202605251830",
+        "01_Input/PA_학습기록_post_cleanup.xlsx (cleanup 후 최종 검증본)"
+      ],
+      "memory_updates": [
+        "feedback_env_mismatch_precheck: 누적 6→7회, 7차 박제 (js+html+xlsx 동시 stale), Cowork 본인 또 위반 사례 + 사용자 지적 후 정정, .js·.xlsx 위험 파일 추가"
+      ],
+      "next_actions": [
+        "잠금 해제된 (A) 그룹 자연 검증: Axis2 R1 webhook 실기기, score_group/recovery_band, 카드ID latency, Axis3 exam_perf — 학생 학습 누적 시 진입",
+        "Sheet 빈 행 43+15 정리 (시트 미관, 우선순위 낮음): 사용자가 시트에서 직접 row 삭제 또는 차후 cleanup 다른 방식",
+        "webhook 중복 전송 fix는 실작동 검증 — 다음 학생 세션 시 중복 0 유지 확인",
+        "메모리 feedback_env_mismatch_precheck 다음 위반 막기 위한 행동 룰: bash 결과 의심 신호(truncation·BadZipFile 등) 즉시 Read 도구 cross-check 의무, 사용자 보고 전 자체 검증"
+      ]
     }
   ],
   "hotfix_2026-03-18": {
@@ -1347,9 +1459,9 @@
       "힌트 사용 증가(-0.52 상관계수)에도 성적 미개선 — 힌트 품질 문제"
     ]
   },
-  "last_completed": "session_2026_05_25_v1_1_images_fontsize",
-  "updated_at": "2026-05-24T10:04:37+00:00",
-  "current_step": "v1.1 push 완료, 사용자 모바일 검수 대기. 검수 통과 시 다음 발주: 스킬화('오늘의 한 장 만들어') + 큐 모델(안 본 카드 순서대로 1장씩) + 미열람 추적(localStorage). Cowork scheduled task는 폐기.",
+  "last_completed": "session_2026_05_29_ii_negframe_impl_verify_and_tailfix",
+  "updated_at": "2026-05-29T14:45:00+09:00",
+  "current_step": "STEP141",
   "completed_tasks": [
     {
       "step": 55,
@@ -2135,7 +2247,7 @@
     "status": "pending",
     "next_session_first_action": "Step 1: 01_Input/260303_중2_영어_천재.LLM.md에서 L4 본문 영역(p.69~78 추정) 정제하여 02_Working/lesson4_extracted.md 작성. 서브에이전트 위임 권장."
   },
-  "last_session_end": "2026-05-14 Axis3 series closed after user-confirmed v131 deployment, Apps Script redeploy, and sendWeeklyReport manual success. Natural verification items remain open.",
+  "last_session_end": "2026-05-29-ii",
   "session_2026_05_02_L4_step1_extract": {
     "datetime": "2026-05-02 (7th run, same day continuation)",
     "step": "L4 풀세트 Step 1 — OCR 추출본 작성",
@@ -5034,5 +5146,72 @@
         "session-logs/session-log-2026-05-15.md"
       ]
     }
+  },
+  "session_2026_05_29_negframe_label_audit_and_order": {
+    "datetime": "2026-05-29T14:19:00+09:00",
+    "session_seq": "2026-05-29-i",
+    "category": "bug_audit_and_order",
+    "title": "부정 프레임 정답 라벨 ↔ 보기 셔플 불일치 버그 — 진단·L2/L4 전수검사·발주",
+    "trigger": "학생이 영어 L2 실전대비 2문항(화면1 E-SR-002, 화면2 E-SR-L2-MATCH-05)을 '이상하다'고 지적",
+    "diagnosis": {
+      "screen1_E-SR-002": "부정 프레임. 데이터 정상(correct=2). 해설 '🎯 답: 보기 N번'이 q.correct+1(원본 인덱스) 사용 → 보기 셔플(showShortReading index.html 4363줄) 후 표시 위치와 불일치. 초록 하이라이트는 newCorrect로 정확. 숫자 라벨만 엉뚱한(본문과 일치하는 참인) 보기 지목 → 모순.",
+      "screen2_E-SR-L2-MATCH-05": "긍정 프레임('일치하는 것'). 정답(correct=1)·오답해설 3개·힌트·핵심문장 링크(CS07) 전부 정상. 'tiny sneeze=작은 소리?' 의문도 본문·교과서 'small sound like sneezing(재채기 같은 작은 소리)' 근거로 정답 확인.",
+      "root_cause": "index.html showWrongExplanation() 4644줄 — 부정 프레임에서 q.correct+1 번호 라벨 사용, 셔플과 불일치. 긍정 프레임(4646줄)은 q.choices[q.correct] 내용 라벨이라 정상."
+    },
+    "full_audit": {
+      "method": "isNegativeFrame 정규식(index.html 4634줄) 그대로 Python 재현. 조건: type∈{fill_blank,dialogue_response,short_reading} ∧ isNegativeFrame(instruction+sentence) ∧ choices/correct 보유. 세 type 모두 셔플 확인(4268/4292/4363줄).",
+      "lesson2_affected": [
+        "E-SR-002",
+        "E-SR-003",
+        "PC2-B-01",
+        "PC2-B-02",
+        "PC2-C-01",
+        "PC2-C-04",
+        "E-SR-L2-MATCH-02",
+        "E-SR-L2-MATCH-04"
+      ],
+      "lesson4_affected": [
+        "R005",
+        "G012",
+        "PC4-MATCH-002",
+        "PC4-MATCH-004",
+        "Q-CONTENT-MATCH-L4-002",
+        "Q-CONTENT-MATCH-L4-004"
+      ],
+      "total": 14,
+      "data_status": "14문항 데이터(correct/보기/해설) 모두 정상 — 렌더링 라벨만 버그. 데이터 파일(lesson2.js/lesson4.js) 무변경.",
+      "no_false_positive_check": "PC2-* 항목은 instruction 중립이나 sentence에 '일치하지 않는 것은?/답할 수 없는 질문은?' 포함 확인. 영어엔 별도 'choice' type 없음 → 버그 경로는 세 type뿐."
+    },
+    "decision": "수정방식 (b) 채택(사용자 승인) — 번호 대신 정답 내용 표시. 단 '✅ 정답:' 프레이밍 금지(4630-4632 주석: 부정프레임에서 틀린 문장을 정답으로 외우는 오학습 방지). 중립 프레임 '🎯 골라야 할 보기: ' + q.choices[q.correct] 채택. q.choices는 비셔플 원본이라 셔플 무관 항상 정답 내용 반환.",
+    "order_issued": "00_Context/claude-code-orders/2026-05-29-negframe-answer-label-shuffle-fix.md",
+    "fix_scope": "index.html 1줄. 활성 사본 3개: 90_Output/app/index.html, 90_Output/app-android/app/src/main/assets/www/index.html, 90_Output/app-android/app/src/main/assets-runtime/www/index.html. app-v132/_legacy/build intermediates 제외(해당 라인 없음).",
+    "status": "발주 완료. Claude Code 구현 대기. 사용자가 새 창에서 Claude Code 결과 검토 예정.",
+    "applied_memories": [
+      "feedback_progress_json_python_only",
+      "feedback_self_audit_before_report",
+      "feedback_env_mismatch_precheck",
+      "project_codex_actual_worker",
+      "feedback_decide_and_proceed",
+      "feedback_edit_silent_truncation"
+    ]
+  },
+  "session_2026_05_29_ii_negframe_impl_verify_and_tailfix": {
+    "date": "2026-05-29",
+    "type": "Claude Code 구현 검증 + 긴급 tail-fix",
+    "summary": "직전 세션(-i) 발주(2026-05-29-negframe-answer-label-shuffle-fix.md)의 Claude Code 구현 결과를 Cowork에서 독립 검증. 라벨 변경(line 4644)은 3개 활성 사본 모두 정확(🎯 골라야 할 보기: ' + q.choices[q.correct] + '</div>', NEW 1건/OLD 0건/broken 잔재 0건). 그러나 diff 결과 3개 파일 모두 끝부분 </body></html>가 </bo로 silent truncation. 중간 +12 byte 증가가 꼬리 -12 byte 잘림과 상쇄되어 byte delta=0 → Claude Code의 'byte 동일' 검증을 통과해버림(메모리 edit_silent_truncation 재현, 5/13에 이은 2번째).",
+    "fix": "Python으로 3개 파일 꼬리 </bo → </body>\\n</html>\\n 복구(+12 byte 각). 수정 전 잘린 상태를 .bak-pre-tailfix-20260529로 별도 백업. 복구 후 검증: 원본백업(.bak-pre-negframe-label-20260529) 대비 diff = 라벨 1줄뿐, 꼬리 정상, NEW 1/OLD 0/broken 0.",
+    "files_fixed": [
+      "90_Output/app/index.html",
+      "90_Output/app-android/app/src/main/assets/www/index.html",
+      "90_Output/app-android/app/src/main/assets-runtime/www/index.html"
+    ],
+    "backups": [
+      ".bak-pre-negframe-label-20260529 (변경 전 원본, Claude Code 생성)",
+      ".bak-pre-tailfix-20260529 (잘린 상태, Cowork 생성)"
+    ],
+    "not_done": [
+      "수동 브라우저 동작확인(E-SR-002 셔플 반복 시 라벨 내용=초록 하이라이트 일치) — 코드레벨 구조 보장은 확인했으나 실행환경 검증은 사용자 몫"
+    ],
+    "status": "완료"
   }
 }
