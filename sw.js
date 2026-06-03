@@ -1,4 +1,5 @@
-const CACHE_NAME = 'quiz-v136';
+const CACHE_NAME = 'quiz-v137';
+// v137 (2026-06-03): 오늘의 한장 읽음 상태 기기 간 동기화(GAS 양방향) + 웹훅 ?wh= 링크 세팅. index.html이 markDailyAsRead POST + syncDailyReadFromServer(JSONP union 병합) + isValidWebhookUrl 검증 추가. 캐시 강제 갱신용.
 // v136 (2026-05-24): STEP133 큐 모델 + 스킬화. index.html이 날짜 fallback 폐기 + 큐 1장씩 노출 + IntersectionObserver 읽음 처리 + 미열람 배지 + 탭 라벨 "한 장/지난 글"로 전환. 캐시 강제 갱신용.
 // v135 (2026-05-24): daily 5/26 톱스타뉴스 순위표, 5/28 아주경제 광화문우산 추가. 매핑률 6/7 → 7/7 (100%).
 // v134 (2026-05-24): daily 5/25,26,29 image_url 매핑 보강 (3/7 → 6/7). 주간경향·경인일보·국민일보 fair_use OG.

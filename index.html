@@ -1981,8 +1981,8 @@
         let hintUsedThisQuestion = false;
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
-        const BUILD_VERSION = '2026-05-25 v132';
-        const APP_CACHE_NAME = 'quiz-v132';
+        const BUILD_VERSION = '2026-06-03 v137';
+        const APP_CACHE_NAME = 'quiz-v137';
 
         function safeSetItem(key, value) {
             try {
@@ -2222,15 +2222,32 @@
         }
 
         // Webhook settings
+        function isValidWebhookUrl(url) {
+            // [보안] Apps Script 웹앱만 허용 — 임의 URL 주입(로그 exfiltration) 차단
+            // [v2] prefix 비교보다 hostname 정확 일치가 더 단단함 (userinfo·유사도메인 트릭 차단)
+            if (typeof url !== 'string') return false;
+            try {
+                var u = new URL(url);
+                return u.protocol === 'https:' && u.hostname === 'script.google.com';
+            } catch (e) {
+                return false;   // 파싱 불가 = 무효
+            }
+        }
+
         function saveWebhookUrl() {
             const url = document.getElementById('webhook-input').value.trim();
-            if (url) {
-                safeSetItem('webhook_url', url);
-                document.getElementById('webhook-status').textContent = '✓ 저장되었습니다';
-                setTimeout(() => { document.getElementById('webhook-status').textContent = ''; }, 2000);
-                flushVocabQueue();
-                updateOpsDiagnostics();
+            if (!url) return;
+            if (!isValidWebhookUrl(url)) {                       // [v2]
+                document.getElementById('webhook-status').textContent = '⚠ script.google.com 주소만 사용할 수 있어요';
+                document.getElementById('webhook-status').style.color = '#c0392b';
+                return;
             }
+            document.getElementById('webhook-status').style.color = '';   // 원래 색 복귀
+            safeSetItem('webhook_url', url);
+            document.getElementById('webhook-status').textContent = '✓ 저장되었습니다';
+            setTimeout(() => { document.getElementById('webhook-status').textContent = ''; }, 2000);
+            flushVocabQueue();
+            updateOpsDiagnostics();
         }
 
         function getQuizLogStorageKeys() {
@@ -2584,6 +2601,61 @@
             } catch (e) { return []; }
         }
 
+        // ===== 기기 간 읽음 동기화 (2026-06-03 v137) =====
+        function backfillDailyReadToServer(missingIds) {
+            if (!missingIds || missingIds.length === 0) return;
+            try {
+                var wh = localStorage.getItem('webhook_url');
+                if (!wh) return;
+                fetch(wh, {
+                    method: 'POST',
+                    body: JSON.stringify({ sheet: 'daily_read', dates: missingIds, timestamp: new Date().toISOString() })
+                }).catch(function () {});   // 실패 무시 — 다음 진입 때 재시도됨
+            } catch (e) {}
+        }
+
+        function syncDailyReadFromServer() {
+            return new Promise(function (resolve) {
+                var wh = localStorage.getItem('webhook_url');
+                if (!wh) { resolve(false); return; }
+                var cbName = '__daily_read_cb_' + Date.now();
+                var done = false;
+                var s = null;
+                function finish(ok) {
+                    if (done) return; done = true;
+                    try { delete window[cbName]; } catch (e) {}
+                    if (s && s.parentNode) s.parentNode.removeChild(s);
+                    resolve(ok);
+                }
+                window[cbName] = function (serverIds) {
+                    try {
+                        if (Array.isArray(serverIds)) {
+                            var local = loadDailyReadIds();
+                            var serverSet = {};
+                            serverIds.forEach(function (d) { if (d) serverSet[d] = true; });
+                            // 1) union 병합 → 로컬 갱신
+                            var merged = local.slice();
+                            serverIds.forEach(function (d) {
+                                if (d && merged.indexOf(d) === -1) merged.push(d);
+                            });
+                            safeSetItem(PA_DAILY_READ_IDS_KEY, JSON.stringify(merged));   // [v2] safeSetItem 사용
+                            updateDailyUnreadBadges();   // 함정 §2-6
+                            // 2) [v2] 백필: 서버에 없던 로컬 날짜를 일괄 업로드
+                            var missing = local.filter(function (d) { return d && !serverSet[d]; });
+                            backfillDailyReadToServer(missing);
+                        }
+                    } catch (e) {}
+                    finish(true);
+                };
+                s = document.createElement('script');
+                var sep = wh.indexOf('?') === -1 ? '?' : '&';
+                s.src = wh + sep + 'action=daily_read&callback=' + cbName + '&_=' + Date.now();
+                s.onerror = function () { finish(false); };
+                document.head.appendChild(s);
+                setTimeout(function () { finish(false); }, 5000);
+            });
+        }
+
         function markDailyAsRead(dateStr) {
             if (!dateStr) return;
             const ids = loadDailyReadIds();
@@ -2593,6 +2665,16 @@
                 localStorage.setItem(PA_DAILY_READ_IDS_KEY, JSON.stringify(ids));
             } catch (e) { /* quota / private mode — silent */ }
             updateDailyUnreadBadges();
+            // 기기 간 동기화: 읽은 날짜를 GAS에 전송 (fire-and-forget, CORS-safe)
+            try {
+                var _wh = localStorage.getItem('webhook_url');
+                if (_wh) {
+                    fetch(_wh, {
+                        method: 'POST',
+                        body: JSON.stringify({ sheet: 'daily_read', date: dateStr, timestamp: new Date().toISOString() })
+                    }).catch(function () {});   // 실패 무시 — 로컬은 이미 기록됨
+                }
+            } catch (e) {}
         }
 
         function pickNextQueueDate() {
@@ -2726,6 +2808,7 @@
             document.getElementById('daily-header-date').textContent = today + ' (' + getWeekdayKo(today) + ')';
 
             await loadDailyIndexJsonp();
+            await syncDailyReadFromServer();   // [v2] 큐 선택 전에 병합 완료 보장
             updateDailyUnreadBadges();
 
             const nextDate = pickNextQueueDate();
@@ -2762,6 +2845,7 @@
 
         async function loadDailyArchive() {
             await loadDailyIndexJsonp();
+            await syncDailyReadFromServer();   // [v2] archive는 읽은 카드만 노출하므로 렌더 전 병합 필수
             renderDailyArchive();
         }
 
@@ -3279,6 +3363,21 @@
             document.querySelector('.header-title').textContent = '오늘의 학습';
             // 음소거 상태 복원
             document.getElementById('mute-toggle').textContent = isMuted ? '🔇' : '🔊';
+            // 웹훅 URL을 링크 파라미터로 1회 세팅 (?wh=...) — 공개 소스 노출 회피
+            try {
+                var _params = new URLSearchParams(window.location.search);
+                var _wh = _params.get('wh');   // [v2] URLSearchParams.get()이 이미 디코딩함 → decodeURIComponent 재호출 금지(이중 디코딩 버그)
+                if (_wh) {
+                    _wh = _wh.trim();
+                    if (isValidWebhookUrl(_wh)) {          // [v2] 공통 검증 사용
+                        safeSetItem('webhook_url', _wh);
+                    }
+                    // 성공·실패 무관하게 주소창에서 wh 제거 (북마크/공유 흔적 최소화)
+                    _params.delete('wh');
+                    var _clean = window.location.pathname + (_params.toString() ? '?' + _params.toString() : '') + window.location.hash;
+                    try { window.history.replaceState(null, '', _clean); } catch (e) {}
+                }
+            } catch (e) {}
             // 웹훅 URL 복원
             const savedWebhook = localStorage.getItem('webhook_url');
             if (savedWebhook) document.getElementById('webhook-input').value = savedWebhook;
@@ -3290,7 +3389,9 @@
             updateExamDdayUi();
             // STEP133: 초기 진입 시 미열람 배지를 위해 daily index를 백그라운드 prefetch
             try {
-                loadDailyIndexJsonp().then(function() { updateDailyUnreadBadges(); });
+                loadDailyIndexJsonp().then(function() {
+                    syncDailyReadFromServer().then(function() { updateDailyUnreadBadges(); });
+                });
             } catch (e) {}
         }
 
