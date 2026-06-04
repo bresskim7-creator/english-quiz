@@ -1,4 +1,5 @@
-const CACHE_NAME = 'quiz-v138';
+const CACHE_NAME = 'quiz-v139';
+// v139 (2026-06-04): L2 어휘 영영풀이·영어동의어 유형 신설 — lesson2.js에 match 15문항 추가(standalone 8 + 문맥형 3 + 동의어 4). 실제 시험(영영→영어) 형식 정렬. 렌더러 변경 없음, 데이터만. 캐시 강제 갱신용.
 // v138 (2026-06-04): 영어 기말 범위 정렬 — Lesson 1·3(중간범위) 버튼 숨김, 2·4만 노출. 과목카드 라벨 Lesson 2·4. index.html 정적+동적 셀렉터 동시 수정. 캐시 강제 갱신용.
 // v138 (추가): 시험 절차 모달 하단 버튼 줄바꿈 개선 — word-break:keep-all + line-height + 너비 균형(1:1.25)으로 '않기' 단어 중간 잘림 제거.
 // v137 (2026-06-03): 오늘의 한장 읽음 상태 기기 간 동기화(GAS 양방향) + 웹훅 ?wh= 링크 세팅. index.html이 markDailyAsRead POST + syncDailyReadFromServer(JSONP union 병합) + isValidWebhookUrl 검증 추가. 캐시 강제 갱신용.

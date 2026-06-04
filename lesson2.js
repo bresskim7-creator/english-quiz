@@ -1,9 +1,9 @@
 __loadLesson({
   "lesson": 2,
   "title": "Lesson 2: Now One Foot, Now the Other",
-  "version": "3.16",
+  "version": "3.17",
   "build_date": "2026-05-12",
-  "build_note": "v3.15 — L2 본문 일치/불일치형 5장 추가 (5/12h 보강)",
+  "build_note": "v3.17 — L2 영영풀이 8(standalone)+3(문맥형)+영어동의어 4 = 15문항 추가 (6/04 발주, match 재사용)",
   "core_sentences": [
     {
       "id": "CS01",
@@ -3361,34 +3361,34 @@ __loadLesson({
       "training_layer": "skill_focus"
     },
     {
-        "id": "E-SR-006",
-        "type": "short_reading",
-        "phase": "exam_prep",
-        "difficulty": null,
-        "keyword": null,
-        "instruction": "다음 글에서 'At that moment'가 가리키는 순간으로 가장 적절한 것은?",
-        "hint": "'At that moment'는 'sneezing'이라는 회복 신호 직후의 순간이야. 첫 장면(탑 무너짐)과 헷갈리지 마!",
-        "wrong_explanations": {
-          "0": "병원에서 돌아왔을 때? 본문에서 그건 이미 일어났어. 'At that moment'는 더 뒤를 가리켜!",
-          "1": "재채기로 탑이 무너졌을 때? 그건 첫 장면(p.33) 이야기야. 회복 장면에선 안 일어나!",
-          "2": "Bobby가 블록을 가져왔을 때? 그건 준비 단계지, 회복 신호는 그 다음에 와."
-        },
-        "core_sentence_id": "CS07",
-        "linked_rule_ids": [],
-        "recovery_band": "A",
-        "test_task": null,
-        "page": null,
-        "sentence": "Bobby came into Bob's room with the blocks. Bob's mouth made a small smile. Bobby began to build the tower. \"Okay, Bob, now the elephant block.\" Suddenly, Bob made a small sound like sneezing. At that moment, Bobby realized that Bob would recover soon.",
-        "choices": [
-          "Bob이 병원에서 돌아왔을 때",
-          "Bob이 재채기를 해서 탑이 무너졌을 때",
-          "Bobby가 블록을 가져왔을 때",
-          "Bob이 재채기 비슷한 작은 소리를 냈을 때"
-        ],
-        "correct": 3,
-        "exam_pattern": "시점 추론",
-        "training_layer": "skill_focus"
+      "id": "E-SR-006",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "difficulty": null,
+      "keyword": null,
+      "instruction": "다음 글에서 'At that moment'가 가리키는 순간으로 가장 적절한 것은?",
+      "hint": "'At that moment'는 'sneezing'이라는 회복 신호 직후의 순간이야. 첫 장면(탑 무너짐)과 헷갈리지 마!",
+      "wrong_explanations": {
+        "0": "병원에서 돌아왔을 때? 본문에서 그건 이미 일어났어. 'At that moment'는 더 뒤를 가리켜!",
+        "1": "재채기로 탑이 무너졌을 때? 그건 첫 장면(p.33) 이야기야. 회복 장면에선 안 일어나!",
+        "2": "Bobby가 블록을 가져왔을 때? 그건 준비 단계지, 회복 신호는 그 다음에 와."
       },
+      "core_sentence_id": "CS07",
+      "linked_rule_ids": [],
+      "recovery_band": "A",
+      "test_task": null,
+      "page": null,
+      "sentence": "Bobby came into Bob's room with the blocks. Bob's mouth made a small smile. Bobby began to build the tower. \"Okay, Bob, now the elephant block.\" Suddenly, Bob made a small sound like sneezing. At that moment, Bobby realized that Bob would recover soon.",
+      "choices": [
+        "Bob이 병원에서 돌아왔을 때",
+        "Bob이 재채기를 해서 탑이 무너졌을 때",
+        "Bobby가 블록을 가져왔을 때",
+        "Bob이 재채기 비슷한 작은 소리를 냈을 때"
+      ],
+      "correct": 3,
+      "exam_pattern": "시점 추론",
+      "training_layer": "skill_focus"
+    },
     {
       "id": "E-SR-007",
       "type": "short_reading",
@@ -5552,6 +5552,441 @@ __loadLesson({
         "2": "'Bobby smiled with tears' — 눈물과 함께 미소.",
         "3": "마지막 'Bob would recover soon' — 곧 나아질 거라 생각."
       }
+    },
+    {
+      "id": "M-DEF-L2-01",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "영영풀이",
+      "instruction": "단어의 영영 풀이로 알맞은 것을 고르세요.",
+      "hint": "교과서 p.33 — pile: (블록을) 쌓다, 포개어 놓다",
+      "wrong_explanations": {
+        "to suddenly push air out through your nose": "⚡ 이건 코로 공기를 내뿜는 행동(재채기)이야. pile은 물건을 위로 포개어 쌓는 거야.",
+        "to fall down to the ground all at once": "⚡ 이건 무너져 내리는 거야. pile은 반대로 위로 차곡차곡 올려놓는 거야.",
+        "to take things away one by one": "⚡ 이건 하나씩 치우는 거야. pile은 하나씩 올려 쌓는 거라 방향이 반대야."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": 33,
+      "sentence_ko": "pile",
+      "choices": [
+        "to place something on top of another",
+        "to suddenly push air out through your nose",
+        "to fall down to the ground all at once",
+        "to take things away one by one"
+      ],
+      "correct": 0,
+      "exam_pattern": "영영풀이",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-DEF-L2-02",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "easy",
+      "keyword": "영영풀이",
+      "instruction": "단어의 영영 풀이로 알맞은 것을 고르세요.",
+      "hint": "교과서 p.33 — sneeze: 재채기하다",
+      "wrong_explanations": {
+        "to make a low sound in your throat when you have a cold": "⚡ 이건 목으로 하는 기침이야. 재채기(sneeze)는 코·입으로 갑자기 공기가 터져 나오는 거야.",
+        "to breathe slowly and deeply while you sleep": "⚡ 이건 잘 때 숨 쉬는 모습이야. 재채기는 갑작스럽고 참기 어려운 행동이야.",
+        "to laugh loudly at something funny": "⚡ 이건 웃는 거(laugh)야. 본문에서 Bobby가 한 행동이지, Bob의 재채기가 아니야."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "A",
+      "test_task": null,
+      "page": 33,
+      "sentence_ko": "sneeze",
+      "choices": [
+        "to suddenly push air out through your nose and mouth in a way you cannot control",
+        "to make a low sound in your throat when you have a cold",
+        "to breathe slowly and deeply while you sleep",
+        "to laugh loudly at something funny"
+      ],
+      "correct": 0,
+      "exam_pattern": "영영풀이",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-DEF-L2-03",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "영영풀이",
+      "instruction": "단어의 영영 풀이로 알맞은 것을 고르세요.",
+      "hint": "교과서 p.35 — breeze: 산들바람, 미풍",
+      "wrong_explanations": {
+        "a strong, dangerous wind": "⚡ breeze는 세기가 약하고 부드러운 바람이야. 강하고 위험한 바람은 storm 쪽이야.",
+        "a sudden flash of light in the sky": "⚡ 이건 번개야. breeze는 빛이 아니라 바람이야.",
+        "a heavy fall of rain": "⚡ 이건 폭우야. breeze는 비가 아니라 살랑이는 바람이야."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": 35,
+      "sentence_ko": "breeze",
+      "choices": [
+        "a light, gentle wind",
+        "a strong, dangerous wind",
+        "a sudden flash of light in the sky",
+        "a heavy fall of rain"
+      ],
+      "correct": 0,
+      "exam_pattern": "영영풀이",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-DEF-L2-04",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "영영풀이",
+      "instruction": "단어의 영영 풀이로 알맞은 것을 고르세요.",
+      "hint": "교과서 p.34 — recover: (병에서) 회복하다",
+      "wrong_explanations": {
+        "to become sick or ill": "⚡ 방향이 반대야. recover는 아프다가 다시 건강해지는 거야.",
+        "to feel very tired and weak": "⚡ 이건 지치고 힘없는 상태야. recover는 그 상태에서 회복되는 거야.",
+        "to lie in bed without moving": "⚡ 이건 아파서 누워만 있는 모습이야. recover는 거기서 나아지는 걸 말해."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": 34,
+      "sentence_ko": "recover",
+      "choices": [
+        "to become well again after an illness",
+        "to become sick or ill",
+        "to feel very tired and weak",
+        "to lie in bed without moving"
+      ],
+      "correct": 0,
+      "exam_pattern": "영영풀이",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-DEF-L2-05",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "영영풀이",
+      "instruction": "단어의 영영 풀이로 알맞은 것을 고르세요.",
+      "hint": "교과서 p.35 — lean: 기대다, 기울이다",
+      "wrong_explanations": {
+        "to jump over something quickly": "⚡ 이건 뛰어넘는 거야. lean은 무언가에 기대어 몸을 받치는 거야.",
+        "to push something away with force": "⚡ 이건 밀어내는 거야. lean은 반대로 기대어 의지하는 거야.",
+        "to lie flat on the floor": "⚡ 이건 바닥에 눕는 거야. lean은 벽 같은 데 기대어 서거나 받치는 거야."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": 35,
+      "sentence_ko": "lean",
+      "choices": [
+        "to bend or rest against something for support",
+        "to jump over something quickly",
+        "to push something away with force",
+        "to lie flat on the floor"
+      ],
+      "correct": 0,
+      "exam_pattern": "영영풀이",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-DEF-L2-06",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "easy",
+      "keyword": "영영풀이",
+      "instruction": "단어의 영영 풀이로 알맞은 것을 고르세요.",
+      "hint": "교과서 p.33 — wooden: 나무로 만든 (wooden blocks = 나무 블록)",
+      "wrong_explanations": {
+        "made of metal": "⚡ 이건 쇠로 만든 거야. wooden은 '나무로 만든'이야.",
+        "made of glass": "⚡ 이건 유리로 만든 거야. wooden은 나무 재질이야.",
+        "made of paper": "⚡ 이건 종이로 만든 거야. 본문의 wooden blocks는 나무 블록이야."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "A",
+      "test_task": null,
+      "page": 33,
+      "sentence_ko": "wooden",
+      "choices": [
+        "made of wood",
+        "made of metal",
+        "made of glass",
+        "made of paper"
+      ],
+      "correct": 0,
+      "exam_pattern": "영영풀이",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-DEF-L2-07",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "영영풀이",
+      "instruction": "단어의 영영 풀이로 알맞은 것을 고르세요.",
+      "hint": "교과서 p.33 — appear: 나타나다, 보이기 시작하다",
+      "wrong_explanations": {
+        "to go out of sight; to disappear": "⚡ 방향이 반대야. appear는 보이기 시작하는 거고, 사라지는 건 disappear야.",
+        "to make a loud sound": "⚡ 이건 소리를 내는 거야. appear는 소리가 아니라 '눈에 보이게 나타나는' 거야.",
+        "to fall down suddenly": "⚡ 이건 갑자기 쓰러지는 거야. appear는 모습이 나타나는 걸 말해."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": 33,
+      "sentence_ko": "appear",
+      "choices": [
+        "to start to be seen; to come into sight",
+        "to go out of sight; to disappear",
+        "to make a loud sound",
+        "to fall down suddenly"
+      ],
+      "correct": 0,
+      "exam_pattern": "영영풀이",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-DEF-L2-08",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "easy",
+      "keyword": "영영풀이",
+      "instruction": "단어의 영영 풀이로 알맞은 것을 고르세요.",
+      "hint": "교과서 p.35 — magic: 마법 (Like magic = 마법처럼)",
+      "wrong_explanations": {
+        "the ability to run very fast": "⚡ 이건 빨리 달리는 능력이야. magic은 불가능한 일을 일어나게 하는 마법의 힘이야.",
+        "a special trick used in cooking": "⚡ 이건 요리 비법이야. 본문의 Like magic은 '마법처럼'이라는 뜻이야.",
+        "a loud sound made by a machine": "⚡ 이건 기계 소리야. magic은 소리가 아니라 마법의 힘이야."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "A",
+      "test_task": null,
+      "page": 35,
+      "sentence_ko": "magic",
+      "choices": [
+        "the power to make impossible things happen, often using tricks",
+        "the ability to run very fast",
+        "a special trick used in cooking",
+        "a loud sound made by a machine"
+      ],
+      "correct": 0,
+      "exam_pattern": "영영풀이",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-DEF-L2-09",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "easy",
+      "keyword": "영영풀이",
+      "instruction": "따옴표 안 단어의 뜻으로 알맞은 영영 풀이를 고르세요.",
+      "hint": "교과서 본문 — far: (거리가) 먼, 멀리 떨어진",
+      "wrong_explanations": {
+        "very close to this place": "⚡ 방향이 반대야. far는 '멀리 떨어진'이라 가까운 게 아니야. 본문에서 병원이 여기서 멀다고 했어.",
+        "high up above the ground": "⚡ 이건 '높이'에 대한 말이야. far는 높낮이가 아니라 '거리가 먼' 걸 뜻해.",
+        "deep under the ground": "⚡ 이건 '깊이'에 대한 말이야. far는 깊이가 아니라 거리가 먼 걸 뜻해."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "A",
+      "test_task": null,
+      "page": 34,
+      "sentence_ko": "What does \"far\" mean?  He is in a hospital which is far from here.",
+      "choices": [
+        "at or to a great distance",
+        "very close to this place",
+        "high up above the ground",
+        "deep under the ground"
+      ],
+      "correct": 0,
+      "exam_pattern": "영영풀이",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-DEF-L2-10",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "hard",
+      "keyword": "영영풀이",
+      "instruction": "따옴표 안 단어의 뜻으로 알맞은 영영 풀이를 고르세요.",
+      "hint": "교과서 본문 — carefully: 주의 깊게, 조심스럽게",
+      "wrong_explanations": {
+        "in a fast and careless way": "⚡ 정반대야. carefully는 실수하지 않게 '조심해서, 신중하게' 하는 거야.",
+        "with great anger and force": "⚡ 이건 화내며 거칠게 하는 모습이야. carefully는 감정이 아니라 '주의 깊게'라는 뜻이야.",
+        "in a quiet and sleepy way": "⚡ 이건 졸린 듯 조용히 하는 모습이야. carefully는 '집중해서 조심스럽게'야."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": 33,
+      "sentence_ko": "What does \"carefully\" mean?  Bobby carefully put the elephant block on the top.",
+      "choices": [
+        "with great attention and care, so as to avoid mistakes",
+        "in a fast and careless way",
+        "with great anger and force",
+        "in a quiet and sleepy way"
+      ],
+      "correct": 0,
+      "exam_pattern": "영영풀이",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-DEF-L2-11",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "hard",
+      "keyword": "영영풀이",
+      "instruction": "따옴표 안 단어의 뜻으로 알맞은 영영 풀이를 고르세요.",
+      "hint": "교과서 본문 — suddenly: 갑자기, 순식간에",
+      "wrong_explanations": {
+        "slowly and over a long time": "⚡ 정반대야. suddenly는 '갑자기, 순식간에' 일어나는 걸 뜻해.",
+        "again and again many times": "⚡ 이건 '반복해서'라는 뜻이야. suddenly는 한 번에 갑자기 일어나는 거야.",
+        "quietly and on purpose": "⚡ 이건 '조용히 일부러'야. suddenly는 예상치 못하게 갑자기 일어나는 걸 말해."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": 34,
+      "sentence_ko": "What does \"suddenly\" mean?  Suddenly, Bob made a small sound like sneezing.",
+      "choices": [
+        "quickly and unexpectedly",
+        "slowly and over a long time",
+        "again and again many times",
+        "quietly and on purpose"
+      ],
+      "correct": 0,
+      "exam_pattern": "영영풀이",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-SYN-L2-01",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "영어동의어",
+      "instruction": "따옴표 친 표현과 의미가 같은 것을 고르세요.",
+      "hint": "교과서 본문 — fall ill: 병이 나다, 아프게 되다",
+      "wrong_explanations": {
+        "got better": "⚡ 방향이 반대야. fell ill은 '아프게 됐다'는 뜻이고, got better는 '나아졌다'야.",
+        "woke up early": "⚡ 이건 '일찍 일어났다'야. fell ill은 잠이 아니라 병이 난 걸 말해.",
+        "went out to play": "⚡ 이건 '놀러 나갔다'야. fell ill은 아파서 병원에 간 상황이야."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": 34,
+      "sentence_ko": "Which means the same as \"fell ill\"?  Bob fell ill, so he went to the hospital.",
+      "choices": [
+        "got sick",
+        "got better",
+        "woke up early",
+        "went out to play"
+      ],
+      "correct": 0,
+      "exam_pattern": "영어동의어",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-SYN-L2-02",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "영어동의어",
+      "instruction": "따옴표 친 표현과 의미가 같은 것을 고르세요.",
+      "hint": "교과서 본문 — get better: (병이) 나아지다, 회복하다",
+      "wrong_explanations": {
+        "get worse": "⚡ 정반대야. get better는 '나아지다'이고 get worse는 '더 나빠지다'야.",
+        "get up": "⚡ 이건 '자리에서 일어나다'야. get better는 병이 나아지는 걸 뜻해.",
+        "give up": "⚡ 이건 '포기하다'야. get better와는 의미가 전혀 달라."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": 34,
+      "sentence_ko": "Which means the same as \"get better\"?  We hope he will get better soon.",
+      "choices": [
+        "get well",
+        "get worse",
+        "get up",
+        "give up"
+      ],
+      "correct": 0,
+      "exam_pattern": "영어동의어",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-SYN-L2-03",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "영어동의어",
+      "instruction": "따옴표 친 표현과 의미가 같은 것을 고르세요.",
+      "hint": "교과서 본문 — after a while: 잠시 후에, 조금 있다가",
+      "wrong_explanations": {
+        "after a whole year": "⚡ 너무 길어. a while은 '잠깐 동안'이라 짧은 시간을 뜻해.",
+        "right at this moment": "⚡ 이건 '바로 지금'이야. after a while은 조금 시간이 지난 뒤를 말해.",
+        "a long time ago": "⚡ 이건 '오래 전'이라 과거야. after a while은 조금 뒤를 뜻해."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": 34,
+      "sentence_ko": "Which means the same as \"after a while\"?  After a while, Bobby came into the room.",
+      "choices": [
+        "after a short time",
+        "after a whole year",
+        "right at this moment",
+        "a long time ago"
+      ],
+      "correct": 0,
+      "exam_pattern": "영어동의어",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-SYN-L2-04",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "영어동의어",
+      "instruction": "따옴표 친 표현과 의미가 같은 것을 고르세요.",
+      "hint": "교과서 본문 — far from here: 여기서 멀리 떨어진",
+      "wrong_explanations": {
+        "close to here": "⚡ 방향이 반대야. far from here는 '여기서 멀리 떨어진'이라는 뜻이야.",
+        "right next to here": "⚡ 이건 '바로 옆'이라 아주 가까운 거야. far from here는 멀다는 뜻이야.",
+        "in this very room": "⚡ 이건 '바로 이 방 안'이야. far from here는 여기서 멀리 떨어져 있다는 뜻이야."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": 34,
+      "sentence_ko": "Which means the same as \"far from here\"?  The hospital is far from here.",
+      "choices": [
+        "a long way from here",
+        "close to here",
+        "right next to here",
+        "in this very room"
+      ],
+      "correct": 0,
+      "exam_pattern": "영어동의어",
+      "training_layer": "skill_focus"
     }
   ],
   "vocab_drill": [
