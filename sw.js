@@ -1,4 +1,5 @@
-const CACHE_NAME = 'quiz-v137';
+const CACHE_NAME = 'quiz-v138';
+// v138 (2026-06-04): 영어 기말 범위 정렬 — Lesson 1·3(중간범위) 버튼 숨김, 2·4만 노출. 과목카드 라벨 Lesson 2·4. index.html 정적+동적 셀렉터 동시 수정. 캐시 강제 갱신용.
 // v137 (2026-06-03): 오늘의 한장 읽음 상태 기기 간 동기화(GAS 양방향) + 웹훅 ?wh= 링크 세팅. index.html이 markDailyAsRead POST + syncDailyReadFromServer(JSONP union 병합) + isValidWebhookUrl 검증 추가. 캐시 강제 갱신용.
 // v136 (2026-05-24): STEP133 큐 모델 + 스킬화. index.html이 날짜 fallback 폐기 + 큐 1장씩 노출 + IntersectionObserver 읽음 처리 + 미열람 배지 + 탭 라벨 "한 장/지난 글"로 전환. 캐시 강제 갱신용.
 // v135 (2026-05-24): daily 5/26 톱스타뉴스 순위표, 5/28 아주경제 광화문우산 추가. 매핑률 6/7 → 7/7 (100%).

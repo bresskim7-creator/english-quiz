@@ -1664,7 +1664,7 @@
                 <div class="subject-card english" onclick="selectSubject('english')">
                     <div class="subject-card-icon">📘</div>
                     <div class="subject-card-name">영어</div>
-                    <div class="subject-card-sub">Lesson 1·3</div>
+                    <div class="subject-card-sub">Lesson 2·4</div>
                 </div>
                 <div class="subject-card korean" onclick="selectSubject('korean')">
                     <div class="subject-card-icon">📕</div>
@@ -1732,9 +1732,9 @@
                 <div class="setting-row" id="lesson-row">
                     <span class="setting-label">Lesson</span>
                     <div class="lesson-selector" id="lesson-selector">
-                        <button class="lesson-btn active" id="lesson-btn-1" onclick="selectLesson(1)">1</button>
-                        <button class="lesson-btn" id="lesson-btn-2" onclick="selectLesson(2)">2</button>
-                        <button class="lesson-btn" id="lesson-btn-3" onclick="selectLesson(3)">3</button>
+                        <!-- L1 숨김(2026-06-04 기말범위) 복원시 주석해제: <button class="lesson-btn" id="lesson-btn-1" onclick="selectLesson(1)">1</button> -->
+                        <button class="lesson-btn active" id="lesson-btn-2" onclick="selectLesson(2)">2</button>
+                        <!-- L3 숨김(2026-06-04 기말범위) 복원시 주석해제: <button class="lesson-btn" id="lesson-btn-3" onclick="selectLesson(3)">3</button> -->
                         <button class="lesson-btn" id="lesson-btn-4" onclick="selectLesson(4)">4</button>
                     </div>
                 </div>
@@ -1981,8 +1981,8 @@
         let hintUsedThisQuestion = false;
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
-        const BUILD_VERSION = '2026-06-03 v137';
-        const APP_CACHE_NAME = 'quiz-v137';
+        const BUILD_VERSION = '2026-06-04 v138';
+        const APP_CACHE_NAME = 'quiz-v138';
 
         function safeSetItem(key, value) {
             try {
@@ -2521,11 +2521,11 @@
             } else {
                 lessonRow.querySelector('.setting-label').textContent = 'Lesson';
                 lessonSelector.innerHTML =
-                    '<button class="lesson-btn active" id="lesson-btn-1" onclick="selectLesson(1)">1</button>' +
-                    '<button class="lesson-btn" id="lesson-btn-2" onclick="selectLesson(2)">2</button>' +
-                    '<button class="lesson-btn" id="lesson-btn-3" onclick="selectLesson(3)">3</button>' +
+                    // L1 숨김(2026-06-04 기말범위) 복원시: '<button class="lesson-btn" id="lesson-btn-1" onclick="selectLesson(1)">1</button>' +
+                    '<button class="lesson-btn active" id="lesson-btn-2" onclick="selectLesson(2)">2</button>' +
+                    // L3 숨김(2026-06-04 기말범위) 복원시: '<button class="lesson-btn" id="lesson-btn-3" onclick="selectLesson(3)">3</button>' +
                     '<button class="lesson-btn" id="lesson-btn-4" onclick="selectLesson(4)">4</button>';
-                await loadLesson(1);
+                await loadLesson(2);
             }
             updateSubtitle();
 
