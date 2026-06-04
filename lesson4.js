@@ -1,9 +1,9 @@
 __loadLesson({
   "lesson": 4,
   "title": "Lesson 4: Open the Doors to the World",
-  "version": "1.9",
+  "version": "1.10",
   "build_date": "2026-05-12",
-  "build_note": "v1.7 — L4 GR-PASSIVE drill 4장 추가 (5/12h 보강)",
+  "build_note": "v1.10 — L4 영영풀이 8(standalone)+3(문맥형)+영어동의어 4 = 15문항 추가 (6/04 L4 발주, match 재사용, 영어→영어 시험형 정렬)",
   "core_sentences": [
     {
       "id": "CS01",
@@ -4119,129 +4119,129 @@ __loadLesson({
       "training_layer": "mixed_practice"
     },
     {
-        "id": "E-DR-L4-AWK-01",
-        "type": "dialogue_response",
-        "phase": "exam_prep",
-        "difficulty": "medium",
-        "keyword": "Pardon? 응답 어색 판별",
-        "instruction": "다음 대화가 자연스럽지 않은 것은?",
-        "hint": "Pardon?은 '뭐라고?'라는 반복 요청. 감사/허락 응답이 자연스러운가?",
-        "wrong_explanations": {
-          "0": "💡 'Hot Dog Heaven은 맛있는 핫도그로 유명해'는 famous for 표현이 자연스러운 응답이야.",
-          "2": "💡 'Italy는 피자와 파스타로 유명해'는 famous for 질문에 famous for 답 — 자연스러워.",
-          "3": "💡 'Sounds good!'은 제안에 대한 동의 응답. 일상 대화로 자연스러워."
-        },
-        "core_sentence_id": "CS07",
-        "linked_rule_ids": [],
-        "recovery_band": "A",
-        "test_task": "dialogue_response",
-        "page": 65,
-        "sentence": "자연스럽지 않은 대화를 고르세요.",
-        "choices": [
-          "A: Do you know Hot Dog Heaven?\nB: It's famous for delicious hot dogs.",
-          "A: I love this pizza. Where is it from?\nB: Pardon? Thanks a lot!",
-          "A: What is Italy famous for?\nB: It's famous for pizza and pasta.",
-          "A: I'm hungry. Let's get some food.\nB: Sounds good!"
-        ],
-        "correct": 1,
-        "correct_index": 1,
-        "blank_answer": null,
-        "exam_pattern": "대화 어색 판별",
-        "training_layer": "skill_focus"
+      "id": "E-DR-L4-AWK-01",
+      "type": "dialogue_response",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "Pardon? 응답 어색 판별",
+      "instruction": "다음 대화가 자연스럽지 않은 것은?",
+      "hint": "Pardon?은 '뭐라고?'라는 반복 요청. 감사/허락 응답이 자연스러운가?",
+      "wrong_explanations": {
+        "0": "💡 'Hot Dog Heaven은 맛있는 핫도그로 유명해'는 famous for 표현이 자연스러운 응답이야.",
+        "2": "💡 'Italy는 피자와 파스타로 유명해'는 famous for 질문에 famous for 답 — 자연스러워.",
+        "3": "💡 'Sounds good!'은 제안에 대한 동의 응답. 일상 대화로 자연스러워."
       },
+      "core_sentence_id": "CS07",
+      "linked_rule_ids": [],
+      "recovery_band": "A",
+      "test_task": "dialogue_response",
+      "page": 65,
+      "sentence": "자연스럽지 않은 대화를 고르세요.",
+      "choices": [
+        "A: Do you know Hot Dog Heaven?\nB: It's famous for delicious hot dogs.",
+        "A: I love this pizza. Where is it from?\nB: Pardon? Thanks a lot!",
+        "A: What is Italy famous for?\nB: It's famous for pizza and pasta.",
+        "A: I'm hungry. Let's get some food.\nB: Sounds good!"
+      ],
+      "correct": 1,
+      "correct_index": 1,
+      "blank_answer": null,
+      "exam_pattern": "대화 어색 판별",
+      "training_layer": "skill_focus"
+    },
     {
-        "id": "E-DR-L4-AWK-02",
-        "type": "dialogue_response",
-        "phase": "exam_prep",
-        "difficulty": "medium",
-        "keyword": "What is X famous for? 응답 어색 판별",
-        "instruction": "다음 대화가 자연스럽지 않은 것은?",
-        "hint": "'What is X famous for?'는 '무엇으로 유명한가?' 질문. 위치/지리 응답이 자연스러운가?",
-        "wrong_explanations": {
-          "0": "💡 'France는 에펠탑으로 유명해' — famous for 질문에 famous for 답. 자연.",
-          "1": "💡 'Pardon? 못 들었어' 다음 'I said + 원래 문장'으로 다시 말하기 — 회화 단원 정형 흐름.",
-          "3": "💡 'Yeah, 정말 재밌었어'는 영화 감상 공유 응답. 일상 대화로 자연."
-        },
-        "core_sentence_id": "CS11",
-        "linked_rule_ids": [],
-        "recovery_band": "A",
-        "test_task": "dialogue_response",
-        "page": 67,
-        "sentence": "자연스럽지 않은 대화를 고르세요.",
-        "choices": [
-          "A: What is France famous for?\nB: It's famous for the Eiffel Tower.",
-          "A: Pardon? I didn't hear you.\nB: I said I want to go to France.",
-          "A: What is India famous for?\nB: India is in Asia, next to China.",
-          "A: That's an interesting movie.\nB: Yeah, I really enjoyed it."
-        ],
-        "correct": 2,
-        "correct_index": 2,
-        "blank_answer": null,
-        "exam_pattern": "대화 어색 판별",
-        "training_layer": "skill_focus"
+      "id": "E-DR-L4-AWK-02",
+      "type": "dialogue_response",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "What is X famous for? 응답 어색 판별",
+      "instruction": "다음 대화가 자연스럽지 않은 것은?",
+      "hint": "'What is X famous for?'는 '무엇으로 유명한가?' 질문. 위치/지리 응답이 자연스러운가?",
+      "wrong_explanations": {
+        "0": "💡 'France는 에펠탑으로 유명해' — famous for 질문에 famous for 답. 자연.",
+        "1": "💡 'Pardon? 못 들었어' 다음 'I said + 원래 문장'으로 다시 말하기 — 회화 단원 정형 흐름.",
+        "3": "💡 'Yeah, 정말 재밌었어'는 영화 감상 공유 응답. 일상 대화로 자연."
       },
+      "core_sentence_id": "CS11",
+      "linked_rule_ids": [],
+      "recovery_band": "A",
+      "test_task": "dialogue_response",
+      "page": 67,
+      "sentence": "자연스럽지 않은 대화를 고르세요.",
+      "choices": [
+        "A: What is France famous for?\nB: It's famous for the Eiffel Tower.",
+        "A: Pardon? I didn't hear you.\nB: I said I want to go to France.",
+        "A: What is India famous for?\nB: India is in Asia, next to China.",
+        "A: That's an interesting movie.\nB: Yeah, I really enjoyed it."
+      ],
+      "correct": 2,
+      "correct_index": 2,
+      "blank_answer": null,
+      "exam_pattern": "대화 어색 판별",
+      "training_layer": "skill_focus"
+    },
     {
-        "id": "E-DR-L4-AWK-03",
-        "type": "dialogue_response",
-        "phase": "exam_prep",
-        "difficulty": "medium",
-        "keyword": "I beg your pardon? 응답 어색 판별",
-        "instruction": "다음 대화가 자연스럽지 않은 것은?",
-        "hint": "'I beg your pardon?'은 격식 있는 반복 요청. '천만에' 응답이 자연스러운가?",
-        "wrong_explanations": {
-          "1": "💡 'New York은 브로드웨이 뮤지컬로 유명해' 응답. 본문 CS09 정형 패턴.",
-          "2": "💡 'Pardon? 다시 말해줄래?' 다음 'I said + 본래 문장'으로 응답 — 회화 본문 정형.",
-          "3": "💡 'I love tteokbokki' 음식 취향 공유 응답. 일상 대화로 자연."
-        },
-        "core_sentence_id": "CS06",
-        "linked_rule_ids": [],
-        "recovery_band": "A",
-        "test_task": "dialogue_response",
-        "page": 64,
-        "sentence": "자연스럽지 않은 대화를 고르세요.",
-        "choices": [
-          "A: I'd like to visit the Louvre Museum.\nB: I beg your pardon? You're welcome!",
-          "A: New York is famous for Broadway musicals.\nB: Wow, I want to see one someday.",
-          "A: Pardon? Could you say that again?\nB: I said the Louvre Museum.",
-          "A: What's your favorite snack?\nB: I love tteokbokki."
-        ],
-        "correct": 0,
-        "correct_index": 0,
-        "blank_answer": null,
-        "exam_pattern": "대화 어색 판별",
-        "training_layer": "skill_focus"
+      "id": "E-DR-L4-AWK-03",
+      "type": "dialogue_response",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "I beg your pardon? 응답 어색 판별",
+      "instruction": "다음 대화가 자연스럽지 않은 것은?",
+      "hint": "'I beg your pardon?'은 격식 있는 반복 요청. '천만에' 응답이 자연스러운가?",
+      "wrong_explanations": {
+        "1": "💡 'New York은 브로드웨이 뮤지컬로 유명해' 응답. 본문 CS09 정형 패턴.",
+        "2": "💡 'Pardon? 다시 말해줄래?' 다음 'I said + 본래 문장'으로 응답 — 회화 본문 정형.",
+        "3": "💡 'I love tteokbokki' 음식 취향 공유 응답. 일상 대화로 자연."
       },
+      "core_sentence_id": "CS06",
+      "linked_rule_ids": [],
+      "recovery_band": "A",
+      "test_task": "dialogue_response",
+      "page": 64,
+      "sentence": "자연스럽지 않은 대화를 고르세요.",
+      "choices": [
+        "A: I'd like to visit the Louvre Museum.\nB: I beg your pardon? You're welcome!",
+        "A: New York is famous for Broadway musicals.\nB: Wow, I want to see one someday.",
+        "A: Pardon? Could you say that again?\nB: I said the Louvre Museum.",
+        "A: What's your favorite snack?\nB: I love tteokbokki."
+      ],
+      "correct": 0,
+      "correct_index": 0,
+      "blank_answer": null,
+      "exam_pattern": "대화 어색 판별",
+      "training_layer": "skill_focus"
+    },
     {
-        "id": "E-DR-L4-AWK-04",
-        "type": "dialogue_response",
-        "phase": "exam_prep",
-        "difficulty": "medium",
-        "keyword": "I said + 문장 응답 어색 판별",
-        "instruction": "다음 대화가 자연스럽지 않은 것은?",
-        "hint": "Pardon?을 듣고 다시 말할 때는 'I said + 원래 문장' (과거 말함). 현재진행형 'I'm saying'이 자연스러운가?",
-        "wrong_explanations": {
-          "0": "💡 'It's famous for the Mona Lisa' → 'Louvre Museum이구나' 응답. 본문 CS10 정형.",
-          "1": "💡 'Pardon?' 다음 'I said I want to visit India' — 본문 CS08 그대로의 자연 흐름.",
-          "2": "💡 'What is Brazil famous for?' → 'Christ the Redeemer로 유명해' — D010 본문 패턴 일치."
-        },
-        "core_sentence_id": "CS08",
-        "linked_rule_ids": [],
-        "recovery_band": "A",
-        "test_task": "dialogue_response",
-        "page": 67,
-        "sentence": "자연스럽지 않은 대화를 고르세요.",
-        "choices": [
-          "A: It's famous for the Mona Lisa.\nB: Oh, the Louvre Museum!",
-          "A: Pardon?\nB: I said I want to visit India.",
-          "A: What is Brazil famous for?\nB: It's famous for Christ the Redeemer.",
-          "A: I beg your pardon?\nB: I'm saying India."
-        ],
-        "correct": 3,
-        "correct_index": 3,
-        "blank_answer": null,
-        "exam_pattern": "대화 어색 판별",
-        "training_layer": "skill_focus"
+      "id": "E-DR-L4-AWK-04",
+      "type": "dialogue_response",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "I said + 문장 응답 어색 판별",
+      "instruction": "다음 대화가 자연스럽지 않은 것은?",
+      "hint": "Pardon?을 듣고 다시 말할 때는 'I said + 원래 문장' (과거 말함). 현재진행형 'I'm saying'이 자연스러운가?",
+      "wrong_explanations": {
+        "0": "💡 'It's famous for the Mona Lisa' → 'Louvre Museum이구나' 응답. 본문 CS10 정형.",
+        "1": "💡 'Pardon?' 다음 'I said I want to visit India' — 본문 CS08 그대로의 자연 흐름.",
+        "2": "💡 'What is Brazil famous for?' → 'Christ the Redeemer로 유명해' — D010 본문 패턴 일치."
       },
+      "core_sentence_id": "CS08",
+      "linked_rule_ids": [],
+      "recovery_band": "A",
+      "test_task": "dialogue_response",
+      "page": 67,
+      "sentence": "자연스럽지 않은 대화를 고르세요.",
+      "choices": [
+        "A: It's famous for the Mona Lisa.\nB: Oh, the Louvre Museum!",
+        "A: Pardon?\nB: I said I want to visit India.",
+        "A: What is Brazil famous for?\nB: It's famous for Christ the Redeemer.",
+        "A: I beg your pardon?\nB: I'm saying India."
+      ],
+      "correct": 3,
+      "correct_index": 3,
+      "blank_answer": null,
+      "exam_pattern": "대화 어색 판별",
+      "training_layer": "skill_focus"
+    },
     {
       "id": "A004",
       "type": "arrange",
@@ -6000,107 +6000,572 @@ __loadLesson({
       "wrong_explanations": {}
     },
     {
-        "id": "Q-DLG-ORDER-L4-001",
-        "type": "dialogue_order",
-        "phase": "exam_prep",
-        "training_layer": "skill_focus",
-        "test_task": "dialogue_order",
-        "difficulty": "B",
-        "is_bridge_item": false,
-        "hint": "Paris의 Louvre Museum 앞 대화. 'I beg your pardon?'은 못 알아들었을 때 응답.",
-        "core_sentence_id": "CS10",
-        "exam_pattern": "대화 순서 배열",
-        "keyword": "Louvre Museum 5문장 대화 (CS10 REVIEW p78)",
-        "instruction": "다음 대화를 올바른 순서로 배열하세요.",
-        "linked_rule_ids": [],
-        "page": 78,
-        "recovery_band": "A",
-        "wrong_explanations": {
-          "default": "정답 순서: (a) Louvre Museum 발견 → (b) 못 알아들음(반복요청) → (c) 다시 말하기 → (d) Mona Lisa로 유명 → (e) 가보고 싶다는 동의. L4 본문 p78 REVIEW의 대화 흐름 그대로."
-        },
-        "intro_paragraph_en": null,
-        "paragraphs": [
-          {
-            "label": "(b)",
-            "text_en": "I beg your pardon?"
-          },
-          {
-            "label": "(d)",
-            "text_en": "It's famous for the Mona Lisa."
-          },
-          {
-            "label": "(a)",
-            "text_en": "I can't believe I'm in Paris. Look! That's the Louvre Museum!"
-          },
-          {
-            "label": "(e)",
-            "text_en": "Oh, right! I've always wanted to see it."
-          },
-          {
-            "label": "(c)",
-            "text_en": "I said the Louvre Museum."
-          }
-        ],
-        "answer": [
-          "a",
-          "b",
-          "c",
-          "d",
-          "e"
-        ],
-        "prompt_ko": "다음 대화를 올바른 순서로 배열하세요. (Paris의 Louvre Museum 앞 대화)"
+      "id": "Q-DLG-ORDER-L4-001",
+      "type": "dialogue_order",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "dialogue_order",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "Paris의 Louvre Museum 앞 대화. 'I beg your pardon?'은 못 알아들었을 때 응답.",
+      "core_sentence_id": "CS10",
+      "exam_pattern": "대화 순서 배열",
+      "keyword": "Louvre Museum 5문장 대화 (CS10 REVIEW p78)",
+      "instruction": "다음 대화를 올바른 순서로 배열하세요.",
+      "linked_rule_ids": [],
+      "page": 78,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "default": "정답 순서: (a) Louvre Museum 발견 → (b) 못 알아들음(반복요청) → (c) 다시 말하기 → (d) Mona Lisa로 유명 → (e) 가보고 싶다는 동의. L4 본문 p78 REVIEW의 대화 흐름 그대로."
       },
-    {
-        "id": "Q-DLG-ORDER-L4-002",
-        "type": "dialogue_order",
-        "phase": "exam_prep",
-        "training_layer": "skill_focus",
-        "test_task": "dialogue_order",
-        "difficulty": "B",
-        "is_bridge_item": false,
-        "hint": "India 여행 이야기. 속삭임 → 못 알아들음(Pardon?) → 다시 말하기 → 무엇으로 유명한지 질문 → 답.",
-        "core_sentence_id": "CS08",
-        "exam_pattern": "대화 순서 배열",
-        "keyword": "India Taj Mahal 5문장 대화 (CS08·CS11 본문 p67)",
-        "instruction": "다음 대화를 올바른 순서로 배열하세요.",
-        "linked_rule_ids": [],
-        "page": 67,
-        "recovery_band": "A",
-        "wrong_explanations": {
-          "default": "정답 순서: (a) 속삭임으로 첫 발화 → (b) 못 알아들음(Pardon?) → (c) 다시 말하기 → (d) 유명한 것 질문 → (e) 답변. L4 listen_talk p67 본문 흐름 그대로."
+      "intro_paragraph_en": null,
+      "paragraphs": [
+        {
+          "label": "(b)",
+          "text_en": "I beg your pardon?"
         },
-        "intro_paragraph_en": null,
-        "paragraphs": [
-          {
-            "label": "(c)",
-            "text_en": "I said I want to visit India."
-          },
-          {
-            "label": "(e)",
-            "text_en": "It's famous for the Taj Mahal."
-          },
-          {
-            "label": "(a)",
-            "text_en": "(whispering) I want to visit India."
-          },
-          {
-            "label": "(b)",
-            "text_en": "Pardon?"
-          },
-          {
-            "label": "(d)",
-            "text_en": "What is India famous for?"
-          }
-        ],
-        "answer": [
-          "a",
-          "b",
-          "c",
-          "d",
-          "e"
-        ],
-        "prompt_ko": "다음 대화를 올바른 순서로 배열하세요. (India Taj Mahal 대화)"
-      }
+        {
+          "label": "(d)",
+          "text_en": "It's famous for the Mona Lisa."
+        },
+        {
+          "label": "(a)",
+          "text_en": "I can't believe I'm in Paris. Look! That's the Louvre Museum!"
+        },
+        {
+          "label": "(e)",
+          "text_en": "Oh, right! I've always wanted to see it."
+        },
+        {
+          "label": "(c)",
+          "text_en": "I said the Louvre Museum."
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "prompt_ko": "다음 대화를 올바른 순서로 배열하세요. (Paris의 Louvre Museum 앞 대화)"
+    },
+    {
+      "id": "Q-DLG-ORDER-L4-002",
+      "type": "dialogue_order",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "dialogue_order",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "India 여행 이야기. 속삭임 → 못 알아들음(Pardon?) → 다시 말하기 → 무엇으로 유명한지 질문 → 답.",
+      "core_sentence_id": "CS08",
+      "exam_pattern": "대화 순서 배열",
+      "keyword": "India Taj Mahal 5문장 대화 (CS08·CS11 본문 p67)",
+      "instruction": "다음 대화를 올바른 순서로 배열하세요.",
+      "linked_rule_ids": [],
+      "page": 67,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "default": "정답 순서: (a) 속삭임으로 첫 발화 → (b) 못 알아들음(Pardon?) → (c) 다시 말하기 → (d) 유명한 것 질문 → (e) 답변. L4 listen_talk p67 본문 흐름 그대로."
+      },
+      "intro_paragraph_en": null,
+      "paragraphs": [
+        {
+          "label": "(c)",
+          "text_en": "I said I want to visit India."
+        },
+        {
+          "label": "(e)",
+          "text_en": "It's famous for the Taj Mahal."
+        },
+        {
+          "label": "(a)",
+          "text_en": "(whispering) I want to visit India."
+        },
+        {
+          "label": "(b)",
+          "text_en": "Pardon?"
+        },
+        {
+          "label": "(d)",
+          "text_en": "What is India famous for?"
+        }
+      ],
+      "answer": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e"
+      ],
+      "prompt_ko": "다음 대화를 올바른 순서로 배열하세요. (India Taj Mahal 대화)"
+    },
+    {
+      "id": "M-DEF-L4-01",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "easy",
+      "keyword": "영영풀이",
+      "instruction": "단어의 영영 풀이로 알맞은 것을 고르세요.",
+      "hint": "맛이 짠 — 4과 어휘(salty)",
+      "wrong_explanations": {
+        "tasting of sugar": "⚡ 이건 단맛이야. salty는 소금처럼 '짠맛'이 나는 거야.",
+        "having no taste at all": "⚡ 이건 아무 맛도 없는 거야. salty는 분명한 짠맛이 있어.",
+        "smelling of smoke": "⚡ 이건 냄새에 대한 말이야. salty는 냄새가 아니라 '맛'이 짠 거야."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "A",
+      "test_task": null,
+      "page": [
+        72
+      ],
+      "sentence_ko": "salty",
+      "choices": [
+        "tasting of salt",
+        "tasting of sugar",
+        "having no taste at all",
+        "smelling of smoke"
+      ],
+      "correct": 0,
+      "exam_pattern": "영영풀이",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-DEF-L4-02",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "easy",
+      "keyword": "영영풀이",
+      "instruction": "단어의 영영 풀이로 알맞은 것을 고르세요.",
+      "hint": "Hula는 맨발로 — 교과서 p.70(barefoot)",
+      "wrong_explanations": {
+        "wearing thick winter boots": "⚡ 정반대야. barefoot은 발에 아무것도 신지 않은 상태야.",
+        "wearing socks but no shoes": "⚡ barefoot은 양말조차 안 신은 맨발이야. 양말을 신으면 barefoot이 아니야.",
+        "covering the head with a hat": "⚡ 이건 머리에 대한 말이야. barefoot은 '발'이 맨발인 상태야."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "A",
+      "test_task": null,
+      "page": [
+        70
+      ],
+      "sentence_ko": "barefoot",
+      "choices": [
+        "not wearing anything on the feet",
+        "wearing thick winter boots",
+        "wearing socks but no shoes",
+        "covering the head with a hat"
+      ],
+      "correct": 0,
+      "exam_pattern": "영영풀이",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-DEF-L4-03",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "easy",
+      "keyword": "영영풀이",
+      "instruction": "단어의 영영 풀이로 알맞은 것을 고르세요.",
+      "hint": "the Statue of Liberty — 교과서 대화문(statue)",
+      "wrong_explanations": {
+        "a painting of a famous person": "⚡ 이건 그림이야. statue는 평면 그림이 아니라 돌·금속으로 만든 입체 조각상이야.",
+        "a tall modern building": "⚡ 이건 건물이야. statue는 사람·동물 모양으로 만든 조각상이야.",
+        "a small toy for children": "⚡ 이건 장난감이야. statue는 기념물처럼 세워 두는 조각상이야."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "A",
+      "test_task": null,
+      "page": [
+        66
+      ],
+      "sentence_ko": "statue",
+      "choices": [
+        "a figure of a person or animal made of stone, metal, or wood",
+        "a painting of a famous person",
+        "a tall modern building",
+        "a small toy for children"
+      ],
+      "correct": 0,
+      "exam_pattern": "영영풀이",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-DEF-L4-04",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "영영풀이",
+      "instruction": "단어의 영영 풀이로 알맞은 것을 고르세요.",
+      "hint": "hula is a language through body movements — 교과서 p.70(movement)",
+      "wrong_explanations": {
+        "an act of staying still": "⚡ 정반대야. movement는 '움직임'이라 가만히 있는 게 아니야.",
+        "a kind of loud music": "⚡ 이건 음악이야. movement는 소리가 아니라 몸의 '움직임'이야.",
+        "a short rest between dances": "⚡ 이건 쉬는 시간이야. movement는 쉬는 게 아니라 움직이는 동작이야."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": [
+        70
+      ],
+      "sentence_ko": "movement",
+      "choices": [
+        "an act of moving",
+        "an act of staying still",
+        "a kind of loud music",
+        "a short rest between dances"
+      ],
+      "correct": 0,
+      "exam_pattern": "영영풀이",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-DEF-L4-05",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "영영풀이",
+      "instruction": "단어의 영영 풀이로 알맞은 것을 고르세요.",
+      "hint": "동작을 자연스럽게 — 교과서 p.71(naturally)",
+      "wrong_explanations": {
+        "in a stiff and forced way": "⚡ 정반대야. naturally는 억지스럽지 않게 '편하고 자연스럽게'야.",
+        "in a loud and angry way": "⚡ 이건 화내는 모습이야. naturally는 감정이 아니라 '자연스럽게'라는 뜻이야.",
+        "in a slow and careful way": "⚡ 이건 '천천히 조심스럽게'야. naturally는 속도가 아니라 꾸밈없이 자연스러운 걸 말해."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": [
+        71
+      ],
+      "sentence_ko": "naturally",
+      "choices": [
+        "in a relaxed and normal way",
+        "in a stiff and forced way",
+        "in a loud and angry way",
+        "in a slow and careful way"
+      ],
+      "correct": 0,
+      "exam_pattern": "영영풀이",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-DEF-L4-06",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "영영풀이",
+      "instruction": "단어의 영영 풀이로 알맞은 것을 고르세요.",
+      "hint": "Every gesture in hula has a meaning — 교과서 p.71(gesture)",
+      "wrong_explanations": {
+        "a loud shout to get attention": "⚡ 이건 소리치는 거야. gesture는 소리가 아니라 손·팔·머리의 '몸짓'이야.",
+        "a written note left for someone": "⚡ 이건 글로 남긴 쪽지야. gesture는 글이 아니라 몸으로 표현하는 동작이야.",
+        "a long pause before speaking": "⚡ 이건 말하기 전 멈춤이야. gesture는 멈춤이 아니라 의미를 담은 몸짓이야."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": [
+        71
+      ],
+      "sentence_ko": "gesture",
+      "choices": [
+        "a movement of the hand, arm, or head to express an idea or feeling",
+        "a loud shout to get attention",
+        "a written note left for someone",
+        "a long pause before speaking"
+      ],
+      "correct": 0,
+      "exam_pattern": "영영풀이",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-DEF-L4-07",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "영영풀이",
+      "instruction": "단어의 영영 풀이로 알맞은 것을 고르세요.",
+      "hint": "from one generation to the next — 교과서 p.70(generation)",
+      "wrong_explanations": {
+        "a period of one hundred years": "⚡ 이건 '세기(century)'야. generation은 기간이 아니라 비슷한 나이대의 '세대' 사람들이야.",
+        "a member of one's close family": "⚡ 이건 가족 한 사람이야. generation은 비슷한 연령대 사람들 전체를 가리켜.",
+        "a small group of close friends": "⚡ 이건 친한 친구 무리야. generation은 같은 시대를 사는 또래 세대야."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": [
+        70
+      ],
+      "sentence_ko": "generation",
+      "choices": [
+        "all the people of about the same age",
+        "a period of one hundred years",
+        "a member of one's close family",
+        "a small group of close friends"
+      ],
+      "correct": 0,
+      "exam_pattern": "영영풀이",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-DEF-L4-08",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "영영풀이",
+      "instruction": "단어의 영영 풀이로 알맞은 것을 고르세요.",
+      "hint": "bend your knees a little — 교과서 p.71(bend)",
+      "wrong_explanations": {
+        "to move from side to side": "⚡ 이건 '좌우로 흔들다(wave)'에 가까워. bend는 휘거나 구부리는 거야. (무릎을 구부리다 = bend your knees)",
+        "to break into small pieces": "⚡ 이건 부서지는 거야. bend는 부러지지 않고 휘는 거야.",
+        "to push something forward": "⚡ 이건 앞으로 미는 거야. bend는 곧은 것을 구부리는 거야."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": [
+        71
+      ],
+      "sentence_ko": "bend",
+      "choices": [
+        "to make something become curved, or to move your body so it is not straight",
+        "to move from side to side",
+        "to break into small pieces",
+        "to push something forward"
+      ],
+      "correct": 0,
+      "exam_pattern": "영영풀이",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-DEF-L4-09",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "hard",
+      "keyword": "영영풀이",
+      "instruction": "따옴표 안 단어의 뜻으로 알맞은 영영 풀이를 고르세요.",
+      "hint": "교과서 본문 — take off: (신발·옷을) 벗다",
+      "wrong_explanations": {
+        "to start to fly up into the sky": "⚡ 이건 비행기가 '이륙하다'는 뜻이야. 여기서는 신발·양말을 '벗다'는 뜻이야.",
+        "to put on a piece of clothing": "⚡ 정반대야. take off는 입거나 신은 걸 '벗는' 거야.",
+        "to clean something carefully": "⚡ 이건 깨끗이 닦는 거야. take off는 벗는 동작이야."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": [
+        70
+      ],
+      "sentence_ko": "What does \"take off\" mean?  Oh, you need to take off your shoes and socks!",
+      "choices": [
+        "to remove something you are wearing",
+        "to start to fly up into the sky",
+        "to put on a piece of clothing",
+        "to clean something carefully"
+      ],
+      "correct": 0,
+      "exam_pattern": "영영풀이",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-DEF-L4-10",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "hard",
+      "keyword": "영영풀이",
+      "instruction": "따옴표 안 단어의 뜻으로 알맞은 영영 풀이를 고르세요.",
+      "hint": "교과서 본문 — wave: (손·손가락을) 좌우로 흔들다",
+      "wrong_explanations": {
+        "to hold something tightly in your hand": "⚡ 이건 꽉 쥐는 거야. wave는 손·손가락을 좌우로 흔드는 거야.",
+        "to fold your fingers into a fist": "⚡ 이건 주먹을 쥐는 거야. wave는 손가락을 펴서 흔드는 동작이야.",
+        "to point straight at something": "⚡ 이건 가리키는 거야. wave는 한 곳을 가리키는 게 아니라 좌우로 흔드는 거야."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": [
+        71
+      ],
+      "sentence_ko": "What does \"wave\" mean?  Wave your fingers while you move your arms up and down.",
+      "choices": [
+        "to move your hand or fingers from side to side",
+        "to hold something tightly in your hand",
+        "to fold your fingers into a fist",
+        "to point straight at something"
+      ],
+      "correct": 0,
+      "exam_pattern": "영영풀이",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-DEF-L4-11",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "hard",
+      "keyword": "영영풀이",
+      "instruction": "따옴표 안 단어의 뜻으로 알맞은 영영 풀이를 고르세요.",
+      "hint": "교과서 본문 — continue: 계속하다, 이어가다",
+      "wrong_explanations": {
+        "to stop something completely": "⚡ 정반대야. continue는 멈추지 않고 '계속 이어가는' 거야.",
+        "to begin something for the first time": "⚡ 이건 처음 '시작하는' 거야. continue는 하던 것을 계속하는 거야.",
+        "to forget something on purpose": "⚡ 이건 일부러 잊는 거야. continue는 이어가는 거라 의미가 반대야."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": [
+        71
+      ],
+      "sentence_ko": "What does \"continue\" mean?  As a hula teacher, I always try to continue the history and culture of Hawaii.",
+      "choices": [
+        "to keep doing something without stopping",
+        "to stop something completely",
+        "to begin something for the first time",
+        "to forget something on purpose"
+      ],
+      "correct": 0,
+      "exam_pattern": "영영풀이",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-SYN-L4-01",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "영어동의어",
+      "instruction": "따옴표 친 표현과 의미가 같은 것을 고르세요.",
+      "hint": "교과서 본문 — pass down: 물려주다, 전해 내려주다",
+      "wrong_explanations": {
+        "throw away": "⚡ 이건 '버리다'야. pass down은 버리는 게 아니라 다음 세대에 물려주는 거야.",
+        "put off": "⚡ 이건 '미루다'야. pass down은 미루는 게 아니라 전해 내려주는 거야.",
+        "give up": "⚡ 이건 '포기하다'야. pass down은 포기가 아니라 물려주는 거야."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": [
+        69
+      ],
+      "sentence_ko": "Which means the same as \"pass down\"?  Hula has passed down stories from one generation to the next.",
+      "choices": [
+        "hand down",
+        "throw away",
+        "put off",
+        "give up"
+      ],
+      "correct": 0,
+      "exam_pattern": "영어동의어",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-SYN-L4-02",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "영어동의어",
+      "instruction": "따옴표 친 표현과 의미가 같은 것을 고르세요.",
+      "hint": "교과서 본문 — above: ~의 위에",
+      "wrong_explanations": {
+        "under": "⚡ 방향이 반대야. above는 '위에'이고 under는 '아래에'야.",
+        "behind": "⚡ 이건 '뒤에'야. above는 위치가 위쪽이라는 뜻이야.",
+        "next to": "⚡ 이건 '옆에'야. above는 옆이 아니라 머리 위쪽을 가리켜."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": [
+        71
+      ],
+      "sentence_ko": "Which means the same as \"above\"?  Hawaiians make a circle with their arms above their heads.",
+      "choices": [
+        "over",
+        "under",
+        "behind",
+        "next to"
+      ],
+      "correct": 0,
+      "exam_pattern": "영어동의어",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-SYN-L4-03",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "easy",
+      "keyword": "영어동의어",
+      "instruction": "따옴표 친 표현과 의미가 같은 것을 고르세요.",
+      "hint": "교과서 본문 — from side to side: 좌우로",
+      "wrong_explanations": {
+        "up and down": "⚡ 이건 '위아래로'야. from side to side는 '좌우로'라 방향 축이 달라.",
+        "round and round": "⚡ 이건 '빙글빙글 도는' 거야. from side to side는 좌우로 왔다 갔다 하는 거야.",
+        "back and forth": "⚡ 이건 '앞뒤로' 왔다 갔다야. from side to side는 앞뒤가 아니라 '좌우로'야."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "A",
+      "test_task": null,
+      "page": [
+        71
+      ],
+      "sentence_ko": "Which means the same as \"from side to side\"?  Bend your knees a little and step from side to side.",
+      "choices": [
+        "left and right",
+        "up and down",
+        "round and round",
+        "back and forth"
+      ],
+      "correct": 0,
+      "exam_pattern": "영어동의어",
+      "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-SYN-L4-04",
+      "type": "match",
+      "phase": "exam_prep",
+      "difficulty": "medium",
+      "keyword": "영어동의어",
+      "instruction": "따옴표 친 표현과 의미가 같은 것을 고르세요.",
+      "hint": "4과 어휘 예문 — solve: (문제를) 풀다, 해결하다",
+      "wrong_explanations": {
+        "give up": "⚡ 이건 '포기하다'야. solve는 포기가 아니라 문제를 '풀어내는' 거야.",
+        "look for": "⚡ 이건 '찾다'야. solve는 찾는 게 아니라 해결하는 거야.",
+        "ask about": "⚡ 이건 '물어보다'야. solve는 묻는 게 아니라 직접 해결하는 거야."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": [
+        72
+      ],
+      "sentence_ko": "Which means the same as \"solve\"?  We solve the problem together.",
+      "choices": [
+        "work out",
+        "give up",
+        "look for",
+        "ask about"
+      ],
+      "correct": 0,
+      "exam_pattern": "영어동의어",
+      "training_layer": "skill_focus"
+    }
   ],
   "vocab_drill": [
     {
