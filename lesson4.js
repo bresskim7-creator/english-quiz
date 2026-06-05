@@ -1,9 +1,9 @@
 __loadLesson({
   "lesson": 4,
   "title": "Lesson 4: Open the Doors to the World",
-  "version": "1.12",
+  "version": "1.13",
   "build_date": "2026-05-12",
-  "build_note": "v1.12 — 2차 ①③: multi_grammar 다답형 6(Q-MULTI-AWK-L4-001~004 + M-MULTI-OK-L4-01/02) + short_reading 4(Q-CONTENT-MATCH-L4-001~004)에 exam_perf_variants 부착(exam_perf 리허설 활성). correct polarity 신규 2(M-MULTI-OK-L4-03 현재완료/04 so~that, variant 동시 부착) → multi_focus correct 풀 2→4 고정노출 분산. 기존 문항 콘텐츠 불변. (6/05 2차 발주)",
+  "build_note": "v1.13 — 3차 갭팩 A·E: 배열-N번째 선택형 신규 3(Q-ARR-NTH-L4-001~003) + 문장삽입 신규 1(Q-SENT-INS-L4-001, 적중문제 Q10 교과서 Reading verbatim). 전부 skill_focus+exam_perf_variants(75s), core_sentences 소싱. 기존 문항·P001~003 불변. (6/05 3차 발주) || v1.12 — 2차 ①③: multi_grammar 다답형 6(Q-MULTI-AWK-L4-001~004 + M-MULTI-OK-L4-01/02) + short_reading 4(Q-CONTENT-MATCH-L4-001~004)에 exam_perf_variants 부착(exam_perf 리허설 활성). correct polarity 신규 2(M-MULTI-OK-L4-03 현재완료/04 so~that, variant 동시 부착) → multi_focus correct 풀 2→4 고정노출 분산. 기존 문항 콘텐츠 불변. (6/05 2차 발주)",
   "core_sentences": [
     {
       "id": "CS01",
@@ -6969,6 +6969,227 @@ __loadLesson({
         3
       ],
       "prompt": "다음 ①~⑤ 중 어법상 옳은 두 문장을 고르세요."
+    },
+    {
+      "id": "Q-ARR-NTH-L4-001",
+      "type": "position_ask",
+      "phase": "exam_prep",
+      "difficulty": "B",
+      "keyword": "현재완료 어순배열",
+      "instruction": "다음 우리말과 같도록 <보기>의 단어를 모두 배열할 때, 3번째로 오는 단어를 고르세요.",
+      "meaning_ko": "나는 할머니와 함께 강릉에 여행 간 적이 있다.",
+      "hint": "💡 보기를 우리말 뜻에 맞게 머릿속/여백에 배열한 뒤 3번째 단어를 세어 고르세요.",
+      "wrong_explanations": {
+        "0": "정답은 3번째 'traveled'. 전체 배열: \"I have traveled to Gangneung with my grandmother.\". 'have'은(는) 2번째.",
+        "1": "정답은 3번째 'traveled'. 전체 배열: \"I have traveled to Gangneung with my grandmother.\". 'to'은(는) 4번째.",
+        "3": "정답은 3번째 'traveled'. 전체 배열: \"I have traveled to Gangneung with my grandmother.\". 'Gangneung'은(는) 5번째."
+      },
+      "core_sentence_id": "CS03",
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": 79,
+      "sentence": "I have traveled to Gangneung with my grandmother.",
+      "word_bank": [
+        "grandmother",
+        "I",
+        "traveled",
+        "with",
+        "have",
+        "Gangneung",
+        "my",
+        "to"
+      ],
+      "arranged_sentence": "I have traveled to Gangneung with my grandmother.",
+      "target_position": 3,
+      "choices": [
+        "have",
+        "to",
+        "traveled",
+        "Gangneung"
+      ],
+      "correct": 2,
+      "exam_pattern": "어순 배열 N번째",
+      "training_layer": "skill_focus",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "보기를 배열한 뒤 N번째 단어를 고른다"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
+    },
+    {
+      "id": "Q-ARR-NTH-L4-002",
+      "type": "position_ask",
+      "phase": "exam_prep",
+      "difficulty": "B",
+      "keyword": "to부정사 어순배열",
+      "instruction": "다음 우리말과 같도록 <보기>의 단어를 모두 배열할 때, 5번째로 오는 단어를 고르세요.",
+      "meaning_ko": "나는 인도를 방문하고 싶다고 말했다.",
+      "hint": "💡 보기를 우리말 뜻에 맞게 머릿속/여백에 배열한 뒤 5번째 단어를 세어 고르세요.",
+      "wrong_explanations": {
+        "0": "정답은 5번째 'to'. 전체 배열: \"I said I want to visit India.\". 'want'은(는) 4번째.",
+        "1": "정답은 5번째 'to'. 전체 배열: \"I said I want to visit India.\". 'said'은(는) 2번째.",
+        "3": "정답은 5번째 'to'. 전체 배열: \"I said I want to visit India.\". 'visit'은(는) 6번째."
+      },
+      "core_sentence_id": "CS08",
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": 67,
+      "sentence": "I said I want to visit India.",
+      "word_bank": [
+        "visit",
+        "I",
+        "want",
+        "India",
+        "said",
+        "I",
+        "to"
+      ],
+      "arranged_sentence": "I said I want to visit India.",
+      "target_position": 5,
+      "choices": [
+        "want",
+        "said",
+        "to",
+        "visit"
+      ],
+      "correct": 2,
+      "exam_pattern": "어순 배열 N번째",
+      "training_layer": "skill_focus",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "보기를 배열한 뒤 N번째 단어를 고른다"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
+    },
+    {
+      "id": "Q-ARR-NTH-L4-003",
+      "type": "position_ask",
+      "phase": "exam_prep",
+      "difficulty": "B",
+      "keyword": "현재완료 경험 어순배열",
+      "instruction": "다음 우리말과 같도록 <보기>의 단어를 모두 배열할 때, 4번째로 오는 단어를 고르세요.",
+      "meaning_ko": "너는 Coco를 본 적 있니?",
+      "hint": "💡 보기를 우리말 뜻에 맞게 머릿속/여백에 배열한 뒤 4번째 단어를 세어 고르세요.",
+      "wrong_explanations": {
+        "0": "정답은 4번째 'watched'. 전체 배열: \"Have you ever watched Coco?\". 'ever'은(는) 3번째.",
+        "1": "정답은 4번째 'watched'. 전체 배열: \"Have you ever watched Coco?\". 'you'은(는) 2번째.",
+        "2": "정답은 4번째 'watched'. 전체 배열: \"Have you ever watched Coco?\". 'Coco'은(는) 5번째."
+      },
+      "core_sentence_id": "CS12",
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": 76,
+      "sentence": "Have you ever watched Coco?",
+      "word_bank": [
+        "Coco",
+        "Have",
+        "watched",
+        "you",
+        "ever"
+      ],
+      "arranged_sentence": "Have you ever watched Coco?",
+      "target_position": 4,
+      "choices": [
+        "ever",
+        "you",
+        "Coco",
+        "watched"
+      ],
+      "correct": 3,
+      "exam_pattern": "어순 배열 N번째",
+      "training_layer": "skill_focus",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "보기를 배열한 뒤 N번째 단어를 고른다"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
+    },
+    {
+      "id": "Q-SENT-INS-L4-001",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "difficulty": "B",
+      "keyword": "문장삽입 (글의 흐름)",
+      "instruction": "다음 글의 흐름으로 보아 주어진 문장이 들어가기에 가장 알맞은 곳은?",
+      "hint": "💡 주어진 문장의 'it(=hula)'을 '본격 설명'을 시작하기 직전에 두어야 자연스럽습니다.",
+      "wrong_explanations": {
+        "0": "① — 인사말(Aloha 뜻) 직후로, 아직 hula 화제를 꺼내기 전이라 이르다. 정답은 ②.",
+        "2": "③ — 이미 'Hula is a traditional dance...'(설명 시작) 뒤라, 설명 도입 문장이 들어갈 자리가 아님. 정답은 ②.",
+        "3": "④ — 설명이 한참 진행된 뒤라 도입 문장 자리로 부적절. 정답은 ②.",
+        "4": "⑤ — 글 마지막이라 '레슨 시작 전' 도입 문장과 안 맞음. 정답은 ②(hula를 묻는 질문 직후, 설명 시작 직전)."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": 69,
+      "sentence": "주어진 문장: Before we start our lesson, I want to tell you about it.\n\nAloha! Welcome to Hawaii! Aloha means \"hello\" or \"goodbye\" in the Hawaiian language. ( ① ) I'm Malia, and I'm your hula teacher for today. Have you heard of hula before? How much do you know about hula? ( ② ) Hula is a traditional dance from Hawaii, and it has been a part of Hawaiian life for a long time. ( ③ ) The early Hawaiians didn't have a writing system, so they used hula to tell stories. ( ④ ) Hula is a language through body movements, and it has passed down stories from one generation to the next. ( ⑤ )",
+      "choices": [
+        "①",
+        "②",
+        "③",
+        "④",
+        "⑤"
+      ],
+      "correct": 1,
+      "exam_pattern": "문장 삽입",
+      "training_layer": "skill_focus",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "글의 흐름으로 주어진 문장의 자리를 찾는다 — it/지시어가 가리키는 대상을 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
     }
   ],
   "vocab_drill": [

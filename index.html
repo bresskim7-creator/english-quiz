@@ -1984,8 +1984,8 @@
         let hintUsedThisQuestion = false;
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
-        const BUILD_VERSION = '2026-06-05 v145';
-        const APP_CACHE_NAME = 'quiz-v145';
+        const BUILD_VERSION = '2026-06-05 v146';
+        const APP_CACHE_NAME = 'quiz-v146';
 
         function safeSetItem(key, value) {
             try {
@@ -5013,6 +5013,15 @@
             // 한국어 해석을 보여주고, 영어 문장을 머릿속으로 떠올리게 함
             const displayText = q.meaning_ko || q.sentence;
             questionText.innerHTML = '<div class="position-sentence" style="font-size:16px;line-height:2;letter-spacing:0.5px;color:#2F5496;background:#f0f4ff;padding:12px 16px;border-radius:8px;border-left:3px solid #2F5496;">' + displayText + '</div>';
+            // [3차 갭팩A] position_ask에 word_bank 존재 시 <보기> 단어 박스를 표시(표시-only, 드래그 없음).
+            //   word_bank 없으면 미진입 → 기존 P001~P003 렌더/채점 동작 불변(비파괴 추가 분기).
+            if (Array.isArray(q.word_bank) && q.word_bank.length) {
+                var wbHtml = q.word_bank.map(function(w){ return '<span style="display:inline-block;margin:3px 4px;padding:5px 11px;background:#fff;border:1.5px solid #2F5496;border-radius:7px;font-size:14px;font-weight:600;color:#2F5496;">' + w + '</span>'; }).join('');
+                var nth = q.target_position || '?';
+                questionText.innerHTML = '<div style="margin-bottom:10px;padding:11px 13px;background:#eef3ff;border-radius:9px;">' +
+                    '<div style="font-size:12px;font-weight:700;color:#555;margin-bottom:7px;">📦 보기 — 우리말 뜻에 맞게 배열한 뒤, ' + nth + '번째 단어를 고르세요</div>' +
+                    '<div style="line-height:2.1;">' + wbHtml + '</div></div>' + questionText.innerHTML;
+            }
 
             // 선택지는 fill-blank-container 재사용
             const container = document.getElementById('fill-blank-container');

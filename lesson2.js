@@ -1,9 +1,9 @@
 __loadLesson({
   "lesson": 2,
   "title": "Lesson 2: Now One Foot, Now the Other",
-  "version": "3.19",
+  "version": "3.20",
   "build_date": "2026-05-12",
-  "build_note": "v3.19 — 2차 ①③: multi_grammar 다답형 6(Q-MULTI-AWK-L2-001~004 + M-MULTI-OK-L2-01/02) + short_reading 4(E-SR-L2-MATCH-01~04)에 exam_perf_variants 부착(exam_perf 리허설 활성). correct polarity 신규 2(M-MULTI-OK-L2-03 to부정사/04 관계대명사, variant 동시 부착) → multi_focus correct 풀 2→4 고정노출 분산. 기존 문항 콘텐츠 불변. (6/05 2차 발주)",
+  "build_note": "v3.20 — 3차 갭팩 A·E: 배열-N번째 선택형 신규 3(Q-ARR-NTH-L2-001~003, word_bank/arranged_sentence/target_position; showPositionAsk 비파괴 분기로 보기박스 표시) + 문장삽입 신규 1(Q-SENT-INS-L2-001, 적중문제 Q10 교과서 Reading verbatim). 전부 skill_focus+exam_perf_variants(75s), core_sentences 소싱. 기존 문항·P001~003 불변. (6/05 3차 발주) || v3.19 — 2차 ①③: multi_grammar 다답형 6(Q-MULTI-AWK-L2-001~004 + M-MULTI-OK-L2-01/02) + short_reading 4(E-SR-L2-MATCH-01~04)에 exam_perf_variants 부착(exam_perf 리허설 활성). correct polarity 신규 2(M-MULTI-OK-L2-03 to부정사/04 관계대명사, variant 동시 부착) → multi_focus correct 풀 2→4 고정노출 분산. 기존 문항 콘텐츠 불변. (6/05 2차 발주)",
   "core_sentences": [
     {
       "id": "CS01",
@@ -6391,6 +6391,233 @@ __loadLesson({
         3
       ],
       "prompt": "다음 ①~⑤ 중 어법상 옳은 두 문장을 고르세요."
+    },
+    {
+      "id": "Q-ARR-NTH-L2-001",
+      "type": "position_ask",
+      "phase": "exam_prep",
+      "difficulty": "B",
+      "keyword": "소유격 어순배열",
+      "instruction": "다음 우리말과 같도록 <보기>의 단어를 모두 배열할 때, 4번째로 오는 단어를 고르세요.",
+      "meaning_ko": "Bob은 Bobby의 어깨에 기댔다.",
+      "hint": "💡 보기를 우리말 뜻에 맞게 머릿속/여백에 배열한 뒤 4번째 단어를 세어 고르세요.",
+      "wrong_explanations": {
+        "1": "정답은 4번째 'Bobby's'. 전체 배열: \"Bob leaned on Bobby's shoulders.\". 'leaned'은(는) 2번째.",
+        "2": "정답은 4번째 'Bobby's'. 전체 배열: \"Bob leaned on Bobby's shoulders.\". 'on'은(는) 3번째.",
+        "3": "정답은 4번째 'Bobby's'. 전체 배열: \"Bob leaned on Bobby's shoulders.\". 'shoulders'은(는) 5번째."
+      },
+      "core_sentence_id": "CS08",
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": 35,
+      "sentence": "Bob leaned on Bobby's shoulders.",
+      "word_bank": [
+        "shoulders",
+        "Bob",
+        "Bobby's",
+        "on",
+        "leaned"
+      ],
+      "arranged_sentence": "Bob leaned on Bobby's shoulders.",
+      "target_position": 4,
+      "choices": [
+        "Bobby's",
+        "leaned",
+        "on",
+        "shoulders"
+      ],
+      "correct": 0,
+      "exam_pattern": "어순 배열 N번째",
+      "training_layer": "skill_focus",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "보기를 배열한 뒤 N번째 단어를 고른다"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
+    },
+    {
+      "id": "Q-ARR-NTH-L2-002",
+      "type": "position_ask",
+      "phase": "exam_prep",
+      "difficulty": "B",
+      "keyword": "관계대명사 which 어순배열",
+      "instruction": "다음 우리말과 같도록 <보기>의 단어를 모두 배열할 때, 6번째로 오는 단어를 고르세요.",
+      "meaning_ko": "그는 여기서 멀리 떨어진 병원에 있다.",
+      "hint": "💡 보기를 우리말 뜻에 맞게 머릿속/여백에 배열한 뒤 6번째 단어를 세어 고르세요.",
+      "wrong_explanations": {
+        "0": "정답은 6번째 'which'. 전체 배열: \"He is in a hospital which is far from here.\". 'hospital'은(는) 5번째.",
+        "2": "정답은 6번째 'which'. 전체 배열: \"He is in a hospital which is far from here.\". 'far'은(는) 8번째.",
+        "3": "정답은 6번째 'which'. 전체 배열: \"He is in a hospital which is far from here.\". 'is'은(는) 2·7번째."
+      },
+      "core_sentence_id": "CS04",
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": 33,
+      "sentence": "He is in a hospital which is far from here.",
+      "word_bank": [
+        "far",
+        "is",
+        "hospital",
+        "which",
+        "He",
+        "here",
+        "a",
+        "in",
+        "is",
+        "from"
+      ],
+      "arranged_sentence": "He is in a hospital which is far from here.",
+      "target_position": 6,
+      "choices": [
+        "hospital",
+        "which",
+        "far",
+        "is"
+      ],
+      "correct": 1,
+      "exam_pattern": "어순 배열 N번째",
+      "training_layer": "skill_focus",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "보기를 배열한 뒤 N번째 단어를 고른다"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
+    },
+    {
+      "id": "Q-ARR-NTH-L2-003",
+      "type": "position_ask",
+      "phase": "exam_prep",
+      "difficulty": "B",
+      "keyword": "if 조건/허락 어순배열",
+      "instruction": "다음 우리말과 같도록 <보기>의 단어를 모두 배열할 때, 4번째로 오는 단어를 고르세요.",
+      "meaning_ko": "내가 야구 경기를 보러 가도 될까?",
+      "hint": "💡 보기를 우리말 뜻에 맞게 머릿속/여백에 배열한 뒤 4번째 단어를 세어 고르세요.",
+      "wrong_explanations": {
+        "0": "정답은 4번째 'if'. 전체 배열: \"Is it okay if I go to see a baseball game?\". 'okay'은(는) 3번째.",
+        "1": "정답은 4번째 'if'. 전체 배열: \"Is it okay if I go to see a baseball game?\". 'go'은(는) 6번째.",
+        "3": "정답은 4번째 'if'. 전체 배열: \"Is it okay if I go to see a baseball game?\". 'to'은(는) 7번째."
+      },
+      "core_sentence_id": "CS10",
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": 28,
+      "sentence": "Is it okay if I go to see a baseball game?",
+      "word_bank": [
+        "game",
+        "okay",
+        "if",
+        "Is",
+        "go",
+        "baseball",
+        "to",
+        "it",
+        "see",
+        "a",
+        "I"
+      ],
+      "arranged_sentence": "Is it okay if I go to see a baseball game?",
+      "target_position": 4,
+      "choices": [
+        "okay",
+        "go",
+        "if",
+        "to"
+      ],
+      "correct": 2,
+      "exam_pattern": "어순 배열 N번째",
+      "training_layer": "skill_focus",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "보기를 배열한 뒤 N번째 단어를 고른다"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
+    },
+    {
+      "id": "Q-SENT-INS-L2-001",
+      "type": "short_reading",
+      "phase": "exam_prep",
+      "difficulty": "B",
+      "keyword": "문장삽입 (글의 흐름)",
+      "instruction": "다음 글의 흐름으로 보아 주어진 문장이 들어가기에 가장 알맞은 곳은?",
+      "hint": "💡 주어진 문장의 'They(=Bob and Bobby)'와 '탑을 쌓았다'가 어느 문장 사이에 들어가야 자연스러운지 보세요.",
+      "wrong_explanations": {
+        "0": "① — 아직 블록 놀이를 시작하기 전(걷는 법 가르친 사람 소개 직후)이라 '탑을 쌓았다'가 이르다. 정답은 ③.",
+        "1": "② — 'Now one foot, now the other' 대사 직후로 탑 쌓기 장면 도입 전. 정답은 ③.",
+        "3": "④ — 이미 'one more block to put'(탑 거의 완성) 뒤라, 쌓기 시작 문장이 들어갈 자리가 아님. 정답은 ③.",
+        "4": "⑤ — 탑이 무너진 뒤라 흐름상 맞지 않음. 정답은 ③('블록을 하나씩 쌓아 탑을 만들었다' → 'one more block')."
+      },
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "recovery_band": "B",
+      "test_task": null,
+      "page": 32,
+      "sentence": "주어진 문장: They slowly piled the blocks one by one to build a tower.\n\nBobby got his name from his grandfather, Bob. Bob was his best friend. Bob was the person who taught Bobby how to walk. ( ① ) \"Hold my hands, Bobby,\" Bob said. \"Now one foot, now the other.\" ( ② ) Bob and Bobby often played with old wooden blocks. ( ③ ) \"There is one more block to put,\" Bob said. \"And that's the elephant block,\" Bobby said. ( ④ ) Bobby carefully put the elephant block on the top. But Bob sneezed, and the tower fell. ( ⑤ ) Bobby laughed and laughed.",
+      "choices": [
+        "①",
+        "②",
+        "③",
+        "④",
+        "⑤"
+      ],
+      "correct": 2,
+      "exam_pattern": "문장 삽입",
+      "training_layer": "skill_focus",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "글의 흐름으로 주어진 문장의 자리를 찾는다 — 앞뒤 연결(지시어·순서)을 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      }
     }
   ],
   "vocab_drill": [
