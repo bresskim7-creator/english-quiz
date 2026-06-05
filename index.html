@@ -1984,8 +1984,8 @@
         let hintUsedThisQuestion = false;
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
-        const BUILD_VERSION = '2026-06-05 v143';
-        const APP_CACHE_NAME = 'quiz-v143';
+        const BUILD_VERSION = '2026-06-05 v144';
+        const APP_CACHE_NAME = 'quiz-v144';
 
         function safeSetItem(key, value) {
             try {
@@ -2390,7 +2390,10 @@
         // 실제 파일이 .js(JSONP)이므로 script 태그를 1순위로 사용
         function fetchJsonCompat(url) {
             // 1순위: <script> 태그로 .js(JSONP) 직접 로드 — 모든 브라우저 호환
-            const jsUrl = url.replace(/\.json$/, '.js');
+            // v144: 캐시버스팅 — lesson 데이터 URL에 ?v=<APP_CACHE_NAME> 부착. 버전 범프 시 자동 변경 → 강제 새 요청.
+            //        (sw.js가 쿼리 제거한 bare 키로 정규화 저장/폴백하므로 오프라인 캐시 유지)
+            const ver = (u) => u + (u.indexOf('?') < 0 ? '?v=' : '&v=') + encodeURIComponent(APP_CACHE_NAME);
+            const jsUrl = ver(url.replace(/\.json$/, '.js'));
             return new Promise((resolve, reject) => {
                 window.__loadLesson = function(data) {
                     delete window.__loadLesson;
@@ -2415,7 +2418,7 @@
             }).catch(scriptErr => {
                 // 2순위 폴백: fetch(.json) — .json 파일이 있는 환경 대비
                 console.warn('JSONP load failed, trying fetch:', scriptErr.message);
-                return fetch(url).then(r => {
+                return fetch(ver(url)).then(r => {
                     if (!r.ok) throw new Error('HTTP ' + r.status);
                     return r.json();
                 });
@@ -2424,7 +2427,7 @@
                 console.warn('Fetch failed, trying XHR:', fetchErr.message);
                 return new Promise((resolve, reject) => {
                     const xhr = new XMLHttpRequest();
-                    xhr.open('GET', url, true);
+                    xhr.open('GET', ver(url), true);
                     xhr.onload = function() {
                         if (xhr.status === 0 || xhr.status === 200) {
                             try { resolve(JSON.parse(xhr.responseText)); }

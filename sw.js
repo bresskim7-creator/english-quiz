@@ -1,4 +1,5 @@
-const CACHE_NAME = 'quiz-v143';
+const CACHE_NAME = 'quiz-v144';
+// v144 (2026-06-05): lesson 데이터 캐시버스팅 재발방지 — loadLesson이 lesson*.js에 ?v=<version> 부착(데이터 갱신 즉시 반영). sw는 daily_v2처럼 쿼리 제거 bare 키로 정규화 저장/폴백(오프라인 유지). CSS/세션 로직·데이터 불변. 캐시 강제 갱신용.
 // v143 (2026-06-05): '모두고르기 5분' 버튼 미노출 버그 수정 — #english-mode-selector를 2열 wrap(flex-wrap)로 변경. 모드 버튼 4개가 한 줄(nowrap, max-width 300px)에 안 들어가 4번째 버튼이 모바일 화면 밖으로 잘리던 문제. CSS만 수정, 로직·데이터·generateMultiFocusSession 불변. 캐시 강제 갱신용.
 // v142 (2026-06-05): multi_focus 세션 mix 조정 — 예열1/awkward3/correct2(4-6번 내부 셔플로 polarity 위치 추측 차단). generateMultiFocusSession()만 수정, 데이터·GAS·로깅 불변. 캐시 강제 갱신용.
 // v141 (2026-06-04): multi_focus("모두고르기 5분") 1차 — 평시 전용 얇은 모드 신설. 영어 L2/L4(기말범위)에서 D-day 무관 상시 노출. generateMultiFocusSession() 신규(generateExamPrepSession 불변), 기존 어법 다답형 8(Q-MULTI-AWK)에 focus_group/polarity 메타 부착 + positive polarity 신규 4(M-MULTI-OK, 옳은 것 모두 고르기). 다답 로깅 보강(count_mismatch/likely_polarity_miss → 조건읽기실수 컬럼 재활용, GAS 무수정). lesson2 v3.18·lesson4 v1.11. 캐시 강제 갱신용.
@@ -44,7 +45,14 @@ function isDailyV2Path(pathname) {
   return /\/daily_\d{4}-\d{2}\.js$/.test(pathname);
 }
 
-function normalisedDailyRequest(reqUrl, origRequest) {
+// v144: lesson 데이터(.js)는 ?v=<version>로 캐시버스팅 요청되므로, daily_v2와 동일하게
+// 쿼리 제거한 bare 키로 정규화 저장/폴백한다(오프라인 시 PRECACHE bare 키와 일치 보장).
+// daily_*는 위 isDailyV2Path로 먼저 분기되므로 여기서 겹치지 않는다.
+function isLessonPath(pathname) {
+  return /\/lesson[\w]*\.js$/.test(pathname);
+}
+
+function normalisedRequest(reqUrl, origRequest) {
   // Strip query string for cache key; preserve other Request properties.
   const cleanUrl = reqUrl.origin + reqUrl.pathname;
   return new Request(cleanUrl, {
@@ -83,7 +91,25 @@ self.addEventListener('fetch', event => {
   // v133: daily v2 normalised-key branch.
   // Network-first; on success cache under query-less key. On failure serve normalised cache.
   if (isDailyV2Path(reqUrl.pathname)) {
-    const cacheKey = normalisedDailyRequest(reqUrl, event.request);
+    const cacheKey = normalisedRequest(reqUrl, event.request);
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          if (response && response.ok) {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then(cache => cache.put(cacheKey, clone));
+          }
+          return response;
+        })
+        .catch(() => caches.match(cacheKey).then(hit => hit || caches.match(event.request)))
+    );
+    return;
+  }
+
+  // v144: lesson 데이터 normalised-key 분기. Network-first; 성공 시 쿼리 제거한 bare 키로 저장,
+  // 실패(오프라인) 시 bare 키 캐시로 폴백.
+  if (isLessonPath(reqUrl.pathname)) {
+    const cacheKey = normalisedRequest(reqUrl, event.request);
     event.respondWith(
       fetch(event.request)
         .then(response => {
