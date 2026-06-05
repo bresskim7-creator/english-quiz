@@ -1,4 +1,5 @@
-const CACHE_NAME = 'quiz-v144';
+const CACHE_NAME = 'quiz-v145';
+// v145 (2026-06-05): 2차 ①③④ — L2/L4 exam_perf_variants 부착(exam_perf 리허설 활성, D-7 자동승격) + multi_focus correct 풀 2→4(M-MULTI-OK-Lx-03/04) + polarity_miss_level 세분(진단 details, GAS 합산 불변) + lesson별 캐시버스팅(LESSON_VERSIONS). lesson2 v3.19·lesson4 v1.12. (GAS는 v15 별도 배포). 캐시 강제 갱신용.
 // v144 (2026-06-05): lesson 데이터 캐시버스팅 재발방지 — loadLesson이 lesson*.js에 ?v=<version> 부착(데이터 갱신 즉시 반영). sw는 daily_v2처럼 쿼리 제거 bare 키로 정규화 저장/폴백(오프라인 유지). CSS/세션 로직·데이터 불변. 캐시 강제 갱신용.
 // v143 (2026-06-05): '모두고르기 5분' 버튼 미노출 버그 수정 — #english-mode-selector를 2열 wrap(flex-wrap)로 변경. 모드 버튼 4개가 한 줄(nowrap, max-width 300px)에 안 들어가 4번째 버튼이 모바일 화면 밖으로 잘리던 문제. CSS만 수정, 로직·데이터·generateMultiFocusSession 불변. 캐시 강제 갱신용.
 // v142 (2026-06-05): multi_focus 세션 mix 조정 — 예열1/awkward3/correct2(4-6번 내부 셔플로 polarity 위치 추측 차단). generateMultiFocusSession()만 수정, 데이터·GAS·로깅 불변. 캐시 강제 갱신용.

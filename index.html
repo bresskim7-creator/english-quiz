@@ -1984,8 +1984,8 @@
         let hintUsedThisQuestion = false;
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
-        const BUILD_VERSION = '2026-06-05 v144';
-        const APP_CACHE_NAME = 'quiz-v144';
+        const BUILD_VERSION = '2026-06-05 v145';
+        const APP_CACHE_NAME = 'quiz-v145';
 
         function safeSetItem(key, value) {
             try {
@@ -2392,7 +2392,13 @@
             // 1순위: <script> 태그로 .js(JSONP) 직접 로드 — 모든 브라우저 호환
             // v144: 캐시버스팅 — lesson 데이터 URL에 ?v=<APP_CACHE_NAME> 부착. 버전 범프 시 자동 변경 → 강제 새 요청.
             //        (sw.js가 쿼리 제거한 bare 키로 정규화 저장/폴백하므로 오프라인 캐시 유지)
-            const ver = (u) => u + (u.indexOf('?') < 0 ? '?v=' : '&v=') + encodeURIComponent(APP_CACHE_NAME);
+            // [④4-3] lesson별 캐시버스팅 버전(단건 데이터 갱신을 app 버전 범프 없이 전파). 키=파일명(.js 제외). 없으면 APP_CACHE_NAME.
+            const LESSON_VERSIONS = { lesson_kor2: 'k2-1.1' };
+            const ver = (u) => {
+                const m = u.match(/([A-Za-z0-9_]+)\.js(?:\?|$)/);
+                const vv = (m && LESSON_VERSIONS[m[1]]) ? LESSON_VERSIONS[m[1]] : APP_CACHE_NAME;
+                return u + (u.indexOf('?') < 0 ? '?v=' : '&v=') + encodeURIComponent(vv);
+            };
             const jsUrl = ver(url.replace(/\.json$/, '.js'));
             return new Promise((resolve, reject) => {
                 window.__loadLesson = function(data) {
@@ -5810,12 +5816,23 @@
             const correct_hit_count = [...selectedSet].filter(i => correctSet.has(i)).length;
             const count_mismatch = selected_count !== need;                                  // 정답 개수 오독
             const likely_polarity_miss = (selected_count === need && correct_hit_count < need); // 개수는 맞췄으나 오선택(반대 polarity 후보 — hit<need, 확정 아님)
+            // [④4-1] polarity_miss 세분(진단 전용 — GAS condition_miss 합산값 불변, boolean 둘 다 유지):
+            //   count(개수 처리 실패) / flip(개수는 맞지만 hit=0, 조건 통째 뒤집힘) / partial(0<hit<need, 보기별 판단 흔들림) / none(정답)
+            let polarity_miss_level = 'none';
+            if (count_mismatch) {
+                polarity_miss_level = 'count';
+            } else if (need > 0 && correct_hit_count === 0) {
+                polarity_miss_level = 'flip';
+            } else if (correct_hit_count < need) {
+                polarity_miss_level = 'partial';
+            }
             recordAnswer(q, isCorrect, {
                 need: need,
                 selected_count: selected_count,
                 correct_hit_count: correct_hit_count,
                 count_mismatch: count_mismatch,
-                likely_polarity_miss: likely_polarity_miss
+                likely_polarity_miss: likely_polarity_miss,
+                polarity_miss_level: polarity_miss_level
             });
             if (!isCorrect) {
                 // [06b A-1 + Codex Q1] 다중정답 전용 wrong explanation — 인덱스별 해설 표시
@@ -6838,6 +6855,8 @@
             // [multi_focus 1차] 평시 다답 모드: 조건읽기실수 컬럼(condition_miss) 재활용.
             // exam_perf 전용 updateExamPerfMetrics는 평시에 미작동 → 세션 답안에서 직접 집계.
             // condition_miss = Σ(정답개수 오독) + Σ(개수는 맞췄으나 반대 polarity 선택).
+            // [④4-2] multi_focus는 condition_miss 컬럼을 exam_perf와 공유하지만, GAS calcExamPerfSignals(v15~)가
+            //   session_type='exam_perf' 행만 집계하므로 exam_perf 신호는 미오염(②). flip/partial 세분은 details(polMiss=) 진단용 — 합산값 불변.
             let multiFocusConditionMiss = '';
             if (currentMode === 'multi_focus') {
                 let sum = 0;
@@ -6872,7 +6891,7 @@
                     if (a.need != null && a.selected_count != null) {
                         const flags = [];
                         if (a.count_mismatch) flags.push('countMiss');
-                        if (a.likely_polarity_miss) flags.push('polMiss');
+                        if (a.likely_polarity_miss) flags.push('polMiss=' + (a.polarity_miss_level || 'flip'));
                         const polShort = a.polarity === 'awkward' ? 'awk' : (a.polarity === 'correct' ? 'ok' : a.polarity);
                         const polTag = polShort ? ',pol=' + polShort : '';
                         s += '[need' + a.need + ',sel' + a.selected_count + ',hit' + a.correct_hit_count + polTag + (flags.length ? ',' + flags.join(',') : '') + ']';

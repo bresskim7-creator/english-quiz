@@ -1,9 +1,9 @@
 __loadLesson({
   "lesson": 4,
   "title": "Lesson 4: Open the Doors to the World",
-  "version": "1.11",
+  "version": "1.12",
   "build_date": "2026-05-12",
-  "build_note": "v1.11 — multi_focus(모두고르기 5분) 1차: 기존 어법 다답형 4(Q-MULTI-AWK-L4)에 focus_group/polarity/answer_count 메타 부착 + positive polarity 신규 2(M-MULTI-OK-L4-01/02, 옳은 것 모두 고르기). exam_prep+multi_focus 양쪽 노출 (6/04 multi_focus 발주)",
+  "build_note": "v1.12 — 2차 ①③: multi_grammar 다답형 6(Q-MULTI-AWK-L4-001~004 + M-MULTI-OK-L4-01/02) + short_reading 4(Q-CONTENT-MATCH-L4-001~004)에 exam_perf_variants 부착(exam_perf 리허설 활성). correct polarity 신규 2(M-MULTI-OK-L4-03 현재완료/04 so~that, variant 동시 부착) → multi_focus correct 풀 2→4 고정노출 분산. 기존 문항 콘텐츠 불변. (6/05 2차 발주)",
   "core_sentences": [
     {
       "id": "CS01",
@@ -5014,6 +5014,23 @@ __loadLesson({
     },
     {
       "id": "Q-MULTI-AWK-L4-001",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "정답 개수와 조건(어색한 것)을 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": true,
+          "additional_answers": [3]
+        }
+      },
       "focus_group": "multi_grammar",
       "polarity": "awkward",
       "answer_count": 2,
@@ -5060,6 +5077,23 @@ __loadLesson({
     },
     {
       "id": "Q-MULTI-AWK-L4-002",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "정답 개수와 조건(어색한 것)을 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": true,
+          "additional_answers": [3]
+        }
+      },
       "focus_group": "multi_grammar",
       "polarity": "awkward",
       "answer_count": 2,
@@ -5106,6 +5140,23 @@ __loadLesson({
     },
     {
       "id": "Q-MULTI-AWK-L4-003",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "정답 개수와 조건(어색한 것)을 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": true,
+          "additional_answers": [3]
+        }
+      },
       "focus_group": "multi_grammar",
       "polarity": "awkward",
       "answer_count": 2,
@@ -5152,6 +5203,23 @@ __loadLesson({
     },
     {
       "id": "Q-MULTI-AWK-L4-004",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "정답 개수와 조건(어색한 것)을 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": true,
+          "additional_answers": [3]
+        }
+      },
       "focus_group": "multi_grammar",
       "polarity": "awkward",
       "answer_count": 2,
@@ -5328,6 +5396,23 @@ __loadLesson({
     },
     {
       "id": "Q-CONTENT-MATCH-L4-001",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": false,
+          "prompt_modifier": ""
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 60
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      },
       "type": "short_reading",
       "phase": "exam_prep",
       "training_layer": "passage_check",
@@ -5368,6 +5453,23 @@ __loadLesson({
     },
     {
       "id": "Q-CONTENT-MATCH-L4-002",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "일치하지 않는 것을 고르세요 — 조건을 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 60
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      },
       "type": "short_reading",
       "phase": "exam_prep",
       "training_layer": "passage_check",
@@ -5408,6 +5510,23 @@ __loadLesson({
     },
     {
       "id": "Q-CONTENT-MATCH-L4-003",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": false,
+          "prompt_modifier": ""
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 60
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      },
       "type": "short_reading",
       "phase": "exam_prep",
       "training_layer": "passage_check",
@@ -5448,6 +5567,23 @@ __loadLesson({
     },
     {
       "id": "Q-CONTENT-MATCH-L4-004",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "일치하지 않는 것을 고르세요 — 조건을 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 60
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      },
       "type": "short_reading",
       "phase": "exam_prep",
       "training_layer": "passage_check",
@@ -6580,6 +6716,23 @@ __loadLesson({
     },
     {
       "id": "M-MULTI-OK-L4-01",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "정답 개수와 조건(옳은 것)을 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": true,
+          "additional_answers": [2]
+        }
+      },
       "focus_group": "multi_grammar",
       "polarity": "correct",
       "answer_count": 2,
@@ -6626,6 +6779,23 @@ __loadLesson({
     },
     {
       "id": "M-MULTI-OK-L4-02",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "정답 개수와 조건(옳은 것)을 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": true,
+          "additional_answers": [2]
+        }
+      },
       "focus_group": "multi_grammar",
       "polarity": "correct",
       "answer_count": 2,
@@ -6667,6 +6837,136 @@ __loadLesson({
       "answer_indices": [
         0,
         2
+      ],
+      "prompt": "다음 ①~⑤ 중 어법상 옳은 두 문장을 고르세요."
+    },
+    {
+      "id": "M-MULTI-OK-L4-03",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "정답 개수와 조건(옳은 것)을 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": true,
+          "additional_answers": [
+            3
+          ]
+        }
+      },
+      "focus_group": "multi_grammar",
+      "polarity": "correct",
+      "answer_count": 2,
+      "type": "choice_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "choice_blank",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "현재완료 옳은 문장 다중정답2",
+      "instruction": "어법상 옳은 문장을 모두 고르세요. (정답 2개)",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "page": 69,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번이 틀림. 현재완료는 'yesterday'(명백한 과거시점)와 함께 못 씀 → 단순과거 'finished it yesterday'.",
+        "I have finished it yesterday.": "①번이 틀림. 현재완료는 'yesterday'(명백한 과거시점)와 함께 못 씀 → 단순과거 'finished it yesterday'.",
+        "1": "②번은 옳음. 현재완료 has changed (지금까지의 변화). L4 GR01.",
+        "Hula has changed a lot over the years.": "②번은 옳음. 현재완료 has changed (지금까지의 변화). L4 GR01.",
+        "2": "③번이 틀림. 현재완료는 'ago'와 함께 못 씀 → 단순과거 'arrived two days ago'.",
+        "They have arrived two days ago.": "③번이 틀림. 현재완료는 'ago'와 함께 못 씀 → 단순과거 'arrived two days ago'.",
+        "3": "④번은 옳음. have lived + since + 시점(2019). L4 GR01.",
+        "We have lived here since 2019.": "④번은 옳음. have lived + since + 시점(2019). L4 GR01.",
+        "4": "⑤번이 틀림. has 다음은 과거분사 known — 'has known'. knew(과거형) 불가.",
+        "He has knew her for years.": "⑤번이 틀림. has 다음은 과거분사 known — 'has known'. knew(과거형) 불가."
+      },
+      "choices": [
+        "I have finished it yesterday.",
+        "Hula has changed a lot over the years.",
+        "They have arrived two days ago.",
+        "We have lived here since 2019.",
+        "He has knew her for years."
+      ],
+      "answer_indices": [
+        1,
+        3
+      ],
+      "prompt": "다음 ①~⑤ 중 어법상 옳은 두 문장을 고르세요."
+    },
+    {
+      "id": "M-MULTI-OK-L4-04",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "정답 개수와 조건(옳은 것)을 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": true,
+          "additional_answers": [
+            3
+          ]
+        }
+      },
+      "focus_group": "multi_grammar",
+      "polarity": "correct",
+      "answer_count": 2,
+      "type": "choice_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "choice_blank",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "so~that 옳은 문장 다중정답2",
+      "instruction": "어법상 옳은 문장을 모두 고르세요. (정답 2개)",
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "page": 71,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번이 틀림. 'so + 형용사 + a + 명사' 어순 → 'so long a story'가 정문. 'so a long story' 불가.",
+        "It was so a long story that I forgot the end.": "①번이 틀림. 'so + 형용사 + a + 명사' 어순 → 'so long a story'가 정문. 'so a long story' 불가.",
+        "1": "②번은 옳음. so + 형용사(beautiful) + that절. L4 GR02.",
+        "The dance is so beautiful that everyone loves it.": "②번은 옳음. so + 형용사(beautiful) + that절. L4 GR02.",
+        "2": "③번이 틀림. 동사 spoke를 꾸미려면 부사 — 'so quickly'. 형용사 quick 불가.",
+        "He spoke so quick that I missed it.": "③번이 틀림. 동사 spoke를 꾸미려면 부사 — 'so quickly'. 형용사 quick 불가.",
+        "3": "④번은 옳음. so + 형용사(tired) + that절.",
+        "He was so tired that he fell asleep.": "④번은 옳음. so + 형용사(tired) + that절.",
+        "4": "⑤번이 틀림. be동사(was) 뒤 보어는 형용사 — 'so easy'. 부사 easily 불가.",
+        "The question was so easily that everyone solved it.": "⑤번이 틀림. be동사(was) 뒤 보어는 형용사 — 'so easy'. 부사 easily 불가."
+      },
+      "choices": [
+        "It was so a long story that I forgot the end.",
+        "The dance is so beautiful that everyone loves it.",
+        "He spoke so quick that I missed it.",
+        "He was so tired that he fell asleep.",
+        "The question was so easily that everyone solved it."
+      ],
+      "answer_indices": [
+        1,
+        3
       ],
       "prompt": "다음 ①~⑤ 중 어법상 옳은 두 문장을 고르세요."
     }

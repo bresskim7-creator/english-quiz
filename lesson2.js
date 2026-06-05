@@ -1,9 +1,9 @@
 __loadLesson({
   "lesson": 2,
   "title": "Lesson 2: Now One Foot, Now the Other",
-  "version": "3.18",
+  "version": "3.19",
   "build_date": "2026-05-12",
-  "build_note": "v3.18 — multi_focus(모두고르기 5분) 1차: 기존 어법 다답형 4(Q-MULTI-AWK-L2)에 focus_group/polarity/answer_count 메타 부착 + positive polarity 신규 2(M-MULTI-OK-L2-01/02, 옳은 것 모두 고르기). exam_prep+multi_focus 양쪽 노출 (6/04 multi_focus 발주)",
+  "build_note": "v3.19 — 2차 ①③: multi_grammar 다답형 6(Q-MULTI-AWK-L2-001~004 + M-MULTI-OK-L2-01/02) + short_reading 4(E-SR-L2-MATCH-01~04)에 exam_perf_variants 부착(exam_perf 리허설 활성). correct polarity 신규 2(M-MULTI-OK-L2-03 to부정사/04 관계대명사, variant 동시 부착) → multi_focus correct 풀 2→4 고정노출 분산. 기존 문항 콘텐츠 불변. (6/05 2차 발주)",
   "core_sentences": [
     {
       "id": "CS01",
@@ -4588,6 +4588,23 @@ __loadLesson({
     },
     {
       "id": "Q-MULTI-AWK-L2-001",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "정답 개수와 조건(어색한 것)을 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": true,
+          "additional_answers": [3]
+        }
+      },
       "focus_group": "multi_grammar",
       "polarity": "awkward",
       "answer_count": 2,
@@ -4634,6 +4651,23 @@ __loadLesson({
     },
     {
       "id": "Q-MULTI-AWK-L2-002",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "정답 개수와 조건(어색한 것)을 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": true,
+          "additional_answers": [3]
+        }
+      },
       "focus_group": "multi_grammar",
       "polarity": "awkward",
       "answer_count": 2,
@@ -4680,6 +4714,23 @@ __loadLesson({
     },
     {
       "id": "Q-MULTI-AWK-L2-003",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "정답 개수와 조건(어색한 것)을 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": true,
+          "additional_answers": [3]
+        }
+      },
       "focus_group": "multi_grammar",
       "polarity": "awkward",
       "answer_count": 2,
@@ -4726,6 +4777,23 @@ __loadLesson({
     },
     {
       "id": "Q-MULTI-AWK-L2-004",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "정답 개수와 조건(어색한 것)을 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": true,
+          "additional_answers": [3]
+        }
+      },
       "focus_group": "multi_grammar",
       "polarity": "awkward",
       "answer_count": 2,
@@ -5412,6 +5480,23 @@ __loadLesson({
     },
     {
       "id": "E-SR-L2-MATCH-01",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": false,
+          "prompt_modifier": ""
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 60
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      },
       "type": "short_reading",
       "phase": "exam_prep",
       "training_layer": "skill_focus",
@@ -5443,6 +5528,23 @@ __loadLesson({
     },
     {
       "id": "E-SR-L2-MATCH-02",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "일치하지 않는 것을 고르세요 — 조건을 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 60
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      },
       "type": "short_reading",
       "phase": "exam_prep",
       "training_layer": "skill_focus",
@@ -5474,6 +5576,23 @@ __loadLesson({
     },
     {
       "id": "E-SR-L2-MATCH-03",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": false,
+          "prompt_modifier": ""
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 60
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      },
       "type": "short_reading",
       "phase": "exam_prep",
       "training_layer": "skill_focus",
@@ -5505,6 +5624,23 @@ __loadLesson({
     },
     {
       "id": "E-SR-L2-MATCH-04",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "일치하지 않는 것을 고르세요 — 조건을 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 60
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": false,
+          "additional_answers": []
+        }
+      },
       "type": "short_reading",
       "phase": "exam_prep",
       "training_layer": "skill_focus",
@@ -6002,6 +6138,23 @@ __loadLesson({
     },
     {
       "id": "M-MULTI-OK-L2-01",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "정답 개수와 조건(옳은 것)을 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": true,
+          "additional_answers": [2]
+        }
+      },
       "focus_group": "multi_grammar",
       "polarity": "correct",
       "answer_count": 2,
@@ -6048,6 +6201,23 @@ __loadLesson({
     },
     {
       "id": "M-MULTI-OK-L2-02",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "정답 개수와 조건(옳은 것)을 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": true,
+          "additional_answers": [2]
+        }
+      },
       "focus_group": "multi_grammar",
       "polarity": "correct",
       "answer_count": 2,
@@ -6089,6 +6259,136 @@ __loadLesson({
       "answer_indices": [
         0,
         2
+      ],
+      "prompt": "다음 ①~⑤ 중 어법상 옳은 두 문장을 고르세요."
+    },
+    {
+      "id": "M-MULTI-OK-L2-03",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "정답 개수와 조건(옳은 것)을 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": true,
+          "additional_answers": [
+            3
+          ]
+        }
+      },
+      "focus_group": "multi_grammar",
+      "polarity": "correct",
+      "answer_count": 2,
+      "type": "choice_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "choice_blank",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "to부정사 옳은 문장 다중정답2",
+      "instruction": "어법상 옳은 문장을 모두 고르세요. (정답 2개)",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "page": 32,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번이 틀림. decide는 to부정사를 목적어로 — 'decided to help'. 동명사 helping 불가.",
+        "Bob decided helping his grandfather.": "①번이 틀림. decide는 to부정사를 목적어로 — 'decided to help'. 동명사 helping 불가.",
+        "1": "②번은 옳음. want + to부정사 (wanted to walk). L2 GR01.",
+        "Bobby wanted to walk on his own.": "②번은 옳음. want + to부정사 (wanted to walk). L2 GR01.",
+        "2": "③번이 틀림. hope는 to부정사를 목적어로 — 'hopes to see'. 동명사 seeing 불가.",
+        "She hopes seeing him soon.": "③번이 틀림. hope는 to부정사를 목적어로 — 'hopes to see'. 동명사 seeing 불가.",
+        "3": "④번은 옳음. need + to부정사 (needed to practice). L2 GR01.",
+        "They needed to practice every day.": "④번은 옳음. need + to부정사 (needed to practice). L2 GR01.",
+        "4": "⑤번이 틀림. 'It is time to + 동사원형' — 'time to leave'. to 누락.",
+        "It is time leave now.": "⑤번이 틀림. 'It is time to + 동사원형' — 'time to leave'. to 누락."
+      },
+      "choices": [
+        "Bob decided helping his grandfather.",
+        "Bobby wanted to walk on his own.",
+        "She hopes seeing him soon.",
+        "They needed to practice every day.",
+        "It is time leave now."
+      ],
+      "answer_indices": [
+        1,
+        3
+      ],
+      "prompt": "다음 ①~⑤ 중 어법상 옳은 두 문장을 고르세요."
+    },
+    {
+      "id": "M-MULTI-OK-L2-04",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "정답 개수와 조건(옳은 것)을 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        },
+        "multi_answer": {
+          "active": true,
+          "additional_answers": [
+            3
+          ]
+        }
+      },
+      "focus_group": "multi_grammar",
+      "polarity": "correct",
+      "answer_count": 2,
+      "type": "choice_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "choice_blank",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "관계대명사 옳은 문장 다중정답2",
+      "instruction": "어법상 옳은 문장을 모두 고르세요. (정답 2개)",
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "page": 33,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번은 옳음. 사물(tower)을 that으로 받음. L2 GR02.",
+        "This is the tower that Bobby built.": "①번은 옳음. 사물(tower)을 that으로 받음. L2 GR02.",
+        "1": "②번이 틀림. book(사물)은 who로 못 받음 → which/that 필요.",
+        "The book who is on the desk is mine.": "②번이 틀림. book(사물)은 who로 못 받음 → which/that 필요.",
+        "2": "③번이 틀림. 선행사 dog(3인칭 단수) → 관계절 동사 barks. bark 불가.",
+        "He has a dog which bark loudly.": "③번이 틀림. 선행사 dog(3인칭 단수) → 관계절 동사 barks. bark 불가.",
+        "3": "④번은 옳음. 사람(doctor)을 who로 받고 3인칭 단수 helps. L2 GR02.",
+        "I met a doctor who helps young athletes.": "④번은 옳음. 사람(doctor)을 who로 받고 3인칭 단수 helps. L2 GR02.",
+        "4": "⑤번이 틀림. girl(사람)은 which로 못 받음 → who/that 필요.",
+        "She is the girl which won the race.": "⑤번이 틀림. girl(사람)은 which로 못 받음 → who/that 필요."
+      },
+      "choices": [
+        "This is the tower that Bobby built.",
+        "The book who is on the desk is mine.",
+        "He has a dog which bark loudly.",
+        "I met a doctor who helps young athletes.",
+        "She is the girl which won the race."
+      ],
+      "answer_indices": [
+        0,
+        3
       ],
       "prompt": "다음 ①~⑤ 중 어법상 옳은 두 문장을 고르세요."
     }
