@@ -1,9 +1,9 @@
 __loadLesson({
   "lesson": 4,
   "title": "Lesson 4: Open the Doors to the World",
-  "version": "1.10",
+  "version": "1.11",
   "build_date": "2026-05-12",
-  "build_note": "v1.10 — L4 영영풀이 8(standalone)+3(문맥형)+영어동의어 4 = 15문항 추가 (6/04 L4 발주, match 재사용, 영어→영어 시험형 정렬)",
+  "build_note": "v1.11 — multi_focus(모두고르기 5분) 1차: 기존 어법 다답형 4(Q-MULTI-AWK-L4)에 focus_group/polarity/answer_count 메타 부착 + positive polarity 신규 2(M-MULTI-OK-L4-01/02, 옳은 것 모두 고르기). exam_prep+multi_focus 양쪽 노출 (6/04 multi_focus 발주)",
   "core_sentences": [
     {
       "id": "CS01",
@@ -5014,6 +5014,9 @@ __loadLesson({
     },
     {
       "id": "Q-MULTI-AWK-L4-001",
+      "focus_group": "multi_grammar",
+      "polarity": "awkward",
+      "answer_count": 2,
       "type": "choice_blank",
       "phase": "exam_prep",
       "training_layer": "skill_focus",
@@ -5057,6 +5060,9 @@ __loadLesson({
     },
     {
       "id": "Q-MULTI-AWK-L4-002",
+      "focus_group": "multi_grammar",
+      "polarity": "awkward",
+      "answer_count": 2,
       "type": "choice_blank",
       "phase": "exam_prep",
       "training_layer": "skill_focus",
@@ -5100,6 +5106,9 @@ __loadLesson({
     },
     {
       "id": "Q-MULTI-AWK-L4-003",
+      "focus_group": "multi_grammar",
+      "polarity": "awkward",
+      "answer_count": 2,
       "type": "choice_blank",
       "phase": "exam_prep",
       "training_layer": "skill_focus",
@@ -5143,6 +5152,9 @@ __loadLesson({
     },
     {
       "id": "Q-MULTI-AWK-L4-004",
+      "focus_group": "multi_grammar",
+      "polarity": "awkward",
+      "answer_count": 2,
       "type": "choice_blank",
       "phase": "exam_prep",
       "training_layer": "skill_focus",
@@ -6565,6 +6577,98 @@ __loadLesson({
       "correct": 0,
       "exam_pattern": "영어동의어",
       "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-MULTI-OK-L4-01",
+      "focus_group": "multi_grammar",
+      "polarity": "correct",
+      "answer_count": 2,
+      "type": "choice_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "choice_blank",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "현재완료 옳은 문장 다중정답",
+      "instruction": "어법상 옳은 문장을 모두 고르세요. (정답 2개)",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "page": 69,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번은 옳음. L4 CS01 직접 인용. has been + for + 기간.",
+        "Hula has been a part of Hawaiian life for a long time.": "①번은 옳음. L4 CS01 직접 인용. has been + for + 기간.",
+        "1": "②번이 틀림. since는 시점과 — 'three years ago'는 부사구라 since 불가. 'for three years' 또는 'since 2023'.",
+        "I have studied English since three years ago.": "②번이 틀림. since는 시점과 — 'three years ago'는 부사구라 since 불가. 'for three years' 또는 'since 2023'.",
+        "2": "③번은 옳음. since + 시점(2020). 계속의 현재완료.",
+        "They have known each other since 2020.": "③번은 옳음. since + 시점(2020). 계속의 현재완료.",
+        "3": "④번이 틀림. 현재완료 + ago 불가. 'visited Japan two months ago'(단순과거).",
+        "We have visited Japan two months ago.": "④번이 틀림. 현재완료 + ago 불가. 'visited Japan two months ago'(단순과거).",
+        "4": "⑤번이 틀림. yesterday(과거 특정 시점) + 현재완료 불가. 'went to school yesterday'.",
+        "She has gone to school yesterday.": "⑤번이 틀림. yesterday(과거 특정 시점) + 현재완료 불가. 'went to school yesterday'."
+      },
+      "choices": [
+        "Hula has been a part of Hawaiian life for a long time.",
+        "I have studied English since three years ago.",
+        "They have known each other since 2020.",
+        "We have visited Japan two months ago.",
+        "She has gone to school yesterday."
+      ],
+      "answer_indices": [
+        0,
+        2
+      ],
+      "prompt": "다음 ①~⑤ 중 어법상 옳은 두 문장을 고르세요."
+    },
+    {
+      "id": "M-MULTI-OK-L4-02",
+      "focus_group": "multi_grammar",
+      "polarity": "correct",
+      "answer_count": 2,
+      "type": "choice_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "choice_blank",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "so~that 옳은 문장 다중정답",
+      "instruction": "어법상 옳은 문장을 모두 고르세요. (정답 2개)",
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "page": 71,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번은 옳음. so + 형용사(simple) + that. 정확한 어순.",
+        "These gestures are so simple that you can easily remember them.": "①번은 옳음. so + 형용사(simple) + that. 정확한 어순.",
+        "1": "②번이 틀림. 'so a hot day' 어순 불가 → 'so hot a day' 또는 'such a hot day'. so 뒤에는 형용사가 바로 옴.",
+        "It was so a hot day that we couldn't go out.": "②번이 틀림. 'so a hot day' 어순 불가 → 'so hot a day' 또는 'such a hot day'. so 뒤에는 형용사가 바로 옴.",
+        "2": "③번은 옳음. so + 형용사(delicious) + that.",
+        "The food was so delicious that I ate everything.": "③번은 옳음. so + 형용사(delicious) + that.",
+        "3": "④번이 틀림. 'fastly'는 단어 자체가 틀림. fast는 부사 그대로 'so fast that'.",
+        "He runs so fastly that no one can catch him.": "④번이 틀림. 'fastly'는 단어 자체가 틀림. fast는 부사 그대로 'so fast that'.",
+        "4": "⑤번이 틀림. 'so kind person' 어순 불가 → 'so kind a person' 또는 'such a kind person'. so + 형용사 + a + 명사.",
+        "She is so kind person that everyone likes her.": "⑤번이 틀림. 'so kind person' 어순 불가 → 'so kind a person' 또는 'such a kind person'. so + 형용사 + a + 명사."
+      },
+      "choices": [
+        "These gestures are so simple that you can easily remember them.",
+        "It was so a hot day that we couldn't go out.",
+        "The food was so delicious that I ate everything.",
+        "He runs so fastly that no one can catch him.",
+        "She is so kind person that everyone likes her."
+      ],
+      "answer_indices": [
+        0,
+        2
+      ],
+      "prompt": "다음 ①~⑤ 중 어법상 옳은 두 문장을 고르세요."
     }
   ],
   "vocab_drill": [

@@ -1,9 +1,9 @@
 __loadLesson({
   "lesson": 2,
   "title": "Lesson 2: Now One Foot, Now the Other",
-  "version": "3.17",
+  "version": "3.18",
   "build_date": "2026-05-12",
-  "build_note": "v3.17 — L2 영영풀이 8(standalone)+3(문맥형)+영어동의어 4 = 15문항 추가 (6/04 발주, match 재사용)",
+  "build_note": "v3.18 — multi_focus(모두고르기 5분) 1차: 기존 어법 다답형 4(Q-MULTI-AWK-L2)에 focus_group/polarity/answer_count 메타 부착 + positive polarity 신규 2(M-MULTI-OK-L2-01/02, 옳은 것 모두 고르기). exam_prep+multi_focus 양쪽 노출 (6/04 multi_focus 발주)",
   "core_sentences": [
     {
       "id": "CS01",
@@ -4588,6 +4588,9 @@ __loadLesson({
     },
     {
       "id": "Q-MULTI-AWK-L2-001",
+      "focus_group": "multi_grammar",
+      "polarity": "awkward",
+      "answer_count": 2,
       "type": "choice_blank",
       "phase": "exam_prep",
       "training_layer": "skill_focus",
@@ -4631,6 +4634,9 @@ __loadLesson({
     },
     {
       "id": "Q-MULTI-AWK-L2-002",
+      "focus_group": "multi_grammar",
+      "polarity": "awkward",
+      "answer_count": 2,
       "type": "choice_blank",
       "phase": "exam_prep",
       "training_layer": "skill_focus",
@@ -4674,6 +4680,9 @@ __loadLesson({
     },
     {
       "id": "Q-MULTI-AWK-L2-003",
+      "focus_group": "multi_grammar",
+      "polarity": "awkward",
+      "answer_count": 2,
       "type": "choice_blank",
       "phase": "exam_prep",
       "training_layer": "skill_focus",
@@ -4717,6 +4726,9 @@ __loadLesson({
     },
     {
       "id": "Q-MULTI-AWK-L2-004",
+      "focus_group": "multi_grammar",
+      "polarity": "awkward",
+      "answer_count": 2,
       "type": "choice_blank",
       "phase": "exam_prep",
       "training_layer": "skill_focus",
@@ -5987,6 +5999,98 @@ __loadLesson({
       "correct": 0,
       "exam_pattern": "영어동의어",
       "training_layer": "skill_focus"
+    },
+    {
+      "id": "M-MULTI-OK-L2-01",
+      "focus_group": "multi_grammar",
+      "polarity": "correct",
+      "answer_count": 2,
+      "type": "choice_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "choice_blank",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "to부정사 옳은 문장 다중정답",
+      "instruction": "어법상 옳은 문장을 모두 고르세요. (정답 2개)",
+      "linked_rule_ids": [
+        "GR01"
+      ],
+      "page": 32,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번은 옳음. decide + to부정사 (decided to help).",
+        "Bobby decided to help his grandfather walk again.": "①번은 옳음. decide + to부정사 (decided to help).",
+        "1": "②번이 틀림. want는 to부정사를 목적어로 — 'wanted to walk'. 동사원형 walk 불가.",
+        "Bob wanted walk again with Bobby's help.": "②번이 틀림. want는 to부정사를 목적어로 — 'wanted to walk'. 동사원형 walk 불가.",
+        "2": "③번은 옳음. 'It's time to + 동사원형' (to build). L2 CS06 어법.",
+        "It's time to build a tower together.": "③번은 옳음. 'It's time to + 동사원형' (to build). L2 CS06 어법.",
+        "3": "④번이 틀림. finish는 동명사를 목적어로 — 'finished doing'. to부정사 불가.",
+        "Bobby finished to do his homework.": "④번이 틀림. finish는 동명사를 목적어로 — 'finished doing'. to부정사 불가.",
+        "4": "⑤번이 틀림. hope는 to부정사를 목적어로 — 'hoped to recover'. 동명사 recovering 불가.",
+        "They hoped recovering soon.": "⑤번이 틀림. hope는 to부정사를 목적어로 — 'hoped to recover'. 동명사 recovering 불가."
+      },
+      "choices": [
+        "Bobby decided to help his grandfather walk again.",
+        "Bob wanted walk again with Bobby's help.",
+        "It's time to build a tower together.",
+        "Bobby finished to do his homework.",
+        "They hoped recovering soon."
+      ],
+      "answer_indices": [
+        0,
+        2
+      ],
+      "prompt": "다음 ①~⑤ 중 어법상 옳은 두 문장을 고르세요."
+    },
+    {
+      "id": "M-MULTI-OK-L2-02",
+      "focus_group": "multi_grammar",
+      "polarity": "correct",
+      "answer_count": 2,
+      "type": "choice_blank",
+      "phase": "exam_prep",
+      "training_layer": "skill_focus",
+      "test_task": "choice_blank",
+      "difficulty": "B",
+      "is_bridge_item": false,
+      "hint": "",
+      "core_sentence_id": "",
+      "exam_pattern": "",
+      "keyword": "관계대명사 옳은 문장 다중정답",
+      "instruction": "어법상 옳은 문장을 모두 고르세요. (정답 2개)",
+      "linked_rule_ids": [
+        "GR02"
+      ],
+      "page": 33,
+      "recovery_band": "A",
+      "wrong_explanations": {
+        "0": "①번은 옳음. 사람(person)을 who로 받음. L2 GR02.",
+        "Bob is the person who taught Bobby how to walk.": "①번은 옳음. 사람(person)을 who로 받음. L2 GR02.",
+        "1": "②번이 틀림. hospital(사물)은 who로 못 받음 → which/that 필요. L2 본문 변형 함정.",
+        "He is in a hospital who is far from here.": "②번이 틀림. hospital(사물)은 who로 못 받음 → which/that 필요. L2 본문 변형 함정.",
+        "2": "③번은 옳음. 사물(song) + that.",
+        "She likes the song that makes her happy.": "③번은 옳음. 사물(song) + that.",
+        "3": "④번이 틀림. friend(사람)는 which로 못 받음 → who/that 필요.",
+        "I have a friend which can speak three languages.": "④번이 틀림. friend(사람)는 which로 못 받음 → who/that 필요.",
+        "4": "⑤번이 틀림. girl(3인칭 단수) → who plays. play 불가.",
+        "I know a girl who play the violin.": "⑤번이 틀림. girl(3인칭 단수) → who plays. play 불가."
+      },
+      "choices": [
+        "Bob is the person who taught Bobby how to walk.",
+        "He is in a hospital who is far from here.",
+        "She likes the song that makes her happy.",
+        "I have a friend which can speak three languages.",
+        "I know a girl who play the violin."
+      ],
+      "answer_indices": [
+        0,
+        2
+      ],
+      "prompt": "다음 ①~⑤ 중 어법상 옳은 두 문장을 고르세요."
     }
   ],
   "vocab_drill": [
