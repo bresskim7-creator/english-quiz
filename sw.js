@@ -1,4 +1,5 @@
-const CACHE_NAME = 'quiz-v142';
+const CACHE_NAME = 'quiz-v143';
+// v143 (2026-06-05): '모두고르기 5분' 버튼 미노출 버그 수정 — #english-mode-selector를 2열 wrap(flex-wrap)로 변경. 모드 버튼 4개가 한 줄(nowrap, max-width 300px)에 안 들어가 4번째 버튼이 모바일 화면 밖으로 잘리던 문제. CSS만 수정, 로직·데이터·generateMultiFocusSession 불변. 캐시 강제 갱신용.
 // v142 (2026-06-05): multi_focus 세션 mix 조정 — 예열1/awkward3/correct2(4-6번 내부 셔플로 polarity 위치 추측 차단). generateMultiFocusSession()만 수정, 데이터·GAS·로깅 불변. 캐시 강제 갱신용.
 // v141 (2026-06-04): multi_focus("모두고르기 5분") 1차 — 평시 전용 얇은 모드 신설. 영어 L2/L4(기말범위)에서 D-day 무관 상시 노출. generateMultiFocusSession() 신규(generateExamPrepSession 불변), 기존 어법 다답형 8(Q-MULTI-AWK)에 focus_group/polarity 메타 부착 + positive polarity 신규 4(M-MULTI-OK, 옳은 것 모두 고르기). 다답 로깅 보강(count_mismatch/likely_polarity_miss → 조건읽기실수 컬럼 재활용, GAS 무수정). lesson2 v3.18·lesson4 v1.11. 캐시 강제 갱신용.
 // v140 (2026-06-04): L4 어휘 영영풀이·영어동의어 유형 신설 — lesson4.js에 match 15문항 추가(standalone 8 + 문맥형 3 + 동의어 4 context형). L2(v139)와 대칭, 실제 시험(영영→영어) 형식 정렬. 렌더러 변경 없음, 데이터만. 캐시 강제 갱신용.

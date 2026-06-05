@@ -957,6 +957,9 @@
         .exam-perf-mode-btn { border-color: #4B5563 !important; color: #4B5563 !important; white-space: normal; }
         .exam-perf-mode-btn.active { background: #4B5563 !important; color: white !important; border-color: #4B5563 !important; }
         .exam-perf-frame { margin: 8px 0 12px; padding: 8px 10px; border-left: 4px solid #4B5563; background: #F3F4F6; border-radius: 0 8px 8px 0; font-size: 12px; font-weight: 700; color: #374151; }
+        /* 영어 모드 셀렉터: 모드 버튼 4개(단어/문장/실전대비/모두고르기) → 2열 wrap. 한 줄(nowrap) 고정 시 4번째 '모두고르기 5분' 버튼이 화면 밖으로 잘려 미노출되던 문제 해결. */
+        #english-mode-selector { flex-wrap: wrap; width: 90%; max-width: 320px; }
+        #english-mode-selector .mode-btn { flex: 0 0 calc(50% - 5px); white-space: normal; }
         /* 국어 모드 셀렉터: 2x2 그리드 */
         #korean-mode-selector { flex-wrap: wrap; width: 90%; max-width: 320px; }
         #korean-mode-selector .mode-btn { flex: 0 0 calc(50% - 5px); white-space: normal; border-color: #6B4C9A; color: #6B4C9A; font-size: 14px; padding: 14px 8px; }
@@ -1981,8 +1984,8 @@
         let hintUsedThisQuestion = false;
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
-        const BUILD_VERSION = '2026-06-05 v142';
-        const APP_CACHE_NAME = 'quiz-v142';
+        const BUILD_VERSION = '2026-06-05 v143';
+        const APP_CACHE_NAME = 'quiz-v143';
 
         function safeSetItem(key, value) {
             try {
