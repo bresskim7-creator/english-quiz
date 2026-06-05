@@ -1981,8 +1981,8 @@
         let hintUsedThisQuestion = false;
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
-        const BUILD_VERSION = '2026-06-04 v140';
-        const APP_CACHE_NAME = 'quiz-v140';
+        const BUILD_VERSION = '2026-06-05 v142';
+        const APP_CACHE_NAME = 'quiz-v142';
 
         function safeSetItem(key, value) {
             try {
@@ -2338,6 +2338,7 @@
                 }
             }
             if (QUIZ_DATA) renderExamPerfModeButton();
+            if (QUIZ_DATA) renderMultiFocusModeButton();
         }
 
         function saveExamDday() {
@@ -3307,6 +3308,7 @@
                 }
             }
             renderExamPerfModeButton();
+            renderMultiFocusModeButton();
         }
 
         // B-2: Select learning mode
@@ -3315,6 +3317,8 @@
             document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
             if (mode === 'exam_perf') {
                 document.querySelectorAll('.exam-perf-mode-btn').forEach(btn => btn.classList.add('active'));
+            } else if (mode === 'multi_focus') {
+                document.getElementById('mode-multi-focus')?.classList.add('active');
             } else if (mode === 'drill') {
                 document.getElementById('mode-btn-drill')?.classList.add('active');
             } else if (mode === 'vocab') {
@@ -3718,6 +3722,70 @@
             return session.slice(0, TARGET);
         }
 
+        // multi_focus("모두고르기 5분") 세션 엔진 — generateExamPrepSession와 완전 독립.
+        // 6문항 고정, 시퀀스: 1 예열 / 2-3 awkward(어색한 것 모두) / 4-6 correct(옳은 것 모두)2 + awkward1(내부 셔플).
+        // 각 레이어 내부만 셔플(위치 패턴 암기 차단). 풀이 6 미달이면 있는 만큼 + 잔여 풀로 보충.
+        function generateMultiFocusSession() {
+            if (!QUIZ_DATA || !Array.isArray(QUIZ_DATA.questions)) return [];
+            const all = QUIZ_DATA.questions.filter(q => !HIDDEN_TYPES.has(q.type));
+            const pool = all.filter(q => q.focus_group === 'multi_grammar');
+
+            const singles = pool.filter(q => q.answer_count === 1);
+            const awkward = pool.filter(q => q.polarity === 'awkward');
+            const correct = pool.filter(q => q.polarity === 'correct');
+            shuffleArray(singles);
+            shuffleArray(awkward);
+            shuffleArray(correct);
+
+            // L1 (1번): 단일 예열 1개. 풀에 단일형(answer_count:1)이 없으면 기존 어법 단답 1개로 대체.
+            let warm = singles.slice(0, 1);
+            if (warm.length === 0) {
+                const grammarSingle = all.filter(q =>
+                    (q.type === 'fill_blank' || q.type === 'choice_blank') &&
+                    q.phase === 'exam_prep' &&
+                    q.focus_group !== 'multi_grammar' &&
+                    !(Array.isArray(q.answer_indices) && q.answer_indices.length > 0) &&
+                    Array.isArray(q.linked_rule_ids) && q.linked_rule_ids.length > 0
+                );
+                shuffleArray(grammarSingle);
+                warm = grammarSingle.slice(0, 1);
+            }
+
+            // L2 (2-3번): awkward 2개 (앞 블록 — blocked 연습, 레이어 내부 셔플은 위에서 완료)
+            const awkFront = awkward.slice(0, 2);
+
+            // L3 (4-6번): correct 2 + awkward 1, 내부 셔플 → polarity 위치 추측 차단
+            const back = [];
+            back.push(...correct.slice(0, 2));            // correct 최대 2
+            if (awkward.length > 2) back.push(awkward[2]); // 남은 awkward 1
+            shuffleArray(back);
+
+            let session = [...warm, ...awkFront, ...back];
+
+            // 중복 제거
+            const seen = new Set();
+            session = session.filter(q => {
+                if (!q || seen.has(q.id)) return false;
+                seen.add(q.id);
+                return true;
+            });
+
+            // 6 미달 시 잔여 multi_grammar 풀에서 보충 (있는 만큼).
+            // correct 과노출 방지(풀 확장 대비) → 보충은 awkward 우선, correct 후순위.
+            if (session.length < 6) {
+                const rest = pool.filter(q => !seen.has(q.id));
+                shuffleArray(rest);
+                rest.sort((a, b) => (a.polarity === 'correct' ? 1 : 0) - (b.polarity === 'correct' ? 1 : 0));
+                for (const q of rest) {
+                    if (session.length >= 6) break;
+                    session.push(q);
+                    seen.add(q.id);
+                }
+            }
+
+            return session.slice(0, 6);
+        }
+
         // 국어 실전대비 세션: passage_group 단위 묶음 출제
         function generateKoreanExamPrepSession(examPrepQuestions) {
             const passageCheck = examPrepQuestions.filter(q => q.training_layer === 'passage_check');
@@ -3977,6 +4045,32 @@
             if (currentMode === 'exam_perf') btn.classList.add('active');
         }
 
+        // multi_focus("모두고르기 5분") — 평시 전용 얇은 모드 버튼
+        // 노출 조건: 영어 AND 기말범위 단원(L2/L4) AND multi_grammar 풀 존재. D-day 게이트 없음(평시 상시).
+        function renderMultiFocusModeButton() {
+            document.querySelectorAll('.multi-focus-mode-btn').forEach(btn => btn.remove());
+            if (currentSubject !== 'english') return;
+            const ln = Number(currentLesson);
+            if (!(ln === 2 || ln === 4)) return;
+            if (!QUIZ_DATA || !Array.isArray(QUIZ_DATA.questions)) return;
+            const hasPool = QUIZ_DATA.questions.some(q => q.focus_group === 'multi_grammar' && !HIDDEN_TYPES.has(q.type));
+            if (!hasPool) return;
+
+            const container = document.getElementById('english-mode-selector');
+            if (!container) return;
+            document.getElementById('mode-selector-container').style.display = 'block';
+            document.getElementById('mode-preparing-msg').style.display = 'none';
+            container.style.display = 'flex';
+
+            const btn = document.createElement('button');
+            btn.className = 'mode-btn multi-focus-mode-btn';
+            btn.id = 'mode-multi-focus';
+            btn.innerHTML = '모두고르기 5분<span class="mode-desc">조건·정답개수</span>';
+            btn.onclick = () => selectAndStart('multi_focus');
+            container.appendChild(btn);
+            if (currentMode === 'multi_focus') btn.classList.add('active');
+        }
+
         function prepareExamPerfQuestion(q) {
             const copy = { ...q };
             const variants = q.exam_perf_variants || {};
@@ -4091,6 +4185,29 @@
                     score_groups: currentSession.map(q => q.score_group || q.recovery_band || '')
                 };
                 document.querySelector('.header-title').textContent = getHeaderTitle('시험 수행');
+                showPage('quiz-page');
+                showQuestion();
+                return;
+            }
+
+            // multi_focus("모두고르기 5분") — 평시 전용 얇은 모드. generateExamPrepSession와 독립.
+            if (currentMode === 'multi_focus') {
+                currentSession = generateMultiFocusSession();
+                if (!currentSession || currentSession.length === 0) {
+                    alert('이 단원은 모두고르기 문항을 준비 중입니다.');
+                    return;
+                }
+                currentQuestionIndex = 0;
+                sessionAnswers = [];
+                sessionStartTime = Date.now();
+                currentSessionMeta = {
+                    type: 'multi_focus',
+                    lesson: currentLesson,
+                    mode: currentMode,
+                    size: currentSession.length,
+                    score_groups: currentSession.map(q => q.score_group || q.recovery_band || '')
+                };
+                document.querySelector('.header-title').textContent = getHeaderTitle('모두고르기 5분');
                 showPage('quiz-page');
                 showQuestion();
                 return;
@@ -5681,7 +5798,19 @@
                 submitBtn.style.cursor = 'not-allowed';
             }
 
-            recordAnswer(q, isCorrect);
+            // [multi_focus 1차] 다답 세부 메트릭 — 조건읽기/polarity 오독 분리 로깅
+            const need = correctSet.size;
+            const selected_count = selectedSet.size;
+            const correct_hit_count = [...selectedSet].filter(i => correctSet.has(i)).length;
+            const count_mismatch = selected_count !== need;                                  // 정답 개수 오독
+            const likely_polarity_miss = (selected_count === need && correct_hit_count < need); // 개수는 맞췄으나 오선택(반대 polarity 후보 — hit<need, 확정 아님)
+            recordAnswer(q, isCorrect, {
+                need: need,
+                selected_count: selected_count,
+                correct_hit_count: correct_hit_count,
+                count_mismatch: count_mismatch,
+                likely_polarity_miss: likely_polarity_miss
+            });
             if (!isCorrect) {
                 // [06b A-1 + Codex Q1] 다중정답 전용 wrong explanation — 인덱스별 해설 표시
                 showWrongExplanationMulti(q, document.getElementById('fill-blank-container'), selectedSet, correctSet);
@@ -6135,7 +6264,7 @@
         }
 
         // 답변 기록 - B-8: Fallback field support
-        function recordAnswer(q, isCorrect) {
+        function recordAnswer(q, isCorrect, extra) {
             playSound(isCorrect ? 'correct' : 'incorrect');
             // 정답이면 0.5초 후 문장 읽어주기 (드릴 모드만, 실전대비는 제외, 국어는 제외)
             if (isCorrect && currentMode === 'drill' && currentSubject !== 'korean') {
@@ -6157,7 +6286,9 @@
                 exam_perf: q._exam_perf ? 'Y' : '',
                 exam_perf_variants: q._exam_perf_variants ? q._exam_perf_variants.join('|') : '',
                 time_limit_sec: q._exam_time_limit || '',
-                phase: q.phase || ''
+                phase: q.phase || '',
+                polarity: q.polarity || '',
+                ...(extra || {})
             });
 
             if (!questionHistory[q.id]) {
@@ -6698,6 +6829,19 @@
             const metrics = compute4Metrics(sessionAnswers);
             const examPerfFields = getExamPerfLogFields();
 
+            // [multi_focus 1차] 평시 다답 모드: 조건읽기실수 컬럼(condition_miss) 재활용.
+            // exam_perf 전용 updateExamPerfMetrics는 평시에 미작동 → 세션 답안에서 직접 집계.
+            // condition_miss = Σ(정답개수 오독) + Σ(개수는 맞췄으나 반대 polarity 선택).
+            let multiFocusConditionMiss = '';
+            if (currentMode === 'multi_focus') {
+                let sum = 0;
+                sessionAnswers.forEach(a => {
+                    if (a.count_mismatch) sum++;
+                    if (a.likely_polarity_miss) sum++;
+                });
+                multiFocusConditionMiss = sum;
+            }
+
             const log = {
                 lesson: currentLesson || 1,
                 subject: currentSubject,
@@ -6713,12 +6857,22 @@
                 type_breakdown: typeBreakdown,
                 hint_count: hintCount,
                 metrics: metrics,
-                condition_miss: examPerfFields.condition_miss,
+                condition_miss: currentMode === 'multi_focus' ? multiFocusConditionMiss : examPerfFields.condition_miss,
                 omr_miss: examPerfFields.omr_miss,
                 time_complete: examPerfFields.time_complete,
-                details: sessionAnswers.map(a =>
-                    a.id + (a.correct ? '✓' : '✗') + a.time_sec + 's' + (a.hint_used ? '💡' : '')
-                ).join(', '),
+                details: sessionAnswers.map(a => {
+                    let s = a.id + (a.correct ? '✓' : '✗') + a.time_sec + 's' + (a.hint_used ? '💡' : '');
+                    // [multi_focus 1차] 다답 세부 인코딩: [need2,sel1,hit1,pol=awk,countMiss]
+                    if (a.need != null && a.selected_count != null) {
+                        const flags = [];
+                        if (a.count_mismatch) flags.push('countMiss');
+                        if (a.likely_polarity_miss) flags.push('polMiss');
+                        const polShort = a.polarity === 'awkward' ? 'awk' : (a.polarity === 'correct' ? 'ok' : a.polarity);
+                        const polTag = polShort ? ',pol=' + polShort : '';
+                        s += '[need' + a.need + ',sel' + a.selected_count + ',hit' + a.correct_hit_count + polTag + (flags.length ? ',' + flags.join(',') : '') + ']';
+                    }
+                    return s;
+                }).join(', '),
                 questions: sessionAnswers,
                 timestamp: new Date().toISOString(),
                 partial: false
