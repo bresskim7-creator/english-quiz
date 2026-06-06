@@ -1,4 +1,5 @@
-const CACHE_NAME = 'quiz-v148';
+const CACHE_NAME = 'quiz-v149';
+// v149 (2026-06-06): 과학 개념카드 추가 그림 5개 배선 — CC-01(sci_earth_system)·CC-02(sci_earth_interior_card)·CC-16(sci_mineral_props)·CC-14(sci_plate_boundary)·PW-02(sci_wave_elements)에 visual_img 추가 + img/ PNG 5개 프리캐시 등재. (v148 헤더가 선기재돼 있었으나 실제 배선은 본 버전에서 완료.) 데이터만, 렌더러 불변. 캐시 강제 갱신용.
 // v148 (2026-06-06): 기말 과학 v3 — 실적중 문항 17 추가(파동 L3-W09~17, 지권 S2-E045~052) + 그림(L3-W17/S2-E052 SVG, S2-E051 이미지) + 개념카드 이미지 5개(visual_img) + renderVisualMedia(img>svg>none). img/ PNG 5개 프리캐시. 캐시 강제 갱신용.
 // v147 (2026-06-06): 기말 과학 콘텐츠 — sci2 지권 보강(CC-16/17·S2-E039~044) + sci3 파동 신규(PW·L3-W, 빛 scope_out) + sci4 식물 신규 단원. index.html FINALS_MODE 숨김 메커니즘 + visual_svg 렌더 + 셀렉터 분기. lesson_sci4.js 프리캐시 추가. 캐시 강제 갱신용.
 // v146 (2026-06-05): 3차 갭팩 A(배열-N번째 선택형 Q-ARR-NTH-Lx-001~003, showPositionAsk word_bank 비파괴 분기)·E(문장삽입 Q-SENT-INS-Lx-001, 교과서 Reading verbatim). L2/L4 각 +4문항, skill_focus+exam_perf_variants(75s). lesson2 v3.20·lesson4 v1.13. 기존 P001~003·세션로직 불변. 캐시 강제 갱신용.
@@ -44,7 +45,12 @@ const PRECACHE_URLS = [
   './img/sci_sound_three.png',
   './img/sci_photosynthesis.png',
   './img/sci_rock_cycle.png',
-  './img/sci_photo_vs_resp.png'
+  './img/sci_photo_vs_resp.png',
+  './img/sci_earth_system.png',
+  './img/sci_earth_interior_card.png',
+  './img/sci_mineral_props.png',
+  './img/sci_plate_boundary.png',
+  './img/sci_wave_elements.png'
 ];
 
 // v133: daily v2 — paths that must be cached under a query-stripped (normalised) key.

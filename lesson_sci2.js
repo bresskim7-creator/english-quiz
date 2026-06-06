@@ -16,7 +16,8 @@ __loadLesson({
         "수권",
         "생물권",
         "외권"
-      ]
+      ],
+      "visual_img": "img/sci_earth_system.png"
     },
     {
       "id": "CC-02",
@@ -30,7 +31,8 @@ __loadLesson({
         "맨틀",
         "지각",
         "압력"
-      ]
+      ],
+      "visual_img": "img/sci_earth_interior_card.png"
     },
     {
       "id": "CC-17",
@@ -87,7 +89,8 @@ __loadLesson({
         "자철석",
         "방해석",
         "석영"
-      ]
+      ],
+      "visual_img": "img/sci_mineral_props.png"
     },
     {
       "id": "CC-05",
@@ -231,6 +234,7 @@ __loadLesson({
         "해구",
         "습곡산맥"
       ],
+      "visual_img": "img/sci_plate_boundary.png",
       "scope_out": true
     },
     {

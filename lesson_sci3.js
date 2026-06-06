@@ -235,7 +235,8 @@ __loadLesson({
         "골",
         "파장",
         "진폭"
-      ]
+      ],
+      "visual_img": "img/sci_wave_elements.png"
     },
     {
       "id": "PW-03",
