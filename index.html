@@ -1984,8 +1984,28 @@
         let hintUsedThisQuestion = false;
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
-        const BUILD_VERSION = '2026-06-05 v146';
-        const APP_CACHE_NAME = 'quiz-v146';
+        const BUILD_VERSION = '2026-06-06 v148';
+        const APP_CACHE_NAME = 'quiz-v148';
+
+        // ── 기말 과학 범위 숨김 (2026-06-06) ──
+        // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
+        //              + lesson_sci2/sci3.js의 scope_out 필드 제거 시 빛/판운동 콘텐츠도 부활.
+        const FINALS_MODE = true;
+        function inScope(item) { return !(FINALS_MODE && item && item.scope_out === true); }
+        function scopedItems(items) { return (items || []).filter(inScope); }
+
+        // 그림 렌더 공통 헬퍼 (2026-06-06 v3): 우선순위 visual_img > visual_svg > 없음. 중복 렌더 금지.
+        // 이미지 파일 누락 시 onerror로 컨테이너 숨김(빈 박스 방지).
+        function renderVisualMedia(item) {
+            if (!item) return '';
+            if (item.visual_img) {
+                return '<div class="mc-visual" style="margin-bottom:12px;text-align:center;overflow-x:auto;max-width:100%;"><img src="' + item.visual_img + '" alt="" style="max-width:100%;height:auto;border-radius:8px;" onerror="this.parentNode.style.display=\'none\'"></div>';
+            }
+            if (item.visual_svg) {
+                return '<div class="mc-visual" style="margin-bottom:12px;text-align:center;overflow-x:auto;max-width:100%;">' + item.visual_svg.replace(/<svg /, '<svg style="max-width:100%;height:auto;" ') + '</div>';
+            }
+            return '';
+        }
 
         function safeSetItem(key, value) {
             try {
@@ -2089,13 +2109,13 @@
                 const count = (QUIZ_DATA && QUIZ_DATA.procedure_drills) ? QUIZ_DATA.procedure_drills.length : 0;
                 el.textContent = count + '문제 · 약 10분';
             } else if (currentMode === 'social_concept' || currentMode === 'science_concept') {
-                const count = (QUIZ_DATA && QUIZ_DATA.concept_cards) ? QUIZ_DATA.concept_cards.length : 0;
+                // 기말 범위 필터 반영 (과학 sci2=13/sci3=6/sci4=6; 사회는 scope_out 없어 영향 없음)
+                const count = (QUIZ_DATA && QUIZ_DATA.concept_cards) ? scopedItems(QUIZ_DATA.concept_cards).length : 0;
                 el.textContent = count + '개 카드 · 약 5분';
             } else if (currentMode === 'exam_prep') {
-                // STEP98 / 2026-04-19c: 전 과목 실전대비 20문항 통일
-                // 사회/과학은 QUIZ_DATA.exam_prep, 그 외는 QUIZ_DATA.questions를 쓰지만
-                // 실제 세션 생성기는 모두 20문항을 목표로 하므로 표시도 20으로 통일.
-                el.textContent = '20문항 · 약 20분';
+                // 2026-06-06: 기말 범위 필터 후 실제 인스코프 수 표시(sci3 파동=8, sci4 식물=8 등 20 미만 단원 오인 방지)
+                const epCount = (QUIZ_DATA && QUIZ_DATA.exam_prep) ? Math.min(20, scopedItems(QUIZ_DATA.exam_prep).length) : 20;
+                el.textContent = epCount + '문항 · 약 20분';
             } else {
                 const total = QUIZ_DATA && QUIZ_DATA.questions ? Math.min(30, QUIZ_DATA.questions.length) : 30;
                 el.textContent = total + '문항 · 약 20분';
@@ -2527,10 +2547,19 @@
                 await loadLesson('soc1');
             } else if (subject === 'science') {
                 lessonRow.querySelector('.setting-label').textContent = '단원';
-                lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-sci1" onclick="selectLesson(\'sci1\')">1단원</button>' +
-                    '<button class="lesson-btn" id="lesson-btn-sci2" onclick="selectLesson(\'sci2\')">2단원</button>' +
-                    '<button class="lesson-btn" id="lesson-btn-sci3" onclick="selectLesson(\'sci3\')">3단원</button>';
-                await loadLesson('sci1');
+                if (FINALS_MODE) {
+                    // 기말: 지권(보강)/파동(sci3 빛 숨김)/식물(sci4 신규). 기본 진입=지권.
+                    lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-sci2" onclick="selectLesson(\'sci2\')">지권</button>' +
+                        '<button class="lesson-btn" id="lesson-btn-sci3" onclick="selectLesson(\'sci3\')">파동</button>' +
+                        '<button class="lesson-btn" id="lesson-btn-sci4" onclick="selectLesson(\'sci4\')">식물</button>';
+                    await loadLesson('sci2');
+                } else {
+                    lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-sci1" onclick="selectLesson(\'sci1\')">1단원</button>' +
+                        '<button class="lesson-btn" id="lesson-btn-sci2" onclick="selectLesson(\'sci2\')">2단원</button>' +
+                        '<button class="lesson-btn" id="lesson-btn-sci3" onclick="selectLesson(\'sci3\')">3단원</button>' +
+                        '<button class="lesson-btn" id="lesson-btn-sci4" onclick="selectLesson(\'sci4\')">4단원</button>';
+                    await loadLesson('sci1');
+                }
             } else {
                 lessonRow.querySelector('.setting-label').textContent = 'Lesson';
                 lessonSelector.innerHTML =
@@ -3239,8 +3268,8 @@
                 document.getElementById('social-mode-selector').style.display = 'none';
                 document.getElementById('science-mode-selector').style.display = 'flex';
 
-                const hasSciCC = QUIZ_DATA.concept_cards && QUIZ_DATA.concept_cards.length > 0;
-                const hasSciEP = QUIZ_DATA.exam_prep && QUIZ_DATA.exam_prep.length > 0;
+                const hasSciCC = scopedItems(QUIZ_DATA.concept_cards).length > 0;  // 기말: 전부 scope_out인 단원은 '준비됨' 미표시
+                const hasSciEP = scopedItems(QUIZ_DATA.exam_prep).length > 0;
 
                 if (hasSciCC || hasSciEP) {
                     document.getElementById('mode-selector-container').style.display = 'block';
@@ -7335,13 +7364,13 @@
         // 사회/과학 공통: 개념정리 + 실전문제 세션 엔진
         // =========================================================
         function generateStudyConceptSession() {
-            const cards = QUIZ_DATA.concept_cards || [];
+            const cards = scopedItems(QUIZ_DATA.concept_cards);  // 기말 범위 필터 후 평일 5장 제한
             const limited = limitConceptCards(cards);
             return limited.map(c => ({...c, type: 'study_concept_card'}));
         }
 
         function generateStudyExamSession() {
-            const questions = QUIZ_DATA.exam_prep || [];
+            const questions = scopedItems(QUIZ_DATA.exam_prep);  // 기말 범위 필터
             if (questions.length === 0) return [];
             // 2026-05-14: A/B/C 그룹별 추출 제거 → 단순 무작위 20문항
             const pool = [...questions];
@@ -7387,7 +7416,7 @@
                         <div class="mc-tap">탭하면 설명 보기</div>
                     </div>
                     <div class="mc-back">
-                        ${q.visual_svg ? `<div class="mc-visual" style="margin-bottom:12px;text-align:center;overflow-x:auto;max-width:100%;">${q.visual_svg.replace(/<svg /,'<svg style="max-width:100%;height:auto;" ')}</div>` : ''}
+                        ${renderVisualMedia(q)}
                         <div class="mc-easy" style="font-size:16px;line-height:1.7;margin-bottom:12px;">💡 ${highlightText(q.easy_explanation, q.term)}</div>
                         <div class="mc-def" style="font-size:13px;color:#888;border-top:1px solid #eee;padding-top:8px;">📖 교과서 표현: ${highlightText(q.definition, q.term)}</div>
                         ${q.exam_tip ? `<div class="mc-tip" style="margin-top:8px;">🎯 ${highlightText(q.exam_tip, q.term)}</div>` : ''}
@@ -7405,6 +7434,8 @@
             const subjectColor = currentSubject === 'social' ? '#2E7D32' : '#1565C0';
 
             let sentenceHtml = q.sentence ? `<div style="font-size:15px;line-height:1.7;margin-bottom:16px;white-space:pre-line;background:#F1F8E9;padding:12px;border-radius:8px;">${q.sentence}</div>` : '';
+            // 그림 문항 렌더 — visual_img(이미지) 우선, 없으면 visual_svg (renderVisualMedia)
+            let visualHtml = renderVisualMedia(q);
             let questionHtml = q.question ? `<div style="font-size:15px;font-weight:600;margin-bottom:12px;">${q.question.replace(/(틀린|아닌|않는|없는|못한|아닌 것|틀린 것|해당하지 않는|거리가 먼|적절하지 않은|올바르지 않은)/g, '<span style="color:#E53935;font-weight:700;text-decoration:underline;text-decoration-color:#E53935;">\$1</span>')}</div>` : '';
 
             // 보기 셔플
@@ -7418,7 +7449,7 @@
                 return `<button class="option-btn" style="display:block;width:100%;text-align:left;padding:12px 16px;margin-bottom:8px;border:2px solid #ddd;border-radius:10px;background:white;font-size:15px;cursor:pointer;line-height:1.5;" onclick="checkStudyChoice(this, ${i})">${label} ${item.opt}</button>`;
             }).join('');
 
-            container.innerHTML = sentenceHtml + questionHtml + `<div id="study-options">${optionsHtml}</div>`;
+            container.innerHTML = sentenceHtml + visualHtml + questionHtml + `<div id="study-options">${optionsHtml}</div>`;
             document.getElementById('question-text').innerHTML = q.instruction || '';
             document.getElementById('btn-hint').style.display = q.hint ? '' : 'none';
             if (q.hint) {
@@ -7471,7 +7502,7 @@
 
             // 오답 시 관련 개념카드 보기 버튼
             if (!isCorrect && q.linked_concept && q.linked_concept.length > 0) {
-                const conceptCards = QUIZ_DATA.concept_cards || [];
+                const conceptCards = scopedItems(QUIZ_DATA.concept_cards);  // 숨김 카드 링크 방어
                 const linked = conceptCards.filter(c => q.linked_concept.includes(c.id));
                 if (linked.length > 0) {
                     const linkDiv = document.createElement('div');
@@ -7506,7 +7537,7 @@
                 <button onclick="document.getElementById('concept-popup-overlay').remove()" style="position:absolute;top:12px;right:12px;background:none;border:none;font-size:24px;cursor:pointer;color:#999;padding:4px 8px;">✕</button>
                 <div style="font-size:12px;color:${subjectColor};font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">📚 관련 개념카드</div>
                 <div style="font-size:20px;font-weight:700;color:#333;margin-bottom:16px;">${card.term}</div>
-                ${card.visual_svg ? `<div style="margin-bottom:16px;text-align:center;overflow-x:auto;max-width:100%;">${card.visual_svg.replace(/<svg /,'<svg style="max-width:100%;height:auto;" ')}</div>` : ''}
+                ${renderVisualMedia(card)}
                 <div style="font-size:16px;line-height:1.7;margin-bottom:16px;color:#333;">💡 ${highlightText(card.easy_explanation, card.term)}</div>
                 <div style="font-size:13px;color:#888;border-top:1px solid #eee;padding-top:10px;line-height:1.6;">📖 교과서 표현: ${highlightText(card.definition, card.term)}</div>
                 ${card.exam_tip ? `<div style="margin-top:10px;font-size:13px;background:#FFF8E1;padding:10px;border-radius:8px;line-height:1.5;">🎯 시험 팁: ${highlightText(card.exam_tip, card.term)}</div>` : ''}
