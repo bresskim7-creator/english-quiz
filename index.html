@@ -2543,8 +2543,16 @@
                 await loadLesson('math1');
             } else if (subject === 'social') {
                 lessonRow.querySelector('.setting-label').textContent = '단원';
-                lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-soc1" onclick="selectLesson(\'soc1\')">1단원</button><button class="lesson-btn" id="lesson-btn-soc2" onclick="selectLesson(\'soc2\')">2단원</button>';
-                await loadLesson('soc1');
+                if (FINALS_MODE) {
+                    // 기말: 3단원(시장과 가격, soc3 신규)/4단원(우리나라 경제와 세계화, soc4 신규). 기본 진입=3단원.
+                    // 복원: FINALS_MODE=false면 1·2단원(soc1/soc2) 노출로 자동 복귀.
+                    lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-soc3" onclick="selectLesson(\'soc3\')">3단원</button>' +
+                        '<button class="lesson-btn" id="lesson-btn-soc4" onclick="selectLesson(\'soc4\')">4단원</button>';
+                    await loadLesson('soc3');
+                } else {
+                    lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-soc1" onclick="selectLesson(\'soc1\')">1단원</button><button class="lesson-btn" id="lesson-btn-soc2" onclick="selectLesson(\'soc2\')">2단원</button>';
+                    await loadLesson('soc1');
+                }
             } else if (subject === 'science') {
                 lessonRow.querySelector('.setting-label').textContent = '단원';
                 if (FINALS_MODE) {

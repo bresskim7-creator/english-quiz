@@ -1,4 +1,5 @@
-const CACHE_NAME = 'quiz-v149';
+const CACHE_NAME = 'quiz-v150';
+// v150 (2026-06-07): 기말 사회 3·4단원 신규 — lesson_soc3.js(개념 13+문항 35)·lesson_soc4.js(개념 14+문항 33) 프리캐시 추가 + img/soc_*.png 5종 등재. index.html social FINALS_MODE 분기(soc3/soc4). 데이터만, 렌더러 불변. 캐시 강제 갱신용.
 // v149 (2026-06-06): 과학 개념카드 추가 그림 5개 배선 — CC-01(sci_earth_system)·CC-02(sci_earth_interior_card)·CC-16(sci_mineral_props)·CC-14(sci_plate_boundary)·PW-02(sci_wave_elements)에 visual_img 추가 + img/ PNG 5개 프리캐시 등재. (v148 헤더가 선기재돼 있었으나 실제 배선은 본 버전에서 완료.) 데이터만, 렌더러 불변. 캐시 강제 갱신용.
 // v148 (2026-06-06): 기말 과학 v3 — 실적중 문항 17 추가(파동 L3-W09~17, 지권 S2-E045~052) + 그림(L3-W17/S2-E052 SVG, S2-E051 이미지) + 개념카드 이미지 5개(visual_img) + renderVisualMedia(img>svg>none). img/ PNG 5개 프리캐시. 캐시 강제 갱신용.
 // v147 (2026-06-06): 기말 과학 콘텐츠 — sci2 지권 보강(CC-16/17·S2-E039~044) + sci3 파동 신규(PW·L3-W, 빛 scope_out) + sci4 식물 신규 단원. index.html FINALS_MODE 숨김 메커니즘 + visual_svg 렌더 + 셀렉터 분기. lesson_sci4.js 프리캐시 추가. 캐시 강제 갱신용.
@@ -37,6 +38,8 @@ const PRECACHE_URLS = [
   './lesson_math3.js',
   './lesson_soc1.js',
   './lesson_soc2.js',
+  './lesson_soc3.js',
+  './lesson_soc4.js',
   './lesson_sci1.js',
   './lesson_sci2.js',
   './lesson_sci3.js',
@@ -50,7 +53,12 @@ const PRECACHE_URLS = [
   './img/sci_earth_interior_card.png',
   './img/sci_mineral_props.png',
   './img/sci_plate_boundary.png',
-  './img/sci_wave_elements.png'
+  './img/sci_wave_elements.png',
+  './img/soc_supply_demand_curve.png',
+  './img/soc_curve_shift_vs_movement.png',
+  './img/soc_price_change_mindmap.png',
+  './img/soc_inflation_winners_losers.png',
+  './img/soc_exchange_rate_effects.png'
 ];
 
 // v133: daily v2 — paths that must be cached under a query-stripped (normalised) key.
