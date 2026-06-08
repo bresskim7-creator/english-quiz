@@ -1918,6 +1918,11 @@
             </div>
         </div>
 
+        <!-- 과학 마인드맵 허브 (science-hub-page, v1 2026-06-08) -->
+        <div id="science-hub-page" class="page">
+            <div id="science-hub-content"></div>
+        </div>
+
         <!-- Vocab Drill Page -->
         <div class="page" id="vocab-page">
             <div class="vocab-progress-bar"><div class="vocab-progress-fill" id="vocab-progress-fill"></div></div>
@@ -1985,8 +1990,9 @@
         let hintUsedThisQuestion = false;
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
-        const BUILD_VERSION = '2026-06-06 v149';
-        const APP_CACHE_NAME = 'quiz-v151';
+        let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
+        const BUILD_VERSION = '2026-06-08 v152';
+        const APP_CACHE_NAME = 'quiz-v152';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -4276,6 +4282,11 @@
             let modeLabel = '';
 
             if (currentMode === 'social_concept' || currentMode === 'science_concept') {
+                // 과학 마인드맵 허브 분기 — 과학 + mindmap 메타 있을 때만(타 과목/조건 미충족 시 기존 경로 그대로)
+                if (currentSubject === 'science' && QUIZ_DATA && QUIZ_DATA.mindmap) {
+                    renderMindmapHub();
+                    return;
+                }
                 currentSession = generateStudyConceptSession();
                 modeLabel = '개념 정리';
             } else if (currentMode === 'math_concept') {
@@ -7259,6 +7270,7 @@
 
         // 홈으로
         function goHome() {
+            currentMindmapBranch = null;
             currentSession = null;
             currentQuestionIndex = 0;
             sessionAnswers = [];
@@ -7424,10 +7436,154 @@
             return s;
         }
 
+        // ============================================================
+        // 과학 마인드맵 허브 (v1, 2026-06-08) — 과학 개념정리 한정 분기.
+        // 진입은 startSession()에서 currentSubject==='science' && QUIZ_DATA.mindmap 일 때만.
+        // limitConceptCards/scopedItems/generateStudyConceptSession 불변 — 허브 경로는 가지 카드만 직접 세션화(평일 5장 제한 우회).
+        // ============================================================
+        function getMindmapDone() {
+            try { return JSON.parse(localStorage.getItem('pa_mm_done_sci2') || '[]'); }
+            catch (e) { return []; }
+        }
+        function saveMindmapDone(arr) {
+            safeSetItem('pa_mm_done_sci2', JSON.stringify(arr));
+        }
+
+        function renderMindmapHub() {
+            currentMindmapBranch = null;
+            const mm = QUIZ_DATA.mindmap;
+            const branches = mm.branches;
+            const done = getMindmapDone();
+            const totalCards = branches.reduce((s, b) => s + (b.cards ? b.cards.length : 0), 0);
+            let doneCards = 0;
+            branches.forEach(b => { if (done.includes(b.no)) doneCards += (b.cards ? b.cards.length : 0); });
+            const doneBranches = branches.filter(b => done.includes(b.no)).length;
+            const nextBranch = branches.find(b => !done.includes(b.no));
+
+            const grid = branches.map(b => {
+                const num = String.fromCharCode(0x2460 + b.no - 1);
+                const isDone = done.includes(b.no);
+                const isZoom = b.action === 'zoom';
+                const cardCount = b.cards ? b.cards.length : 0;
+                const wingBorder = b.wing === 'L' ? '#1565C0' : '#E8821A';
+                const wingBg = isDone ? '#F1F8E9' : (b.wing === 'L' ? '#E3F2FD' : '#FFF3E0');
+                const sub = isZoom ? '전체 지도 보기' : ('카드 ' + cardCount + '장');
+                const dashed = isZoom ? 'border-style:dashed;' : '';
+                const check = isDone ? ' ✅' : '';
+                return '<button onclick="startMindmapBranch(' + b.no + ')" style="text-align:left;padding:12px 14px;border:2px solid ' + wingBorder + ';' + dashed + 'border-radius:12px;background:' + wingBg + ';cursor:pointer;font-size:15px;font-weight:600;color:#333;line-height:1.35;">' +
+                    num + ' ' + b.label + check +
+                    '<span style="display:block;font-size:12px;font-weight:400;color:#777;margin-top:3px;">' + sub + '</span>' +
+                    '</button>';
+            }).join('');
+
+            const continueBtn = nextBranch
+                ? '<button onclick="startMindmapBranch(' + nextBranch.no + ')" style="width:100%;margin-top:16px;padding:15px;font-size:16px;font-weight:600;background:#1565C0;color:white;border:none;border-radius:12px;cursor:pointer;">▶ 이어서 학습 (다음: ' + nextBranch.label + ')</button>'
+                : '<div style="margin-top:16px;padding:15px;text-align:center;background:#F1F8E9;border-radius:12px;color:#2E7D32;font-weight:600;">🎉 모든 가지를 끝냈어!</div>';
+
+            const html =
+                '<div style="font-size:18px;font-weight:700;color:#1565C0;text-align:center;margin:4px 0 10px;">' + mm.title + '</div>' +
+                '<div style="text-align:center;margin-bottom:12px;cursor:pointer;" onclick="openMindmapZoom()">' +
+                    '<img src="' + mm.img + '" alt="" style="max-width:100%;height:auto;border-radius:10px;border:1px solid #eee;" onerror="this.style.display=\'none\'">' +
+                    '<div style="font-size:12px;color:#999;margin-top:4px;">🔍 탭하면 크게 보기</div>' +
+                '</div>' +
+                '<div style="font-size:13px;color:#666;text-align:center;margin-bottom:14px;">가지 ' + doneBranches + '/' + branches.length + ' 완료 · 카드 ' + doneCards + '/' + totalCards + '</div>' +
+                '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">' + grid + '</div>' +
+                continueBtn +
+                '<button onclick="goHome()" style="width:100%;margin-top:10px;padding:12px;font-size:14px;background:#f0f0f0;color:#555;border:none;border-radius:10px;cursor:pointer;">← 과목으로 돌아가기</button>';
+
+            document.getElementById('science-hub-content').innerHTML = html;
+            document.querySelector('.header-title').textContent = getHeaderTitle('개념 정리');
+            showPage('science-hub-page');
+        }
+
+        function startMindmapBranch(branchNo) {
+            const mm = QUIZ_DATA.mindmap;
+            const branch = mm.branches.find(b => b.no === branchNo);
+            if (!branch) return;
+            if (branch.action === 'zoom') {
+                const done = getMindmapDone();
+                if (!done.includes(branch.no)) { done.push(branch.no); saveMindmapDone(done); }
+                renderMindmapHub();
+                openMindmapZoom();
+                return;
+            }
+            // scopedItems로 판운동(scope_out) 카드 원천 차단 후 가지 카드만 순서대로
+            const byId = {};
+            scopedItems(QUIZ_DATA.concept_cards).forEach(c => { byId[c.id] = c; });
+            const cards = (branch.cards || []).map(id => byId[id]).filter(Boolean);
+            if (cards.length === 0) { alert('이 가지는 카드를 준비 중입니다.'); return; }
+            currentMindmapBranch = branchNo;
+            currentSession = cards.map(c => ({ ...c, type: 'study_concept_card' }));
+            currentQuestionIndex = 0;
+            sessionAnswers = [];
+            sessionStartTime = Date.now();
+            currentSessionMeta = { type: 'science_concept', lesson: currentLesson, mode: currentMode, size: currentSession.length, branch: branchNo };
+            document.querySelector('.header-title').textContent = getHeaderTitle(branch.label);
+            showPage('quiz-page');
+            showQuestion();
+        }
+
+        function completeMindmapBranch() {
+            if (currentMindmapBranch != null) {
+                const done = getMindmapDone();
+                if (!done.includes(currentMindmapBranch)) { done.push(currentMindmapBranch); saveMindmapDone(done); }
+            }
+            currentSession = null;
+            currentQuestionIndex = 0;
+            renderMindmapHub();
+        }
+
+        function renderMinimapStrip() {
+            const mm = QUIZ_DATA.mindmap;
+            const done = getMindmapDone();
+            let h = '<div style="display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-bottom:14px;">';
+            mm.branches.forEach(b => {
+                const cur = b.no === currentMindmapBranch;
+                const isDone = done.includes(b.no);
+                const num = String.fromCharCode(0x2460 + b.no - 1);
+                const bg = cur ? '#1565C0' : (isDone ? '#C8E6C9' : '#eee');
+                const col = cur ? '#fff' : '#666';
+                h += '<span style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:' + bg + ';color:' + col + ';font-size:13px;font-weight:600;">' + num + '</span>';
+            });
+            return h + '</div>';
+        }
+
+        function openMindmapZoom() {
+            if (!QUIZ_DATA || !QUIZ_DATA.mindmap) return;
+            let ov = document.getElementById('mm-zoom-overlay');
+            if (!ov) {
+                ov = document.createElement('div');
+                ov.id = 'mm-zoom-overlay';
+                ov.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;display:flex;align-items:center;justify-content:center;padding:12px;';
+                ov.onclick = function () { ov.style.display = 'none'; };
+                const img = document.createElement('img');
+                img.id = 'mm-zoom-img';
+                img.style.cssText = 'max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;';
+                ov.appendChild(img);
+                document.body.appendChild(ov);
+            }
+            document.getElementById('mm-zoom-img').src = QUIZ_DATA.mindmap.img;
+            ov.style.display = 'flex';
+        }
+
         function showStudyConceptCard(q) {
             const container = document.getElementById('question-container');
             const subjectColor = currentSubject === 'social' ? '#2E7D32' : '#1565C0';
-            container.innerHTML = `
+            // 마인드맵 가지 학습 중이면 미니맵 + 마지막 카드에 '가지 완료' 버튼(방어: mindmap 없는 과목이면 일반 경로)
+            const inBranch = (currentMindmapBranch != null && QUIZ_DATA && QUIZ_DATA.mindmap);
+            const isLast = currentQuestionIndex >= currentSession.length - 1;
+            let navHtml;
+            if (inBranch && isLast) {
+                const prevBtn = currentQuestionIndex > 0
+                    ? '<button onclick="goPrevQuestion()" style="flex:1;padding:14px;font-size:15px;background:#f0f0f0;color:#333;border:none;border-radius:10px;cursor:pointer;">← 이전</button>'
+                    : '';
+                navHtml = '<div style="display:flex;gap:8px;margin-top:16px;">' + prevBtn +
+                    '<button onclick="completeMindmapBranch()" style="flex:1;padding:14px;font-size:15px;background:#2E7D32;color:white;border:none;border-radius:10px;cursor:pointer;">가지 완료 ✓</button></div>';
+            } else {
+                navHtml = browseNavButtons('다음 카드 →', subjectColor);
+            }
+            const minimap = inBranch ? renderMinimapStrip() : '';
+            container.innerHTML = minimap + `
                 <div class="mc-card" onclick="this.classList.toggle('flipped')" style="--mc-color:${subjectColor}">
                     <div class="mc-front">
                         <div class="mc-title" style="color:${subjectColor}">${q.term}</div>
@@ -7441,7 +7597,7 @@
                         ${q.exam_tip ? `<div class="mc-tip" style="margin-top:8px;">🎯 ${highlightText(q.exam_tip, q.term)}</div>` : ''}
                     </div>
                 </div>
-                ${browseNavButtons('다음 카드 →', subjectColor)}
+                ${navHtml}
             `;
             document.getElementById('btn-hint').style.display = 'none';
         }

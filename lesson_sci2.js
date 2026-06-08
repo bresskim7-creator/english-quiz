@@ -3,6 +3,95 @@ __loadLesson({
   "subject": "science",
   "title": "2단원: 지권의 변화",
   "version": "1.0",
+  "mindmap": {
+    "img": "img/sci_mindmap_jigwon_v1.png",
+    "title": "지권의 변화 — 기말 한 장 정리",
+    "branches": [
+      {
+        "no": 1,
+        "label": "지구계",
+        "wing": "L",
+        "cards": [
+          "CC-01"
+        ]
+      },
+      {
+        "no": 2,
+        "label": "내부 조사",
+        "wing": "L",
+        "cards": [
+          "CC-17"
+        ]
+      },
+      {
+        "no": 3,
+        "label": "층상 구조",
+        "wing": "L",
+        "cards": [
+          "CC-02",
+          "CC-03"
+        ]
+      },
+      {
+        "no": 4,
+        "label": "광물",
+        "wing": "L",
+        "cards": [
+          "CC-04",
+          "CC-16"
+        ]
+      },
+      {
+        "no": 5,
+        "label": "화성암",
+        "wing": "R",
+        "cards": [
+          "CC-05",
+          "CC-06"
+        ]
+      },
+      {
+        "no": 6,
+        "label": "퇴적암",
+        "wing": "R",
+        "cards": [
+          "CC-07"
+        ]
+      },
+      {
+        "no": 7,
+        "label": "변성암",
+        "wing": "R",
+        "cards": [
+          "CC-08"
+        ]
+      },
+      {
+        "no": 8,
+        "label": "암석의 순환",
+        "wing": "R",
+        "cards": [
+          "CC-09"
+        ]
+      },
+      {
+        "no": 9,
+        "label": "풍화와 토양",
+        "wing": "R",
+        "cards": [
+          "CC-10",
+          "CC-11"
+        ]
+      },
+      {
+        "no": 10,
+        "label": "활용",
+        "wing": "R",
+        "cards": [],
+        "action": "zoom"
+      }
+    ]
+  },
   "concept_cards": [
     {
       "id": "CC-01",

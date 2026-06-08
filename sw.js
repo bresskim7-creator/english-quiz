@@ -1,4 +1,5 @@
-const CACHE_NAME = 'quiz-v151';
+const CACHE_NAME = 'quiz-v152';
+// v152 (2026-06-08): 과학 지권(sci2) 마인드맵 허브 v1 — lesson_sci2.js에 mindmap 메타(가지10/카드13) 추가, img/sci_mindmap_jigwon_v1.png 프리캐시 등재. index.html: 과학 개념정리 진입 시 마인드맵 허브 분기(currentSubject==='science'&&QUIZ_DATA.mindmap), 가지별 학습 세션(평일 5장 제한 우회)+미니맵+가지완료(localStorage pa_mm_done_sci2). limitConceptCards/scopedItems 불변, 타 과목 경로 불변. 캐시 강제 갱신용.
 // v151 (2026-06-07): 기말 국어 3단원 신규 — lesson_kor3.js(개념14+문항38+해설3)·kor3_reader.js(PG3 원문 3편) 프리캐시 + img/kor_*.png 3종 등재. index.html korean FINALS_MODE 분기(kor3 기본)+getReaderTexts kor3+개념카드 visual 배선(renderVisualMedia). kor2 v1.2(피동/인용 교정+15문항). APP_CACHE_NAME 동반 범프(v149->v151 단일값). 캐시 강제 갱신용.
 // v150 (2026-06-07): 기말 사회 3·4단원 신규 — lesson_soc3.js(개념 13+문항 35)·lesson_soc4.js(개념 14+문항 33) 프리캐시 추가 + img/soc_*.png 5종 등재. index.html social FINALS_MODE 분기(soc3/soc4). 데이터만, 렌더러 불변. 캐시 강제 갱신용.
 // v149 (2026-06-06): 과학 개념카드 추가 그림 5개 배선 — CC-01(sci_earth_system)·CC-02(sci_earth_interior_card)·CC-16(sci_mineral_props)·CC-14(sci_plate_boundary)·PW-02(sci_wave_elements)에 visual_img 추가 + img/ PNG 5개 프리캐시 등재. (v148 헤더가 선기재돼 있었으나 실제 배선은 본 버전에서 완료.) 데이터만, 렌더러 불변. 캐시 강제 갱신용.
@@ -57,6 +58,7 @@ const PRECACHE_URLS = [
   './img/sci_mineral_props.png',
   './img/sci_plate_boundary.png',
   './img/sci_wave_elements.png',
+  './img/sci_mindmap_jigwon_v1.png',
   './img/soc_supply_demand_curve.png',
   './img/soc_curve_shift_vs_movement.png',
   './img/soc_price_change_mindmap.png',
