@@ -1,4 +1,6 @@
-const CACHE_NAME = 'quiz-v152';
+const CACHE_NAME = 'quiz-v154';
+// v154 (2026-06-08): 지권 콘텐츠 사실오류 교정(이암→편암·엽리 단서·토양 교과서 프레임·암석순환 네트워크·백운모 제거) + 마인드맵 v4 교체(sci_mindmap_jigwon_v4.png, 암석순환 방향 정정). ※ 미배포 v153(sci_rock_cycle.png 네트워크 그림 교체 + CC-09·S2-E011 단방향 교정)도 본 배포에 함께 포함(라이브는 직전까지 v152였음).
+// v153 (2026-06-08): sci_rock_cycle.png를 단방향 4단계 고리에서 교과서형 5노드·9경로 네트워크 그림으로 교체. lesson_sci2 CC-09·S2-E011의 단방향 설명과 중복정답 경로도 교정. 동일 파일명 이미지 갱신을 위한 캐시 강제 갱신용.
 // v152 (2026-06-08): 과학 지권(sci2) 마인드맵 허브 v1 — lesson_sci2.js에 mindmap 메타(가지10/카드13) 추가, img/sci_mindmap_jigwon_v1.png 프리캐시 등재. index.html: 과학 개념정리 진입 시 마인드맵 허브 분기(currentSubject==='science'&&QUIZ_DATA.mindmap), 가지별 학습 세션(평일 5장 제한 우회)+미니맵+가지완료(localStorage pa_mm_done_sci2). limitConceptCards/scopedItems 불변, 타 과목 경로 불변. 캐시 강제 갱신용.
 // v151 (2026-06-07): 기말 국어 3단원 신규 — lesson_kor3.js(개념14+문항38+해설3)·kor3_reader.js(PG3 원문 3편) 프리캐시 + img/kor_*.png 3종 등재. index.html korean FINALS_MODE 분기(kor3 기본)+getReaderTexts kor3+개념카드 visual 배선(renderVisualMedia). kor2 v1.2(피동/인용 교정+15문항). APP_CACHE_NAME 동반 범프(v149->v151 단일값). 캐시 강제 갱신용.
 // v150 (2026-06-07): 기말 사회 3·4단원 신규 — lesson_soc3.js(개념 13+문항 35)·lesson_soc4.js(개념 14+문항 33) 프리캐시 추가 + img/soc_*.png 5종 등재. index.html social FINALS_MODE 분기(soc3/soc4). 데이터만, 렌더러 불변. 캐시 강제 갱신용.
@@ -58,7 +60,7 @@ const PRECACHE_URLS = [
   './img/sci_mineral_props.png',
   './img/sci_plate_boundary.png',
   './img/sci_wave_elements.png',
-  './img/sci_mindmap_jigwon_v1.png',
+  './img/sci_mindmap_jigwon_v4.png',
   './img/soc_supply_demand_curve.png',
   './img/soc_curve_shift_vs_movement.png',
   './img/soc_price_change_mindmap.png',
