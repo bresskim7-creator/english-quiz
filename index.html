@@ -1977,6 +1977,7 @@
 
     <script src="kor1_reader.js"></script>
     <script src="kor2_reader.js"></script>
+    <script src="kor3_reader.js"></script>
     <script>
         // 전역 변수
         let isMuted = localStorage.getItem('sound_muted') === 'true';
@@ -1985,7 +1986,7 @@
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         const BUILD_VERSION = '2026-06-06 v149';
-        const APP_CACHE_NAME = 'quiz-v149';
+        const APP_CACHE_NAME = 'quiz-v151';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -2413,7 +2414,7 @@
             // v144: 캐시버스팅 — lesson 데이터 URL에 ?v=<APP_CACHE_NAME> 부착. 버전 범프 시 자동 변경 → 강제 새 요청.
             //        (sw.js가 쿼리 제거한 bare 키로 정규화 저장/폴백하므로 오프라인 캐시 유지)
             // [④4-3] lesson별 캐시버스팅 버전(단건 데이터 갱신을 app 버전 범프 없이 전파). 키=파일명(.js 제외). 없으면 APP_CACHE_NAME.
-            const LESSON_VERSIONS = { lesson_kor2: 'k2-1.1' };
+            const LESSON_VERSIONS = { lesson_kor2: 'k2-1.2', lesson_kor3: 'k3-1.0' };
             const ver = (u) => {
                 const m = u.match(/([A-Za-z0-9_]+)\.js(?:\?|$)/);
                 const vv = (m && LESSON_VERSIONS[m[1]]) ? LESSON_VERSIONS[m[1]] : APP_CACHE_NAME;
@@ -2535,8 +2536,15 @@
             const lessonRow = document.getElementById('lesson-row');
             if (subject === 'korean') {
                 lessonRow.querySelector('.setting-label').textContent = '단원';
-                lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-kor1" onclick="selectLesson(\'kor1\')">1단원</button>' + '<button class="lesson-btn" id="lesson-btn-kor2" onclick="selectLesson(\'kor2\')">2단원</button>';
-                await loadLesson('kor1');
+                if (FINALS_MODE) {
+                    // 기말: 2단원(kor2)/3단원(kor3 신규). 기본 진입=3단원(중간 약점 직결 회수 본체).
+                    // 복원: FINALS_MODE=false면 1·2단원(kor1/kor2) 노출로 자동 복귀.
+                    lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-kor3" onclick="selectLesson(\'kor3\')">3단원</button>' + '<button class="lesson-btn" id="lesson-btn-kor2" onclick="selectLesson(\'kor2\')">2단원</button>';
+                    await loadLesson('kor3');
+                } else {
+                    lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-kor1" onclick="selectLesson(\'kor1\')">1단원</button>' + '<button class="lesson-btn" id="lesson-btn-kor2" onclick="selectLesson(\'kor2\')">2단원</button>';
+                    await loadLesson('kor1');
+                }
             } else if (subject === 'math') {
                 lessonRow.querySelector('.setting-label').textContent = '단원';
                 lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-math1" onclick="selectLesson(\'math1\')">Ⅰ. 유리수</button><button class="lesson-btn" id="lesson-btn-math2" onclick="selectLesson(\'math2\')">Ⅱ-1 식의계산</button><button class="lesson-btn" id="lesson-btn-math3" onclick="selectLesson(\'math3\')">Ⅱ-2 부등식</button>';
@@ -3595,7 +3603,9 @@
                 pair_title: c.pair_title,
                 card_a: c.card_a,
                 card_b: c.card_b,
-                exam_tip: c.exam_tip
+                exam_tip: c.exam_tip,
+                visual_img: c.visual_img,
+                visual_svg: c.visual_svg
             }));
         }
 
@@ -5313,6 +5323,7 @@
         function getReaderTexts() {
             // 현재 레슨에 따라 올바른 reader 데이터 반환
             if (currentLesson === 'kor2') return window.__kor2ReaderTexts || {};
+            if (currentLesson === 'kor3') return window.__kor3ReaderTexts || {};
             return window.__korReaderTexts || {};
         }
 
@@ -5421,7 +5432,7 @@
             container.innerHTML = `
                 <div class="concept-card-container">
                     <h3 class="cc-pair-title">${q.pair_title}</h3>
-                    ${q.visual_svg ? `<div style="margin-bottom:12px;text-align:center;overflow-x:auto;max-width:100%;">${q.visual_svg.replace(/<svg /,'<svg style="max-width:100%;height:auto;" ')}</div>` : ''}
+                    ${renderVisualMedia(q)}
                     <div class="cc-cards">
                         <div class="cc-card cc-card-a" onclick="this.classList.toggle('flipped')">
                             <div class="cc-front">

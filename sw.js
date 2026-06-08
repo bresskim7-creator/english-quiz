@@ -1,4 +1,5 @@
-const CACHE_NAME = 'quiz-v150';
+const CACHE_NAME = 'quiz-v151';
+// v151 (2026-06-07): 기말 국어 3단원 신규 — lesson_kor3.js(개념14+문항38+해설3)·kor3_reader.js(PG3 원문 3편) 프리캐시 + img/kor_*.png 3종 등재. index.html korean FINALS_MODE 분기(kor3 기본)+getReaderTexts kor3+개념카드 visual 배선(renderVisualMedia). kor2 v1.2(피동/인용 교정+15문항). APP_CACHE_NAME 동반 범프(v149->v151 단일값). 캐시 강제 갱신용.
 // v150 (2026-06-07): 기말 사회 3·4단원 신규 — lesson_soc3.js(개념 13+문항 35)·lesson_soc4.js(개념 14+문항 33) 프리캐시 추가 + img/soc_*.png 5종 등재. index.html social FINALS_MODE 분기(soc3/soc4). 데이터만, 렌더러 불변. 캐시 강제 갱신용.
 // v149 (2026-06-06): 과학 개념카드 추가 그림 5개 배선 — CC-01(sci_earth_system)·CC-02(sci_earth_interior_card)·CC-16(sci_mineral_props)·CC-14(sci_plate_boundary)·PW-02(sci_wave_elements)에 visual_img 추가 + img/ PNG 5개 프리캐시 등재. (v148 헤더가 선기재돼 있었으나 실제 배선은 본 버전에서 완료.) 데이터만, 렌더러 불변. 캐시 강제 갱신용.
 // v148 (2026-06-06): 기말 과학 v3 — 실적중 문항 17 추가(파동 L3-W09~17, 지권 S2-E045~052) + 그림(L3-W17/S2-E052 SVG, S2-E051 이미지) + 개념카드 이미지 5개(visual_img) + renderVisualMedia(img>svg>none). img/ PNG 5개 프리캐시. 캐시 강제 갱신용.
@@ -31,8 +32,10 @@ const PRECACHE_URLS = [
   './lesson4.js',
   './lesson_kor1.js',
   './lesson_kor2.js',
+  './lesson_kor3.js',
   './kor1_reader.js',
   './kor2_reader.js',
+  './kor3_reader.js',
   './lesson_math1.js',
   './lesson_math2.js',
   './lesson_math3.js',
@@ -58,7 +61,10 @@ const PRECACHE_URLS = [
   './img/soc_curve_shift_vs_movement.png',
   './img/soc_price_change_mindmap.png',
   './img/soc_inflation_winners_losers.png',
-  './img/soc_exchange_rate_effects.png'
+  './img/soc_exchange_rate_effects.png',
+  './img/kor_structure_intro_mid_end.png',
+  './img/kor_reasoning_3types.png',
+  './img/kor_writing_process_5steps.png'
 ];
 
 // v133: daily v2 — paths that must be cached under a query-stripped (normalised) key.
