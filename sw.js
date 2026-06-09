@@ -1,4 +1,6 @@
-const CACHE_NAME = 'quiz-v156';
+const CACHE_NAME = 'quiz-v158';
+// v158 (2026-06-09): 과학 식물(sci4) 실전 2문항 보강 — lesson_sci4.js exam_prep 8→10(S4-E009 온도 그래프 B군 visual_img=sci_temp_photosynthesis_v1.png·linked PC-02 / S4-E010 광합성↔호흡 비교 A군 텍스트·linked PC-01·03·04). img/sci_temp_photosynthesis_v1.png 프리캐시 등재. ※v158 누적: v157(엽록소→엽록체 교정+마인드맵 허브) 미배포분 포함 — 한 번 배포로 함께 반영. 캐시 강제 갱신용.
+// v157 (2026-06-09): 과학 식물(sci4) 교과서 표현 교정(PC-06·S4-E007 "엽록소"→"엽록체" 탈색, 5곳) + 마인드맵 허브 v1 — lesson_sci4.js에 "lesson":"sci4" 저장키 분리 필드 + mindmap 메타(가지6=PC-01~06) 추가, img/sci_mindmap_sikmul_v1.png 프리캐시 등재. 허브 로직(renderMindmapHub 등) 불변. 캐시 강제 갱신용.
 // v156 (2026-06-09): 과학 파동(sci3) 실전 보강 6문항(L3-W18~23, 그림형 B군) 추가 — lesson_sci3.js exam_prep 47→53. W18~21 PNG(sci_pw_q18~21.png) 프리캐시 등재, W22~23은 인라인 SVG(파일 없음). 기존 W04·W17 세로축 라벨을 '위치'로 통일. 캐시 강제 갱신용.
 // v155 (2026-06-08): 과학 파동(sci3) 마인드맵 허브 v1 — lesson_sci3.js에 mindmap 메타(가지6/카드PW-01~06) 추가, img/sci_mindmap_padong_v1.png 프리캐시 등재. index.html: 마인드맵 진행 저장키를 lesson별로 분리(pa_mm_done_<lesson>, sci2는 fallback으로 기존 키 보존). 허브 로직(renderMindmapHub 등) 불변. 캐시 강제 갱신용.
 // v154 (2026-06-08): 지권 콘텐츠 사실오류 교정(이암→편암·엽리 단서·토양 교과서 프레임·암석순환 네트워크·백운모 제거) + 마인드맵 v4 교체(sci_mindmap_jigwon_v4.png, 암석순환 방향 정정). ※ 미배포 v153(sci_rock_cycle.png 네트워크 그림 교체 + CC-09·S2-E011 단방향 교정)도 본 배포에 함께 포함(라이브는 직전까지 v152였음).
@@ -64,6 +66,8 @@ const PRECACHE_URLS = [
   './img/sci_wave_elements.png',
   './img/sci_mindmap_jigwon_v4.png',
   './img/sci_mindmap_padong_v1.png',
+  './img/sci_mindmap_sikmul_v1.png',
+  './img/sci_temp_photosynthesis_v1.png',
   './img/sci_pw_q18.png',
   './img/sci_pw_q19.png',
   './img/sci_pw_q20.png',
