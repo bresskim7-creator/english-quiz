@@ -1,4 +1,5 @@
-const CACHE_NAME = 'quiz-v155';
+const CACHE_NAME = 'quiz-v156';
+// v156 (2026-06-09): 과학 파동(sci3) 실전 보강 6문항(L3-W18~23, 그림형 B군) 추가 — lesson_sci3.js exam_prep 47→53. W18~21 PNG(sci_pw_q18~21.png) 프리캐시 등재, W22~23은 인라인 SVG(파일 없음). 기존 W04·W17 세로축 라벨을 '위치'로 통일. 캐시 강제 갱신용.
 // v155 (2026-06-08): 과학 파동(sci3) 마인드맵 허브 v1 — lesson_sci3.js에 mindmap 메타(가지6/카드PW-01~06) 추가, img/sci_mindmap_padong_v1.png 프리캐시 등재. index.html: 마인드맵 진행 저장키를 lesson별로 분리(pa_mm_done_<lesson>, sci2는 fallback으로 기존 키 보존). 허브 로직(renderMindmapHub 등) 불변. 캐시 강제 갱신용.
 // v154 (2026-06-08): 지권 콘텐츠 사실오류 교정(이암→편암·엽리 단서·토양 교과서 프레임·암석순환 네트워크·백운모 제거) + 마인드맵 v4 교체(sci_mindmap_jigwon_v4.png, 암석순환 방향 정정). ※ 미배포 v153(sci_rock_cycle.png 네트워크 그림 교체 + CC-09·S2-E011 단방향 교정)도 본 배포에 함께 포함(라이브는 직전까지 v152였음).
 // v153 (2026-06-08): sci_rock_cycle.png를 단방향 4단계 고리에서 교과서형 5노드·9경로 네트워크 그림으로 교체. lesson_sci2 CC-09·S2-E011의 단방향 설명과 중복정답 경로도 교정. 동일 파일명 이미지 갱신을 위한 캐시 강제 갱신용.
@@ -63,6 +64,10 @@ const PRECACHE_URLS = [
   './img/sci_wave_elements.png',
   './img/sci_mindmap_jigwon_v4.png',
   './img/sci_mindmap_padong_v1.png',
+  './img/sci_pw_q18.png',
+  './img/sci_pw_q19.png',
+  './img/sci_pw_q20.png',
+  './img/sci_pw_q21.png',
   './img/soc_supply_demand_curve.png',
   './img/soc_curve_shift_vs_movement.png',
   './img/soc_price_change_mindmap.png',
