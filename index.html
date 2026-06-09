@@ -1991,8 +1991,8 @@
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-06-09 v159';
-        const APP_CACHE_NAME = 'quiz-v159';
+        const BUILD_VERSION = '2026-06-09 v161';
+        const APP_CACHE_NAME = 'quiz-v161';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -2420,7 +2420,7 @@
             // v144: 캐시버스팅 — lesson 데이터 URL에 ?v=<APP_CACHE_NAME> 부착. 버전 범프 시 자동 변경 → 강제 새 요청.
             //        (sw.js가 쿼리 제거한 bare 키로 정규화 저장/폴백하므로 오프라인 캐시 유지)
             // [④4-3] lesson별 캐시버스팅 버전(단건 데이터 갱신을 app 버전 범프 없이 전파). 키=파일명(.js 제외). 없으면 APP_CACHE_NAME.
-            const LESSON_VERSIONS = { lesson_kor2: 'k2-1.2', lesson_kor3: 'k3-1.0' };
+            const LESSON_VERSIONS = { lesson_kor2: 'k2-1.4', lesson_kor3: 'k3-1.3' };
             const ver = (u) => {
                 const m = u.match(/([A-Za-z0-9_]+)\.js(?:\?|$)/);
                 const vv = (m && LESSON_VERSIONS[m[1]]) ? LESSON_VERSIONS[m[1]] : APP_CACHE_NAME;
@@ -4299,6 +4299,11 @@
                 currentSession = generatePassageGuideSession();
                 modeLabel = '본문 해설';
             } else if (currentMode === 'concept_card') {
+                // 국어 마인드맵 허브 분기 — 국어 + mindmap 메타 있을 때만(없으면 기존 개념카드 경로 그대로)
+                if (currentSubject === 'korean' && QUIZ_DATA && QUIZ_DATA.mindmap) {
+                    renderMindmapHub();
+                    return;
+                }
                 currentSession = generateConceptCardSession();
                 modeLabel = '개념 카드';
             } else if (currentMode === 'perf_assessment') {
@@ -4383,7 +4388,7 @@
             if (currentSubject === 'math') {
                 instrEl.innerHTML = renderMath(instrText);
             } else {
-                instrEl.innerHTML = instrText.replace(/(틀린|아닌|않는|없는|못한|아닌 것|틀린 것|해당하지 않는|거리가 먼|적절하지 않은|올바르지 않은)/g,
+                instrEl.innerHTML = instrText.replace(/(틀린|아닌|않는|없는|못한|아닌 것|틀린 것|해당하지 않는|거리가 먼|적절하지 않은|올바르지 않은|바르지 않은|알맞지 않은)/g,
                     '<span style="color:#E53935;font-weight:700;text-decoration:underline;text-decoration-color:#E53935;">$1</span>');
             }
 
@@ -4920,7 +4925,7 @@
             //   부정 프레임에서는 보기 번호만 노출하고 공통 라벨도 중립 문구로 교체.
             function isNegativeFrame(qq) {
                 const s = (qq.instruction || '') + ' ' + (qq.sentence || '');
-                return /일치하지 않|답할 수 없|나오지 않|원문의 뜻과 다른|흐름과 관계없|흐름에서 벗어|어색한|틀린 문장|틀린 부분|옳지 않은|적절하지 않|문법적으로 다른|용법이 다른|의미가 다른|문법적으로 올바르지 않/.test(s);
+                return /일치하지 않|답할 수 없|나오지 않|원문의 뜻과 다른|흐름과 관계없|흐름에서 벗어|어색한|틀린 문장|틀린 부분|옳지 않은|적절하지 않|문법적으로 다른|용법이 다른|의미가 다른|문법적으로 올바르지 않|바르지 않|알맞지 않|아닌 것은|아닌 것을|해당하지 않|거리가 먼|보기 어려운/.test(s);
             }
             const _isNeg = isNegativeFrame(q);
 
@@ -5440,7 +5445,21 @@
         // 개념 카드: 플립 카드 모드
         function showConceptCard(q) {
             const container = document.getElementById('question-container');
-            container.innerHTML = `
+            // 마인드맵 가지 학습 중이면 미니맵 + 마지막 카드에 '가지 완료' 버튼(국어 쌍카드; mindmap 없는 경로면 기존 그대로)
+            const inBranch = (currentMindmapBranch != null && QUIZ_DATA && QUIZ_DATA.mindmap);
+            const isLast = currentQuestionIndex >= currentSession.length - 1;
+            let navHtml;
+            if (inBranch && isLast) {
+                const prevBtn = currentQuestionIndex > 0
+                    ? '<button onclick="goPrevQuestion()" style="flex:1;padding:14px;font-size:15px;background:#f0f0f0;color:#333;border:none;border-radius:10px;cursor:pointer;">← 이전</button>'
+                    : '';
+                navHtml = '<div style="display:flex;gap:8px;margin-top:16px;">' + prevBtn +
+                    '<button onclick="completeMindmapBranch()" style="flex:1;padding:14px;font-size:15px;background:#2E7D32;color:white;border:none;border-radius:10px;cursor:pointer;">가지 완료 ✓</button></div>';
+            } else {
+                navHtml = browseNavButtons('다음 쌍 →', '#6B4C9A');
+            }
+            const minimap = inBranch ? renderMinimapStrip() : '';
+            container.innerHTML = minimap + `
                 <div class="concept-card-container">
                     <h3 class="cc-pair-title">${q.pair_title}</h3>
                     ${renderVisualMedia(q)}
@@ -5453,6 +5472,7 @@
                             <div class="cc-back">
                                 <div class="cc-definition">${highlightText(q.card_a.definition, q.card_a.term)}</div>
                                 <div class="cc-simple">💡 ${highlightText(q.card_a.simple, q.card_a.term)}</div>
+                                ${q.card_a.easy_explanation ? `<div class="cc-easy" style="font-size:14px;line-height:1.6;color:#33691E;background:#F1F8E9;border-radius:8px;padding:8px 10px;margin:6px 0;">🟢 ${highlightText(q.card_a.easy_explanation, q.card_a.term)}</div>` : ''}
                                 <div class="cc-example">📚 ${highlightText(q.card_a.example, q.card_a.term)}</div>
                             </div>
                         </div>
@@ -5465,12 +5485,13 @@
                             <div class="cc-back">
                                 <div class="cc-definition">${highlightText(q.card_b.definition, q.card_b.term)}</div>
                                 <div class="cc-simple">💡 ${highlightText(q.card_b.simple, q.card_b.term)}</div>
+                                ${q.card_b.easy_explanation ? `<div class="cc-easy" style="font-size:14px;line-height:1.6;color:#33691E;background:#F1F8E9;border-radius:8px;padding:8px 10px;margin:6px 0;">🟢 ${highlightText(q.card_b.easy_explanation, q.card_b.term)}</div>` : ''}
                                 <div class="cc-example">📚 ${highlightText(q.card_b.example, q.card_b.term)}</div>
                             </div>
                         </div>
                     </div>
                     <div class="cc-exam-tip">🎯 시험 팁: ${highlightText(q.exam_tip, q.card_a.term + ' ' + q.card_b.term)}</div>
-                    ${browseNavButtons('다음 쌍 →', '#6B4C9A')}
+                    ${navHtml}
                 </div>
             `;
             document.getElementById('btn-hint').style.display = 'none';
@@ -7513,7 +7534,8 @@
             const cards = (branch.cards || []).map(id => byId[id]).filter(Boolean);
             if (cards.length === 0) { alert('이 가지는 카드를 준비 중입니다.'); return; }
             currentMindmapBranch = branchNo;
-            currentSession = cards.map(c => ({ ...c, type: 'study_concept_card' }));
+            // 국어 쌍카드(card_a 보유)는 showConceptCard 렌더러로, 과학/사회 단일카드는 study_concept_card로 분기(빈 카드 방지)
+            currentSession = cards.map(c => ({ ...c, type: c.card_a ? 'concept_card' : 'study_concept_card' }));
             currentQuestionIndex = 0;
             sessionAnswers = [];
             sessionStartTime = Date.now();
@@ -7611,7 +7633,7 @@
             let sentenceHtml = q.sentence ? `<div style="font-size:15px;line-height:1.7;margin-bottom:16px;white-space:pre-line;background:#F1F8E9;padding:12px;border-radius:8px;">${q.sentence}</div>` : '';
             // 그림 문항 렌더 — visual_img(이미지) 우선, 없으면 visual_svg (renderVisualMedia)
             let visualHtml = renderVisualMedia(q);
-            let questionHtml = q.question ? `<div style="font-size:15px;font-weight:600;margin-bottom:12px;">${q.question.replace(/(틀린|아닌|않는|없는|못한|아닌 것|틀린 것|해당하지 않는|거리가 먼|적절하지 않은|올바르지 않은)/g, '<span style="color:#E53935;font-weight:700;text-decoration:underline;text-decoration-color:#E53935;">\$1</span>')}</div>` : '';
+            let questionHtml = q.question ? `<div style="font-size:15px;font-weight:600;margin-bottom:12px;">${q.question.replace(/(틀린|아닌|않는|없는|못한|아닌 것|틀린 것|해당하지 않는|거리가 먼|적절하지 않은|올바르지 않은|바르지 않은|알맞지 않은)/g, '<span style="color:#E53935;font-weight:700;text-decoration:underline;text-decoration-color:#E53935;">\$1</span>')}</div>` : '';
 
             // 보기 셔플
             const shuffled = q.options.map((opt, idx) => ({ origIdx: idx, opt }));
