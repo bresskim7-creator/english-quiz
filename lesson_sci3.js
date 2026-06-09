@@ -4,6 +4,18 @@ __loadLesson({
   "title": "3단원: 빛과 파동",
   "subtitle": "물체를 보는 과정, 반사와 굴절, 거울과 렌즈, 빛의 합성",
   "version": "1.1",
+  "mindmap": {
+    "img": "img/sci_mindmap_padong_v1.png",
+    "title": "파동 — 기말 한 장 정리",
+    "branches": [
+      { "no": 1, "label": "파동과 매질", "wing": "L", "cards": ["PW-01"] },
+      { "no": 2, "label": "파동의 요소", "wing": "L", "cards": ["PW-02"] },
+      { "no": 3, "label": "진동수·주기", "wing": "L", "cards": ["PW-03"] },
+      { "no": 4, "label": "소리의 발생·전달", "wing": "R", "cards": ["PW-04"] },
+      { "no": 5, "label": "소리의 3요소", "wing": "R", "cards": ["PW-05"] },
+      { "no": 6, "label": "파동의 이용", "wing": "R", "cards": ["PW-06"] }
+    ]
+  },
   "build_date": "2026-03-31",
   "concept_cards": [
     {

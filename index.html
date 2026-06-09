@@ -1991,8 +1991,8 @@
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-06-08 v154';
-        const APP_CACHE_NAME = 'quiz-v154';
+        const BUILD_VERSION = '2026-06-08 v155';
+        const APP_CACHE_NAME = 'quiz-v155';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -7442,11 +7442,11 @@
         // limitConceptCards/scopedItems/generateStudyConceptSession 불변 — 허브 경로는 가지 카드만 직접 세션화(평일 5장 제한 우회).
         // ============================================================
         function getMindmapDone() {
-            try { return JSON.parse(localStorage.getItem('pa_mm_done_sci2') || '[]'); }
+            try { return JSON.parse(localStorage.getItem('pa_mm_done_' + ((QUIZ_DATA && QUIZ_DATA.lesson) || 'sci2')) || '[]'); }
             catch (e) { return []; }
         }
         function saveMindmapDone(arr) {
-            safeSetItem('pa_mm_done_sci2', JSON.stringify(arr));
+            safeSetItem('pa_mm_done_' + ((QUIZ_DATA && QUIZ_DATA.lesson) || 'sci2'), JSON.stringify(arr));
         }
 
         function renderMindmapHub() {
