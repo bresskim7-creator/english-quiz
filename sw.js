@@ -1,4 +1,5 @@
-const CACHE_NAME = 'quiz-v163';
+const CACHE_NAME = 'quiz-v164';
+// v164 (2026-06-10): 과학 3단원 배치1(문항 재작성·용어 병기·표현 정렬, lesson_sci2/3/4.js) + 배치2 카드 이미지 7장 배선 — CC-06(igneous_compare)·CC-07(sedimentary_classify)·CC-08(metamorphic_pairs)·PW-01(wave_vs_medium)·PW-04(sound_medium)·PC-02(photo_factors_graphs)·PC-06(starch_test_steps_v2) visual_img 추가 + PRECACHE 7 PNG 등재. APP_CACHE_NAME 동반 범프(index v161->v164). 캐시 강제 갱신용.
 // v163 (2026-06-10): 사회 과학화 배치3 — 그림 9장 프리캐시 등재 + 배선. 카드 8(SC3-07 초과공급/SC3-11 대체·보완재/SC3-12·13 균형이동 매트릭스 공용/SC4-03·04 GDP 5체크 공용/SC4-06 인플레 3원인/SC4-08 물가안정 4주체/SC4-13 외화 수급) + 중립 문항 3(S3-E020·E037 수요곡선 우이동 공용/S3-E027 공급곡선 우이동). lesson_soc3/4 visual_img 배선, index.html showStudyChoice/renderVisualMedia 공용 경로(불변). ※v163 누적: v152~162 미배포분 포함(라이브 v161). 캐시 강제 갱신용.
 // v162 (2026-06-10): 사회 과학화 마인드맵 허브 이미지 프리캐시 — soc3는 soc_mindmap_soc3_v1.png, soc4는 실업 4유형을 반영한 soc_mindmap_soc4_v2.png 등재. lesson_soc3/4 mindmap 메타와 파일명 일치. 캐시 강제 갱신용.
 // v161 (2026-06-09): 국어 과학화 배치3 — lesson_kor2(6쌍)·lesson_kor3(14쌍) 개념카드 card_a/card_b에 easy_explanation(쉬운 풀이 2~3문장) 40면 추가(simple·example·exam_tip 유지). index.html showConceptCard에 easy_explanation 조건부 렌더(🟢, 마인드맵 가지뷰 포함). lesson_kor2 v1.4·kor3 v1.3, LESSON_VERSIONS k2-1.4·k3-1.3. PRECACHE 변경 없음. ※v161 누적: v152~160 미배포분 포함. 캐시 강제 갱신용.
@@ -77,6 +78,13 @@ const PRECACHE_URLS = [
   './img/sci_pw_q19.png',
   './img/sci_pw_q20.png',
   './img/sci_pw_q21.png',
+  './img/sci_igneous_compare_v1.png',
+  './img/sci_sedimentary_classify_v1.png',
+  './img/sci_metamorphic_pairs_v1.png',
+  './img/sci_wave_vs_medium_v1.png',
+  './img/sci_sound_medium_v1.png',
+  './img/sci_photo_factors_graphs_v1.png',
+  './img/sci_starch_test_steps_v2.png',
   './img/soc_supply_demand_curve.png',
   './img/soc_curve_shift_vs_movement.png',
   './img/soc_price_change_mindmap.png',
