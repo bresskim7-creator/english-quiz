@@ -4282,8 +4282,8 @@
             let modeLabel = '';
 
             if (currentMode === 'social_concept' || currentMode === 'science_concept') {
-                // 과학 마인드맵 허브 분기 — 과학 + mindmap 메타 있을 때만(타 과목/조건 미충족 시 기존 경로 그대로)
-                if (currentSubject === 'science' && QUIZ_DATA && QUIZ_DATA.mindmap) {
+                // 과학·사회 마인드맵 허브 분기 — 해당 과목 + mindmap 메타 있을 때만(타 과목/조건 미충족 시 기존 경로 그대로)
+                if ((currentSubject === 'science' || currentSubject === 'social') && QUIZ_DATA && QUIZ_DATA.mindmap) {
                     renderMindmapHub();
                     return;
                 }

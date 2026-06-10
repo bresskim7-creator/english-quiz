@@ -1,4 +1,5 @@
-const CACHE_NAME = 'quiz-v161';
+const CACHE_NAME = 'quiz-v162';
+// v162 (2026-06-10): 사회 과학화 마인드맵 허브 이미지 프리캐시 — soc3는 soc_mindmap_soc3_v1.png, soc4는 실업 4유형을 반영한 soc_mindmap_soc4_v2.png 등재. lesson_soc3/4 mindmap 메타와 파일명 일치. 캐시 강제 갱신용.
 // v161 (2026-06-09): 국어 과학화 배치3 — lesson_kor2(6쌍)·lesson_kor3(14쌍) 개념카드 card_a/card_b에 easy_explanation(쉬운 풀이 2~3문장) 40면 추가(simple·example·exam_tip 유지). index.html showConceptCard에 easy_explanation 조건부 렌더(🟢, 마인드맵 가지뷰 포함). lesson_kor2 v1.4·kor3 v1.3, LESSON_VERSIONS k2-1.4·k3-1.3. PRECACHE 변경 없음. ※v161 누적: v152~160 미배포분 포함. 캐시 강제 갱신용.
 // v160 (2026-06-09): 국어 과학화 배치1+2 — (배치1) lesson_kor3.js 보강 8문항(KOR3-E039~E046, 스트레스세트6·인과1·딥타임1, 38→46). (배치2) lesson_kor2/kor3 mindmap 메타 추가(국어 개념정리→마인드맵 허브, 가지6) + img/kor_mindmap_kor2_v1.png·kor_mindmap_kor3_v1.png 프리캐시 등재. index.html: 진입게이트(concept_card 블록 korean+mindmap 분기)+startMindmapBranch type 분기(국어 쌍카드=concept_card)+showConceptCard inBranch/가지완료 이식 + isNegativeFrame 정규식 보강(바르지 않/알맞지 않/아닌 것은·것을/해당하지 않/거리가 먼/보기 어려운; '수 없' 미추가)+하이라이트 정규식 일관. LESSON_VERSIONS k2-1.3·k3-1.2. ※v160 누적: v152~159 미배포분 포함. 캐시 강제 갱신용.
 // v159 (2026-06-09): 과학 기말 보강 4문항 — 식물(sci4) exam_prep 10→12(S4-E011 낮밤 기체출입 A군 텍스트·linked PC-05 / S4-E012 산물확인실험 에탄올 처리 A군 텍스트·linked PC-06), 지권(sci2) exam_prep 52→54(S2-E053 암석순환 네트워크 해석 B군 visual_img=기존 sci_rock_cycle.png 재사용·linked CC-09 / S2-E054 토양단면 A~D 생성순서 D→C→A→B B군 인라인 SVG·linked CC-11). 신규 PNG·PRECACHE 변경 없음. ※v159 누적: v152~158 미배포분 포함 — 한 번 배포로 함께 반영. 캐시 강제 갱신용.
@@ -80,6 +81,8 @@ const PRECACHE_URLS = [
   './img/soc_price_change_mindmap.png',
   './img/soc_inflation_winners_losers.png',
   './img/soc_exchange_rate_effects.png',
+  './img/soc_mindmap_soc3_v1.png',
+  './img/soc_mindmap_soc4_v2.png',
   './img/kor_structure_intro_mid_end.png',
   './img/kor_reasoning_3types.png',
   './img/kor_writing_process_5steps.png',
