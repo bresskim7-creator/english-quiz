@@ -1991,8 +1991,8 @@
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-06-10 v165';
-        const APP_CACHE_NAME = 'quiz-v165';
+        const BUILD_VERSION = '2026-06-11 v166';
+        const APP_CACHE_NAME = 'quiz-v166';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -4913,6 +4913,7 @@
 
             const we = q.wrong_explanations || {};
             let html = '<div style="font-weight:700;color:#e65100;margin-bottom:8px;font-size:16px;">🎓 선생님 설명</div>';
+            html += renderVisualMedia(q);
 
             // 설명 조회: 텍스트 키 → 숫자 인덱스 키 → hint 순으로 시도
             function findExplanation(answer, idx) {
@@ -5001,6 +5002,7 @@
             const we = q.wrong_explanations || {};
             const choices = q.choices || [];
             let html = '<div style="font-weight:700;color:#e65100;margin-bottom:8px;font-size:16px;">🎓 선생님 설명</div>';
+            html += renderVisualMedia(q);
 
             const wrongSelected = [...selectedSet].filter(i => !correctSet.has(i)).sort((a, b) => a - b);
             const missedCorrect = [...correctSet].filter(i => !selectedSet.has(i)).sort((a, b) => a - b);

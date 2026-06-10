@@ -1,4 +1,5 @@
-const CACHE_NAME = 'quiz-v165';
+const CACHE_NAME = 'quiz-v166';
+// v166 (2026-06-11): 영어 배치1 + 이미지 3장 — (배치1) lesson4 PC4-MATCH-002 지문 교과서 p.70 원문 복원·G016 already 어순 해설 정정·제목추론 2문항(Q-TITLE-L4-001/002, questions 배열) 추가; lesson2 P001 wrong_explanations 위치정합·'탑을 쌓을' 통일. (이미지) eng_present_perfect/eng_so_that/eng_rel_pronoun v1 PNG visual_img 배선(lesson4 18+13, lesson2 10) + index.html showWrongExplanation·showWrongExplanationMulti에 renderVisualMedia(q) 호출 + PRECACHE 3 PNG 등재(pngquant 미가용→Pillow 256색 Floyd-Steinberg 압축 -54~62%). lesson2 v3.20->3.21·lesson4 v1.13->1.14. APP_CACHE_NAME 동반 범프(v165->v166). 캐시 강제 갱신용.
 // v165 (2026-06-10): 국어 배치1 + 카드 이미지 3장 배선 — cc-kor2-2(kor_passive_3ways_v1)·cc-kor2-3(kor_quote_convert_v1)·KC3-04(kor_expl_methods8_v1) visual_img + PRECACHE 3 PNG. lesson_kor2 1.5·kor3 1.4. APP_CACHE_NAME 동반 범프(v164->v165). 캐시 강제 갱신용.
 // v164 (2026-06-10): 과학 3단원 배치1(문항 재작성·용어 병기·표현 정렬, lesson_sci2/3/4.js) + 배치2 카드 이미지 7장 배선 — CC-06(igneous_compare)·CC-07(sedimentary_classify)·CC-08(metamorphic_pairs)·PW-01(wave_vs_medium)·PW-04(sound_medium)·PC-02(photo_factors_graphs)·PC-06(starch_test_steps_v2) visual_img 추가 + PRECACHE 7 PNG 등재. APP_CACHE_NAME 동반 범프(index v161->v164). 캐시 강제 갱신용.
 // v163 (2026-06-10): 사회 과학화 배치3 — 그림 9장 프리캐시 등재 + 배선. 카드 8(SC3-07 초과공급/SC3-11 대체·보완재/SC3-12·13 균형이동 매트릭스 공용/SC4-03·04 GDP 5체크 공용/SC4-06 인플레 3원인/SC4-08 물가안정 4주체/SC4-13 외화 수급) + 중립 문항 3(S3-E020·E037 수요곡선 우이동 공용/S3-E027 공급곡선 우이동). lesson_soc3/4 visual_img 배선, index.html showStudyChoice/renderVisualMedia 공용 경로(불변). ※v163 누적: v152~162 미배포분 포함(라이브 v161). 캐시 강제 갱신용.
@@ -109,7 +110,10 @@ const PRECACHE_URLS = [
   './img/kor_quote_convert_v1.png',
   './img/kor_expl_methods8_v1.png',
   './img/kor_mindmap_kor2_v1.png',
-  './img/kor_mindmap_kor3_v1.png'
+  './img/kor_mindmap_kor3_v1.png',
+  './img/eng_present_perfect_v1.png',
+  './img/eng_so_that_v1.png',
+  './img/eng_rel_pronoun_v1.png'
 ];
 
 // v133: daily v2 — paths that must be cached under a query-stripped (normalised) key.

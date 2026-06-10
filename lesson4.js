@@ -1,7 +1,7 @@
 __loadLesson({
   "lesson": 4,
   "title": "Lesson 4: Open the Doors to the World",
-  "version": "1.13",
+  "version": "1.14",
   "build_date": "2026-05-12",
   "build_note": "v1.13 — 3차 갭팩 A·E: 배열-N번째 선택형 신규 3(Q-ARR-NTH-L4-001~003) + 문장삽입 신규 1(Q-SENT-INS-L4-001, 적중문제 Q10 교과서 Reading verbatim). 전부 skill_focus+exam_perf_variants(75s), core_sentences 소싱. 기존 문항·P001~003 불변. (6/05 3차 발주) || v1.12 — 2차 ①③: multi_grammar 다답형 6(Q-MULTI-AWK-L4-001~004 + M-MULTI-OK-L4-01/02) + short_reading 4(Q-CONTENT-MATCH-L4-001~004)에 exam_perf_variants 부착(exam_perf 리허설 활성). correct polarity 신규 2(M-MULTI-OK-L4-03 현재완료/04 so~that, variant 동시 부착) → multi_focus correct 풀 2→4 고정노출 분산. 기존 문항 콘텐츠 불변. (6/05 2차 발주)",
   "core_sentences": [
@@ -1807,6 +1807,7 @@ __loadLesson({
     },
     {
       "id": "G001",
+      "visual_img": "img/eng_present_perfect_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "easy",
@@ -1840,6 +1841,7 @@ __loadLesson({
     },
     {
       "id": "G002",
+      "visual_img": "img/eng_present_perfect_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "easy",
@@ -1873,6 +1875,7 @@ __loadLesson({
     },
     {
       "id": "G003",
+      "visual_img": "img/eng_present_perfect_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "medium",
@@ -1906,6 +1909,7 @@ __loadLesson({
     },
     {
       "id": "G004",
+      "visual_img": "img/eng_present_perfect_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "medium",
@@ -1939,6 +1943,7 @@ __loadLesson({
     },
     {
       "id": "G005",
+      "visual_img": "img/eng_present_perfect_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "easy",
@@ -1972,6 +1977,7 @@ __loadLesson({
     },
     {
       "id": "G006",
+      "visual_img": "img/eng_present_perfect_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "easy",
@@ -2005,6 +2011,7 @@ __loadLesson({
     },
     {
       "id": "G007",
+      "visual_img": "img/eng_present_perfect_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "medium",
@@ -2038,6 +2045,7 @@ __loadLesson({
     },
     {
       "id": "G008",
+      "visual_img": "img/eng_present_perfect_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "medium",
@@ -2071,6 +2079,7 @@ __loadLesson({
     },
     {
       "id": "G009",
+      "visual_img": "img/eng_so_that_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "easy",
@@ -2104,6 +2113,7 @@ __loadLesson({
     },
     {
       "id": "G010",
+      "visual_img": "img/eng_so_that_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "medium",
@@ -2137,6 +2147,7 @@ __loadLesson({
     },
     {
       "id": "G011",
+      "visual_img": "img/eng_so_that_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "easy",
@@ -2170,6 +2181,7 @@ __loadLesson({
     },
     {
       "id": "G012",
+      "visual_img": "img/eng_so_that_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "medium",
@@ -3573,6 +3585,7 @@ __loadLesson({
     },
     {
       "id": "G013",
+      "visual_img": "img/eng_present_perfect_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "easy",
@@ -3606,6 +3619,7 @@ __loadLesson({
     },
     {
       "id": "G014",
+      "visual_img": "img/eng_present_perfect_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "easy",
@@ -3639,6 +3653,7 @@ __loadLesson({
     },
     {
       "id": "G015",
+      "visual_img": "img/eng_present_perfect_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "medium",
@@ -3672,6 +3687,7 @@ __loadLesson({
     },
     {
       "id": "G016",
+      "visual_img": "img/eng_present_perfect_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "medium",
@@ -3680,7 +3696,7 @@ __loadLesson({
       "hint": "'already'(이미)도 has 다음, p.p. 앞!",
       "wrong_explanations": {
         "0": "💡 'already has'는 어순이 어색해!",
-        "2": "💡 'has eaten already'는 어색하지는 않지만 시험 표준은 'has already eaten'!",
+        "2": "💡 'already'가 동사(eaten)와 목적어(dinner) 사이에 들어가면 안 돼! 어순은 has + already + eaten + dinner.",
         "3": "💡 'is already eaten'은 수동태처럼 보여 어색해!"
       },
       "core_sentence_id": null,
@@ -3705,6 +3721,7 @@ __loadLesson({
     },
     {
       "id": "G017",
+      "visual_img": "img/eng_present_perfect_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "medium",
@@ -3738,6 +3755,7 @@ __loadLesson({
     },
     {
       "id": "G018",
+      "visual_img": "img/eng_present_perfect_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "medium",
@@ -3771,6 +3789,7 @@ __loadLesson({
     },
     {
       "id": "G019",
+      "visual_img": "img/eng_so_that_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "easy",
@@ -3804,6 +3823,7 @@ __loadLesson({
     },
     {
       "id": "G020",
+      "visual_img": "img/eng_so_that_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "medium",
@@ -3837,6 +3857,7 @@ __loadLesson({
     },
     {
       "id": "G021",
+      "visual_img": "img/eng_so_that_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "easy",
@@ -3870,6 +3891,7 @@ __loadLesson({
     },
     {
       "id": "G022",
+      "visual_img": "img/eng_so_that_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "medium",
@@ -3903,6 +3925,7 @@ __loadLesson({
     },
     {
       "id": "G023",
+      "visual_img": "img/eng_so_that_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "hard",
@@ -4892,7 +4915,7 @@ __loadLesson({
         70
       ],
       "instruction": "다음 글의 내용과 일치하지 않는 것은?",
-      "sentence": "Now it's time to dance! Remember that you become a storyteller when you dance hula. You tell a story with your hands, feet, and hips. Oh, you need to take off your shoes and socks! Hula is always done barefoot.\n\nLet's start with the hand gestures. To show \"rain,\" wave your hands up and down. This gesture is called ua in the Hawaiian language, and it means \"rain.\" What about the sun? Hawaiians make a circle with their arms above their heads. That's ka la, the \"sun.\" These gestures are so simple that you can easily remember them.",
+      "sentence": "Now it's time to dance! Remember that you become a storyteller when you dance hula. You tell a story with your hands, feet, and hips. Oh, you need to take off your shoes and socks! Hula is always done barefoot.\n\nLet's start with the hand gestures. Every gesture in hula has a meaning. Wave your fingers while you move your arms up and down. This gesture is called ua in the Hawaiian language, and it means \"rain.\" What about the sun? Hawaiians make a circle with their arms above their heads. That's ka la, the \"sun.\" These gestures are so simple that you can easily remember them.",
       "choices": [
         "훌라를 출 때 신발과 양말을 벗어야 한다.",
         "훌라는 항상 맨발로 한다.",
@@ -5014,6 +5037,7 @@ __loadLesson({
     },
     {
       "id": "Q-MULTI-AWK-L4-001",
+      "visual_img": "img/eng_present_perfect_v1.png",
       "exam_perf_variants": {
         "condition_trap": {
           "active": true,
@@ -5077,6 +5101,7 @@ __loadLesson({
     },
     {
       "id": "Q-MULTI-AWK-L4-002",
+      "visual_img": "img/eng_present_perfect_v1.png",
       "exam_perf_variants": {
         "condition_trap": {
           "active": true,
@@ -5140,6 +5165,7 @@ __loadLesson({
     },
     {
       "id": "Q-MULTI-AWK-L4-003",
+      "visual_img": "img/eng_so_that_v1.png",
       "exam_perf_variants": {
         "condition_trap": {
           "active": true,
@@ -5203,6 +5229,7 @@ __loadLesson({
     },
     {
       "id": "Q-MULTI-AWK-L4-004",
+      "visual_img": "img/eng_so_that_v1.png",
       "exam_perf_variants": {
         "condition_trap": {
           "active": true,
@@ -6716,6 +6743,7 @@ __loadLesson({
     },
     {
       "id": "M-MULTI-OK-L4-01",
+      "visual_img": "img/eng_present_perfect_v1.png",
       "exam_perf_variants": {
         "condition_trap": {
           "active": true,
@@ -6779,6 +6807,7 @@ __loadLesson({
     },
     {
       "id": "M-MULTI-OK-L4-02",
+      "visual_img": "img/eng_so_that_v1.png",
       "exam_perf_variants": {
         "condition_trap": {
           "active": true,
@@ -6842,6 +6871,7 @@ __loadLesson({
     },
     {
       "id": "M-MULTI-OK-L4-03",
+      "visual_img": "img/eng_present_perfect_v1.png",
       "exam_perf_variants": {
         "condition_trap": {
           "active": true,
@@ -6907,6 +6937,7 @@ __loadLesson({
     },
     {
       "id": "M-MULTI-OK-L4-04",
+      "visual_img": "img/eng_so_that_v1.png",
       "exam_perf_variants": {
         "condition_trap": {
           "active": true,
@@ -7189,6 +7220,68 @@ __loadLesson({
           "active": false,
           "additional_answers": []
         }
+      }
+    },
+    {
+      "id": "Q-TITLE-L4-001",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "recovery_band": "B",
+      "core_sentence_id": null,
+      "linked_rule_ids": [],
+      "exam_pattern": "title_main_idea",
+      "page": null,
+      "instruction": "윗글의 제목으로 가장 알맞은 것은? (올해 중간 기출 13번과 같은 형식)",
+      "sentence": "Aloha! Welcome to Hawaii! Aloha means \"hello\" or \"goodbye\" in the Hawaiian language. I'm Malia, and I'm your hula teacher for today. Have you heard of hula before? How much do you know about hula? Before we start our lesson, I want to tell you about it.\n\nHula is a traditional dance from Hawaii, and it has been a part of Hawaiian life for a long time. The early Hawaiians didn't have a writing system, so they used hula to tell stories. Hula is a language through body movements, and it has passed down stories from one generation to the next.\n\n윗글의 제목으로 가장 알맞은 것은?",
+      "choices": [
+        "Hula, More than Just a Dance",
+        "How to Learn the Hawaiian Language",
+        "The History of Writing in Hawaii",
+        "Various Dances Around the World",
+        "Malia's First Trip to Hawaii"
+      ],
+      "correct": 0,
+      "hint": "글 전체가 무엇을 소개해? 훌라 = 춤 그 이상(이야기를 전하는 '언어'). 교과서 본문 제목 그대로야.",
+      "wrong_explanations": {
+        "1": "💡 하와이어(Aloha)는 인사말 소개일 뿐, 글의 중심은 훌라야.",
+        "2": "💡 문자 체계가 없었다는 건 훌라가 이야기 전달 수단이 된 배경 설명이야.",
+        "3": "💡 세계 여러 춤이 아니라 훌라 '하나'만 다뤄 — 범위가 너무 넓은 제목.",
+        "4": "💡 Malia는 훌라 선생님으로 자기소개만 했어. 여행 이야기가 아니야."
+      }
+    },
+    {
+      "id": "Q-TITLE-L4-002",
+      "phase": "exam_prep",
+      "training_layer": "passage_check",
+      "passage_stage": "A",
+      "type": "short_reading",
+      "difficulty": "medium",
+      "recovery_band": "B",
+      "core_sentence_id": "CS04",
+      "linked_rule_ids": [],
+      "exam_pattern": "title_main_idea",
+      "page": [
+        70
+      ],
+      "instruction": "윗글의 제목으로 가장 알맞은 것은?",
+      "sentence": "Now it's time to dance! Remember that you become a storyteller when you dance hula. You tell a story with your hands, feet, and hips. Oh, you need to take off your shoes and socks! Hula is always done barefoot.\n\nLet's start with the hand gestures. Every gesture in hula has a meaning. Wave your fingers while you move your arms up and down. This gesture is called ua in the Hawaiian language, and it means \"rain.\" What about the sun? Hawaiians make a circle with their arms above their heads. That's ka la, the \"sun.\" These gestures are so simple that you can easily remember them.\n\n윗글의 제목으로 가장 알맞은 것은?",
+      "choices": [
+        "Hand Gestures in Hula: Simple Moves with Meanings",
+        "The Weather of Hawaii: Rain and Sun",
+        "Why You Should Wear Shoes When Dancing",
+        "The History of Hawaiian Storytellers",
+        "How to Make a Circle with Your Arms"
+      ],
+      "correct": 0,
+      "hint": "ua(비)·ka la(태양)는 무엇의 예시야? 글의 중심 소재 = 손동작(gestures)과 그 의미.",
+      "wrong_explanations": {
+        "1": "💡 비·태양은 날씨 이야기가 아니라 손동작의 '뜻'으로 나온 거야.",
+        "2": "💡 본문은 반대 — 신발·양말을 '벗어야' 해(barefoot).",
+        "3": "💡 storyteller가 언급되지만 '역사'는 다루지 않아.",
+        "4": "💡 팔로 원 만들기는 ka la 하나의 예시일 뿐 — 너무 좁은 제목."
       }
     }
   ],

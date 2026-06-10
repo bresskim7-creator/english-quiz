@@ -1,7 +1,7 @@
 __loadLesson({
   "lesson": 2,
   "title": "Lesson 2: Now One Foot, Now the Other",
-  "version": "3.20",
+  "version": "3.21",
   "build_date": "2026-05-12",
   "build_note": "v3.20 — 3차 갭팩 A·E: 배열-N번째 선택형 신규 3(Q-ARR-NTH-L2-001~003, word_bank/arranged_sentence/target_position; showPositionAsk 비파괴 분기로 보기박스 표시) + 문장삽입 신규 1(Q-SENT-INS-L2-001, 적중문제 Q10 교과서 Reading verbatim). 전부 skill_focus+exam_perf_variants(75s), core_sentences 소싱. 기존 문항·P001~003 불변. (6/05 3차 발주) || v3.19 — 2차 ①③: multi_grammar 다답형 6(Q-MULTI-AWK-L2-001~004 + M-MULTI-OK-L2-01/02) + short_reading 4(E-SR-L2-MATCH-01~04)에 exam_perf_variants 부착(exam_perf 리허설 활성). correct polarity 신규 2(M-MULTI-OK-L2-03 to부정사/04 관계대명사, variant 동시 부착) → multi_focus correct 풀 2→4 고정노출 분산. 기존 문항 콘텐츠 불변. (6/05 2차 발주)",
   "core_sentences": [
@@ -68,7 +68,7 @@ __loadLesson({
     {
       "id": "CS06",
       "text_en": "Bob, it's time to build a tower!",
-      "text_ko": "Bob, 탑을 세울 시간이야!",
+      "text_ko": "Bob, 탑을 쌓을 시간이야!",
       "pair_id": null,
       "source": "read_p33",
       "is_priority": true,
@@ -737,7 +737,7 @@ __loadLesson({
       "drill_stage": 1,
       "is_bridge_item": false,
       "prompt_en": "Bob, it's time to build a tower!",
-      "prompt_ko": "Bob, 탑을 세울 시간이야!",
+      "prompt_ko": "Bob, 탑을 쌓을 시간이야!",
       "grammar_note": "time to build: to부정사가 time(명사)을 꾸며줘요. '세울 시간'"
     },
     {
@@ -763,7 +763,7 @@ __loadLesson({
       "drill_stage": 2,
       "is_bridge_item": false,
       "prompt": "Bob, it's time to _____ a tower!",
-      "korean_full": "Bob, 탑을 세울 시간이야!",
+      "korean_full": "Bob, 탑을 쌓을 시간이야!",
       "answer": "build",
       "choices": [
         "build",
@@ -791,7 +791,7 @@ __loadLesson({
       "page": null,
       "drill_stage": 3,
       "is_bridge_item": false,
-      "prompt_ko": "Bob, 탑을 세울 시간이야!",
+      "prompt_ko": "Bob, 탑을 쌓을 시간이야!",
       "chunks": [
         "Bob,",
         "it's time",
@@ -833,7 +833,7 @@ __loadLesson({
           "biuld"
         ]
       },
-      "prompt_ko": "Bob, 탑을 세울 시간이야!"
+      "prompt_ko": "Bob, 탑을 쌓을 시간이야!"
     },
     {
       "id": "D-CS07-01",
@@ -2052,9 +2052,9 @@ __loadLesson({
       "meaning_ko": "탑을 쌓을 시간이야.",
       "hint": "💡 It(1) is(2) time(3) to(4) build(5)...",
       "wrong_explanations": {
-        "0": "⚡ 3번째 단어는 'time'야! 'It'은 다른 위치에 있어.",
-        "1": "⚡ 3번째 단어는 'time'야! 'is'은 다른 위치에 있어.",
-        "3": "⚡ 3번째 단어는 'time'야! 'to'은 다른 위치에 있어."
+        "0": "⚡ 'It'은 1번째 단어야! 5번째는 'build'. It(1) is(2) time(3) to(4) build(5)...",
+        "1": "⚡ 'is'는 2번째 단어야! 5번째는 'build'.",
+        "3": "⚡ 'to'는 4번째 단어야! 5번째는 'build'."
       },
       "core_sentence_id": "CS06",
       "linked_rule_ids": [],
@@ -2236,6 +2236,7 @@ __loadLesson({
     },
     {
       "id": "G005",
+      "visual_img": "img/eng_rel_pronoun_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "medium",
@@ -2267,6 +2268,7 @@ __loadLesson({
     },
     {
       "id": "G006",
+      "visual_img": "img/eng_rel_pronoun_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "medium",
@@ -2298,6 +2300,7 @@ __loadLesson({
     },
     {
       "id": "G007",
+      "visual_img": "img/eng_rel_pronoun_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "medium",
@@ -2329,6 +2332,7 @@ __loadLesson({
     },
     {
       "id": "M001",
+      "visual_img": "img/eng_rel_pronoun_v1.png",
       "type": "match",
       "phase": "exam_prep",
       "difficulty": "medium",
@@ -2360,6 +2364,7 @@ __loadLesson({
     },
     {
       "id": "M002",
+      "visual_img": "img/eng_rel_pronoun_v1.png",
       "type": "match",
       "phase": "exam_prep",
       "difficulty": "medium",
@@ -2712,6 +2717,7 @@ __loadLesson({
     },
     {
       "id": "G018",
+      "visual_img": "img/eng_rel_pronoun_v1.png",
       "type": "fill_blank",
       "phase": "exam_prep",
       "difficulty": "medium",
@@ -4588,6 +4594,7 @@ __loadLesson({
     },
     {
       "id": "Q-MULTI-AWK-L2-001",
+      "visual_img": "img/eng_rel_pronoun_v1.png",
       "exam_perf_variants": {
         "condition_trap": {
           "active": true,
@@ -4714,6 +4721,7 @@ __loadLesson({
     },
     {
       "id": "Q-MULTI-AWK-L2-003",
+      "visual_img": "img/eng_rel_pronoun_v1.png",
       "exam_perf_variants": {
         "condition_trap": {
           "active": true,
@@ -6201,6 +6209,7 @@ __loadLesson({
     },
     {
       "id": "M-MULTI-OK-L2-02",
+      "visual_img": "img/eng_rel_pronoun_v1.png",
       "exam_perf_variants": {
         "condition_trap": {
           "active": true,
@@ -6329,6 +6338,7 @@ __loadLesson({
     },
     {
       "id": "M-MULTI-OK-L2-04",
+      "visual_img": "img/eng_rel_pronoun_v1.png",
       "exam_perf_variants": {
         "condition_trap": {
           "active": true,
