@@ -1,4 +1,5 @@
-const CACHE_NAME = 'quiz-v166';
+const CACHE_NAME = 'quiz-v167';
+// v167 (2026-06-12): 기말 총점검 보강 — 사회 soc4 환율 그래프 exam 4문항(S4-E040~E043, v1.0->1.1; img/soc_forex_shift_demand_v1.png Pillow 256색 FS 압축 -62% 배선) + 과학 sci2 형식 정합 4건(S2-E026 보기형 재설계·E032/E006 ㄱㄴㄷ 변환·E001 자구, v1.1->1.2). PRECACHE에 soc_forex_shift_demand_v1.png 등재. APP_CACHE_NAME 동반 범프(v166->v167). 캐시 강제 갱신용.
 // v166 (2026-06-11): 영어 배치1 + 이미지 3장 — (배치1) lesson4 PC4-MATCH-002 지문 교과서 p.70 원문 복원·G016 already 어순 해설 정정·제목추론 2문항(Q-TITLE-L4-001/002, questions 배열) 추가; lesson2 P001 wrong_explanations 위치정합·'탑을 쌓을' 통일. (이미지) eng_present_perfect/eng_so_that/eng_rel_pronoun v1 PNG visual_img 배선(lesson4 18+13, lesson2 10) + index.html showWrongExplanation·showWrongExplanationMulti에 renderVisualMedia(q) 호출 + PRECACHE 3 PNG 등재(pngquant 미가용→Pillow 256색 Floyd-Steinberg 압축 -54~62%). lesson2 v3.20->3.21·lesson4 v1.13->1.14. APP_CACHE_NAME 동반 범프(v165->v166). 캐시 강제 갱신용.
 // v165 (2026-06-10): 국어 배치1 + 카드 이미지 3장 배선 — cc-kor2-2(kor_passive_3ways_v1)·cc-kor2-3(kor_quote_convert_v1)·KC3-04(kor_expl_methods8_v1) visual_img + PRECACHE 3 PNG. lesson_kor2 1.5·kor3 1.4. APP_CACHE_NAME 동반 범프(v164->v165). 캐시 강제 갱신용.
 // v164 (2026-06-10): 과학 3단원 배치1(문항 재작성·용어 병기·표현 정렬, lesson_sci2/3/4.js) + 배치2 카드 이미지 7장 배선 — CC-06(igneous_compare)·CC-07(sedimentary_classify)·CC-08(metamorphic_pairs)·PW-01(wave_vs_medium)·PW-04(sound_medium)·PC-02(photo_factors_graphs)·PC-06(starch_test_steps_v2) visual_img 추가 + PRECACHE 7 PNG 등재. APP_CACHE_NAME 동반 범프(index v161->v164). 캐시 강제 갱신용.
@@ -101,6 +102,7 @@ const PRECACHE_URLS = [
   './img/soc_gdp_5check_v1.png',
   './img/soc_inflation_3causes_v1.png',
   './img/soc_forex_demand_supply_v1.png',
+  './img/soc_forex_shift_demand_v1.png',
   './img/soc_substitute_complement_v1.png',
   './img/soc_price_stability_4actors_v1.png',
   './img/kor_structure_intro_mid_end.png',
