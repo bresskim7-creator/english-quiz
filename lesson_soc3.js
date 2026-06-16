@@ -7,7 +7,7 @@ __loadLesson({
   "build_date": "2026-06-07",
   "lesson": "soc3",
   "mindmap": {
-    "img": "img/soc_mindmap_soc3_v1.png",
+    "img": "img/soc_mindmap_soc3_v2.png",
     "title": "시장과 가격 — 기말 한 장 정리",
     "branches": [
       { "no": 1, "label": "시장의 의미·종류·역할", "wing": "L", "cards": ["SC3-01", "SC3-02", "SC3-03", "SC3-04"] },

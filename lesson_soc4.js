@@ -7,7 +7,7 @@ __loadLesson({
   "build_date": "2026-06-07",
   "lesson": "soc4",
   "mindmap": {
-    "img": "img/soc_mindmap_soc4_v2.png",
+    "img": "img/soc_mindmap_soc4_v3.png",
     "title": "우리나라 경제와 세계화 — 기말 한 장 정리",
     "branches": [
       { "no": 1, "label": "경제성장·GDP", "wing": "L", "cards": ["SC4-01", "SC4-02", "SC4-03"] },
