@@ -1,4 +1,5 @@
-const CACHE_NAME = 'quiz-v168';
+const CACHE_NAME = 'quiz-v169';
+// v169 (2026-06-16): 국어 마인드맵 내용형 교체 — kor2 허브 kor_mindmap_kor2_v2.png, kor3 허브 kor_mindmap_kor3_v2.png(가지별 핵심 불릿 + ⚠함정). lesson_kor2/3 mindmap.img 동반 갱신. PRECACHE 2줄(v1→v2) 교체. APP_CACHE_NAME 동반 범프(v168->v169). 캐시 강제 갱신용.
 // v168 (2026-06-16): 사회 마인드맵 내용형 교체 — soc3 허브 soc_mindmap_soc3_v2.png, soc4 허브 soc_mindmap_soc4_v3.png(가지별 핵심 불릿 + ⚠함정). lesson_soc3/4 mindmap.img 동반 갱신. PRECACHE 2줄(v1→v2 / v2→v3) 교체. APP_CACHE_NAME 동반 범프(v167->v168). 캐시 강제 갱신용.
 // v167 (2026-06-12): 기말 총점검 보강 — 사회 soc4 환율 그래프 exam 4문항(S4-E040~E043, v1.0->1.1; img/soc_forex_shift_demand_v1.png Pillow 256색 FS 압축 -62% 배선) + 과학 sci2 형식 정합 4건(S2-E026 보기형 재설계·E032/E006 ㄱㄴㄷ 변환·E001 자구, v1.1->1.2). PRECACHE에 soc_forex_shift_demand_v1.png 등재. APP_CACHE_NAME 동반 범프(v166->v167). 캐시 강제 갱신용.
 // v166 (2026-06-11): 영어 배치1 + 이미지 3장 — (배치1) lesson4 PC4-MATCH-002 지문 교과서 p.70 원문 복원·G016 already 어순 해설 정정·제목추론 2문항(Q-TITLE-L4-001/002, questions 배열) 추가; lesson2 P001 wrong_explanations 위치정합·'탑을 쌓을' 통일. (이미지) eng_present_perfect/eng_so_that/eng_rel_pronoun v1 PNG visual_img 배선(lesson4 18+13, lesson2 10) + index.html showWrongExplanation·showWrongExplanationMulti에 renderVisualMedia(q) 호출 + PRECACHE 3 PNG 등재(pngquant 미가용→Pillow 256색 Floyd-Steinberg 압축 -54~62%). lesson2 v3.20->3.21·lesson4 v1.13->1.14. APP_CACHE_NAME 동반 범프(v165->v166). 캐시 강제 갱신용.
@@ -112,8 +113,8 @@ const PRECACHE_URLS = [
   './img/kor_passive_3ways_v1.png',
   './img/kor_quote_convert_v1.png',
   './img/kor_expl_methods8_v1.png',
-  './img/kor_mindmap_kor2_v1.png',
-  './img/kor_mindmap_kor3_v1.png',
+  './img/kor_mindmap_kor2_v2.png',
+  './img/kor_mindmap_kor3_v2.png',
   './img/eng_present_perfect_v1.png',
   './img/eng_so_that_v1.png',
   './img/eng_rel_pronoun_v1.png'

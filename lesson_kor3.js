@@ -9,7 +9,7 @@ __loadLesson({
   "build_date": "2026-06-07",
   "build_note": "기말 국어 3단원 신규 빌드. 개념카드 14(KC3, visual_img 3종) + 문항 46(KOR3-E, A20/B21/C5, 다중정답 8·부정형 다수; +batch1 스트레스세트6·인과1·딥타임1) + 본문해설 3편(PG3-01 임두원/PG3-02 채운/PG3-03 진서 스트레스). kor2 스키마. 교과서 직독본+이해완성 캐논 대조. (발주서 v2 §3·§4) / batch1(2026-06-10 재점검): KC3-07 card_a에 교과서 요약 도움말 어구 병기(찾아 표시·조합).",
   "mindmap": {
-    "img": "img/kor_mindmap_kor3_v1.png",
+    "img": "img/kor_mindmap_kor3_v2.png",
     "title": "3단원 — 기말 한 장 정리",
     "branches": [
       {
