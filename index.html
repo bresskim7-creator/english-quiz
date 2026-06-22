@@ -1991,8 +1991,8 @@
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-06-16 v169';
-        const APP_CACHE_NAME = 'quiz-v169';
+        const BUILD_VERSION = '2026-06-22 v170';
+        const APP_CACHE_NAME = 'quiz-v170';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -2921,12 +2921,27 @@
         }
 
         // STEP133 (2026-05-24): 큐가 비었을 때 ("다 봤어요!") - 큐 모델 빈 상태
+        function __dailyEmptySub() {
+            var today = getTodayDateStr();
+            var fut = (DAILY_INDEX_DATA || [])
+                .map(function (it) { return it && it.date; })
+                .filter(function (d) { return d && d > today; })
+                .sort();
+            var t = new Date(); t.setDate(t.getDate() + 1);
+            var tmr = t.getFullYear() + '-'
+                + String(t.getMonth() + 1).padStart(2, '0') + '-'
+                + String(t.getDate()).padStart(2, '0');
+            if (fut.length === 0) return '새 글이 준비되면 다시 올라와요.';
+            if (fut[0] === tmr) return '내일 새 글이 준비됩니다.';
+            return '곧 새 글이 준비됩니다.';
+        }
+
         function renderDailyQueueEmpty() {
             const view = document.getElementById('daily-today-view');
             view.innerHTML = '<div class="daily-empty">'
                 + '<div class="daily-empty-icon">🎉</div>'
                 + '<div>다 봤어요!</div>'
-                + '<div style="margin-top:6px;font-size:13px;color:#666;">새 글은 매주 토·일·월 새벽에 준비됩니다.</div>'
+                + '<div style="margin-top:6px;font-size:13px;color:#666;">' + __dailyEmptySub() + '</div>'
                 + '<div style="margin-top:6px;font-size:12px;color:#999;">"지난 글" 탭에서 읽었던 카드를 다시 볼 수 있어요.</div>'
                 + '</div>';
         }

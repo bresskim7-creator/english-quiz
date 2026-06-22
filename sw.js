@@ -1,4 +1,5 @@
-const CACHE_NAME = 'quiz-v169';
+// v170 (2026-06-22): '오늘의 한 장' 빈 화면 문구를 인덱스 잔여분 기준 3분기(내일/곧/준비되면)로 분기. index.html renderDailyQueueEmpty만 변경, 데이터·렌더러 불변.
+const CACHE_NAME = 'quiz-v170';
 // v169 (2026-06-16): 국어 마인드맵 내용형 교체 — kor2 허브 kor_mindmap_kor2_v2.png, kor3 허브 kor_mindmap_kor3_v2.png(가지별 핵심 불릿 + ⚠함정). lesson_kor2/3 mindmap.img 동반 갱신. PRECACHE 2줄(v1→v2) 교체. APP_CACHE_NAME 동반 범프(v168->v169). 캐시 강제 갱신용.
 // v168 (2026-06-16): 사회 마인드맵 내용형 교체 — soc3 허브 soc_mindmap_soc3_v2.png, soc4 허브 soc_mindmap_soc4_v3.png(가지별 핵심 불릿 + ⚠함정). lesson_soc3/4 mindmap.img 동반 갱신. PRECACHE 2줄(v1→v2 / v2→v3) 교체. APP_CACHE_NAME 동반 범프(v167->v168). 캐시 강제 갱신용.
 // v167 (2026-06-12): 기말 총점검 보강 — 사회 soc4 환율 그래프 exam 4문항(S4-E040~E043, v1.0->1.1; img/soc_forex_shift_demand_v1.png Pillow 256색 FS 압축 -62% 배선) + 과학 sci2 형식 정합 4건(S2-E026 보기형 재설계·E032/E006 ㄱㄴㄷ 변환·E001 자구, v1.1->1.2). PRECACHE에 soc_forex_shift_demand_v1.png 등재. APP_CACHE_NAME 동반 범프(v166->v167). 캐시 강제 갱신용.
