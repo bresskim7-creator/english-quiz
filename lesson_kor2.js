@@ -2768,6 +2768,153 @@ __loadLesson({
         "1": "'라고'를 '고'로 바꾸는 것도 간접 인용 전환이 맞아. 옳은 방법이라 답이 아니야!",
         "2": "'저'를 '자기'로 바꾸는 높임 조정도 간접 인용 전환이 맞아. 옳은 방법이라 답이 아니야!"
       }
+    },
+    {
+      "id": "KOR2-E054",
+      "type": "short_reading",
+      "score_group": "A",
+      "passage_group": "P002",
+      "choices": [
+        "수혈이 필요한 위급 환자의 모습",
+        "헌혈 시 주의할 점에 관한 정보",
+        "혈액 백의 이미지",
+        "'재생'이라는 단어"
+      ],
+      "explanation": "💡 (가) 인쇄 광고는 '아름다운 재생'으로 헌혈의 가치를 강조하면서, 위급 환자의 모습과 헌혈 시 주의할 점 같은 정보는 일부러 뺐어요(배제). 광고 분석은 '무엇을 강조했나'만큼 '무엇을 뺐나'를 보는 거예요. 📖 매체 자료의 정보 선택과 배제 📝 강조한 것(혈액 백·'재생')과 뺀 것(위급 환자·주의할 점)을 구분하세요.",
+      "sentence": "[헌혈 공익광고 지문] (가) 인쇄 광고는 혈액 백에 영상 '재생' 아이콘을 넣고 '재생'을 두 가지 의미(영상 재생·생명을 되살림)로 반복하며 그 앞에 '아름다운'을 붙였다. (나) 영상 광고는 심장 박동 그래프와 수혈이 필요한 위급 환자의 모습을 보여 주며 '살릴 수 있습니다'를 반복했다. ─ (가) 광고가 의도적으로 빼고(배제) 보여 주지 않은 정보를 모두 고르시오.",
+      "instruction": "광고가 '뺀 정보'를 모두 찾으세요.",
+      "correct": 0,
+      "hint": "광고가 강조한 것 말고, 일부러 안 보여 준 것을 찾으세요.",
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "difficulty": "medium",
+      "recovery_band": "normal",
+      "subject": "korean",
+      "unit": "2단원",
+      "subunit": "2-02",
+      "is_transfer_item": false,
+      "source": "비상_중2국어_2단원",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "exam_prep"
+      ],
+      "wrong_explanations": {
+        "2": "혈액 백은 (가)가 '선택해 보여 준' 핵심 이미지예요. 뺀 게 아니에요.",
+        "3": "'재생'은 (가)가 두 의미로 '반복·강조'한 단어예요. 뺀 게 아니에요."
+      },
+      "answer_indices": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "KOR2-E055",
+      "type": "short_reading",
+      "score_group": "A",
+      "passage_group": "P002",
+      "choices": [
+        "헌혈 절차의 번거로움을 솔직하게 알리려고",
+        "헌혈을 생명을 살리는 가치 있고 아름다운 일로 느끼게 하려고",
+        "헌혈자 수를 정확한 통계로 보여 주려고",
+        "위급 환자에게 겁을 주려고"
+      ],
+      "explanation": "💡 (가)는 번거로움·주의할 점을 빼고 '아름다운'이라는 말로 헌혈을 생명을 살리는 가치 있고 아름다운 일로 느끼게 했어요. 정보를 빼고 특정 가치를 부각하는 게 재현에 담긴 의도예요. 📖 재현에 담긴 제작자의 의도 📝 '왜 이 정보를 뺐을까?'를 의도와 연결하세요.",
+      "sentence": "[같은 헌혈 광고] (가)가 위급 환자의 모습과 헌혈 시 주의할 점을 빼고 '아름다운 재생'을 앞세운 의도로 알맞은 것은?",
+      "instruction": "(가)가 정보를 뺀 의도를 고르세요.",
+      "correct": 1,
+      "hint": "'아름다운'이라는 말이 주는 느낌을 생각해 보세요.",
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "difficulty": "medium",
+      "recovery_band": "normal",
+      "subject": "korean",
+      "unit": "2단원",
+      "subunit": "2-02",
+      "is_transfer_item": false,
+      "source": "비상_중2국어_2단원",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "exam_prep"
+      ],
+      "wrong_explanations": {
+        "0": "번거로움·주의할 점은 오히려 '배제'했어요. 솔직히 알리려는 게 아니에요.",
+        "2": "통계 수치는 (가)에 없어요. 가치를 '느끼게' 하려는 거예요.",
+        "3": "겁주기가 아니라 '아름다운 가치'로 마음을 움직이려는 거예요."
+      }
+    },
+    {
+      "id": "KOR2-E056",
+      "type": "short_reading",
+      "score_group": "B",
+      "passage_group": "P002",
+      "choices": [
+        "(가)는 위급 환자를, (나)는 혈액 백 이미지를 중심에 둔다",
+        "(가)는 '재생'의 두 가지 의미를 반복하고, (나)는 위급 환자 모습과 '살릴 수 있습니다'를 반복한다",
+        "(가)와 (나) 모두 헌혈 시 주의할 점을 자세히 안내한다",
+        "(가)와 (나) 모두 그래프 없이 글자만으로 표현한다"
+      ],
+      "explanation": "💡 (가)는 '재생'의 두 의미를 반복하고, (나)는 위급 환자의 모습과 '살릴 수 있습니다'를 반복해요. 같은 헌혈 주제라도 매체에 따라 강조·반복하는 방식이 달라요. 📖 매체에 따른 재현 방식의 차이 📝 각 광고가 '무엇을 반복했는지'가 핵심 단서예요.",
+      "sentence": "[같은 헌혈 광고] (가)와 (나)의 표현 방식 차이로 알맞은 것은?",
+      "instruction": "두 광고의 표현 방식 차이를 고르세요.",
+      "correct": 1,
+      "hint": "각 광고가 무엇을 '반복'했는지 떠올려 보세요.",
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "difficulty": "medium",
+      "recovery_band": "normal",
+      "subject": "korean",
+      "unit": "2단원",
+      "subunit": "2-02",
+      "is_transfer_item": false,
+      "source": "비상_중2국어_2단원",
+      "is_priority": false,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "exam_prep"
+      ],
+      "wrong_explanations": {
+        "0": "거꾸로예요. 위급 환자는 (나), 혈액 백은 (가) 쪽이에요.",
+        "2": "둘 다 '헌혈 시 주의할 점'은 배제했어요.",
+        "3": "(나)는 심장 박동 그래프를 반복해서 써요. 글자만 쓴 게 아니에요."
+      }
+    },
+    {
+      "id": "KOR2-E057",
+      "type": "short_reading",
+      "score_group": "B",
+      "passage_group": "P002",
+      "choices": [
+        "특정 회사의 제품을 팔아 이익을 얻는 것이 목적이다",
+        "헌혈 참여처럼 사회적으로 필요한 행동을 이끌어 내는 것이 목적이다",
+        "구매 후기를 모아 제품의 신뢰를 높이려 한다",
+        "값이 싸다는 점을 내세워 소비를 부추긴다"
+      ],
+      "explanation": "💡 이 광고는 제품을 팔아 이익을 얻는 상업 광고와 달리, 헌혈 참여처럼 사회적으로 필요한 행동을 이끌어 내는 공익 광고예요. 📖 공익 광고와 상업 광고의 구별 📝 '파는 것이 있나?'로 둘을 구분하세요.",
+      "sentence": "[같은 헌혈 광고] 이 헌혈 광고가 상업 광고와 구별되는 점으로 알맞은 것은?",
+      "instruction": "공익 광고의 목적을 고르세요.",
+      "correct": 1,
+      "hint": "이 광고가 '팔려는 것'이 있나요?",
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "difficulty": "medium",
+      "recovery_band": "normal",
+      "subject": "korean",
+      "unit": "2단원",
+      "subunit": "2-02",
+      "is_transfer_item": false,
+      "source": "비상_중2국어_2단원",
+      "is_priority": false,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "exam_prep"
+      ],
+      "wrong_explanations": {
+        "0": "제품 판매·이익은 '상업' 광고의 목적이에요. 이건 공익 광고예요.",
+        "2": "구매 후기·신뢰는 상업 광고 전략이에요.",
+        "3": "소비 부추기기는 상업 광고예요. 공익 광고는 사회적 행동을 유도해요."
+      }
     }
   ]
 });
