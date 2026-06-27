@@ -2303,6 +2303,456 @@ __loadLesson({
         "1": "맞아. 참가자는 15명이야.",
         "2": "맞아. 실제 40일을 약 30일로 느꼈어."
       }
+    },
+    {
+      "id": "KOR3-EP-01",
+      "type": "short_reading",
+      "score_group": "A",
+      "choices": [
+        "ㄱ, ㄴ",
+        "ㄱ, ㄷ",
+        "ㄴ, ㄹ",
+        "ㄱ, ㄷ, ㄹ",
+        "ㄴ, ㄷ, ㄹ"
+      ],
+      "explanation": "💡 8종(정의·예시·인과·비교·대조·구분·분류·분석)에 없는 것은 ㄱ '인용'(보조 개념)·ㄷ '은유'(표현 방법)예요. ㄴ 정의·ㄹ 분석은 8종에 포함! 📖 3단원 설명 방법 8종 📝 '인용'은 단골 함정.",
+      "sentence": "〈보기〉\nㄱ. 인용\nㄴ. 정의\nㄷ. 은유\nㄹ. 분석\n\n위 〈보기〉 중 교과서가 제시한 '설명 방법 8종'에 속하지 '않는' 것끼리 바르게 묶은 것은?",
+      "instruction": "다음 문제를 읽고 정답을 고르세요.",
+      "correct": 1,
+      "passage_group": null,
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "difficulty": "medium",
+      "recovery_band": "normal",
+      "subject": "korean",
+      "unit": "3단원",
+      "subunit": "3-01",
+      "is_transfer_item": false,
+      "source": "비상_중2국어_3단원(exam_perf 재구성)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "exam_prep"
+      ],
+      "wrong_explanations": {
+        "0": "ㄴ '정의'는 8종 설명 방법이에요('~란 ~이다'). 8종이 아닌 건 ㄱ·ㄷ.",
+        "2": "둘 다 8종에 포함돼요. 8종이 아닌 건 ㄱ '인용'·ㄷ '은유'예요.",
+        "3": "ㄹ '분석'은 8종에 포함돼요. 8종이 아닌 건 ㄱ·ㄷ뿐.",
+        "4": "ㄴ '정의'·ㄹ '분석'은 8종이에요. 8종이 아닌 건 ㄱ·ㄷ이에요."
+      },
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건: 〈보기〉를 ㄱ부터 옳고·그름을 판정한 뒤, 옳지 않은 것끼리 묶인 조합을 선택"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "KOR3-EP-02",
+      "type": "short_reading",
+      "score_group": "A",
+      "choices": [
+        "ㄱ, ㄴ",
+        "ㄱ, ㄷ",
+        "ㄴ, ㄹ",
+        "ㄱ, ㄷ, ㄹ",
+        "ㄴ, ㄷ, ㄹ"
+      ],
+      "explanation": "💡 옳은 것은 ㄱ·ㄷ이에요. ㄴ '구체→일반'은 연역이 아니라 귀납, ㄹ 유추는 연역이 아니라 '귀납'에 속해요(교과서 명시). 📖 3단원 논증 방법 📝 ★유추⊂귀납! 유추를 연역과 묶으면 오답.",
+      "sentence": "〈보기〉\nㄱ. 귀납은 구체적인 사례들에서 일반적인 결론을 이끌어 내는 논증이다.\nㄴ. 연역은 구체적인 사례들을 모아 일반적인 결론을 이끌어 낸다.\nㄷ. 유추는 귀납 논증에 속한다.\nㄹ. 유추는 연역 논증에 속한다.\n\n위 〈보기〉 중 논증 방법에 대한 설명으로 옳은 것끼리 바르게 묶은 것은?",
+      "instruction": "다음 문제를 읽고 정답을 고르세요.",
+      "correct": 1,
+      "passage_group": null,
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "difficulty": "medium",
+      "recovery_band": "normal",
+      "subject": "korean",
+      "unit": "3단원",
+      "subunit": "3-01",
+      "is_transfer_item": false,
+      "source": "비상_중2국어_3단원(exam_perf 재구성)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "exam_prep"
+      ],
+      "wrong_explanations": {
+        "0": "ㄴ이 틀렸어요. 구체적 사례에서 일반 결론을 끌어내는 건 연역이 아니라 귀납이에요.",
+        "2": "둘 다 틀렸어요. ㄴ은 귀납의 설명, ㄹ 유추는 귀납에 속해요.",
+        "3": "ㄹ이 틀렸어요. 유추는 연역이 아니라 귀납에 속해요. 옳은 것은 ㄱ·ㄷ.",
+        "4": "ㄴ·ㄹ이 틀렸어요. 옳은 것은 ㄱ·ㄷ이에요."
+      },
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건: 〈보기〉를 ㄱ부터 하나씩 옳고·그름을 판정한 뒤, 옳은 것끼리 묶인 조합만 선택"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 80
+        },
+        "omr_marking": {
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "KOR3-EP-03",
+      "type": "short_reading",
+      "score_group": "A",
+      "choices": [
+        "ㄱ, ㄴ",
+        "ㄴ, ㄹ",
+        "ㄱ, ㄷ",
+        "ㄴ, ㄷ, ㄹ",
+        "ㄱ, ㄴ, ㄹ"
+      ],
+      "explanation": "💡 설명글 특징이 아닌 것은 ㄴ(주장으로 설득)·ㄹ(예상 반론·반박)이에요 — 둘 다 '주장하는 글'의 특징! ㄱ 객관적 정보·ㄷ '처음-중간-끝'은 설명글 특징이에요. 📖 3단원 설명글 vs 주장글 📝 주장글 특징을 설명글로 착각 금지.",
+      "sentence": "〈보기〉\nㄱ. 객관적인 정보를 전달한다.\nㄴ. 글쓴이의 주장으로 독자를 설득한다.\nㄷ. '처음-중간-끝' 구조로 짜인다.\nㄹ. 예상 반론과 반박으로 설득력을 높인다.\n\n위 〈보기〉 중 '설명하는 글'의 특징으로 알맞지 '않은' 것끼리 바르게 묶은 것은?",
+      "instruction": "다음 문제를 읽고 정답을 고르세요.",
+      "correct": 1,
+      "passage_group": null,
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "difficulty": "medium",
+      "recovery_band": "normal",
+      "subject": "korean",
+      "unit": "3단원",
+      "subunit": "3-01",
+      "is_transfer_item": false,
+      "source": "비상_중2국어_3단원(exam_perf 재구성)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "exam_prep"
+      ],
+      "wrong_explanations": {
+        "0": "ㄱ '객관적 정보 전달'은 설명글의 특징이에요. 아닌 건 ㄴ·ㄹ.",
+        "2": "둘 다 설명글의 특징이에요. 아닌 건 ㄴ '설득'·ㄹ '예상 반론'이에요.",
+        "3": "ㄷ '처음-중간-끝'은 설명글 특징이에요. 아닌 건 ㄴ·ㄹ뿐.",
+        "4": "ㄱ '객관적 정보'는 설명글 특징이에요. 아닌 건 ㄴ·ㄹ이에요."
+      },
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건: 〈보기〉를 ㄱ부터 옳고·그름을 판정한 뒤, 옳지 않은 것끼리 묶인 조합을 선택"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 80
+        },
+        "omr_marking": {
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "KOR3-EP-04",
+      "type": "short_reading",
+      "score_group": "A",
+      "choices": [
+        "ㄱ, ㄴ",
+        "ㄱ, ㄷ",
+        "ㄴ, ㄹ",
+        "ㄱ, ㄷ, ㄹ",
+        "ㄴ, ㄷ, ㄹ"
+      ],
+      "explanation": "💡 옳은 것은 ㄱ·ㄷ이에요. ㄴ '강조·요약'은 원리 네 가지(추가·삭제·대치·재구성)에 없고, ㄹ '분량 차원'은 점검 세 차원(내용·조직·표현)에 없어요. 📖 3단원 고쳐쓰기 원리4·차원3 📝 원리 4 + 차원 3을 분리해서 외우기.",
+      "sentence": "〈보기〉\nㄱ. 고쳐쓰기 원리 네 가지는 추가·삭제·대치·재구성이다.\nㄴ. '강조'와 '요약'은 고쳐쓰기 원리 네 가지에 든다.\nㄷ. 고쳐쓰기 점검 세 차원은 내용·조직·표현이다.\nㄹ. '분량 차원'은 고쳐쓰기 점검 세 차원에 든다.\n\n위 〈보기〉 중 고쳐쓰기에 대한 설명으로 옳은 것끼리 바르게 묶은 것은?",
+      "instruction": "다음 문제를 읽고 정답을 고르세요.",
+      "correct": 1,
+      "passage_group": null,
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "difficulty": "medium",
+      "recovery_band": "normal",
+      "subject": "korean",
+      "unit": "3단원",
+      "subunit": "3-02",
+      "is_transfer_item": false,
+      "source": "비상_중2국어_3단원(exam_perf 재구성)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "exam_prep"
+      ],
+      "wrong_explanations": {
+        "0": "ㄴ이 틀렸어요. '강조·요약'은 원리 네 가지(추가·삭제·대치·재구성)에 없어요.",
+        "2": "둘 다 틀렸어요. ㄴ·ㄹ 모두 원리/차원에 없는 항목이에요.",
+        "3": "ㄹ이 틀렸어요. '분량 차원'은 점검 세 차원에 없어요. 옳은 것은 ㄱ·ㄷ.",
+        "4": "ㄴ·ㄹ이 틀렸어요. 옳은 것은 ㄱ·ㄷ이에요."
+      },
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건: 〈보기〉를 ㄱ부터 하나씩 옳고·그름을 판정한 뒤, 옳은 것끼리 묶인 조합만 선택"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "KOR3-EP-05",
+      "type": "short_reading",
+      "score_group": "A",
+      "choices": [
+        "분석",
+        "구분",
+        "비교",
+        "정의",
+        "대조"
+      ],
+      "explanation": "💡 한 대상(시계)을 구성 요소(시침·분침·초침)로 쪼개면 '분석'이에요. 📖 3단원 설명 방법 📝 분석=한 대상을 부품으로, 구분=종류로 나누기.",
+      "sentence": "다음 문장에 쓰인 설명 방법은? — \"시계는 시침, 분침, 초침으로 이루어져 있다.\"",
+      "instruction": "다음 문제를 읽고 정답을 고르세요.",
+      "correct": 0,
+      "passage_group": null,
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "difficulty": "medium",
+      "recovery_band": "normal",
+      "subject": "korean",
+      "unit": "3단원",
+      "subunit": "3-01",
+      "is_transfer_item": false,
+      "source": "비상_중2국어_3단원(exam_perf 재구성)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "exam_prep"
+      ],
+      "wrong_explanations": {
+        "1": "구분은 '종류'로 나눠요(벽걸이/휴대용). 여기선 한 시계를 부품으로 쪼개요.",
+        "2": "비교는 두 대상의 공통점을 밝혀요. 여기선 대상이 하나예요.",
+        "3": "정의는 뜻을 풀이해요('~란 ~이다'). 여기선 구성 요소를 나열해요.",
+        "4": "대조는 두 대상의 차이점을 밝혀요. 여기엔 견주는 대상이 없어요."
+      },
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건: 발문을 끝까지 읽고 신호어를 근거로 정답 1개만 선택"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 45
+        },
+        "omr_marking": {
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "KOR3-EP-06",
+      "type": "short_reading",
+      "score_group": "A",
+      "choices": [
+        "유추",
+        "귀납",
+        "연역",
+        "정의",
+        "분석"
+      ],
+      "explanation": "💡 비슷한 두 대상(태국·베트남)을 근거로 다른 속성도 같을 거라 추론하면 '유추'예요(유추는 귀납에 속함). 📖 3단원 논증 방법 📝 '비슷하다 → 다른 점도 비슷할 것이다'가 유추.",
+      "sentence": "다음 논증의 방법은? — \"태국은 강수량·일조량이 많아 벼농사가 잘된다. 베트남도 강수량·일조량이 많다. 따라서 베트남도 벼농사가 잘될 것이다.\"",
+      "instruction": "다음 문제를 읽고 정답을 고르세요.",
+      "correct": 0,
+      "passage_group": null,
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "difficulty": "medium",
+      "recovery_band": "normal",
+      "subject": "korean",
+      "unit": "3단원",
+      "subunit": "3-01",
+      "is_transfer_item": false,
+      "source": "비상_중2국어_3단원(exam_perf 재구성)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "exam_prep"
+      ],
+      "wrong_explanations": {
+        "1": "귀납은 여러 구체 사례를 모아 일반 결론을 내요. 여기선 비슷한 두 대상으로 추론해요.",
+        "2": "연역은 대전제·소전제로 추론해요. 여기선 비슷한 대상으로 추론해요.",
+        "3": "정의는 뜻을 풀이하는 설명 방법이에요. 논증 방법이 아니에요.",
+        "4": "분석은 한 대상을 쪼개는 설명 방법이에요. 논증 방법이 아니에요."
+      },
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건: 발문을 끝까지 읽고 신호어를 근거로 정답 1개만 선택"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 50
+        },
+        "omr_marking": {
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "KOR3-EP-07",
+      "type": "short_reading",
+      "score_group": "B",
+      "choices": [
+        "계획하기 → 내용 생성하기 → 내용 조직하기 → 표현하기 → 고쳐쓰기",
+        "내용 생성하기 → 계획하기 → 표현하기 → 내용 조직하기 → 고쳐쓰기",
+        "표현하기 → 계획하기 → 내용 생성하기 → 고쳐쓰기 → 내용 조직하기",
+        "고쳐쓰기 → 표현하기 → 내용 조직하기 → 내용 생성하기 → 계획하기",
+        "계획하기 → 내용 조직하기 → 내용 생성하기 → 표현하기 → 고쳐쓰기"
+      ],
+      "explanation": "💡 정식 순서는 계획→생성→조직→표현→고쳐쓰기예요. 자료를 모은(생성) 뒤에 개요를 짜요(조직)! 📖 3단원 쓰기 과정 5단계 📝 계획→수집→조직→표현→고쳐쓰기.",
+      "sentence": "글쓰기 과정 다섯 단계를 순서대로 바르게 나열한 것은?",
+      "instruction": "다음 문제를 읽고 정답을 고르세요.",
+      "correct": 0,
+      "passage_group": null,
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "difficulty": "medium",
+      "recovery_band": "normal",
+      "subject": "korean",
+      "unit": "3단원",
+      "subunit": "3-02",
+      "is_transfer_item": false,
+      "source": "비상_중2국어_3단원(exam_perf 재구성)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "exam_prep"
+      ],
+      "wrong_explanations": {
+        "1": "계획하기가 가장 먼저예요. 생성이 먼저 오면 순서가 어긋나요.",
+        "2": "표현하기(쓰기)가 맨 앞에 올 수 없어요. 계획부터 시작해요.",
+        "3": "고쳐쓰기는 맨 마지막 단계예요. 거꾸로 된 순서예요.",
+        "4": "생성과 조직의 순서가 바뀌었어요. 자료를 모은(생성) 뒤 개요를 짜요(조직)."
+      },
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건: 발문을 끝까지 읽고 신호어를 근거로 정답 1개만 선택"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 50
+        },
+        "omr_marking": {
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "KOR3-EP-08",
+      "type": "short_reading",
+      "score_group": "B",
+      "choices": [
+        "출처가 믿을 만하고 주제와 관련이 있는가",
+        "분량이 길수록 무조건 좋은 자료이다",
+        "글자 수가 많은 자료를 우선한다",
+        "어려운 전문 용어가 많을수록 좋다",
+        "자료가 최신 것일수록 주제와 관련이 없어도 우선한다"
+      ],
+      "explanation": "💡 자료 선별 기준은 출처의 신뢰성·주제 관련성·독자 수준이에요. 길거나 어렵거나 최신이라고 좋은 자료가 아니에요! 📖 3단원 자료 선별 📝 '믿을 만한가 + 주제와 맞는가'가 핵심.",
+      "sentence": "글을 쓸 때 자료를 선별하는 기준으로 알맞은 것은?",
+      "instruction": "다음 문제를 읽고 정답을 고르세요.",
+      "correct": 0,
+      "passage_group": null,
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "difficulty": "medium",
+      "recovery_band": "normal",
+      "subject": "korean",
+      "unit": "3단원",
+      "subunit": "3-02",
+      "is_transfer_item": false,
+      "source": "비상_중2국어_3단원(exam_perf 재구성)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "exam_prep"
+      ],
+      "wrong_explanations": {
+        "1": "길다고 좋은 자료가 아니에요. 신뢰성·관련성을 따져야 해요.",
+        "2": "글자 수가 많다고 좋은 게 아니에요. 주제 관련성이 중요해요.",
+        "3": "전문 용어가 많으면 오히려 독자 수준에 안 맞을 수 있어요.",
+        "4": "최신이어도 주제와 무관하면 좋은 자료가 아니에요. 주제 관련성이 기준이에요."
+      },
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건: 발문을 끝까지 읽고 신호어를 근거로 정답 1개만 선택"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 50
+        },
+        "omr_marking": {
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "KOR3-EP-09",
+      "type": "short_reading",
+      "score_group": "A",
+      "choices": [
+        "세부 예시는 삭제하고 구체적인 내용은 일반화한다",
+        "글에 나온 모든 예를 빠짐없이 그대로 옮긴다",
+        "내 생각을 새로 덧붙여 길게 늘인다",
+        "가장 어려운 문장만 골라 그대로 베낀다",
+        "글에서 가장 긴 문장을 찾아 그대로 옮겨 적는다"
+      ],
+      "explanation": "💡 요약의 두 규칙: 중심 문장 찾기 + 삭제·일반화예요. 세부 예시는 지우고 구체적인 말은 큰 말로 일반화해요. 📖 3단원 문단 요약 규칙 📝 예시·숫자는 요약에서 1순위로 삭제, 길이로 고르지 않아요.",
+      "sentence": "문단을 요약하는 방법으로 알맞은 것은?",
+      "instruction": "다음 문제를 읽고 정답을 고르세요.",
+      "correct": 0,
+      "passage_group": null,
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "difficulty": "medium",
+      "recovery_band": "normal",
+      "subject": "korean",
+      "unit": "3단원",
+      "subunit": "3-01",
+      "is_transfer_item": false,
+      "source": "비상_중2국어_3단원(exam_perf 재구성)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "exam_prep"
+      ],
+      "wrong_explanations": {
+        "1": "예를 다 옮기면 요약이 아니라 그대로 베끼는 거예요. 예시는 삭제해요.",
+        "2": "내 생각을 덧붙이는 건 요약이 아니에요. 요약은 글 내용을 줄이는 거예요.",
+        "3": "어려운 문장만 베끼는 건 요약이 아니에요. 중심 문장을 골라요.",
+        "4": "길이로 고르는 게 아니에요. 중심 문장을 찾아 삭제·일반화하는 거예요."
+      },
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건: 발문을 끝까지 읽고 신호어를 근거로 정답 1개만 선택"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 50
+        },
+        "omr_marking": {
+          "active": true
+        }
+      }
     }
   ]
 });

@@ -2915,6 +2915,506 @@ __loadLesson({
         "2": "구매 후기·신뢰는 상업 광고 전략이에요.",
         "3": "소비 부추기기는 상업 광고예요. 공익 광고는 사회적 행동을 유도해요."
       }
+    },
+    {
+      "id": "KOR2-EP-01",
+      "type": "short_reading",
+      "score_group": "A",
+      "choices": [
+        "ㄱ, ㄴ",
+        "ㄱ, ㄷ",
+        "ㄴ, ㄹ",
+        "ㄱ, ㄷ, ㄹ",
+        "ㄴ, ㄷ, ㄹ"
+      ],
+      "explanation": "💡 옳은 것은 ㄱ·ㄷ이에요. ㄴ '잡혀지다·읽혀지다'는 이중 피동(비문), ㄹ '-시키다'는 사동이라 피동이 아니에요. 📖 2단원 피동 표현 📝 접미사 4종·성분 변화는 옳고, 이중 피동·사동은 함정!",
+      "sentence": "〈보기〉\nㄱ. 피동을 만드는 접미사는 '-이-, -히-, -리-, -기-' 네 가지이다.\nㄴ. '잡혀지다', '읽혀지다'는 피동을 두 번 겹쳐 쓴 바른 표현이다.\nㄷ. 능동을 피동으로 바꾸면 목적어가 주어가 되고, 능동의 주어는 '~에게/~에 의해' 부사어가 된다.\nㄹ. 능동에 '-시키다'를 붙이면 피동 표현이 된다.\n\n위 〈보기〉 중 능동·피동에 대한 설명으로 옳은 것끼리 바르게 묶은 것은?",
+      "instruction": "다음 문제를 읽고 정답을 고르세요.",
+      "correct": 1,
+      "passage_group": null,
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "difficulty": "medium",
+      "recovery_band": "normal",
+      "subject": "korean",
+      "unit": "2단원",
+      "subunit": "2-01",
+      "is_transfer_item": false,
+      "source": "비상_중2국어_2단원(exam_perf 재구성)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "exam_prep"
+      ],
+      "wrong_explanations": {
+        "0": "ㄴ이 틀렸어요. '잡혀지다·읽혀지다'는 피동을 두 번 겹친 이중 피동(비문)이에요.",
+        "2": "둘 다 틀렸어요. ㄴ은 이중 피동(비문), ㄹ '-시키다'는 사동이라 피동이 아니에요.",
+        "3": "ㄹ이 틀렸어요. '-시키다'는 남에게 시키는 사동이라 피동을 만드는 방법이 아니에요.",
+        "4": "ㄴ·ㄹ이 틀렸어요. 옳은 것은 ㄱ·ㄷ뿐이에요."
+      },
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건: 〈보기〉를 ㄱ부터 하나씩 옳고·그름을 판정한 뒤, 옳은 것끼리 묶인 조합만 선택"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "KOR2-EP-02",
+      "type": "short_reading",
+      "score_group": "A",
+      "choices": [
+        "ㄱ, ㄴ",
+        "ㄱ, ㄷ",
+        "ㄴ, ㄹ",
+        "ㄱ, ㄴ, ㄷ",
+        "ㄷ, ㄹ"
+      ],
+      "explanation": "💡 이중 피동(비문)은 ㄱ '잡혀지다', ㄷ '읽혀지다'예요. 접미사(-히-)에 '-어지다'를 또 붙였어요. ㄴ '잡히다'·ㄹ '열리다'는 접미사를 한 번만 쓴 바른 피동! 📖 2단원 이중 피동 📝 '-혀지-'처럼 피동이 두 번 보이면 비문.",
+      "sentence": "〈보기〉\nㄱ. 잡혀지다\nㄴ. 잡히다\nㄷ. 읽혀지다\nㄹ. 열리다\n\n위 〈보기〉 중 피동을 두 번 겹쳐 쓴 잘못된 표현(이중 피동)끼리 바르게 묶은 것은?",
+      "instruction": "다음 문제를 읽고 정답을 고르세요.",
+      "correct": 1,
+      "passage_group": null,
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "difficulty": "medium",
+      "recovery_band": "normal",
+      "subject": "korean",
+      "unit": "2단원",
+      "subunit": "2-01",
+      "is_transfer_item": false,
+      "source": "비상_중2국어_2단원(exam_perf 재구성)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "exam_prep"
+      ],
+      "wrong_explanations": {
+        "0": "ㄴ '잡히다'는 '-히-'를 한 번만 쓴 바른 피동이에요. 이중 피동이 아니에요.",
+        "2": "둘 다 바른 피동이에요. 이중 피동은 ㄱ '잡혀지다', ㄷ '읽혀지다'예요.",
+        "3": "ㄴ '잡히다'는 바른 피동이라 빼야 해요. 이중 피동은 ㄱ·ㄷ뿐이에요.",
+        "4": "ㄹ '열리다'는 '-리-'를 한 번만 쓴 바른 피동이에요. 이중 피동은 ㄱ·ㄷ이에요."
+      },
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건: 〈보기〉를 ㄱ부터 옳고·그름을 판정한 뒤, 옳지 않은 것끼리 묶인 조합을 선택"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "KOR2-EP-03",
+      "type": "short_reading",
+      "score_group": "A",
+      "choices": [
+        "ㄱ, ㄴ",
+        "ㄱ, ㄷ",
+        "ㄴ, ㄹ",
+        "ㄱ, ㄴ, ㄷ",
+        "ㄷ, ㄹ"
+      ],
+      "explanation": "💡 옳은 것은 ㄱ·ㄴ이에요. ㄷ '완벽히 중립적인 매체'는 없고(모든 매체에 제작자 관점이 들어감), ㄹ 재현은 거짓으로 꾸미는 게 아니라 의도에 맞게 '다시 나타내는' 거예요. 📖 2단원 매체 재현 📝 '있는 그대로·완벽 중립·거짓 창작'은 모두 함정.",
+      "sentence": "〈보기〉\nㄱ. 재현은 현실을 제작자의 의도나 관점에 따라 다시 나타내는 것이다.\nㄴ. 매체가 어떤 정보를 선택하고 배제하는지는 제작자의 주관과 가치관을 반영한다.\nㄷ. 사실만 객관적으로 전달하는, 완벽히 중립적인 매체가 존재한다.\nㄹ. 재현은 현실에 없던 일을 거짓으로 꾸며 만들어 내는 것이다.\n\n위 〈보기〉 중 매체의 재현에 대한 설명으로 옳은 것끼리 바르게 묶은 것은?",
+      "instruction": "다음 문제를 읽고 정답을 고르세요.",
+      "correct": 0,
+      "passage_group": null,
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "difficulty": "medium",
+      "recovery_band": "normal",
+      "subject": "korean",
+      "unit": "2단원",
+      "subunit": "2-02",
+      "is_transfer_item": false,
+      "source": "비상_중2국어_2단원(exam_perf 재구성)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "exam_prep"
+      ],
+      "wrong_explanations": {
+        "1": "ㄷ이 틀렸어요. 모든 매체에는 제작자의 관점이 들어가 완벽히 중립적인 매체는 없어요.",
+        "2": "ㄹ이 틀렸어요. 재현은 거짓으로 꾸미는 게 아니라 의도에 맞게 다시 나타내는 거예요.",
+        "3": "ㄷ이 틀렸어요. 옳은 것은 ㄱ·ㄴ뿐이에요.",
+        "4": "둘 다 틀렸어요. 옳은 것은 ㄱ·ㄴ이에요."
+      },
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건: 〈보기〉를 ㄱ부터 하나씩 옳고·그름을 판정한 뒤, 옳은 것끼리 묶인 조합만 선택"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "KOR2-EP-04",
+      "type": "short_reading",
+      "score_group": "A",
+      "choices": [
+        "ㄱ, ㄴ",
+        "ㄱ, ㄷ",
+        "ㄴ, ㄹ",
+        "ㄱ, ㄷ, ㄹ",
+        "ㄴ, ㄷ, ㄹ"
+      ],
+      "explanation": "💡 고정관념 강화는 ㄱ(남=기계/운동)·ㄷ(여=화장)이에요. ㄴ 능숙한 할머니·ㄹ 다양성은 오히려 고정관념을 '깨는' 표현! 📖 2단원 매체 속 고정관념 📝 깨는 표현(능숙한 할머니·다양성)과 강화 표현을 구분.",
+      "sentence": "〈보기〉\nㄱ. 남학생은 농구공을 들고 기계를 잘 다루는 모습으로 그린다.\nㄴ. 할머니가 키오스크를 능숙하게 다루는 모습을 보여 준다.\nㄷ. 여학생은 화장 도구를 들고 예뻐 보이는 것을 중요하게 여기는 모습으로 그린다.\nㄹ. 다양한 직업과 가족 형태를 골고루 등장시킨다.\n\n위 〈보기〉 중 성별·연령에 대한 고정관념을 '강화'하는 표현끼리 바르게 묶은 것은?",
+      "instruction": "다음 문제를 읽고 정답을 고르세요.",
+      "correct": 1,
+      "passage_group": null,
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "difficulty": "medium",
+      "recovery_band": "normal",
+      "subject": "korean",
+      "unit": "2단원",
+      "subunit": "2-02",
+      "is_transfer_item": false,
+      "source": "비상_중2국어_2단원(exam_perf 재구성)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "exam_prep"
+      ],
+      "wrong_explanations": {
+        "0": "ㄴ이 틀렸어요. 능숙한 할머니는 '나이 들면 기계 못 한다'는 고정관념을 깨는 표현이에요.",
+        "2": "둘 다 고정관념을 깨는 표현이에요. 강화하는 것은 ㄱ·ㄷ이에요.",
+        "3": "ㄹ이 틀렸어요. 다양성은 고정관념을 깨는 표현이에요. 강화는 ㄱ·ㄷ뿐.",
+        "4": "ㄴ·ㄹ은 고정관념을 깨는 표현이에요. 강화하는 것은 ㄱ·ㄷ이에요."
+      },
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건: 〈보기〉를 ㄱ부터 하나씩 옳고·그름을 판정한 뒤, 옳은 것끼리 묶인 조합만 선택"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 80
+        },
+        "omr_marking": {
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "KOR2-EP-05",
+      "type": "short_reading",
+      "score_group": "A",
+      "choices": [
+        "-이-",
+        "-히-",
+        "-리-",
+        "-게-",
+        "-기-"
+      ],
+      "explanation": "💡 피동 접미사는 '-이-, -히-, -리-, -기-' 딱 4종이에요. '-게-'는 부사형 어미라 피동 접미사가 아니에요. 📖 2단원 피동 접미사 4종 📝 4종을 통째로 외우기.",
+      "sentence": "다음 중 피동 접미사가 아닌 것은?",
+      "instruction": "다음 문제를 읽고 정답을 고르세요.",
+      "correct": 3,
+      "passage_group": null,
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "difficulty": "medium",
+      "recovery_band": "normal",
+      "subject": "korean",
+      "unit": "2단원",
+      "subunit": "2-01",
+      "is_transfer_item": false,
+      "source": "비상_중2국어_2단원(exam_perf 재구성)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "exam_prep"
+      ],
+      "wrong_explanations": {
+        "0": "'-이-'는 피동 접미사 4종 중 하나예요(예: 쓰이다).",
+        "1": "'-히-'는 피동 접미사 4종 중 하나예요(예: 잡히다).",
+        "2": "'-리-'는 피동 접미사 4종 중 하나예요(예: 열리다).",
+        "4": "'-기-'는 피동 접미사 4종 중 하나예요(예: 안기다)."
+      },
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건: '아닌/않은'을 묻는 부정 발문임에 주의해 정답 1개만 정확히 선택"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 45
+        },
+        "omr_marking": {
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "KOR2-EP-06",
+      "type": "short_reading",
+      "score_group": "A",
+      "choices": [
+        "능동의 주어가 그대로 피동의 주어로 남는다",
+        "능동의 목적어가 피동의 주어가 되고, 능동의 주어는 '~에게/~에 의해' 부사어가 된다",
+        "능동과 피동은 문장 성분이 전혀 바뀌지 않는다",
+        "능동의 목적어가 피동에서도 그대로 목적어로 남는다",
+        "서술어에는 아무 변화가 없고 능동의 서술어가 그대로 쓰인다"
+      ],
+      "explanation": "💡 능동→피동: 목적어→주어, 주어→'~에게/~에 의해' 부사어! 서술어도 피동 접미사가 붙어 바뀌어요(잡았다→잡혔다). 📖 2단원 능동↔피동 성분 변화 📝 목적어↔주어 이동을 외우면 끝.",
+      "sentence": "능동문을 피동문으로 바꿀 때 문장 성분의 변화로 알맞은 것은?",
+      "instruction": "다음 문제를 읽고 정답을 고르세요.",
+      "correct": 1,
+      "passage_group": null,
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "difficulty": "medium",
+      "recovery_band": "normal",
+      "subject": "korean",
+      "unit": "2단원",
+      "subunit": "2-01",
+      "is_transfer_item": false,
+      "source": "비상_중2국어_2단원(exam_perf 재구성)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "exam_prep"
+      ],
+      "wrong_explanations": {
+        "0": "능동의 주어는 그대로 남지 않고 '~에게/~에 의해' 부사어로 밀려나요.",
+        "2": "전혀 안 바뀌는 게 아니라 주어·목적어 자리가 바뀌는 게 핵심이에요.",
+        "3": "능동의 목적어는 피동에서 주어가 돼요. 목적어로 남지 않아요.",
+        "4": "서술어도 바뀌어요. 능동 '잡았다'가 피동 '잡혔다'처럼 접미사가 붙어요."
+      },
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건: 발문을 끝까지 읽고 신호어를 근거로 정답 1개만 선택"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 50
+        },
+        "omr_marking": {
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "KOR2-EP-07",
+      "type": "short_reading",
+      "score_group": "B",
+      "choices": [
+        "공익 광고는 제품을 팔아 이익을 얻으려는 의도가 가장 크다",
+        "상업 광고는 제품의 장점만 강조하고 단점·부작용은 잘 보여 주지 않는다",
+        "공익 광고는 제품의 단점을 자세히 알려 소비자를 보호한다",
+        "상업 광고는 사회 문제 해결만을 목적으로 만든다",
+        "상업 광고는 제품의 단점과 부작용까지 솔직하게 모두 알린다"
+      ],
+      "explanation": "💡 상업 광고는 '팔기 위해' 장점만 강조하고 단점·부작용은 배제해요. 공익 광고는 공공의 이익이 목적! 📖 2단원 공익 광고 vs 상업 광고 📝 '파는 것이 있나?'로 둘을 구분.",
+      "sentence": "공익 광고와 상업 광고에 대한 설명으로 알맞은 것은?",
+      "instruction": "다음 문제를 읽고 정답을 고르세요.",
+      "correct": 1,
+      "passage_group": null,
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "difficulty": "medium",
+      "recovery_band": "normal",
+      "subject": "korean",
+      "unit": "2단원",
+      "subunit": "2-02",
+      "is_transfer_item": false,
+      "source": "비상_중2국어_2단원(exam_perf 재구성)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "exam_prep"
+      ],
+      "wrong_explanations": {
+        "0": "이익이 목적인 건 상업 광고예요. 공익 광고는 공공의 이익이 목적이에요.",
+        "2": "광고는 단점을 잘 안 보여 줘요. 특히 상업 광고는 장점만 강조해요.",
+        "3": "사회 문제 해결은 공익 광고의 목적이에요. 상업 광고는 제품 판매가 목적.",
+        "4": "상업 광고는 단점·부작용을 솔직히 알리지 않고 장점만 강조해요."
+      },
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건: 발문을 끝까지 읽고 신호어를 근거로 정답 1개만 선택"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 50
+        },
+        "omr_marking": {
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "KOR2-EP-08",
+      "type": "short_reading",
+      "score_group": "B",
+      "choices": [
+        "광고 속에 어떤 집단에 대한 고정관념이 들어 있는지 살핀다",
+        "강조된 글자 크기나 색에 어떤 의도가 담겼는지 따져 본다",
+        "이 자료가 사람들의 생각이나 행동에 어떤 영향을 줄지 예측해 본다",
+        "광고에 나온 내용은 만든 사람이 골라 넣은 것이므로 의심 없이 그대로 믿는다",
+        "광고가 의도적으로 빼놓은(배제한) 정보가 무엇인지 살펴본다"
+      ],
+      "explanation": "💡 비판적 수용은 '그대로 믿지 않고' 의도·고정관념·영향·배제된 정보를 따져 보는 거예요. ④ '의심 없이 그대로 믿는다'가 비판적 태도와 반대! 📖 2단원 매체의 비판적 수용 📝 부정 발문 — 나머지 4개는 옳은 태도예요.",
+      "sentence": "매체 자료를 비판적으로 수용하는 태도로 옳지 않은 것은?",
+      "instruction": "다음 문제를 읽고 정답을 고르세요.",
+      "correct": 3,
+      "passage_group": null,
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "difficulty": "medium",
+      "recovery_band": "normal",
+      "subject": "korean",
+      "unit": "2단원",
+      "subunit": "2-02",
+      "is_transfer_item": false,
+      "source": "비상_중2국어_2단원(exam_perf 재구성)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "exam_prep"
+      ],
+      "wrong_explanations": {
+        "0": "고정관념을 살피는 건 비판적 수용의 핵심이에요. 옳은 태도라 답이 아니에요.",
+        "1": "강조된 표현의 의도를 따지는 것도 비판적 분석이에요. 옳은 태도예요.",
+        "2": "영향을 예측해 보는 것도 비판적 수용에 필요해요. 옳은 태도예요.",
+        "4": "광고가 배제한 정보를 찾는 것도 비판적 수용이에요. 옳은 태도예요."
+      },
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건: '아닌/않은'을 묻는 부정 발문임에 주의해 정답 1개만 정확히 선택"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 50
+        },
+        "omr_marking": {
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "KOR2-EP-09",
+      "type": "short_reading",
+      "score_group": "A",
+      "choices": [
+        "ㄱ, ㄴ",
+        "ㄱ, ㄷ",
+        "ㄴ, ㄹ",
+        "ㄱ, ㄴ, ㄷ",
+        "ㄷ, ㄹ"
+      ],
+      "explanation": "💡 옳은 것은 ㄱ·ㄴ이에요. ㄷ 간접 인용으로 바꾸면 시제·인칭·지시어가 함께 바뀔 수 있고('지금→그때'), ㄹ 말투를 생생하게 살리는 건 간접이 아니라 직접 인용이에요. 📖 2단원 인용 표현 📝 직접=생생함, 간접=간결함.",
+      "sentence": "〈보기〉\nㄱ. 직접 인용은 큰따옴표로 말을 그대로 옮겨 말한 사람의 말투와 현장감을 살린다.\nㄴ. 간접 인용은 큰따옴표 없이 '~고'를 써서 내용을 매끄럽고 간결하게 전한다.\nㄷ. 직접 인용을 간접 인용으로 바꿀 때 시제·인칭·지시어는 전혀 바뀌지 않는다.\nㄹ. 간접 인용은 직접 인용보다 말한 사람의 말투를 더 생생하게 살린다.\n\n위 〈보기〉 중 인용 표현에 대한 설명으로 옳은 것끼리 바르게 묶은 것은?",
+      "instruction": "다음 문제를 읽고 정답을 고르세요.",
+      "correct": 0,
+      "passage_group": null,
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "difficulty": "medium",
+      "recovery_band": "normal",
+      "subject": "korean",
+      "unit": "2단원",
+      "subunit": "2-01",
+      "is_transfer_item": false,
+      "source": "비상_중2국어_2단원(exam_perf 재구성)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "exam_prep"
+      ],
+      "wrong_explanations": {
+        "1": "ㄷ이 틀렸어요. 간접 인용으로 바꾸면 시제·인칭·지시어가 함께 바뀔 수 있어요.",
+        "2": "ㄹ이 틀렸어요. 말투를 생생하게 살리는 건 직접 인용이에요.",
+        "3": "ㄷ이 틀렸어요. 옳은 것은 ㄱ·ㄴ뿐이에요.",
+        "4": "둘 다 틀렸어요. 옳은 것은 ㄱ·ㄴ이에요."
+      },
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건: 〈보기〉를 ㄱ부터 하나씩 옳고·그름을 판정한 뒤, 옳은 것끼리 묶인 조합만 선택"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 75
+        },
+        "omr_marking": {
+          "active": true
+        }
+      }
+    },
+    {
+      "id": "KOR2-EP-10",
+      "type": "short_reading",
+      "score_group": "A",
+      "choices": [
+        "말한 사람의 말투를 그대로 살려 현장감을 준다",
+        "직접 말을 전하는 듯한 생동감을 준다",
+        "큰따옴표를 써서 누가 한 말인지 또렷하게 드러낸다",
+        "원래 말보다 매끄럽고 간결하게 줄여서 전달한다",
+        "큰따옴표 안에 말을 그대로 담아 인용한 내용을 정확하게 보여 준다"
+      ],
+      "explanation": "💡 '매끄럽고 간결하게 줄임'은 직접 인용이 아니라 간접 인용의 효과예요. 직접 인용은 말투·현장감·생동감을 그대로 살리고 큰따옴표로 또렷이 드러내요. 📖 2단원 인용 표현의 효과 📝 부정 발문 — 직접=생생함, 간접=간결함을 바꿔치기한 함정.",
+      "sentence": "직접 인용의 효과로 알맞지 '않은' 것은?",
+      "instruction": "다음 문제를 읽고 정답을 고르세요.",
+      "correct": 3,
+      "passage_group": null,
+      "phase": "exam_prep",
+      "training_layer": "mixed_practice",
+      "difficulty": "medium",
+      "recovery_band": "normal",
+      "subject": "korean",
+      "unit": "2단원",
+      "subunit": "2-01",
+      "is_transfer_item": false,
+      "source": "비상_중2국어_2단원(exam_perf 재구성)",
+      "is_priority": true,
+      "linked_rule_ids": [],
+      "bridge_to_exam": [
+        "exam_prep"
+      ],
+      "wrong_explanations": {
+        "0": "말투를 살려 현장감을 주는 건 직접 인용의 효과예요. 옳은 설명이라 답이 아니에요.",
+        "1": "생동감을 주는 것도 직접 인용의 효과예요. 옳은 설명이라 답이 아니에요.",
+        "2": "큰따옴표로 또렷이 드러내는 것도 직접 인용의 특징이에요. 옳은 설명이라 답이 아니에요.",
+        "4": "큰따옴표 안에 말을 그대로 담아 정확히 보여 주는 것도 직접 인용의 효과예요. 옳은 설명이라 답이 아니에요."
+      },
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "조건: '아닌/않은'을 묻는 부정 발문임에 주의해 정답 1개만 정확히 선택"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 50
+        },
+        "omr_marking": {
+          "active": true
+        }
+      }
     }
   ]
 });
