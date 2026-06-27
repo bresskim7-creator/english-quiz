@@ -318,6 +318,11 @@ __loadLesson({
     },
     {
       "id": "S3-E006",
+      "exam_perf_variants": {
+        "condition_trap": { "active": true, "prompt_modifier": "조건: (가)·(나)를 하나씩 대조해 모두 맞는 짝만 선택" },
+        "time_pressure": { "active": true, "seconds": 65 },
+        "omr_marking": { "active": true }
+      },
       "type": "choice",
       "instruction": "특화와 분업.",
       "question": "(가), (나)에 해당하는 용어를 옳게 연결한 것은?",
@@ -370,6 +375,11 @@ __loadLesson({
     },
     {
       "id": "S3-E008",
+      "exam_perf_variants": {
+        "condition_trap": { "active": true, "prompt_modifier": "조건: 설명을 끝까지 읽고 일치하는 용어 하나만 고르기" },
+        "time_pressure": { "active": true, "seconds": 55 },
+        "omr_marking": { "active": true }
+      },
       "type": "choice",
       "instruction": "생산 요소.",
       "question": "다음에서 설명하는 용어로 옳은 것은?",
@@ -422,6 +432,11 @@ __loadLesson({
     },
     {
       "id": "S3-E010",
+      "exam_perf_variants": {
+        "condition_trap": { "active": true, "prompt_modifier": "조건: 제시된 사례들의 공통점을 찾아 가장 적절한 하나만 선택" },
+        "time_pressure": { "active": true, "seconds": 55 },
+        "omr_marking": { "active": true }
+      },
       "type": "choice",
       "instruction": "생산 요소 시장의 공통점.",
       "question": "다음 제시된 시장들의 공통적인 특징으로 옳은 것은?",
@@ -448,6 +463,11 @@ __loadLesson({
     },
     {
       "id": "S3-E011",
+      "exam_perf_variants": {
+        "condition_trap": { "active": true, "prompt_modifier": "조건: '옳지 않은' 것을 고르는 문제 — 발문을 끝까지 읽고 함정 방지" },
+        "time_pressure": { "active": true, "seconds": 60 },
+        "omr_marking": { "active": true }
+      },
       "type": "choice",
       "instruction": "수요·공급의 기본(옳지 않은 것).",
       "question": "수요와 공급에 대한 설명으로 옳지 않은 것은?",
@@ -500,6 +520,11 @@ __loadLesson({
     },
     {
       "id": "S3-E013",
+      "exam_perf_variants": {
+        "condition_trap": { "active": true, "prompt_modifier": "조건: 〈보기〉를 ㄱ부터 하나씩 옳고·그름 판정 후 맞는 조합만 선택" },
+        "time_pressure": { "active": true, "seconds": 75 },
+        "omr_marking": { "active": true }
+      },
       "type": "choice",
       "instruction": "수요·공급의 개념.",
       "question": "수요와 공급에 대한 설명으로 옳은 것을 <보기>에서 고른 것은?",
@@ -579,6 +604,11 @@ __loadLesson({
     },
     {
       "id": "S3-E016",
+      "exam_perf_variants": {
+        "condition_trap": { "active": true, "prompt_modifier": "조건: 첫 단계부터 차례로 따져 순서를 확정" },
+        "time_pressure": { "active": true, "seconds": 70 },
+        "omr_marking": { "active": true }
+      },
       "type": "choice",
       "instruction": "초과 수요의 균형 회복(순서).",
       "question": "(가)~(라)를 초과 수요 상황에서 균형을 이루는 과정에 따라 순서대로 나열한 것은?",
@@ -631,6 +661,11 @@ __loadLesson({
     },
     {
       "id": "S3-E018",
+      "exam_perf_variants": {
+        "condition_trap": { "active": true, "prompt_modifier": "조건: 보기 ①~⑤를 끝까지 읽고 옳은 설명 하나만 선택" },
+        "time_pressure": { "active": true, "seconds": 55 },
+        "omr_marking": { "active": true }
+      },
       "type": "choice",
       "instruction": "균형 가격·거래량의 의미.",
       "question": "시장의 균형에 대한 설명으로 옳은 것은?",
@@ -789,6 +824,11 @@ __loadLesson({
     },
     {
       "id": "S3-E024",
+      "exam_perf_variants": {
+        "condition_trap": { "active": true, "prompt_modifier": "조건: 보완재·대체재를 구분해 각 가격 변화의 효과를 따져 선택" },
+        "time_pressure": { "active": true, "seconds": 60 },
+        "omr_marking": { "active": true }
+      },
       "type": "choice",
       "instruction": "대체재·보완재 가격 상승의 효과 (구분쌍).",
       "question": "(가) 보완재와 (나) 대체재에 대해, 각각의 가격이 상승할 때 관련 재화의 수요 변화로 옳은 것은?",

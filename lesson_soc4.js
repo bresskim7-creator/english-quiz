@@ -202,6 +202,11 @@ __loadLesson({
   "exam_prep": [
     {
       "id": "S4-E001",
+      "exam_perf_variants": {
+        "condition_trap": { "active": true, "prompt_modifier": "조건: 〈보기〉에서 골라 시간 순서대로 배열 확정" },
+        "time_pressure": { "active": true, "seconds": 70 },
+        "omr_marking": { "active": true }
+      },
       "type": "choice",
       "instruction": "우리나라 경제 성장 과정(순서).",
       "question": "우리나라의 경제 성장 과정을 <보기>에서 골라 순서대로 나열한 것은?",
@@ -228,6 +233,11 @@ __loadLesson({
     },
     {
       "id": "S4-E002",
+      "exam_perf_variants": {
+        "condition_trap": { "active": true, "prompt_modifier": "조건: '적절하지 않은' 것을 고르는 문제 — 끝까지 읽고 함정 방지" },
+        "time_pressure": { "active": true, "seconds": 60 },
+        "omr_marking": { "active": true }
+      },
       "type": "choice",
       "instruction": "경제 성장의 영향(적절하지 않은 것).",
       "question": "경제 성장에 따른 영향으로 적절하지 않은 것은?",
@@ -280,6 +290,11 @@ __loadLesson({
     },
     {
       "id": "S4-E004",
+      "exam_perf_variants": {
+        "condition_trap": { "active": true, "prompt_modifier": "조건: 보기 ①~⑤를 끝까지 읽고 GDP 정의에 맞는 하나만 선택" },
+        "time_pressure": { "active": true, "seconds": 55 },
+        "omr_marking": { "active": true }
+      },
       "type": "choice",
       "instruction": "GDP의 기본 성격(옳은 것).",
       "question": "GDP에 대한 설명으로 옳은 것은?",
@@ -409,6 +424,11 @@ __loadLesson({
     },
     {
       "id": "S4-E009",
+      "exam_perf_variants": {
+        "condition_trap": { "active": true, "prompt_modifier": "조건: 〈보기〉를 ㄱ부터 하나씩 판정 후 맞는 조합만 선택" },
+        "time_pressure": { "active": true, "seconds": 75 },
+        "omr_marking": { "active": true }
+      },
       "type": "choice",
       "instruction": "GDP의 한계.",
       "question": "국내 총생산의 한계에 대한 설명으로 옳은 것을 <보기>에서 고른 것은?",
@@ -513,6 +533,11 @@ __loadLesson({
     },
     {
       "id": "S4-E013",
+      "exam_perf_variants": {
+        "condition_trap": { "active": true, "prompt_modifier": "조건: 물가 상승의 원인인지 결과인지 구분해 하나만 선택" },
+        "time_pressure": { "active": true, "seconds": 55 },
+        "omr_marking": { "active": true }
+      },
       "type": "choice",
       "instruction": "물가 상승의 원인.",
       "question": "물가가 상승하는 원인으로 가장 적절한 것은?",
@@ -669,6 +694,11 @@ __loadLesson({
     },
     {
       "id": "S4-E019",
+      "exam_perf_variants": {
+        "condition_trap": { "active": true, "prompt_modifier": "조건: 보기를 끝까지 읽고 가장 적절한 영향 하나만 선택" },
+        "time_pressure": { "active": true, "seconds": 55 },
+        "omr_marking": { "active": true }
+      },
       "type": "choice",
       "instruction": "실업의 영향.",
       "question": "실업률이 지속적으로 상승하는 현상이 우리 사회에 미치는 영향으로 가장 적절한 것은?",
@@ -823,6 +853,11 @@ __loadLesson({
     },
     {
       "id": "S4-E025",
+      "exam_perf_variants": {
+        "condition_trap": { "active": true, "prompt_modifier": "조건: 외화가 해외로 나가는 상황인지 따져 가장 적절한 하나만 선택" },
+        "time_pressure": { "active": true, "seconds": 60 },
+        "omr_marking": { "active": true }
+      },
       "type": "choice",
       "instruction": "외화 수요 발생 경우.",
       "question": "외화의 수요가 발생하는 경우로 가장 적절한 것은?",
@@ -899,6 +934,11 @@ __loadLesson({
     },
     {
       "id": "S4-E028",
+      "exam_perf_variants": {
+        "condition_trap": { "active": true, "prompt_modifier": "조건: (가)·(나)를 하나씩 대조해 모두 맞는 짝만 선택" },
+        "time_pressure": { "active": true, "seconds": 65 },
+        "omr_marking": { "active": true }
+      },
       "type": "choice",
       "instruction": "국제 거래의 대상 (구분).",
       "question": "(가), (나)에 해당하는 국제 거래의 대상을 옳게 연결한 것은?",
