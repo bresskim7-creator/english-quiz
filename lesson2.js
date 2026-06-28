@@ -6030,6 +6030,19 @@ __loadLesson({
     },
     {
       "id": "M-SYN-L2-01",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "따옴표 친 표현의 의미를 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 40
+        },
+        "omr_marking": {
+          "active": true
+        }
+      },
       "type": "match",
       "phase": "exam_prep",
       "difficulty": "medium",
@@ -6059,6 +6072,19 @@ __loadLesson({
     },
     {
       "id": "M-SYN-L2-02",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "따옴표 친 표현의 의미를 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 40
+        },
+        "omr_marking": {
+          "active": true
+        }
+      },
       "type": "match",
       "phase": "exam_prep",
       "difficulty": "medium",

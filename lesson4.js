@@ -6619,6 +6619,19 @@ __loadLesson({
     },
     {
       "id": "M-SYN-L4-01",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "따옴표 친 표현의 의미를 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 40
+        },
+        "omr_marking": {
+          "active": true
+        }
+      },
       "type": "match",
       "phase": "exam_prep",
       "difficulty": "medium",
@@ -6650,6 +6663,19 @@ __loadLesson({
     },
     {
       "id": "M-SYN-L4-02",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "따옴표 친 표현의 의미를 먼저 확인"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 40
+        },
+        "omr_marking": {
+          "active": true
+        }
+      },
       "type": "match",
       "phase": "exam_prep",
       "difficulty": "medium",
@@ -7224,6 +7250,19 @@ __loadLesson({
     },
     {
       "id": "Q-TITLE-L4-001",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "지문 전체의 주제를 먼저 파악"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 80
+        },
+        "omr_marking": {
+          "active": true
+        }
+      },
       "phase": "exam_prep",
       "training_layer": "passage_check",
       "passage_stage": "A",
@@ -7254,6 +7293,19 @@ __loadLesson({
     },
     {
       "id": "Q-TITLE-L4-002",
+      "exam_perf_variants": {
+        "condition_trap": {
+          "active": true,
+          "prompt_modifier": "지문 전체의 주제를 먼저 파악"
+        },
+        "time_pressure": {
+          "active": true,
+          "seconds": 80
+        },
+        "omr_marking": {
+          "active": true
+        }
+      },
       "phase": "exam_prep",
       "training_layer": "passage_check",
       "passage_stage": "A",
