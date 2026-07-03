@@ -307,6 +307,6 @@ window.__loadDailyIndex([
   }
 ], {
   "schema_version": 1,
-  "updated_at": "2026-07-03T10:07:04+09:00",
-  "version_key": "20260703-1007"
+  "updated_at": "2026-07-03T10:39:59+09:00",
+  "version_key": "20260703-1039"
 });
