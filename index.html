@@ -1227,6 +1227,17 @@
         .daily-sources a { color: #2F5496; text-decoration: none; word-break: break-all; }
         .daily-sources a:hover { text-decoration: underline; }
 
+        /* 문해력 카드 연계 CTA (v176) */
+        .daily-munhaerak-cta {
+            display: block; text-decoration: none; margin: 14px 0 4px;
+            background: linear-gradient(135deg, #6a4fc0, #8265d6);
+            border-radius: 12px; padding: 14px 16px; text-align: center;
+            box-shadow: 0 2px 8px rgba(106,79,192,.28);
+        }
+        .daily-munhaerak-cta:active { transform: translateY(1px); }
+        .daily-munhaerak-cta-main { display: block; color: #fff; font-size: 16px; font-weight: 800; letter-spacing: -.2px; }
+        .daily-munhaerak-cta-sub { display: block; color: #ece7fb; font-size: 12px; margin-top: 4px; }
+
         .daily-archive-list { padding: 8px 0; }
         .daily-archive-item {
             display: flex; align-items: center; gap: 10px;
@@ -1991,8 +2002,8 @@
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-06-28 v175';
-        const APP_CACHE_NAME = 'quiz-v175';
+        const BUILD_VERSION = '2026-07-03 v176';
+        const APP_CACHE_NAME = 'quiz-v176';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -3017,6 +3028,14 @@
             setTimeout(function() { t.style.opacity = '0'; }, 2400);
         }
 
+        // 문해력 카드 날짜→파일 매핑 (v176). 존재하는 날짜만 등록(404 방지). Batch B~D 빌드 시 항목 추가.
+        var MUNHAERAK_CARDS = {
+            "2026-07-04": "문해력카드/문해력_요약_카드_01_0704.html",
+            "2026-07-05": "문해력카드/문해력_요약_카드_02_0705.html",
+            "2026-07-06": "문해력카드/문해력_요약_카드_03_0706.html",
+            "2026-07-07": "문해력카드/문해력_요약_카드_04_0707.html"
+        };
+
         function renderDailyToday(d, ctx) {
             ctx = ctx || {};
             if (!d) {
@@ -3130,6 +3149,15 @@
             }
 
             html += '</div>';
+            // 문해력 카드 연계 CTA — 해당 날짜 카드가 있으면 카드 말미에 노출 (오늘/큐/지난글 일관)
+            var _mhDate = ctx.date || getTodayDateStr();
+            var _mhCard = (typeof MUNHAERAK_CARDS !== 'undefined') ? MUNHAERAK_CARDS[_mhDate] : null;
+            if (_mhCard) {
+                html += '<a class="daily-munhaerak-cta" href="' + dailyEscapeHtml(_mhCard) + '">'
+                    + '<span class="daily-munhaerak-cta-main">📖 오늘의 문해력 한 장 →</span>'
+                    + '<span class="daily-munhaerak-cta-sub">짧은 글 하나 읽고 요약 연습, 5분</span>'
+                    + '</a>';
+            }
             // STEP133: 카드 하단 sentinel — 화면에 들어오면 read 처리 (큐 경로만)
             html += '<div id="daily-read-sentinel" style="height:1px;"></div>';
             view.innerHTML = html;
