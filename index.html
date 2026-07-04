@@ -1994,6 +1994,8 @@
     <script src="kor1_reader.js"></script>
     <script src="kor2_reader.js"></script>
     <script src="kor3_reader.js"></script>
+    <script>window.MUNHAERAK_CARDS = window.MUNHAERAK_CARDS || {};</script>
+    <script src="문해력카드/cards.js"></script>
     <script>
         // 전역 변수
         let isMuted = localStorage.getItem('sound_muted') === 'true';
@@ -2002,8 +2004,8 @@
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-07-03 v176';
-        const APP_CACHE_NAME = 'quiz-v176';
+        const BUILD_VERSION = '2026-07-04 v177';
+        const APP_CACHE_NAME = 'quiz-v177';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -3028,13 +3030,13 @@
             setTimeout(function() { t.style.opacity = '0'; }, 2400);
         }
 
-        // 문해력 카드 날짜→파일 매핑 (v176). 존재하는 날짜만 등록(404 방지). Batch B~D 빌드 시 항목 추가.
-        var MUNHAERAK_CARDS = {
-            "2026-07-04": "문해력카드/문해력_요약_카드_01_0704.html",
-            "2026-07-05": "문해력카드/문해력_요약_카드_02_0705.html",
-            "2026-07-06": "문해력카드/문해력_요약_카드_03_0706.html",
-            "2026-07-07": "문해력카드/문해력_요약_카드_04_0707.html"
-        };
+        // 문해력 카드: 데이터는 문해력카드/cards.js(window.MUNHAERAK_CARDS)에서 로드. 새 카드 추가 = cards.js에만 append(index.html·sw.js 불변).
+        function hasMunhaerakCard(date) {
+            return !!(window.MUNHAERAK_CARDS && window.MUNHAERAK_CARDS[date]);
+        }
+        function getMunhaerakCardHref(date) {
+            return '문해력카드/card.html?d=' + encodeURIComponent(date);
+        }
 
         function renderDailyToday(d, ctx) {
             ctx = ctx || {};
@@ -3151,9 +3153,8 @@
             html += '</div>';
             // 문해력 카드 연계 CTA — 해당 날짜 카드가 있으면 카드 말미에 노출 (오늘/큐/지난글 일관)
             var _mhDate = ctx.date || getTodayDateStr();
-            var _mhCard = (typeof MUNHAERAK_CARDS !== 'undefined') ? MUNHAERAK_CARDS[_mhDate] : null;
-            if (_mhCard) {
-                html += '<a class="daily-munhaerak-cta" href="' + dailyEscapeHtml(_mhCard) + '">'
+            if (hasMunhaerakCard(_mhDate)) {
+                html += '<a class="daily-munhaerak-cta" href="' + dailyEscapeHtml(getMunhaerakCardHref(_mhDate)) + '">'
                     + '<span class="daily-munhaerak-cta-main">📖 오늘의 문해력 한 장 →</span>'
                     + '<span class="daily-munhaerak-cta-sub">짧은 글 하나 읽고 요약 연습, 5분</span>'
                     + '</a>';
