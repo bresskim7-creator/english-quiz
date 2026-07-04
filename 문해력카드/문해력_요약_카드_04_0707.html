@@ -1,0 +1,163 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>문해력 한 장 · 요약 훈련 (04)</title><style>
+:root{--bg:#f4f2ec;--card:#fff;--ink:#20201d;--mut:#57564f;--line:#cdc8ba;--soft:#e6e2d7;--ok:#0f6e56;--okbg:#dcf1e8;--no:#a32d2d;--nobg:#fbe6e5;--acc:#0f6e56;--accbg:#dcefe5}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.6}
+.wrap{max-width:720px;margin:0 auto;padding:18px 14px 64px}
+h1{font-size:21px;margin:0 0 4px;letter-spacing:-.2px}
+.lead{font-size:13.5px;color:var(--mut);margin:0 0 14px}
+.card{background:#fff;border:1px solid var(--soft);border-radius:14px;border-top:5px solid #0f6e56;padding:16px 16px 18px;margin-top:8px;box-shadow:0 2px 10px rgba(40,38,30,.05)}
+.ptitle{font-size:18px;font-weight:800;margin:0 0 12px;line-height:1.35;letter-spacing:-.2px}
+.stepno{display:inline-block;font-size:12px;font-weight:800;color:#fff;background:var(--acc);border-radius:99px;padding:3px 12px;margin:16px 0 8px;letter-spacing:.2px}
+.stepno.two{background:#6a4fc0}.stepno.three{background:#bd7d13}
+.sguide{font-size:13.5px;color:#4a4942;margin:0 0 9px}
+.sen{display:block;width:100%;text-align:left;font-family:inherit;font-size:16px;background:#fbfaf6;border:1.5px solid var(--line);border-radius:11px;padding:12px 13px;margin-bottom:8px;cursor:pointer;line-height:1.7;color:var(--ink);box-shadow:0 1px 0 rgba(40,38,30,.04);transition:background .12s,border-color .12s}
+.sen:hover{background:#f3eee1;border-color:#bdb7a5}
+.sen .num{display:inline-block;min-width:24px;height:24px;line-height:24px;text-align:center;background:#efe6cf;color:#8a5a12;font-weight:800;font-size:13px;border-radius:50%;margin-right:8px;vertical-align:1px}
+.sen.ok{border-color:var(--ok);background:var(--okbg);font-weight:600}
+.sen.ok .num{background:#0f6e56;color:#fff}
+.sen.no{border-color:var(--no);background:var(--nobg)}
+i.g{font-style:normal;color:#7a5f1f;font-size:.9em}
+.fb{display:none;margin-top:9px}.fb.on{display:block}
+.fx{font-size:13.5px;background:var(--accbg);border:1px solid #bfe0d2;border-radius:9px;padding:10px 12px;line-height:1.6}
+.fb.no .fx{background:var(--nobg);border-color:#eec4c2;color:#7c2b2b}
+.fb.ok .fx{background:var(--okbg);border-color:#b6e0cf;color:#0b4a3a}
+.saybox{font-size:14.5px;color:#3f3e38;background:#fbfaf6;border:1.5px dashed #c3bda9;border-radius:11px;padding:11px 13px;line-height:1.65}
+.rvl{display:block;width:100%;font-family:inherit;font-size:14px;font-weight:800;color:#fff;background:var(--acc);border:none;border-radius:11px;padding:12px;cursor:pointer;margin-top:2px;box-shadow:0 1px 4px rgba(15,110,86,.25)}
+.rvl:hover{background:#0c5c48}
+.model{font-size:14.5px;background:#fff6d6;border:1.5px solid #e6d69a;border-radius:10px;padding:11px 13px;line-height:1.65;font-weight:600;margin-bottom:11px}
+.model b{color:#835410}
+.maph{font-size:13px;font-weight:800;color:var(--acc);margin:4px 0 7px}
+.maprow{display:flex;gap:8px;align-items:flex-start;font-size:13.2px;line-height:1.55;margin-bottom:6px}
+.tag{flex:none;font-size:11px;font-weight:800;border-radius:6px;padding:3px 8px;margin-top:1px;white-space:nowrap}
+.t-int{background:#e9e7e0;color:#4d4a42}
+.t-core{background:#d6f0e5;color:#0b6b53}
+.t-evd{background:#e5ddf6;color:#5b3fa0}
+.t-res{background:#dcecfb;color:#1a5591}
+.selfcheck{background:#f6f3ea;border:1px solid #e3ddcd;border-radius:10px;padding:11px 12px;margin-top:13px}
+.selfcheck>.sch{font-size:13.2px;font-weight:800;color:#5b43ad}
+.ck{display:block;width:100%;text-align:left;font-family:inherit;font-size:14px;background:#fff;border:1.5px solid var(--line);border-radius:9px;padding:10px 12px;margin-top:8px;cursor:pointer;line-height:1.5;color:var(--ink)}
+.ck.on{border-color:var(--ok);background:var(--okbg);font-weight:700}
+.ck.on::before{content:"\2713 ";color:var(--ok);font-weight:800}
+.score{margin-top:10px;font-size:14.5px;font-weight:800;color:var(--mut);text-align:center}
+.score.one{color:#8a5a12}
+.score.two{color:var(--ok)}
+.more{background:#e7f0fb;border:1.5px solid #b9d4f0;border-radius:11px;padding:12px 13px;margin-top:15px;font-size:13.5px;line-height:1.6}
+.more b{color:#17538f}
+.more a{display:inline-block;margin-top:6px;color:#0f4c96;font-weight:800;text-decoration:none}
+.more a:hover{text-decoration:underline}
+.src{font-size:11px;color:#8f8e86;margin-top:16px;line-height:1.5;word-break:break-all}
+.src a{color:#82817a}
+</style></head><body><div class="wrap">
+<h1>문해력 한 장 · 요약 훈련</h1>
+<p class="lead">짧은 글 한 편을 읽고 → 핵심 문장(글쓴이가 가장 하고 싶은 말)을 찾고 → 한 문장으로 요약해 말해 보자. 하루 5분.</p>
+
+<div class="card">
+<p class="ptitle">발효와 부패는 무엇이 다를까?</p>
+
+<div class="stepno">STEP 1 · 읽고, 핵심 문장 찾기</div>
+<p class="sguide">이 글은 <b>두 가지(발효·부패)를 견주는</b> 글이야. 둘을 가르는 <b>결정적 차이(핵심)</b> 한 문장은? 눌러 봐.</p>
+
+<button class="sen" data-n="1" onclick="pick(this)"><span class="num">1</span>우리는 김치와 요구르트는 &lsquo;발효 식품&rsquo;이라며 즐겨 먹지만, 상한 음식은 &lsquo;부패했다&rsquo;며 버린다.</button>
+<button class="sen" data-n="2" onclick="pick(this)"><span class="num">2</span>발효는 미생물<i class="g">(눈에 안 보이는 아주 작은 생물)</i>이 음식 속 영양분을 분해해 알코올이나 새콤한 산 같은 물질을 만드는 것이다.</button>
+<button class="sen" data-n="3" onclick="pick(this)"><span class="num">3</span>부패도 미생물이 음식 속 영양분을 분해하는 것인데, 이때는 고약한 냄새와 몸에 해로운 물질이 만들어진다.</button>
+<button class="sen" data-n="4" onclick="pick(this)"><span class="num">4</span>놀랍게도 발효와 부패는 사실 같은 과정이고, 그 결과물이 사람에게 이로우면 &lsquo;발효&rsquo;, 해롭거나 냄새나면 &lsquo;부패&rsquo;라고 부르는 것뿐이다.</button>
+<button class="sen" data-n="5" onclick="pick(this)"><span class="num">5</span>그래서 같은 미생물이라도 어떤 때는 발효를, 어떤 때는 부패를 일으켜서 둘 사이 경계가 딱 잘라 나뉘지 않는다.</button>
+<button class="sen" data-n="6" onclick="pick(this)"><span class="num">6</span>김치·된장·치즈·술은 발효의 예이고, 상한 고기나 생선은 부패의 예다.</button>
+<button class="sen" data-n="7" onclick="pick(this)"><span class="num">7</span>결국 발효와 부패를 가르는 것은 과정의 차이가 아니라, 사람에게 이로운가 해로운가 하는 &lsquo;결과물&rsquo;의 차이다.</button>
+
+<div id="s1fb" class="fb"><div class="fx"></div></div>
+
+<div class="stepno two">STEP 2 · 말로 요약하기</div>
+<p class="sguide"><b>4번(핵심 차이)</b>을 &lsquo;무엇이 같고 무엇이 다른지&rsquo; 담아 <b>소리 내어 한 문장으로 말해 봐.</b> (옆에 계신 분께 들려드려도 좋아!)</p>
+<div class="saybox">🗣️ 이렇게: &ldquo;발효와 부패는 &hellip;&hellip;는 같지만, &hellip;&hellip;가 다르다.&rdquo;</div>
+
+<div class="stepno three">STEP 3 · 모범과 견주고 셀프 체크</div>
+<button class="rvl" onclick="rv(this)">모범 요약·구조 확인하기</button>
+<div class="fb">
+  <div class="model">모범 요약 &mdash; <b>발효와 부패는 둘 다 미생물이 영양분을 분해하는 같은 과정이지만, 결과물이 이로우면 발효, 해로우면 부패라고 부른다.</b></div>
+  <div class="maph">글의 구조 한눈에 보기</div>
+  <div class="maprow"><span class="tag t-int">1 도입</span><span>발효는 먹고, 부패는 버린다 &mdash; 둘은 정말 다를까?</span></div>
+  <div class="maprow"><span class="tag t-evd">2~3 두 가지 설명</span><span>발효 = 이로운 물질을 만듦 · 부패 = 해로운 물질을 만듦.</span></div>
+  <div class="maprow"><span class="tag t-core">4 핵심 차이(중심)</span><span>사실 같은 과정, 결과물이 이로우면 발효·해로우면 부패. ← 가장 하고 싶은 말</span></div>
+  <div class="maprow"><span class="tag t-evd">5~6 보충·예시</span><span>경계가 딱 나뉘지 않음 · 김치 vs 상한 고기.</span></div>
+  <div class="maprow"><span class="tag t-res">7 정리</span><span>가르는 것은 과정이 아니라 &lsquo;결과물&rsquo;의 차이.</span></div>
+  <div class="selfcheck">
+    <div class="sch">내가 말한 요약에 이게 있었어? <span style="font-weight:400;color:#82817a">— 눌러서 체크</span></div>
+    <button class="ck" onclick="ck(this)">같은 점 — 둘 다 미생물이 분해하는 &lsquo;같은 과정&rsquo;</button>
+    <button class="ck" onclick="ck(this)">다른 점 — 결과물이 &lsquo;이로우면 발효, 해로우면 부패&rsquo;</button>
+    <div class="score" id="score">하나씩 눌러서 확인해 봐</div>
+  </div>
+</div>
+
+<div class="more">
+  <b>📺 다 했으면, 관심 있으면 더 보기</b><br>
+  &lsquo;발효와 부패의 차이&rsquo;를 〈과학을 보다〉에서 생물학자<i class="g">(생물을 연구하는 사람)</i>가 직접 설명해 &mdash; <b>15:09 ~ 17:40</b> 구간만 보면 돼.<br>
+  <a href="https://www.youtube.com/watch?v=PQt0-30ZrGw&amp;t=909s" target="_blank" rel="noopener">▶ &lsquo;발효와 부패의 차이&rsquo; 구간 열기</a>
+</div>
+</div>
+
+<p class="src">출처 — 국립국어원 표준국어대사전 &ldquo;발효&rdquo;·&ldquo;부패&rdquo; (<a href="https://stdict.korean.go.kr/search/searchResult.do?searchKeyword=발효">stdict.korean.go.kr</a>) · Wikipedia, &ldquo;발효&rdquo;·&ldquo;부패&rdquo; (<a href="https://ko.wikipedia.org/wiki/발효">ko.wikipedia.org/wiki/발효</a>) · 영상: 〈과학을 보다 · 미생물의 세계(김응빈 교수)〉 보다 BODA (<a href="https://www.youtube.com/watch?v=PQt0-30ZrGw&amp;t=909s">youtube.com</a>)</p>
+
+<script>
+var CORRECT=4,done=false;
+var HINTS={
+ 1:"이건 두 가지를 나란히 보여주는 &lsquo;도입&rsquo;이야. 둘을 가르는 &lsquo;핵심 차이&rsquo;를 골라봐.",
+ 2:"이건 &lsquo;발효&rsquo;가 무엇인지 설명하는 부분이야. 둘을 가르는 결정적 차이를 골라봐.",
+ 3:"이건 &lsquo;부패&rsquo;가 무엇인지 설명하는 부분이야. 둘을 가르는 결정적 차이를 골라봐.",
+ 5:"이건 핵심 차이를 받쳐 주는 &lsquo;보충&rsquo;이야. 둘을 가르는 &lsquo;결정적 한 문장&rsquo;을 골라봐.",
+ 6:"이건 &lsquo;예시&rsquo;야. 둘을 가르는 결정적 차이를 골라봐.",
+ 7:"이건 마무리 &lsquo;정리&rsquo;야. 본문에서 그 차이를 처음 딱 짚어 준 문장을 골라봐."
+};
+function pick(el){
+  if(done)return;
+  var n=parseInt(el.getAttribute('data-n'),10);
+  var box=document.getElementById('s1fb');
+  if(n===CORRECT){
+    el.classList.add('ok');done=true;
+    document.querySelectorAll('.sen').forEach(function(s){s.style.cursor='default';});
+    box.className='fb on ok';
+    box.querySelector('.fx').innerHTML='<b>정답!</b> 4번이 이 글의 <b>핵심 차이</b>야. 앞은 두 가지를 각각 설명하고, 뒤는 예시와 정리고. 이제 &lsquo;무엇이 같고 무엇이 다른지&rsquo;를 한 문장으로 말해 보자.';
+    playSound('correct');
+  }else{
+    el.classList.add('no');
+    box.className='fb on no';
+    box.querySelector('.fx').innerHTML='<b>다시!</b> '+HINTS[n];
+    playSound('incorrect');
+    setTimeout(function(){el.classList.remove('no');},700);
+  }
+}
+function rv(btn){var fb=btn.nextElementSibling;if(fb&&fb.classList.contains('fb'))fb.classList.add('on');btn.style.display='none';}
+function ck(btn){
+  btn.classList.toggle('on');
+  var total=document.querySelectorAll('.ck').length;
+  var n=document.querySelectorAll('.ck.on').length;
+  var s=document.getElementById('score');
+  if(n===0){s.textContent='하나씩 눌러서 확인해 봐';s.className='score';}
+  else if(n<total){s.textContent='빠진 게 있으면 넣어서 다시 말해보자';s.className='score one';}
+  else{s.textContent='핵심 다 담겼어!';s.className='score two';playSound('correct');}
+}
+// ── 사운드: PA 앱(index.html)과 동일 ──
+var _audioCtx=null;
+function getAudioCtx(){
+  if(!_audioCtx){try{_audioCtx=new (window.AudioContext||window.webkitAudioContext)();}catch(e){return null;}}
+  if(_audioCtx.state==='suspended'){_audioCtx.resume().catch(function(){});}
+  return _audioCtx;
+}
+function playSound(type){
+  try{
+    var ctx=getAudioCtx();if(!ctx)return;
+    var gain=ctx.createGain();gain.connect(ctx.destination);
+    if(type==='correct'){
+      gain.gain.value=0.25;
+      [523,659,784].forEach(function(freq,i){var osc=ctx.createOscillator();osc.type='sine';osc.frequency.value=freq;osc.connect(gain);osc.start(ctx.currentTime+i*0.12);osc.stop(ctx.currentTime+i*0.12+0.15);});
+      gain.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.6);
+    }else{
+      gain.gain.value=0.16;
+      [440,349].forEach(function(freq,i){var osc=ctx.createOscillator();osc.type='sine';osc.frequency.value=freq;osc.connect(gain);osc.start(ctx.currentTime+i*0.12);osc.stop(ctx.currentTime+i*0.12+0.12);});
+      gain.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.35);
+    }
+  }catch(e){}
+}
+</script>
+</div></body></html>

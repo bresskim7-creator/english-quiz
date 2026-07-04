@@ -1,0 +1,152 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>문해력 한 장 · 요약 훈련 (05)</title><style>
+:root{--bg:#f4f2ec;--card:#fff;--ink:#20201d;--mut:#57564f;--line:#cdc8ba;--soft:#e6e2d7;--ok:#0f6e56;--okbg:#dcf1e8;--no:#a32d2d;--nobg:#fbe6e5;--acc:#0f6e56;--accbg:#dcefe5}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.6}
+.wrap{max-width:720px;margin:0 auto;padding:18px 14px 64px}
+h1{font-size:21px;margin:0 0 4px;letter-spacing:-.2px}
+.lead{font-size:13.5px;color:var(--mut);margin:0 0 14px}
+.card{background:#fff;border:1px solid var(--soft);border-radius:14px;border-top:5px solid #0f6e56;padding:16px 16px 18px;margin-top:8px;box-shadow:0 2px 10px rgba(40,38,30,.05)}
+.ptitle{font-size:18px;font-weight:800;margin:0 0 12px;line-height:1.35;letter-spacing:-.2px}
+.stepno{display:inline-block;font-size:12px;font-weight:800;color:#fff;background:var(--acc);border-radius:99px;padding:3px 12px;margin:16px 0 8px;letter-spacing:.2px}
+.stepno.two{background:#6a4fc0}.stepno.three{background:#bd7d13}
+.sguide{font-size:13.5px;color:#4a4942;margin:0 0 9px}
+.sen{display:block;width:100%;text-align:left;font-family:inherit;font-size:16px;background:#fbfaf6;border:1.5px solid var(--line);border-radius:11px;padding:12px 13px;margin-bottom:8px;cursor:pointer;line-height:1.7;color:var(--ink);box-shadow:0 1px 0 rgba(40,38,30,.04);transition:background .12s,border-color .12s}
+.sen:hover{background:#f3eee1;border-color:#bdb7a5}
+.sen .num{display:inline-block;min-width:24px;height:24px;line-height:24px;text-align:center;background:#efe6cf;color:#8a5a12;font-weight:800;font-size:13px;border-radius:50%;margin-right:8px;vertical-align:1px}
+.sen.ok{border-color:var(--ok);background:var(--okbg);font-weight:600}
+.sen.ok .num{background:#0f6e56;color:#fff}
+.sen.no{border-color:var(--no);background:var(--nobg)}
+i.g{font-style:normal;color:#7a5f1f;font-size:.9em}
+.fb{display:none;margin-top:9px}.fb.on{display:block}
+.fx{font-size:13.5px;background:var(--accbg);border:1px solid #bfe0d2;border-radius:9px;padding:10px 12px;line-height:1.6}
+.fb.no .fx{background:var(--nobg);border-color:#eec4c2;color:#7c2b2b}
+.fb.ok .fx{background:var(--okbg);border-color:#b6e0cf;color:#0b4a3a}
+.saybox{font-size:14.5px;color:#3f3e38;background:#fbfaf6;border:1.5px dashed #c3bda9;border-radius:11px;padding:11px 13px;line-height:1.65}
+.rvl{display:block;width:100%;font-family:inherit;font-size:14px;font-weight:800;color:#fff;background:var(--acc);border:none;border-radius:11px;padding:12px;cursor:pointer;margin-top:2px;box-shadow:0 1px 4px rgba(15,110,86,.25)}
+.rvl:hover{background:#0c5c48}
+.model{font-size:14.5px;background:#fff6d6;border:1.5px solid #e6d69a;border-radius:10px;padding:11px 13px;line-height:1.65;font-weight:600;margin-bottom:11px}
+.model b{color:#835410}
+.maph{font-size:13px;font-weight:800;color:var(--acc);margin:4px 0 7px}
+.maprow{display:flex;gap:8px;align-items:flex-start;font-size:13.2px;line-height:1.55;margin-bottom:6px}
+.tag{flex:none;font-size:11px;font-weight:800;border-radius:6px;padding:3px 8px;margin-top:1px;white-space:nowrap}
+.t-int{background:#e9e7e0;color:#4d4a42}
+.t-core{background:#d6f0e5;color:#0b6b53}
+.t-evd{background:#e5ddf6;color:#5b3fa0}
+.t-res{background:#dcecfb;color:#1a5591}
+.selfcheck{background:#f6f3ea;border:1px solid #e3ddcd;border-radius:10px;padding:11px 12px;margin-top:13px}
+.selfcheck>.sch{font-size:13.2px;font-weight:800;color:#5b43ad}
+.ck{display:block;width:100%;text-align:left;font-family:inherit;font-size:14px;background:#fff;border:1.5px solid var(--line);border-radius:9px;padding:10px 12px;margin-top:8px;cursor:pointer;line-height:1.5;color:var(--ink)}
+.ck.on{border-color:var(--ok);background:var(--okbg);font-weight:700}
+.ck.on::before{content:"\2713 ";color:var(--ok);font-weight:800}
+.score{margin-top:10px;font-size:14.5px;font-weight:800;color:var(--mut);text-align:center}
+.score.one{color:#8a5a12}
+.score.two{color:var(--ok)}
+.src{font-size:11px;color:#8f8e86;margin-top:16px;line-height:1.5;word-break:break-all}
+.src a{color:#82817a}
+</style></head><body><div class="wrap">
+<h1>문해력 한 장 · 요약 훈련</h1>
+<p class="lead">짧은 글 한 편을 읽고 → 핵심 문장(글쓴이가 가장 하고 싶은 말)을 찾고 → 한 문장으로 요약해 말해 보자. 하루 5분.</p>
+
+<div class="card">
+<p class="ptitle">유럽 사람 셋 중 하나를 앗아간 흑사병, 세상을 어떻게 바꿨을까?</p>
+
+<div class="stepno">STEP 1 · 읽고, 핵심 문장 찾기</div>
+<p class="sguide">이 글은 흑사병이 <b>퍼진 순서(시간)</b>대로 쓴 글이야. 하지만 글쓴이가 가장 하고 싶은 말은 &lsquo;그래서 이 일이 <b>무엇을 바꿨는가(결과·의미)</b>&rsquo;야. 그 한 문장은? 눌러 봐.</p>
+
+<button class="sen" data-n="1" onclick="pick(this)"><span class="num">1</span>1347년, 흑사병<i class="g">(페스트, 아주 무서운 전염병)</i>이 중앙아시아에서 비단길<i class="g">(옛날 동서양을 잇던 무역길)</i>을 타고 유럽 항구로 들어왔다.</button>
+<button class="sen" data-n="2" onclick="pick(this)"><span class="num">2</span>이듬해에는 이탈리아를 지나 프랑스·스페인·잉글랜드로, 1349~1350년에는 독일과 북유럽까지 단 몇 해 만에 유럽 전역으로 퍼졌다.</button>
+<button class="sen" data-n="3" onclick="pick(this)"><span class="num">3</span>그 몇 해 동안 유럽 사람의 약 3분의 1에서 절반가량이 목숨을 잃었다.</button>
+<button class="sen" data-n="4" onclick="pick(this)"><span class="num">4</span>사람이 갑자기 크게 줄자, 농사짓고 물건 만들 일손이 턱없이 부족해졌다.</button>
+<button class="sen" data-n="5" onclick="pick(this)"><span class="num">5</span>그러자 살아남은 농민과 일꾼의 몸값이 올라 임금이 뛰었고, 영주<i class="g">(땅과 사람을 거느리던 귀족)</i>에게 매여 살던 농노<i class="g">(땅에 묶여 일하던 농민)</i>의 처지도 조금씩 나아졌다.</button>
+<button class="sen" data-n="6" onclick="pick(this)"><span class="num">6</span>사람을 땅에 묶어 두던 낡은 신분 질서가 흔들리고, 도시와 장사·수공업<i class="g">(손으로 물건을 만드는 일)</i>이 다시 살아났다.</button>
+<button class="sen" data-n="7" onclick="pick(this)"><span class="num">7</span>결국 흑사병은 그저 무서운 전염병에 그치지 않고, 중세<i class="g">(약 1000년간 이어진 옛 유럽 시대)</i>의 낡은 질서를 무너뜨리고 새 시대로 넘어가는 문을 연 사건이었다.</button>
+
+<div id="s1fb" class="fb"><div class="fx"></div></div>
+
+<div class="stepno two">STEP 2 · 말로 요약하기</div>
+<p class="sguide"><b>7번(결과·의미)</b>에 &lsquo;어쩌다 그렇게 됐는지&rsquo; 흐름을 한 가지 더해 <b>소리 내어 한 문장으로 말해 봐.</b> (옆에 계신 분께 들려드려도 좋아!)</p>
+<div class="saybox">🗣️ 이렇게: &ldquo;흑사병으로 사람이 크게 줄자 &hellip;&hellip;, 그래서 중세 질서가 무너지고 새 시대로 넘어갔다.&rdquo;</div>
+
+<div class="stepno three">STEP 3 · 모범과 견주고 셀프 체크</div>
+<button class="rvl" onclick="rv(this)">모범 요약·구조 확인하기</button>
+<div class="fb">
+  <div class="model">모범 요약 &mdash; <b>흑사병으로 유럽 인구가 크게 줄자 일손이 부족해져 임금이 오르고 신분 질서가 흔들렸고, 그 결과 중세가 무너지며 새 시대로 넘어가는 계기가 되었다.</b></div>
+  <div class="maph">글의 구조 한눈에 보기</div>
+  <div class="maprow"><span class="tag t-int">1 시작</span><span>1347년, 흑사병이 유럽에 들어온다.</span></div>
+  <div class="maprow"><span class="tag t-evd">2~3 퍼진 과정</span><span>몇 해 만에 유럽 전역 확산 · 인구 3분의 1~절반 사망.</span></div>
+  <div class="maprow"><span class="tag t-evd">4~6 이어진 변화</span><span>일손 부족 → 임금 상승 → 신분 질서 흔들림 · 도시 부활.</span></div>
+  <div class="maprow"><span class="tag t-core">7 결과·의미(중심)</span><span>중세를 무너뜨리고 새 시대로 넘어가는 문을 엶. ← 글쓴이가 가장 하고 싶은 말</span></div>
+  <div class="selfcheck">
+    <div class="sch">내가 말한 요약에 이게 있었어? <span style="font-weight:400;color:#82817a">— 눌러서 체크</span></div>
+    <button class="ck" onclick="ck(this)">흐름 — 사람이 크게 줄어 &lsquo;일손 부족 → 임금 상승 → 신분 질서 흔들림&rsquo;</button>
+    <button class="ck" onclick="ck(this)">결과·의미 — 중세가 무너지고 &lsquo;새 시대로 넘어가는&rsquo; 계기가 됨</button>
+    <div class="score" id="score">하나씩 눌러서 확인해 봐</div>
+  </div>
+</div>
+</div>
+
+<p class="src">출처 — Wikipedia &ldquo;흑사병&rdquo; (<a href="https://ko.wikipedia.org/wiki/흑사병">ko.wikipedia.org/wiki/흑사병</a>) · Wikipedia &ldquo;Black Death&rdquo; (<a href="https://en.wikipedia.org/wiki/Black_Death">en.wikipedia.org/wiki/Black_Death</a>)<!-- BODA 영상 pending(05): 실물 확인 시 7/4 배선 때 .more(〈역사를 보다〉 딥링크) 추가 --></p>
+
+<script>
+var CORRECT=7,done=false;
+var HINTS={
+ 1:"이건 흑사병이 &lsquo;처음 들어온&rsquo; 장면이야(시작). 글쓴이가 말하려는 &lsquo;결과·의미&rsquo;는 맨 끝에 있어.",
+ 2:"이건 병이 &lsquo;퍼져 간 과정&rsquo;이야. 그래서 그게 무엇을 바꿨는지 &lsquo;결과&rsquo;를 골라봐.",
+ 3:"이건 얼마나 많이 잃었는지 &lsquo;피해 규모&rsquo;야. 그 일이 남긴 &lsquo;의미&rsquo; 문장을 골라봐.",
+ 4:"이건 그 결과 벌어진 &lsquo;중간 변화&rsquo;(일손 부족)야. 글 전체가 향하는 &lsquo;마지막 의미&rsquo;를 골라봐.",
+ 5:"이것도 결과로 이어지는 &lsquo;중간 변화&rsquo;(임금 상승)야. 이 변화들이 결국 무엇을 뜻하는지 마지막 문장을 골라봐.",
+ 6:"이것도 &lsquo;중간 변화&rsquo;(신분 질서 흔들림)야. 글쓴이가 이 모든 흐름을 모아 내린 &lsquo;결론&rsquo;을 골라봐."
+};
+function pick(el){
+  if(done)return;
+  var n=parseInt(el.getAttribute('data-n'),10);
+  var box=document.getElementById('s1fb');
+  if(n===CORRECT){
+    el.classList.add('ok');done=true;
+    document.querySelectorAll('.sen').forEach(function(s){s.style.cursor='default';});
+    box.className='fb on ok';
+    box.querySelector('.fx').innerHTML='<b>정답!</b> 7번이 이 글의 <b>핵심</b>이야. 앞 1~6번은 흑사병이 퍼지고 벌어진 일을 &lsquo;순서대로&rsquo; 알려 준 거고, 7번은 &lsquo;그래서 그게 무슨 의미인가&rsquo;를 짚은 결론이야. 이제 흐름을 이 결과로 모아 한 문장으로 말해 보자.';
+    playSound('correct');
+  }else{
+    el.classList.add('no');
+    box.className='fb on no';
+    box.querySelector('.fx').innerHTML='<b>다시!</b> '+HINTS[n];
+    playSound('incorrect');
+    setTimeout(function(){el.classList.remove('no');},700);
+  }
+}
+function rv(btn){var fb=btn.nextElementSibling;if(fb&&fb.classList.contains('fb'))fb.classList.add('on');btn.style.display='none';}
+function ck(btn){
+  btn.classList.toggle('on');
+  var total=document.querySelectorAll('.ck').length;
+  var n=document.querySelectorAll('.ck.on').length;
+  var s=document.getElementById('score');
+  if(n===0){s.textContent='하나씩 눌러서 확인해 봐';s.className='score';}
+  else if(n<total){s.textContent='빠진 게 있으면 넣어서 다시 말해보자';s.className='score one';}
+  else{s.textContent='핵심 다 담겼어!';s.className='score two';playSound('correct');}
+}
+// ── 사운드: PA 앱(index.html)과 동일 ──
+var _audioCtx=null;
+function getAudioCtx(){
+  if(!_audioCtx){try{_audioCtx=new (window.AudioContext||window.webkitAudioContext)();}catch(e){return null;}}
+  if(_audioCtx.state==='suspended'){_audioCtx.resume().catch(function(){});}
+  return _audioCtx;
+}
+function playSound(type){
+  try{
+    var ctx=getAudioCtx();if(!ctx)return;
+    var gain=ctx.createGain();gain.connect(ctx.destination);
+    if(type==='correct'){
+      gain.gain.value=0.25;
+      [523,659,784].forEach(function(freq,i){var osc=ctx.createOscillator();osc.type='sine';osc.frequency.value=freq;osc.connect(gain);osc.start(ctx.currentTime+i*0.12);osc.stop(ctx.currentTime+i*0.12+0.15);});
+      gain.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.6);
+    }else{
+      gain.gain.value=0.16;
+      [440,349].forEach(function(freq,i){var osc=ctx.createOscillator();osc.type='sine';osc.frequency.value=freq;osc.connect(gain);osc.start(ctx.currentTime+i*0.12);osc.stop(ctx.currentTime+i*0.12+0.12);});
+      gain.gain.exponentialRampToValueAtTime(0.01,ctx.currentTime+0.35);
+    }
+  }catch(e){}
+}
+</script>
+</div></body></html>
