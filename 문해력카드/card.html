@@ -48,6 +48,21 @@ i.g{font-style:normal;color:#7a5f1f;font-size:.9em}
 .more a:hover{text-decoration:underline}
 .src{font-size:11px;color:#8f8e86;margin-top:16px;line-height:1.5;word-break:break-all}
 .src a{color:#82817a}
+/* ── 2주차 인터랙션(삭제·일반화·재구성) 전용 추가 스타일 (1주차 선택자 불변) ── */
+.sen.rsen{cursor:default;box-shadow:none}
+.sen.rsen:hover{background:#fbfaf6;border-color:var(--line)}
+.sen.delsen.struck{text-decoration:line-through;opacity:.42}
+.sen.delsen.struck .num{opacity:.6}
+.sen.delsen.miss{border-color:#d8b24a;background:#fbf4de}
+.fx .cutlist{margin-top:6px}
+.fx .cutlist>div{margin-top:5px}
+.confirm{display:block;width:100%;font-family:inherit;font-size:14px;font-weight:800;color:#fff;background:#6a4fc0;border:none;border-radius:11px;padding:12px;cursor:pointer;margin:6px 0 2px;box-shadow:0 1px 4px rgba(106,79,192,.25)}
+.confirm:hover{background:#573fa8}
+.opts{margin-top:2px}
+.opt{display:block;width:100%;text-align:left;font-family:inherit;font-size:15.5px;background:#fbfaf6;border:1.5px solid var(--line);border-radius:11px;padding:12px 13px;margin-bottom:8px;cursor:pointer;line-height:1.6;color:var(--ink);box-shadow:0 1px 0 rgba(40,38,30,.04);transition:background .12s,border-color .12s}
+.opt:hover{background:#f3eee1;border-color:#bdb7a5}
+.opt.ok{border-color:var(--ok);background:var(--okbg);font-weight:600}
+.opt.no{border-color:var(--no);background:var(--nobg)}
 </style></head><body><div class="wrap">
 <h1>문해력 한 장 · 요약 훈련</h1>
 <p class="lead">짧은 글 한 편을 읽고 → 핵심 문장(글쓴이가 가장 하고 싶은 말)을 찾고 → 한 문장으로 요약해 말해 보자. 하루 5분.</p>
@@ -58,6 +73,7 @@ i.g{font-style:normal;color:#7a5f1f;font-size:.9em}
 <script>
 // ── 데이터 주입점(카드별) ── 렌더 시 각 카드 데이터에서 채워짐. 인터랙션 로직(pick/rv/ck/playSound)은 카드01 원본과 동일.
 var CORRECT=null,HINTS={},CORRECT_FB='',done=false;
+var CARD=null; // 현재 카드(2주차 인터랙션 핸들러가 참조)
 
 function pick(el){
   if(done)return;
@@ -110,6 +126,108 @@ function playSound(type){
   }catch(e){}
 }
 
+// ── 2주차 인터랙션 핸들러 ──
+// 삭제(delete_noise): 문장 토글로 지우고, '확인'으로 채점(선택집합 vs deletable).
+function delToggle(el){ if(done)return; el.classList.toggle('struck'); }
+function delConfirm(btn){
+  if(done)return;
+  var struck=[];
+  document.querySelectorAll('.delsen').forEach(function(b){ if(b.classList.contains('struck')) struck.push(parseInt(b.getAttribute('data-n'),10)); });
+  var del=(CARD.deletable||[]);
+  var wrongStruck=struck.filter(function(n){return del.indexOf(n)<0;}); // 지우면 안 되는데 지움
+  var missed=del.filter(function(n){return struck.indexOf(n)<0;});      // 지워야 하는데 안 지움
+  var box=document.getElementById('s1fb');
+  if(wrongStruck.length===0 && missed.length===0){
+    done=true;
+    document.querySelectorAll('.delsen').forEach(function(b){
+      b.style.cursor='default';
+      var n=parseInt(b.getAttribute('data-n'),10);
+      if(del.indexOf(n)<0) b.classList.add('ok'); // 남은 핵심(뼈대) 강조
+    });
+    btn.style.display='none';
+    box.className='fb on ok';
+    box.querySelector('.fx').innerHTML=CARD.delete_fb_ok||'<b>좋아!</b> 남은 문장이 이 글의 뼈대야.';
+    playSound('correct');
+  }else{
+    box.className='fb on no';
+    var msg='<b>다시!</b> ';
+    wrongStruck.forEach(function(n){var b=document.querySelector('.delsen[data-n="'+n+'"]');if(b)b.classList.add('no');});
+    if(wrongStruck.length){
+      // 잘못 지운 필수문장(essential) 우선 — 기존 hints 유지
+      var focus=wrongStruck[0];
+      msg+=(CARD.hints&&CARD.hints[focus])?CARD.hints[focus]:'지우면 안 되는 문장을 지웠어 — 주장·핵심 이유는 남겨야 뼈대가 서.';
+    }else{
+      // 안 지운 곁가지(missed)만 남은 경우 → 화면에 표시 + cut_reason 나열
+      var cr=CARD.cut_reason||{};
+      missed.forEach(function(n){var b=document.querySelector('.delsen[data-n="'+n+'"]');if(b)b.classList.add('miss');});
+      var items='';
+      missed.forEach(function(n){ if(cr[n]) items+='<div>('+n+') '+cr[n]+'</div>'; });
+      if(items){ msg+='이 문장들은 <b>곁가지</b>야 — 눌러서 지워 봐:<div class="cutlist">'+items+'</div>'; }
+      else { msg+='아직 지울 수 있는 예시·군더더기가 남았어. 꼭 필요한 문장만 남게 더 지워 봐.'; }
+    }
+    box.querySelector('.fx').innerHTML=msg;
+    playSound('incorrect');
+    setTimeout(function(){document.querySelectorAll('.delsen.no,.delsen.miss').forEach(function(b){b.classList.remove('no');b.classList.remove('miss');});},1800);
+  }
+}
+// 일반화/재구성(generalize·reconstruct): 보기 옵션 클릭 채점(index vs correct).
+function pickOpt(el){
+  if(done)return;
+  var i=parseInt(el.getAttribute('data-i'),10);
+  var box=document.getElementById('s1fb');
+  if(i===CARD.correct){
+    el.classList.add('ok');done=true;
+    document.querySelectorAll('.opt').forEach(function(b){b.style.cursor='default';});
+    box.className='fb on ok';
+    box.querySelector('.fx').innerHTML=CARD.gen_fb_ok||CARD.recon_fb_ok||'<b>정답!</b>';
+    playSound('correct');
+  }else{
+    el.classList.add('no');
+    box.className='fb on no';
+    var hint=(CARD.hints&&CARD.hints[i])?CARD.hints[i]:'다시 생각해 봐.';
+    box.querySelector('.fx').innerHTML='<b>다시!</b> '+hint;
+    playSound('incorrect');
+    setTimeout(function(){el.classList.remove('no');},700);
+  }
+}
+// STEP1 렌더 분기. pick_core_sentence(1주차) 출력은 완전 불변.
+function renderStep1(card){
+  var it=card.interaction||'pick_core_sentence';
+  var g='';
+  if(it==='pick_core_sentence'){
+    g+='<div class="stepno">STEP 1 · 읽고, 핵심 문장 찾기</div>';
+    g+='<p class="sguide">'+card.step1_guide+'</p>';
+    card.sentences.forEach(function(s,i){
+      g+='<button class="sen" data-n="'+(i+1)+'" onclick="pick(this)"><span class="num">'+(i+1)+'</span>'+s+'</button>';
+    });
+    g+='<div id="s1fb" class="fb"><div class="fx"></div></div>';
+  }else if(it==='delete_noise'){
+    g+='<div class="stepno">STEP 1 · 지우고 뼈대만 남기기</div>';
+    g+='<p class="sguide">'+card.step1_guide+'</p>';
+    card.sentences.forEach(function(s,i){
+      g+='<button class="sen delsen" data-n="'+(i+1)+'" onclick="delToggle(this)"><span class="num">'+(i+1)+'</span>'+s+'</button>';
+    });
+    g+='<button class="confirm" onclick="delConfirm(this)">확인 — 남은 문장 보기</button>';
+    g+='<div id="s1fb" class="fb"><div class="fx"></div></div>';
+  }else if(it==='generalize'||it==='reconstruct'){
+    var label=(it==='generalize')?'STEP 1 · 한 단어로 묶기':'STEP 1 · 주제문 만들기';
+    g+='<div class="stepno">'+label+'</div>';
+    g+='<p class="sguide">'+card.step1_guide+'</p>';
+    card.sentences.forEach(function(s,i){
+      g+='<div class="sen rsen"><span class="num">'+(i+1)+'</span>'+s+'</div>';
+    });
+    g+='<div class="opts">';
+    (card.options||[]).forEach(function(o,i){
+      g+='<button class="opt" data-i="'+i+'" onclick="pickOpt(this)">'+o+'</button>';
+    });
+    g+='</div>';
+    g+='<div id="s1fb" class="fb"><div class="fx"></div></div>';
+  }else{
+    g+='<div class="stepno">STEP 1</div><p class="sguide">이 카드 형식은 아직 준비 중이에요.</p>';
+  }
+  return g;
+}
+
 // ── 렌더 ── ?d=YYYY-MM-DD 로 카드 데이터 조회 → DOM 생성. 데이터 없으면 안전 실패(준비 중).
 function _pad2(x){return x<10?'0'+x:''+x;}
 function _mhGetDate(){var m=location.search.match(/[?&]d=([^&]*)/);return m?decodeURIComponent(m[1]):'';}
@@ -117,17 +235,13 @@ function _mhNotReady(){
   document.getElementById('root').innerHTML='<div class="card"><p class="ptitle">이 날짜 카드는 아직 준비 중이에요</p><p class="sguide">앱으로 돌아가 &lsquo;오늘의 한 장&rsquo;을 먼저 해도 좋아.</p></div>';
 }
 function renderCard(card){
+  CARD=card;
   CORRECT=card.correct;HINTS=card.hints||{};CORRECT_FB=card.correct_fb||'';done=false;
   document.title='문해력 한 장 · 요약 훈련 ('+_pad2(card.n)+')';
   var h='';
   h+='<div class="card">';
   h+='<p class="ptitle">'+card.ptitle+'</p>';
-  h+='<div class="stepno">STEP 1 · 읽고, 핵심 문장 찾기</div>';
-  h+='<p class="sguide">'+card.step1_guide+'</p>';
-  card.sentences.forEach(function(s,i){
-    h+='<button class="sen" data-n="'+(i+1)+'" onclick="pick(this)"><span class="num">'+(i+1)+'</span>'+s+'</button>';
-  });
-  h+='<div id="s1fb" class="fb"><div class="fx"></div></div>';
+  h+=renderStep1(card);
   h+='<div class="stepno two">STEP 2 · 말로 요약하기</div>';
   h+='<p class="sguide">'+card.step2_guide+'</p>';
   h+='<div class="saybox">'+card.saybox+'</div>';
