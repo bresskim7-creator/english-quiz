@@ -1,5 +1,11 @@
 window.__loadDailyIndex([
   {
+    "date": "2026-07-18",
+    "month": "2026-07",
+    "category": "시사",
+    "title": "잠실야구장, 돔으로 다시 태어납니다"
+  },
+  {
     "date": "2026-07-17",
     "month": "2026-07",
     "category": "캘린더",
@@ -51,7 +57,7 @@ window.__loadDailyIndex([
     "date": "2026-07-09",
     "month": "2026-07",
     "category": "시사",
-    "title": "잠실야구장, 돔으로 다시 태어납니다"
+    "title": "모욕당한 쪽이 먼저 내민 손 — 광주일고 이야기"
   },
   {
     "date": "2026-07-08",
@@ -307,6 +313,6 @@ window.__loadDailyIndex([
   }
 ], {
   "schema_version": 1,
-  "updated_at": "2026-07-03T10:39:59+09:00",
-  "version_key": "20260703-1039"
+  "updated_at": "2026-07-08T14:30:00+09:00",
+  "version_key": "20260708-1430"
 });
