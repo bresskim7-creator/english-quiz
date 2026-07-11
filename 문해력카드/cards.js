@@ -637,7 +637,9 @@ Object.assign(window.MUNHAERAK_CARDS, {
         "url": "https://en.wikipedia.org/wiki/Commodity_money",
         "url_label": "en.wikipedia.org"
       }
-    ]
+    ],
+    "more": {"desc": "돈이 어떻게 생겨났는지 한국은행<i class=\"g\">(우리나라 돈을 만들고 관리하는 곳)</i>이 만든 4분짜리 영상으로 볼 수 있어 — 물물교환부터 지금 돈까지 쭉 훑어 줘.", "url": "https://www.youtube.com/watch?v=BeRwr2sWxQ8", "link_label": "▶ ‘돈은 어떻게 만들어졌을까?’ 영상 열기"}
+  
   },
   "2026-07-12": {
     "n": 9,
@@ -777,7 +779,9 @@ Object.assign(window.MUNHAERAK_CARDS, {
         "url": "https://www.britannica.com/science/convection",
         "url_label": "britannica.com"
       }
-    ]
+    ],
+    "more": {"desc": "열이 전도·대류로 어떻게 옮겨가는지 EBS 중2 과학 영상에서 그림으로 설명해 줘 — 약 10분이야.", "url": "https://www.youtube.com/watch?v=M5-7xQP8kuU", "link_label": "▶ ‘열의 전도·대류·복사’ 영상 열기"}
+  
   },
   "2026-07-14": {
     "n": 11,
@@ -847,7 +851,9 @@ Object.assign(window.MUNHAERAK_CARDS, {
         "url": "https://www.britannica.com/biography/John-Snow-British-physician",
         "url_label": "britannica.com"
       }
-    ]
+    ],
+    "more": {"desc": "존 스노우가 지도로 콜레라<i class=\"g\">(심한 설사병)</i>의 원인을 어떻게 찾아냈는지 약 6분짜리 영상으로 볼 수 있어.", "url": "https://www.youtube.com/watch?v=H7Aolx1g7JQ", "link_label": "▶ ‘런던 콜레라를 지도로 잡은 이야기’ 영상 열기"}
+  
   }
 });
 
@@ -926,7 +932,9 @@ Object.assign(window.MUNHAERAK_CARDS, {
         "url": "https://en.wikipedia.org/wiki/Trial_of_Socrates",
         "url_label": "en.wikipedia.org"
       }
-    ]
+    ],
+    "more": {"desc": "소크라테스가 왜 도망치지 않았는지, 그가 남긴 글 ‘크리톤’ 이야기를 약 7분짜리 영상에서 풀어 줘.", "url": "https://www.youtube.com/watch?v=wHIp1o2kYiQ", "link_label": "▶ ‘소크라테스는 왜 탈옥하지 않았나’ 영상 열기"}
+  
   },
   "2026-07-16": {
     "n": 13,
@@ -1080,7 +1088,9 @@ Object.assign(window.MUNHAERAK_CARDS, {
         "url": "https://en.wikipedia.org/wiki/Oracle_bone_script",
         "url_label": "en.wikipedia.org"
       }
-    ]
+    ],
+    "more": {"desc": "옛 사람들이 만든 쐐기문자와 상형문자 이야기를 약 5분짜리 영상에서 볼 수 있어.", "url": "https://www.youtube.com/watch?v=DsHRWgmhhXM", "link_label": "▶ ‘세상을 바꾼 발명품, 쐐기문자와 상형문자’ 영상 열기"}
+  
   }
 });
 
