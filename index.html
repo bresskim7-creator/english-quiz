@@ -791,6 +791,7 @@
         }
         .lesson-selector {
             display: flex;
+            flex-wrap: wrap; /* 2026-07-12: 영어 L5~L8 추가로 6버튼 — 좁은 기기 줄바꿈 */
             gap: 8px;
         }
         .lesson-btn {
@@ -1749,9 +1750,14 @@
                     <span class="setting-label">Lesson</span>
                     <div class="lesson-selector" id="lesson-selector">
                         <!-- L1 숨김(2026-06-04 기말범위) 복원시 주석해제: <button class="lesson-btn" id="lesson-btn-1" onclick="selectLesson(1)">1</button> -->
-                        <button class="lesson-btn active" id="lesson-btn-2" onclick="selectLesson(2)">2</button>
+                        <button class="lesson-btn" id="lesson-btn-2" onclick="selectLesson(2)">2</button>
                         <!-- L3 숨김(2026-06-04 기말범위) 복원시 주석해제: <button class="lesson-btn" id="lesson-btn-3" onclick="selectLesson(3)">3</button> -->
                         <button class="lesson-btn" id="lesson-btn-4" onclick="selectLesson(4)">4</button>
+                        <!-- 2학기 단어트랙(2026-07-12): L5~L8 신규(단어·숙어 암기). L8에 Special Lesson 15어 포함(unit:"SP") -->
+                        <button class="lesson-btn active" id="lesson-btn-5" onclick="selectLesson(5)">5</button>
+                        <button class="lesson-btn" id="lesson-btn-6" onclick="selectLesson(6)">6</button>
+                        <button class="lesson-btn" id="lesson-btn-7" onclick="selectLesson(7)">7</button>
+                        <button class="lesson-btn" id="lesson-btn-8" onclick="selectLesson(8)">8</button>
                     </div>
                 </div>
 
@@ -2008,8 +2014,8 @@
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-07-12 v178';
-        const APP_CACHE_NAME = 'quiz-v178';
+        const BUILD_VERSION = '2026-07-12 v179';
+        const APP_CACHE_NAME = 'quiz-v179';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -2437,7 +2443,7 @@
             // v144: 캐시버스팅 — lesson 데이터 URL에 ?v=<APP_CACHE_NAME> 부착. 버전 범프 시 자동 변경 → 강제 새 요청.
             //        (sw.js가 쿼리 제거한 bare 키로 정규화 저장/폴백하므로 오프라인 캐시 유지)
             // [④4-3] lesson별 캐시버스팅 버전(단건 데이터 갱신을 app 버전 범프 없이 전파). 키=파일명(.js 제외). 없으면 APP_CACHE_NAME.
-            const LESSON_VERSIONS = { lesson_kor2: 'k2-1.7', lesson_kor3: 'k3-1.5', lesson_sci2: 'sci2-1.3', lesson_sci3: 'sci3-1.2', lesson_sci4: 'sci4-1.1', lesson_soc3: 'soc3-1.1', lesson_soc4: 'soc4-1.1' };
+            const LESSON_VERSIONS = { lesson_kor2: 'k2-1.7', lesson_kor3: 'k3-1.5', lesson_sci2: 'sci2-1.3', lesson_sci3: 'sci3-1.2', lesson_sci4: 'sci4-1.1', lesson_soc3: 'soc3-1.1', lesson_soc4: 'soc4-1.1', lesson5: 'l5-1.0', lesson6: 'l6-1.0', lesson7: 'l7-1.0', lesson8: 'l8-1.0' };
             const ver = (u) => {
                 const m = u.match(/([A-Za-z0-9_]+)\.js(?:\?|$)/);
                 const vv = (m && LESSON_VERSIONS[m[1]]) ? LESSON_VERSIONS[m[1]] : APP_CACHE_NAME;
@@ -2603,10 +2609,15 @@
                 lessonRow.querySelector('.setting-label').textContent = 'Lesson';
                 lessonSelector.innerHTML =
                     // L1 숨김(2026-06-04 기말범위) 복원시: '<button class="lesson-btn" id="lesson-btn-1" onclick="selectLesson(1)">1</button>' +
-                    '<button class="lesson-btn active" id="lesson-btn-2" onclick="selectLesson(2)">2</button>' +
+                    '<button class="lesson-btn" id="lesson-btn-2" onclick="selectLesson(2)">2</button>' +
                     // L3 숨김(2026-06-04 기말범위) 복원시: '<button class="lesson-btn" id="lesson-btn-3" onclick="selectLesson(3)">3</button>' +
-                    '<button class="lesson-btn" id="lesson-btn-4" onclick="selectLesson(4)">4</button>';
-                await loadLesson(2);
+                    '<button class="lesson-btn" id="lesson-btn-4" onclick="selectLesson(4)">4</button>' +
+                    // 2학기 단어트랙(2026-07-12): L5~L8 신규(단어·숙어 암기). L8=51어+Special 15어(unit:"SP"). 기본 진입=L5.
+                    '<button class="lesson-btn active" id="lesson-btn-5" onclick="selectLesson(5)">5</button>' +
+                    '<button class="lesson-btn" id="lesson-btn-6" onclick="selectLesson(6)">6</button>' +
+                    '<button class="lesson-btn" id="lesson-btn-7" onclick="selectLesson(7)">7</button>' +
+                    '<button class="lesson-btn" id="lesson-btn-8" onclick="selectLesson(8)">8</button>';
+                await loadLesson(5);
             }
             updateSubtitle();
 
@@ -6486,6 +6497,7 @@
             });
         }
 
+        const VOCAB_SESSION_CAP = 20; // 세션당 단어 노출 상한(2026-07-12 사용자 확정: 모르는>새 단어>아는 순, 나머지 다음 세션 이월)
         let vocabDrillList = [];      // current round words (shuffled)
         let vocabDrillIndex = 0;
         let vocabDrillResults = {};   // { "VD-L1-001": true/false, ... }
@@ -6511,6 +6523,8 @@
             shuffleArray(untested);
             shuffleArray(known);
             vocabDrillList = [...unknown, ...untested, ...known];
+            // 하루 노출 캡(2026-07-12): 세션당 20장 — 우선순위 정렬 후 상위만. 나머지는 다음 세션 자동 이월.
+            vocabDrillList = vocabDrillList.slice(0, VOCAB_SESSION_CAP);
             vocabDrillIndex = 0;
 
             document.getElementById('vocab-result-area').style.display = 'none';
@@ -6698,10 +6712,12 @@
             });
             safeSetItem('vocab_results', JSON.stringify(vocabResults));
 
-            // Calculate final stats
+            // Calculate final stats — 세션 기준(20장 캡) + Lesson 누적 병기(2026-07-12)
             const totalAll = QUIZ_DATA.vocab_drill.length;
             const totalKnown = QUIZ_DATA.vocab_drill.filter(item => vocabDrillResults[item.id] === true).length;
-            const percentage = Math.round((totalKnown / totalAll) * 100);
+            const sessionTotal = Object.keys(vocabDrillResults).length || 1;
+            const percentage = Math.round((totalKnown / sessionTotal) * 100);
+            const cumKnown = QUIZ_DATA.vocab_drill.filter(item => vocabResults[lessonKey][item.id] && vocabResults[lessonKey][item.id].known === true).length;
 
             // Show result
             const area = document.getElementById('vocab-result-area');
@@ -6722,7 +6738,8 @@
                 <div class="vocab-result-summary">
                     <h2>단어 드릴 완료!</h2>
                     <div class="score">${percentage}%</div>
-                    <div class="detail">${totalAll}개 중 ${totalKnown}개 알고 있어요</div>
+                    <div class="detail">오늘 본 ${sessionTotal}개 중 ${totalKnown}개 알고 있어요</div>
+                    <div class="detail" style="margin-top:4px;color:#888;">이 Lesson 누적: ${cumKnown} / ${totalAll} 외움</div>
                     ${unknownHtml}
                     <button class="vocab-done-btn" onclick="showPage('home-page')" style="margin-top:24px;">홈으로 돌아가기</button>
                 </div>
