@@ -1678,9 +1678,10 @@
                 <div class="subject-card english" onclick="selectSubject('english')">
                     <div class="subject-card-icon">📘</div>
                     <div class="subject-card-name">영어</div>
-                    <div class="subject-card-sub">Lesson 2·4</div>
+                    <div class="subject-card-sub">단어·숙어 암기</div>
                 </div>
-                <div class="subject-card korean" onclick="selectSubject('korean')">
+                <!-- 집중모드 숨김(2026-07-12): 여름 집중(단어 드릴 + 오늘의 한 장 + 문해력). 국·수·사·과 카드 임시 숨김. 복원 시 주석 해제.
+<div class="subject-card korean" onclick="selectSubject('korean')">
                     <div class="subject-card-icon">📕</div>
                     <div class="subject-card-name">국어</div>
                     <div class="subject-card-sub">1·2단원</div>
@@ -1700,10 +1701,11 @@
                     <div class="subject-card-name">과학</div>
                     <div class="subject-card-sub">1·3단원</div>
                 </div>
+                -->
                 <div class="subject-card daily" onclick="selectSubject('daily')">
                     <div class="subject-card-icon">📰</div>
                     <div class="subject-card-name">오늘의 한 장</div>
-                    <div class="subject-card-sub">아침 독해</div>
+                    <div class="subject-card-sub">아침 독해 · 문해력</div>
                     <div class="daily-unread-badge" id="home-daily-unread-badge" style="display:none;">0</div>
                 </div>
             </div>
@@ -1761,7 +1763,8 @@
                             단어 드릴
                             <span class="mode-desc">핵심 단어</span>
                         </button>
-                        <button class="mode-btn" id="mode-btn-drill" onclick="selectAndStart('drill')">
+                        <!-- 집중모드 숨김(2026-07-12): 문장 드릴·실전 대비 임시 숨김(단어 드릴만 노출). 복원 시 주석 해제.
+<button class="mode-btn" id="mode-btn-drill" onclick="selectAndStart('drill')">
                             문장 드릴
                             <span class="mode-desc">기초 문항</span>
                         </button>
@@ -1769,6 +1772,7 @@
                             실전 대비
                             <span class="mode-desc">시험 문항</span>
                         </button>
+-->
                     </div>
                     <div class="mode-selector" id="korean-mode-selector" style="display:none;">
                         <button class="mode-btn" id="mode-passage-guide" onclick="selectAndStart('passage_guide')">
@@ -2004,8 +2008,8 @@
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-07-04 v177';
-        const APP_CACHE_NAME = 'quiz-v177';
+        const BUILD_VERSION = '2026-07-12 v178';
+        const APP_CACHE_NAME = 'quiz-v178';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -4158,6 +4162,7 @@
         // 노출 조건: 영어 AND 기말범위 단원(L2/L4) AND multi_grammar 풀 존재. D-day 게이트 없음(평시 상시).
         function renderMultiFocusModeButton() {
             document.querySelectorAll('.multi-focus-mode-btn').forEach(btn => btn.remove());
+            return; // 집중모드 숨김(2026-07-12): 여름 집중 기간 '모두고르기 5분' 버튼 미노출. 복원 시 이 줄 삭제.
             if (currentSubject !== 'english') return;
             const ln = Number(currentLesson);
             if (!(ln === 2 || ln === 4)) return;
