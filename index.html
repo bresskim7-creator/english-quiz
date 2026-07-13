@@ -1957,10 +1957,10 @@
                     </div>
                 </div>
                 <div class="flashcard-buttons" id="vocab-buttons" style="display:none;">
-                    <button class="flashcard-btn know" onclick="handleVocabAnswer(true)">외웠어 ✓</button>
-                    <button class="flashcard-btn dont-know" onclick="handleVocabAnswer(false)">한번 더 볼래</button>
+                    <button class="flashcard-btn know" onclick="vocabStudyNext()">다음 →</button>
                 </div>
             </div>
+            <div id="vocab-test-area" style="display:none;"></div>
             <div id="vocab-result-area" style="display:none;"></div>
             <div class="quiz-controls" id="vocab-controls">
                 <button class="btn-quit" onclick="quitVocabDrill()">그만하기</button>
@@ -2015,8 +2015,8 @@
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-07-12 v180';
-        const APP_CACHE_NAME = 'quiz-v180';
+        const BUILD_VERSION = '2026-07-13 v181';
+        const APP_CACHE_NAME = 'quiz-v181';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -6499,11 +6499,20 @@
             });
         }
 
-        const VOCAB_SESSION_CAP = 20; // 세션당 단어 노출 상한(2026-07-12 사용자 확정: 모르는>새 단어>아는 순, 나머지 다음 세션 이월)
+        const VOCAB_SESSION_CAP = 10; // 세션당 단어 노출 상한(2026-07-12 사용자 확정: 모르는>새 단어>아는 순, 나머지 다음 세션 이월)
         let vocabDrillList = [];      // current round words (shuffled)
         let vocabDrillIndex = 0;
         let vocabDrillResults = {};   // { "VD-L1-001": true/false, ... }
         let vocabDrillRound = 1;
+        // v181(2026-07-13) 객관식 테스트 상태 — 공부(플래시카드) 후 그 N개를 4지선다로 채점
+        let vocabTestWords = [];          // 이번 세션에 공부한 N개(≤10)
+        let vocabTestList = [];           // 현재 출제 문항 배열
+        let vocabTestIndex = 0;
+        let vocabTestPhase = 'first';     // 'first' | 'retry'
+        let vocabTestFirstResults = {};   // { id: true/false } 첫 시도 정오 — known 판정의 유일 근거
+        let vocabTestRetryResults = {};   // { id: true/false } 즉시 재도전 정오(복습 성공/실패, known 불변)
+        let vocabTestLastType = {};       // { id: 'en2ko'|'ko2en'|'cloze' } 첫 시도 유형(회전·저장용)
+        let _vocabDrillFinished = false;  // finishVocabDrill 이중 실행/이중 전송 방지
 
         function startVocabDrill() {
             if (!QUIZ_DATA || !QUIZ_DATA.vocab_drill || QUIZ_DATA.vocab_drill.length === 0) {
@@ -6513,6 +6522,7 @@
 
             vocabDrillRound = 1;
             vocabDrillResults = {};
+            _vocabDrillFinished = false;
 
             // 이전 세션 결과 읽어서 모르는 단어를 앞에 배치
             const prevResults = JSON.parse(localStorage.getItem('vocab_results') || '{}');
@@ -6531,6 +6541,7 @@
 
             document.getElementById('vocab-result-area').style.display = 'none';
             document.getElementById('vocab-card-area').style.display = 'block';
+            document.getElementById('vocab-test-area').style.display = 'none';
             document.getElementById('vocab-controls').style.display = '';
 
             const modeLabel = '단어 드릴';
@@ -6566,7 +6577,7 @@
 
         function showVocabCard() {
             if (vocabDrillIndex >= vocabDrillList.length) {
-                finishVocabRound();
+                startVocabTest();
                 return;
             }
 
@@ -6638,58 +6649,219 @@
             };
         }
 
-        function handleVocabAnswer(known) {
-            const item = vocabDrillList[vocabDrillIndex];
-            document.getElementById('vocab-scene').onclick = null;
-            document.querySelectorAll('#vocab-buttons .flashcard-btn').forEach(b => { b.disabled = true; });
-
-            vocabDrillResults[item.id] = known;
-            playSound(known ? 'correct' : 'incorrect');
-
+        // ── 공부 단계: '다음'(자기분류·known 판정 없음) ──
+        function vocabStudyNext() {
             vocabDrillIndex++;
-            setTimeout(() => showVocabCard(), 400);
+            showVocabCard();  // 목록 끝이면 내부에서 startVocabTest() 호출
         }
 
-        function finishVocabRound() {
-            const unknownItems = vocabDrillList.filter(item => vocabDrillResults[item.id] === false);
-            const knownCount = vocabDrillList.filter(item => vocabDrillResults[item.id] === true).length;
-            const totalAll = QUIZ_DATA.vocab_drill.length;
-            const totalKnown = QUIZ_DATA.vocab_drill.filter(item => vocabDrillResults[item.id] === true).length;
-
-            if (unknownItems.length > 0 && vocabDrillRound < 3) {
-                // Show retry prompt
-                const area = document.getElementById('vocab-result-area');
-                area.style.display = 'block';
-                document.getElementById('vocab-card-area').style.display = 'none';
-                area.innerHTML = `
-                    <div class="vocab-round-msg">
-                        <h3>라운드 ${vocabDrillRound} 완료!</h3>
-                        <p>외웠어: ${totalKnown}개 / 한번 더: ${unknownItems.length}개</p>
-                        <button class="vocab-retry-btn" onclick="retryVocabDrill()">한번 더 볼 ${unknownItems.length}개 다시 도전</button>
-                        <button class="vocab-done-btn" onclick="finishVocabDrill()">여기서 마치기</button>
-                    </div>
-                `;
-            } else {
-                finishVocabDrill();
+        // ===== v181 (2026-07-13) 혼합 객관식 테스트 (전용 렌더러) =====
+        function vocabMeaningTokens(m) {
+            return String(m || '').replace(/\s+/g, '').split(/[,\/·・、;()~]/).filter(Boolean);
+        }
+        function vocabMeaningsOverlap(a, b) {
+            const ta = vocabMeaningTokens(a), tb = vocabMeaningTokens(b);
+            for (const x of ta) for (const y of tb) {
+                if (x && y && (x === y || x.includes(y) || y.includes(x))) return true;
             }
+            return false;
+        }
+        // §5-4 v1: cloze 적합성 — example에서 정답 표면형을 확실히 추출 가능한 단어만
+        function vocabClozeEligible(item) {
+            if (!item || !item.example) return false;
+            if (Array.isArray(item.inflections) && item.inflections.length) return false; // (a) 불규칙 활용
+            const w = String(item.word || '').trim();
+            if (!w || /\s/.test(w)) return false;                                          // (b) 다단어 표현
+            const esc = w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            return new RegExp('\\b' + esc + '\\b', 'i').test(item.example);              // (c) verbatim 토큰
+        }
+        function vocabMakeCloze(item) {
+            const w = String(item.word || '').trim();
+            const esc = w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            return item.example.replace(new RegExp('\\b' + esc + '\\b', 'i'), '_____');
+        }
+        // §5-5: distractor — 같은 Lesson, 같은 pos 우선, 동의어(뜻 겹침) 제외
+        // TODO(v182): distractor 출처를 same-lesson → 통합 어휘 풀로 확장
+        function vocabPickDistractors(answer, pool, mode, count) {
+            const answerVal = (mode === 'meaning') ? answer.meaning : answer.word;
+            const cand = pool.filter(w =>
+                w.id !== answer.id && w.word !== answer.word &&
+                !vocabMeaningsOverlap(w.meaning, answer.meaning));
+            const same = cand.filter(w => w.pos === answer.pos);
+            const other = cand.filter(w => w.pos !== answer.pos);
+            shuffleArray(same); shuffleArray(other);
+            const ordered = same.concat(other);
+            const chosen = [];
+            const seen = new Set([answerVal]);
+            for (const w of ordered) {
+                const val = (mode === 'meaning') ? w.meaning : w.word;
+                if (seen.has(val)) continue;
+                seen.add(val); chosen.push(w);
+                if (chosen.length === count) break;
+            }
+            return chosen;
+        }
+        // (answer, type) → 문항 객체. 후보 부족/유일성 미달 시 null.
+        function vocabBuildQuestion(answer, type, pool) {
+            let prompt, promptLabel, mode;
+            if (type === 'cloze') {
+                if (!vocabClozeEligible(answer)) return null;
+                prompt = vocabMakeCloze(answer); promptLabel = '빈칸에 알맞은 단어는?'; mode = 'word';
+            } else if (type === 'ko2en') {
+                prompt = answer.meaning; promptLabel = '이 뜻의 영어 단어는?'; mode = 'word';
+            } else {
+                prompt = answer.word; promptLabel = '이 단어의 뜻은?'; mode = 'meaning';
+            }
+            const ds = vocabPickDistractors(answer, pool, mode, 3);
+            if (ds.length < 3) return null; // 보기 수 축소 금지 → 다른 유형으로 대체
+            const correctVal = (mode === 'meaning') ? answer.meaning : answer.word;
+            const options = [{ val: correctVal, correct: true }]
+                .concat(ds.map(d => ({ val: (mode === 'meaning') ? d.meaning : d.word, correct: false })));
+            if (options.filter(o => o.correct).length !== 1) return null;           // §5-5 유일성
+            const vals = options.map(o => o.val);
+            if (new Set(vals).size !== vals.length) return null;                     // 보기 중복 방지
+            shuffleArray(options);
+            return { item: answer, type: type, prompt: prompt, promptLabel: promptLabel, pos: answer.pos, options: options };
+        }
+        // §5-3/§5-6: N개 유형 배정(4/3/3 목표) + 품질·유일성 우선 폴백
+        function vocabBuildTestQuestions(words, avoidTypeOf) {
+            const pool = QUIZ_DATA.vocab_drill; // same-lesson (v182: 통합)
+            const N = words.length;
+            const eligibleCloze = words.filter(vocabClozeEligible).length;
+            const clozeN = Math.min(Math.round(N * 3 / 10), eligibleCloze);
+            const rest = N - clozeN;
+            const enN = Math.round(rest * 4 / 7);
+            const koN = rest - enN;
+            const tokens = [];
+            for (let i = 0; i < enN; i++) tokens.push('en2ko');
+            for (let i = 0; i < koN; i++) tokens.push('ko2en');
+            const eligible = words.filter(vocabClozeEligible);
+            const nonEligible = words.filter(w => !vocabClozeEligible(w));
+            shuffleArray(eligible); shuffleArray(nonEligible);
+            const base = {};
+            let ei = 0;
+            for (let i = 0; i < clozeN && ei < eligible.length; i++) base[eligible[ei++].id] = 'cloze';
+            shuffleArray(tokens);
+            const remainWords = eligible.slice(ei).concat(nonEligible);
+            shuffleArray(remainWords);
+            let ti = 0;
+            for (const w of remainWords) base[w.id] = tokens[ti++] || 'en2ko';
+            const questions = [];
+            for (const w of words) {
+                const avoid = avoidTypeOf ? avoidTypeOf(w) : null;
+                const eligibleTypes = ['en2ko', 'ko2en'].concat(vocabClozeEligible(w) ? ['cloze'] : []);
+                const order = [];
+                const push = t => { if (t && eligibleTypes.indexOf(t) !== -1 && order.indexOf(t) === -1) order.push(t); };
+                if (base[w.id] !== avoid) push(base[w.id]);            // 목표 유형(회피 아니면)
+                eligibleTypes.forEach(t => { if (t !== avoid) push(t); }); // 다른 비회피 유형
+                push(avoid);                                          // 최후: 회피 유형 허용(품질>회피)
+                push(base[w.id]);
+                eligibleTypes.forEach(push);
+                let q = null;
+                for (const t of order) { q = vocabBuildQuestion(w, t, pool); if (q) break; }
+                if (q) questions.push(q); // q==null(초소형 Lesson 후보부족): 그 단어 제외(보기 축소 금지)
+            }
+            shuffleArray(questions); // 출제 순서 셔플
+            return questions;
         }
 
-        function retryVocabDrill() {
-            vocabDrillRound++;
-            const unknownItems = QUIZ_DATA.vocab_drill.filter(item => vocabDrillResults[item.id] === false);
-            vocabDrillList = [...unknownItems];
-            shuffleArray(vocabDrillList);
-            vocabDrillIndex = 0;
-
+        function startVocabTest() {
+            document.getElementById('vocab-card-area').style.display = 'none';
             document.getElementById('vocab-result-area').style.display = 'none';
-            document.getElementById('vocab-card-area').style.display = 'block';
-            showVocabCard();
+            vocabTestWords = vocabDrillList.slice();
+            vocabTestPhase = 'first';
+            vocabTestIndex = 0;
+            vocabTestFirstResults = {};
+            vocabTestRetryResults = {};
+            vocabTestLastType = {};
+            // §6-3: 저장된 known=false 단어는 lastType과 다른 유형 우선(v180 레코드=lastType 없음→제한 없음)
+            const store = JSON.parse(localStorage.getItem('vocab_results') || '{}');
+            const lk = (typeof currentLesson === 'string' && isNaN(currentLesson)) ? currentLesson : ('L' + currentLesson);
+            const prev = store[lk] || {};
+            const avoidTypeOf = (w) => {
+                const rec = prev[w.id];
+                return (rec && rec.known === false && rec.lastType) ? rec.lastType : null;
+            };
+            vocabTestList = vocabBuildTestQuestions(vocabTestWords, avoidTypeOf);
+            if (vocabTestList.length === 0) { finishVocabDrill(); return; }
+            document.getElementById('vocab-test-area').style.display = 'block';
+            renderVocabTestQuestion();
+        }
+
+        function renderVocabTestQuestion() {
+            const q = vocabTestList[vocabTestIndex];
+            const total = vocabTestList.length;
+            document.getElementById('vocab-progress-fill').style.width = ((vocabTestIndex / total) * 100) + '%';
+            document.getElementById('vocab-counter').textContent =
+                (vocabTestIndex + 1) + ' / ' + total + (vocabTestPhase === 'retry' ? ' (재도전)' : ' (테스트)');
+            let promptHtml;
+            if (q.type === 'cloze') {
+                promptHtml = '<div style="font-size:18px;line-height:1.8;text-align:center;background:#F1F8E9;padding:16px;border-radius:10px;margin-bottom:18px;">' + q.prompt + '</div>';
+            } else if (q.type === 'ko2en') {
+                promptHtml = '<div style="font-size:24px;font-weight:700;text-align:center;margin:12px 0 18px;color:#333;">' + q.prompt + '</div>';
+            } else {
+                promptHtml = '<div style="font-size:30px;font-weight:800;text-align:center;margin:8px 0 2px;color:#1565C0;">' + q.prompt + '</div>' +
+                    '<div style="text-align:center;color:#888;font-size:14px;margin-bottom:16px;">' + (q.pos || '') + '</div>';
+            }
+            const optsHtml = q.options.map((o, i) =>
+                '<button class="vocab-test-opt" onclick="checkVocabTestAnswer(this,' + i + ')" style="display:block;width:100%;text-align:left;padding:14px 16px;margin-bottom:10px;border:2px solid #ddd;border-radius:10px;background:white;font-size:16px;cursor:pointer;line-height:1.5;">' +
+                String.fromCharCode(0x2460 + i) + ' ' + o.val + '</button>'
+            ).join('');
+            document.getElementById('vocab-test-area').innerHTML =
+                '<div style="text-align:center;color:#666;font-size:14px;margin:8px 0;">' + q.promptLabel + '</div>' +
+                promptHtml +
+                '<div id="vocab-test-options">' + optsHtml + '</div>' +
+                '<div id="vocab-test-feedback"></div>';
+        }
+
+        // §5-7: 선택 → 정오 피드백(정답 표시) → 명시적 '다음' 버튼(자동 전환 금지)
+        function checkVocabTestAnswer(btn, idx) {
+            const q = vocabTestList[vocabTestIndex];
+            if (q._answered) return;
+            q._answered = true;
+            const isCorrect = !!q.options[idx].correct;
+            if (vocabTestPhase === 'first') {
+                vocabTestFirstResults[q.item.id] = isCorrect;   // known 판정 근거(첫 시도만)
+                vocabTestLastType[q.item.id] = q.type;
+            } else {
+                vocabTestRetryResults[q.item.id] = isCorrect;   // 복습 성공/실패(known 불변)
+            }
+            playSound(isCorrect ? 'correct' : 'incorrect');
+            const els = document.querySelectorAll('#vocab-test-options .vocab-test-opt');
+            els.forEach((b, i) => {
+                b.disabled = true; b.style.cursor = 'default';
+                if (q.options[i].correct) { b.style.background = '#E8F5E9'; b.style.borderColor = '#4CAF50'; }
+            });
+            if (!isCorrect) { btn.style.background = '#FFEBEE'; btn.style.borderColor = '#F44336'; }
+            const it = q.item;
+            const correctVal = q.options.find(o => o.correct).val;
+            const head = isCorrect
+                ? '<div style="color:#2E7D32;font-weight:700;margin-top:12px;">정답이에요! ✓</div>'
+                : '<div style="color:#C62828;font-weight:700;margin-top:12px;">정답: ' + correctVal + '</div>';
+            const wordLine = '<div style="margin-top:6px;font-size:15px;color:#333;"><strong>' + it.word + '</strong> <span style="color:#888">' + (it.pos || '') + '</span> — ' + it.meaning + '</div>';
+            const nextBtn = '<button class="vocab-test-next" onclick="vocabTestNext()" style="display:block;width:100%;padding:14px;margin-top:16px;border:none;border-radius:10px;background:#1565C0;color:white;font-size:17px;font-weight:700;cursor:pointer;">다음 →</button>';
+            document.getElementById('vocab-test-feedback').innerHTML = head + wordLine + nextBtn;
+        }
+
+        function vocabTestNext() {
+            vocabTestIndex++;
+            if (vocabTestIndex < vocabTestList.length) { renderVocabTestQuestion(); return; }
+            if (vocabTestPhase === 'first') {
+                const wrong = vocabTestWords.filter(w => vocabTestFirstResults[w.id] === false);
+                if (wrong.length > 0) {
+                    vocabTestPhase = 'retry';
+                    vocabTestIndex = 0;
+                    vocabTestList = vocabBuildTestQuestions(wrong, (w) => vocabTestLastType[w.id]); // §5-6 다른 유형 우선
+                    if (vocabTestList.length > 0) { renderVocabTestQuestion(); return; }
+                }
+            }
+            finishVocabDrill();
         }
 
         function quitVocabDrill() {
             if (confirm('학습을 중단하겠습니까?')) {
-                if (Object.keys(vocabDrillResults).length > 0) {
-                    finishVocabDrill();
+                if (Object.keys(vocabTestFirstResults).length > 0) {
+                    finishVocabDrill();  // 답한 첫 시도 문항만 저장·전송
                 } else {
                     showPage('home-page');
                 }
@@ -6697,57 +6869,66 @@
         }
 
         function finishVocabDrill() {
-            // 그만하기 버튼 숨기기 (결과 화면에서는 "홈으로 돌아가기"가 있으므로)
+            if (_vocabDrillFinished) return;   // 이중 실행/이중 전송 방지
+            _vocabDrillFinished = true;
             document.getElementById('vocab-controls').style.display = 'none';
-            // Save results to localStorage
+
+            // ── 저장(§6-3 최종 스키마): known=첫 시도 정오, lastType=첫 시도 유형 ──
             const vocabResults = JSON.parse(localStorage.getItem('vocab_results') || '{}');
             const lessonKey = (typeof currentLesson === 'string' && isNaN(currentLesson)) ? currentLesson : ('L' + currentLesson);
             if (!vocabResults[lessonKey]) vocabResults[lessonKey] = {};
             const now = new Date().toISOString();
-            QUIZ_DATA.vocab_drill.forEach(item => {
-                if (vocabDrillResults[item.id] !== undefined) {
+            vocabTestWords.forEach(item => {
+                if (vocabTestFirstResults[item.id] !== undefined) {
                     vocabResults[lessonKey][item.id] = {
-                        known: vocabDrillResults[item.id],
-                        tested_at: now
+                        known: vocabTestFirstResults[item.id],   // 첫 시도만 — 재도전 성공해도 덮어쓰지 않음(§6-1)
+                        tested_at: now,
+                        lastType: vocabTestLastType[item.id] || 'en2ko'
                     };
                 }
             });
             safeSetItem('vocab_results', JSON.stringify(vocabResults));
 
-            // Calculate final stats — 세션 기준(20장 캡) + Lesson 누적 병기(2026-07-12)
+            // ── 통계 ──
+            const firstIds = Object.keys(vocabTestFirstResults);
+            const firstTotal = firstIds.length;
+            const firstKnown = firstIds.filter(id => vocabTestFirstResults[id] === true).length;
+            const retryIds = Object.keys(vocabTestRetryResults);
+            const retryTotal = retryIds.length;
+            const retryOk = retryIds.filter(id => vocabTestRetryResults[id] === true).length;
             const totalAll = QUIZ_DATA.vocab_drill.length;
-            const totalKnown = QUIZ_DATA.vocab_drill.filter(item => vocabDrillResults[item.id] === true).length;
-            const sessionTotal = Object.keys(vocabDrillResults).length || 1;
-            const percentage = Math.round((totalKnown / sessionTotal) * 100);
-            const cumKnown = QUIZ_DATA.vocab_drill.filter(item => vocabResults[lessonKey][item.id] && vocabResults[lessonKey][item.id].known === true).length;
+            const cumKnown = QUIZ_DATA.vocab_drill.filter(item =>
+                vocabResults[lessonKey][item.id] && vocabResults[lessonKey][item.id].known === true).length;
 
-            // Show result
+            // ── 틀린 단어(첫 시도 오답) ──
+            const wrongWords = vocabTestWords.filter(w => vocabTestFirstResults[w.id] === false);
+            let wrongHtml = '';
+            if (wrongWords.length > 0) {
+                wrongHtml = '<div style="text-align:left;margin-top:20px;"><div style="font-size:15px;font-weight:600;color:#e65100;margin-bottom:8px;">복습 필요 단어</div>';
+                wrongWords.forEach(w => {
+                    wrongHtml += '<div style="padding:8px 0;border-bottom:1px solid #eee;font-size:14px;"><strong>' + w.word + '</strong> <span style="color:#888">' + (w.pos || '') + '</span> — ' + w.meaning + '</div>';
+                });
+                wrongHtml += '</div>';
+            }
+            const retryHtml = retryTotal > 0
+                ? '<div class="detail" style="margin-top:4px;">재도전: ' + retryOk + ' / ' + retryTotal + ' 성공</div>'
+                : '';
+
+            document.getElementById('vocab-test-area').style.display = 'none';
             const area = document.getElementById('vocab-result-area');
             area.style.display = 'block';
             document.getElementById('vocab-card-area').style.display = 'none';
+            area.innerHTML =
+                '<div class="vocab-result-summary">' +
+                    '<h2>오늘 단어 테스트 완료!</h2>' +
+                    '<div class="score">' + firstKnown + ' / ' + firstTotal + '</div>' +
+                    '<div class="detail">오늘 첫 시도: ' + firstKnown + ' / ' + firstTotal + '</div>' +
+                    retryHtml +
+                    '<div class="detail" style="margin-top:4px;color:#888;">이 Lesson 누적: ' + cumKnown + ' / ' + totalAll + ' 외움</div>' +
+                    wrongHtml +
+                    '<button class="vocab-done-btn" onclick="showPage(\'home-page\')" style="margin-top:24px;">홈으로 돌아가기</button>' +
+                '</div>';
 
-            const unknownWords = QUIZ_DATA.vocab_drill.filter(item => vocabDrillResults[item.id] === false);
-            let unknownHtml = '';
-            if (unknownWords.length > 0) {
-                unknownHtml = '<div style="text-align:left;margin-top:20px;"><div style="font-size:15px;font-weight:600;color:#e65100;margin-bottom:8px;">복습 필요 단어</div>';
-                unknownWords.forEach(w => {
-                    unknownHtml += `<div style="padding:8px 0;border-bottom:1px solid #eee;font-size:14px;"><strong>${w.word}</strong> <span style="color:#888">${w.pos}</span> — ${w.meaning}</div>`;
-                });
-                unknownHtml += '</div>';
-            }
-
-            area.innerHTML = `
-                <div class="vocab-result-summary">
-                    <h2>단어 드릴 완료!</h2>
-                    <div class="score">${percentage}%</div>
-                    <div class="detail">오늘 본 ${sessionTotal}개 중 ${totalKnown}개 알고 있어요</div>
-                    <div class="detail" style="margin-top:4px;color:#888;">이 Lesson 누적: ${cumKnown} / ${totalAll} 외움</div>
-                    ${unknownHtml}
-                    <button class="vocab-done-btn" onclick="showPage('home-page')" style="margin-top:24px;">홈으로 돌아가기</button>
-                </div>
-            `;
-
-            // Send to Google Sheets (vocab_log)
             sendVocabToGoogleSheets();
         }
 
@@ -6808,10 +6989,10 @@
 
         function sendVocabToGoogleSheets() {
             if (!QUIZ_DATA || !QUIZ_DATA.vocab_drill) return;
-
+            // v181: known = 첫 시도 객관식 정오(자기평가 아님). 단어당 첫 시도 1행만. 재도전은 무행.
             const now = new Date().toISOString();
-            QUIZ_DATA.vocab_drill.forEach(item => {
-                if (vocabDrillResults[item.id] !== undefined) {
+            vocabTestWords.forEach(item => {
+                if (vocabTestFirstResults[item.id] !== undefined) {
                     enqueueVocabRow({
                         sheet: 'vocab_log',
                         timestamp: now,
@@ -6819,7 +7000,9 @@
                         subject: currentSubject,
                         word_id: item.id,
                         word: item.word,
-                        known: vocabDrillResults[item.id] ? 'T' : 'F'
+                        known: vocabTestFirstResults[item.id] ? 'T' : 'F',
+                        mode: 'vocab_test',                 // v181 마커(GAS가 무해하게 무시; 시트 저장은 별도 발주)
+                        assessment_version: 'v181-objective'
                     });
                 }
             });
