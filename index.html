@@ -2016,8 +2016,8 @@
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-07-13 v182';
-        const APP_CACHE_NAME = 'quiz-v182';
+        const BUILD_VERSION = '2026-07-13 v183';
+        const APP_CACHE_NAME = 'quiz-v183';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -6543,6 +6543,49 @@
         // ── v182 §3: 통합 어휘 풀 순차 로드 + single-flight ──
         // fetchJsonCompat는 단일 전역 콜백(window.__loadLesson)을 쓰므로 Promise.all 병렬 금지.
         // for...of + await 로 L5→L6→L7→L8→ess 순차. 실패 시 부분병합 금지(전체 중단).
+        // ── v183 §1 핫픽스: 통합 로더 전용 JSONP (콜백 identity 경쟁 제거) ──
+        // 기존 fetchJsonCompat(2443)는 불변. 여기서는 callback이 데이터만 capture하고,
+        // resolve/reject는 해당 script의 onload에서만 한다. 정리(delete window.__loadLesson)는
+        // window.__loadLesson===cb 일 때만(다음 로드의 콜백을 지우지 않음). settleOnce로
+        // timeout·onerror·onload 모두 1회만 settle → 각 파일이 반드시 resolve|reject → hang 제거.
+        function fetchVocabJsonp(url) {
+            // 캐시버스팅은 fetchJsonCompat와 동일 규칙(LESSON_VERSIONS→APP_CACHE_NAME). fetchJsonCompat 불변 유지 위해 국소 복제.
+            const LESSON_VERSIONS = { lesson5: 'l5-1.0', lesson6: 'l6-1.0', lesson7: 'l7-1.0', lesson8: 'l8-1.0', lesson_ess: 'ess-1.0' };
+            const jsUrlRaw = url.replace(/\.json$/, '.js');
+            const m = jsUrlRaw.match(/([A-Za-z0-9_]+)\.js(?:\?|$)/);
+            const vv = (m && LESSON_VERSIONS[m[1]]) ? LESSON_VERSIONS[m[1]] : APP_CACHE_NAME;
+            const jsUrl = jsUrlRaw + (jsUrlRaw.indexOf('?') < 0 ? '?v=' : '&v=') + encodeURIComponent(vv);
+            const TIMEOUT_MS = 8000;
+            return new Promise((resolve, reject) => {
+                let settled = false, hasData = false, captured, timer = null;
+                const script = document.createElement('script');
+                const cb = function(data) { captured = data; hasData = true; };   // 데이터만 capture(resolve/reject 안 함)
+                function settleOnce(fn) {
+                    if (settled) return;                          // 늦게 온 timeout/onload/onerror = no-op
+                    settled = true;
+                    if (timer) { clearTimeout(timer); timer = null; }
+                    script.onload = null;
+                    script.onerror = null;
+                    if (script.parentNode) script.remove();
+                    if (window.__loadLesson === cb) delete window.__loadLesson;   // 자기 콜백만 정리(identity)
+                    fn();
+                }
+                window.__loadLesson = cb;
+                script.src = jsUrl;
+                script.onload = function() {
+                    if (hasData) settleOnce(function() { resolve(captured); });
+                    else settleOnce(function() { reject(new Error('JSONP callback not invoked: ' + jsUrl)); });
+                };
+                script.onerror = function() {
+                    settleOnce(function() { reject(new Error('Script load failed: ' + jsUrl)); });
+                };
+                timer = setTimeout(function() {
+                    settleOnce(function() { reject(new Error('JSONP timeout: ' + jsUrl)); });
+                }, TIMEOUT_MS);
+                document.head.appendChild(script);
+            });
+        }
+
         function loadUnifiedVocab() {
             if (UNIFIED_VOCAB) return Promise.resolve(UNIFIED_VOCAB);   // 세션 캐시 재사용
             if (_unifiedLoadInFlight) return _unifiedLoadInFlight;       // 진행 중이면 같은 프로미스
@@ -6551,7 +6594,7 @@
                 for (const tag of VOCAB_CONFIG.activeLessons) {
                     const file = VOCAB_LESSON_FILE[tag];
                     if (!file) throw new Error('알 수 없는 lesson 태그: ' + tag);
-                    const data = await fetchJsonCompat(file);            // 각 await 완료 후 다음(순차)
+                    const data = await fetchVocabJsonp(file);            // 각 await 완료 후 다음(순차)
                     const vd = (data && Array.isArray(data.vocab_drill)) ? data.vocab_drill : [];
                     for (const w of vd) merged.push(Object.assign({}, w, { _lesson: tag })); // 병합본에만 태깅
                 }
