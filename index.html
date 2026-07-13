@@ -1676,10 +1676,11 @@
         <div id="home-page" class="page active">
             <div class="home-title">오늘의 학습</div>
             <div class="subject-grid">
-                <div class="subject-card english" onclick="selectSubject('english')">
+                <div class="subject-card english" onclick="startEnglishEntry(event)">
                     <div class="subject-card-icon">📘</div>
                     <div class="subject-card-name">영어</div>
-                    <div class="subject-card-sub">단어·숙어 암기</div>
+                    <div class="subject-card-sub">영어 단어 10개</div>
+                    <button onclick="openEnglishReview(event)" style="margin-top:10px;padding:6px 12px;border:1px solid rgba(255,255,255,0.6);border-radius:8px;background:rgba(255,255,255,0.18);color:inherit;font-size:12px;cursor:pointer;">Lesson별 복습</button>
                 </div>
                 <!-- 집중모드 숨김(2026-07-12): 여름 집중(단어 드릴 + 오늘의 한 장 + 문해력). 국·수·사·과 카드 임시 숨김. 복원 시 주석 해제.
 <div class="subject-card korean" onclick="selectSubject('korean')">
@@ -2015,8 +2016,8 @@
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-07-13 v181';
-        const APP_CACHE_NAME = 'quiz-v181';
+        const BUILD_VERSION = '2026-07-13 v182';
+        const APP_CACHE_NAME = 'quiz-v182';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -2543,6 +2544,7 @@
         // 과목 선택
         async function selectSubject(subject) {
             currentSubject = subject;
+            vocabDrillUnified = false;   // 단일/통합 모드 리셋(통합 진입에서 true 재설정)
 
             // 데일리 코너는 별도 페이지로 직행
             if (subject === 'daily') {
@@ -6499,6 +6501,18 @@
             });
         }
 
+        // ── v182(2026-07-13) 통합 단어 큐 설정 (시험기간 복원 스위치, 발주 §2.5) ──
+        const VOCAB_CONFIG = {
+            entryMode: 'unified',              // 'unified'(평상시) | 'lesson'(시험기간)
+            activeLessons:    ['L5','L6','L7','L8','ess'],
+            textbookLessons:  ['L5','L6','L7','L8'],
+            essentialLessons: ['ess']
+        };
+        // 'L5'/'ess' 태그 → lesson 데이터 파일(loadLesson 규칙: 숫자→lessonN.json, 문자열→lesson_x.json)
+        const VOCAB_LESSON_FILE = { L5:'lesson5.json', L6:'lesson6.json', L7:'lesson7.json', L8:'lesson8.json', ess:'lesson_ess.json' };
+        let UNIFIED_VOCAB = null;              // 통합 병합본(세션 캐시) — _lesson 태깅 항목 배열
+        let _unifiedLoadInFlight = null;       // single-flight 프로미스(연속 탭 재진입 방지)
+        let vocabDrillUnified = false;         // 현재 드릴이 통합 모드인지(단일 복습=false)
         const VOCAB_SESSION_CAP = 10; // 세션당 단어 노출 상한(2026-07-12 사용자 확정: 모르는>새 단어>아는 순, 나머지 다음 세션 이월)
         let vocabDrillList = [];      // current round words (shuffled)
         let vocabDrillIndex = 0;
@@ -6514,6 +6528,88 @@
         let vocabTestLastType = {};       // { id: 'en2ko'|'ko2en'|'cloze' } 첫 시도 유형(회전·저장용)
         let _vocabDrillFinished = false;  // finishVocabDrill 이중 실행/이중 전송 방지
 
+        // ── v182 §6: 저장·로그 키잉의 유일 경로 ──
+        function normalizeLessonKey(cl) {
+            if (cl === null || cl === undefined) return null;
+            if (typeof cl === 'number') return 'L' + cl;                 // 5 → 'L5'
+            if (typeof cl === 'string') return isNaN(cl) ? cl : ('L' + cl); // '5'→'L5', 'ess'/'kor1'→그대로
+            return null;
+        }
+        function getVocabLessonKey(item) {
+            // 통합 단어=item._lesson(있음). 단일 복습 원본=_lesson 없음 → currentLesson 정규화.
+            return (item && item._lesson) ? item._lesson : normalizeLessonKey(currentLesson);
+        }
+
+        // ── v182 §3: 통합 어휘 풀 순차 로드 + single-flight ──
+        // fetchJsonCompat는 단일 전역 콜백(window.__loadLesson)을 쓰므로 Promise.all 병렬 금지.
+        // for...of + await 로 L5→L6→L7→L8→ess 순차. 실패 시 부분병합 금지(전체 중단).
+        function loadUnifiedVocab() {
+            if (UNIFIED_VOCAB) return Promise.resolve(UNIFIED_VOCAB);   // 세션 캐시 재사용
+            if (_unifiedLoadInFlight) return _unifiedLoadInFlight;       // 진행 중이면 같은 프로미스
+            _unifiedLoadInFlight = (async () => {
+                const merged = [];
+                for (const tag of VOCAB_CONFIG.activeLessons) {
+                    const file = VOCAB_LESSON_FILE[tag];
+                    if (!file) throw new Error('알 수 없는 lesson 태그: ' + tag);
+                    const data = await fetchJsonCompat(file);            // 각 await 완료 후 다음(순차)
+                    const vd = (data && Array.isArray(data.vocab_drill)) ? data.vocab_drill : [];
+                    for (const w of vd) merged.push(Object.assign({}, w, { _lesson: tag })); // 병합본에만 태깅
+                }
+                UNIFIED_VOCAB = merged;
+                return merged;
+            })();
+            _unifiedLoadInFlight.then(
+                () => { _unifiedLoadInFlight = null; },
+                () => { _unifiedLoadInFlight = null; }   // 실패 후 재시도 허용
+            );
+            return _unifiedLoadInFlight;
+        }
+
+        // 홈 영어 카드(통합 진입) — 순차 로드 후 통합 드릴. 로드 중 중복 진입 차단.
+        let _vocabEntryBusy = false;
+        async function startEnglishEntry(ev) {
+            if (VOCAB_CONFIG.entryMode !== 'unified') { selectSubject('english'); return; }
+            if (_vocabEntryBusy || _unifiedLoadInFlight) return;   // 연속 탭 재진입 방지(single-flight)
+            _vocabEntryBusy = true;
+            const card = ev && ev.currentTarget;
+            if (card) card.style.pointerEvents = 'none';
+            try {
+                currentSubject = 'english';
+                await loadUnifiedVocab();
+                QUIZ_DATA = { subject: 'english', vocab_drill: UNIFIED_VOCAB };
+                currentLesson = 'ENG_ALL';
+                currentMode = 'vocab';
+                vocabDrillUnified = true;
+                startVocabDrill();
+            } catch (err) {
+                console.error('[unified-vocab-load-fail]', err && err.message);
+                showUnifiedLoadError();
+            } finally {
+                _vocabEntryBusy = false;
+                if (card) card.style.pointerEvents = '';
+            }
+        }
+        function showUnifiedLoadError() {
+            const home = document.getElementById('home-page');
+            let box = document.getElementById('unified-load-error');
+            if (!box) {
+                box = document.createElement('div');
+                box.id = 'unified-load-error';
+                box.style.cssText = 'margin:16px;padding:16px;border-radius:10px;background:#FFEBEE;color:#C62828;text-align:center;font-size:14px;';
+                home.appendChild(box);
+            }
+            box.innerHTML = '단어 데이터를 불러오지 못했어요. 인터넷 연결을 확인하고 다시 시도해 주세요.' +
+                '<button onclick="this.parentElement.remove();startEnglishEntry({currentTarget:null})" style="display:block;margin:12px auto 0;padding:10px 20px;border:none;border-radius:8px;background:#C62828;color:white;font-size:15px;font-weight:700;cursor:pointer;">다시 시도</button>';
+            box.style.display = 'block';
+        }
+
+        // Lesson별 복습(보조) — 카드 본체 통합 진입과 버블링 차단.
+        function openEnglishReview(ev) {
+            if (ev && ev.stopPropagation) ev.stopPropagation();
+            vocabDrillUnified = false;
+            selectSubject('english');
+        }
+
         function startVocabDrill() {
             if (!QUIZ_DATA || !QUIZ_DATA.vocab_drill || QUIZ_DATA.vocab_drill.length === 0) {
                 alert('이 Lesson에는 단어 드릴 데이터가 없습니다.');
@@ -6524,19 +6620,54 @@
             vocabDrillResults = {};
             _vocabDrillFinished = false;
 
-            // 이전 세션 결과 읽어서 모르는 단어를 앞에 배치
+            // ── v182 §4: 선발 (통합=계열별 새→아는 + 오답우선 6:4 / 단일=v181 순서) ──
             const prevResults = JSON.parse(localStorage.getItem('vocab_results') || '{}');
-            const lk = (typeof currentLesson === 'string' && isNaN(currentLesson)) ? currentLesson : ('L' + currentLesson);
-            const prevLesson = prevResults[lk] || {};
-            const unknown = QUIZ_DATA.vocab_drill.filter(item => prevLesson[item.id] && prevLesson[item.id].known === false);
-            const untested = QUIZ_DATA.vocab_drill.filter(item => !prevLesson[item.id]);
-            const known = QUIZ_DATA.vocab_drill.filter(item => prevLesson[item.id] && prevLesson[item.id].known === true);
-            shuffleArray(unknown);
-            shuffleArray(untested);
-            shuffleArray(known);
-            vocabDrillList = [...unknown, ...untested, ...known];
-            // 하루 노출 캡(2026-07-12): 세션당 20장 — 우선순위 정렬 후 상위만. 나머지는 다음 세션 자동 이월.
-            vocabDrillList = vocabDrillList.slice(0, VOCAB_SESSION_CAP);
+            const recOf = (item) => {
+                const k = getVocabLessonKey(item);
+                return (k && prevResults[k]) ? prevResults[k][item.id] : undefined;
+            };
+            const pool = QUIZ_DATA.vocab_drill;
+            if (vocabDrillUnified) {
+                const CFG = VOCAB_CONFIG;
+                const inSet = (item, set) => set.indexOf(item._lesson) !== -1;
+                const isKnown = (it) => { const r = recOf(it); return !!(r && r.known === true); };
+                const isWrong = (it) => { const r = recOf(it); return !!(r && r.known === false); };
+                const WRONG     = pool.filter(isWrong);                                        // 활성셋, 소속 무관
+                const NEW_TXT   = pool.filter(it => inSet(it, CFG.textbookLessons)  && !recOf(it));
+                const KNOWN_TXT = pool.filter(it => inSet(it, CFG.textbookLessons)  && isKnown(it));
+                const NEW_ESS   = pool.filter(it => inSet(it, CFG.essentialLessons) && !recOf(it));
+                const KNOWN_ESS = pool.filter(it => inSet(it, CFG.essentialLessons) && isKnown(it));
+                [WRONG, NEW_TXT, KNOWN_TXT, NEW_ESS, KNOWN_ESS].forEach(shuffleArray);
+                const cap = VOCAB_SESSION_CAP;
+                const picked = [];
+                const seen = new Set();
+                const take = (arr, n) => {
+                    for (const it of arr) {
+                        if (picked.length >= cap || n <= 0) break;
+                        if (seen.has(it.id)) continue;
+                        seen.add(it.id); picked.push(it); n--;
+                    }
+                };
+                // 1) 오답 먼저(별도 선취, 6:4 quota 미포함)
+                take(WRONG, Math.min(WRONG.length, cap));
+                const wrongTaken = picked.length;
+                // 2) 남은 자리 R = 교과서:필수 6:4
+                const R = cap - wrongTaken;
+                const txtN = Math.round(R * 0.6);
+                const essN = R - txtN;
+                // 3) 계열별 새→아는(KNOWN 합치지 않음)
+                let f = picked.length; take(NEW_TXT, txtN);  take(KNOWN_TXT, txtN - (picked.length - f));
+                f = picked.length;     take(NEW_ESS, essN);  take(KNOWN_ESS, essN - (picked.length - f));
+                // 4) 크로스 드레인(최후): 못 채운 몫을 다른 계열 남은(NEW→KNOWN)으로
+                take(NEW_TXT, cap); take(NEW_ESS, cap); take(KNOWN_TXT, cap); take(KNOWN_ESS, cap);
+                vocabDrillList = picked.slice(0, cap);
+            } else {
+                const unknown  = pool.filter(item => { const r = recOf(item); return r && r.known === false; });
+                const untested = pool.filter(item => !recOf(item));
+                const known    = pool.filter(item => { const r = recOf(item); return r && r.known === true; });
+                shuffleArray(unknown); shuffleArray(untested); shuffleArray(known);
+                vocabDrillList = [...unknown, ...untested, ...known].slice(0, VOCAB_SESSION_CAP);
+            }
             vocabDrillIndex = 0;
 
             document.getElementById('vocab-result-area').style.display = 'none';
@@ -6725,7 +6856,7 @@
         }
         // §5-3/§5-6: N개 유형 배정(4/3/3 목표) + 품질·유일성 우선 폴백
         function vocabBuildTestQuestions(words, avoidTypeOf) {
-            const pool = QUIZ_DATA.vocab_drill; // same-lesson (v182: 통합)
+            const pool = QUIZ_DATA.vocab_drill; // v182: 통합 모드=병합 287풀 / 단일=해당 lesson
             const N = words.length;
             const eligibleCloze = words.filter(vocabClozeEligible).length;
             const clozeN = Math.min(Math.round(N * 3 / 10), eligibleCloze);
@@ -6774,12 +6905,11 @@
             vocabTestFirstResults = {};
             vocabTestRetryResults = {};
             vocabTestLastType = {};
-            // §6-3: 저장된 known=false 단어는 lastType과 다른 유형 우선(v180 레코드=lastType 없음→제한 없음)
+            // §6-3(v182): 저장 known=false는 lastType과 다른 유형 우선. 키잉=getVocabLessonKey(항목별).
             const store = JSON.parse(localStorage.getItem('vocab_results') || '{}');
-            const lk = (typeof currentLesson === 'string' && isNaN(currentLesson)) ? currentLesson : ('L' + currentLesson);
-            const prev = store[lk] || {};
             const avoidTypeOf = (w) => {
-                const rec = prev[w.id];
+                const k = getVocabLessonKey(w);
+                const rec = (k && store[k]) ? store[k][w.id] : null;
                 return (rec && rec.known === false && rec.lastType) ? rec.lastType : null;
             };
             vocabTestList = vocabBuildTestQuestions(vocabTestWords, avoidTypeOf);
@@ -6873,15 +7003,16 @@
             _vocabDrillFinished = true;
             document.getElementById('vocab-controls').style.display = 'none';
 
-            // ── 저장(§6-3 최종 스키마): known=첫 시도 정오, lastType=첫 시도 유형 ──
+            // ── 저장(§6 v182): known=첫 시도 정오, lastType=첫 시도 유형. 키잉=getVocabLessonKey(항목별) ──
             const vocabResults = JSON.parse(localStorage.getItem('vocab_results') || '{}');
-            const lessonKey = (typeof currentLesson === 'string' && isNaN(currentLesson)) ? currentLesson : ('L' + currentLesson);
-            if (!vocabResults[lessonKey]) vocabResults[lessonKey] = {};
             const now = new Date().toISOString();
             vocabTestWords.forEach(item => {
                 if (vocabTestFirstResults[item.id] !== undefined) {
-                    vocabResults[lessonKey][item.id] = {
-                        known: vocabTestFirstResults[item.id],   // 첫 시도만 — 재도전 성공해도 덮어쓰지 않음(§6-1)
+                    const k = getVocabLessonKey(item);            // 통합=_lesson / 단일=currentLesson 정규화
+                    if (!k) return;                                // undefined 키 저장 방지
+                    if (!vocabResults[k]) vocabResults[k] = {};
+                    vocabResults[k][item.id] = {
+                        known: vocabTestFirstResults[item.id],     // 첫 시도만 — 재도전 성공해도 덮어쓰지 않음(§6-1)
                         tested_at: now,
                         lastType: vocabTestLastType[item.id] || 'en2ko'
                     };
@@ -6896,9 +7027,24 @@
             const retryIds = Object.keys(vocabTestRetryResults);
             const retryTotal = retryIds.length;
             const retryOk = retryIds.filter(id => vocabTestRetryResults[id] === true).length;
-            const totalAll = QUIZ_DATA.vocab_drill.length;
-            const cumKnown = QUIZ_DATA.vocab_drill.filter(item =>
-                vocabResults[lessonKey][item.id] && vocabResults[lessonKey][item.id].known === true).length;
+            let totalAll, cumKnown, sourceDist = '';
+            if (vocabDrillUnified) {
+                // §7 누적: 활성 known=true 합 / 통합 풀 전체(UNIFIED_VOCAB.length). ENG_ALL 키 생성 금지.
+                const uni = UNIFIED_VOCAB || QUIZ_DATA.vocab_drill;
+                totalAll = uni.length;
+                cumKnown = uni.filter(item => {
+                    const k = getVocabLessonKey(item);
+                    return k && vocabResults[k] && vocabResults[k][item.id] && vocabResults[k][item.id].known === true;
+                }).length;
+                const distMap = {};
+                vocabTestWords.forEach(w => { const k = getVocabLessonKey(w) || '?'; distMap[k] = (distMap[k] || 0) + 1; });
+                sourceDist = Object.keys(distMap).sort().map(k => (k === 'ess' ? '필수' : k) + ' ' + distMap[k]).join(' · ');
+            } else {
+                const lessonKey = getVocabLessonKey(vocabTestWords[0] || {}) || normalizeLessonKey(currentLesson);
+                const bucket = (lessonKey && vocabResults[lessonKey]) ? vocabResults[lessonKey] : {};
+                totalAll = QUIZ_DATA.vocab_drill.length;
+                cumKnown = QUIZ_DATA.vocab_drill.filter(item => bucket[item.id] && bucket[item.id].known === true).length;
+            }
 
             // ── 틀린 단어(첫 시도 오답) ──
             const wrongWords = vocabTestWords.filter(w => vocabTestFirstResults[w.id] === false);
@@ -6915,6 +7061,8 @@
                 : '';
 
             document.getElementById('vocab-test-area').style.display = 'none';
+            const cumLabel = vocabDrillUnified ? '누적' : '이 Lesson 누적';
+            const distHtml = (vocabDrillUnified && sourceDist) ? '<div class="detail" style="margin-top:4px;color:#888;">이번 출처: ' + sourceDist + '</div>' : '';
             const area = document.getElementById('vocab-result-area');
             area.style.display = 'block';
             document.getElementById('vocab-card-area').style.display = 'none';
@@ -6924,7 +7072,8 @@
                     '<div class="score">' + firstKnown + ' / ' + firstTotal + '</div>' +
                     '<div class="detail">오늘 첫 시도: ' + firstKnown + ' / ' + firstTotal + '</div>' +
                     retryHtml +
-                    '<div class="detail" style="margin-top:4px;color:#888;">이 Lesson 누적: ' + cumKnown + ' / ' + totalAll + ' 외움</div>' +
+                    distHtml +
+                    '<div class="detail" style="margin-top:4px;color:#888;">' + cumLabel + ': ' + cumKnown + ' / ' + totalAll + ' 외움</div>' +
                     wrongHtml +
                     '<button class="vocab-done-btn" onclick="showPage(\'home-page\')" style="margin-top:24px;">홈으로 돌아가기</button>' +
                 '</div>';
@@ -6996,7 +7145,7 @@
                     enqueueVocabRow({
                         sheet: 'vocab_log',
                         timestamp: now,
-                        lesson: currentLesson,
+                        lesson: getVocabLessonKey(item),
                         subject: currentSubject,
                         word_id: item.id,
                         word: item.word,
@@ -7635,6 +7784,7 @@
             } else if (currentSubject === 'science') {
                 return modeLabel ? `과학 · ${modeLabel}` : '과학';
             }
+            if (currentLesson === 'ENG_ALL') return '영어 단어 드릴';   // 통합 모드: Lesson 번호·ENG_ALL 누출 차단
             return modeLabel ? `영어 Lesson ${currentLesson} · ${modeLabel}` : `영어 Lesson ${currentLesson || 1}`;
         }
 
