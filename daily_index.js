@@ -18,6 +18,12 @@ window.__loadDailyIndex([
     "title": "KBO 후반기 개막 — 여름을 버티는 팀이 웃는다"
   },
   {
+    "date": "2026-07-15b",
+    "month": "2026-07",
+    "category": "야구",
+    "title": "특집 — 새벽 1시 50분의 메시지, 랜들이 돌아온다"
+  },
+  {
     "date": "2026-07-15",
     "month": "2026-07",
     "category": "캘린더",
@@ -313,6 +319,6 @@ window.__loadDailyIndex([
   }
 ], {
   "schema_version": 1,
-  "updated_at": "2026-07-08T14:30:00+09:00",
-  "version_key": "20260708-1430"
+  "updated_at": "2026-07-15T14:25:17+09:00",
+  "version_key": "20260715-2230"
 });
