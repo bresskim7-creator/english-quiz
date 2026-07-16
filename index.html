@@ -2016,8 +2016,8 @@
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-07-13 v183';
-        const APP_CACHE_NAME = 'quiz-v183';
+        const BUILD_VERSION = '2026-07-16 v184';
+        const APP_CACHE_NAME = 'quiz-v184';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -4241,9 +4241,13 @@
             if (q._exam_condition_trap && !isCorrect) {
                 examPerfSessionMetrics.condition_miss++;
             }
-            if (q._exam_omr && !isCorrect) {
-                examPerfSessionMetrics.omr_miss++;
-            }
+            // [N11 2026-07-16] OMR 마킹 실수는 탭 UI에서 분리 측정할 신호가 없어 측정 불가.
+            //   기존엔 condition_trap와 동일한 !isCorrect로 증가해 omr_miss와 condition_miss가 구조적으로 완전 일치했음(23/23).
+            //   → OMR 집계 중단. getExamPerfLogFields()가 omr_miss를 항상 ''(N/A)로 반환한다.
+            //   ※ q._exam_omr 플래그 자체는 문항 프레임 'OMR 번호 확인' 칩(renderExamPerfQuestionFrame) 표시에 계속 사용.
+            // if (q._exam_omr && !isCorrect) {
+            //     examPerfSessionMetrics.omr_miss++;
+            // }
             if (q._exam_time_limit) {
                 examPerfSessionMetrics.timed_total++;
                 if (elapsed <= q._exam_time_limit) examPerfSessionMetrics.timed_ok++;
@@ -4255,8 +4259,12 @@
                 return { condition_miss: '', omr_miss: '', time_complete: '' };
             }
             return {
+                // [N11 2026-07-16] condition_miss = condition_trap 태그 문항의 오답 수 '프록시'.
+                //   순수 '조건 오독' 측정이 아니다. 현재 국·과·사 exam_perf 문항은 100% condition_trap 플래그라 사실상 세션 총 오답수에 수렴한다.
                 condition_miss: examPerfSessionMetrics.condition_miss || 0,
-                omr_miss: examPerfSessionMetrics.omr_miss || 0,
+                // [N11 2026-07-16] omr_miss는 탭 UI 측정 불가 → 항상 ''(N/A). (증가부는 updateExamPerfMetrics에서 주석 처리.)
+                //   기존 23행(6/29~30 exam_perf)의 omr_miss==condition_miss는 pre-fix legacy 아티팩트로, 분석에서 제외한다.
+                omr_miss: '',
                 time_complete: examPerfSessionMetrics.timed_total > 0
                     ? (examPerfSessionMetrics.timed_ok >= examPerfSessionMetrics.timed_total ? 'Y' : 'N')
                     : ''
