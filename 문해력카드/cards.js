@@ -1,7 +1,7 @@
-// 문해력 요약 카드 데이터 (canonical) — 렌더러: 문해력카드/card.html?d=YYYY-MM-DD
-// 새 카드 추가 = 이 객체에 날짜 키 하나 append. index.html·sw.js 불변.
-// 분기키 interaction: "pick_core_sentence"(1주형). 향후 delete_noise/generalize/reconstruct.
-// week는 운영/일정 메타(렌더 분기 아님). 엔티티는 unicode로 정규화됨(렌더 DOM 동일).
+// 문해력 요약 카드 데이터 (canonical) — 렌더러: 문해력카드/card.html?d=YYYY-MM-DD
+// 새 카드 추가 = 이 객체에 날짜 키 하나 append. index.html·sw.js 불변.
+// 분기키 interaction: "pick_core_sentence"(1주형). 향후 delete_noise/generalize/reconstruct.
+// week는 운영/일정 메타(렌더 분기 아님). 엔티티는 unicode로 정규화됨(렌더 DOM 동일).
 window.MUNHAERAK_CARDS = window.MUNHAERAK_CARDS || {};
 Object.assign(window.MUNHAERAK_CARDS, {
   "2026-07-04": {
@@ -555,10 +555,7 @@ Object.assign(window.MUNHAERAK_CARDS, {
         "url_label": "ko.wikipedia.org/wiki/무중량상태"
       }
     ]
-  }
-});
-
-Object.assign(window.MUNHAERAK_CARDS, {
+  },
   "2026-07-11": {
     "n": 8,
     "date": "2026-07-11",
@@ -638,8 +635,11 @@ Object.assign(window.MUNHAERAK_CARDS, {
         "url_label": "en.wikipedia.org"
       }
     ],
-    "more": {"desc": "돈이 어떻게 생겨났는지 한국은행<i class=\"g\">(우리나라 돈을 만들고 관리하는 곳)</i>이 만든 4분짜리 영상으로 볼 수 있어 — 물물교환부터 지금 돈까지 쭉 훑어 줘.", "url": "https://www.youtube.com/watch?v=BeRwr2sWxQ8", "link_label": "▶ ‘돈은 어떻게 만들어졌을까?’ 영상 열기"}
-  
+    "more": {
+      "desc": "돈이 어떻게 생겨났는지 한국은행<i class=\"g\">(우리나라 돈을 만들고 관리하는 곳)</i>이 만든 4분짜리 영상으로 볼 수 있어 — 물물교환부터 지금 돈까지 쭉 훑어 줘.",
+      "url": "https://www.youtube.com/watch?v=BeRwr2sWxQ8",
+      "link_label": "▶ ‘돈은 어떻게 만들어졌을까?’ 영상 열기"
+    }
   },
   "2026-07-12": {
     "n": 9,
@@ -780,8 +780,11 @@ Object.assign(window.MUNHAERAK_CARDS, {
         "url_label": "britannica.com"
       }
     ],
-    "more": {"desc": "열이 전도·대류로 어떻게 옮겨가는지 EBS 중2 과학 영상에서 그림으로 설명해 줘 — 약 10분이야.", "url": "https://www.youtube.com/watch?v=M5-7xQP8kuU", "link_label": "▶ ‘열의 전도·대류·복사’ 영상 열기"}
-  
+    "more": {
+      "desc": "열이 전도·대류로 어떻게 옮겨가는지 EBS 중2 과학 영상에서 그림으로 설명해 줘 — 약 10분이야.",
+      "url": "https://www.youtube.com/watch?v=M5-7xQP8kuU",
+      "link_label": "▶ ‘열의 전도·대류·복사’ 영상 열기"
+    }
   },
   "2026-07-14": {
     "n": 11,
@@ -852,12 +855,12 @@ Object.assign(window.MUNHAERAK_CARDS, {
         "url_label": "britannica.com"
       }
     ],
-    "more": {"desc": "존 스노우가 지도로 콜레라<i class=\"g\">(심한 설사병)</i>의 원인을 어떻게 찾아냈는지 약 6분짜리 영상으로 볼 수 있어.", "url": "https://www.youtube.com/watch?v=H7Aolx1g7JQ", "link_label": "▶ ‘런던 콜레라를 지도로 잡은 이야기’ 영상 열기"}
-  
-  }
-});
-
-Object.assign(window.MUNHAERAK_CARDS, {
+    "more": {
+      "desc": "존 스노우가 지도로 콜레라<i class=\"g\">(심한 설사병)</i>의 원인을 어떻게 찾아냈는지 약 6분짜리 영상으로 볼 수 있어.",
+      "url": "https://www.youtube.com/watch?v=H7Aolx1g7JQ",
+      "link_label": "▶ ‘런던 콜레라를 지도로 잡은 이야기’ 영상 열기"
+    }
+  },
   "2026-07-15": {
     "n": 12,
     "date": "2026-07-15",
@@ -933,8 +936,11 @@ Object.assign(window.MUNHAERAK_CARDS, {
         "url_label": "en.wikipedia.org"
       }
     ],
-    "more": {"desc": "소크라테스가 왜 도망치지 않았는지, 그가 남긴 글 ‘크리톤’ 이야기를 약 7분짜리 영상에서 풀어 줘.", "url": "https://www.youtube.com/watch?v=wHIp1o2kYiQ", "link_label": "▶ ‘소크라테스는 왜 탈옥하지 않았나’ 영상 열기"}
-  
+    "more": {
+      "desc": "소크라테스가 왜 도망치지 않았는지, 그가 남긴 글 ‘크리톤’ 이야기를 약 7분짜리 영상에서 풀어 줘.",
+      "url": "https://www.youtube.com/watch?v=wHIp1o2kYiQ",
+      "link_label": "▶ ‘소크라테스는 왜 탈옥하지 않았나’ 영상 열기"
+    }
   },
   "2026-07-16": {
     "n": 13,
@@ -1089,12 +1095,12 @@ Object.assign(window.MUNHAERAK_CARDS, {
         "url_label": "en.wikipedia.org"
       }
     ],
-    "more": {"desc": "옛 사람들이 만든 쐐기문자와 상형문자 이야기를 약 5분짜리 영상에서 볼 수 있어.", "url": "https://www.youtube.com/watch?v=DsHRWgmhhXM", "link_label": "▶ ‘세상을 바꾼 발명품, 쐐기문자와 상형문자’ 영상 열기"}
-  
-  }
-});
-
-Object.assign(window.MUNHAERAK_CARDS, {
+    "more": {
+      "desc": "옛 사람들이 만든 쐐기문자와 상형문자 이야기를 약 5분짜리 영상에서 볼 수 있어.",
+      "url": "https://www.youtube.com/watch?v=DsHRWgmhhXM",
+      "link_label": "▶ ‘세상을 바꾼 발명품, 쐐기문자와 상형문자’ 영상 열기"
+    }
+  },
   "2026-07-18": {
     "n": 15,
     "date": "2026-07-18",
@@ -1168,10 +1174,7 @@ Object.assign(window.MUNHAERAK_CARDS, {
         "url_label": "seoul.co.kr"
       }
     ]
-  }
-});
-
-Object.assign(window.MUNHAERAK_CARDS, {
+  },
   "2026-07-19": {
     "n": 16,
     "date": "2026-07-19",
@@ -1679,6 +1682,505 @@ Object.assign(window.MUNHAERAK_CARDS, {
         "text": "Scientific American, “Why do rainbows form instead of straight bands of colors?” (색은 연속 스펙트럼)",
         "url": "https://www.scientificamerican.com/article/why-do-rainbows-form-inst/",
         "url_label": "scientificamerican.com"
+      }
+    ]
+  },
+  "2026-07-26": {
+    "n": 23,
+    "date": "2026-07-26",
+    "week": 4,
+    "interaction": "reconstruct",
+    "ptitle": "바다는 벽이었을까, 길이었을까?",
+    "step1_guide": "글의 증거와 결론, 아직 모르는 점을 모두 담는 주제문을 골라 봐.",
+    "sentences": [
+      "아주 오래전 사람과 가까운 인류 집단은 육지와 이어진 곳만 걸어 다닌 것이 아니다.",
+      "플로레스 같은 섬에서는 깊은 바다로 갈라져 있던 시기의 석기와 인류 화석이 발견되었다.",
+      "이 흔적은 누군가가 물을 건너 섬에 도착했다는 사실을 보여 준다.",
+      "그러나 그들이 어떤 배를 썼는지, 계획해서 건넜는지, 떠밀려 갔는지를 직접 알려 주는 배 유물은 남아 있지 않다.",
+      "따라서 바다는 이동을 막는 경계였지만, 어떤 집단은 그 경계를 실제로 넘었다고 추론할 수 있다.",
+      "좋은 설명은 확인된 흔적과 아직 알 수 없는 방법을 구분한다."
+    ],
+    "options": [
+      "옛사람은 모두 튼튼한 배를 만들어 원하는 섬으로 계획적으로 이동했다.",
+      "섬의 고고학 흔적은 옛 인류 집단이 바다를 건넜음을 보여 주지만, 이동 방법과 의도는 아직 확정할 수 없다.",
+      "바다는 너무 깊어서 옛사람의 이동을 완전히 막았다.",
+      "플로레스에서 발견된 석기보다 배 유물이 더 많다."
+    ],
+    "correct": 1,
+    "recon_fb_ok": "<b>정답!</b> 섬의 흔적이라는 <b>증거</b>, 바다를 건넜다는 <b>결론</b>, 방법과 의도는 모른다는 <b>한계</b>가 한 문장에 함께 들어 있어.",
+    "hints": {
+      "0": "본문은 배의 종류와 계획 여부를 <b>확정하지 않았어</b>. ‘모두’와 ‘계획적으로’가 지나쳐.",
+      "2": "섬의 흔적은 누군가 실제로 바다를 <b>넘었다</b>는 증거야.",
+      "3": "본문은 배 유물이 남아 있지 않다고 했어. 증거의 종류를 반대로 읽었어."
+    },
+    "step2_guide": "‘어떤 증거로 무엇을 알 수 있고, 무엇은 아직 모르는가’를 네 말로 두 문장 안에 정리해 봐.",
+    "saybox": "예: 섬에서 ○○가 발견되어 △△를 알 수 있다. 하지만 □□는 아직 모른다.",
+    "model": "깊은 바다로 떨어진 섬에서 석기와 인류 화석이 발견된 것은 옛 인류 집단이 물을 건넜다는 증거다. 다만 배의 모습과 이동의 의도까지는 확인할 수 없다.",
+    "map": [
+      {
+        "tag": "int",
+        "label": "1 배경",
+        "text": "옛 인류의 이동은 육지에만 머물지 않았다."
+      },
+      {
+        "tag": "evd",
+        "label": "2~3 증거",
+        "text": "바다로 갈라진 섬의 석기·화석 → 물을 건넌 흔적"
+      },
+      {
+        "tag": "lim",
+        "label": "4 한계",
+        "text": "배의 종류와 계획 여부를 알려 줄 직접 증거는 없음"
+      },
+      {
+        "tag": "core",
+        "label": "5~6 결론",
+        "text": "경계를 넘었다는 추론과 모르는 점을 함께 적기"
+      }
+    ],
+    "selfcheck": [
+      "섬의 흔적 → 바다를 건넜다는 추론을 연결했나?",
+      "배와 의도를 확정하지 않고 증거의 한계를 남겼나?"
+    ],
+    "sources": [
+      {
+        "text": "Scientific Reports — Pleistocene sea-crossing and island archaeology",
+        "url": "https://www.nature.com/articles/s41598-019-42946-9",
+        "url_label": "nature.com"
+      },
+      {
+        "text": "Smithsonian Human Origins — Homo floresiensis",
+        "url": "https://humanorigins.si.edu/evidence/human-fossils/species/homo-floresiensis",
+        "url_label": "humanorigins.si.edu"
+      }
+    ]
+  },
+  "2026-07-27": {
+    "n": 24,
+    "date": "2026-07-27",
+    "week": 4,
+    "interaction": "delete_noise",
+    "ptitle": "우주선은 왜 질량을 끝까지 줄일까?",
+    "step1_guide": "로켓의 질량과 추진제 관계를 설명하는 문장은 남기고, 없어도 핵심이 유지되는 곁가지는 지워 봐.",
+    "sentences": [
+      "로켓은 탑재물뿐 아니라 엔진, 탱크, 추진제까지 함께 가속해야 한다.",
+      "같은 속도 변화를 만들 때 실어 나를 질량이 늘면 추진 장치가 감당해야 할 부담도 커진다.",
+      "더 많은 추진제를 싣는 방법도 있지만, 그 추진제 자체가 다시 질량을 늘리는 문제가 생긴다.",
+      "그래서 다단 로켓은 추진제를 다 쓴 탱크와 구조물을 떼어 내, 남은 로켓이 더 적은 질량을 움직이게 한다.",
+      "발사장 관중은 카운트다운의 마지막 숫자를 함께 외치기도 한다.",
+      "로켓의 겉면은 임무와 기관에 따라 흰색이나 검은색 무늬가 다르게 보일 수 있다."
+    ],
+    "deletable": [
+      5,
+      6
+    ],
+    "delete_fb_ok": "<b>좋아!</b> 1~4는 ‘움직여야 할 질량이 커지면 부담이 커지고, 빈 구조물을 버려 남은 질량을 줄인다’는 한 축을 만든다. 5~6은 빼도 원리가 그대로야.",
+    "hints": {
+      "1": "로켓이 <b>무엇까지 함께 움직이는지</b> 보여 주는 출발 문장이야.",
+      "2": "질량이 늘 때 추진 부담이 커진다는 <b>핵심 관계</b>야.",
+      "3": "추진제를 더 실으면 그 자체도 질량이 된다는 <b>되먹임</b>을 설명해.",
+      "4": "단 분리가 왜 필요한지 보여 주는 <b>해결 방법</b>이야."
+    },
+    "cut_reason": {
+      "5": "카운트다운 풍경은 흥미로운 장면이지만 <b>질량과 추진</b>을 설명하지 않아.",
+      "6": "겉면 색은 로켓의 모양에 관한 정보라 <b>질량을 줄이는 이유</b>와 관계없어."
+    },
+    "step2_guide": "남긴 문장으로 ‘질량이 늘면 어떤 문제가 생기고, 단 분리는 무엇을 해결하는가’를 네 말로 정리해 봐.",
+    "saybox": "예: 로켓은 ○○까지 움직여야 해서 질량이 늘면 △△가 커진다. 그래서 □□한다.",
+    "model": "로켓은 탑재물과 추진 장치 전체를 가속하므로 질량이 커질수록 필요한 추진 부담도 커진다. 다단 로켓은 다 쓴 탱크를 버려 남은 질량을 줄인다.",
+    "map": [
+      {
+        "tag": "int",
+        "label": "1 대상",
+        "text": "탑재물·엔진·탱크·추진제를 함께 가속"
+      },
+      {
+        "tag": "core",
+        "label": "2 관계",
+        "text": "움직일 질량 증가 → 추진 부담 증가"
+      },
+      {
+        "tag": "evd",
+        "label": "3 문제",
+        "text": "추진제를 늘리면 그 추진제도 다시 질량이 됨"
+      },
+      {
+        "tag": "res",
+        "label": "4 해결",
+        "text": "빈 구조물 분리 → 남은 로켓 질량 감소"
+      }
+    ],
+    "selfcheck": [
+      "‘추진제’와 ‘질량’의 관계를 한 축으로 남겼나?",
+      "단 분리가 빈 구조물을 버리는 과정임을 말했나?"
+    ],
+    "sources": [
+      {
+        "text": "NASA Glenn — Ideal Rocket Equation",
+        "url": "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/ideal-rocket-equation/",
+        "url_label": "nasa.gov"
+      },
+      {
+        "text": "NASA Glenn — Mass Ratios",
+        "url": "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/mass-ratios/",
+        "url_label": "nasa.gov"
+      },
+      {
+        "text": "NASA — Basics of Space Flight, Rocket Staging",
+        "url": "https://science.nasa.gov/learn/basics-of-space-flight/chapter14-1/",
+        "url_label": "nasa.gov"
+      }
+    ]
+  },
+  "2026-07-28": {
+    "n": 25,
+    "date": "2026-07-28",
+    "week": 4,
+    "interaction": "reconstruct",
+    "ptitle": "내 선택은 어디까지 내 것일까?",
+    "step1_guide": "서로 다른 두 주장과 아직 열려 있는 질문을 모두 담는 주제문을 골라 봐.",
+    "sentences": [
+      "결정론은 지금의 사건과 선택이 앞선 원인과 자연 법칙의 결과라고 보는 입장이다.",
+      "이 입장을 강하게 받아들이면 “다르게 선택할 수 없었다면 책임을 물을 수 있는가?”라는 질문이 생긴다.",
+      "어떤 철학자들은 자유의지에는 실제로 다른 선택을 할 가능성이 필요하다고 본다.",
+      "반면 양립가능론자는 선택에 원인이 있어도 강요받지 않고 자신의 이유와 판단에 따라 행동했다면 자유롭다고 설명한다.",
+      "두 입장은 자유와 책임의 조건을 다르게 정하며, 논쟁에는 하나로 확정된 답이 없다.",
+      "중요한 것은 어느 쪽을 먼저 믿는지가 아니라 각 주장이 자유를 어떤 뜻으로 쓰는지 구분하는 일이다."
+    ],
+    "options": [
+      "결정론이 맞다면 인간에게는 어떤 의미의 책임도 절대로 물을 수 없다.",
+      "자유의지 논쟁은 선택의 원인을 인정할지보다 자유와 책임의 조건을 어떻게 정의할지를 두고 서로 다른 답을 제시한다.",
+      "양립가능론은 인간의 모든 선택에 아무 원인도 없다고 주장한다.",
+      "철학자들은 자유의지에 관해 이미 하나의 결론에 모두 동의했다."
+    ],
+    "correct": 1,
+    "recon_fb_ok": "<b>정답!</b> 결정론이 던지는 책임 문제와 양립가능론의 답을 함께 묶고, ‘자유의 조건을 다르게 정의한다’는 공통 쟁점을 잡았어.",
+    "hints": {
+      "0": "본문은 책임이 <b>절대 불가능하다</b>고 결론내리지 않고 질문과 논쟁을 소개해.",
+      "2": "양립가능론은 원인이 없다고 말하는 게 아니라, 원인이 있어도 <b>강요 없이 이유에 따라</b> 행동할 수 있다고 봐.",
+      "3": "본문은 하나로 확정된 답이 <b>없다</b>고 했어."
+    },
+    "step2_guide": "결정론이 던지는 질문과 양립가능론의 답을 “한쪽은…, 다른 쪽은…” 구조로 말해 봐.",
+    "saybox": "예: 한쪽은 자유에 ○○가 필요하다고 보고, 다른 쪽은 △△해도 □□하면 자유롭다고 본다.",
+    "model": "한쪽은 다른 선택이 실제로 가능해야 자유롭다고 보지만, 양립가능론은 선택에 원인이 있어도 강요 없이 자신의 이유로 행동했다면 자유로울 수 있다고 본다.",
+    "map": [
+      {
+        "tag": "int",
+        "label": "1 입장",
+        "text": "결정론: 선택도 앞선 원인과 법칙의 결과"
+      },
+      {
+        "tag": "q",
+        "label": "2 질문",
+        "text": "다르게 할 수 없었다면 책임은 가능한가?"
+      },
+      {
+        "tag": "evd",
+        "label": "3~4 두 답",
+        "text": "다른 가능성 필요 vs 이유에 따른 행동이면 가능"
+      },
+      {
+        "tag": "core",
+        "label": "5~6 쟁점",
+        "text": "자유와 책임의 조건을 어떻게 정의할지 구분"
+      }
+    ],
+    "selfcheck": [
+      "결정론을 곧바로 “책임 없음”으로 단정하지 않았나?",
+      "두 입장이 자유의 조건을 다르게 본다는 점을 담았나?"
+    ],
+    "sources": [
+      {
+        "text": "Stanford Encyclopedia of Philosophy — Free Will",
+        "url": "https://plato.stanford.edu/archives/spr2024/entries/freewill/",
+        "url_label": "plato.stanford.edu"
+      },
+      {
+        "text": "Stanford Encyclopedia of Philosophy — Arguments for Incompatibilism",
+        "url": "https://plato.stanford.edu/entries/incompatibilism-arguments/",
+        "url_label": "plato.stanford.edu"
+      }
+    ]
+  },
+  "2026-07-29": {
+    "n": 26,
+    "date": "2026-07-29",
+    "week": 4,
+    "interaction": "delete_noise",
+    "ptitle": "옛말은 왜 같은 한국어인데 알아듣기 어려울까?",
+    "step1_guide": "언어가 시간에 따라 달라지는 원리를 남기고, 원리와 관계없는 곁가지는 지워 봐.",
+    "sentences": [
+      "언어는 한 번 만들어진 모습으로 멈추지 않고 사람들이 쓰는 동안 조금씩 변한다.",
+      "오랜 시간이 지나면 말소리, 단어의 뜻과 쓰임, 문장을 만드는 방식이 함께 달라질 수 있다.",
+      "변화가 여러 세대에 쌓이면 같은 한국어의 옛 문장도 오늘의 독자에게 낯설게 보인다.",
+      "옛 문헌을 읽을 때는 지금 쓰지 않는 단어만 찾는 것이 아니라 당시의 소리와 문법까지 살펴야 한다.",
+      "옛 책의 표지는 종이나 천 등 서로 다른 재료로 만들어지기도 했다.",
+      "도서관에서는 오래된 책을 온도와 습도가 안정된 공간에 보관한다."
+    ],
+    "deletable": [
+      5,
+      6
+    ],
+    "delete_fb_ok": "<b>좋아!</b> 1~4는 언어 변화가 여러 세대에 쌓여 옛말이 낯설어진다는 설명을 만든다. 5~6은 옛 책에 관한 정보지만 <b>말이 달라지는 이유</b>는 아니야.",
+    "hints": {
+      "1": "언어가 고정되지 않는다는 <b>출발 원리</b>야.",
+      "2": "무엇이 달라지는지 말소리·단어·문법으로 <b>범위를 제시</b>해.",
+      "3": "작은 변화가 세대마다 쌓인 <b>결과</b>를 설명해.",
+      "4": "옛 문장을 읽을 때 무엇을 봐야 하는지 원리와 <b>직접 연결</b>돼."
+    },
+    "cut_reason": {
+      "5": "책의 재료는 옛 문헌의 모습에 관한 정보지만 <b>언어 변화</b>를 설명하지 않아.",
+      "6": "보존 환경은 책을 지키는 방법이지 <b>옛말이 낯선 이유</b>가 아니야."
+    },
+    "step2_guide": "남긴 문장으로 “무엇이 변하고, 그 변화가 쌓이면 어떤 결과가 생기는가”를 두 문장 안에 정리해 봐.",
+    "saybox": "예: 언어의 ○○·△△·□□가 조금씩 변한다. 변화가 쌓이면 옛 문장이 ◇◇하게 보인다.",
+    "model": "언어는 세대가 바뀌는 동안 말소리와 단어, 문법이 조금씩 달라진다. 그 변화가 오래 쌓였기 때문에 같은 한국어의 옛 문장도 오늘날에는 낯설고 어렵게 느껴진다.",
+    "map": [
+      {
+        "tag": "int",
+        "label": "1 원리",
+        "text": "사람이 쓰는 언어는 시간에 따라 변함"
+      },
+      {
+        "tag": "evd",
+        "label": "2 범위",
+        "text": "말소리·단어·문법이 함께 달라질 수 있음"
+      },
+      {
+        "tag": "core",
+        "label": "3 결과",
+        "text": "세대마다 변화 축적 → 옛 문장이 낯설어짐"
+      },
+      {
+        "tag": "res",
+        "label": "4 읽기",
+        "text": "단어뿐 아니라 당시 소리와 문법도 살피기"
+      }
+    ],
+    "selfcheck": [
+      "옛말을 완전히 다른 언어라고 단정하지 않았나?",
+      "말소리·단어·문법의 변화가 쌓인 결과를 담았나?"
+    ],
+    "sources": [
+      {
+        "text": "한국민족문화대백과사전 — 국어사",
+        "url": "https://encykorea.aks.ac.kr/Article/E0053799",
+        "url_label": "encykorea.aks.ac.kr"
+      },
+      {
+        "text": "국립국어원 — 국어 어원사전 편찬 연구",
+        "url": "https://www.korean.go.kr/common/download.do?c_file_name=527739e0-ba94-46b0-9007-4103dfab49f3.pdf&file_path=reportData&o_file_name=2024%EB%85%84+%EA%B5%AD%EC%96%B4+%EC%96%B4%EC%9B%90%EC%82%AC%EC%A0%84+%ED%8E%B8%EC%B0%AC+%EC%B5%9C%EC%A2%85%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf",
+        "url_label": "korean.go.kr"
+      }
+    ]
+  },
+  "2026-07-30": {
+    "n": 27,
+    "date": "2026-07-30",
+    "week": 4,
+    "interaction": "generalize",
+    "ptitle": "우편번호와 도서관 청구기호는 어떻게 ‘주소’가 될까?",
+    "step1_guide": "두 사례에서 반복되는 찾기 원리를 골라 봐. 물건의 이름이 아니라 <b>검색 범위를 줄이는 순서</b>에 주목해.",
+    "sentences": [
+      "다섯 자리 우편번호의 앞부분은 넓은 지역을 가리키고, 뒤쪽으로 갈수록 더 작은 구역을 구별하는 데 쓰인다.",
+      "우편물 분류는 이 숫자를 따라 큰 지역에서 작은 배달 구역 쪽으로 범위를 좁혀 간다.",
+      "도서관 청구기호도 먼저 주제에 따라 책 무리를 나누고, 저자나 자료를 구별하는 정보를 더해 서가의 위치를 찾게 한다.",
+      "도서관마다 쓰는 분류법과 표기 방식은 다를 수 있지만, 비슷한 주제의 자료를 모으고 그 안에서 한 자료를 구별한다.",
+      "두 경우 모두 긴 목록을 처음부터 훑기보다 앞부분에서 큰 범위를 줄이고 뒷부분에서 대상을 더 정확히 찾는다."
+    ],
+    "options": [
+      "숫자와 글자는 언제나 물건의 가격을 짧게 표시한다.",
+      "코드의 앞부분에서 큰 범주나 지역을 좁히고, 뒤 정보를 이용해 더 작은 위치나 대상을 찾을 수 있다.",
+      "우편번호와 청구기호는 모든 기관에서 똑같은 숫자 순서를 사용한다.",
+      "찾을 대상이 많을수록 아무 순서 없이 섞어 두는 것이 빠르다."
+    ],
+    "correct": 1,
+    "gen_fb_ok": "<b>정답!</b> 우편번호와 청구기호는 대상의 이름을 꾸미는 표지가 아니라, <b>큰 범위 → 작은 범위</b>로 검색 구간을 줄여 위치를 찾게 한다는 공통점이 있어.",
+    "hints": {
+      "0": "본문의 숫자와 글자는 <b>가격</b>이 아니라 지역·주제·위치를 찾는 데 쓰여.",
+      "2": "도서관마다 분류법과 표기가 <b>다를 수 있다</b>고 했어.",
+      "3": "두 사례는 섞는 것이 아니라 <b>정해진 순서로 범위를 좁히는</b> 방법이야."
+    },
+    "step2_guide": "우편번호와 청구기호를 하나씩 예로 들고 “큰 범위에서 작은 범위로”라는 공통 원리를 네 말로 설명해 봐.",
+    "saybox": "예: ○○의 앞부분은 큰 범위를, 뒤쪽은 더 작은 대상을 가리켜서 △△를 빨리 찾게 한다.",
+    "model": "우편번호와 청구기호는 앞부분에서 지역이나 주제 같은 큰 범위를 먼저 줄이고, 뒤 정보를 이용해 더 작은 구역이나 한 자료를 찾게 한다.",
+    "map": [
+      {
+        "tag": "evd",
+        "label": "1~2 우편",
+        "text": "넓은 지역 → 작은 배달 구역으로 분류"
+      },
+      {
+        "tag": "evd",
+        "label": "3~4 도서관",
+        "text": "주제 무리 → 자료 구별 → 서가 위치 찾기"
+      },
+      {
+        "tag": "core",
+        "label": "5 공통 원리",
+        "text": "앞에서 크게 좁히고 뒤에서 정확히 찾기"
+      }
+    ],
+    "selfcheck": [
+      "기존의 번호 기록 예시 없이 ‘찾기’ 원리에만 집중했나?",
+      "모든 기관의 표기가 같다고 일반화하지 않았나?"
+    ],
+    "sources": [
+      {
+        "text": "우정사업본부 — 국가기초구역과 5자리 우편번호",
+        "url": "https://www.koreapost.go.kr/kpost/subIndex/208.do?pSiteIdx=125",
+        "url_label": "koreapost.go.kr"
+      },
+      {
+        "text": "Library of Congress — Call numbers and shelf location",
+        "url": "https://guides.loc.gov/american-women-general-collections/lc-call-numbers",
+        "url_label": "loc.gov"
+      },
+      {
+        "text": "Library of Congress — Classification and locating items",
+        "url": "https://www.loc.gov/aba/pcc/sca/classtgrpt.html",
+        "url_label": "loc.gov"
+      }
+    ]
+  },
+  "2026-07-31": {
+    "n": 28,
+    "date": "2026-07-31",
+    "week": 4,
+    "interaction": "generalize",
+    "ptitle": "바늘·못·칼날은 왜 끝이 뾰족할까?",
+    "step1_guide": "세 물건의 모양에서 반복되는 물리 원리를 골라 봐. 힘의 크기와 닿는 넓이를 구분해.",
+    "sentences": [
+      "손가락으로 같은 힘을 주어도 바늘의 가는 끝은 넓적한 뒤쪽보다 천을 쉽게 뚫는다.",
+      "못의 뾰족한 끝도 망치의 힘이 아주 작은 면적에 작용하게 해 나무 안으로 들어간다.",
+      "칼날은 얇은 가장자리에서 재료와 닿는 면적을 줄여 큰 압력을 만든다.",
+      "압력은 힘을 그 힘이 작용하는 면적으로 나눈 값이므로, 같은 힘이라면 면적이 작을수록 커진다.",
+      "실제 뚫기와 자르기에는 재료의 단단함, 날의 각도와 상태도 영향을 주지만 세 물건의 공통축은 작은 접촉 면적이다."
+    ],
+    "options": [
+      "끝을 뾰족하게 만들면 손이 주는 힘 자체가 자동으로 몇 배 늘어난다.",
+      "같은 힘이 더 작은 면적에 작용하면 압력이 커져 재료를 뚫거나 자르기 쉬워진다.",
+      "물체의 색이 어두울수록 압력이 커진다.",
+      "접촉 면적이 넓을수록 같은 힘으로 더 큰 압력을 만든다."
+    ],
+    "correct": 1,
+    "gen_fb_ok": "<b>정답!</b> 바늘·못·칼날은 힘을 새로 만드는 것이 아니라, 힘이 닿는 <b>면적을 줄여 압력을 크게</b> 만든다는 공통 원리를 이용해.",
+    "hints": {
+      "0": "뾰족한 모양은 손이나 망치의 <b>힘 자체</b>를 자동으로 늘리지 않아.",
+      "2": "본문은 색을 한 번도 원인으로 쓰지 않았어.",
+      "3": "압력은 힘÷면적이므로 같은 힘에서는 면적이 <b>작을수록</b> 커져."
+    },
+    "step2_guide": "“힘은 같고, 무엇이 달라져서, 어떤 결과가 생기는가” 순서로 네 말로 설명해 봐.",
+    "saybox": "예: 같은 힘이 더 ○○ 면적에 작용하면 △△이 커져서 □□하기 쉬워진다.",
+    "model": "바늘과 못, 칼날은 끝의 접촉 면적을 작게 만든다. 같은 힘이 작은 면적에 모이면 압력이 커져 재료를 뚫거나 자르기 쉬워진다.",
+    "map": [
+      {
+        "tag": "evd",
+        "label": "1~3 사례",
+        "text": "바늘·못·칼날의 가늘고 얇은 접촉 부분"
+      },
+      {
+        "tag": "core",
+        "label": "4 공식",
+        "text": "압력 = 힘 ÷ 면적"
+      },
+      {
+        "tag": "lim",
+        "label": "5 조건",
+        "text": "재료·각도도 영향, 공통축은 작은 접촉 면적"
+      }
+    ],
+    "selfcheck": [
+      "끝이 뾰족하면 힘 자체가 커진다고 쓰지 않았나?",
+      "같은 힘·작은 면적·큰 압력의 관계를 모두 담았나?"
+    ],
+    "sources": [
+      {
+        "text": "OpenStax College Physics 2e — Pressure",
+        "url": "https://openstax.org/books/college-physics-2e/pages/11-3-pressure",
+        "url_label": "openstax.org"
+      },
+      {
+        "text": "The Physics Classroom — Pressure",
+        "url": "https://www.physicsclassroom.com/class/fluids/pressure/pressure",
+        "url_label": "physicsclassroom.com"
+      }
+    ]
+  },
+  "2026-08-01": {
+    "n": 29,
+    "date": "2026-08-01",
+    "week": 4,
+    "interaction": "delete_noise",
+    "ptitle": "좋은 경고문은 무엇을 꼭 말해야 할까?",
+    "step1_guide": "사람이 위험을 알아차리고 바로 행동하게 만드는 문장은 남기고, 장식과 배경 설명은 지워 봐.",
+    "sentences": [
+      "좋은 경고문은 먼저 감전, 미끄러짐, 고온처럼 무엇이 위험한지 분명히 알려야 한다.",
+      "그다음 “전원을 끄시오”, “난간 안으로 들어가지 마시오”처럼 해야 할 행동이나 피할 행동을 바로 제시한다.",
+      "위험의 크기가 큰 경우에는 신호어와 눈에 잘 띄는 표시를 사용해 주의를 끈다.",
+      "문장은 읽는 사람이 한 번에 이해할 수 있는 익숙한 말과 구체적인 동사로 쓴다.",
+      "표지판의 테두리는 건물 디자인에 맞춰 여러 무늬로 꾸밀 수 있다.",
+      "경고문을 만든 회사의 창립 연도와 대표자의 이름을 아래에 길게 적을 수도 있다."
+    ],
+    "deletable": [
+      5,
+      6
+    ],
+    "delete_fb_ok": "<b>좋아!</b> 1~4는 ‘어떤 위험인가 → 무엇을 해야 하나 → 어떻게 바로 알아보게 하나’를 설명한다. 5~6은 읽는 사람의 안전 행동을 돕지 않는 곁가지야.",
+    "hints": {
+      "1": "읽는 사람이 먼저 알아야 할 <b>위험의 종류</b>야.",
+      "2": "경고를 본 뒤 바로 옮길 <b>행동</b>을 제시해.",
+      "3": "위험의 크기와 주의를 빠르게 알리는 <b>표시 방법</b>이야.",
+      "4": "짧기만 한 문장보다 <b>이해 가능한 구체적 표현</b>이 중요해."
+    },
+    "cut_reason": {
+      "5": "장식 무늬는 표지판을 꾸미지만 <b>위험과 행동</b>을 더 분명하게 만들지 않아.",
+      "6": "회사 정보는 경고의 핵심인 <b>즉시 해야 할 안전 행동</b>과 관계없어."
+    },
+    "step2_guide": "하나의 상황을 정해 “위험 + 행동” 구조의 경고문을 한 문장으로 만들어 봐.",
+    "saybox": "예: ○○ 위험. △△하지 말고 □□하시오.",
+    "model": "고온 화상 위험. 장비가 식기 전에는 맨손으로 만지지 마시오.",
+    "map": [
+      {
+        "tag": "int",
+        "label": "1 위험",
+        "text": "무엇이 사람을 다치게 할 수 있는지 밝히기"
+      },
+      {
+        "tag": "core",
+        "label": "2 행동",
+        "text": "해야 할 일·하지 말아야 할 일을 구체적으로 쓰기"
+      },
+      {
+        "tag": "evd",
+        "label": "3~4 전달",
+        "text": "눈에 띄는 표시와 익숙한 동사로 빠르게 이해시키기"
+      },
+      {
+        "tag": "cut",
+        "label": "5~6 곁가지",
+        "text": "장식·회사 연혁은 안전 행동에 필요 없음"
+      }
+    ],
+    "selfcheck": [
+      "위험의 종류와 해야 할 행동이 모두 들어갔나?",
+      "무조건 짧게만 줄이지 않고 이해 가능한 동사를 썼나?"
+    ],
+    "sources": [
+      {
+        "text": "OSHA — Specifications for Accident Prevention Signs and Tags",
+        "url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1910/1910.145",
+        "url_label": "osha.gov"
+      },
+      {
+        "text": "CDC — Plain Language Materials",
+        "url": "https://www.cdc.gov/health-literacy/php/develop-materials/plain-language.html",
+        "url_label": "cdc.gov"
+      },
+      {
+        "text": "ATSDR — Tips for Preparing Written Documents",
+        "url": "https://www.atsdr.cdc.gov/pha-guidance/putting_it_all_together/tips-for-preparing-written-documents.html",
+        "url_label": "cdc.gov"
       }
     ]
   }
