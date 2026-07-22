@@ -1753,7 +1753,12 @@ Object.assign(window.MUNHAERAK_CARDS, {
         "url": "https://humanorigins.si.edu/evidence/human-fossils/species/homo-floresiensis",
         "url_label": "humanorigins.si.edu"
       }
-    ]
+    ],
+    "more": {
+      "desc": "〈역사를 보다 EP.66〉에서 옛 인류가 바다를 건넌 흔적과 배의 모습은 아직 가설이라는 점을 함께 설명해 — <b>8:38 ~ 10:08 (약 1분 30초)</b>만 보면 돼.",
+      "url": "https://www.youtube.com/watch?v=OETazVAxBaE&t=518s",
+      "link_label": "▶ ‘바다를 건넌 흔적과 남은 의문’ 구간 열기"
+    }
   },
   "2026-07-27": {
     "n": 24,
@@ -1830,7 +1835,12 @@ Object.assign(window.MUNHAERAK_CARDS, {
         "url": "https://science.nasa.gov/learn/basics-of-space-flight/chapter14-1/",
         "url_label": "nasa.gov"
       }
-    ]
+    ],
+    "more": {
+      "desc": "과학기술정보통신부 공식 영상이 다 쓴 단을 버려 남은 로켓의 질량을 줄이는 이유를 <b>1분 21초</b> 안에 설명해.",
+      "url": "https://www.youtube.com/watch?v=oVedNfEWYFE",
+      "link_label": "▶ ‘로켓은 왜 단 분리를 할까?’ 영상 열기"
+    }
   },
   "2026-07-28": {
     "n": 25,
@@ -1900,7 +1910,12 @@ Object.assign(window.MUNHAERAK_CARDS, {
         "url": "https://plato.stanford.edu/entries/incompatibilism-arguments/",
         "url_label": "plato.stanford.edu"
       }
-    ]
+    ],
+    "more": {
+      "desc": "〈철학을 보다 EP.15〉에서 한 선택이 이미 결정된 결과인지 자유의지의 결과인지 두 입장을 맞대어 봐 — <b>5:30 ~ 7:55 (약 2분 25초)</b>만 보면 돼.",
+      "url": "https://www.youtube.com/watch?v=tnHnx2FqsDM&t=330s",
+      "link_label": "▶ ‘결정론과 자유의지’ 토론 구간 열기"
+    }
   },
   "2026-07-29": {
     "n": 26,
