@@ -24,6 +24,12 @@ window.__loadDailyIndex([
     "title": "많은 맨홀 뚜껑은 왜 둥글까?"
   },
   {
+    "date": "2026-07-29b",
+    "month": "2026-07",
+    "category": "야구",
+    "title": "공 하나 못 던지고 퇴장 — 고우석에게 무슨 일이 있었나"
+  },
+  {
     "date": "2026-07-28",
     "month": "2026-07",
     "category": "철학",
@@ -403,6 +409,6 @@ window.__loadDailyIndex([
   }
 ], {
   "schema_version": 1,
-  "updated_at": "2026-07-22T12:39:00+09:00",
-  "version_key": "20260722-1239"
+  "updated_at": "2026-07-29T21:30:00+09:00",
+  "version_key": "20260729-2130"
 });
