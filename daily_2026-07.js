@@ -2648,10 +2648,10 @@ window.__loadDailyMonth("2026-07", {
       "sensitivity": "normal",
       "review_status": "manual_reviewed",
       "render_min_version": 1.1,
-      "image_url": "https://image.fnnews.com/resource/media/image/2026/07/21/202607211405116107_l.jpg",
+      "image_url": "img/daily_go_glove_20260730.jpg",
       "image_credit": {
-        "source": "뉴시스 / 파이낸셜뉴스",
-        "url": "https://www.fnnews.com/news/202607270832557242",
+        "source": "MiLB TV 중계화면 / 미주중앙일보(OSEN)",
+        "url": "https://www.koreadaily.com/article/20260725081227013",
         "license": "fair_use"
       },
       "generated_at": "2026-07-29T21:30:00+09:00",
