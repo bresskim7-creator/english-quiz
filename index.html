@@ -1731,6 +1731,10 @@
                     <div class="ops-diag-row"><span>미전송 퀴즈</span><strong id="diag-unsent-quiz">-</strong></div>
                     <div class="ops-diag-row"><span>미전송 단어</span><strong id="diag-unsent-vocab">-</strong></div>
                     <div class="ops-diag-row"><span>마지막 전송</span><strong id="diag-last-send">-</strong></div>
+                    <div class="ops-diag-row" style="display:block;">
+                        <span>단어 아웃박스</span>
+                        <div id="vocab-outbox-inspector" style="margin-top:6px;"></div>
+                    </div>
                     <div class="ops-diag-actions">
                         <button onclick="resendLogsNow()">로그 재전송</button>
                         <button onclick="forceRefreshApp()">강제 새로고침</button>
@@ -2016,8 +2020,8 @@
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-07-16 v184';
-        const APP_CACHE_NAME = 'quiz-v184';
+        const BUILD_VERSION = '2026-07-20 v185';
+        const APP_CACHE_NAME = 'quiz-v185';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -2302,6 +2306,7 @@
             document.getElementById('webhook-status').textContent = '✓ 저장되었습니다';
             setTimeout(() => { document.getElementById('webhook-status').textContent = ''; }, 2000);
             flushVocabQueue();
+            flushVocabOutbox();
             updateOpsDiagnostics();
         }
 
@@ -2346,8 +2351,9 @@
             setText('diag-cache-name', APP_CACHE_NAME);
             setText('diag-sw-status', navigator.serviceWorker && navigator.serviceWorker.controller ? '활성' : '미등록');
             setText('diag-unsent-quiz', String(getUnsentQuizLogCount()));
-            setText('diag-unsent-vocab', String(JSON.parse(localStorage.getItem('pending_vocab_log') || '[]').length));
+            setText('diag-unsent-vocab', String(JSON.parse(localStorage.getItem('pending_vocab_log') || '[]').length + countVocabOutboxEvents()));
             setText('diag-last-send', getLastSendTime());
+            renderVocabOutboxInspector();
         }
 
 
@@ -6721,6 +6727,13 @@
             }
             vocabDrillIndex = 0;
 
+            // [v185] 세션 진단 계측 초기화 (§2.5 계측: selected = 풀 선발 수)
+            _vocabSelectedCount = vocabDrillList.length;
+            _vocabGeneratedCount = 0;
+            _vocabUnpersisted = null;
+            _vocabPersistAttempts = 0;
+            _vocabPendingSummaryHtml = '';
+
             document.getElementById('vocab-result-area').style.display = 'none';
             document.getElementById('vocab-card-area').style.display = 'block';
             document.getElementById('vocab-test-area').style.display = 'none';
@@ -6964,7 +6977,8 @@
                 return (rec && rec.known === false && rec.lastType) ? rec.lastType : null;
             };
             vocabTestList = vocabBuildTestQuestions(vocabTestWords, avoidTypeOf);
-            if (vocabTestList.length === 0) { finishVocabDrill(); return; }
+            _vocabGeneratedCount = vocabTestList.length;          // [v185] 진단: 문항 생성 수
+            if (vocabTestList.length === 0) { finishVocabDrill('generation_failed'); return; }
             document.getElementById('vocab-test-area').style.display = 'block';
             renderVocabTestQuestion();
         }
@@ -7036,23 +7050,37 @@
                     if (vocabTestList.length > 0) { renderVocabTestQuestion(); return; }
                 }
             }
-            finishVocabDrill();
+            finishVocabDrill('complete');
         }
 
         function quitVocabDrill() {
             if (confirm('학습을 중단하겠습니까?')) {
                 if (Object.keys(vocabTestFirstResults).length > 0) {
-                    finishVocabDrill();  // 답한 첫 시도 문항만 저장·전송
+                    finishVocabDrill('partial');  // 답한 첫 시도 문항만 저장·전송
                 } else {
                     showPage('home-page');
                 }
             }
         }
 
-        function finishVocabDrill() {
+        function finishVocabDrill(reason) {
             if (_vocabDrillFinished) return;   // 이중 실행/이중 전송 방지
             _vocabDrillFinished = true;
             document.getElementById('vocab-controls').style.display = 'none';
+
+            // [v185] 호출원 구분 — 7039 vocabTestNext=complete / 7045 quitVocabDrill=partial / 문항0건=generation_failed
+            const completionReason = (reason === 'partial' || reason === 'generation_failed') ? reason : 'complete';
+
+            // [v185 §3.1] 문항 생성 0건: 성공화면 금지. 진단행만(expected=0·events 빈 배열) + 실패 전용 안내.
+            if (completionReason === 'generation_failed') {
+                _vocabPendingSummaryHtml = vocabGenerationFailedHtml();
+                if (sendVocabToGoogleSheets('generation_failed')) {
+                    renderVocabResultHtml(_vocabPendingSummaryHtml);
+                } else {
+                    renderVocabPersistBlocked();
+                }
+                return;
+            }
 
             // ── 저장(§6 v182): known=첫 시도 정오, lastType=첫 시도 유형. 키잉=getVocabLessonKey(항목별) ──
             const vocabResults = JSON.parse(localStorage.getItem('vocab_results') || '{}');
@@ -7114,10 +7142,7 @@
             document.getElementById('vocab-test-area').style.display = 'none';
             const cumLabel = vocabDrillUnified ? '누적' : '이 Lesson 누적';
             const distHtml = (vocabDrillUnified && sourceDist) ? '<div class="detail" style="margin-top:4px;color:#888;">이번 출처: ' + sourceDist + '</div>' : '';
-            const area = document.getElementById('vocab-result-area');
-            area.style.display = 'block';
-            document.getElementById('vocab-card-area').style.display = 'none';
-            area.innerHTML =
+            _vocabPendingSummaryHtml =
                 '<div class="vocab-result-summary">' +
                     '<h2>오늘 단어 테스트 완료!</h2>' +
                     '<div class="score">' + firstKnown + ' / ' + firstTotal + '</div>' +
@@ -7129,7 +7154,12 @@
                     '<button class="vocab-done-btn" onclick="showPage(\'home-page\')" style="margin-top:24px;">홈으로 돌아가기</button>' +
                 '</div>';
 
-            sendVocabToGoogleSheets();
+            // [v185 §2.1] persist-before-send — 영속(safeSetItem===true) 확인 전에는 완료 화면 금지(거짓 완료 방지)
+            if (sendVocabToGoogleSheets(completionReason)) {
+                renderVocabResultHtml(_vocabPendingSummaryHtml);
+            } else {
+                renderVocabPersistBlocked();
+            }
         }
 
         function enqueueVocabRow(row) {
@@ -7138,8 +7168,390 @@
             safeSetItem('pending_vocab_log', JSON.stringify(q));
         }
 
+        // =========================================================
+        // [v185] 단어 전송 신뢰성 — durable outbox (발주서 v1.5 §2.1~§2.3 · §3)
+        //  · 선비움 폐기: ACK 확인 전에는 아웃박스에서 아무것도 지우지 않는다
+        //  · persist-before-send: safeSetItem === true 확인 후에만 POST 자격
+        //  · 안전 삭제: ACK 성공 시 localStorage 재읽기 → 해당 outbox_entry_id 하나만 filter → 저장 성공 확인
+        //  · session_id / client_event_id 는 최초 enqueue 1회 생성 후 재전송 불변
+        // =========================================================
+        const VOCAB_OUTBOX_KEY = 'vocab_outbox_v2';
+        const MAX_PERSIST_RETRIES = 3;
+        const VOCAB_ERROR_ALLOWLIST = ['invalid_envelope', 'duplicate_event_id', 'payload_conflict', 'count_mismatch'];
+        const VOCAB_KEEPALIVE_MAX_BYTES = 65536;      // §2.2 실측 바이트 64KiB 초과 시 일반 fetch 폴백
+        const VOCAB_ISO_RE = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$/;
+        // [v1.6 P2-a] 서버 SUBJECT_MAP(GAS 141)과 동일 enum — 클라 검증을 서버와 같은 기준으로 맞춘다.
+        const VOCAB_SUBJECT_KEYS = ['english', 'korean', 'math', 'social', 'science'];
+
+        let _vocabOutboxInFlight = false;
+        let _vocabOutboxDirty = false;
+        let _vocabErroredIds = new Set();             // §3.1a 인메모리 제외(persist 성공 전에도 이번 실행 POST 제외)
+        let _vocabUnpersisted = null;                 // §2.1 persist 실패 시 봉투 보관(SPA 이동 생존 · 앱 kill 소실)
+        let _vocabPersistAttempts = 0;
+        let _vocabPendingSummaryHtml = '';
+        let _vocabSelectedCount = 0;
+        let _vocabGeneratedCount = 0;
+        // [v1.6 P1-3] 격리 상태 저장(safeSetItem)이 실패한 봉투. flush 진입 시 재-persist 한다.
+        // 재시도 대상은 '격리 상태 저장'뿐이며 POST 재시도가 아니다(§3.1a).
+        let _vocabPendingQuarantine = new Map();
+
+        function newVocabId(prefix) {
+            let core = '';
+            try {
+                if (window.crypto && typeof window.crypto.randomUUID === 'function') core = window.crypto.randomUUID();
+            } catch (_) {}
+            try {
+                if (!core && window.crypto && window.crypto.getRandomValues) {
+                    const a = new Uint8Array(16);
+                    window.crypto.getRandomValues(a);
+                    core = Array.from(a).map(b => ('0' + b.toString(16)).slice(-2)).join('');
+                }
+            } catch (_) {}
+            if (!core) core = Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 12);
+            return prefix + '_' + core;
+        }
+
+        function readVocabOutbox() {
+            try {
+                const raw = JSON.parse(localStorage.getItem(VOCAB_OUTBOX_KEY) || '[]');
+                return Array.isArray(raw) ? raw : [];
+            } catch (err) {
+                console.warn('[vocab-outbox-parse-fail]', err && err.message);
+                return [];
+            }
+        }
+
+        function countVocabOutboxEvents() {
+            return readVocabOutbox().reduce((n, e) => n + ((e && Array.isArray(e.events)) ? e.events.length : 0), 0);
+        }
+
+        // ── §2.1 envelope 구성 (id는 여기서 1회 생성 후 불변) ──
+        function buildVocabEvents() {
+            const events = [];
+            vocabTestWords.forEach(item => {
+                if (vocabTestFirstResults[item.id] !== undefined) {
+                    events.push({
+                        client_event_id: newVocabId('ev'),
+                        word_id: String(item.id),
+                        word: String(item.word),
+                        known: vocabTestFirstResults[item.id] ? 'T' : 'F',
+                        lesson: String(getVocabLessonKey(item) || normalizeLessonKey(currentLesson) || 'unknown')
+                    });
+                }
+            });
+            return events;
+        }
+
+        function buildVocabEnvelope(events, completionReason) {
+            return {
+                schema_version: 2,
+                sheet: 'vocab_batch',
+                outbox_entry_id: newVocabId('ob'),      // §2.1 격리·삭제 키 — session_id와 독립
+                session_id: newVocabId('sess'),
+                subject: currentSubject,                // 세션 단위(행별 아님)
+                enqueued_at: new Date().toISOString(),
+                expected_count: events.length,
+                events: events,
+                session_diag: {
+                    selected_count: _vocabSelectedCount,
+                    generated_count: _vocabGeneratedCount,
+                    answered_count: Object.keys(vocabTestFirstResults).length,
+                    saved_count: events.length,
+                    completion_reason: completionReason
+                }
+            };
+        }
+
+        // ── §2.3-0 POST 前 클라 봉투 검증 (서버 전수검증과 동일 항목) ──
+        // 반환: null = 정상 / reason_code 문자열 = 손상
+        function validateVocabEnvelopeClient(env) {
+            const isStr = v => typeof v === 'string' && v.trim() !== '';
+            const isInt = v => typeof v === 'number' && isFinite(v) && v % 1 === 0 && v >= 0;
+            if (!env || typeof env !== 'object' || Array.isArray(env)) return 'invalid_envelope';
+            if (!isStr(env.session_id)) return 'invalid_envelope';
+            if (!isStr(env.subject)) return 'invalid_envelope';
+            // [v1.6 P2-a] 서버 722와 동일하게 enum 소속까지 검사(문자열 존재만으로는 부족).
+            if (VOCAB_SUBJECT_KEYS.indexOf(String(env.subject).toLowerCase().trim()) === -1) return 'invalid_envelope';
+            if (!isStr(env.enqueued_at) || !VOCAB_ISO_RE.test(env.enqueued_at)) return 'invalid_envelope';
+            // [v1.6 P2-a] 서버 702와 동일하게 달력 유효성까지(형식은 맞지만 존재하지 않는 날짜 배제).
+            if (isNaN(new Date(env.enqueued_at).getTime())) return 'invalid_envelope';
+            if (!Array.isArray(env.events)) return 'invalid_envelope';
+            if (!isInt(env.expected_count)) return 'invalid_envelope';
+            const d = env.session_diag;
+            if (!d || typeof d !== 'object' || Array.isArray(d)) return 'invalid_envelope';
+            const counts = ['selected_count', 'generated_count', 'answered_count', 'saved_count'];
+            for (const k of counts) { if (!isInt(d[k])) return 'invalid_envelope'; }
+            if (['complete', 'partial', 'generation_failed'].indexOf(d.completion_reason) === -1) return 'invalid_envelope';
+            const seen = new Set();
+            for (const ev of env.events) {
+                if (!ev || typeof ev !== 'object' || Array.isArray(ev)) return 'invalid_envelope';
+                if (!isStr(ev.client_event_id) || !isStr(ev.word_id) || !isStr(ev.word) || !isStr(ev.lesson)) return 'invalid_envelope';
+                if (ev.known !== 'T' && ev.known !== 'F') return 'invalid_envelope';
+                if (seen.has(ev.client_event_id)) return 'duplicate_event_id';
+                seen.add(ev.client_event_id);
+            }
+            if (env.expected_count !== env.events.length) return 'count_mismatch';
+            return null;
+        }
+
+        // ── §2.1 persist-before-send ──
+        function persistVocabOutbox() {
+            if (!_vocabUnpersisted) return true;
+            _vocabPersistAttempts++;
+            const box = readVocabOutbox();
+            box.push(_vocabUnpersisted);
+            if (safeSetItem(VOCAB_OUTBOX_KEY, JSON.stringify(box)) === true) {
+                _vocabUnpersisted = null;
+                return true;
+            }
+            return false;   // 영속 실패 = POST 자격 없음(전송 0)
+        }
+
+        // ── §3.1 안전 삭제: 재읽기 → 대상 outbox_entry_id 하나만 제거 → 저장 성공 확인 ──
+        // flush 시작 시점 스냅샷을 되쓰지 않는다(전송 중 enqueue된 봉투 보호).
+        function deleteVocabEnvelope(entryId) {
+            const box = readVocabOutbox();
+            // [v1.6 P1-4] filter는 동일 outbox_entry_id를 '전부' 지운다(격리의 findIndex와 비대칭).
+            // 중복이 남아 있어도 ACK 대상 1건만 제거한다 — 나머지는 다음 drain이 처리한다.
+            const idx = box.findIndex(e => e && e.outbox_entry_id === entryId);
+            if (idx === -1) return true;                              // 이미 없음
+            box.splice(idx, 1);
+            return safeSetItem(VOCAB_OUTBOX_KEY, JSON.stringify(box)) === true;
+        }
+
+        // ── §3.1a 격리: 인메모리 즉시 제외 + _errored 영속(재읽기→갱신→저장 확인). 자동 삭제 없음 ──
+        // safeSetItem이 false여도 재시도는 '격리 상태 저장'에만 적용된다 — POST 재시도가 아니다.
+        function quarantineVocabEnvelope(entryId, reasonCode, env, fallbackIdx) {
+            _vocabErroredIds.add(String(entryId));
+            const box = readVocabOutbox();
+            let target = box.findIndex(e => e && e.outbox_entry_id === entryId);
+            if (target === -1 && typeof fallbackIdx === 'number' && box[fallbackIdx] &&
+                env && box[fallbackIdx].enqueued_at === env.enqueued_at) {
+                target = fallbackIdx;
+                box[target].outbox_entry_id = entryId;                // recovery ID 부여(전송 없이 · 자동삭제 금지)
+            }
+            if (target === -1) return false;
+            box[target]._errored = true;
+            box[target].reason_code = reasonCode;
+            box[target].errored_at = new Date().toISOString();
+            const saved = safeSetItem(VOCAB_OUTBOX_KEY, JSON.stringify(box)) === true;
+            if (saved) {
+                _vocabPendingQuarantine.delete(String(entryId));
+            } else {
+                // [v1.6 P1-3] 저장 실패 = 격리 미영속. 인메모리 tombstone은 이번 실행만 막으므로
+                // 저장공간이 회복되면 재영속시켜야 재부팅 후에도 자동 POST가 부활하지 않는다.
+                _vocabPendingQuarantine.set(String(entryId), { reasonCode: reasonCode, env: env, fallbackIdx: fallbackIdx });
+                console.warn('[vocab-outbox-quarantine-persist-fail]', entryId, reasonCode);
+            }
+            return saved;
+        }
+
+        // [v1.6 P1-3] flush 진입 훅 — 미영속 격리를 재-persist. POST 재시도가 아니다.
+        // 저장공간 회복 시 _errored가 durable하게 안착하는 지점.
+        // ⚠ 비범위: 영속 실패 직후 즉시 앱 kill 되면 인메모리 tombstone이 함께 소실되고
+        //   localStorage에는 _errored가 없다. 이를 막으려면 IndexedDB 등 별도 durable
+        //   tombstone이 필요하며 v1.6 범위 밖(후속 ②)이다.
+        function retryPendingVocabQuarantine() {
+            if (!_vocabPendingQuarantine.size) return;
+            Array.from(_vocabPendingQuarantine.entries()).forEach(([id, ctx]) => {
+                quarantineVocabEnvelope(id, ctx.reasonCode, ctx.env, ctx.fallbackIdx);
+            });
+        }
+
+        // [v1.6 P1-4] 중복 outbox_entry_id 사전 격리(flush 진입 훅).
+        // ① 충돌 그룹(원본+중복)은 이번 drain POST 0 — mutate된 stale 뷰로 전송하지 않는다.
+        // ② 중복분만 고유 recovery ID 재부여 + 격리(전송·자동삭제 없이).
+        // ③ 원본 1건은 보존 → 다음 drain(중복이 빠진 깨끗한 box)에서 원본만 정상 POST.
+        // 반환: 이번 drain에서 POST를 건너뛸 outbox_entry_id 집합.
+        function quarantineDuplicateVocabEntries() {
+            const box = readVocabOutbox();
+            const firstIdx = new Map();
+            const dups = [];
+            box.forEach((e, idx) => {
+                if (!e) return;
+                const id = String(e.outbox_entry_id || '');
+                if (!id) return;                      // id 없음은 sendVocabEnvelope의 recovery 경로가 처리
+                if (firstIdx.has(id)) dups.push({ idx: idx, origId: id });
+                else firstIdx.set(id, idx);
+            });
+            const skip = new Set();
+            if (!dups.length) return skip;
+
+            // 재읽기 → 중복분에만 고유 recovery ID 부여 → 저장 확인(안전삭제와 동일 규약)
+            const cur = readVocabOutbox();
+            const assigned = [];
+            dups.forEach(d => {
+                if (!cur[d.idx]) return;
+                const rid = newVocabId('recovered');
+                cur[d.idx].outbox_entry_id = rid;
+                assigned.push({ idx: d.idx, entryId: rid, origId: d.origId });
+            });
+            if (!assigned.length) return skip;
+            const wrote = safeSetItem(VOCAB_OUTBOX_KEY, JSON.stringify(cur)) === true;
+
+            assigned.forEach(a => {
+                skip.add(a.origId);                   // 원본도 이번 drain은 보류
+                if (wrote) {
+                    quarantineVocabEnvelope(a.entryId, 'duplicate_entry_id', cur[a.idx], a.idx);
+                } else {
+                    // 저장 실패 — 인메모리로만 막고 다음 flush에서 재영속 시도
+                    _vocabErroredIds.add(a.entryId);
+                    _vocabPendingQuarantine.set(a.entryId, { reasonCode: 'duplicate_entry_id', env: cur[a.idx], fallbackIdx: a.idx });
+                }
+            });
+            return skip;
+        }
+
+        // ── §2.3-3 ok일 때만 적용되는 8삭제조건 ──
+        function vocabAckAllowsDelete(ack, env) {
+            const isInt = v => typeof v === 'number' && isFinite(v) && v % 1 === 0 && v >= 0;
+            if (ack.session_id !== env.session_id) return false;
+            if (ack.expected_count !== env.expected_count) return false;
+            if (!Array.isArray(ack.confirmed_event_ids)) return false;
+            const got = ack.confirmed_event_ids;
+            const set = new Set(got);
+            if (set.size !== got.length) return false;                       // 중복 없음
+            const want = env.events.map(e => e.client_event_id);
+            if (want.length !== got.length) return false;
+            for (const w of want) { if (!set.has(w)) return false; }         // 요청 event_id set equal
+            if (!isInt(ack.accepted_new) || !isInt(ack.already_present)) return false;
+            if (ack.accepted_new + ack.already_present !== env.expected_count) return false;
+            return true;
+        }
+
+        // ── §3.5 디버그 훅 하드 게이트: localhost 계열 AND E2E 플래그, 둘 다 참일 때만 ──
+        function vocabDebugHooksEnabled() {
+            const h = String((typeof location !== 'undefined' && location.hostname) || '');
+            const isLocal = (h === 'localhost' || h === '127.0.0.1' || h === '::1' || h === '[::1]');
+            if (!isLocal) return false;      // Pages 등 타 origin은 플래그가 있어도 무조건 비활성
+            return localStorage.getItem('vocab_e2e_debug') === '1';
+        }
+        function vocabE2EDelayAck() {
+            if (!vocabDebugHooksEnabled()) return Promise.resolve();
+            const ms = parseInt(localStorage.getItem('vocab_e2e_ack_delay_ms') || '0', 10);
+            if (!(ms > 0)) return Promise.resolve();
+            return new Promise(res => setTimeout(res, Math.min(ms, 60000)));
+        }
+        function vocabE2EHoldDelete() {
+            return vocabDebugHooksEnabled() && localStorage.getItem('vocab_e2e_hold_delete') === '1';
+        }
+
+        // ── §2.2 배치 1-POST + keepalive / §2.3 응답 처리 순서 ──
+        function sendVocabEnvelope(webhookUrl, env, idx) {
+            let entryId = (env && typeof env.outbox_entry_id === 'string' && env.outbox_entry_id.trim())
+                ? env.outbox_entry_id : '';
+            const missingId = !entryId;
+            if (missingId) {
+                entryId = 'recovered_' + idx + '_' + ((env && env.enqueued_at) || 'unknown');
+            }
+            const bad = validateVocabEnvelopeClient(env);
+            if (bad || missingId) {
+                // 손상 봉투 — 네트워크 전송 없이 즉시 격리
+                console.warn('[vocab-envelope-invalid-local]', entryId, bad || 'missing_outbox_entry_id');
+                quarantineVocabEnvelope(entryId, bad || 'invalid_envelope', env, idx);
+                return Promise.resolve(false);
+            }
+
+            const payload = {
+                schema_version: 2,
+                sheet: 'vocab_batch',
+                outbox_entry_id: env.outbox_entry_id,
+                session_id: env.session_id,
+                subject: env.subject,
+                enqueued_at: env.enqueued_at,
+                expected_count: env.expected_count,
+                events: env.events,
+                session_diag: env.session_diag
+            };
+            const body = JSON.stringify(payload);
+            let bytes = body.length;
+            try { bytes = new TextEncoder().encode(body).length; } catch (_) {}
+            const opts = { method: 'POST', body: body };
+            if (bytes <= VOCAB_KEEPALIVE_MAX_BYTES) opts.keepalive = true;
+
+            return fetch(webhookUrl, opts).then(async r => {
+                // 1. HTTP ok & 유효 JSON·객체가 아니면 보존·재전송(malformed = 일시)
+                if (!r.ok) throw new Error('HTTP ' + r.status);
+                const text = await r.text();
+                await vocabE2EDelayAck();                 // E2E 전용: ACK 처리 지연(강제종료 창)
+                let ack = null;
+                try { ack = JSON.parse(text); } catch (_) { ack = null; }
+                if (!ack || typeof ack !== 'object' || Array.isArray(ack)) {
+                    console.warn('[vocab-ack-malformed]', entryId);
+                    return false;
+                }
+                // 2. status 분기
+                if (ack.status === 'retry') return false;                       // 일시 — 자동 재전송
+                if (ack.status === 'error') {
+                    const allowed = VOCAB_ERROR_ALLOWLIST.indexOf(ack.reason_code) !== -1;
+                    const correlated = (ack.session_id === env.session_id) ||
+                                       (ack.outbox_entry_id === env.outbox_entry_id);
+                    if (allowed && correlated) {
+                        quarantineVocabEnvelope(entryId, ack.reason_code, env, idx);
+                        return false;
+                    }
+                    console.warn('[vocab-ack-error-unverified]', entryId, ack.reason_code);  // 위장 방어
+                    return false;
+                }
+                if (ack.status !== 'ok') return false;
+                // 3. ok일 때만 8삭제조건
+                if (!vocabAckAllowsDelete(ack, env)) {
+                    console.warn('[vocab-ack-strict-reject]', entryId);
+                    return false;
+                }
+                if (vocabE2EHoldDelete()) {
+                    console.warn('[vocab-e2e] delete held — 재전송 관측 모드');
+                    return false;
+                }
+                const removed = deleteVocabEnvelope(entryId);
+                if (removed) { try { safeSetItem('vocab_last_send', new Date().toISOString()); } catch (_) {} }
+                return removed;
+            }).catch(err => {
+                console.warn('[vocab-envelope-send-fail]', entryId, err && err.message);
+                return false;   // 보존·재전송
+            });
+        }
+
+        // ── §3.1 단일비행 + dirty 재배수. _errored 봉투는 자동 POST 대상에서 제외 ──
+        function flushVocabOutbox() {
+            if (_vocabOutboxInFlight) { _vocabOutboxDirty = true; return Promise.resolve(false); }
+
+            // [v1.6 P1-3] 진입 훅 ①: 미영속 격리 재-persist(저장공간 회복 시 안착).
+            retryPendingVocabQuarantine();
+            // [v1.6 P1-4] 진입 훅 ②: 중복 outbox_entry_id 사전 격리 → 충돌 그룹은 이번 drain 보류.
+            const skipDup = quarantineDuplicateVocabEntries();
+
+            const webhookUrl = localStorage.getItem('webhook_url');
+            if (!webhookUrl) return Promise.resolve(false);
+
+            const box = readVocabOutbox();
+            const targets = [];
+            box.forEach((env, idx) => {
+                if (!env) return;
+                if (env._errored) return;
+                if (_vocabErroredIds.has(String(env.outbox_entry_id || ''))) return;
+                if (skipDup.has(String(env.outbox_entry_id || ''))) return;   // 충돌 그룹 — 다음 drain에서 원본만
+                targets.push({ env: env, idx: idx });
+            });
+            if (!targets.length) return Promise.resolve(true);
+
+            _vocabOutboxInFlight = true;
+            let allDone = true;
+            return targets.reduce((chain, t) => chain.then(() =>
+                sendVocabEnvelope(webhookUrl, t.env, t.idx).then(done => { if (!done) allDone = false; })
+            ), Promise.resolve()).catch(err => {
+                console.warn('[vocab-outbox-flush-fail]', err && err.message);
+                allDone = false;
+            }).then(() => {
+                _vocabOutboxInFlight = false;
+                try { updateOpsDiagnostics(); } catch (_) {}
+                if (_vocabOutboxDirty) { _vocabOutboxDirty = false; return flushVocabOutbox(); }
+                return allDone;
+            });
+        }
+
+        // ── §2.7 · §3.4 v1 잔존 큐: 비변환 재전송, 행별 ACK 확인 뒤에만 삭제(선비움 폐기) ──
         function flushVocabQueue() {
-            // v132: 동시 호출 차단 + reserve-before-fetch (race 중복 방지)
             if (_vocabFlushInFlight) return Promise.resolve(false);
 
             const webhookUrl = localStorage.getItem('webhook_url');
@@ -7149,11 +7561,8 @@
             if (!q.length) return Promise.resolve(true);
 
             _vocabFlushInFlight = true;
+            const confirmed = [];   // ACK(ok/dedup) 확인된 행의 JSON 문자열
 
-            // 큐를 즉시 비움 — fetch 도중 새 row enqueue돼도 다음 flush 차례
-            safeSetItem('pending_vocab_log', JSON.stringify([]));
-
-            const remaining = [];
             return Promise.allSettled(q.map(row =>
                 fetch(webhookUrl, {
                     method: 'POST',
@@ -7161,52 +7570,147 @@
                 }).then(async r => {
                     if (!r.ok) throw new Error('HTTP ' + r.status);
                     const text = await r.text();
-                    let body = null;
-                    try { body = JSON.parse(text); } catch (_) {}
-                    if (body && body.ok === false) throw new Error(body.error || 'apps-script reject');
-                    if (body && body.status && body.status !== 'ok') throw new Error(body.error || body.status);
+                    let ackBody = null;
+                    try { ackBody = JSON.parse(text); } catch (_) {}
+                    if (!ackBody || typeof ackBody !== 'object') throw new Error('malformed ack');
+                    if (ackBody.ok === false) throw new Error(ackBody.error || 'apps-script reject');
+                    if (ackBody.status !== 'ok') throw new Error(ackBody.error || ackBody.status || 'no status');
+                    confirmed.push(JSON.stringify(row));   // ok / dedup:true 둘 다 status==='ok'
                 }).catch(err => {
                     console.warn('[vocab-log-send-fail]', err && err.message);
-                    remaining.push(row);
                 })
             )).then(() => {
-                // 실패 row만 큐 복귀 — 그 사이 enqueue된 새 row와 병합
+                // 재-읽기-filter-검증 삭제: 확인된 행만 1건씩 제거, 그 사이 enqueue된 행은 보존
+                const remain = new Map();
+                confirmed.forEach(s => remain.set(s, (remain.get(s) || 0) + 1));
                 const currentQ = JSON.parse(localStorage.getItem('pending_vocab_log') || '[]');
-                safeSetItem('pending_vocab_log', JSON.stringify([...currentQ, ...remaining]));
-                if (remaining.length < q.length) {
+                const kept = currentQ.filter(row => {
+                    const s = JSON.stringify(row);
+                    const c = remain.get(s) || 0;
+                    if (c > 0) { remain.set(s, c - 1); return false; }
+                    return true;
+                });
+                // [v1.6 P2-b] §3.4 재-읽기-filter-'검증' — 저장 성공을 리턴 근거에서 분리한다.
+                // 저장 실패면 삭제 미확정이므로 성공으로 보고하지 않는다(다음 flush 재시도).
+                // 서버 4튜플 dedup이 재전송을 흡수하므로 중복 위험은 없다.
+                const savedQueue = safeSetItem('pending_vocab_log', JSON.stringify(kept)) === true;
+                if (confirmed.length > 0) {
                     try { safeSetItem('vocab_last_send', new Date().toISOString()); } catch (_) {}
                 }
                 _vocabFlushInFlight = false;
-                return remaining.length === 0;
+                return savedQueue && confirmed.length === q.length;
             }).catch(err => {
-                // 예상 못한 에러 — 원본 큐 복구
-                const currentQ = JSON.parse(localStorage.getItem('pending_vocab_log') || '[]');
-                safeSetItem('pending_vocab_log', JSON.stringify([...currentQ, ...q]));
-                _vocabFlushInFlight = false;
+                _vocabFlushInFlight = false;   // 큐는 손대지 않았으므로 복구 불필요(선비움 폐기)
                 throw err;
             });
         }
 
-        function sendVocabToGoogleSheets() {
-            if (!QUIZ_DATA || !QUIZ_DATA.vocab_drill) return;
-            // v181: known = 첫 시도 객관식 정오(자기평가 아님). 단어당 첫 시도 1행만. 재도전은 무행.
-            const now = new Date().toISOString();
-            vocabTestWords.forEach(item => {
-                if (vocabTestFirstResults[item.id] !== undefined) {
-                    enqueueVocabRow({
-                        sheet: 'vocab_log',
-                        timestamp: now,
-                        lesson: getVocabLessonKey(item),
-                        subject: currentSubject,
-                        word_id: item.id,
-                        word: item.word,
-                        known: vocabTestFirstResults[item.id] ? 'T' : 'F',
-                        mode: 'vocab_test',                 // v181 마커(GAS가 무해하게 무시; 시트 저장은 별도 발주)
-                        assessment_version: 'v181-objective'
-                    });
+        // ── 세션 봉투 적재 + 전송 시도. 반환 = 영속 성공 여부(= '저장됨' 성립 여부) ──
+        function sendVocabToGoogleSheets(completionReason) {
+            const events = buildVocabEvents();
+            _vocabUnpersisted = buildVocabEnvelope(events, completionReason);
+            _vocabPersistAttempts = 0;
+            const persisted = persistVocabOutbox();
+            if (persisted) flushVocabOutbox();
+            try { updateOpsDiagnostics(); } catch (_) {}
+            return persisted;
+        }
+
+        // ── §2.1 persist 실패 처리: 완료/다음 차단 + 재시도. MAX 초과 = 명시적 hard failure ──
+        function renderVocabResultHtml(html) {
+            const area = document.getElementById('vocab-result-area');
+            area.style.display = 'block';
+            document.getElementById('vocab-card-area').style.display = 'none';
+            document.getElementById('vocab-test-area').style.display = 'none';
+            area.innerHTML = html;
+        }
+
+        function renderVocabPersistBlocked() {
+            const hard = _vocabPersistAttempts >= MAX_PERSIST_RETRIES;
+            renderVocabResultHtml(hard
+                ? '<div class="vocab-result-summary">' +
+                      '<h2>이 세션은 기록되지 않았습니다</h2>' +
+                      '<div class="detail">저장 공간이 부족해 결과를 저장하지 못했어요.<br>설정 → 로그 재전송 후 강제 새로고침을 해 주세요.</div>' +
+                      '<button class="vocab-done-btn" onclick="showPage(\'home-page\')" style="margin-top:24px;">홈으로</button>' +
+                  '</div>'
+                : '<div class="vocab-result-summary">' +
+                      '<h2>저장 공간 부족 — 재시도</h2>' +
+                      '<div class="detail">결과를 저장하지 못했어요. 아직 완료 처리되지 않았습니다.</div>' +
+                      '<button class="vocab-done-btn" onclick="retryVocabPersist()" style="margin-top:24px;">재시도</button>' +
+                  '</div>');
+        }
+
+        function retryVocabPersist() {
+            if (!_vocabUnpersisted) { renderVocabResultHtml(_vocabPendingSummaryHtml); return; }
+            if (persistVocabOutbox()) {
+                renderVocabResultHtml(_vocabPendingSummaryHtml);
+                flushVocabOutbox();
+                return;
+            }
+            renderVocabPersistBlocked();
+        }
+
+        // ── §3.1 문항 생성 0건: 성공화면 금지, 실패 전용 안내 + 드릴 전체 재시작 ──
+        function vocabGenerationFailedHtml() {
+            return '<div class="vocab-result-summary">' +
+                       '<h2>문항을 만들지 못했어요</h2>' +
+                       '<div class="detail">이번에는 문제를 만들 수 없었어요. 다시 시도해 주세요.</div>' +
+                       '<button class="vocab-done-btn" onclick="startVocabDrill()" style="margin-top:24px;">다시 시도</button>' +
+                       '<button class="vocab-done-btn" onclick="showPage(\'home-page\')" style="margin-top:10px;background:#f0f0f0;color:#666;">홈으로</button>' +
+                   '</div>';
+        }
+
+        // ── §3.5 아웃박스 인스펙터(자동 삭제 없음 · 수동 조치만) ──
+        function renderVocabOutboxInspector() {
+            const el = document.getElementById('vocab-outbox-inspector');
+            if (!el) return;
+            const box = readVocabOutbox();
+            if (!box.length) { el.innerHTML = '<div style="color:#888;">아웃박스 비어 있음</div>'; return; }
+            el.innerHTML = box.map((e, i) => {
+                // [v1.6 P1-5] 버튼 파라미터는 배열 index가 아니라 고정 outbox_entry_id다.
+                // 렌더~클릭 사이 flush가 앞 봉투를 삭제하면 index가 밀려 다른 봉투의 격리를 오해제한다.
+                const rawId = (e && typeof e.outbox_entry_id === 'string' && e.outbox_entry_id.trim()) ? e.outbox_entry_id : '';
+                const id = rawId || ('(id 없음 · idx ' + i + ')');
+                const arg = "'" + rawId.replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'";
+                const n = (e && Array.isArray(e.events)) ? e.events.length : 0;
+                const head = '<div><strong>' + id + '</strong></div>' +
+                    '<div>session: ' + ((e && e.session_id) || '-') + ' · event ' + n + '건 · ' + ((e && e.enqueued_at) || '-') + '</div>';
+                let err = '';
+                if (e && e._errored) {
+                    err = '<div style="color:#C62828;margin-top:4px;">⚠ 격리됨 — ' + ((e && e.reason_code) || '?') +
+                          ' · 자동 전송이 멈췄습니다(수동 조치 필요)</div>';
+                    err += rawId
+                        ? '<button onclick="copyVocabEnvelope(' + arg + ')" style="margin-top:4px;padding:4px 8px;font-size:11px;">payload 복사</button> ' +
+                          '<button onclick="retryVocabErrored(' + arg + ')" style="margin-top:4px;padding:4px 8px;font-size:11px;">원인 수정 후 재시도</button>'
+                        : '<div style="color:#888;margin-top:4px;">id 없는 손상 봉투 — 다음 flush에서 recovery ID가 부여됩니다</div>';
                 }
-            });
-            flushVocabQueue();
+                return '<div style="padding:6px 0;border-bottom:1px solid #eee;font-size:11px;line-height:1.5;">' + head + err + '</div>';
+            }).join('');
+        }
+
+        // [v1.6 P1-5] 재읽은 box에서 outbox_entry_id로 찾는다. 없으면 no-op + 재렌더.
+        function copyVocabEnvelope(entryId) {
+            const box = readVocabOutbox();
+            const i = box.findIndex(e => e && e.outbox_entry_id === entryId);
+            if (i === -1) { renderVocabOutboxInspector(); return; }
+            const text = JSON.stringify(box[i], null, 2);
+            try { navigator.clipboard.writeText(text); } catch (_) { console.log(text); }
+        }
+
+        function retryVocabErrored(entryId) {
+            const box = readVocabOutbox();
+            const i = box.findIndex(e => e && e.outbox_entry_id === entryId);
+            if (i === -1) { renderVocabOutboxInspector(); return; }   // 이미 사라진 봉투 — 오해제 금지
+            const target = box[i];
+            _vocabErroredIds.delete(String(entryId));
+            _vocabPendingQuarantine.delete(String(entryId));
+            delete target._errored;
+            delete target.reason_code;
+            delete target.errored_at;
+            if (safeSetItem(VOCAB_OUTBOX_KEY, JSON.stringify(box)) === true) {
+                flushVocabOutbox();
+            }
+            renderVocabOutboxInspector();
         }
 
         // 세션 종료
@@ -7726,6 +8230,7 @@
         function retransmitUnsentLogs() {
             sendToGoogleSheets();
             flushVocabQueue();
+            flushVocabOutbox();
         }
 
         // 결과 내보내기
