@@ -1042,7 +1042,43 @@
         .subject-card-icon { font-size: 32px; margin-bottom: 8px; }
         .subject-card-name { font-size: 17px; font-weight: 700; }
         .subject-card-sub { font-size: 12px; margin-top: 4px; opacity: 0.7; }
-        .subject-card.english { border-color: #2F5496; color: #2F5496; }
+        .subject-card.english {
+            border-color: #2F5496;
+            color: #2F5496;
+            position: relative;
+            overflow: hidden;
+        }
+        .vocab-entry-loading {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.97);
+            color: #2F5496;
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.45;
+            text-align: center;
+        }
+        .vocab-entry-loading[hidden] { display: none; }
+        .vocab-entry-spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid #D6E1F4;
+            border-top-color: #2F5496;
+            border-radius: 50%;
+            animation: vocab-entry-spin 0.8s linear infinite;
+        }
+        @keyframes vocab-entry-spin { to { transform: rotate(360deg); } }
+        @media (prefers-reduced-motion: reduce) {
+            .vocab-entry-spinner { animation-duration: 1.6s; }
+        }
         .subject-card.korean { border-color: #6B4C9A; color: #6B4C9A; }
         .subject-card.math { border-color: #D4760A; color: #D4760A; }
         .subject-card.social { border-color: #2E7D32; color: #2E7D32; }
@@ -1681,6 +1717,10 @@
                     <div class="subject-card-name">영어</div>
                     <div class="subject-card-sub">영어 단어 10개</div>
                     <button onclick="openEnglishReview(event)" style="margin-top:10px;padding:6px 12px;border:1px solid rgba(255,255,255,0.6);border-radius:8px;background:rgba(255,255,255,0.18);color:inherit;font-size:12px;cursor:pointer;">Lesson별 복습</button>
+                    <div id="vocab-entry-loading" class="vocab-entry-loading" role="status" aria-live="polite" aria-atomic="true" aria-hidden="true" hidden>
+                        <div class="vocab-entry-spinner" aria-hidden="true"></div>
+                        <div id="vocab-entry-loading-text">영어 단어를 준비하고 있어요…</div>
+                    </div>
                 </div>
                 <!-- 집중모드 숨김(2026-07-12): 여름 집중(단어 드릴 + 오늘의 한 장 + 문해력). 국·수·사·과 카드 임시 숨김. 복원 시 주석 해제.
 <div class="subject-card korean" onclick="selectSubject('korean')">
@@ -2020,8 +2060,8 @@
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-07-20 v185';
-        const APP_CACHE_NAME = 'quiz-v185';
+        const BUILD_VERSION = '2026-08-25 v186r2';
+        const APP_CACHE_NAME = 'quiz-v186r2';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -6542,6 +6582,282 @@
         let vocabTestLastType = {};       // { id: 'en2ko'|'ko2en'|'cloze' } 첫 시도 유형(회전·저장용)
         let _vocabDrillFinished = false;  // finishVocabDrill 이중 실행/이중 전송 방지
 
+        // ═══════════════════════════════════════════════════════════════
+        // [v186] E30 간격 복습 — 클라이언트는 서버 상태의 '캐시'다.
+        //   상태(박스·만기)를 계산하지도 올리지도 않는다. 올리는 것은
+        //   '무엇을 언제 어떻게 답했는가'뿐이고, 사다리는 서버가 계산해 돌려준다.
+        //   아이 화면은 지금과 같다 — 박스·만기·간격은 절대 노출하지 않는다(7/19b 규칙 11).
+        // ═══════════════════════════════════════════════════════════════
+        const SRS_EVENT_VERSION = 1;          // §2.3 이벤트 스키마 버전
+        const SRS_SESSION_VERSION = 1;        // §2.3 세션 스키마 버전(§2.4 램프 카운터가 세는 필드)
+        const SRS_STATE_CACHE_KEY = 'vocab_state_cache';
+        const SRS_DEVICE_KEY = 'device_instance_id';
+        const SRS_FALLBACK_DUE_CAP = 3;       // §2.4 메타 부재(구서버·캐시 없음) 시 클라 기본값
+        const SRS_FALLBACK_NEW_MIN = 2;
+        const SRS_PULL_HEDGE_MS = 6000;       // §5″ 첫 요청이 느릴 때 GET 1회만 추가
+        const SRS_PULL_HARD_CAP_MS = 12000;   // §5″ 두 요청이 공유하는 전체 상한(t0 기준)
+        const SRS_FLUSH_WAIT_MS = 3000;       // §2.7 ① outbox flush ACK 대기 상한
+        let _vocabPullSeq = 0;                 // JSONP callback/nonce 충돌 방지(페이지 실행 단위)
+        let _vocabStateMap = {};              // word_id → 서버 상태(box·due_on·legacy_pending)
+        let _vocabStateMeta = null;           // { due_cap, new_min, server_today_kst }
+        let _vocabRecallMode = {};            // word_id → 'cold_recall' | 'study_then_test'
+        let _vocabStudyList = [];             // 카드 단계를 거치는 단어만(냉시험 단어 제외)
+        let _vocabSyncNote = '';              // 세션 시작 동기화 결과(§2.7 — 진단용)
+        let _vocabLocalSaveFailed = false;    // §4-7 로컬 캐시 저장 실패 플래그
+        let vocabTestAnsweredAt = {};         // word_id → 첫 시도 응답 시각(로컬 ISO+오프셋)
+
+        function srsModeOf(id) {
+            return _vocabRecallMode[String(id)] || 'study_then_test';
+        }
+
+        // 익명 UUID v4. localStorage 영구 보관, 최초 1회 생성.
+        // ⚠ 선발 로직에 절대 쓰지 않는다 — 진단 전용(§2.3).
+        function getDeviceInstanceId() {
+            let id = '';
+            try { id = localStorage.getItem(SRS_DEVICE_KEY) || ''; } catch (_) {}
+            if (id) return id;
+            try {
+                if (window.crypto && typeof window.crypto.randomUUID === 'function') id = window.crypto.randomUUID();
+            } catch (_) {}
+            if (!id) {
+                try {
+                    if (window.crypto && window.crypto.getRandomValues) {
+                        const a = new Uint8Array(16);
+                        window.crypto.getRandomValues(a);
+                        a[6] = (a[6] & 0x0f) | 0x40;   // version 4
+                        a[8] = (a[8] & 0x3f) | 0x80;   // variant 10x
+                        const h = Array.from(a).map(b => ('0' + b.toString(16)).slice(-2)).join('');
+                        id = h.slice(0, 8) + '-' + h.slice(8, 12) + '-' + h.slice(12, 16) + '-' + h.slice(16, 20) + '-' + h.slice(20);
+                    }
+                } catch (_) {}
+            }
+            if (!id) id = 'dev-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 12);
+            safeSetItem(SRS_DEVICE_KEY, id);
+            return id;
+        }
+
+        // 로컬 시각 ISO+오프셋. §2.3 — 서버는 이 원본을 절대 덮어쓰지 않는다.
+        function srsLocalIso(d) {
+            const t = d || new Date();
+            const off = -t.getTimezoneOffset();
+            const sign = off >= 0 ? '+' : '-';
+            const p = n => ('0' + Math.floor(Math.abs(n))).slice(-2);
+            return t.getFullYear() + '-' + p(t.getMonth() + 1) + '-' + p(t.getDate()) + 'T' +
+                p(t.getHours()) + ':' + p(t.getMinutes()) + ':' + p(t.getSeconds()) +
+                sign + p(off / 60) + ':' + p(off % 60);
+        }
+
+        // 기기 KST 날짜 — pull 실패·메타 부재 시의 fallback(§2.7)
+        function srsDeviceTodayKst() {
+            const d = new Date(Date.now() + 9 * 3600000);
+            const p = n => ('0' + n).slice(-2);
+            return d.getUTCFullYear() + '-' + p(d.getUTCMonth() + 1) + '-' + p(d.getUTCDate());
+        }
+
+        // §2.7 '오늘'의 판정 기준: 정상 pull이면 server_today_kst, 아니면 기기 KST.
+        // fallback을 허용하는 이유 = 오프라인에서도 아이가 학습을 못 하면 안 된다.
+        // 그 대가(조기 냉시험)는 클라가 아니라 서버 재fold가 막는다(§2.1a) — 서버 방어는 우회할 수 없다.
+        function srsToday() {
+            const s = _vocabStateMeta && _vocabStateMeta.server_today_kst;
+            return (typeof s === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(s)) ? s : srsDeviceTodayKst();
+        }
+        function srsDueCap() {
+            const v = _vocabStateMeta && _vocabStateMeta.due_cap;
+            return (typeof v === 'number' && isFinite(v) && v >= 0) ? v : SRS_FALLBACK_DUE_CAP;
+        }
+        function srsNewMin() {
+            const v = _vocabStateMeta && _vocabStateMeta.new_min;
+            return (typeof v === 'number' && isFinite(v) && v >= 0) ? v : SRS_FALLBACK_NEW_MIN;
+        }
+
+        function srsValidYmd(value, allowEmpty) {
+            if (allowEmpty && value === '') return true;
+            if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+            const p = value.split('-').map(Number);
+            const d = new Date(Date.UTC(p[0], p[1] - 1, p[2]));
+            return d.getUTCFullYear() === p[0] && d.getUTCMonth() === p[1] - 1 && d.getUTCDate() === p[2];
+        }
+
+        function srsValidateStatePayload(payload) {
+            if (!payload || typeof payload !== 'object' || payload.status !== 'ok') return false;
+            if (!Array.isArray(payload.states) || !payload.meta || typeof payload.meta !== 'object') return false;
+            const dc = payload.meta.due_cap, nm = payload.meta.new_min, td = payload.meta.server_today_kst;
+            if (!Number.isInteger(dc) || dc < 0 || dc > VOCAB_SESSION_CAP) return false;
+            if (!Number.isInteger(nm) || nm < 0 || nm > VOCAB_SESSION_CAP) return false;
+            if (!srsValidYmd(td, false)) return false;
+            const seen = {};
+            for (let i = 0; i < payload.states.length; i++) {
+                const s = payload.states[i];
+                if (!s || typeof s !== 'object' || typeof s.word_id !== 'string' ||
+                    !s.word_id || s.word_id !== s.word_id.trim()) return false;
+                if (seen[s.word_id]) return false;
+                if (!Number.isInteger(s.box) || s.box < 0 || s.box > 3) return false;
+                if (!srsValidYmd(s.due_on, true)) return false;
+                if (typeof s.last_pass_at !== 'string' ||
+                    (s.last_pass_at && !Number.isFinite(Date.parse(s.last_pass_at)))) return false;
+                if (!Number.isInteger(s.fail_count) || s.fail_count < 0 ||
+                    !Number.isInteger(s.attempt_count) || s.attempt_count < 0 ||
+                    s.fail_count > s.attempt_count) return false;
+                if (s.legacy_pending !== 0 && s.legacy_pending !== 1) return false;
+                if (typeof s.legacy_pass_types !== 'string') return false;
+                seen[s.word_id] = true;
+            }
+            return true;
+        }
+
+        function srsApplyStatePayload(payload) {
+            if (!srsValidateStatePayload(payload)) return false;
+            const map = {};
+            payload.states.forEach(s => { if (s && s.word_id) map[String(s.word_id)] = s; });
+            _vocabStateMap = map;
+            _vocabStateMeta = payload.meta;
+            return true;
+        }
+
+        function srsLoadStateCache() {
+            try {
+                const raw = localStorage.getItem(SRS_STATE_CACHE_KEY);
+                if (!raw) return false;
+                return srsApplyStatePayload(JSON.parse(raw));
+            } catch (_) { return false; }
+        }
+
+        // ── §2.7/§5″ pull: doGet?action=vocab_state (JSONP) ──
+        // 6s에 GET을 딱 1회 hedge하고, 두 요청은 t0+12s hard cap을 공유한다.
+        // 첫 유효 payload만 적용한다. hard cap 뒤 늦은 JSONP는 page-lifetime no-op callback이
+        // 흡수해 ReferenceError와 승자 상태 덮어쓰기를 모두 막는다.
+        function loadVocabState() {
+            return new Promise(function (resolve) {
+                var wh = '';
+                try { wh = localStorage.getItem('webhook_url') || ''; } catch (e) {}
+                if (!wh) { resolve(false); return; }
+                var opId = Date.now().toString(36) + '_' + (++_vocabPullSeq).toString(36);
+                var attempts = [];
+                var settled = false;
+                var secondStarted = false;
+                var hedgeTimer = null;
+                var capTimer = null;
+
+                function removeScript(a) {
+                    if (!a || !a.script) return;
+                    a.script.onload = null;
+                    a.script.onerror = null;
+                    if (a.script.parentNode) a.script.parentNode.removeChild(a.script);
+                }
+                function cleanupFinished(a) {
+                    removeScript(a);
+                    try { delete window[a.cbName]; } catch (e) { window[a.cbName] = undefined; }
+                }
+                function tombstoneActive(a) {
+                    // script 제거만으로 진행 중 JSONP 실행이 취소되지 않는다(8/19 실측).
+                    // 따라서 callback 이름은 페이지가 닫힐 때까지 안전한 no-op으로 남긴다.
+                    window[a.cbName] = function () {};
+                    removeScript(a);
+                }
+                function settle(ok) {
+                    if (settled) return;
+                    settled = true;
+                    if (hedgeTimer !== null) clearTimeout(hedgeTimer);
+                    if (capTimer !== null) clearTimeout(capTimer);
+                    attempts.forEach(function (a) {
+                        if (a.finished) cleanupFinished(a);
+                        else tombstoneActive(a);
+                    });
+                    resolve(!!ok);
+                }
+                function allStartedAttemptsFinished() {
+                    return secondStarted && attempts.length === 2 && attempts.every(function (a) { return a.finished; });
+                }
+                function startSecond() {
+                    if (settled || secondStarted) return;
+                    secondStarted = true;
+                    startAttempt(2);
+                }
+                function finishAttempt(a, payload, hasPayload) {
+                    if (!a || a.finished) return;
+                    a.finished = true;
+                    if (!settled && hasPayload) {
+                        var applied = false;
+                        try {
+                            // 첫 기기의 fallback 보장까지 성공 계약에 포함한다. 캐시 저장에
+                            // 실패한 payload를 메모리에 먼저 적용해 fail-open으로 남기지 않는다.
+                            if (srsValidateStatePayload(payload)) {
+                                if (!safeSetItem(SRS_STATE_CACHE_KEY, JSON.stringify(payload))) {
+                                    // 네트워크 재시도로는 로컬 저장공간 오류가 회복되지 않는다.
+                                    // 즉시 false로 닫고 prepareVocabSession의 기존 캐시 fallback에 맡긴다.
+                                    settle(false);
+                                    return;
+                                }
+                                applied = srsApplyStatePayload(payload);
+                            }
+                        } catch (e) { applied = false; }
+                        if (applied) { settle(true); return; }
+                    }
+                    cleanupFinished(a);
+                    if (settled) return;
+                    if (a.number === 1) startSecond();
+                    if (allStartedAttemptsFinished()) settle(false);
+                }
+                function startAttempt(number) {
+                    if (settled || number < 1 || number > 2) return;
+                    var cbName = '__vocab_state_cb_' + opId + '_' + number;
+                    var a = { number: number, cbName: cbName, script: null, finished: false };
+                    attempts.push(a);
+                    try {
+                        window[cbName] = function (payload) { finishAttempt(a, payload, true); };
+                        var s = document.createElement('script');
+                        a.script = s;
+                        var sep = wh.indexOf('?') === -1 ? '?' : '&';
+                        var nonce = opId + '_' + number + '_' + Date.now().toString(36);
+                        s.src = wh + sep + 'action=vocab_state&callback=' + encodeURIComponent(cbName) +
+                            '&srs_pull_attempt=' + number + '&_=' + encodeURIComponent(nonce);
+                        s.onerror = function () { finishAttempt(a, null, false); };
+                        // HTTP 200이지만 callback을 호출하지 않은 script도 실패로 확정한다.
+                        s.onload = function () { finishAttempt(a, null, false); };
+                        document.head.appendChild(s);
+                    }
+                    catch (e) { finishAttempt(a, null, false); }
+                }
+
+                try {
+                    hedgeTimer = setTimeout(startSecond, SRS_PULL_HEDGE_MS);
+                    capTimer = setTimeout(function () { settle(false); }, SRS_PULL_HARD_CAP_MS);
+                    startAttempt(1);
+                } catch (e) { settle(false); }
+            });
+        }
+
+        // ── §2.7 세션 시작 순서(고정): ① outbox flush + ACK → ② vocab_state pull → ③ 선발 ──
+        // 순서를 지키지 않으면 직전 오프라인 세션의 결과와 램프 카운터가 한 세션 늦게 반영된다.
+        // ①의 대기 상한 3s — 초과하면 기다리지 않고 ②로 넘어간다(outbox는 그대로 보존).
+        // ②는 최대 12s. pull·캐시가 모두 없으면 잘못된 '전부 신규' 선발 대신 진입을 막는다.
+        async function prepareVocabSession() {
+            _vocabSyncNote = '';
+            let flushed = false;
+            try {
+                flushed = await Promise.race([
+                    flushVocabOutbox(),
+                    new Promise(r => setTimeout(() => r('timeout'), SRS_FLUSH_WAIT_MS))
+                ]);
+            } catch (_) { flushed = false; }
+            if (flushed === 'timeout') _vocabSyncNote = 'flush_timeout';
+            else if (flushed !== true) _vocabSyncNote = 'flush_incomplete';
+
+            const pulled = await loadVocabState();
+            if (!pulled) {
+                const cached = srsLoadStateCache();
+                _vocabSyncNote = (_vocabSyncNote ? _vocabSyncNote + '|' : '') +
+                    (cached ? 'pull_fail_cache' : 'pull_fail_nostate');
+                if (!cached) {
+                    // 같은 SPA에서 직전 세션의 상태가 남아 있는 fail-open도 함께 차단한다.
+                    _vocabStateMap = {};
+                    _vocabStateMeta = null;
+                }
+                return cached;
+            }
+            return true;
+        }
+
         // ── v182 §6: 저장·로그 키잉의 유일 경로 ──
         function normalizeLessonKey(cl) {
             if (cl === null || cl === undefined) return null;
@@ -6623,30 +6939,87 @@
         }
 
         // 홈 영어 카드(통합 진입) — 순차 로드 후 통합 드릴. 로드 중 중복 진입 차단.
+        const VOCAB_ENTRY_LOADING_COPY = {
+            lessons: '영어 단어를 준비하고 있어요…',
+            state: '오늘의 단어를 고르고 있어요…'
+        };
+        function setVocabEntryLoading(show, message) {
+            // 로딩 UI 자체의 결손이 진입 lock 해제를 막지 않도록 항상 no-throw로 둔다.
+            try {
+                const box = document.getElementById('vocab-entry-loading');
+                const text = document.getElementById('vocab-entry-loading-text');
+                const home = document.getElementById('home-page');
+                if (text && message) text.textContent = message;
+                if (box) {
+                    box.hidden = !show;
+                    box.setAttribute('aria-hidden', show ? 'false' : 'true');
+                }
+                if (home) {
+                    if (show) home.setAttribute('aria-busy', 'true');
+                    else home.removeAttribute('aria-busy');
+                }
+            } catch (_) {}
+        }
         let _vocabEntryBusy = false;
         async function startEnglishEntry(ev) {
             if (VOCAB_CONFIG.entryMode !== 'unified') { selectSubject('english'); return; }
             if (_vocabEntryBusy || _unifiedLoadInFlight) return;   // 연속 탭 재진입 방지(single-flight)
             _vocabEntryBusy = true;
-            const card = ev && ev.currentTarget;
-            if (card) card.style.pointerEvents = 'none';
+            let card = null;
+            let home = null;
+            let entrySnapshot = null;
             try {
+                card = (ev && ev.currentTarget) || document.querySelector('.subject-card.english');
+                home = document.getElementById('home-page');
+                entrySnapshot = {
+                    pointerEvents: card && card.style ? card.style.pointerEvents : '',
+                    cardAriaDisabled: card && card.getAttribute ? card.getAttribute('aria-disabled') : null,
+                    homeAriaBusy: home && home.getAttribute ? home.getAttribute('aria-busy') : null
+                };
+                const staleError = document.getElementById('unified-load-error');
+                if (staleError) staleError.remove();
+                if (card && card.style) card.style.pointerEvents = 'none';
+                if (card && card.setAttribute) card.setAttribute('aria-disabled', 'true');
+                setVocabEntryLoading(true, VOCAB_ENTRY_LOADING_COPY.lessons);
                 currentSubject = 'english';
                 await loadUnifiedVocab();
+                setVocabEntryLoading(true, VOCAB_ENTRY_LOADING_COPY.state);
                 QUIZ_DATA = { subject: 'english', vocab_drill: UNIFIED_VOCAB };
                 currentLesson = 'ENG_ALL';
                 currentMode = 'vocab';
                 vocabDrillUnified = true;
+                // [v186] §2.7 세션 시작 순서(고정): ① outbox flush+ACK → ② vocab_state pull → ③ 선발.
+                // 이 순서를 지키지 않으면 직전 오프라인 세션의 결과와 램프 카운터가
+                // 한 세션 늦게 반영된다. 캐시도 없으면 신규 오선발 대신 fail-closed.
+                const stateReady = await prepareVocabSession();
+                if (!stateReady) {
+                    setVocabEntryLoading(false);
+                    showUnifiedLoadError('복습 상태를 불러오지 못했어요. 인터넷 연결을 확인하고 다시 시도해 주세요.');
+                    return;
+                }
                 startVocabDrill();
             } catch (err) {
                 console.error('[unified-vocab-load-fail]', err && err.message);
+                setVocabEntryLoading(false);
                 showUnifiedLoadError();
             } finally {
+                // 로딩 cleanup과 접근성 속성 복원은 각각 독립시켜 한 실패가 lock 복원을 막지 않게 한다.
+                setVocabEntryLoading(false);
+                try {
+                    if (card && card.style && entrySnapshot) card.style.pointerEvents = entrySnapshot.pointerEvents;
+                    if (card && card.setAttribute && card.removeAttribute && entrySnapshot) {
+                        if (entrySnapshot.cardAriaDisabled === null) card.removeAttribute('aria-disabled');
+                        else card.setAttribute('aria-disabled', entrySnapshot.cardAriaDisabled);
+                    }
+                    if (home && home.setAttribute && home.removeAttribute && entrySnapshot) {
+                        if (entrySnapshot.homeAriaBusy === null) home.removeAttribute('aria-busy');
+                        else home.setAttribute('aria-busy', entrySnapshot.homeAriaBusy);
+                    }
+                } catch (_) {}
                 _vocabEntryBusy = false;
-                if (card) card.style.pointerEvents = '';
             }
         }
-        function showUnifiedLoadError() {
+        function showUnifiedLoadError(message) {
             const home = document.getElementById('home-page');
             let box = document.getElementById('unified-load-error');
             if (!box) {
@@ -6655,7 +7028,7 @@
                 box.style.cssText = 'margin:16px;padding:16px;border-radius:10px;background:#FFEBEE;color:#C62828;text-align:center;font-size:14px;';
                 home.appendChild(box);
             }
-            box.innerHTML = '단어 데이터를 불러오지 못했어요. 인터넷 연결을 확인하고 다시 시도해 주세요.' +
+            box.innerHTML = (message || '단어 데이터를 불러오지 못했어요. 인터넷 연결을 확인하고 다시 시도해 주세요.') +
                 '<button onclick="this.parentElement.remove();startEnglishEntry({currentTarget:null})" style="display:block;margin:12px auto 0;padding:10px 20px;border:none;border-radius:8px;background:#C62828;color:white;font-size:15px;font-weight:700;cursor:pointer;">다시 시도</button>';
             box.style.display = 'block';
         }
@@ -6677,6 +7050,21 @@
             vocabDrillResults = {};
             _vocabDrillFinished = false;
 
+            // ── [v186 · E30 §4-1a] 세션 경계 선제 초기화 (E34) ──
+            // 직전 완주 뒤 재진입하여 카드 단계에서 startVocabTest() 실행 전에 '그만하기'를
+            // 누르면, 리셋이 startVocabTest()에만 있어 직전 테스트 상태가 그대로 재사용된다.
+            // 그 결과 quitVocabDrill()이 직전 세션 답안을 전량 재전송한다(팬텀 세션 §2.8b).
+            // startVocabTest()의 리셋 목록 전건을 여기서도 선제 적용한다.
+            // ⚠ startVocabTest()의 기존 재초기화는 삭제하지 않는다 — 이동이 아니라 복제(이중 방어).
+            vocabTestWords = [];
+            vocabTestList = [];
+            vocabTestIndex = 0;
+            vocabTestPhase = 'first';
+            vocabTestFirstResults = {};
+            vocabTestRetryResults = {};
+            vocabTestLastType = {};
+            vocabTestAnsweredAt = {};
+
             // ── v182 §4: 선발 (통합=계열별 새→아는 + 오답우선 6:4 / 단일=v181 순서) ──
             const prevResults = JSON.parse(localStorage.getItem('vocab_results') || '{}');
             const recOf = (item) => {
@@ -6684,18 +7072,44 @@
                 return (k && prevResults[k]) ? prevResults[k][item.id] : undefined;
             };
             const pool = QUIZ_DATA.vocab_drill;
+            _vocabRecallMode = {};
             if (vocabDrillUnified) {
+                // ── [v186] E30 §2.4 선발 계약 (의사코드 그대로) ──
+                //   1) 만기 복습 우선 — due_on <= 오늘(KST), 오래된 만기 순
+                //   2) 초과분은 이월(선발 안 함, 다음 세션에서 다시 가장 오래된 순)
+                //   3) 남은 칸에만 신규 — 신규 안에서는 교과서:필수 6:4 유지
+                //   4) 만기·신규 모두 비면 legacy(due_on 결손) fallback
+                //   5) 신규 최소 보장 new_min — 만기가 캡을 넘겨도 신규 슬롯은 남긴다
+                // ⚠ 현행 WRONG 선취는 폐기한다. 실패 단어는 서버가 '다음 학습일 만기'로
+                //   내려주므로 1번 경로로 자연히 먼저 나온다(§2.4).
                 const CFG = VOCAB_CONFIG;
                 const inSet = (item, set) => set.indexOf(item._lesson) !== -1;
-                const isKnown = (it) => { const r = recOf(it); return !!(r && r.known === true); };
-                const isWrong = (it) => { const r = recOf(it); return !!(r && r.known === false); };
-                const WRONG     = pool.filter(isWrong);                                        // 활성셋, 소속 무관
-                const NEW_TXT   = pool.filter(it => inSet(it, CFG.textbookLessons)  && !recOf(it));
-                const KNOWN_TXT = pool.filter(it => inSet(it, CFG.textbookLessons)  && isKnown(it));
-                const NEW_ESS   = pool.filter(it => inSet(it, CFG.essentialLessons) && !recOf(it));
-                const KNOWN_ESS = pool.filter(it => inSet(it, CFG.essentialLessons) && isKnown(it));
-                [WRONG, NEW_TXT, KNOWN_TXT, NEW_ESS, KNOWN_ESS].forEach(shuffleArray);
+                const today = srsToday();
+                const stOf = (it) => _vocabStateMap[String(it.id)];
+                const isDue = (it) => { const s = stOf(it); return !!(s && s.due_on && s.due_on <= today); };
+                const isNew = (it) => !stOf(it);
+                const isLegacyNoDue = (it) => { const s = stOf(it); return !!(s && s.legacy_pending && !s.due_on); };
+
+                // 오래된 만기 순. 동률은 단어ID 사전순 — 선발을 결정적으로 만든다.
+                const DUE = pool.filter(isDue).sort((a, b) => {
+                    const da = stOf(a).due_on, db = stOf(b).due_on;
+                    if (da !== db) return da < db ? -1 : 1;
+                    return String(a.id) < String(b.id) ? -1 : 1;
+                });
+                const LEGACY  = pool.filter(isLegacyNoDue);
+                const NEW_TXT = pool.filter(it => inSet(it, CFG.textbookLessons)  && isNew(it));
+                const NEW_ESS = pool.filter(it => inSet(it, CFG.essentialLessons) && isNew(it));
+                [NEW_TXT, NEW_ESS, LEGACY].forEach(shuffleArray);   // DUE는 만기 순 — 섞지 않는다
+
                 const cap = VOCAB_SESSION_CAP;
+                const dueCap = srsDueCap();       // 서버 정책값(램프 중 3 / 이후 8)
+                const newMin = srsNewMin();       // 서버 정책값(2)
+                const newLeft = NEW_TXT.length + NEW_ESS.length;
+                // ⓪ 정책값이 바뀌어도 신규 최소 보장이 깨지지 않게 방어.
+                //   서버가 due_cap을 10으로 올려도 신규 2칸이 지켜진다.
+                //   신규 풀이 완전히 소진되면 자동으로 cap까지 만기가 차지한다.
+                const effectiveDueCap = (newLeft > 0) ? Math.min(dueCap, cap - newMin) : cap;
+
                 const picked = [];
                 const seen = new Set();
                 const take = (arr, n) => {
@@ -6705,19 +7119,25 @@
                         seen.add(it.id); picked.push(it); n--;
                     }
                 };
-                // 1) 오답 먼저(별도 선취, 6:4 quota 미포함)
-                take(WRONG, Math.min(WRONG.length, cap));
-                const wrongTaken = picked.length;
-                // 2) 남은 자리 R = 교과서:필수 6:4
-                const R = cap - wrongTaken;
-                const txtN = Math.round(R * 0.6);
-                const essN = R - txtN;
-                // 3) 계열별 새→아는(KNOWN 합치지 않음)
-                let f = picked.length; take(NEW_TXT, txtN);  take(KNOWN_TXT, txtN - (picked.length - f));
-                f = picked.length;     take(NEW_ESS, essN);  take(KNOWN_ESS, essN - (picked.length - f));
-                // 4) 크로스 드레인(최후): 못 채운 몫을 다른 계열 남은(NEW→KNOWN)으로
-                take(NEW_TXT, cap); take(NEW_ESS, cap); take(KNOWN_TXT, cap); take(KNOWN_ESS, cap);
+                // ① 만기
+                take(DUE, Math.min(effectiveDueCap, DUE.length));
+                // ② 신규 — 남은 칸 전부. 계열 6:4 유지
+                const newTake = cap - picked.length;
+                const txtN = Math.round(newTake * 0.6);
+                const f = picked.length;
+                take(NEW_TXT, txtN);
+                take(NEW_ESS, newTake - (picked.length - f));
+                take(NEW_TXT, cap); take(NEW_ESS, cap);   // 크로스 드레인(한쪽 계열 소진 시)
+                // ③ 신규가 모자라거나 문항 생성에 실패하면 남는 칸은 DUE로 반환
+                if (picked.length < cap) take(DUE, cap);
+                // ④ 만기·신규 모두 비면 legacy fallback(정상 경로에서는 legacy도 due_on을 갖는다)
+                if (picked.length < cap) take(LEGACY, cap);
                 vocabDrillList = picked.slice(0, cap);
+
+                // §2.5 냉시험 분리 — 만기 복습 단어는 카드 없이 바로 문제로 낸다.
+                vocabDrillList.forEach(it => {
+                    _vocabRecallMode[String(it.id)] = isDue(it) ? 'cold_recall' : 'study_then_test';
+                });
             } else {
                 const unknown  = pool.filter(item => { const r = recOf(item); return r && r.known === false; });
                 const untested = pool.filter(item => !recOf(item));
@@ -6726,6 +7146,10 @@
                 vocabDrillList = [...unknown, ...untested, ...known].slice(0, VOCAB_SESSION_CAP);
             }
             vocabDrillIndex = 0;
+            // [v186] §2.5 — 카드 단계는 신규 단어만 거친다. 만기 복습 단어의 카드를
+            // 선공개하면 냉시험이 아니게 되어 지연 회상을 측정할 수 없다.
+            // 테스트 단계(vocabTestWords)는 두 구간을 합쳐 '오늘 10개' 한 흐름으로 낸다.
+            _vocabStudyList = vocabDrillList.filter(it => srsModeOf(it.id) !== 'cold_recall');
 
             // [v185] 세션 진단 계측 초기화 (§2.5 계측: selected = 풀 선발 수)
             _vocabSelectedCount = vocabDrillList.length;
@@ -6771,13 +7195,15 @@
         }
 
         function showVocabCard() {
-            if (vocabDrillIndex >= vocabDrillList.length) {
+            // [v186] §2.5 — 카드 단계 목록은 _vocabStudyList(냉시험 단어 제외).
+            // 전부 만기 단어면 이 목록이 비어 곧바로 테스트로 넘어간다.
+            if (vocabDrillIndex >= _vocabStudyList.length) {
                 startVocabTest();
                 return;
             }
 
-            const item = vocabDrillList[vocabDrillIndex];
-            const total = vocabDrillList.length;
+            const item = _vocabStudyList[vocabDrillIndex];
+            const total = _vocabStudyList.length;
             const progress = (vocabDrillIndex / total) * 100;
 
             document.getElementById('vocab-progress-fill').style.width = progress + '%';
@@ -6969,6 +7395,7 @@
             vocabTestFirstResults = {};
             vocabTestRetryResults = {};
             vocabTestLastType = {};
+            vocabTestAnsweredAt = {};        // [v186] §2.3 문항별 응답 시각(원본 로컬 시각)
             // §6-3(v182): 저장 known=false는 lastType과 다른 유형 우선. 키잉=getVocabLessonKey(항목별).
             const store = JSON.parse(localStorage.getItem('vocab_results') || '{}');
             const avoidTypeOf = (w) => {
@@ -7018,6 +7445,7 @@
             if (vocabTestPhase === 'first') {
                 vocabTestFirstResults[q.item.id] = isCorrect;   // known 판정 근거(첫 시도만)
                 vocabTestLastType[q.item.id] = q.type;
+                vocabTestAnsweredAt[q.item.id] = srsLocalIso();  // [v186] §2.3 answered_at 원본
             } else {
                 vocabTestRetryResults[q.item.id] = isCorrect;   // 복습 성공/실패(known 불변)
             }
@@ -7035,7 +7463,13 @@
                 : '<div style="color:#C62828;font-weight:700;margin-top:12px;">정답: ' + correctVal + '</div>';
             const wordLine = '<div style="margin-top:6px;font-size:15px;color:#333;"><strong>' + it.word + '</strong> <span style="color:#888">' + (it.pos || '') + '</span> — ' + it.meaning + '</div>';
             const nextBtn = '<button class="vocab-test-next" onclick="vocabTestNext()" style="display:block;width:100%;padding:14px;margin-top:16px;border:none;border-radius:10px;background:#1565C0;color:white;font-size:17px;font-weight:700;cursor:pointer;">다음 →</button>';
-            document.getElementById('vocab-test-feedback').innerHTML = head + wordLine + nextBtn;
+            // [v186] §2.5 — 냉시험 문항은 카드를 선공개하지 않는 대신, 답한 뒤에
+            // 정오와 무관하게 카드 피드백(뜻·품사·예문)을 준다. 측정과 학습을 둘 다 얻기 위한 순서다.
+            const exLine = (srsModeOf(it.id) === 'cold_recall' && it.example)
+                ? '<div style="margin-top:8px;padding:10px 12px;background:#F1F8E9;border-radius:8px;font-size:14px;color:#33691E;line-height:1.6;">' +
+                  it.example + (it.example_ko ? '<div style="margin-top:4px;color:#7A8B6F;">' + it.example_ko + '</div>' : '') + '</div>'
+                : '';
+            document.getElementById('vocab-test-feedback').innerHTML = head + wordLine + exLine + nextBtn;
         }
 
         function vocabTestNext() {
@@ -7097,7 +7531,20 @@
                     };
                 }
             });
-            safeSetItem('vocab_results', JSON.stringify(vocabResults));
+            // [v186] §4-7 — 반환값을 확인한다. 이전에는 실패를 그대로 흘려보내
+            // 로컬 캐시가 조용히 어긋났다(진단 v4 결손 ③). 서버가 진실원이라 치명적이진
+            // 않지만, 오프라인 구간의 선발이 흔들린다 → 진단 플래그 + 1회 지연 재시도.
+            const _vocabResultsJson = JSON.stringify(vocabResults);
+            if (safeSetItem('vocab_results', _vocabResultsJson) !== true) {
+                _vocabLocalSaveFailed = true;
+                console.warn('[vocab-results-persist-fail] 로컬 캐시 저장 실패 — 다음 pull에서 서버 상태로 복원');
+                try { localStorage.setItem('vocab_results_save_failed_at', new Date().toISOString()); } catch (_) {}
+                setTimeout(() => {
+                    if (safeSetItem('vocab_results', _vocabResultsJson) === true) _vocabLocalSaveFailed = false;
+                }, 1500);
+            } else {
+                _vocabLocalSaveFailed = false;
+            }
 
             // ── 통계 ──
             const firstIds = Object.keys(vocabTestFirstResults);
@@ -7228,6 +7675,7 @@
         // ── §2.1 envelope 구성 (id는 여기서 1회 생성 후 불변) ──
         function buildVocabEvents() {
             const events = [];
+            const devId = getDeviceInstanceId();
             vocabTestWords.forEach(item => {
                 if (vocabTestFirstResults[item.id] !== undefined) {
                     events.push({
@@ -7235,7 +7683,15 @@
                         word_id: String(item.id),
                         word: String(item.word),
                         known: vocabTestFirstResults[item.id] ? 'T' : 'F',
-                        lesson: String(getVocabLessonKey(item) || normalizeLessonKey(currentLesson) || 'unknown')
+                        lesson: String(getVocabLessonKey(item) || normalizeLessonKey(currentLesson) || 'unknown'),
+                        // [v186] E30 §2.3 — 사다리 계산에 필요한 의미 필드.
+                        // answered_at은 원본 로컬 시각이고, 서버가 received_at·
+                        // effective_answered_at·clock_anomaly를 따로 만든다(원본 불변).
+                        answered_at: vocabTestAnsweredAt[item.id] || srsLocalIso(),
+                        srs_event_version: SRS_EVENT_VERSION,
+                        recall_mode: srsModeOf(item.id),          // 승급 가능 여부를 가르는 필드
+                        question_type: vocabTestLastType[item.id] || 'en2ko',
+                        device_instance_id: devId                 // 진단 전용 — 선발에 쓰지 않는다
                     });
                 }
             });
@@ -7257,7 +7713,13 @@
                     generated_count: _vocabGeneratedCount,
                     answered_count: Object.keys(vocabTestFirstResults).length,
                     saved_count: events.length,
-                    completion_reason: completionReason
+                    completion_reason: completionReason,
+                    // [v186] §2.3 — 클라가 보내는 세션 필드는 이 3개뿐(v1.3: sync_note 추가).
+                    // first/last_answered_at·clock_anomaly_count는 서버가 '단어로그'에서
+                    // 재계산한다(재전송으로 행이 늘어도 같은 값으로 수렴).
+                    device_instance_id: getDeviceInstanceId(),
+                    srs_session_version: SRS_SESSION_VERSION,
+                    sync_note: _vocabSyncNote || ''   // §2.7 ① 타임아웃·실패 사실
                 }
             };
         }

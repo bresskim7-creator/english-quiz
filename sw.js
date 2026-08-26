@@ -14,7 +14,14 @@
 // v178 (2026-07-12): 집중모드 UI — 홈 국·수·사·과 카드 + 영어 문장드릴/실전대비/모두고르기 숨김(주석·return, 삭제 아님). index.html 변경 전파용 CACHE_NAME v177->v178, APP_CACHE_NAME 동반. 데이터/lesson/daily 불변.
 // v184 (2026-07-16): N11 수정 — exam_perf omr_miss 측정 중단(탭 UI에 마킹 실수 분리 신호 없음 → ''=N/A) + condition_miss는 condition_trap 오답 프록시로 명시(주석). index.html getExamPerfLogFields/updateExamPerfMetrics만 변경. GAS 분석은 v16 별도(OMR 신호 available:false, 조건 표시명 변경). index 전파 위해 CACHE_NAME v183->v184, APP_CACHE_NAME/BUILD_VERSION 동반. 데이터/lesson/daily 불변.
 // v185 (2026-07-20): 영어 단어드릴 전송 신뢰성 — durable outbox(vocab_outbox_v2) + event_id 멱등 ACK. 선비움 폐기·persist-before-send·ACK 8조건 확인 후에만 삭제(재읽기-filter, outbox_entry_id 하나만)·영구오류 격리(_errored). GAS는 v17 별도(vocab_batch 수신, 단어로그 6->8열, 단어세션진단 신설). index.html만 변경, 데이터/lesson/daily 불변. index 전파 위해 CACHE_NAME v184->v185, APP_CACHE_NAME/BUILD_VERSION 동반.
-const CACHE_NAME = 'quiz-v185';
+// v186r2 (2026-08-25): E30 §5″ (1-b) — 영어 카드 진입 즉시 로딩 표시, 단어파일·SRS 준비 전 구간 유지, 성공·실패·재시도 cleanup.
+//   GAS v19 유지. index+sw만 새 캐시로 전파하며 E27·E35는 제외.
+// v186r1 (2026-08-21): E30 §5″ — vocab_state 6s hedge/12s hard cap·late JSONP 격리·무캐시 fail-closed.
+//   GAS v19 유지. index+sw만 새 캐시로 전파하며 E27·E35는 제외.
+// v186 (2026-08-03): 영어 단어 간격 복습(E30) — 서버(GAS v18)가 사다리를 계산하고 클라는 캐시.
+//   device_instance_id·answered_at·recall_mode·question_type 전송, doGet?action=vocab_state pull,
+//   만기 우선 선발(due_cap 램프 + new_min 2), 만기 단어는 카드 없이 냉시험.
+const CACHE_NAME = 'quiz-v186r2';
 // v169 (2026-06-16): 국어 마인드맵 내용형 교체 — kor2 허브 kor_mindmap_kor2_v2.png, kor3 허브 kor_mindmap_kor3_v2.png(가지별 핵심 불릿 + ⚠함정). lesson_kor2/3 mindmap.img 동반 갱신. PRECACHE 2줄(v1→v2) 교체. APP_CACHE_NAME 동반 범프(v168->v169). 캐시 강제 갱신용.
 // v168 (2026-06-16): 사회 마인드맵 내용형 교체 — soc3 허브 soc_mindmap_soc3_v2.png, soc4 허브 soc_mindmap_soc4_v3.png(가지별 핵심 불릿 + ⚠함정). lesson_soc3/4 mindmap.img 동반 갱신. PRECACHE 2줄(v1→v2 / v2→v3) 교체. APP_CACHE_NAME 동반 범프(v167->v168). 캐시 강제 갱신용.
 // v167 (2026-06-12): 기말 총점검 보강 — 사회 soc4 환율 그래프 exam 4문항(S4-E040~E043, v1.0->1.1; img/soc_forex_shift_demand_v1.png Pillow 256색 FS 압축 -62% 배선) + 과학 sci2 형식 정합 4건(S2-E026 보기형 재설계·E032/E006 ㄱㄴㄷ 변환·E001 자구, v1.1->1.2). PRECACHE에 soc_forex_shift_demand_v1.png 등재. APP_CACHE_NAME 동반 범프(v166->v167). 캐시 강제 갱신용.
