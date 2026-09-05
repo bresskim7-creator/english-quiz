@@ -1,7 +1,7 @@
 window.__loadDailyMonth("2026-08", {
   "schema_version": 1.1,
   "month": "2026-08",
-  "updated_at": "2026-08-28T16:30:00+09:00",
+  "updated_at": "2026-09-06T07:05:00+09:00",
   "days": {
     "2026-08-01": {
       "schema_version": 1.1,
@@ -2016,6 +2016,268 @@ window.__loadDailyMonth("2026-08", {
         "model": "claude-fable-5",
         "web_search_used": true
       }
+    },
+    "2026-08-23b": {
+      "schema_version": 1.1,
+      "sensitivity": "sensitive",
+      "review_status": "manual_reviewed",
+      "render_min_version": 1.1,
+      "image_url": null,
+      "image_credit": null,
+      "image_fallback": "category_svg_general",
+      "id": "2026-08-23b",
+      "date": "2026-08-24",
+      "weekday": "월요일",
+      "category": "특집",
+      "generated_at": "2026-09-06T07:05:00+09:00",
+      "model_meta": {
+        "model": "claude-fable-5",
+        "web_search_used": true
+      },
+      "chapter_label": "[특집] 이별 수업 ① 마음",
+      "title": "슬픔은 파도처럼 왔다가 갑니다",
+      "subtitle": "이별 뒤, 마음에서 일어나는 일",
+      "lead_question": "아주 소중한 사람과 이별하면 마음속에서는 어떤 일이 일어날까요? 그 마음은 어떻게 돌보면 될까요?",
+      "why_today": "할아버지를 보내드리고 처음 여는 한 장 — 마음 이야기부터 시작합니다.",
+      "sections": [
+        {
+          "icon": "🌊",
+          "heading": "정해진 모양이 없습니다",
+          "body": "소중한 사람을 잃는 일을 상실이라고 하고, 그 뒤 마음과 몸에 일어나는 자연스러운 변화의 과정을 애도라고 합니다. 애도의 모양은 사람마다 다릅니다. 눈물이 쏟아지는 사람도, 화가 나는 사람도, 머릿속이 멍해지는 사람도 있습니다. 실감이 나지 않아 한동안 아무렇지 않은 것 같은 사람도 있습니다. 전문가들은 이 모든 반응이 정상이라고 말합니다. 실감은 천천히 오기도 하고, 슬픔이 뒤늦게 찾아오기도 합니다. '이렇게 느껴야 맞다'는 정답은 없습니다."
+        },
+        {
+          "icon": "🌅",
+          "heading": "파도처럼 왔다 갑니다",
+          "body": "슬픔은 한결같이 이어지기보다 파도처럼 밀려왔다 물러갑니다. 한참 괜찮다가도 사진 한 장이나 익숙한 음식 하나에 훅 밀려오기도 합니다. 그러다 다시 잔잔해집니다. 언제까지 슬프다는 정해진 시간표도 없습니다. 몇 주가 걸리기도 하고, 더 오래가기도 합니다. 마음의 일은 몸으로도 나타납니다. 잠이 잘 안 오거나, 입맛이 없거나, 공부와 훈련에 집중이 잘 안 될 수 있습니다. 몸이 보내는 자연스러운 신호이니 이상한 것이 아닙니다."
+        },
+        {
+          "icon": "⚾",
+          "heading": "마음을 돌보는 연습",
+          "body": "마음이 무거울 때는 혼자 버티기보다 꺼내 놓는 것이 좋습니다. 가족이나 친구에게 말하기, 글로 적어 보기가 대표적인 방법입니다. 밥을 먹고, 잘 자고, 몸을 움직이는 평소의 리듬도 마음을 지키는 힘이 됩니다. 운동선수에게는 훈련이 좋은 위로가 되기도 합니다. 슬픈 시기에 웃거나 재미있게 놀았다고 미안해할 필요도 없습니다. 사랑이 줄어든 것이 아니라 마음이 잠깐 쉬어 가는 것입니다. 그래도 많이 힘든 날에는 어른에게 꼭 말해 주세요."
+        }
+      ],
+      "vocabulary": [
+        {
+          "ko": "상실",
+          "en": "Loss",
+          "desc": "소중한 사람이나 것을 잃는 일입니다. 그 뒤 마음이 크게 흔들리는 것은 자연스러운 일입니다."
+        },
+        {
+          "ko": "애도",
+          "en": "Grief",
+          "desc": "상실 뒤에 마음과 몸이 겪는 자연스러운 변화의 과정입니다. 사람마다 모양과 기간이 다릅니다."
+        },
+        {
+          "ko": "위로",
+          "en": "Comfort",
+          "desc": "힘든 마음을 어루만져 조금 가볍게 해 주는 것입니다. 말하기, 함께 있어 주기가 대표적입니다."
+        }
+      ],
+      "ox_check": [
+        {
+          "statement": "애도의 모양과 기간은 사람마다 달라서, 모두가 따라야 하는 정해진 시간표는 없다.",
+          "answer": "O",
+          "explanation": "반응도 기간도 사람마다 다르다는 것이 §1~§2의 내용입니다."
+        },
+        {
+          "statement": "이별 뒤에 실감이 나지 않고 아무렇지 않은 것 같다면, 그것은 잘못된 반응이다.",
+          "answer": "X",
+          "explanation": "실감이 천천히 오는 것도 정상 반응이라고 했습니다."
+        },
+        {
+          "statement": "슬픈 시기에 웃거나 훈련을 즐기는 것은 그분을 덜 사랑한다는 뜻이다.",
+          "answer": "X",
+          "explanation": "마음이 잠깐 쉬어 가는 것일 뿐, 사랑이 준 것이 아닙니다."
+        }
+      ],
+      "one_line_summary": "[   ] 뒤에 찾아오는 [   ]는 파도처럼 왔다 가며, 정답도 시간표도 없이 사람마다 모양이 다르다.",
+      "summary_keywords": "키워드: 상실, 애도, 파도",
+      "sources": [
+        {
+          "title": "슬픔과 애도 — 한국생명존중희망재단",
+          "url": "https://www.kfsp.or.kr/home/kor/contents.do?menuPos=39"
+        },
+        {
+          "title": "Grief (for Teens) — Nemours KidsHealth",
+          "url": "https://kidshealth.org/en/teens/someone-died.html"
+        },
+        {
+          "title": "12 things I wish I'd known about grief — Talk Grief",
+          "url": "https://www.talkgrief.org/blog/article/12-things-id-wish-id-known-about-grief"
+        }
+      ]
+    },
+    "2026-08-23c": {
+      "schema_version": 1.1,
+      "sensitivity": "sensitive",
+      "review_status": "manual_reviewed",
+      "render_min_version": 1.1,
+      "image_url": null,
+      "image_credit": null,
+      "image_fallback": "category_svg_general",
+      "id": "2026-08-23c",
+      "date": "2026-08-25",
+      "weekday": "화요일",
+      "category": "특집",
+      "generated_at": "2026-09-06T07:05:00+09:00",
+      "model_meta": {
+        "model": "claude-fable-5",
+        "web_search_used": true
+      },
+      "chapter_label": "[특집] 이별 수업 ② 자연",
+      "title": "몸을 이루던 것들은 어디로 갈까",
+      "subtitle": "별의 조각과 자연의 순환",
+      "lead_question": "우리 몸을 이루는 산소, 탄소, 칼슘 같은 재료는 어디에서 왔고, 생명이 다한 뒤에는 어디로 갈까요?",
+      "why_today": "어제는 마음 이야기 — 오늘은 과학의 눈으로 이별을 바라봅니다.",
+      "sections": [
+        {
+          "icon": "✨",
+          "heading": "우리는 별의 조각",
+          "body": "몸속 원소들의 고향은 놀랍게도 별입니다. 우주가 처음 생겼을 때는 수소 같은 가장 가벼운 원소밖에 없었습니다. 숨 쉬게 하는 산소, 몸의 뼈대가 되는 탄소와 칼슘은 별 속에서 만들어졌습니다. 철보다 무거운 원소는 별이 폭발하는 초신성을 적어도 한 번 거쳐 왔습니다. 그래서 영국 자연사박물관의 과학자는 '우리 몸의 원소 대부분은 별에서 만들어진 것'이라고 말합니다. 약 138억 년 우주의 역사가 지금 우리 몸속에 들어 있는 셈입니다."
+        },
+        {
+          "icon": "🍂",
+          "heading": "자연은 버리지 않습니다",
+          "body": "가을에 떨어진 낙엽을 생각해 봅시다. 낙엽은 그냥 사라지지 않습니다. 세균과 버섯, 지렁이 같은 분해자가 낙엽을 잘게 되돌립니다. 그 속의 탄소와 질소, 칼슘 같은 양분은 흙과 물로 돌아갑니다. 식물은 그 양분을 다시 빨아들여 새잎과 열매를 만들고, 그것을 먹은 생물이 또 자랍니다. 모든 생명이 이 순환 안에 있습니다. 우리가 먹는 밥과 과일도 그 순환이 길러 낸 것입니다. 자연에서 재료는 버려지거나 없어지지 않고, 모습만 바꾸며 계속 돌고 돕니다."
+        },
+        {
+          "icon": "🌳",
+          "heading": "사라짐이 아니라 돌아감",
+          "body": "과학의 눈으로 보면, 생명이 다한다는 것은 '없던 일'이 되는 것이 아닙니다. 몸을 이루던 재료들이 왔던 곳으로, 자연의 큰 순환으로 돌아가는 일입니다. 별에서 온 원소가 지구를 거쳐 한 사람의 몸이 되었다가, 다시 세상 속을 도는 것입니다. 할아버지의 몸을 이루던 재료들도 지금 그 큰 순환 어딘가에 함께 있습니다. 그런데 사람에게는 재료 말고도 남는 것이 하나 더 있습니다. 그 이야기는 내일 이어집니다."
+        }
+      ],
+      "vocabulary": [
+        {
+          "ko": "원소",
+          "en": "Element",
+          "desc": "물질을 이루는 기본 재료입니다. 산소, 탄소, 칼슘처럼 더 쪼갤 수 없는 종류를 말합니다."
+        },
+        {
+          "ko": "분해자",
+          "en": "Decomposer",
+          "desc": "죽은 생물을 잘게 분해해 양분으로 되돌리는 생물입니다. 세균, 버섯, 지렁이가 대표입니다."
+        },
+        {
+          "ko": "순환",
+          "en": "Cycle",
+          "desc": "물질이 없어지지 않고 모습을 바꾸며 돌고 도는 것입니다. 낙엽이 흙이 되고 새잎이 되는 흐름입니다."
+        }
+      ],
+      "ox_check": [
+        {
+          "statement": "우리 몸속 원소 가운데 철보다 무거운 것들은 별의 폭발을 적어도 한 번 거쳐 왔다.",
+          "answer": "O",
+          "explanation": "초신성을 거쳐 만들어져 왔다는 것이 §1의 내용입니다."
+        },
+        {
+          "statement": "죽은 생물의 재료는 자연에서 완전히 사라져 다시는 쓰이지 않는다.",
+          "answer": "X",
+          "explanation": "분해자를 거쳐 양분으로 돌아가 새 생명에 다시 쓰입니다."
+        },
+        {
+          "statement": "분해자는 죽은 생물을 분해해 식물이 다시 쓸 수 있는 양분으로 되돌린다.",
+          "answer": "O",
+          "explanation": "세균, 버섯, 지렁이가 하는 일이 바로 그것입니다."
+        }
+      ],
+      "one_line_summary": "몸의 재료는 [   ]에서 왔고, 생명이 다하면 [   ]를 거쳐 자연의 순환으로 돌아가 다시 쓰인다.",
+      "summary_keywords": "키워드: 별, 분해자, 순환",
+      "sources": [
+        {
+          "title": "Are we really made of stardust? — Natural History Museum",
+          "url": "https://www.nhm.ac.uk/discover/are-we-really-made-of-stardust.html"
+        },
+        {
+          "title": "Decomposers — National Geographic Education",
+          "url": "https://education.nationalgeographic.org/resource/decomposers/"
+        }
+      ]
+    },
+    "2026-08-23d": {
+      "schema_version": 1.1,
+      "sensitivity": "sensitive",
+      "review_status": "manual_reviewed",
+      "render_min_version": 1.1,
+      "image_url": null,
+      "image_credit": null,
+      "image_fallback": "category_svg_general",
+      "id": "2026-08-23d",
+      "date": "2026-08-26",
+      "weekday": "수요일",
+      "category": "특집",
+      "generated_at": "2026-09-06T07:05:00+09:00",
+      "model_meta": {
+        "model": "claude-fable-5",
+        "web_search_used": true
+      },
+      "chapter_label": "[특집] 이별 수업 ③ 기억",
+      "title": "기억하는 한, 함께 있는 것입니다",
+      "subtitle": "작별 인사, 그리고 이어받기",
+      "lead_question": "사람들은 왜 검은 리본을 달고 묵념을 하고 나무를 심을까요? 기억에는 어떤 힘이 있을까요?",
+      "why_today": "이별 수업 마지막 장 — 오늘은 기억에 대한 이야기입니다.",
+      "sections": [
+        {
+          "icon": "🎗️",
+          "heading": "함께 인사하는 마음",
+          "body": "사람은 아주 오래전부터 떠난 이에게 함께 작별 인사를 해 왔습니다. 이렇게 떠난 사람을 그리며 기리는 일을 추모라고 합니다. 그 모습은 집집마다, 나라마다 다릅니다. 여러 사람이 모여 며칠을 함께 보내는 집도 있고, 우리처럼 가족끼리만 조용히 인사하는 집도 있습니다. 꽃을 놓기도 하고, 검은 리본을 달기도 하고, 잠시 다 함께 묵념을 하기도 합니다. 무엇이 더 낫고 못한 것은 아닙니다. 형식은 달라도 뜻은 하나이기 때문입니다. 고마웠다는 인사, 그리고 잊지 않겠다는 약속입니다."
+        },
+        {
+          "icon": "📦",
+          "heading": "기억을 지키는 방법",
+          "body": "마음이 낫는다는 것은 그 사람을 잊는다는 뜻이 아닙니다. 그래서 사람들은 기억을 간직하는 장치를 만듭니다. 사진과 물건을 모은 기억 상자, 마음을 적은 편지, 그분을 생각하며 심는 나무 같은 것들입니다. 가장 쉬운 방법은 이야기입니다. '할아버지가 그때 뭐라고 하셨더라' 하고 꺼내는 순간, 기억은 다시 선명해집니다. 이야기를 나누는 것은 슬픔을 키우는 일이 아니라 기억을 지키는 일입니다."
+        },
+        {
+          "icon": "⚾",
+          "heading": "이어받는 사람",
+          "body": "기억을 지키는 가장 힘센 방법은 따로 있습니다. 그분이 나에게 심어 준 것을 계속 살아 있게 하는 것입니다. 아껴 주던 마음, 가르쳐 준 태도 같은 것들입니다. 연습 한 번, 공 하나에 그 마음을 담으면 기억은 앞으로도 계속 이어집니다. 몸의 재료는 어제 배운 것처럼 자연의 순환으로 돌아갑니다. 하지만 한 사람이 남긴 것은 기억하는 사람 안에서 계속 살아갑니다. 그러니 언제든 할아버지 이야기를 꺼내도 됩니다. 가족 모두 같은 마음입니다."
+        }
+      ],
+      "vocabulary": [
+        {
+          "ko": "추모",
+          "en": "Commemoration",
+          "desc": "떠난 사람을 그리워하며 기리는 일입니다. 리본을 달거나 묵념을 하는 것이 대표적인 형식입니다."
+        },
+        {
+          "ko": "묵념",
+          "en": "Silent tribute",
+          "desc": "말없이 고개를 숙이고 떠난 사람을 생각하는 짧은 시간입니다. 여럿이 함께하는 추모의 형식입니다."
+        },
+        {
+          "ko": "간직",
+          "en": "Cherish",
+          "desc": "소중한 것을 잘 지녀 오래 지키는 것입니다. 사진, 편지, 이야기가 기억을 간직하는 도구가 됩니다."
+        }
+      ],
+      "ox_check": [
+        {
+          "statement": "떠난 사람을 그리며 기리는 일을 추모라고 하며, 검은 리본이나 묵념도 그 형식이 될 수 있다.",
+          "answer": "O",
+          "explanation": "§1의 추모 정의와 형식의 예 그대로입니다."
+        },
+        {
+          "statement": "작별 인사는 어느 집이든 반드시 똑같은 형식과 절차를 갖추어야만 마음이 전해진다.",
+          "answer": "X",
+          "explanation": "집집마다 다르고, 형식이 달라도 뜻은 같다고 했습니다."
+        },
+        {
+          "statement": "슬픔에서 마음이 점점 나아진다는 것은 곧 그 사람을 잊어 간다는 뜻이다.",
+          "answer": "X",
+          "explanation": "낫는 것과 잊는 것은 다르다는 것이 §2의 내용입니다."
+        }
+      ],
+      "one_line_summary": "작별의 형식은 달라도 뜻은 하나이고, 이야기하고 [   ]하며 이어받는 동안 그 사람은 [   ] 속에 함께 있다.",
+      "summary_keywords": "키워드: 추모, 간직, 기억",
+      "sources": [
+        {
+          "title": "5 Ways to Cope When a Loved One Dies — Nemours KidsHealth",
+          "url": "https://kidshealth.org/en/teens/coping-grief.html"
+        },
+        {
+          "title": "Grief Support for Teens — Dougy Center",
+          "url": "https://www.dougy.org/grief-support-resources/teens"
+        }
+      ]
     },
     "2026-08-24": {
       "schema_version": 1.1,

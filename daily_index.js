@@ -36,6 +36,24 @@ window.__loadDailyIndex([
     "title": "1주일은 왜 7일일까"
   },
   {
+    "date": "2026-08-23d",
+    "month": "2026-08",
+    "category": "특집",
+    "title": "기억하는 한, 함께 있는 것입니다"
+  },
+  {
+    "date": "2026-08-23c",
+    "month": "2026-08",
+    "category": "특집",
+    "title": "몸을 이루던 것들은 어디로 갈까"
+  },
+  {
+    "date": "2026-08-23b",
+    "month": "2026-08",
+    "category": "특집",
+    "title": "슬픔은 파도처럼 왔다가 갑니다"
+  },
+  {
     "date": "2026-08-23",
     "month": "2026-08",
     "category": "과학",
@@ -577,6 +595,6 @@ window.__loadDailyIndex([
   }
 ], {
   "schema_version": 1,
-  "updated_at": "2026-08-28T16:30:00+09:00",
-  "version_key": "20260828-1630"
+  "updated_at": "2026-09-06T07:05:00+09:00",
+  "version_key": "20260906-0705"
 });
