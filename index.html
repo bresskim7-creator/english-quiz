@@ -1138,6 +1138,13 @@
         }
         .daily-tab.active { color: #C2185B; border-bottom-color: #C2185B; font-weight: 700; }
 
+        /* v187 (2026-09-14): 오늘의 한 장 도식(diagram_*) figure — 헤더 사진(180px cover)과 별개 분기, 원본 비율 유지 */
+        .daily-diagram { margin: 0 0 16px; }
+        .daily-diagram a { display: block; color: #315174; text-decoration: none; }
+        .daily-diagram img { display: block; width: 100%; max-width: 100%; height: auto; object-fit: contain; background: #fffcf3; border-radius: 8px; }
+        .daily-diagram .daily-diagram-zoom { display: block; text-align: right; font-size: 12px; padding: 6px 0; }
+        .daily-diagram figcaption { color: #555; font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
+
         .daily-header-image {
             width: 100%;
             height: 180px;
@@ -2060,8 +2067,8 @@
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-08-25 v186r2';
-        const APP_CACHE_NAME = 'quiz-v186r2';
+        const BUILD_VERSION = '2026-09-14 v187';
+        const APP_CACHE_NAME = 'quiz-v187';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -3124,8 +3131,17 @@
 
             html += '<div class="daily-card">';
 
+            // v187: 도식(diagram_url) 있으면 figure(원본 비율·alt·캡션·크게 보기). 구 렌더러는 이 필드를 모르므로 fallback을 보여 준다.
             // 헤더 이미지: image_url 있으면 표시 + credit, 없으면 image_fallback의 카테고리 그라데이션
-            if (d.image_url) {
+            if (d.diagram_url) {
+                html += '<figure class="daily-diagram">';
+                html += '<a href="' + dailyEscapeHtml(d.diagram_url) + '" target="_blank" rel="noopener" aria-label="그림 크게 보기 (새 탭)">';
+                html += '<img src="' + dailyEscapeHtml(d.diagram_url) + '" alt="' + dailyEscapeHtml(d.diagram_alt || d.title || '') + '" '
+                    + 'onerror="this.closest(\'figure\').hidden=true;">';
+                html += '<span class="daily-diagram-zoom">그림 크게 보기 ↗</span></a>';
+                if (d.diagram_caption) html += '<figcaption>' + dailyEscapeHtml(d.diagram_caption) + '</figcaption>';
+                html += '</figure>';
+            } else if (d.image_url) {
                 html += '<div class="daily-header-image">';
                 html += '<img src="' + dailyEscapeHtml(d.image_url) + '" alt="' + dailyEscapeHtml(d.title || '') + '" '
                     + 'onerror="this.parentNode.classList.add(\'daily-header-fallback\');this.style.display=\'none\';">';

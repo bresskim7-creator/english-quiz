@@ -1,7 +1,7 @@
 window.__loadDailyMonth("2026-08", {
   "schema_version": 1.1,
   "month": "2026-08",
-  "updated_at": "2026-09-13T19:15:00+09:00",
+  "updated_at": "2026-09-14T14:45:00+09:00",
   "days": {
     "2026-08-01": {
       "schema_version": 1.1,
@@ -2831,6 +2831,9 @@ window.__loadDailyMonth("2026-08", {
       "image_url": null,
       "image_credit": null,
       "image_fallback": "category_svg_general",
+      "diagram_url": "img/daily_drift_evidence_v1_m.png",
+      "diagram_alt": "현재 떨어져 있는 남아메리카와 아프리카를 과거 모습으로 복원하여 해안선의 모양과 같은 종류의 화석 분포가 이어지는 모습을 비교한 그림입니다.",
+      "diagram_caption": "대륙을 과거 모습으로 맞추어 해안선과 화석 분포가 이어지는지 본 그림입니다.",
       "id": "2026-08-30",
       "date": "2026-08-30",
       "weekday": "일요일",
@@ -2916,6 +2919,9 @@ window.__loadDailyMonth("2026-08", {
       "image_url": null,
       "image_credit": null,
       "image_fallback": "category_svg_general",
+      "diagram_url": "img/daily_sea_baseline_v2_m.png",
+      "diagram_alt": "영해와 배타적 경제 수역의 거리를 같은 기준선부터 재는 그림입니다. 영해는 보통 12해리, 배타적 경제 수역은 영해 밖에서 기준선으로부터 최대 200해리까지입니다.",
+      "diagram_caption": "영해와 배타적 경제 수역의 거리는 같은 기준선에서 재며, 대한 해협의 영해는 3해리입니다.",
       "id": "2026-08-31",
       "date": "2026-08-31",
       "weekday": "월요일",

@@ -1,3 +1,4 @@
+// v187 (2026-09-14): 오늘의 한 장 도식 이미지(R2) — daily 데이터 diagram_url/diagram_alt/diagram_caption 3필드 신설(image_url은 null 유지), index.html renderDailyToday에 figure 분기(.daily-diagram, 원본 비율·onerror 시 figure 숨김) 추가. img/daily_*_m.png 10장은 PRECACHE 미등재(기존 daily 이미지 관례, 성공 fetch 시 런타임 캐시). index 전파 위해 CACHE_NAME v186r2->v187, APP_CACHE_NAME/BUILD_VERSION 동반. GAS 무접촉.
 // v183 (2026-07-13): 영어 단어트랙 통합 로더 JSONP 콜백 identity 경쟁 핫픽스 — loadUnifiedVocab 전용 fetchVocabJsonp 신설(callback=데이터 capture만, resolve/reject는 onload에서만, settleOnce 1회 settle+identity 정리, 파일당 8s timeout). 실브라우저 순차 로드 hang 제거. v182 통합 큐/6:4/키잉/헤더/복습/결과/저장 전부 불변. index+sw만 수정. CACHE_NAME v182->v183.
 // v182 (2026-07-13): 영어 단어트랙 통합 큐 — 홈 '영어' 카드=L5~L8+필수 병합 통합 드릴(단일 '영어 단어 10개' 버튼). 오답우선 + 남은자리 교과서:필수 6:4, 계열별 새→아는. Lesson별 복습=보조 메뉴(L2·L4 기본 큐 제외, 데이터/기록 보존). 저장 스키마 불변, 키잉=getVocabLessonKey(항목별 _lesson). index 렌더러/로직/동선만 변경, lesson 데이터 불변. CACHE_NAME v181->v182, APP_CACHE_NAME(index) 동반.
 // v181 (2026-07-13): 영어 단어트랙 객관식 테스트 — 공부('다음') 후 방금 본 N개(≤10, 캡 20->10)를 en2ko/ko2en/cloze 혼합 4지선다로 채점. known=첫 시도 정오(자기분류 폐지). index 렌더러·저장(vocab_results{known,tested_at,lastType})만 변경, lesson 데이터 불변. index 전파 위해 CACHE_NAME v180->v181, APP_CACHE_NAME 동반.
@@ -21,7 +22,7 @@
 // v186 (2026-08-03): 영어 단어 간격 복습(E30) — 서버(GAS v18)가 사다리를 계산하고 클라는 캐시.
 //   device_instance_id·answered_at·recall_mode·question_type 전송, doGet?action=vocab_state pull,
 //   만기 우선 선발(due_cap 램프 + new_min 2), 만기 단어는 카드 없이 냉시험.
-const CACHE_NAME = 'quiz-v186r2';
+const CACHE_NAME = 'quiz-v187';
 // v169 (2026-06-16): 국어 마인드맵 내용형 교체 — kor2 허브 kor_mindmap_kor2_v2.png, kor3 허브 kor_mindmap_kor3_v2.png(가지별 핵심 불릿 + ⚠함정). lesson_kor2/3 mindmap.img 동반 갱신. PRECACHE 2줄(v1→v2) 교체. APP_CACHE_NAME 동반 범프(v168->v169). 캐시 강제 갱신용.
 // v168 (2026-06-16): 사회 마인드맵 내용형 교체 — soc3 허브 soc_mindmap_soc3_v2.png, soc4 허브 soc_mindmap_soc4_v3.png(가지별 핵심 불릿 + ⚠함정). lesson_soc3/4 mindmap.img 동반 갱신. PRECACHE 2줄(v1→v2 / v2→v3) 교체. APP_CACHE_NAME 동반 범프(v167->v168). 캐시 강제 갱신용.
 // v167 (2026-06-12): 기말 총점검 보강 — 사회 soc4 환율 그래프 exam 4문항(S4-E040~E043, v1.0->1.1; img/soc_forex_shift_demand_v1.png Pillow 256색 FS 압축 -62% 배선) + 과학 sci2 형식 정합 4건(S2-E026 보기형 재설계·E032/E006 ㄱㄴㄷ 변환·E001 자구, v1.1->1.2). PRECACHE에 soc_forex_shift_demand_v1.png 등재. APP_CACHE_NAME 동반 범프(v166->v167). 캐시 강제 갱신용.
