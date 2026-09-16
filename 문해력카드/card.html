@@ -276,4 +276,30 @@ function renderCard(card){
   if(card){renderCard(card);}else{_mhNotReady();}
 })();
 </script>
+<script>
+/* Append-only view integration; approved card wording/data is unchanged. */
+(function(){
+  const id=_mhGetDate();if(!CARD||!/^2026-(08|09)-\d\d$/.test(id))return;
+  const KEY='pa_literacy_progress_v1',DONE='pa_exam_literacy_v1';
+  function read(k){try{return JSON.parse(localStorage.getItem(k)||'{}');}catch(_){return {};}}
+  const saved=read(KEY)[id];
+  const footer=document.createElement('div');footer.className='card';
+  footer.innerHTML='<button id="literacy-finish" class="rvl">오늘 문해력 마치기</button><p id="literacy-save-status" role="status"></p><a href="../index.html">← 시험 준비 홈</a>';
+  document.getElementById('root').appendChild(footer);
+  const finish=document.getElementById('literacy-finish'),status=document.getElementById('literacy-save-status');
+  function state(){return {done,selected:[...document.querySelectorAll('.sen.ok,.opt.ok')].map(e=>({n:e.dataset.n,i:e.dataset.i})),struck:[...document.querySelectorAll('.delsen.struck')].map(e=>e.dataset.n),revealed:document.querySelector('.rvl:not(#literacy-finish)')?.style.display==='none',checks:[...document.querySelectorAll('.ck')].map(e=>e.classList.contains('on'))};}
+  function update(){const s=state();finish.disabled=!(s.done&&s.revealed&&s.checks.length&&s.checks.every(Boolean));status.textContent=read(DONE)[id]?'이 문해력은 완료했어요.':finish.disabled?'핵심 찾기 → 말로 요약 → 모범·셀프 체크를 마친 뒤 완료해요.':'다 했으면 완료 버튼을 눌러 주세요.';}
+  function save(){try{const all=read(KEY);all[id]=state();localStorage.setItem(KEY,JSON.stringify(all));update();}catch(_){status.textContent='진도를 저장하지 못했어요. 이 화면을 닫기 전에 저장 공간을 확인해 주세요.';finish.disabled=true;}}
+  if(saved){
+    if(CARD.interaction==='delete_noise'){saved.struck.forEach(n=>document.querySelector('.delsen[data-n="'+n+'"]')?.classList.add('struck'));if(saved.done)delConfirm(document.querySelector('.confirm'));}
+    else if(saved.done&&saved.selected.length){const s=saved.selected[0];const el=s.n?document.querySelector('.sen[data-n="'+s.n+'"]'):document.querySelector('.opt[data-i="'+s.i+'"]');if(el){if(s.n)pick(el);else pickOpt(el);}}
+    if(saved.revealed){const b=document.querySelector('.rvl:not(#literacy-finish)');if(b)rv(b);}
+    document.querySelectorAll('.ck').forEach((b,i)=>{if(saved.checks[i])ck(b);});
+  }
+  document.getElementById('root').addEventListener('click',e=>{if(e.target.closest('button')&&e.target.id!=='literacy-finish')save();});
+  finish.onclick=()=>{if(finish.disabled)return;try{const all=read(DONE);all[id]={completed_at:new Date().toISOString()};localStorage.setItem(DONE,JSON.stringify(all));update();}catch(_){status.textContent='완료를 저장하지 못했어요. 저장 공간을 확인한 뒤 다시 눌러 주세요.';}};
+  update();
+})();
+
+</script>
 </body></html>

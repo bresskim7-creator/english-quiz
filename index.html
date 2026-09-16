@@ -1706,7 +1706,33 @@
         }
 
 
-</style>
+
+        /* 2026-09-16: essential science support, one concept a day. */
+        .science-home-note { text-align:center; color:#52657a; font-size:14px; line-height:1.6; margin:8px 0 18px; }
+        .science-review { margin-top:12px; padding:8px 12px; border:1px solid white; border-radius:8px; background:rgba(255,255,255,.16); color:inherit; font-size:14px; cursor:pointer; }
+        .science-support-card { font-size:17px; line-height:1.7; }
+        .science-support-card .mc-visual { width:420px; max-width:100%; margin:12px auto; }
+        .science-support-card h2 { font-size:21px; color:#1565c0; margin-top:4px; }
+        .science-tip { background:#eef4fa; border-radius:10px; padding:12px; }
+        .science-continue, .science-unsure { display:block; width:100%; border:0; border-radius:10px; margin-top:16px; padding:15px; font-size:16px; cursor:pointer; }
+        .science-continue { background:#1565c0; color:white; }
+        .science-unsure { background:#edf1f5; color:#394b60; }
+        .science-unsure:disabled { opacity:.6; cursor:default; }
+        .science-stage { font-size:15px; font-weight:700; color:#1565c0; }
+        .science-repair { margin-top:16px; padding:12px; border:1px solid #bdd0e0; border-radius:10px; }
+        .science-repair summary { cursor:pointer; color:#1565c0; font-weight:700; }
+        #science-support-result { font-size:17px; line-height:1.8; margin:16px 0; }
+        .science-result-note { font-size:14px; color:#607084; }
+
+        #exam-home-grid button{font-family:inherit;border:0;text-align:center;cursor:pointer;width:100%;color:inherit}
+        #exam-home-grid span{display:block}
+        #exam-home-grid #home-daily-unread-badge{display:none!important}
+        #exam-home-grid .subject-card{min-height:150px}
+        .exam-writing{width:100%;font:18px/1.6 inherit;padding:12px;min-height:82px;box-sizing:border-box}
+        .exam-card-lines{white-space:pre-line;line-height:1.8}
+        .science-stage{line-height:1.6}
+        @media(max-width:360px){#exam-home-grid .subject-card-name{font-size:18px}}
+    </style>
 </head>
 <body>
     <div class="app-container">
@@ -1717,47 +1743,21 @@
 
         <!-- 1단계: 과목 선택 화면 -->
         <div id="home-page" class="page active">
-            <div class="home-title">오늘의 학습</div>
-            <div class="subject-grid">
-                <div class="subject-card english" onclick="startEnglishEntry(event)">
-                    <div class="subject-card-icon">📘</div>
-                    <div class="subject-card-name">영어</div>
-                    <div class="subject-card-sub">영어 단어 10개</div>
-                    <button onclick="openEnglishReview(event)" style="margin-top:10px;padding:6px 12px;border:1px solid rgba(255,255,255,0.6);border-radius:8px;background:rgba(255,255,255,0.18);color:inherit;font-size:12px;cursor:pointer;">Lesson별 복습</button>
-                    <div id="vocab-entry-loading" class="vocab-entry-loading" role="status" aria-live="polite" aria-atomic="true" aria-hidden="true" hidden>
-                        <div class="vocab-entry-spinner" aria-hidden="true"></div>
-                        <div id="vocab-entry-loading-text">영어 단어를 준비하고 있어요…</div>
-                    </div>
-                </div>
-                <!-- 집중모드 숨김(2026-07-12): 여름 집중(단어 드릴 + 오늘의 한 장 + 문해력). 국·수·사·과 카드 임시 숨김. 복원 시 주석 해제.
-<div class="subject-card korean" onclick="selectSubject('korean')">
-                    <div class="subject-card-icon">📕</div>
-                    <div class="subject-card-name">국어</div>
-                    <div class="subject-card-sub">1·2단원</div>
-                </div>
-                <div class="subject-card math" onclick="selectSubject('math')">
-                    <div class="subject-card-icon">📐</div>
-                    <div class="subject-card-name">수학</div>
-                    <div class="subject-card-sub">Ⅰ·Ⅱ단원</div>
-                </div>
-                <div class="subject-card social" onclick="selectSubject('social')">
-                    <div class="subject-card-icon">🏛️</div>
-                    <div class="subject-card-name">사회</div>
-                    <div class="subject-card-sub">1·2단원</div>
-                </div>
-                <div class="subject-card science" onclick="selectSubject('science')">
-                    <div class="subject-card-icon">🔬</div>
-                    <div class="subject-card-name">과학</div>
-                    <div class="subject-card-sub">1·3단원</div>
-                </div>
-                -->
-                <div class="subject-card daily" onclick="selectSubject('daily')">
-                    <div class="subject-card-icon">📰</div>
-                    <div class="subject-card-name">오늘의 한 장</div>
-                    <div class="subject-card-sub">아침 독해 · 문해력</div>
-                    <div class="daily-unread-badge" id="home-daily-unread-badge" style="display:none;">0</div>
-                </div>
+            <div class="home-title">2학기 중간고사 준비</div>
+            <p class="science-home-note">한 번에 한 블록씩 · 하던 곳에서 이어 할 수 있어요</p>
+            <div class="subject-grid" id="exam-home-grid">
+                <button class="subject-card daily" onclick="PA_EXAM_HOME.openReading()"><span class="subject-card-icon">📰</span><span class="subject-card-name">오늘의 한 장</span><span class="subject-card-sub" id="exam-reading-status">시험 범위 읽기</span><span id="home-daily-unread-badge" hidden></span></button>
+                <button class="subject-card daily" onclick="PA_EXAM_HOME.openLiteracy()"><span class="subject-card-icon">📖</span><span class="subject-card-name">문해력 한 장</span><span class="subject-card-sub" id="exam-literacy-status">짝 글로 요약 연습</span></button>
+                <button class="subject-card english" onclick="PA_EXAM_SUPPORT.start('english')"><span class="subject-card-icon">📘</span><span class="subject-card-name">영어 5문제</span><span class="subject-card-sub" id="english-support-status">문장과 뜻을 함께</span></button>
+                <button class="subject-card science" onclick="PA_EXAM_SUPPORT.start('science')"><span class="subject-card-icon">🔬</span><span class="subject-card-name">과학 5문제</span><span class="subject-card-sub" id="science-support-status">개념을 알고 적용하기</span></button>
             </div>
+            <p id="exam-home-status" class="science-home-note" role="status"></p>
+            <details class="science-home-note"><summary>더 보고 싶을 때</summary>
+                <button onclick="startEnglishEntry(event)">영어 단어 복습</button>
+                <button onclick="openEnglishReview(event)">영어 Lesson별 복습</button>
+                <button onclick="selectSubject('science')">과학 단원별 복습</button>
+                <div id="vocab-entry-loading" hidden><span id="vocab-entry-loading-text"></span></div>
+            </details>
             <div id="webhook-settings-toggle" style="font-size:12px;color:#999;cursor:pointer;text-align:center;margin-top:24px;" onclick="document.getElementById('webhook-settings').style.display='block';this.style.display='none';updateOpsDiagnostics();">⚙️ 설정</div>
             <div class="webhook-settings" id="webhook-settings" style="display:none;">
                 <div class="stats-title">설정</div>
@@ -2067,8 +2067,8 @@
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-09-14 v187';
-        const APP_CACHE_NAME = 'quiz-v187';
+        const BUILD_VERSION = '2026-09-16 v189';
+        const APP_CACHE_NAME = 'quiz-v189';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -2093,9 +2093,16 @@
         function safeSetItem(key, value) {
             try {
                 localStorage.setItem(key, value);
+                if (/^(pa_(english|science)_|quiz_logs_(eng_mid_launch|sci_mid_mix)$)/.test(key)) document.getElementById('exam-save-error')?.remove();
                 return true;
             } catch (err) {
                 console.warn('[localStorage-set-fail]', key, err && err.message);
+                if (/^(pa_(english|science)_|quiz_logs_(eng_mid_launch|sci_mid_mix)$)/.test(key)) {
+                    let notice=document.getElementById('exam-save-error');
+                    if(!notice){notice=document.createElement('p');notice.id='exam-save-error';notice.setAttribute('role','alert');notice.style.cssText='background:#fff3cd;padding:16px;border:2px solid #ac6600';(document.querySelector('.page.active')||document.body).prepend(notice);}
+                    notice.textContent='답을 저장하지 못했어요. 이 문항에서 멈춰 있어요. 저장 공간을 확보한 뒤 다시 눌러 주세요.';
+                    return false;
+                }
                 pruneOldestQuizLogsForQuota();
                 try {
                     localStorage.setItem(key, value);
@@ -2197,8 +2204,8 @@
                 el.textContent = count + '개 카드 · 약 5분';
             } else if (currentMode === 'exam_prep') {
                 // 2026-06-06: 기말 범위 필터 후 실제 인스코프 수 표시(sci3 파동=8, sci4 식물=8 등 20 미만 단원 오인 방지)
-                const epCount = (QUIZ_DATA && QUIZ_DATA.exam_prep) ? Math.min(20, scopedItems(QUIZ_DATA.exam_prep).length) : 20;
-                el.textContent = epCount + '문항 · 약 20분';
+                const epCount = (QUIZ_DATA && QUIZ_DATA.exam_prep) ? Math.min(QUIZ_DATA.exam_session_size || 20, scopedItems(QUIZ_DATA.exam_prep).length) : 20;
+                el.textContent = epCount + (QUIZ_DATA && QUIZ_DATA.exam_campaign === '2026-2-midterm' ? '문항 · 선택 복습' : '문항 · 약 20분');
             } else {
                 const total = QUIZ_DATA && QUIZ_DATA.questions ? Math.min(30, QUIZ_DATA.questions.length) : 30;
                 el.textContent = total + '문항 · 약 20분';
@@ -2361,7 +2368,7 @@
             const keys = [];
             for (let i = 0; i < localStorage.length; i++) {
                 const k = localStorage.key(i);
-                if (k === 'quiz_logs' || (k && (k.startsWith('quiz_logs_L') || k.startsWith('quiz_logs_kor') || k.startsWith('quiz_logs_math') || k.startsWith('quiz_logs_soc') || k.startsWith('quiz_logs_sci')))) {
+                if (k === 'quiz_logs' || (k && (k.startsWith('quiz_logs_L') || k.startsWith('quiz_logs_kor') || k.startsWith('quiz_logs_math') || k.startsWith('quiz_logs_soc') || k.startsWith('quiz_logs_sci') || k.startsWith('quiz_logs_eng')))) {
                     keys.push(k);
                 }
             }
@@ -2406,6 +2413,8 @@
 
 
         function getExamDday() {
+            // New science scope uses the announced science exam date; other subjects keep their setting.
+            if (currentSubject === 'science' && QUIZ_DATA && QUIZ_DATA.exam_date) return QUIZ_DATA.exam_date;
             return localStorage.getItem('pa_exam_dday') || '';
         }
 
@@ -2498,7 +2507,7 @@
             // v144: 캐시버스팅 — lesson 데이터 URL에 ?v=<APP_CACHE_NAME> 부착. 버전 범프 시 자동 변경 → 강제 새 요청.
             //        (sw.js가 쿼리 제거한 bare 키로 정규화 저장/폴백하므로 오프라인 캐시 유지)
             // [④4-3] lesson별 캐시버스팅 버전(단건 데이터 갱신을 app 버전 범프 없이 전파). 키=파일명(.js 제외). 없으면 APP_CACHE_NAME.
-            const LESSON_VERSIONS = { lesson_kor2: 'k2-1.7', lesson_kor3: 'k3-1.5', lesson_sci2: 'sci2-1.3', lesson_sci3: 'sci3-1.2', lesson_sci4: 'sci4-1.1', lesson_soc3: 'soc3-1.1', lesson_soc4: 'soc4-1.1', lesson5: 'l5-1.0', lesson6: 'l6-1.0', lesson7: 'l7-1.0', lesson8: 'l8-1.0', lesson_ess: 'ess-1.0' };
+            const LESSON_VERSIONS = { lesson_sci_mid_plate: 'mid-3', lesson_sci_mid_element: 'mid-3', lesson_sci_mid_body: 'mid-3', lesson_kor2: 'k2-1.7', lesson_kor3: 'k3-1.5', lesson_sci2: 'sci2-1.3', lesson_sci3: 'sci3-1.2', lesson_sci4: 'sci4-1.1', lesson_soc3: 'soc3-1.1', lesson_soc4: 'soc4-1.1', lesson5: 'l5-1.0', lesson6: 'l6-1.0', lesson7: 'l7-1.0', lesson8: 'l8-1.0', lesson_ess: 'ess-1.0' };
             const ver = (u) => {
                 const m = u.match(/([A-Za-z0-9_]+)\.js(?:\?|$)/);
                 const vv = (m && LESSON_VERSIONS[m[1]]) ? LESSON_VERSIONS[m[1]] : APP_CACHE_NAME;
@@ -2647,20 +2656,11 @@
                     await loadLesson('soc1');
                 }
             } else if (subject === 'science') {
-                lessonRow.querySelector('.setting-label').textContent = '단원';
-                if (FINALS_MODE) {
-                    // 기말: 지권(보강)/파동(sci3 빛 숨김)/식물(sci4 신규). 기본 진입=지권.
-                    lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-sci2" onclick="selectLesson(\'sci2\')">지권</button>' +
-                        '<button class="lesson-btn" id="lesson-btn-sci3" onclick="selectLesson(\'sci3\')">파동</button>' +
-                        '<button class="lesson-btn" id="lesson-btn-sci4" onclick="selectLesson(\'sci4\')">식물</button>';
-                    await loadLesson('sci2');
-                } else {
-                    lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-sci1" onclick="selectLesson(\'sci1\')">1단원</button>' +
-                        '<button class="lesson-btn" id="lesson-btn-sci2" onclick="selectLesson(\'sci2\')">2단원</button>' +
-                        '<button class="lesson-btn" id="lesson-btn-sci3" onclick="selectLesson(\'sci3\')">3단원</button>' +
-                        '<button class="lesson-btn" id="lesson-btn-sci4" onclick="selectLesson(\'sci4\')">4단원</button>';
-                    await loadLesson('sci1');
-                }
+                lessonRow.querySelector('.setting-label').textContent = '핵심';
+                lessonSelector.innerHTML = '<button class="lesson-btn active" id="lesson-btn-sci_mid_plate" onclick="selectLesson(\'sci_mid_plate\')">대륙·판</button>' +
+                    '<button class="lesson-btn" id="lesson-btn-sci_mid_element" onclick="selectLesson(\'sci_mid_element\')">원소·화합물</button>' +
+                    '<button class="lesson-btn" id="lesson-btn-sci_mid_body" onclick="selectLesson(\'sci_mid_body\')">소화·순환</button>';
+                await loadLesson('sci_mid_plate');
             } else {
                 lessonRow.querySelector('.setting-label').textContent = 'Lesson';
                 lessonSelector.innerHTML =
@@ -2688,7 +2688,7 @@
         function goSubjectHome() {
             currentSubject = null;
             QUIZ_DATA = null;
-            document.querySelector('.header-title').textContent = '오늘의 학습';
+            document.querySelector('.header-title').textContent = '시험 준비';
             showPage('home-page');
             // STEP133: 홈 진입 시 미열람 배지 즉시 갱신
             try { updateDailyUnreadBadges(); } catch (e) {}
@@ -2830,6 +2830,7 @@
             // FIFO: 날짜 오름차순으로 첫 미열람 카드. 미래 날짜는 큐에서 제외.
             const today = getTodayDateStr();
             const readIds = loadDailyReadIds();
+            if (typeof PA_EXAM_HOME !== 'undefined') return PA_EXAM_HOME.pair();
             const list = (DAILY_INDEX_DATA || []).slice();
             list.sort(function(a, b) { return (a.date || '').localeCompare(b.date || ''); });
             for (let i = 0; i < list.length; i++) {
@@ -2845,7 +2846,7 @@
         function getDailyUnreadCount() {
             const today = getTodayDateStr();
             const readIds = loadDailyReadIds();
-            const list = (DAILY_INDEX_DATA || []);
+            const list = (DAILY_INDEX_DATA || []).filter(x=>x.date >= '2026-08-30' && x.date <= '2026-09-16');
             let n = 0;
             for (let i = 0; i < list.length; i++) {
                 const d = list[i].date;
@@ -2871,7 +2872,13 @@
             }
         }
 
+        let examDailyIndexFlight = null;
         function loadDailyIndexJsonp() {
+            if (examDailyIndexFlight) return examDailyIndexFlight;
+            examDailyIndexFlight = loadDailyIndexJsonpOnce().finally(()=>{examDailyIndexFlight=null;});
+            return examDailyIndexFlight;
+        }
+        function loadDailyIndexJsonpOnce() {
             return new Promise((resolve) => {
                 if (DAILY_INDEX_LOADED) { resolve(); return; }
                 window.__loadDailyIndex = function(list, meta) {
@@ -3552,7 +3559,7 @@
             currentSubject = null;
             currentLesson = null;
             // 헤더 타이틀 초기 설정
-            document.querySelector('.header-title').textContent = '오늘의 학습';
+            document.querySelector('.header-title').textContent = '시험 준비';
             // 음소거 상태 복원
             document.getElementById('mute-toggle').textContent = isMuted ? '🔇' : '🔊';
             // 웹훅 URL을 링크 파라미터로 1회 세팅 (?wh=...) — 공개 소스 노출 회피
@@ -4285,7 +4292,7 @@
             if (pool.length === 0) return [];
             const shuffled = [...pool];
             shuffleArray(shuffled);
-            return shuffled.slice(0, Math.min(10, shuffled.length)).map(prepareExamPerfQuestion);
+            return shuffled.slice(0, Math.min(QUIZ_DATA.exam_campaign === '2026-2-midterm' ? 5 : 10, shuffled.length)).map(prepareExamPerfQuestion);
         }
 
         function resetExamPerfMetrics() {
@@ -4453,7 +4460,7 @@
                     currentSession = generateDrillSession();
                     modeLabel = '문장 드릴';
                 }
-            } else if ((currentSubject === 'social' || currentSubject === 'science') && currentMode === 'exam_prep') {
+            } else if ((QUIZ_DATA.support_mode || currentSubject === 'social' || currentSubject === 'science') && currentMode === 'exam_prep') {
                 currentSession = generateStudyExamSession();
                 modeLabel = '실전 문제';
             } else {
@@ -4467,7 +4474,7 @@
             }
 
             // 실전 모드: 어제 틀린 문항 2~3개를 세션 앞에 워밍업으로 삽입
-            if (currentMode === 'exam_prep') {
+            if (currentMode === 'exam_prep' && !QUIZ_DATA.exam_campaign && !QUIZ_DATA.support_mode) {
                 const warmup = getYesterdayWrongQuestions(3);
                 if (warmup.length > 0) {
                     // 중복 제거 (이미 세션에 포함된 ID 제외)
@@ -4496,7 +4503,7 @@
 
             // Update header title with mode label
             document.querySelector('.header-title').textContent = getHeaderTitle(modeLabel);
-
+            PA_EXAM_SUPPORT.restore();
             showPage('quiz-page');
             showQuestion();
         }
@@ -4562,7 +4569,9 @@
                 document.getElementById('question-container').style.display = 'block';
             }
 
-            if (q.type === 'math_concept_card') {
+            if (q._support) {
+                showStudyChoice(q);
+            } else if (q.type === 'math_concept_card') {
                 showMathConceptCard(q);
             } else if (q.type === 'procedure_drill') {
                 showProcedureDrill(q);
@@ -6513,13 +6522,16 @@
 
         // 답변 기록 - B-8: Fallback field support
         function recordAnswer(q, isCorrect, extra) {
+            if (q._support?.answered) return false;
+            if (q._support && !PA_EXAM_SUPPORT.canSave()) return false;
             playSound(isCorrect ? 'correct' : 'incorrect');
             // 정답이면 0.5초 후 문장 읽어주기 (드릴 모드만, 실전대비는 제외, 국어는 제외)
             if (isCorrect && currentMode === 'drill' && currentSubject !== 'korean') {
                 setTimeout(() => speakEnglish(getCorrectSentence(q)), 500);
             }
-            const elapsed = questionStartTime ? Math.round((Date.now() - questionStartTime) / 1000) : 0;
+            const elapsed = q._support ? PA_EXAM_SUPPORT.elapsed() : questionStartTime ? Math.round((Date.now() - questionStartTime) / 1000) : 0;
             updateExamPerfMetrics(q, isCorrect, elapsed);
+            const supportFields = PA_EXAM_SUPPORT.record(q, isCorrect);
             sessionAnswers.push({
                 id: q.id,
                 correct: isCorrect,
@@ -6536,9 +6548,11 @@
                 time_limit_sec: q._exam_time_limit || '',
                 phase: q.phase || '',
                 polarity: q.polarity || '',
-                ...(extra || {})
+                ...(extra || {}),
+                ...supportFields
             });
 
+            if (!PA_EXAM_SUPPORT.capture()) return false;
             if (!questionHistory[q.id]) {
                 questionHistory[q.id] = { attempts: 0, correct: 0, last_seen: today(), last_correct: false };
             }
@@ -6894,9 +6908,15 @@
         // resolve/reject는 해당 script의 onload에서만 한다. 정리(delete window.__loadLesson)는
         // window.__loadLesson===cb 일 때만(다음 로드의 콜백을 지우지 않음). settleOnce로
         // timeout·onerror·onload 모두 1회만 settle → 각 파일이 반드시 resolve|reject → hang 제거.
+        let examJsonpQueue = Promise.resolve();
         function fetchVocabJsonp(url) {
+            const request = examJsonpQueue.then(()=>fetchVocabJsonpUnlocked(url));
+            examJsonpQueue = request.catch(()=>{});
+            return request;
+        }
+        function fetchVocabJsonpUnlocked(url) {
             // 캐시버스팅은 fetchJsonCompat와 동일 규칙(LESSON_VERSIONS→APP_CACHE_NAME). fetchJsonCompat 불변 유지 위해 국소 복제.
-            const LESSON_VERSIONS = { lesson5: 'l5-1.0', lesson6: 'l6-1.0', lesson7: 'l7-1.0', lesson8: 'l8-1.0', lesson_ess: 'ess-1.0' };
+            const LESSON_VERSIONS = { lesson_sci_mid_plate: 'mid-3', lesson_sci_mid_element: 'mid-3', lesson_sci_mid_body: 'mid-3', lesson5: 'l5-1.0', lesson6: 'l6-1.0', lesson7: 'l7-1.0', lesson8: 'l8-1.0', lesson_ess: 'ess-1.0' };
             const jsUrlRaw = url.replace(/\.json$/, '.js');
             const m = jsUrlRaw.match(/([A-Za-z0-9_]+)\.js(?:\?|$)/);
             const vv = (m && LESSON_VERSIONS[m[1]]) ? LESSON_VERSIONS[m[1]] : APP_CACHE_NAME;
@@ -6905,7 +6925,7 @@
             return new Promise((resolve, reject) => {
                 let settled = false, hasData = false, captured, timer = null;
                 const script = document.createElement('script');
-                const cb = function(data) { captured = data; hasData = true; };   // 데이터만 capture(resolve/reject 안 함)
+                const cb = function(data) { if(document.currentScript !== script) return; captured = data; hasData = true; };   // 데이터만 capture(resolve/reject 안 함)
                 function settleOnce(fn) {
                     if (settled) return;                          // 늦게 온 timeout/onload/onerror = no-op
                     settled = true;
@@ -8359,7 +8379,7 @@
                 return (q2 ? getWeakLabel(q2) : '') || a.keyword || a.id;
             });
 
-            const sessionDuration = sessionStartTime ? Math.round((Date.now() - sessionStartTime) / 1000) : 0;
+            const sessionDuration = QUIZ_DATA?.support_mode ? sessionAnswers.reduce((n,a)=>n+(a.time_sec||0),0) : sessionStartTime ? Math.round((Date.now() - sessionStartTime) / 1000) : 0;
 
             const typeStats = {};
             sessionAnswers.forEach(a => {
@@ -8420,7 +8440,7 @@
                         const polTag = polShort ? ',pol=' + polShort : '';
                         s += '[need' + a.need + ',sel' + a.selected_count + ',hit' + a.correct_hit_count + polTag + (flags.length ? ',' + flags.join(',') : '') + ']';
                     }
-                    return s;
+                    return s + PA_EXAM_SUPPORT.detail(a);
                 }).join(', '),
                 questions: sessionAnswers,
                 timestamp: new Date().toISOString(),
@@ -8429,8 +8449,12 @@
 
             const logsKey = (typeof currentLesson === 'string' && isNaN(currentLesson)) ? `quiz_logs_${currentLesson}` : `quiz_logs_L${currentLesson}`;
             const logs = JSON.parse(localStorage.getItem(logsKey) || '[]');
-            logs.push(log);
-            safeSetItem(logsKey, JSON.stringify(logs));
+            if (QUIZ_DATA?.support_mode) {
+                log.support_session_id = PA_EXAM_SUPPORT.read(currentSubject).__plan.id;
+                const existing = logs.find(x=>x.support_session_id===log.support_session_id && !x.partial);
+                if(existing) Object.assign(log,existing); else logs.push(log);
+            } else logs.push(log);
+            if (!safeSetItem(logsKey, JSON.stringify(logs))) return;
 
             // Drill stage progression check
             if (currentMode === 'drill') {
@@ -8520,7 +8544,7 @@
                 hint_count: sessionAnswers.filter(a => a.hint_used).length,
                 metrics: null,
                 details: sessionAnswers.map(a =>
-                    a.id + (a.correct ? '✓(회복)' : '✗') + a.time_sec + 's'
+                    a.id + (a.correct ? '✓(회복)' : '✗') + a.time_sec + 's' + PA_EXAM_SUPPORT.detail(a)
                 ).join(', '),
                 questions: sessionAnswers,
                 timestamp: new Date().toISOString(),
@@ -8621,7 +8645,7 @@
                 const allLogs = [];
                 for (let i = 0; i < localStorage.length; i++) {
                     const k = localStorage.key(i);
-                    if (k === 'quiz_logs' || k.startsWith('quiz_logs_L') || k.startsWith('quiz_logs_kor') || k.startsWith('quiz_logs_math') || k.startsWith('quiz_logs_soc') || k.startsWith('quiz_logs_sci')) {
+                    if (k === 'quiz_logs' || k.startsWith('quiz_logs_L') || k.startsWith('quiz_logs_kor') || k.startsWith('quiz_logs_math') || k.startsWith('quiz_logs_soc') || k.startsWith('quiz_logs_sci') || k.startsWith('quiz_logs_eng')) {
                         const items = JSON.parse(localStorage.getItem(k) || '[]');
                         items.forEach(log => allLogs.push(log));
                     }
@@ -8641,8 +8665,9 @@
                     const key = log.timestamp;
                     if (sentKeys.includes(key)) return;
 
-                    // RESERVE IMMEDIATELY (race 방어)
-                    sentKeys.push(key);
+                    // Support logs remain pending until explicit server ACK; server timestamp dedup makes retries safe.
+                    const isSupportLog = /^(english|science)_support$/.test(log.session_type || '');
+                    if (!isSupportLog) sentKeys.push(key);
 
                     const m = log.metrics || {};
                     const data = {
@@ -8681,8 +8706,10 @@
                         const text = await r.text();
                         let body = null;
                         try { body = JSON.parse(text); } catch (_) {}
+                        if (isSupportLog && (!body || body.status !== 'ok')) throw new Error('support-log ACK missing');
                         if (body && body.ok === false) throw new Error(body.error || 'apps-script reject');
                         if (body && body.status && body.status !== 'ok') throw new Error(body.error || body.status);
+                        if (isSupportLog && !sentKeys.includes(key)) sentKeys.push(key);
                         compactSentLogEntry(key);
                     }).catch(err => {
                         console.warn('[log-send-fail]', key, err && err.message);
@@ -8727,6 +8754,7 @@
 
         // 홈으로
         function goHome() {
+            if (QUIZ_DATA && QUIZ_DATA.support_mode) currentSubject = null;
             currentMindmapBranch = null;
             currentSession = null;
             currentQuestionIndex = 0;
@@ -8735,7 +8763,7 @@
             originalSessionAnswers = [];
             originalSession = [];
             // Reset header title
-            document.querySelector('.header-title').textContent = getHeaderTitle();
+            document.querySelector('.header-title').textContent = currentSubject ? getHeaderTitle() : '시험 준비';
             // 과목이 선택된 상태면 과목 상세로, 아니면 과목 선택으로
             if (currentSubject) {
                 showPage('subject-page');
@@ -8752,7 +8780,7 @@
                 // 로그도 부분 저장
                 if (sessionAnswers.length > 0) {
                     const totalCorrect = sessionAnswers.filter(a => a.correct).length;
-                    const sessionDuration = sessionStartTime ? Math.round((Date.now() - sessionStartTime) / 1000) : 0;
+                    const sessionDuration = QUIZ_DATA?.support_mode ? sessionAnswers.reduce((n,a)=>n+(a.time_sec||0),0) : sessionStartTime ? Math.round((Date.now() - sessionStartTime) / 1000) : 0;
                     const typeStats = {};
                     sessionAnswers.forEach(a => {
                         if (!typeStats[a.type]) typeStats[a.type] = { total: 0, correct: 0 };
@@ -8779,7 +8807,7 @@
                         condition_miss: examPerfFields.condition_miss,
                         omr_miss: examPerfFields.omr_miss,
                         time_complete: examPerfFields.time_complete,
-                        details: sessionAnswers.map(a => a.id + (a.correct ? '✓' : '✗') + a.time_sec + 's' + (a.hint_used ? '💡' : '')).join(', '),
+                        details: sessionAnswers.map(a => a.id + (a.correct ? '✓' : '✗') + a.time_sec + 's' + (a.hint_used ? '💡' : '') + PA_EXAM_SUPPORT.detail(a)).join(', '),
                         questions: sessionAnswers,
                         timestamp: new Date().toISOString(),
                         partial: true
@@ -8803,6 +8831,8 @@
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
+            if (pageId === 'result-page') PA_EXAM_SUPPORT.result();
+            if (pageId === 'home-page') PA_EXAM_HOME.refresh();
         }
 
         // 헤더 타이틀 생성 헬퍼
@@ -8854,17 +8884,19 @@
         // =========================================================
         function generateStudyConceptSession() {
             const cards = scopedItems(QUIZ_DATA.concept_cards);  // 기말 범위 필터 후 평일 5장 제한
-            const limited = limitConceptCards(cards);
+            // Explicit unit review exposes all essential cards in prerequisite order.
+            const limited = QUIZ_DATA.exam_campaign === '2026-2-midterm' ? cards : limitConceptCards(cards);
             return limited.map(c => ({...c, type: 'study_concept_card'}));
         }
 
         function generateStudyExamSession() {
+            if (QUIZ_DATA.support_mode) return PA_EXAM_SUPPORT.session(QUIZ_DATA);
             const questions = scopedItems(QUIZ_DATA.exam_prep);  // 기말 범위 필터
             if (questions.length === 0) return [];
             // 2026-05-14: A/B/C 그룹별 추출 제거 → 단순 무작위 20문항
             const pool = [...questions];
             shuffleArray(pool);
-            return pool.slice(0, 20);
+            return pool.slice(0, QUIZ_DATA.exam_session_size || 20);
         }
 
         // 사회/과학 개념카드 렌더러
@@ -9063,6 +9095,8 @@
 
         // 사회/과학 선택형 렌더러 — 보기 셔플 포함
         function showStudyChoice(q) {
+            if (PA_EXAM_SUPPORT.before(q)) return;
+            if (PA_EXAM_SUPPORT.renderMultiple(q)) return;
             const container = document.getElementById('question-container');
             container.style.display = 'block';
             const subjectColor = currentSubject === 'social' ? '#2E7D32' : '#1565C0';
@@ -9074,7 +9108,7 @@
 
             // 보기 셔플
             const shuffled = q.options.map((opt, idx) => ({ origIdx: idx, opt }));
-            shuffleArray(shuffled);
+            if (!q.preserve_option_order) shuffleArray(shuffled);
             // 셔플 맵 저장 (checkStudyChoice에서 사용)
             window._studyShuffleMap = shuffled;
 
@@ -9093,12 +9127,15 @@
                     hintUsedThisQuestion = true;
                 };
             }
+            PA_EXAM_SUPPORT.after(q);
         }
 
         function checkStudyChoice(btn, displayIdx) {
+            if (btn.disabled) return;
+            document.querySelectorAll('.science-unsure').forEach(el => el.disabled = true);
             const q = currentSession[currentQuestionIndex];
             const isMulti = Array.isArray(q.correct);
-            const origIdx = window._studyShuffleMap[displayIdx].origIdx;
+            const origIdx = displayIdx < 0 ? -1 : window._studyShuffleMap[displayIdx].origIdx;
             const isCorrect = isMulti ? q.correct.includes(origIdx) : origIdx === q.correct;
 
             document.querySelectorAll('#study-options .option-btn').forEach((b, i) => {
@@ -9687,5 +9724,9 @@
         // [Codex 2026-05-13 index-tail-restore] Keep this marker so coworkers can identify the recovery patch.
         window.addEventListener('load', init);
     </script>
+    <script src="science_support.js?v=189"></script>
+    <script src="english_exam.js?v=189"></script>
+    <script src="exam_support.js?v=189"></script>
+    <script src="exam_home.js?v=189"></script>
 </body>
 </html>
