@@ -1732,7 +1732,14 @@
         .exam-card-lines{white-space:pre-line;line-height:1.8}
         .science-stage{line-height:1.6}
         @media(max-width:360px){#exam-home-grid .subject-card-name{font-size:18px}}
-    </style>
+    /* Shared completion controls: mirrored in app and standalone literacy renderer. */
+.learning-finish{display:block;width:100%;padding:16px;margin-top:12px;background:#2F5496;color:#fff;border:0;border-radius:10px;font-family:inherit;font-size:17px;font-weight:700;line-height:1.5;cursor:pointer;box-shadow:0 3px 10px rgba(47,84,150,.22)}
+.learning-finish:hover{background:#244478}
+.learning-finish:focus-visible,.learning-home:focus-visible{outline:3px solid #f0b429;outline-offset:3px}
+.learning-home{display:block;width:100%;max-width:360px;padding:14px;margin:12px auto 0;background:#fff;color:#2F5496;border:2px solid #2F5496;border-radius:10px;font-family:inherit;font-size:16px;font-weight:700;line-height:1.5;text-align:center;text-decoration:none;cursor:pointer}
+.learning-home:hover{background:#edf3fc}
+.learning-home:disabled{opacity:.5;cursor:not-allowed}
+</style>
 </head>
 <body>
     <div class="app-container">
@@ -2027,7 +2034,7 @@
                 <div class="result-score"><span id="result-percentage">0</span>%</div>
                 <div class="result-kid-message" id="result-kid-message">오늘 끝! 내일 또 만나요 👋</div>
                 <button class="btn-retry" id="btn-retry" onclick="startRetryRound()" style="display:none;">틀린 문제 다시 풀기</button>
-                <button class="btn-home" onclick="goHome()">홈으로</button>
+                <button class="btn-home learning-home" onclick="goHome()">시험 준비 홈</button>
             </div>
 
             <!-- 부모용 하단 -->
@@ -2067,8 +2074,8 @@
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-09-17 v190';
-        const APP_CACHE_NAME = 'quiz-v190';
+        const BUILD_VERSION = '2026-09-18 v191';
+        const APP_CACHE_NAME = 'quiz-v191';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -2808,11 +2815,11 @@
         function markDailyAsRead(dateStr) {
             if (!dateStr) return;
             const ids = loadDailyReadIds();
-            if (ids.indexOf(dateStr) !== -1) return;
+            if (ids.indexOf(dateStr) !== -1) return true;
             ids.push(dateStr);
             try {
                 localStorage.setItem(PA_DAILY_READ_IDS_KEY, JSON.stringify(ids));
-            } catch (e) { /* quota / private mode — silent */ }
+            } catch (e) { showReadConfirmedToast('읽음 기록을 저장하지 못했어요. 저장 공간을 확인한 뒤 글을 다시 열어 주세요.'); return false; }
             updateDailyUnreadBadges();
             // 기기 간 동기화: 읽은 날짜를 GAS에 전송 (fire-and-forget, CORS-safe)
             try {
@@ -2824,6 +2831,7 @@
                     }).catch(function () {});   // 실패 무시 — 로컬은 이미 기록됨
                 }
             } catch (e) {}
+            return true;
         }
 
         function pickNextQueueDate() {
@@ -3071,7 +3079,7 @@
             _dailyReadObserver = new IntersectionObserver(function(entries) {
                 for (let i = 0; i < entries.length; i++) {
                     if (entries[i].isIntersecting) {
-                        markDailyAsRead(dateStr);
+                        if (!markDailyAsRead(dateStr)) return;
                         if (_dailyReadObserver) { _dailyReadObserver.disconnect(); _dailyReadObserver = null; }
                         showReadConfirmedToast();
                         break;
@@ -3087,7 +3095,7 @@
                 if (!sentinel) return;
                 const rect = sentinel.getBoundingClientRect();
                 if (rect.top <= window.innerHeight) {
-                    markDailyAsRead(dateStr);
+                    if (!markDailyAsRead(dateStr)) return;
                     window.removeEventListener('scroll', _dailyReadScrollHandler);
                     _dailyReadScrollHandler = null;
                     showReadConfirmedToast();
@@ -3096,7 +3104,7 @@
             window.addEventListener('scroll', _dailyReadScrollHandler, { passive: true });
         }
 
-        function showReadConfirmedToast() {
+        function showReadConfirmedToast(message) {
             let t = document.getElementById('daily-read-toast');
             if (!t) {
                 t = document.createElement('div');
@@ -3104,7 +3112,7 @@
                 t.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#2F5496;color:#fff;padding:8px 16px;border-radius:18px;font-size:13px;z-index:9999;opacity:0;transition:opacity .2s;pointer-events:none;';
                 document.body.appendChild(t);
             }
-            t.textContent = '읽음 처리됨';
+            t.textContent = message || '✓ 학습 완료';
             t.style.opacity = '1';
             setTimeout(function() { t.style.opacity = '0'; }, 2400);
         }
@@ -4642,6 +4650,7 @@
 
         // 다음 문항으로 이동 (수동)
         function goNextQuestion() {
+            if (QUIZ_DATA?.support_mode && currentQuestionIndex >= currentSession.length) { finishSession(); return; }
             document.getElementById('btn-next').style.display = 'none';
             currentQuestionIndex++;
             showQuestion();
@@ -4681,6 +4690,9 @@
         // 정답/오답 후 "다음" 버튼 표시
         function showNextButton() {
             const btn = document.getElementById('btn-next');
+            const lastStudyQuestion = !!(QUIZ_DATA?.support_mode && currentQuestionIndex >= currentSession.length - 1);
+            btn.textContent = lastStudyQuestion ? '오늘 학습 마치기' : '다음 문항 ▶';
+            btn.classList.toggle('learning-finish', lastStudyQuestion);
             btn.style.display = 'block';
             // 설명/개념카드 버튼 등이 추가되어 버튼이 화면 밖으로 밀릴 수 있으므로 스크롤
             setTimeout(() => btn.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 150);
@@ -8454,7 +8466,14 @@
                 const existing = logs.find(x=>x.support_session_id===log.support_session_id && !x.partial);
                 if(existing) Object.assign(log,existing); else logs.push(log);
             } else logs.push(log);
-            if (!safeSetItem(logsKey, JSON.stringify(logs))) return;
+            if (!safeSetItem(logsKey, JSON.stringify(logs))) {
+                if (QUIZ_DATA?.support_mode) {
+                    const notice = document.getElementById('exam-save-error');
+                    if (notice) notice.textContent = '5문제 답은 저장됐어요. 마무리 기록을 저장하지 못했어요. 저장 공간을 확인한 뒤 오늘 학습 마치기를 다시 눌러 주세요.';
+                    showNextButton();
+                }
+                return;
+            }
 
             // Drill stage progression check
             if (currentMode === 'drill') {
@@ -9726,7 +9745,7 @@
     </script>
     <script src="science_support.js?v=189"></script>
     <script src="english_exam.js?v=190"></script>
-    <script src="exam_support.js?v=190"></script>
-    <script src="exam_home.js?v=190"></script>
+    <script src="exam_support.js?v=191"></script>
+    <script src="exam_home.js?v=191"></script>
 </body>
 </html>

@@ -63,6 +63,13 @@ i.g{font-style:normal;color:#7a5f1f;font-size:.9em}
 .opt:hover{background:#f3eee1;border-color:#bdb7a5}
 .opt.ok{border-color:var(--ok);background:var(--okbg);font-weight:600}
 .opt.no{border-color:var(--no);background:var(--nobg)}
+/* Shared completion controls: mirrored in app and standalone literacy renderer. */
+.learning-finish{display:block;width:100%;padding:16px;margin-top:12px;background:#2F5496;color:#fff;border:0;border-radius:10px;font-family:inherit;font-size:17px;font-weight:700;line-height:1.5;cursor:pointer;box-shadow:0 3px 10px rgba(47,84,150,.22)}
+.learning-finish:hover{background:#244478}
+.learning-finish:focus-visible,.learning-home:focus-visible{outline:3px solid #f0b429;outline-offset:3px}
+.learning-home{display:block;width:100%;max-width:360px;padding:14px;margin:12px auto 0;background:#fff;color:#2F5496;border:2px solid #2F5496;border-radius:10px;font-family:inherit;font-size:16px;font-weight:700;line-height:1.5;text-align:center;text-decoration:none;cursor:pointer}
+.learning-home:hover{background:#edf3fc}
+.learning-home:disabled{opacity:.5;cursor:not-allowed}
 </style></head><body><div class="wrap">
 <h1>문해력 한 장 · 요약 훈련</h1>
 <p class="lead">짧은 글 한 편을 읽고 → 핵심 문장(글쓴이가 가장 하고 싶은 말)을 찾고 → 한 문장으로 요약해 말해 보자. 하루 5분.</p>
@@ -277,19 +284,44 @@ function renderCard(card){
 })();
 </script>
 <script>
-/* Append-only view integration; approved card wording/data is unchanged. */
+/* Reading completion is separate; both literacy exit controls share this save. */
 (function(){
   const id=_mhGetDate();if(!CARD||!/^2026-(08|09)-\d\d$/.test(id))return;
   const KEY='pa_literacy_progress_v1',DONE='pa_exam_literacy_v1';
   function read(k){try{return JSON.parse(localStorage.getItem(k)||'{}');}catch(_){return {};}}
   const saved=read(KEY)[id];
   const footer=document.createElement('div');footer.className='card';
-  footer.innerHTML='<button id="literacy-finish" class="rvl">오늘 문해력 마치기</button><p id="literacy-save-status" role="status"></p><a href="../index.html">← 시험 준비 홈</a>';
+  footer.innerHTML='<button id="literacy-finish" class="rvl learning-finish">오늘 학습 마치기</button><p id="literacy-save-status" role="status" aria-live="polite" tabindex="-1"></p><a id="literacy-home" class="learning-home" href="../index.html">시험 준비 홈</a>';
   document.getElementById('root').appendChild(footer);
-  const finish=document.getElementById('literacy-finish'),status=document.getElementById('literacy-save-status');
+  const finish=document.getElementById('literacy-finish'),status=document.getElementById('literacy-save-status'),home=document.getElementById('literacy-home');
   function state(){return {done,selected:[...document.querySelectorAll('.sen.ok,.opt.ok')].map(e=>({n:e.dataset.n,i:e.dataset.i})),struck:[...document.querySelectorAll('.delsen.struck')].map(e=>e.dataset.n),revealed:document.querySelector('.rvl:not(#literacy-finish)')?.style.display==='none',checks:[...document.querySelectorAll('.ck')].map(e=>e.classList.contains('on'))};}
-  function update(){const s=state();finish.disabled=!(s.done&&s.revealed&&s.checks.length&&s.checks.every(Boolean));status.textContent=read(DONE)[id]?'이 문해력은 완료했어요.':finish.disabled?'핵심 찾기 → 말로 요약 → 모범·셀프 체크를 마친 뒤 완료해요.':'다 했으면 완료 버튼을 눌러 주세요.';}
-  function save(){try{const all=read(KEY);all[id]=state();localStorage.setItem(KEY,JSON.stringify(all));update();}catch(_){status.textContent='진도를 저장하지 못했어요. 이 화면을 닫기 전에 저장 공간을 확인해 주세요.';finish.disabled=true;}}
+  function ready(s){return !!(s.done&&s.revealed&&s.checks.length&&s.checks.every(Boolean));}
+  function remaining(s){return !s.done?'먼저 핵심 찾기를 마쳐 주세요.':!s.revealed?'말로 요약한 뒤 모범 요약·구조를 확인해 주세요.':'요약에 담은 내용을 셀프 체크해 주세요.';}
+  function announce(message){status.textContent=message;status.focus({preventScroll:true});status.scrollIntoView({block:'nearest'});}
+  function update(){
+    const s=state(),completed=!!read(DONE)[id];
+    finish.textContent=completed?'✓ 학습 완료':'오늘 학습 마치기';
+    home.textContent='시험 준비 홈';
+    status.textContent=completed?'완료를 저장했어요. 시험 준비 홈으로 돌아가도 돼요.':ready(s)?'마치기나 시험 준비 홈을 누르면 완료가 저장돼요.':remaining(s)+' 홈으로 가면 지금까지 한 진도를 저장해요.';
+  }
+  function persist(s){const all=read(KEY);all[id]=s;localStorage.setItem(KEY,JSON.stringify(all));}
+  function save(){try{persist(state());update();}catch(_){announce('진도를 저장하지 못했어요. 이 화면을 닫지 말고 저장 공간을 확인한 뒤 다시 눌러 주세요.');}}
+  function finishOrHome(goHome){
+    const s=state();
+    try{
+      persist(s);
+      const all=read(DONE),completed=!!all[id];
+      if(!completed&&ready(s)){
+        all[id]={completed_at:new Date().toISOString()};
+        localStorage.setItem(DONE,JSON.stringify(all));
+      }else if(!completed&&!goHome){
+        update();announce(remaining(s));return;
+      }
+      update();
+      if(goHome)location.href=home.href;
+      else announce('완료를 저장했어요. 시험 준비 홈으로 돌아가도 돼요.');
+    }catch(_){announce('저장하지 못했어요. 이 화면을 닫지 말고 저장 공간을 확인한 뒤 다시 눌러 주세요.');}
+  }
   if(saved){
     if(CARD.interaction==='delete_noise'){saved.struck.forEach(n=>document.querySelector('.delsen[data-n="'+n+'"]')?.classList.add('struck'));if(saved.done)delConfirm(document.querySelector('.confirm'));}
     else if(saved.done&&saved.selected.length){const s=saved.selected[0];const el=s.n?document.querySelector('.sen[data-n="'+s.n+'"]'):document.querySelector('.opt[data-i="'+s.i+'"]');if(el){if(s.n)pick(el);else pickOpt(el);}}
@@ -297,7 +329,8 @@ function renderCard(card){
     document.querySelectorAll('.ck').forEach((b,i)=>{if(saved.checks[i])ck(b);});
   }
   document.getElementById('root').addEventListener('click',e=>{if(e.target.closest('button')&&e.target.id!=='literacy-finish')save();});
-  finish.onclick=()=>{if(finish.disabled)return;try{const all=read(DONE);all[id]={completed_at:new Date().toISOString()};localStorage.setItem(DONE,JSON.stringify(all));update();}catch(_){status.textContent='완료를 저장하지 못했어요. 저장 공간을 확인한 뒤 다시 눌러 주세요.';}};
+  finish.onclick=()=>finishOrHome(false);
+  home.onclick=e=>{e.preventDefault();finishOrHome(true);};
   update();
 })();
 

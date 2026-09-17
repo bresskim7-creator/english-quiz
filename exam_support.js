@@ -204,8 +204,19 @@ const PA_EXAM_SUPPORT = (() => {
     box.innerHTML=`<p>도움 없이 ${counts.independent} · 설명·힌트 후 ${counts.assisted}<br>다시 연습 ${counts.incorrect+counts.unknown}${counts.precheck?'<br>처음 사전 확인 정답 '+counts.precheck:''}</p><p>연습 결과예요. 시험 예상 점수는 아니에요.</p>`;
     const together=QUIZ_DATA.concept_cards.filter(c=>active.state[c.id]?.error_days>=3);
     if(together.length)box.innerHTML+='<details><summary>부모와 같이 짚어 볼 개념</summary><p>'+together.map(c=>esc(c.term)).join(' · ')+'</p><p>오늘 문제는 늘리지 않고 다음 복습에서 다시 확인해요.</p></details>';
-    document.getElementById('result-kid-message').textContent='오늘 5문제 끝! 짧게 쌓아 가자.';document.querySelector('.result-emoji').textContent='🌱';
-    active.state.__plan.finalized=true;write(active.state);
+    const state=JSON.parse(JSON.stringify(active.state));state.__plan.finalized=true;
+    const saved=active.state.__plan.finalized||write(state);
+    const home=document.querySelector('#result-page .btn-home');home.disabled=!saved;
+    if(!saved){
+      const message='마무리를 저장하지 못했어요. 저장 공간을 확인한 뒤 오늘 학습 마치기를 다시 눌러 주세요.';
+      document.getElementById('result-kid-message').textContent=message;document.querySelector('.result-emoji').textContent='💾';
+      const notice=document.getElementById('exam-save-error');if(notice)notice.textContent=message;
+      const retry=document.createElement('button');retry.id='exam-finalize-retry';retry.className='learning-finish';retry.textContent='오늘 학습 마치기';retry.onclick=result;box.appendChild(retry);
+      return false;
+    }
+    active.state=state;
+    document.getElementById('result-kid-message').textContent='✓ 학습 완료';document.querySelector('.result-emoji').textContent='🌱';
+    return true;
   }
   return {start,session,restore,before,after,renderMultiple,record,capture,detail,result,canSave,planFor,englishPlan,gradeWriting,day,read,elapsed,emphasize};
 })();
