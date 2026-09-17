@@ -23,9 +23,10 @@ const PA_EXAM_SUPPORT = (() => {
   function englishPlan(data,state,date){
     const n=state.completed_days||0, spec=data.launch_days[n];
     if(!spec)return null;
-    return {date,learningDay:n+1,concepts:[spec.concept],exception:spec.exception,answers:[],answered:[],exposed:[],completed:false,
+    const mixed=spec.mode==='mixed_recall';
+    return {date,learningDay:n+1,concepts:mixed?[...new Set(spec.ids.map(id=>data.exam_prep.find(q=>q.id===id).linked_concept[0]))]:[spec.concept],exception:spec.exception,answers:[],answered:[],exposed:[],completed:false,
       tasks:spec.ids.map((id,i)=>{const q=data.exam_prep.find(q=>q.id===id);return {id,support:{subject:'english',concept:q.linked_concept[0],
-        stage:q.practice_role,new:i>=2,showCard:i===2,taught:i>=2,previousDay:state[q.linked_concept[0]]?.last_day}};})};
+        stage:q.practice_role,new:!mixed&&i>=2,showCard:!mixed&&i===2,taught:!mixed&&i>=2,previousDay:state[q.linked_concept[0]]?.last_day,...(mixed?{mixed:true}:{})}};})};
   }
   function planFor(data,state,date=day()){
     const old=state.__plan;
@@ -71,7 +72,7 @@ const PA_EXAM_SUPPORT = (() => {
           concept_cards:lessons.flatMap(l=>l.concept_cards),exam_prep:lessons.flatMap(l=>l.exam_prep)};
       }
       const state=read(subject),p=planFor(data,state);
-      if(!p){status.textContent='첫 3학습일 완료 · 다음 분량 준비 중';return;}
+      if(!p){status.textContent=subject==='english'?`준비된 ${data.launch_days.length}학습일 완료 · 다음 분량 준비 중`:'준비된 학습을 마쳤어요';return;}
       if(p.completed&&p.finalized){status.textContent='오늘 5문제 완료';return;}
       QUIZ_DATA=data;currentSubject=subject;currentLesson=data.lesson;currentMode='exam_prep';
       retryMode=false;originalSession=[];originalSessionAnswers=[];loadQuestionHistory();
@@ -151,7 +152,7 @@ const PA_EXAM_SUPPORT = (() => {
     if(!q._support)return PA_SCIENCE_SUPPORT.renderMultiple(q);
     timer={ms:0,start:document.hidden?null:tick()};
     const s=q._support;const box=document.getElementById('question-container');box.style.display='block';
-    const label=s.stage==='diagnostic'?'처음 만나는 내용 · 사전 확인 (복습 점수 아님)':s.new?'오늘 배운 내용 적용하기':'설명 보기 전, 기억 확인';
+    const label=s.stage==='diagnostic'?'처음 만나는 내용 · 사전 확인 (복습 점수 아님)':s.new?'오늘 배운 내용 적용하기':s.mixed?'여러 날 배운 내용 섞어서 기억 확인':'설명 보기 전, 기억 확인';
     document.getElementById('instruction-text').textContent=label;
     document.getElementById('question-text').innerHTML=emphasize(q.instruction||'알맞은 답을 골라 보세요');
     box.innerHTML=`<p class="exam-card-lines">${esc(q.sentence||'')}</p>${renderVisualMedia(q)}<p><b>${emphasize(q.question)}</b></p><div id="study-options"></div><p id="exam-feedback" role="status"></p>`;

@@ -22,7 +22,7 @@
 // v186 (2026-08-03): 영어 단어 간격 복습(E30) — 서버(GAS v18)가 사다리를 계산하고 클라는 캐시.
 //   device_instance_id·answered_at·recall_mode·question_type 전송, doGet?action=vocab_state pull,
 //   만기 우선 선발(due_cap 램프 + new_min 2), 만기 단어는 카드 없이 냉시험.
-const CACHE_NAME = 'quiz-v189';
+const CACHE_NAME = 'quiz-v190';
 // v169 (2026-06-16): 국어 마인드맵 내용형 교체 — kor2 허브 kor_mindmap_kor2_v2.png, kor3 허브 kor_mindmap_kor3_v2.png(가지별 핵심 불릿 + ⚠함정). lesson_kor2/3 mindmap.img 동반 갱신. PRECACHE 2줄(v1→v2) 교체. APP_CACHE_NAME 동반 범프(v168->v169). 캐시 강제 갱신용.
 // v168 (2026-06-16): 사회 마인드맵 내용형 교체 — soc3 허브 soc_mindmap_soc3_v2.png, soc4 허브 soc_mindmap_soc4_v3.png(가지별 핵심 불릿 + ⚠함정). lesson_soc3/4 mindmap.img 동반 갱신. PRECACHE 2줄(v1→v2 / v2→v3) 교체. APP_CACHE_NAME 동반 범프(v167->v168). 캐시 강제 갱신용.
 // v167 (2026-06-12): 기말 총점검 보강 — 사회 soc4 환율 그래프 exam 4문항(S4-E040~E043, v1.0->1.1; img/soc_forex_shift_demand_v1.png Pillow 256색 FS 압축 -62% 배선) + 과학 sci2 형식 정합 4건(S2-E026 보기형 재설계·E032/E006 ㄱㄴㄷ 변환·E001 자구, v1.1->1.2). PRECACHE에 soc_forex_shift_demand_v1.png 등재. APP_CACHE_NAME 동반 범프(v166->v167). 캐시 강제 갱신용.
@@ -63,9 +63,9 @@ const CACHE_NAME = 'quiz-v189';
 // v133 (2026-05-24): daily v2 — monthly bundle + normalised cache for daily_*.js & daily_index.js
 // [Codex 2026-05-13 index-tail-restore] Force clients to replace the previously cached truncated index.html.
 const PRECACHE_URLS = [
-  './english_exam.js?v=189',
-  './exam_support.js?v=189',
-  './exam_home.js?v=189',
+  './english_exam.js?v=190',
+  './exam_support.js?v=190',
+  './exam_home.js?v=190',
   './문해력카드/card.html',
   './문해력카드/cards.js',
   './daily_index.js',
