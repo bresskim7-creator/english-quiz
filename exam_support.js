@@ -31,7 +31,7 @@ const PA_EXAM_SUPPORT = (() => {
   function planFor(data,state,date=day()){
     const old=state.__plan;
     // An unfinished block survives midnight/absence. Completion on the new day uses that day's five-slot allowance.
-    if(old && (!old.completed || old.completed_day===date || old.date===date || !old.finalized))return old;
+    if(old && (!old.completed || supportPlanIsToday(old,date) || !(old.finalized || hasSupportLog(data.subject,old))))return old;
     const p=data.subject==='english'?englishPlan(data,state,date):PA_SCIENCE_SUPPORT.makePlan(data,state,date);
     if(p){p.subject=data.subject;p.started_at=new Date().toISOString();p.id=data.subject+'-'+p.started_at;
       p.tasks.forEach(t=>t.support.subject=data.subject);}
@@ -40,9 +40,11 @@ const PA_EXAM_SUPPORT = (() => {
   function session(data){
     const state=read(data.subject),plan=planFor(data,state);
     if(!plan)return [];
+    const previousPlan=state.__plan;
     state.__plan=plan;
     active={subject:data.subject,data,state};
     if(!write(state))throw Error('저장할 수 없어 시작하지 않았어요. 저장 공간을 확인한 뒤 다시 눌러 주세요.');
+    noteSupportPlanAdvance(data.subject,previousPlan,plan);
     return plan.tasks.map(t=>{
       const q=data.exam_prep.find(q=>q.id===t.id);
       if(!q)throw Error('배정 문항을 찾지 못했어요. 앱 자료를 다시 확인해야 해요.');
@@ -71,6 +73,7 @@ const PA_EXAM_SUPPORT = (() => {
         data={subject:'science',lesson:'sci_mid_mix',lesson_id:'sci_mid_mix',title:'오늘의 과학',support_mode:true,
           concept_cards:lessons.flatMap(l=>l.concept_cards),exam_prep:lessons.flatMap(l=>l.exam_prep)};
       }
+      recoverSupportLogs();
       const state=read(subject),p=planFor(data,state);
       if(!p){status.textContent=subject==='english'?`준비된 ${data.launch_days.length}학습일 완료 · 다음 분량 준비 중`:'준비된 학습을 마쳤어요';return;}
       if(p.completed&&p.finalized){status.textContent='오늘 5문제 완료';return;}
@@ -136,9 +139,16 @@ const PA_EXAM_SUPPORT = (() => {
     if(!QUIZ_DATA?.support_mode||!active||!pending)return true;
     const state=pending,p=state.__plan;p.answers=sessionAnswers.map(a=>({...a}));p.answered=p.answers.map(a=>a.id);
     const complete=p.tasks.every(t=>p.answered.includes(t.id));
+    const newlyCompleted=complete&&!p.completed;
     if(complete&&!p.completed){p.completed=true;p.completed_day=day();state.completed_days=(state.completed_days||0)+1;}
     if(!write(state)){sessionAnswers.pop();currentSession[currentQuestionIndex]._support.answered=false;pending=null;return false;}
-    active.state=state;pending=null;return true;
+    active.state=state;pending=null;
+    if(newlyCompleted){
+      const saved=persistSupportLog(active.subject,p);
+      if(saved.ok){active.state.__plan.logged=true;sendToGoogleSheets();}
+      else {showSupportRecordIssue(active.subject);scheduleRecordSync();}
+    }
+    return true;
   }
   function gradeWriting(q,value){
     const norm=String(value).trim().replace(/\s+/g,' ').replace(/[.!?]$/,'').toLowerCase();

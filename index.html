@@ -2074,8 +2074,8 @@
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-09-18 v191';
-        const APP_CACHE_NAME = 'quiz-v191';
+        const BUILD_VERSION = '2026-09-18 v192';
+        const APP_CACHE_NAME = 'quiz-v192';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -2163,10 +2163,11 @@
 
         function pruneOldestQuizLogsForQuota() {
             const entries = [];
+            const acknowledged = new Set(JSON.parse(localStorage.getItem('sent_logs') || '[]'));
             getQuizLogStorageKeys().forEach(k => {
                 const items = JSON.parse(localStorage.getItem(k) || '[]');
                 items.forEach((log, idx) => {
-                    entries.push({ key: k, idx, ts: Date.parse(log && log.timestamp || '') || 0, log });
+                    if (log && acknowledged.has(log.timestamp)) entries.push({ key: k, idx, ts: Date.parse(log.timestamp || '') || 0, log });
                 });
             });
             entries.sort((a, b) => a.ts - b.ts);
@@ -3591,7 +3592,8 @@
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('sw.js').catch(() => {});
             }
-            retransmitUnsentLogs();
+            installRecordSync();
+            runRecordSync();
             updateOpsDiagnostics();
             updateExamDdayUi();
             // STEP133: 초기 진입 시 미열람 배지를 위해 daily index를 백그라운드 prefetch
@@ -6550,6 +6552,7 @@
                 type: q.type,
                 difficulty: q.difficulty || (q.phase === 'drill' ? 'drill' : ''),
                 keyword: q.keyword || q.core_sentence_id || q.id,
+                ...(q._support ? { weak_label: getWeakLabel(q) } : {}),
                 score_group: q.score_group || '',
                 recovery_band: q.recovery_band || '',
                 test_task: q.test_task || q.type || '',
@@ -8459,13 +8462,13 @@
                 partial: false
             };
 
+            if (QUIZ_DATA?.support_mode) {
+                const saved = persistSupportLog(currentSubject, PA_EXAM_SUPPORT.read(currentSubject).__plan);
+                if (!saved.ok) { showSupportRecordIssue(currentSubject); showNextButton(); scheduleRecordSync(); return; }
+            } else {
             const logsKey = (typeof currentLesson === 'string' && isNaN(currentLesson)) ? `quiz_logs_${currentLesson}` : `quiz_logs_L${currentLesson}`;
             const logs = JSON.parse(localStorage.getItem(logsKey) || '[]');
-            if (QUIZ_DATA?.support_mode) {
-                log.support_session_id = PA_EXAM_SUPPORT.read(currentSubject).__plan.id;
-                const existing = logs.find(x=>x.support_session_id===log.support_session_id && !x.partial);
-                if(existing) Object.assign(log,existing); else logs.push(log);
-            } else logs.push(log);
+            logs.push(log);
             if (!safeSetItem(logsKey, JSON.stringify(logs))) {
                 if (QUIZ_DATA?.support_mode) {
                     const notice = document.getElementById('exam-save-error');
@@ -8473,6 +8476,8 @@
                     showNextButton();
                 }
                 return;
+            }
+
             }
 
             // Drill stage progression check
@@ -8646,116 +8651,220 @@
             return q.id || '';
         }
 
-        // v132: 동시 송신 차단 mutex (race 중복 방지)
-        let _sendInFlight = false;
-        let _vocabFlushInFlight = false;
-
-        // Google Sheets 전송
-        async function sendToGoogleSheets() {
-            if (_sendInFlight) return;  // 동시 호출 차단
-            _sendInFlight = true;
-
-            try {
-                const webhookUrl = localStorage.getItem('webhook_url');
-                if (!webhookUrl) return;
-                pruneOldSentLogs(90);
-
-                // 모든 레슨 로그 자동 수집 (L1, L2, L3, ... 무제한)
-                const allLogs = [];
-                for (let i = 0; i < localStorage.length; i++) {
-                    const k = localStorage.key(i);
-                    if (k === 'quiz_logs' || k.startsWith('quiz_logs_L') || k.startsWith('quiz_logs_kor') || k.startsWith('quiz_logs_math') || k.startsWith('quiz_logs_soc') || k.startsWith('quiz_logs_sci') || k.startsWith('quiz_logs_eng')) {
-                        const items = JSON.parse(localStorage.getItem(k) || '[]');
-                        items.forEach(log => allLogs.push(log));
-                    }
-                }
-                // timestamp 기준 중복 제거
-                const seen = new Set();
-                const logs = allLogs.filter(log => {
-                    if (seen.has(log.timestamp)) return false;
-                    seen.add(log.timestamp);
-                    return true;
-                });
-                const sentKeys = JSON.parse(localStorage.getItem('sent_logs') || '[]');
-
-                // v132: reserve-before-fetch — fetch 발사 직전 sentKeys에 reserve, 실패 시 catch에서 revert
-                const fetches = [];
-                logs.forEach((log, idx) => {
-                    const key = log.timestamp;
-                    if (sentKeys.includes(key)) return;
-
-                    // Support logs remain pending until explicit server ACK; server timestamp dedup makes retries safe.
-                    const isSupportLog = /^(english|science)_support$/.test(log.session_type || '');
-                    if (!isSupportLog) sentKeys.push(key);
-
-                    const m = log.metrics || {};
-                    const data = {
-                        lesson: log.lesson || currentLesson || 1,
-                        subject: log.subject || 'english',
-                        date: log.date,
-                        session_type: log.session_type || '',
-                        total: log.total,
-                        correct: log.correct,
-                        percentage: log.percentage,
-                        duration_sec: log.duration_sec || 0,
-                        weak: log.weak || '',
-                        type_breakdown: log.type_breakdown || '',
-                        hint_count: log.hint_count || 0,
-                        // 2026-05-14: metrics에서 a_group_recovery 제거됨 → 빈 값 자동 전송 (Apps Script v10 컬럼 호환 유지)
-                        a_group_recovery: m.a_group_recovery != null ? m.a_group_recovery : '',
-                        first_attempt_rate: m.first_attempt_rate != null ? m.first_attempt_rate : '',
-                        arrange_success: m.arrange_success != null ? m.arrange_success : '',
-                        details: log.details || '',
-                        partial: log.partial ? 'Y' : 'N',
-                        retry: log.retry ? 'Y' : 'N',
-                        recovery_rate: log.recovery_rate != null ? log.recovery_rate : '',
-                        condition_miss: log.condition_miss != null ? log.condition_miss : '',
-                        omr_miss: log.omr_miss != null ? log.omr_miss : '',
-                        time_complete: log.time_complete || '',
-                        score_group: log.score_group || '',
-                        recovery_band: log.recovery_band || '',
-                        timestamp: log.timestamp
-                    };
-
-                    const p = fetch(webhookUrl, {
-                        method: 'POST',
-                        body: JSON.stringify(data)
-                    }).then(async r => {
-                        if (!r.ok) throw new Error('HTTP ' + r.status);
-                        const text = await r.text();
-                        let body = null;
-                        try { body = JSON.parse(text); } catch (_) {}
-                        if (isSupportLog && (!body || body.status !== 'ok')) throw new Error('support-log ACK missing');
-                        if (body && body.ok === false) throw new Error(body.error || 'apps-script reject');
-                        if (body && body.status && body.status !== 'ok') throw new Error(body.error || body.status);
-                        if (isSupportLog && !sentKeys.includes(key)) sentKeys.push(key);
-                        compactSentLogEntry(key);
-                    }).catch(err => {
-                        console.warn('[log-send-fail]', key, err && err.message);
-                        // REVERT reservation
-                        const i2 = sentKeys.indexOf(key);
-                        if (i2 >= 0) sentKeys.splice(i2, 1);
-                    });
-                    fetches.push(p);
-                });
-
-                // 즉시 sentKeys 저장 (reserve 보존 — fetch 중 새로고침돼도 reservation 유지)
-                safeSetItem('sent_logs', JSON.stringify(sentKeys));
-
-                // 모든 fetch 완료 후 sentKeys 다시 저장 (revert 반영)
-                await Promise.allSettled(fetches);
-                safeSetItem('sent_logs', JSON.stringify(sentKeys));
-            } finally {
-                _sendInFlight = false;
+        // RECORD_SYNC_BEGIN -- durable quiz results; vocabulary protocol remains separate.
+        const SUPPORT_STORAGE={english:'pa_english_2026_midterm_v1',science:'pa_science_2026_midterm_v2'};
+        const SUPPORT_LESSONS={english:'eng_mid_launch',science:'sci_mid_mix'};
+        const supportRecordFailures=new Map();
+        // Candidate values only: deployment requires isolated GAS latency measurement (M1).
+        const QUIZ_SEND_TIMEOUT_MS=60000, RECORD_SYNC_GAP_MS=10000;
+        const RECORD_RETRY_MS=[60000,300000,900000];
+        let _sendInFlight=false,_sendDirty=false,_vocabFlushInFlight=false;
+        let recordSyncTimer=null,recordSyncDue=0,recordSyncLast=-Infinity,recordRetryStep=0;
+        function storeRecordValue(key,value){
+            // Background result/ACK writes must not display the answer-write failure alert.
+            try{localStorage.setItem(key,value);return true;}
+            catch(_){try{pruneOldestQuizLogsForQuota();localStorage.setItem(key,value);return true;}catch(_){return false;}}
+        }
+        function supportLogKey(subject){if(!SUPPORT_LESSONS[subject])throw Error('invalid-subject');return 'quiz_logs_'+SUPPORT_LESSONS[subject];}
+        function supportLogs(subject){const logs=JSON.parse(localStorage.getItem(supportLogKey(subject))||'[]');if(!Array.isArray(logs))throw Error('invalid-logs');return logs;}
+        function getSupportLog(subject,plan){return plan&&typeof plan.id==='string'?supportLogs(subject).find(x=>x&&x.support_session_id===plan.id&&!x.partial):null;}
+        function hasSupportLog(subject,plan){return !!getSupportLog(subject,plan);}
+        function validStudyDate(s){if(typeof s!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(s))return false;const d=new Date(s+'T00:00:00Z');return Number.isFinite(d.getTime())&&d.toISOString().slice(0,10)===s;}
+        function supportCompletionDate(plan){
+            if(validStudyDate(plan.completed_day))return plan.completed_day;
+            const last=plan.answers?.[plan.answers.length-1]?.answer_date;
+            return validStudyDate(last)?last:null;
+        }
+        function supportPlanIsToday(plan,today){
+            const completion=supportCompletionDate(plan);
+            // An undated legacy block started today cannot have completed yesterday.
+            // This is a progress guard only; plan.date never supplies a result-log date.
+            return completion===today||(!completion&&plan.date===today);
+        }
+        function noteSupportPlanAdvance(subject,previous,plan){
+            if(previous?.completed&&previous.finalized&&previous.id!==plan.id){
+                // The v191 continuity fallback can retire an unrecovered result. Do not
+                // promise automatic retry after its source plan has been replaced.
+                try{if(!hasSupportLog(subject,previous))supportRecordFailures.set(subject,'unrecovered-previous-plan');}
+                catch(_){supportRecordFailures.set(subject,'invalid-record');}
             }
         }
-
-        // 미전송 로그 재전송
-        function retransmitUnsentLogs() {
-            sendToGoogleSheets();
-            flushVocabQueue();
-            flushVocabOutbox();
+        function newQuizTimestamp(){
+            // timestamp is the legacy global dedup key, not the answer time. Disambiguate
+            // same-millisecond recoveries by 1 ms; study dates come only from saved answers.
+            const used=new Set(JSON.parse(localStorage.getItem('sent_logs')||'[]'));
+            for(const key of getQuizLogStorageKeys()){
+                const logs=JSON.parse(localStorage.getItem(key)||'[]');
+                if(Array.isArray(logs))logs.forEach(x=>{if(x?.timestamp)used.add(x.timestamp);});
+            }
+            let ms=Date.now();while(used.has(new Date(ms).toISOString()))ms++;
+            return new Date(ms).toISOString();
         }
+        function buildSupportLog(subject,plan,existingLog,nowIso){
+            if(existingLog)return existingLog;
+            if(!SUPPORT_LESSONS[subject]||!plan||!plan.completed||typeof plan.id!=='string'||!plan.id.trim())throw Error('invalid-plan');
+            const answers=plan.answers,tasks=plan.tasks;
+            if(!Array.isArray(answers)||answers.length!==5||!Array.isArray(tasks)||tasks.length!==5)throw Error('invalid-answers');
+            const ids=new Set(tasks.map(t=>t.id));
+            if(ids.size!==5||new Set(answers.map(a=>a.id)).size!==5||answers.some(a=>!ids.has(a.id)||typeof a.correct!=='boolean'||!Number.isFinite(a.time_sec)||a.time_sec<0))throw Error('invalid-answers');
+            const date=supportCompletionDate(plan);if(!date)throw Error('no-date-evidence');
+            const correct=answers.filter(a=>a.correct).length,types={};
+            answers.forEach(a=>{const type=a.type||'';types[type]=types[type]||{total:0,correct:0};types[type].total++;if(a.correct)types[type].correct++;});
+            const arranged=answers.filter(a=>a.type==='arrange');
+            const meta=k=>[...new Set(answers.map(a=>a[k]).filter(Boolean))].join(', ');
+            return {lesson:SUPPORT_LESSONS[subject],subject,date,session_type:subject+'_support',support_session_id:plan.id,
+                total:answers.length,correct,percentage:Math.round(100*correct/answers.length),duration_sec:answers.reduce((n,a)=>n+a.time_sec,0),
+                weak:answers.filter(a=>!a.correct).map(a=>a.weak_label||a.keyword||a.id).join(', '),
+                score_group:meta('score_group'),recovery_band:meta('recovery_band'),
+                type_breakdown:Object.entries(types).map(([t,s])=>t+':'+s.correct+'/'+s.total).join(', '),hint_count:answers.filter(a=>a.hint_used).length,
+                metrics:{first_attempt_rate:Math.round(100*answers.filter(a=>a.correct&&!a.hint_used).length/answers.length),condition_compliance:null,
+                    arrange_success:arranged.length?Math.round(100*arranged.filter(a=>a.correct).length/arranged.length):null,arrange_count:arranged.length},
+                condition_miss:'',omr_miss:'',time_complete:'',
+                details:answers.map(a=>a.id+(a.correct?'✓':'✗')+a.time_sec+'s'+(a.hint_used?'💡':'')+PA_EXAM_SUPPORT.detail(a)).join(', '),
+                questions:answers.map(a=>({...a})),timestamp:nowIso,partial:false};
+        }
+        function persistSupportLog(subject,plan){
+            try{
+                const logs=supportLogs(subject);let log=getSupportLog(subject,plan),created=false;
+                if(!log){
+                    log=buildSupportLog(subject,plan,null,newQuizTimestamp());
+                    if(!storeRecordValue(supportLogKey(subject),JSON.stringify([...logs,log])))throw Error('storage');
+                    created=true;
+                }
+                supportRecordFailures.delete(subject);
+                // Result log is authoritative. Failure to write this redundant flag is recoverable.
+                let flagSaved=false;
+                try{
+                    const state=PA_EXAM_SUPPORT.read(subject);
+                    if(state.__plan?.id===plan.id){
+                        if(state.__plan.logged)flagSaved=true;
+                        else {state.__plan.logged=true;flagSaved=storeRecordValue(SUPPORT_STORAGE[subject],JSON.stringify(state));}
+                    }
+                }catch(_){}
+                return {ok:true,created,log,flagSaved};
+            }catch(e){
+                const reason=e.message==='storage'?'storage':e.message==='no-date-evidence'?'no-date-evidence':'invalid-record';
+                supportRecordFailures.set(subject,reason);return {ok:false,reason};
+            }
+        }
+        function recoverSupportLogs(){
+            for(const subject of Object.keys(SUPPORT_STORAGE)){
+                try{const plan=PA_EXAM_SUPPORT.read(subject).__plan;if(plan?.completed)persistSupportLog(subject,plan);}
+                catch(_){supportRecordFailures.set(subject,'invalid-record');}
+            }
+        }
+        function supportRecordNotice(){
+            const reasons=[...supportRecordFailures.values()];
+            if(reasons.some(x=>x!=='storage'))return '확인이 필요한 학습이 있어요. 어른에게 알려 주세요.';
+            if(reasons.length)return '답은 저장됐어요. 기록을 다시 저장할게요.';
+            try{
+                const n=getUnsentQuizLogCount();
+                if(n&&!localStorage.getItem('webhook_url'))return '답은 저장됐어요. 어른과 기록 연결을 확인해 주세요.';
+                if(n)return '답은 저장됐어요. 연결되면 이 기기의 학습 기록을 보낼게요. ('+n+'건)';
+            }catch(_){return '학습 기록 확인이 필요해요. 어른에게 알려 주세요.';}
+            return '읽기와 문해력 완료는 각각 기록해요.';
+        }
+        function supportTodayStatus(subject,state,today){
+            const p=state.__plan,days=subject==='english'?window.PA_ENGLISH_EXAM?.launch_days?.length:0;
+            if(p&&!p.completed)return (p.answers||[]).length+'/5 · 이어 하기';
+            if(p?.completed&&supportPlanIsToday(p,today)){
+                if(p.finalized)return '✓ 오늘 학습 완료';
+                if(hasSupportLog(subject,p))return '✓ 오늘 학습 완료 · 결과 보기';
+                return supportRecordFailures.has(subject)?'답은 저장됐어요 · 기록을 다시 저장할게요':'기록을 저장하고 있어요';
+            }
+            if(p?.completed&&!p.finalized&&!hasSupportLog(subject,p))return '5문제 풀이 끝 · 마무리하기';
+            if(days&&state.completed_days>=days)return '준비된 '+days+'학습일 완료 · 다음 분량 준비 중';
+            return '하루 5문제';
+        }
+        function refreshRecordStatus(){
+            try{
+                const el=document.getElementById('exam-home-status');if(el)el.textContent=supportRecordNotice();
+                for(const subject of Object.keys(SUPPORT_STORAGE)){
+                    const card=document.getElementById(subject+'-support-status');
+                    if(card)card.textContent=supportTodayStatus(subject,PA_EXAM_SUPPORT.read(subject),PA_EXAM_SUPPORT.day());
+                }
+                const issue=document.getElementById('exam-record-status');
+                if(issue)issue.textContent=supportRecordFailures.size?supportRecordNotice():'';
+                updateOpsDiagnostics();
+            }catch(_){}
+        }
+        function showSupportRecordIssue(subject){
+            let el=document.getElementById('exam-record-status');
+            if(!el){el=document.createElement('p');el.id='exam-record-status';el.setAttribute('role','status');document.getElementById('question-container')?.after(el);}
+            el.textContent=supportRecordFailures.has(subject)?supportRecordNotice():'';
+            refreshRecordStatus();
+        }
+        function scheduleRecordSync(delay=0){
+            const due=Math.max(Date.now()+delay,recordSyncLast+RECORD_SYNC_GAP_MS);
+            if(recordSyncTimer!==null&&recordSyncDue<=due)return;
+            if(recordSyncTimer!==null)clearTimeout(recordSyncTimer);
+            recordSyncDue=due;recordSyncTimer=setTimeout(()=>{recordSyncTimer=null;runRecordSync();},Math.max(0,due-Date.now()));
+        }
+        function runRecordSync(){recordSyncLast=Date.now();recoverSupportLogs();refreshRecordStatus();retransmitUnsentLogs();}
+        function retryRecordSync(){scheduleRecordSync(RECORD_RETRY_MS[Math.min(recordRetryStep++,RECORD_RETRY_MS.length-1)]);}
+        function installRecordSync(){
+            window.addEventListener('online',()=>scheduleRecordSync());
+            window.addEventListener('pageshow',()=>scheduleRecordSync());
+            document.addEventListener('visibilitychange',()=>{if(!document.hidden)scheduleRecordSync();});
+        }
+        function hasRecordWork(){
+            try{return getUnsentQuizLogCount()>0||[...supportRecordFailures.values()].some(x=>x==='storage');}
+            catch(_){return false;}
+        }
+        async function sendToGoogleSheets(){
+            if(_sendInFlight){_sendDirty=true;return;}
+            _sendInFlight=true;let canRetry=false;
+            try{
+                const webhookUrl=localStorage.getItem('webhook_url');if(!webhookUrl)return;
+                canRetry=true;pruneOldSentLogs(90);
+                const allLogs=[];
+                for(const k of getQuizLogStorageKeys()){
+                    try{const items=JSON.parse(localStorage.getItem(k)||'[]');if(Array.isArray(items))allLogs.push(...items);}
+                    catch(_){console.warn('[log-read-fail]',k);}
+                }
+                const seen=new Set(),logs=allLogs.filter(log=>{if(!log?.timestamp||seen.has(log.timestamp))return false;seen.add(log.timestamp);return true;});
+                const sentKeys=JSON.parse(localStorage.getItem('sent_logs')||'[]');
+                const fetches=logs.map(async log=>{
+                    const key=log.timestamp;if(sentKeys.includes(key))return;
+                    const isSupportLog=/^(english|science)_support$/.test(log.session_type||'');
+                    if(!isSupportLog)sentKeys.push(key); // Preserve existing non-support reservation contract.
+                    const m=log.metrics||{},data={lesson:log.lesson||currentLesson||1,subject:log.subject||'english',date:log.date,session_type:log.session_type||'',
+                        total:log.total,correct:log.correct,percentage:log.percentage,duration_sec:log.duration_sec||0,weak:log.weak||'',type_breakdown:log.type_breakdown||'',hint_count:log.hint_count||0,
+                        a_group_recovery:m.a_group_recovery??'',first_attempt_rate:m.first_attempt_rate??'',arrange_success:m.arrange_success??'',details:log.details||'',partial:log.partial?'Y':'N',retry:log.retry?'Y':'N',
+                        recovery_rate:log.recovery_rate??'',condition_miss:log.condition_miss??'',omr_miss:log.omr_miss??'',time_complete:log.time_complete||'',score_group:log.score_group||'',recovery_band:log.recovery_band||'',timestamp:log.timestamp};
+                    const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),QUIZ_SEND_TIMEOUT_MS);
+                    try{
+                        const r=await fetch(webhookUrl,{method:'POST',body:JSON.stringify(data),signal:controller.signal});
+                        if(!r.ok)throw Error('HTTP '+r.status);
+                        let body=null;try{body=JSON.parse(await r.text());}catch(_){}
+                        if(isSupportLog&&(!body||body.status!=='ok'))throw Error('support-log ACK missing');
+                        if(body&&(body.ok===false||(body.status&&body.status!=='ok')))throw Error('server retry');
+                        if(isSupportLog&&!sentKeys.includes(key))sentKeys.push(key);
+                        // Persist ACK before compacting details; otherwise a storage failure can lose unsent evidence.
+                        const current=JSON.parse(localStorage.getItem('sent_logs')||'[]');
+                        if(storeRecordValue('sent_logs',JSON.stringify([...new Set([...current,key])]))){compactSentLogEntry(key);}
+                        else {const i=sentKeys.indexOf(key);if(i>=0)sentKeys.splice(i,1);}
+                    }catch(err){
+                        console.warn('[log-send-unconfirmed]',key,err&&err.message);
+                        const i=sentKeys.indexOf(key);if(i>=0)sentKeys.splice(i,1);
+                        if(!isSupportLog){const current=JSON.parse(localStorage.getItem('sent_logs')||'[]');storeRecordValue('sent_logs',JSON.stringify(current.filter(x=>x!==key)));}
+                    }finally{clearTimeout(timeout);}
+                });
+                // Legacy reservations are retained; support entries only enter this set after ACK.
+                const current=JSON.parse(localStorage.getItem('sent_logs')||'[]');
+                storeRecordValue('sent_logs',JSON.stringify([...new Set([...current,...sentKeys])]));
+                await Promise.allSettled(fetches);
+            }catch(e){console.warn('[log-send-cycle]',e&&e.message);}
+            finally{
+                _sendInFlight=false;refreshRecordStatus();
+                if(_sendDirty){_sendDirty=false;scheduleRecordSync();}
+                else if((canRetry&&hasRecordWork())||[...supportRecordFailures.values()].some(x=>x==='storage'))retryRecordSync();
+                else if(!hasRecordWork())recordRetryStep=0;
+            }
+        }
+        function retransmitUnsentLogs(){sendToGoogleSheets();flushVocabQueue();flushVocabOutbox();}
+        // RECORD_SYNC_END
+
 
         // 결과 내보내기
         function exportResults() {
@@ -9745,7 +9854,7 @@
     </script>
     <script src="science_support.js?v=189"></script>
     <script src="english_exam.js?v=190"></script>
-    <script src="exam_support.js?v=191"></script>
-    <script src="exam_home.js?v=191"></script>
+    <script src="exam_support.js?v=192"></script>
+    <script src="exam_home.js?v=192"></script>
 </body>
 </html>
