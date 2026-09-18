@@ -3,13 +3,13 @@ const PA_EXAM_SUPPORT = (() => {
   'use strict';
   const KEYS={science:'pa_science_2026_midterm_v2',english:'pa_english_2026_midterm_v1'};
   const IDS=['sci_mid_plate','sci_mid_element','sci_mid_body'];
-  let loading=false, active=null, pending=null, timer=null;
+  let loading=false, active=null, pending=null, timer=null, finishIssue='';
   const tick=()=>typeof performance!=='undefined'?performance.now():Date.now();
   function elapsed(){return timer?Math.round((timer.ms+(timer.start==null?0:tick()-timer.start))/1000):0;}
   document.addEventListener?.('visibilitychange',()=>{if(!timer)return;if(document.hidden&&timer.start!=null){timer.ms+=tick()-timer.start;timer.start=null;}else if(!document.hidden&&timer.start==null)timer.start=tick();});
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const emphasize=s=>esc(s).replace(/(해당하지 않는|적절하지 않은|올바르지 않은|바르지 않은|알맞지 않은|거리가 먼|아닌 것|틀린 것|틀린|아닌|않는|없는|못한)/g,'<span class="exam-negative" style="color:#E53935;font-weight:700;text-decoration:underline">$1</span>');
-  const day=(d=new Date())=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  const day=(d=new Date())=>PA_PROGRESS.day(d);
   const later=n=>{const d=new Date();d.setDate(d.getDate()+n);return day(d);};
   function read(subject){
     const raw=localStorage.getItem(KEYS[subject]);
@@ -21,7 +21,8 @@ const PA_EXAM_SUPPORT = (() => {
   function write(s){return safeSetItem(KEYS[active.subject],JSON.stringify(s));}
   function rules(q){return [...new Set([q.linked_concept[0],...(q.rule_tags||[])])];}
   function englishPlan(data,state,date){
-    const n=state.completed_days||0, spec=data.launch_days[n];
+    const learningDay=PA_PROGRESS.nextDay(state,data.launch_days.length);
+    const n=learningDay===null?data.launch_days.length:learningDay-1, spec=data.launch_days[n];
     if(!spec)return null;
     const mixed=spec.mode==='mixed_recall';
     return {date,learningDay:n+1,concepts:mixed?[...new Set(spec.ids.map(id=>data.exam_prep.find(q=>q.id===id).linked_concept[0]))]:[spec.concept],exception:spec.exception,answers:[],answered:[],exposed:[],completed:false,
@@ -31,7 +32,7 @@ const PA_EXAM_SUPPORT = (() => {
   function planFor(data,state,date=day()){
     const old=state.__plan;
     // An unfinished block survives midnight/absence. Completion on the new day uses that day's five-slot allowance.
-    if(old && (!old.completed || supportPlanIsToday(old,date) || !(old.finalized || hasSupportLog(data.subject,old))))return old;
+    if(old && (!old.completed || supportPlanIsToday(old,date)))return old; // finalized is presentation state, never the next-day gate.
     const p=data.subject==='english'?englishPlan(data,state,date):PA_SCIENCE_SUPPORT.makePlan(data,state,date);
     if(p){p.subject=data.subject;p.started_at=new Date().toISOString();p.id=data.subject+'-'+p.started_at;
       p.tasks.forEach(t=>t.support.subject=data.subject);}
@@ -41,9 +42,11 @@ const PA_EXAM_SUPPORT = (() => {
     const state=read(data.subject),plan=planFor(data,state);
     if(!plan)return [];
     const previousPlan=state.__plan;
+    if(previousPlan&&previousPlan.id!==plan.id)PA_PROGRESS.beforeAdvance(data.subject,state);
     state.__plan=plan;
     active={subject:data.subject,data,state};
     if(!write(state))throw Error('저장할 수 없어 시작하지 않았어요. 저장 공간을 확인한 뒤 다시 눌러 주세요.');
+    finishIssue='';
     noteSupportPlanAdvance(data.subject,previousPlan,plan);
     return plan.tasks.map(t=>{
       const q=data.exam_prep.find(q=>q.id===t.id);
@@ -58,7 +61,23 @@ const PA_EXAM_SUPPORT = (() => {
     sessionStartTime=Date.now()-sessionAnswers.reduce((n,a)=>n+(a.time_sec||0)*1000,0);
     if(currentSessionMeta)currentSessionMeta.type=active.subject+'_support';
   }
-  function canSave(){return !active||write(active.state);}
+  function canSave(){
+    if(!active)return true;
+    const state=JSON.parse(JSON.stringify(active.state)),input=document.querySelector('#question-container .exam-writing');
+    const task=state.__plan.tasks.find(t=>t.id===currentSession?.[currentQuestionIndex]?.id);
+    if(!state.__plan.completed&&typeof input?.value==='string'&&task)task.draft=input.value;
+    if(!write(state))return false;active.state=state;return true;
+  }
+  function finalize(){
+    if(!active?.state.__plan?.completed)return true;
+    if(active.state.__plan.finalized){finishIssue='';return true;}
+    const state=JSON.parse(JSON.stringify(active.state));state.__plan.finalized=true;
+    if(!write(state)){finishIssue='답은 저장됐어요. 마무리 표시는 다음에 다시 저장할게요.';return false;}
+    active.state=state;finishIssue='';return true;
+  }
+  function finishNotice(){return finishIssue;}
+  function leave(){goHome();}
+  function showDetails(){if(active?.state.__plan?.completed)showPage('result-page');}
   async function start(subject){
     if(loading)return;
     loading=true;
@@ -74,15 +93,20 @@ const PA_EXAM_SUPPORT = (() => {
           concept_cards:lessons.flatMap(l=>l.concept_cards),exam_prep:lessons.flatMap(l=>l.exam_prep)};
       }
       recoverSupportLogs();
-      const state=read(subject),p=planFor(data,state);
+      PA_PROGRESS.promote();
+      const local=read(subject);
+      if(PA_PROGRESS.guard(subject,local,day())){status.textContent='✓ 오늘 학습 완료 (다른 기기)';return;}
+      const state=PA_PROGRESS.applyStart(subject,local),p=planFor(data,state);
       if(!p){status.textContent=subject==='english'?`준비된 ${data.launch_days.length}학습일 완료 · 다음 분량 준비 중`:'준비된 학습을 마쳤어요';return;}
-      if(p.completed&&p.finalized){status.textContent='오늘 5문제 완료';return;}
+      if(p.completed){active={subject,data,state};finalize();status.textContent='✓ 오늘 학습 완료';return;}
       QUIZ_DATA=data;currentSubject=subject;currentLesson=data.lesson;currentMode='exam_prep';
       retryMode=false;originalSession=[];originalSessionAnswers=[];loadQuestionHistory();
+      document.getElementById('btn-support-details').hidden=true;
+      const exit=document.querySelector('.btn-quit');exit.textContent='홈으로 돌아가기';exit.style.display='';
       await startSession();
       document.querySelector('.header-title').textContent=(subject==='english'?'오늘의 영어':'오늘의 과학')+' · 5문제';
       status.textContent='하던 곳에서 이어 하기';
-    }catch(e){status.textContent=e.message||'자료를 불러오지 못했어요. 다시 눌러 주세요.';console.error('[exam-start]',e);}
+    }catch(e){status.textContent='학습을 시작하지 못했어요. 저장 공간과 연결을 확인한 뒤 다시 눌러 주세요.';console.error('[exam-start]',e);}
     finally{loading=false;home.inert=false;}
   }
   function cardMarkup(c){return `<section class="science-support-card"><h2>${esc(c.term)}</h2>${renderVisualMedia(c)}<p class="exam-card-lines">${esc(c.easy_explanation)}</p><p class="science-tip">기억할 점 · ${esc(c.exam_tip)}</p><small>교과서 ${c.source_refs[0].printed_pages.join('·')}쪽</small></section>`;}
@@ -140,13 +164,15 @@ const PA_EXAM_SUPPORT = (() => {
     const state=pending,p=state.__plan;p.answers=sessionAnswers.map(a=>({...a}));p.answered=p.answers.map(a=>a.id);
     const complete=p.tasks.every(t=>p.answered.includes(t.id));
     const newlyCompleted=complete&&!p.completed;
-    if(complete&&!p.completed){p.completed=true;p.completed_day=day();state.completed_days=(state.completed_days||0)+1;}
+    if(complete&&!p.completed){p.completed=true;p.completed_day=day();state.completed_days=(state.completed_days||0)+1;PA_PROGRESS.stamp(state,active.subject,p);}
     if(!write(state)){sessionAnswers.pop();currentSession[currentQuestionIndex]._support.answered=false;pending=null;return false;}
     active.state=state;pending=null;
     if(newlyCompleted){
+      PA_PROGRESS.ensureCompletion(active.subject,state);
       const saved=persistSupportLog(active.subject,p);
       if(saved.ok){active.state.__plan.logged=true;sendToGoogleSheets();}
       else {showSupportRecordIssue(active.subject);scheduleRecordSync();}
+      PA_PROGRESS.sync();
     }
     return true;
   }
@@ -214,19 +240,9 @@ const PA_EXAM_SUPPORT = (() => {
     box.innerHTML=`<p>도움 없이 ${counts.independent} · 설명·힌트 후 ${counts.assisted}<br>다시 연습 ${counts.incorrect+counts.unknown}${counts.precheck?'<br>처음 사전 확인 정답 '+counts.precheck:''}</p><p>연습 결과예요. 시험 예상 점수는 아니에요.</p>`;
     const together=QUIZ_DATA.concept_cards.filter(c=>active.state[c.id]?.error_days>=3);
     if(together.length)box.innerHTML+='<details><summary>부모와 같이 짚어 볼 개념</summary><p>'+together.map(c=>esc(c.term)).join(' · ')+'</p><p>오늘 문제는 늘리지 않고 다음 복습에서 다시 확인해요.</p></details>';
-    const state=JSON.parse(JSON.stringify(active.state));state.__plan.finalized=true;
-    const saved=active.state.__plan.finalized||write(state);
-    const home=document.querySelector('#result-page .btn-home');home.disabled=!saved;
-    if(!saved){
-      const message='마무리를 저장하지 못했어요. 저장 공간을 확인한 뒤 오늘 학습 마치기를 다시 눌러 주세요.';
-      document.getElementById('result-kid-message').textContent=message;document.querySelector('.result-emoji').textContent='💾';
-      const notice=document.getElementById('exam-save-error');if(notice)notice.textContent=message;
-      const retry=document.createElement('button');retry.id='exam-finalize-retry';retry.className='learning-finish';retry.textContent='오늘 학습 마치기';retry.onclick=result;box.appendChild(retry);
-      return false;
-    }
-    active.state=state;
+    const home=document.querySelector('#result-page .btn-home');home.disabled=false;home.textContent='홈으로 돌아가기';
     document.getElementById('result-kid-message').textContent='✓ 학습 완료';document.querySelector('.result-emoji').textContent='🌱';
     return true;
   }
-  return {start,session,restore,before,after,renderMultiple,record,capture,detail,result,canSave,planFor,englishPlan,gradeWriting,day,read,elapsed,emphasize};
+  return {start,session,restore,before,after,renderMultiple,record,capture,detail,result,canSave,finalize,finishNotice,leave,showDetails,planFor,englishPlan,gradeWriting,day,read,elapsed,emphasize};
 })();

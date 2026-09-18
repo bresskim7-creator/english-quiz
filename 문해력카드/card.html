@@ -253,13 +253,13 @@ function renderCard(card){
   h+='<p class="sguide">'+card.step2_guide+'</p>';
   h+='<div class="saybox">'+card.saybox+'</div>';
   h+='<div class="stepno three">STEP 3 · 모범과 견주고 셀프 체크</div>';
-  h+='<button class="rvl" onclick="rv(this)">모범 요약·구조 확인하기</button>';
-  h+='<div class="fb">';
+  h+='<div class="fb on" id="literacy-model">';
   h+='<div class="model">모범 요약 &mdash; <b>'+card.model+'</b></div>';
   h+='<div class="maph">글의 구조 한눈에 보기</div>';
   card.map.forEach(function(r){
     h+='<div class="maprow"><span class="tag t-'+r.tag+'">'+r.label+'</span><span>'+r.text+'</span></div>';
   });
+  h+='<div id="literacy-read-end" aria-hidden="true" style="height:1px"></div>';
   h+='<div class="selfcheck">';
   h+='<div class="sch">내가 말한 요약에 이게 있었어? <span style="font-weight:400;color:#82817a">— 눌러서 체크</span></div>';
   card.selfcheck.forEach(function(c){
@@ -284,54 +284,57 @@ function renderCard(card){
 })();
 </script>
 <script>
-/* Reading completion is separate; both literacy exit controls share this save. */
+/* Automatic reading completion. Practice answers are independent of reading. */
 (function(){
   const id=_mhGetDate();if(!CARD||!/^2026-(08|09)-\d\d$/.test(id))return;
   const KEY='pa_literacy_progress_v1',DONE='pa_exam_literacy_v1';
-  function read(k){try{return JSON.parse(localStorage.getItem(k)||'{}');}catch(_){return {};}}
-  const saved=read(KEY)[id];
+  const read=k=>JSON.parse(localStorage.getItem(k)||'{}');
   const footer=document.createElement('div');footer.className='card';
-  footer.innerHTML='<button id="literacy-finish" class="rvl learning-finish">오늘 학습 마치기</button><p id="literacy-save-status" role="status" aria-live="polite" tabindex="-1"></p><a id="literacy-home" class="learning-home" href="../index.html">시험 준비 홈</a>';
+  footer.innerHTML='<p id="literacy-save-status" role="status" aria-live="polite"></p><a id="literacy-home" class="learning-home" href="../index.html">홈으로 돌아가기</a>';
   document.getElementById('root').appendChild(footer);
-  const finish=document.getElementById('literacy-finish'),status=document.getElementById('literacy-save-status'),home=document.getElementById('literacy-home');
-  function state(){return {done,selected:[...document.querySelectorAll('.sen.ok,.opt.ok')].map(e=>({n:e.dataset.n,i:e.dataset.i})),struck:[...document.querySelectorAll('.delsen.struck')].map(e=>e.dataset.n),revealed:document.querySelector('.rvl:not(#literacy-finish)')?.style.display==='none',checks:[...document.querySelectorAll('.ck')].map(e=>e.classList.contains('on'))};}
-  function ready(s){return !!(s.done&&s.revealed&&s.checks.length&&s.checks.every(Boolean));}
-  function remaining(s){return !s.done?'먼저 핵심 찾기를 마쳐 주세요.':!s.revealed?'말로 요약한 뒤 모범 요약·구조를 확인해 주세요.':'요약에 담은 내용을 셀프 체크해 주세요.';}
-  function announce(message){status.textContent=message;status.focus({preventScroll:true});status.scrollIntoView({block:'nearest'});}
-  function update(){
-    const s=state(),completed=!!read(DONE)[id];
-    finish.textContent=completed?'✓ 학습 완료':'오늘 학습 마치기';
-    home.textContent='시험 준비 홈';
-    status.textContent=completed?'완료를 저장했어요. 시험 준비 홈으로 돌아가도 돼요.':ready(s)?'마치기나 시험 준비 홈을 누르면 완료가 저장돼요.':remaining(s)+' 홈으로 가면 지금까지 한 진도를 저장해요.';
+  const status=document.getElementById('literacy-save-status'),end=document.getElementById('literacy-read-end');
+  let reached=false;
+  function state(){return {done,selected:[...document.querySelectorAll('.sen.ok,.opt.ok')].map(e=>({n:e.dataset.n,i:e.dataset.i})),struck:[...document.querySelectorAll('.delsen.struck')].map(e=>e.dataset.n),revealed:true,checks:[...document.querySelectorAll('.ck')].map(e=>e.classList.contains('on'))};}
+  function queueRead(){
+    // Same envelope/receipt contract as PA_PROGRESS. Home's existing sync sends it.
+    // A direct visit before device initialization is recovered from DONE on the next app entry.
+    const device=read('pa_progress_device_v1'),curriculum=device.curriculum;if(!curriculum)return;
+    const event='literacy:'+curriculum+':'+id,receipts=read('pa_progress_receipts_v1');
+    if(receipts.curriculum===curriculum&&(receipts.ids||[]).includes(event))return;
+    const queue=JSON.parse(localStorage.getItem('pa_progress_outbox_v1')||'[]');
+    if(!Array.isArray(queue))throw Error('invalid queue');if(queue.some(e=>e.id===event))return;
+    queue.push({id:event,subject:'common',source:'literacy',items:[{kind:'literacy_read',subject:'common',key:curriculum+'/'+id,value:{v:1,read:true},event_id:event,study_day:''}],logAck:true,progressAck:false});
+    localStorage.setItem('pa_progress_outbox_v1',JSON.stringify(queue));
   }
-  function persist(s){const all=read(KEY);all[id]=s;localStorage.setItem(KEY,JSON.stringify(all));}
-  function save(){try{persist(state());update();}catch(_){announce('진도를 저장하지 못했어요. 이 화면을 닫지 말고 저장 공간을 확인한 뒤 다시 눌러 주세요.');}}
-  function finishOrHome(goHome){
-    const s=state();
-    try{
-      persist(s);
-      const all=read(DONE),completed=!!all[id];
-      if(!completed&&ready(s)){
-        all[id]={completed_at:new Date().toISOString()};
-        localStorage.setItem(DONE,JSON.stringify(all));
-      }else if(!completed&&!goHome){
-        update();announce(remaining(s));return;
-      }
-      update();
-      if(goHome)location.href=home.href;
-      else announce('완료를 저장했어요. 시험 준비 홈으로 돌아가도 돼요.');
-    }catch(_){announce('저장하지 못했어요. 이 화면을 닫지 말고 저장 공간을 확인한 뒤 다시 눌러 주세요.');}
+  function savePractice(){try{const all=read(KEY);all[id]=state();localStorage.setItem(KEY,JSON.stringify(all));}catch(_){status.textContent='연습한 답을 저장하지 못했어요. 저장 공간을 확인해 주세요.';}}
+  function markRead(){
+    if(!reached||document.hidden)return;
+    try{const all=read(DONE);if(!all[id]){all[id]={completed_at:new Date().toISOString()};localStorage.setItem(DONE,JSON.stringify(all));}
+      status.textContent='✓ 읽었어요. 홈으로 돌아가도 돼요.';
+      try{queueRead();}catch(_){status.textContent='읽음은 저장했어요. 다른 기기와는 홈에서 다시 연결할게요.';}
+    }catch(_){status.textContent='읽음을 저장하지 못했어요. 저장 공간을 확인해 주세요.';}
   }
-  if(saved){
-    if(CARD.interaction==='delete_noise'){saved.struck.forEach(n=>document.querySelector('.delsen[data-n="'+n+'"]')?.classList.add('struck'));if(saved.done)delConfirm(document.querySelector('.confirm'));}
-    else if(saved.done&&saved.selected.length){const s=saved.selected[0];const el=s.n?document.querySelector('.sen[data-n="'+s.n+'"]'):document.querySelector('.opt[data-i="'+s.i+'"]');if(el){if(s.n)pick(el);else pickOpt(el);}}
-    if(saved.revealed){const b=document.querySelector('.rvl:not(#literacy-finish)');if(b)rv(b);}
-    document.querySelectorAll('.ck').forEach((b,i)=>{if(saved.checks[i])ck(b);});
+  function checkEnd(){
+    if(document.hidden||!end||!end.getClientRects().length)return;
+    const r=end.getBoundingClientRect();
+    if(r.height>0&&r.top>=0&&r.bottom<=window.innerHeight){reached=true;markRead();}
   }
-  document.getElementById('root').addEventListener('click',e=>{if(e.target.closest('button')&&e.target.id!=='literacy-finish')save();});
-  finish.onclick=()=>finishOrHome(false);
-  home.onclick=e=>{e.preventDefault();finishOrHome(true);};
-  update();
+  try{
+    const saved=read(KEY)[id];
+    if(saved){
+      if(CARD.interaction==='delete_noise'){(saved.struck||[]).forEach(n=>document.querySelector('.delsen[data-n="'+n+'"]')?.classList.add('struck'));if(saved.done)delConfirm(document.querySelector('.confirm'));}
+      else if(saved.done&&saved.selected?.length){const s=saved.selected[0];const el=s.n?document.querySelector('.sen[data-n="'+s.n+'"]'):document.querySelector('.opt[data-i="'+s.i+'"]');if(el){if(s.n)pick(el);else pickOpt(el);}}
+      document.querySelectorAll('.ck').forEach((b,i)=>{if(saved.checks?.[i])ck(b);});
+    }
+    status.textContent=read(DONE)[id]?'✓ 읽었어요. 홈으로 돌아가도 돼요.':'모범 요약과 구조를 끝까지 보면 읽음이 저장돼요.';
+    if(read(DONE)[id])queueRead();
+  }catch(_){status.textContent='저장된 진도를 확인하지 못했어요. 글은 계속 읽을 수 있어요.';}
+  document.getElementById('root').addEventListener('click',e=>{if(e.target.closest('button'))savePractice();});
+  if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting&&e.intersectionRatio===1))checkEnd();},{threshold:1});observer.observe(end);}
+  window.addEventListener('scroll',checkEnd,{passive:true});window.addEventListener('resize',checkEnd);
+  window.addEventListener('pageshow',checkEnd);window.addEventListener('pagehide',savePractice);
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden){if(reached)markRead();else checkEnd();}});
+  requestAnimationFrame(checkEnd);
 })();
 
 </script>

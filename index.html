@@ -1759,6 +1759,7 @@
                 <button class="subject-card science" onclick="PA_EXAM_SUPPORT.start('science')"><span class="subject-card-icon">🔬</span><span class="subject-card-name">과학 5문제</span><span class="subject-card-sub" id="science-support-status">개념을 알고 적용하기</span></button>
             </div>
             <p id="exam-home-status" class="science-home-note" role="status"></p>
+            <p id="exam-progress-status" class="science-home-note" role="status"></p>
             <details class="science-home-note"><summary>더 보고 싶을 때</summary>
                 <button onclick="startEnglishEntry(event)">영어 단어 복습</button>
                 <button onclick="openEnglishReview(event)">영어 Lesson별 복습</button>
@@ -1992,6 +1993,7 @@
 
             <div id="hint-display" style="display:none;background:#fff8e1;border:1px solid #ffc107;border-radius:8px;padding:10px 14px;font-size:13px;color:#795548;margin-top:8px;"></div>
             <button class="btn-next" id="btn-next" onclick="goNextQuestion()">다음 문항 ▶</button>
+            <button id="btn-support-details" hidden onclick="PA_EXAM_SUPPORT.showDetails()">결과 자세히 보기</button>
             <div class="quiz-controls" id="quiz-controls">
                 <button class="btn-hint" id="btn-hint" onclick="showHint()">💡 힌트</button>
                 <button class="btn-quit" onclick="quitQuiz()">그만하기</button>
@@ -2074,8 +2076,8 @@
         let sessionType = localStorage.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-09-18 v192';
-        const APP_CACHE_NAME = 'quiz-v192';
+        const BUILD_VERSION = '2026-09-19 v193';
+        const APP_CACHE_NAME = 'quiz-v193';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -2124,6 +2126,7 @@
 
         function compactStoredQuizLog(log) {
             if (!log || typeof log !== 'object') return log;
+            if (!PA_PROGRESS.beforeCompact(log)) return log;
             const compact = { ...log };
             if (Array.isArray(log.questions)) compact.question_count = log.questions.length;
             delete compact.questions;
@@ -2973,7 +2976,7 @@
             document.getElementById('daily-header-date').textContent = today + ' (' + getWeekdayKo(today) + ')';
 
             await loadDailyIndexJsonp();
-            await syncDailyReadFromServer();   // [v2] 큐 선택 전에 병합 완료 보장
+            void syncDailyReadFromServer(); // Background only; keep the displayed article stable.
             updateDailyUnreadBadges();
 
             const nextDate = pickNextQueueDate();
@@ -3010,7 +3013,7 @@
 
         async function loadDailyArchive() {
             await loadDailyIndexJsonp();
-            await syncDailyReadFromServer();   // [v2] archive는 읽은 카드만 노출하므로 렌더 전 병합 필수
+            void syncDailyReadFromServer(); // Local archive is immediately available.
             renderDailyArchive();
         }
 
@@ -4652,7 +4655,7 @@
 
         // 다음 문항으로 이동 (수동)
         function goNextQuestion() {
-            if (QUIZ_DATA?.support_mode && currentQuestionIndex >= currentSession.length) { finishSession(); return; }
+            if (QUIZ_DATA?.support_mode && currentQuestionIndex >= currentSession.length - 1 && PA_EXAM_SUPPORT.read(currentSubject).__plan?.completed) { PA_EXAM_SUPPORT.leave(); return; }
             document.getElementById('btn-next').style.display = 'none';
             currentQuestionIndex++;
             showQuestion();
@@ -4693,11 +4696,13 @@
         function showNextButton() {
             const btn = document.getElementById('btn-next');
             const lastStudyQuestion = !!(QUIZ_DATA?.support_mode && currentQuestionIndex >= currentSession.length - 1);
-            btn.textContent = lastStudyQuestion ? '오늘 학습 마치기' : '다음 문항 ▶';
+            btn.textContent = lastStudyQuestion ? '홈으로 돌아가기' : '다음 문항 ▶';
+            document.getElementById('btn-support-details').hidden = !lastStudyQuestion;
+            document.querySelector('.btn-quit').style.display = lastStudyQuestion ? 'none' : '';
             btn.classList.toggle('learning-finish', lastStudyQuestion);
             btn.style.display = 'block';
             // 설명/개념카드 버튼 등이 추가되어 버튼이 화면 밖으로 밀릴 수 있으므로 스크롤
-            setTimeout(() => btn.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 150);
+            if (!lastStudyQuestion) setTimeout(() => btn.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 150);
         }
 
 
@@ -8712,7 +8717,7 @@
             answers.forEach(a=>{const type=a.type||'';types[type]=types[type]||{total:0,correct:0};types[type].total++;if(a.correct)types[type].correct++;});
             const arranged=answers.filter(a=>a.type==='arrange');
             const meta=k=>[...new Set(answers.map(a=>a[k]).filter(Boolean))].join(', ');
-            return {lesson:SUPPORT_LESSONS[subject],subject,date,session_type:subject+'_support',support_session_id:plan.id,
+            return {lesson:SUPPORT_LESSONS[subject],subject,date,session_type:subject+'_support',support_session_id:plan.id,event_id:(plan.completion_event_id||PA_CURRICULUM+':'+subject+':'+plan.id)+':complete',
                 total:answers.length,correct,percentage:Math.round(100*correct/answers.length),duration_sec:answers.reduce((n,a)=>n+a.time_sec,0),
                 weak:answers.filter(a=>!a.correct).map(a=>a.weak_label||a.keyword||a.id).join(', '),
                 score_group:meta('score_group'),recovery_band:meta('recovery_band'),
@@ -8754,6 +8759,7 @@
             }
         }
         function supportRecordNotice(){
+            if(PA_EXAM_SUPPORT.finishNotice())return PA_EXAM_SUPPORT.finishNotice();
             const reasons=[...supportRecordFailures.values()];
             if(reasons.some(x=>x!=='storage'))return '확인이 필요한 학습이 있어요. 어른에게 알려 주세요.';
             if(reasons.length)return '답은 저장됐어요. 기록을 다시 저장할게요.';
@@ -8766,19 +8772,21 @@
         }
         function supportTodayStatus(subject,state,today){
             const p=state.__plan,days=subject==='english'?window.PA_ENGLISH_EXAM?.launch_days?.length:0;
-            if(p&&!p.completed)return (p.answers||[]).length+'/5 · 이어 하기';
+            if(PA_PROGRESS.guard(subject,state,today))return '✓ 오늘 학습 완료 (다른 기기)';
+            if(p&&!p.completed&&!(subject==='english'&&PA_PROGRESS.doneDays(state).includes(p.learningDay)))return (p.answers||[]).length+'/5 · 이어 하기';
             if(p?.completed&&supportPlanIsToday(p,today)){
                 if(p.finalized)return '✓ 오늘 학습 완료';
-                if(hasSupportLog(subject,p))return '✓ 오늘 학습 완료 · 결과 보기';
+                if(hasSupportLog(subject,p))return '✓ 오늘 학습 완료';
                 return supportRecordFailures.has(subject)?'답은 저장됐어요 · 기록을 다시 저장할게요':'기록을 저장하고 있어요';
             }
-            if(p?.completed&&!p.finalized&&!hasSupportLog(subject,p))return '5문제 풀이 끝 · 마무리하기';
-            if(days&&state.completed_days>=days)return '준비된 '+days+'학습일 완료 · 다음 분량 준비 중';
+            if(p?.completed&&!p.finalized&&!hasSupportLog(subject,p))return '답은 저장됐어요 · 기록을 다시 저장할게요';
+            if(days&&PA_PROGRESS.nextDay(state,days)===null)return '준비된 '+days+'학습일 완료 · 다음 분량 준비 중';
             return '하루 5문제';
         }
         function refreshRecordStatus(){
             try{
                 const el=document.getElementById('exam-home-status');if(el)el.textContent=supportRecordNotice();
+                const progress=document.getElementById('exam-progress-status');if(progress)progress.textContent=PA_PROGRESS.notice();
                 for(const subject of Object.keys(SUPPORT_STORAGE)){
                     const card=document.getElementById(subject+'-support-status');
                     if(card)card.textContent=supportTodayStatus(subject,PA_EXAM_SUPPORT.read(subject),PA_EXAM_SUPPORT.day());
@@ -8800,7 +8808,7 @@
             if(recordSyncTimer!==null)clearTimeout(recordSyncTimer);
             recordSyncDue=due;recordSyncTimer=setTimeout(()=>{recordSyncTimer=null;runRecordSync();},Math.max(0,due-Date.now()));
         }
-        function runRecordSync(){recordSyncLast=Date.now();recoverSupportLogs();refreshRecordStatus();retransmitUnsentLogs();}
+        function runRecordSync(){recordSyncLast=Date.now();PA_PROGRESS.sync();recoverSupportLogs();refreshRecordStatus();retransmitUnsentLogs();}
         function retryRecordSync(){scheduleRecordSync(RECORD_RETRY_MS[Math.min(recordRetryStep++,RECORD_RETRY_MS.length-1)]);}
         function installRecordSync(){
             window.addEventListener('online',()=>scheduleRecordSync());
@@ -8832,6 +8840,7 @@
                         total:log.total,correct:log.correct,percentage:log.percentage,duration_sec:log.duration_sec||0,weak:log.weak||'',type_breakdown:log.type_breakdown||'',hint_count:log.hint_count||0,
                         a_group_recovery:m.a_group_recovery??'',first_attempt_rate:m.first_attempt_rate??'',arrange_success:m.arrange_success??'',details:log.details||'',partial:log.partial?'Y':'N',retry:log.retry?'Y':'N',
                         recovery_rate:log.recovery_rate??'',condition_miss:log.condition_miss??'',omr_miss:log.omr_miss??'',time_complete:log.time_complete||'',score_group:log.score_group||'',recovery_band:log.recovery_band||'',timestamp:log.timestamp};
+                    if(isSupportLog&&PA_PROGRESS.logEvent(log))data.event_id=PA_PROGRESS.logEvent(log);
                     const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),QUIZ_SEND_TIMEOUT_MS);
                     try{
                         const r=await fetch(webhookUrl,{method:'POST',body:JSON.stringify(data),signal:controller.signal});
@@ -8882,7 +8891,8 @@
 
         // 홈으로
         function goHome() {
-            if (QUIZ_DATA && QUIZ_DATA.support_mode) currentSubject = null;
+            if (QUIZ_DATA && QUIZ_DATA.support_mode) { PA_EXAM_SUPPORT.finalize(); currentSubject = null; }
+            document.getElementById('btn-support-details').hidden = true;
             currentMindmapBranch = null;
             currentSession = null;
             currentQuestionIndex = 0;
@@ -8903,7 +8913,8 @@
 
         // 그만하기
         function quitQuiz() {
-            if (confirm('학습을 중단하겠습니까?')) {
+            if (QUIZ_DATA?.support_mode && PA_EXAM_SUPPORT.read(currentSubject).__plan?.completed) { PA_EXAM_SUPPORT.leave(); return; }
+            if (QUIZ_DATA?.support_mode ? (PA_EXAM_SUPPORT.canSave() || confirm('작성한 답을 저장하지 못했어요. 그래도 홈으로 돌아갈까요?')) : confirm('학습을 중단하겠습니까?')) {
                 // 지금까지 푼 문항의 이력은 이미 recordAnswer에서 저장됨
                 // 로그도 부분 저장
                 if (sessionAnswers.length > 0) {
@@ -8940,6 +8951,7 @@
                         timestamp: new Date().toISOString(),
                         partial: true
                     };
+                    if(QUIZ_DATA?.support_mode){const p=PA_EXAM_SUPPORT.read(currentSubject).__plan;log.support_session_id=p.id;log.event_id=p.id+':partial';}
                     const quitLogsKey = (typeof currentLesson === 'string' && isNaN(currentLesson)) ? `quiz_logs_${currentLesson}` : `quiz_logs_L${currentLesson}`;
                     const logs = JSON.parse(localStorage.getItem(quitLogsKey) || '[]');
                     logs.push(log);
@@ -8960,7 +8972,7 @@
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
             if (pageId === 'result-page') PA_EXAM_SUPPORT.result();
-            if (pageId === 'home-page') PA_EXAM_HOME.refresh();
+            if (pageId === 'home-page') { PA_EXAM_HOME.refresh(); PA_PROGRESS.sync(); }
         }
 
         // 헤더 타이틀 생성 헬퍼
@@ -9852,9 +9864,259 @@
         // [Codex 2026-05-13 index-tail-restore] Keep this marker so coworkers can identify the recovery patch.
         window.addEventListener('load', init);
     </script>
-    <script src="science_support.js?v=189"></script>
+    <script>
+// PROGRESS_CORE_BEGIN
+// P2-P5 only. Same-device drafts stay in subject state; network snapshots never write it.
+const PA_CURRICULUM='mid2-2026-2';
+const PA_PROGRESS=(()=>{
+  const REMOTE='pa_progress_remote_v1',OUTBOX='pa_progress_outbox_v1',DEVICE='pa_progress_device_v1',RECEIPTS='pa_progress_receipts_v1';
+  const KEYS={english:'pa_english_2026_midterm_v1',science:'pa_science_2026_midterm_v2'};
+  const copy=x=>JSON.parse(JSON.stringify(x));
+  const obj=x=>!!x&&typeof x==='object'&&!Array.isArray(x);
+  const date=s=>typeof s==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(s)&&Number.isFinite(Date.parse(s+'T00:00:00Z'))&&new Date(s+'T00:00:00Z').toISOString().slice(0,10)===s;
+  const iso=s=>typeof s==='string'&&/^\d{4}-\d\d-\d\dT/.test(s)&&Number.isFinite(Date.parse(s));
+  const union=(a=[],b=[])=>[...new Set([...a,...b])].sort((x,y)=>typeof x==='number'?x-y:x<y?-1:x>y?1:0);
+  const day=(d=new Date())=>new Date(d.getTime()+9*3600000).toISOString().slice(0,10); // Asia/Seoul
+  let pulling=null,pushing=null,retryTimer=null,lastSync=0,issue='',seq=0;
+  function read(k,fallback){const s=localStorage.getItem(k);return s===null?copy(fallback):JSON.parse(s);}
+  function store(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true;}catch(_){issue='storage';return false;}}
+  function empty(){return {v:1,curriculum:PA_CURRICULUM,literacy_read:[],completion_days:{english:{},science:{}},english_legacy_days:[],concepts:{english:{},science:{}}};}
+  function remote(){try{const r=read(REMOTE,null);return obj(r)&&r.v===1&&r.curriculum===PA_CURRICULUM?r:null;}catch(_){return null;}}
+  function outbox(){const a=read(OUTBOX,[]);if(!Array.isArray(a))throw Error('invalid-outbox');return a;}
+  function device(){
+    let d=read(DEVICE,null);
+    if(d!==null&&(!obj(d)||typeof d.device_id!=='string'||d.curriculum!==PA_CURRICULUM))throw Error('invalid-device');
+    if(!d){d={device_id:crypto.randomUUID(),curriculum:PA_CURRICULUM,migrated:{},migration_error:{}};if(!store(DEVICE,d))throw Error('device-storage');}
+    return d;
+  }
+  function concept(v,stamp,event){
+    if(!obj(v)||!date(v.last_day)||!date(v.due)||typeof v.last_ok!=='boolean'||typeof v.introduced!=='boolean'||!Number.isSafeInteger(v.error_days)||v.error_days<0||!['unknown','incorrect','precheck','assisted','independent'].includes(v.last_status)||!Array.isArray(v.last_questions)||!v.last_questions.every(x=>typeof x==='string')||!Array.isArray(v.independent_days)||!v.independent_days.every(date))return null;
+    const evidence=stamp||v.evidence_at,id=event||v.event_id;if(!iso(evidence)||typeof id!=='string'||!id)return null;
+    const c={v:1};for(const k of ['last_day','last_ok','due','error_days','last_status','introduced'])c[k]=v[k];
+    return {...c,last_questions:union([],v.last_questions),independent_days:union([],v.independent_days).slice(-8),evidence_at:evidence,event_id:id};
+  }
+  function mergeConcept(a,b){
+    const x=concept(a),y=concept(b);
+    if(!y||Date.parse(y.evidence_at)>Date.now()+86400000)return a?copy(a):null;
+    if(!x)return copy(y);
+    const newer=Date.parse(y.evidence_at)>Date.parse(x.evidence_at)||(Date.parse(y.evidence_at)===Date.parse(x.evidence_at)&&y.event_id>x.event_id);
+    return {...copy(newer?y:x),introduced:x.introduced||y.introduced,independent_days:union(x.independent_days,y.independent_days).slice(-8)};
+  }
+  function bucket(a,b){return {v:1,done:true,learningDays:union(a?.learningDays||[],b.learningDays||[]),events:union(a?.events||[],b.events||[])};}
+  function validBucket(b){return obj(b)&&b.done===true&&Array.isArray(b.learningDays)&&b.learningDays.every(x=>Number.isSafeInteger(x)&&x>0)&&Array.isArray(b.events)&&b.events.every(x=>typeof x==='string');}
+  function ingest(snapshot){
+    if(!obj(snapshot)||snapshot.v!==1||snapshot.curriculum!==PA_CURRICULUM||!Array.isArray(snapshot.literacy_read)||!obj(snapshot.completion_days)||!Array.isArray(snapshot.english_legacy_days)||!obj(snapshot.concepts))return false;
+    const r=remote()||empty();
+    r.literacy_read=union(r.literacy_read||[],snapshot.literacy_read.filter(x=>typeof x==='string'));
+    for(const s of Object.keys(KEYS)){
+      r.completion_days[s]=r.completion_days[s]||{};r.concepts[s]=r.concepts[s]||{};
+      for(const [d,b] of Object.entries(snapshot.completion_days[s]||{}))if(date(d)&&validBucket(b))r.completion_days[s][d]=bucket(r.completion_days[s][d],b);
+      for(const [id,c] of Object.entries(snapshot.concepts[s]||{})){const merged=mergeConcept(r.concepts[s][id],c);if(merged)r.concepts[s][id]=merged;}
+    }
+    for(const x of snapshot.english_legacy_days){
+      if(!obj(x)||typeof x.key!=='string'||!x.key.startsWith(PA_CURRICULUM+'/')||!Array.isArray(x.days)||!x.days.every(n=>Number.isSafeInteger(n)&&n>0))continue;
+      const old=r.english_legacy_days.find(y=>y.key===x.key);if(old)old.days=union(old.days,x.days);else r.english_legacy_days.push(copy(x));
+    }
+    return store(REMOTE,r); // No subject state, draft, or screen mutation here.
+  }
+  function receipts(){
+    const r=read(RECEIPTS,{v:1,curriculum:PA_CURRICULUM,ids:[],days:[],rejected:[]});
+    if(!obj(r)||r.v!==1||r.curriculum!==PA_CURRICULUM||!Array.isArray(r.ids)||!Array.isArray(r.days)||!Array.isArray(r.rejected))throw Error('invalid-receipts');
+    return r;
+  }
+  function settled(e){return e.progressAck||e.progressSettled;}
+  function saveQueue(all){
+    const r=receipts(),keep=[];
+    for(const e of all){
+      if(r.ids.includes(e.id))continue;
+      if(e.logAck){if(e.local_plan)e.session_id=e.local_plan.id;delete e.local_plan;}
+      if(settled(e))delete e.original;
+      if(e.logAck&&settled(e)){
+        r.ids=union(r.ids,[e.id]);
+        for(const i of e.items||[])if(i.subject==='english'){
+          if(i.kind==='english_legacy_days')r.days=union(r.days,i.value.days);
+          if(i.kind==='completion_day')r.days=union(r.days,i.value.learningDays);
+        }
+        for(const x of e.rejected||[])if(!r.rejected.some(y=>y.id===e.id&&y.key===x.key))r.rejected.push({id:e.id,key:x.key,reason:'future_evidence'});
+      }else keep.push(e);
+    }
+    // Never cap unsent records. Only diagnostic history is capped; receipt IDs prevent requeue forever.
+    r.rejected=r.rejected.slice(-50);
+    // Receipt + compact learning-day evidence MUST be durable before deleting the envelope.
+    if(!store(RECEIPTS,r))return false;
+    return store(OUTBOX,keep);
+  }
+  function enqueue(e){if(receipts().ids.includes(e.id))return true;const all=outbox();if(all.some(x=>x.id===e.id))return true;return store(OUTBOX,[...all,e]);}
+  function item(kind,subject,key,value,event_id,study_day=''){return {kind,subject,key:PA_CURRICULUM+'/'+key,value,event_id,study_day};}
+  function promote(){
+    for(const subject of Object.keys(KEYS))try{
+      const d=device(),id=`migration-v1:${PA_CURRICULUM}:${subject}:${d.device_id}`;
+      if(d.migrated?.[subject]===id||receipts().ids.includes(id))continue;
+      if(outbox().some(e=>e.id===id)){d.migrated={...d.migrated,[subject]:id};store(DEVICE,d);continue;}
+      const raw=localStorage.getItem(KEYS[subject]),state=raw?JSON.parse(raw):{};
+      if(!obj(state))throw Error('invalid-legacy-state');
+      const n=state.completed_days??0,max=window.PA_ENGLISH_EXAM?.launch_days?.length;
+      if(!Number.isSafeInteger(n)||n<0||(subject==='english'&&(!Number.isInteger(max)||n>max)))throw Error('invalid-legacy-days');
+      const items=[];
+      if(subject==='english')items.push(item('english_legacy_days',subject,d.device_id+'/migration-v1',{v:1,days:Array.from({length:n},(_,i)=>i+1)},id));
+      for(const [key,value] of Object.entries(state))if(!key.startsWith('__')&&obj(value)&&'last_day' in value){
+        // Legacy has day precision only: never stamp it with migration/upload time.
+        const c=concept(value,value.evidence_at||(date(value.last_day)?value.last_day+'T00:00:00+09:00':null),value.event_id||id);
+        if(c)items.push(item('concept',subject,key,c,c.event_id,c.last_day));
+      }
+      const p=state.__plan,completedDay=p?.completed_day||(p&&typeof supportCompletionDate==='function'?supportCompletionDate(p):null);
+      if(p?.completed&&date(completedDay)&&(subject!=='english'||Number.isInteger(p.learningDay)))items.push(item('completion_day',subject,completedDay,{v:1,done:true,learningDays:subject==='english'?[p.learningDay]:[],events:[id]},id,completedDay));
+      if(!enqueue({id,subject,source:'migration',items,original:raw,logAck:true,progressAck:false}))continue;
+      d.migrated={...d.migrated,[subject]:id};store(DEVICE,d);
+    }catch(e){issue='migration';try{const d=device();d.migration_error={...d.migration_error,[subject]:String(e.message)};store(DEVICE,d);}catch(_){}}
+  }
+  function doneDays(state,includeRemote=true){
+    let days=Array.isArray(state.__completed_learning_days)?state.__completed_learning_days:[];
+    try{days=union(days,receipts().days);}catch(_){}
+    const add=i=>{if(i.kind==='english_legacy_days')days=union(days,i.value.days);if(i.kind==='completion_day'&&i.subject==='english')days=union(days,i.value.learningDays);};
+    try{for(const e of outbox())for(const i of e.items||[])add(i);}catch(_){}
+    const r=includeRemote?remote():null;
+    if(r){for(const x of r.english_legacy_days||[])days=union(days,x.days);for(const b of Object.values(r.completion_days?.english||{}))if(validBucket(b))days=union(days,b.learningDays);}
+    // Promotion storage failure must preserve the old local learning path.
+    if(!state.__progress_curriculum&&Number.isSafeInteger(state.completed_days)&&state.completed_days>=0)days=union(days,Array.from({length:state.completed_days},(_,i)=>i+1));
+    return days;
+  }
+  function nextDay(state,total){const done=new Set(doneDays(state));for(let n=1;n<=total;n++)if(!done.has(n))return n;return null;}
+  function localToday(subject,state,today){
+    if(state.__plan?.completed&&state.__plan.completed_day===today)return true;
+    try{return outbox().some(e=>e.subject===subject&&(e.items||[]).some(i=>i.kind==='completion_day'&&i.study_day===today));}catch(_){return true;} // uncertainty must not trigger remote guard
+  }
+  function guard(subject,state,today=day()){
+    try{if(localToday(subject,state,today))return false;const r=remote();return !!(r&&validBucket(r.completion_days?.[subject]?.[today]));}catch(_){return false;}
+  }
+  function stamp(state,subject,p){
+    p.completed_at=p.completed_at||new Date().toISOString();
+    p.completion_event_id=p.completion_event_id||`${PA_CURRICULUM}:${subject}:${p.id}`;
+    if(subject==='english')state.__completed_learning_days=union(state.__completed_learning_days||[],[p.learningDay]);
+    state.__progress_curriculum=PA_CURRICULUM;
+    for(const id of union([],p.answers.map(a=>a.support_concept).filter(Boolean)))if(state[id]){
+      state[id].evidence_at=p.completed_at;state[id].event_id=p.completion_event_id;
+    }
+  }
+  function completionEnvelope(subject,state){
+    const p=state.__plan,completedDay=p?.completed_day||(p&&typeof supportCompletionDate==='function'?supportCompletionDate(p):null);if(!p?.completed||!p.id||!date(completedDay))return null;
+    const id=p.completion_event_id||`${PA_CURRICULUM}:${subject}:${p.id}`;
+    // Pre-upgrade completed blocks have only day precision; don't invent today's evidence.
+    const evidence=p.completed_at||completedDay+'T00:00:00+09:00',items=[];
+    for(const key of union([],p.answers.map(a=>a.support_concept).filter(Boolean))){const c=concept(state[key],evidence,id);if(c)items.push(item('concept',subject,key,c,id,c.last_day));}
+    items.push(item('completion_day',subject,completedDay,{v:1,done:true,learningDays:subject==='english'?[p.learningDay]:[],events:[id]},id,completedDay));
+    return {id,subject,source:'completion',items,local_plan:copy(p),logAck:false,progressAck:false};
+  }
+  function ensureCompletion(subject,state){
+    try{const e=completionEnvelope(subject,state);return !e||enqueue(e);}catch(_){issue='storage';return false;}
+  }
+  function beforeAdvance(subject,state){
+    if(!state.__plan?.completed)return true;
+    if(ensureCompletion(subject,state))return true;
+    throw Error('완료한 답은 저장돼 있어요. 저장 공간을 확인한 뒤 다시 시작해 주세요.');
+  }
+  function applyStart(subject,state){
+    // Preserve the completed block BEFORE remote concepts can replace its local evidence.
+    if(state.__plan?.completed&&!ensureCompletion(subject,state))return state;
+    const result=copy(state),r=remote(),all=(()=>{try{return outbox();}catch(_){return [];}})();
+    const p=result.__plan,days=subject==='english'?doneDays(result):[];
+    const retire=p&&!p.completed&&subject==='english'&&days.includes(p.learningDay);
+    if(retire){
+      if(!enqueue({id:'retired:'+subject+':'+p.id,subject,source:'retired',items:[],local_plan:copy(p),logAck:true,progressAck:true}))return state;
+      delete result.__plan;
+    }
+    const touched=new Set(result.__plan&&!result.__plan.completed?(result.__plan.answers||[]).map(a=>a.support_concept):[]);
+    const merge=(id,c)=>{if(!touched.has(id)){const local=result[id];const normalized=local&&!local.evidence_at?concept(local,local.last_day+'T00:00:00+09:00','legacy-local'):local;
+      const m=mergeConcept(normalized,c);if(m)result[id]=m;}};
+    for(const e of all)for(const i of e.items||[])if(i.subject===subject&&i.kind==='concept')merge(i.key.slice(PA_CURRICULUM.length+1),i.value);
+    if(r)for(const [id,c] of Object.entries(r.concepts?.[subject]||{}))merge(id,c);
+    if(subject==='english')result.__completed_learning_days=days;
+    result.__progress_curriculum=PA_CURRICULUM;
+    // This is the ONLY remote-to-subject write site; invoked only immediately before start's planFor.
+    return store(KEYS[subject],result)?result:state;
+  }
+  function recover(){
+    if(issue==='storage'||issue==='migration')issue='';
+    try{saveQueue(outbox());}catch(_){issue='storage';}
+    promote();
+    for(const subject of Object.keys(KEYS))try{ensureCompletion(subject,read(KEYS[subject],{}));}catch(_){issue='storage';}
+    try{for(const e of outbox())if(e.source==='completion'&&!e.logAck&&e.local_plan){
+      const saved=persistSupportLog(e.subject,e.local_plan);if(saved.ok)linkLog(saved.log);
+    }}catch(_){issue='storage';}
+    try{const lit=read('pa_exam_literacy_v1',{});for(const card of Object.keys(lit))if(lit[card])enqueue({id:`literacy:${PA_CURRICULUM}:${card}`,subject:'common',source:'literacy',
+      items:[item('literacy_read','common',card,{v:1,read:true},`literacy:${PA_CURRICULUM}:${card}`)],logAck:true,progressAck:false});}catch(_){issue='storage';}
+  }
+  function linkLog(log){
+    try{const all=outbox(),e=all.find(x=>x.subject===log.subject&&(x.session_id||x.local_plan?.id)===log.support_session_id);if(!e)return false;
+      e.log_timestamp=log.timestamp;if(read('sent_logs',[]).includes(log.timestamp))e.logAck=true;return saveQueue(all);
+    }catch(_){issue='storage';return false;}
+  }
+  function logEvent(log){return log.event_id||(log.support_session_id?(log.partial?log.support_session_id+':partial':`${PA_CURRICULUM}:${log.subject}:${log.support_session_id}:complete`):null);}
+  function beforeCompact(log){
+    if(!/^(english|science)_support$/.test(log.session_type||'')||log.partial)return true;
+    try{const id=(log.event_id||logEvent(log)||'').replace(/:complete$/,'');if(receipts().ids.includes(id))return true;
+      ensureCompletion(log.subject,read(KEYS[log.subject],{}));const all=outbox(),e=all.find(x=>x.subject===log.subject&&(x.session_id||x.local_plan?.id)===log.support_session_id);if(!e)return false;
+      e.log_timestamp=log.timestamp;e.logAck=true;return saveQueue(all);
+    }catch(_){issue='storage';return false;}
+  }
+  function literacy(){try{return union(Object.keys(read('pa_exam_literacy_v1',{})).filter(k=>read('pa_exam_literacy_v1',{})[k]),remote()?.literacy_read||[]);}catch(_){return remote()?.literacy_read||[];}}
+  function notify(){try{refreshRecordStatus();if(document.getElementById('home-page')?.classList?.contains('active'))void PA_EXAM_HOME.refresh();}catch(_){}const el=document.getElementById('exam-progress-status');if(el)el.textContent=notice();}
+  function notice(){try{if(pulling||pushing)return '확인 중';const q=outbox();if(issue||q.some(e=>!settled(e)||!e.logAck))return '이 기기에 저장됨';if(receipts().rejected.length)return '일부 진도 공유 제외';return remote()?'공유 완료':'이 기기에 저장됨';}catch(_){return '이 기기에 저장됨';}}
+  function retry(){if(retryTimer!==null)return;retryTimer=setTimeout(()=>{retryTimer=null;sync();},30000);}
+  function pull(){
+    if(pulling)return pulling;
+    const url=localStorage.getItem('webhook_url');if(!url)return Promise.resolve(false);
+    pulling=new Promise(resolve=>{
+      const cb='__pa_progress_'+Date.now()+'_'+(++seq),script=document.createElement('script');let ended=false;
+      const finish=ok=>{if(ended)return;ended=true;clearTimeout(timer);delete window[cb];script.remove();if(!ok){issue='network';retry();}resolve(ok);};
+      const timer=setTimeout(()=>finish(false),60000); // existing transport budget, not a new latency claim
+      window[cb]=data=>{try{const ok=ingest(data);if(ok&&issue==='network')issue='';finish(ok);}catch(_){finish(false);}};
+      script.onerror=()=>finish(false);script.src=url+(url.includes('?')?'&':'?')+'action=progress_state&callback='+cb+'&_='+Date.now();document.head.appendChild(script);
+    }).finally(()=>{pulling=null;notify();});return pulling;
+  }
+  function ackProgress(id,reply){
+    if(!reply||reply.status!=='ok')return false;
+    try{const all=outbox(),e=all.find(x=>x.id===id);if(!e)return false;
+      const accepted=reply.accepted_items||[],skipped=reply.skipped_items||[];
+      const same=(a,i)=>a.key===i.key&&a.kind===i.kind&&a.subject===i.subject&&a.event_id===i.event_id;
+      e.skipped=skipped.filter(a=>e.items.some(i=>same(a,i)));
+      // v21 skips only future-dated concepts. Keep unknown/missing ACKs retryable.
+      e.rejected=e.skipped.filter(a=>a.kind==='concept');
+      e.progressAck=e.skipped.length===0&&e.items.every(i=>accepted.some(a=>same(a,i)));
+      e.progressSettled=e.items.every(i=>accepted.some(a=>same(a,i))||e.rejected.some(a=>same(a,i)));
+      const announce=e.rejected.length&&!e.rejectionReported;if(announce)e.rejectionReported=true;
+      const ok=saveQueue(all);
+      if(ok&&announce)console.warn('[progress-excluded] future evidence',e.id);
+      return ok&&settled(e);
+    }catch(_){issue='storage';return false;}
+  }
+  function push(){
+    if(pushing)return pushing;
+    const url=localStorage.getItem('webhook_url');if(!url)return Promise.resolve(false);
+    pushing=(async()=>{
+      let all;try{all=outbox();}catch(_){issue='storage';return false;}
+      for(const e of all.filter(x=>!settled(x))){
+        const controller=new AbortController(),t=setTimeout(()=>controller.abort(),60000);
+        try{const d=device(),response=await fetch(url,{method:'POST',signal:controller.signal,body:JSON.stringify({sheet:'progress',v:1,curriculum:PA_CURRICULUM,device_id:d.device_id,items:e.items})});
+          if(!response.ok||!ackProgress(e.id,await response.json()))throw Error('progress ACK');
+        }catch(_){issue='network';retry();return false;}finally{clearTimeout(t);}
+      }
+      if(issue==='network')issue='';return true;
+    })().finally(()=>{pushing=null;notify();});return pushing;
+  }
+  function sync(){
+    try{recover();notify();if(Date.now()-lastSync<1500)return;lastSync=Date.now();void pull();void push();
+      if(typeof syncDailyReadFromServer==='function')void syncDailyReadFromServer().then(()=>{try{PA_EXAM_HOME.refresh();}catch(_){}});
+    }catch(_){issue='storage';notify();}
+  }
+  return {day,mergeConcept,bucket,ingest,promote,doneDays,nextDay,guard,stamp,ensureCompletion,beforeAdvance,applyStart,recover,linkLog,logEvent,beforeCompact,literacy,notice,pull,push,ackProgress,sync};
+})();
+
+// PROGRESS_CORE_END
+</script>
+<script src="science_support.js?v=189"></script>
     <script src="english_exam.js?v=190"></script>
-    <script src="exam_support.js?v=192"></script>
-    <script src="exam_home.js?v=192"></script>
+    <script src="exam_support.js?v=193"></script>
+    <script src="exam_home.js?v=193"></script>
 </body>
 </html>
