@@ -8,7 +8,7 @@ const PA_SCIENCE_SUPPORT = (() => {
     const day = (date = new Date()) => `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
     const later = n => { const d = new Date(); d.setDate(d.getDate()+n); return day(d); };
     function read() {
-        try { const data = JSON.parse(localStorage.getItem(KEY) || '{}'); return data && typeof data === 'object' && !Array.isArray(data) ? data : {}; }
+        try { const data = JSON.parse(PA_STORAGE.getItem(KEY) || '{}'); return data && typeof data === 'object' && !Array.isArray(data) ? data : {}; }
         catch (_) { return {}; }
     }
     function orderCards(data) {

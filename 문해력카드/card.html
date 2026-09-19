@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>문해력 한 장 · 요약 훈련</title><style>
+<script src="../pa_runtime.js?v=194"></script><title>문해력 한 장 · 요약 훈련</title><style>
 :root{--bg:#f4f2ec;--card:#fff;--ink:#20201d;--mut:#57564f;--line:#cdc8ba;--soft:#e6e2d7;--ok:#0f6e56;--okbg:#dcf1e8;--no:#a32d2d;--nobg:#fbe6e5;--acc:#0f6e56;--accbg:#dcefe5}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.6}
@@ -288,28 +288,30 @@ function renderCard(card){
 (function(){
   const id=_mhGetDate();if(!CARD||!/^2026-(08|09)-\d\d$/.test(id))return;
   const KEY='pa_literacy_progress_v1',DONE='pa_exam_literacy_v1';
-  const read=k=>JSON.parse(localStorage.getItem(k)||'{}');
+  const read=k=>JSON.parse(PA_STORAGE.getItem(k)||'{}');
   const footer=document.createElement('div');footer.className='card';
   footer.innerHTML='<p id="literacy-save-status" role="status" aria-live="polite"></p><a id="literacy-home" class="learning-home" href="../index.html">홈으로 돌아가기</a>';
   document.getElementById('root').appendChild(footer);
+  document.getElementById('literacy-home').href=PA_RUNTIME.href('../index.html');
   const status=document.getElementById('literacy-save-status'),end=document.getElementById('literacy-read-end');
   let reached=false;
   function state(){return {done,selected:[...document.querySelectorAll('.sen.ok,.opt.ok')].map(e=>({n:e.dataset.n,i:e.dataset.i})),struck:[...document.querySelectorAll('.delsen.struck')].map(e=>e.dataset.n),revealed:true,checks:[...document.querySelectorAll('.ck')].map(e=>e.classList.contains('on'))};}
   function queueRead(){
+    if(PA_RUNTIME.preview)return;
     // Same envelope/receipt contract as PA_PROGRESS. Home's existing sync sends it.
     // A direct visit before device initialization is recovered from DONE on the next app entry.
     const device=read('pa_progress_device_v1'),curriculum=device.curriculum;if(!curriculum)return;
     const event='literacy:'+curriculum+':'+id,receipts=read('pa_progress_receipts_v1');
     if(receipts.curriculum===curriculum&&(receipts.ids||[]).includes(event))return;
-    const queue=JSON.parse(localStorage.getItem('pa_progress_outbox_v1')||'[]');
+    const queue=JSON.parse(PA_STORAGE.getItem('pa_progress_outbox_v1')||'[]');
     if(!Array.isArray(queue))throw Error('invalid queue');if(queue.some(e=>e.id===event))return;
     queue.push({id:event,subject:'common',source:'literacy',items:[{kind:'literacy_read',subject:'common',key:curriculum+'/'+id,value:{v:1,read:true},event_id:event,study_day:''}],logAck:true,progressAck:false});
-    localStorage.setItem('pa_progress_outbox_v1',JSON.stringify(queue));
+    PA_STORAGE.setItem('pa_progress_outbox_v1',JSON.stringify(queue));
   }
-  function savePractice(){try{const all=read(KEY);all[id]=state();localStorage.setItem(KEY,JSON.stringify(all));}catch(_){status.textContent='연습한 답을 저장하지 못했어요. 저장 공간을 확인해 주세요.';}}
+  function savePractice(){try{const all=read(KEY);all[id]=state();PA_STORAGE.setItem(KEY,JSON.stringify(all));}catch(_){status.textContent='연습한 답을 저장하지 못했어요. 저장 공간을 확인해 주세요.';}}
   function markRead(){
     if(!reached||document.hidden)return;
-    try{const all=read(DONE);if(!all[id]){all[id]={completed_at:new Date().toISOString()};localStorage.setItem(DONE,JSON.stringify(all));}
+    try{const all=read(DONE);if(!all[id]){all[id]={completed_at:new Date().toISOString()};PA_STORAGE.setItem(DONE,JSON.stringify(all));}
       status.textContent='✓ 읽었어요. 홈으로 돌아가도 돼요.';
       try{queueRead();}catch(_){status.textContent='읽음은 저장했어요. 다른 기기와는 홈에서 다시 연결할게요.';}
     }catch(_){status.textContent='읽음을 저장하지 못했어요. 저장 공간을 확인해 주세요.';}

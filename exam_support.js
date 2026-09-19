@@ -12,7 +12,7 @@ const PA_EXAM_SUPPORT = (() => {
   const day=(d=new Date())=>PA_PROGRESS.day(d);
   const later=n=>{const d=new Date();d.setDate(d.getDate()+n);return day(d);};
   function read(subject){
-    const raw=localStorage.getItem(KEYS[subject]);
+    const raw=PA_STORAGE.getItem(KEYS[subject]);
     if(!raw)return {};
     const s=JSON.parse(raw);
     if(!s||typeof s!=='object'||Array.isArray(s))throw Error('학습 기록을 읽지 못했어요. 기록을 보존한 채 확인이 필요해요.');
@@ -95,7 +95,8 @@ const PA_EXAM_SUPPORT = (() => {
       recoverSupportLogs();
       PA_PROGRESS.promote();
       const local=read(subject);
-      if(PA_PROGRESS.guard(subject,local,day())){status.textContent='✓ 오늘 학습 완료 (다른 기기)';return;}
+      if(PA_RUNTIME.preview&&local.__plan?.completed)delete local.__plan;
+      if(!PA_RUNTIME.preview&&PA_PROGRESS.guard(subject,local,day())){status.textContent='✓ 오늘 학습 완료 (다른 기기)';return;}
       const state=PA_PROGRESS.applyStart(subject,local),p=planFor(data,state);
       if(!p){status.textContent=subject==='english'?`준비된 ${data.launch_days.length}학습일 완료 · 다음 분량 준비 중`:'준비된 학습을 마쳤어요';return;}
       if(p.completed){active={subject,data,state};finalize();status.textContent='✓ 오늘 학습 완료';return;}
