@@ -18,7 +18,46 @@ const PA_EXAM_SUPPORT = (() => {
     if(!s||typeof s!=='object'||Array.isArray(s))throw Error('학습 기록을 읽지 못했어요. 기록을 보존한 채 확인이 필요해요.');
     return s;
   }
-  function write(s){return safeSetItem(KEYS[active.subject],JSON.stringify(s));}
+  function isReplay(){return !!active?.replay;}
+  function write(s){return isReplay()?true:safeSetItem(KEYS[active.subject],JSON.stringify(s));}
+  function replaySource(){
+    if(PA_RUNTIME.preview)return null;
+    try{
+      const state=read('english'),p=state.__plan,data=window.PA_ENGLISH_EXAM;
+      if(!p?.completed||!supportPlanIsToday(p,day())||!Array.isArray(p.tasks)||p.tasks.length!==5||!data)return null;
+      const ids=p.tasks.map(t=>t.id);
+      if(new Set(ids).size!==5||!ids.every(id=>data.exam_prep.some(q=>q.id===id)))return null;
+      if(!p.tasks.every(t=>t.support&&Array.isArray(p.answers)&&p.answers.some(a=>a.id===t.id)))return null;
+      return {state,data};
+    }catch(_){return null;}
+  }
+  function refreshReplayButton(){
+    const b=document.getElementById('english-replay');if(b)b.hidden=!replaySource();
+  }
+  function clearReplay(){
+    if(!isReplay())return;
+    active=null;pending=null;timer=null;finishIssue='';
+    const n=document.getElementById('exam-replay-notice');if(n)n.hidden=true;
+  }
+  function replay(){
+    if(loading||isReplay())return;
+    const source=replaySource();
+    if(!source){refreshReplayButton();document.getElementById('english-support-status').textContent='이 기기에 오늘 푼 문제가 없어 다시 연습할 수 없어요.';return;}
+    const state=JSON.parse(JSON.stringify(source.state)),p=state.__plan;
+    p.answers=[];p.answered=[];p.completed=false;p.finalized=false;p.logged=false;
+    for(const k of ['completed_day','completed_at','completion_event_id'])delete p[k];
+    p.tasks.forEach(t=>{delete t.draft;delete t.selected;for(const k of ['ready','answered','hint','countWarning'])delete t.support[k];});
+    active={subject:'english',data:source.data,state,replay:true};pending=null;timer=null;finishIssue='';
+    QUIZ_DATA=source.data;currentSubject='english';currentLesson=source.data.lesson;currentMode='exam_prep';
+    retryMode=false;originalSession=[];originalSessionAnswers=[];sessionAnswers=[];currentQuestionIndex=0;
+    currentSession=p.tasks.map(t=>({...source.data.exam_prep.find(q=>q.id===t.id),_support:{...t.support,ready:false,answered:false}}));
+    sessionStartTime=Date.now();currentSessionMeta={type:'english_replay',lesson:currentLesson,mode:currentMode,size:currentSession.length};
+    const n=document.getElementById('exam-replay-notice');if(n)n.hidden=false;
+    document.getElementById('btn-support-details').hidden=true;
+    const exit=document.querySelector('.btn-quit');exit.textContent='연습 그만하기';exit.style.display='';
+    document.querySelector('.header-title').textContent='같은 영어 문제 연습';
+    showPage('quiz-page');showQuestion();window.scrollTo?.(0,0);
+  }
   function rules(q){return [...new Set([q.linked_concept[0],...(q.rule_tags||[])])];}
   function englishPlan(data,state,date){
     const learningDay=PA_PROGRESS.nextDay(state,data.launch_days.length);
@@ -69,6 +108,7 @@ const PA_EXAM_SUPPORT = (() => {
     if(!write(state))return false;active.state=state;return true;
   }
   function finalize(){
+    if(isReplay())return true;
     if(!active?.state.__plan?.completed)return true;
     if(active.state.__plan.finalized){finishIssue='';return true;}
     const state=JSON.parse(JSON.stringify(active.state));state.__plan.finalized=true;
@@ -77,9 +117,10 @@ const PA_EXAM_SUPPORT = (() => {
   }
   function finishNotice(){return finishIssue;}
   function leave(){goHome();}
-  function showDetails(){if(active?.state.__plan?.completed)showPage('result-page');}
+  function showDetails(){if(!isReplay()&&active?.state.__plan?.completed)showPage('result-page');}
   async function start(subject){
     if(loading)return;
+    clearReplay();
     loading=true;
     const home=document.getElementById('home-page');home.inert=true;
     const status=document.getElementById(subject+'-support-status');status.textContent='자료를 준비하고 있어요…';
@@ -142,6 +183,10 @@ const PA_EXAM_SUPPORT = (() => {
   }
   function record(q,correct){
     if(!q._support)return {};
+    if(isReplay()){
+      q._support.answered=true;pending=JSON.parse(JSON.stringify(active.state));
+      return {answer_status:'practice',practice:true};
+    }
     const s=q._support,state=JSON.parse(JSON.stringify(active.state)),old=state[s.concept]||{},date=day();
     const helped=!!(hintUsedThisQuestion||s.hint||s.countWarning||s.taught||!s.previousDay||s.previousDay>=date||
       rules(q).some(r=>(state.__exposures?.[date]||[]).includes(r)));
@@ -164,6 +209,7 @@ const PA_EXAM_SUPPORT = (() => {
     if(!QUIZ_DATA?.support_mode||!active||!pending)return true;
     const state=pending,p=state.__plan;p.answers=sessionAnswers.map(a=>({...a}));p.answered=p.answers.map(a=>a.id);
     const complete=p.tasks.every(t=>p.answered.includes(t.id));
+    if(isReplay()){p.completed=complete;active.state=state;pending=null;return true;}
     const newlyCompleted=complete&&!p.completed;
     if(complete&&!p.completed){p.completed=true;p.completed_day=day();state.completed_days=(state.completed_days||0)+1;PA_PROGRESS.stamp(state,active.subject,p);}
     if(!write(state)){sessionAnswers.pop();currentSession[currentQuestionIndex]._support.answered=false;pending=null;return false;}
@@ -229,10 +275,12 @@ const PA_EXAM_SUPPORT = (() => {
   }
   function after(q){if(!q._support)PA_SCIENCE_SUPPORT.after(q);}
   function detail(a){
+    if(a.practice)return "";
     if(!a.support_subject)return PA_SCIENCE_SUPPORT.detail(a);
     return `[${a.support_subject};concept=${a.support_concept};stage=${a.support_stage};status=${a.answer_status};assisted=${Number(a.support_assisted)};plan=${a.plan_date};answered=${a.answer_date};countHelp=${Number(a.count_warning)}${a.selected_indices?';selected='+a.selected_indices.map(i=>i+1).join('+'):''}${a.writing_error?';writing='+a.writing_error+';words='+a.word_count+';typed='+encodeURIComponent(a.writing_normalized):''}]`;
   }
   function result(){
+    if(isReplay()){leave();return true;}
     if(!QUIZ_DATA?.support_mode){PA_SCIENCE_SUPPORT.result();document.getElementById('exam-support-result')?.remove();return;}
     document.getElementById('btn-retry').style.display='none';document.querySelector('.result-score').style.display='none';
     document.getElementById('missed-questions-container').style.display='none';
@@ -245,5 +293,5 @@ const PA_EXAM_SUPPORT = (() => {
     document.getElementById('result-kid-message').textContent='✓ 학습 완료';document.querySelector('.result-emoji').textContent='🌱';
     return true;
   }
-  return {start,session,restore,before,after,renderMultiple,record,capture,detail,result,canSave,finalize,finishNotice,leave,showDetails,planFor,englishPlan,gradeWriting,day,read,elapsed,emphasize};
+  return {replay,isReplay,clearReplay,refreshReplayButton,start,session,restore,before,after,renderMultiple,record,capture,detail,result,canSave,finalize,finishNotice,leave,showDetails,planFor,englishPlan,gradeWriting,day,read,elapsed,emphasize};
 })();

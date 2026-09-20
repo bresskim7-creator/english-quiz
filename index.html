@@ -1759,6 +1759,7 @@
                 <button class="subject-card english" onclick="PA_EXAM_SUPPORT.start('english')"><span class="subject-card-icon">📘</span><span class="subject-card-name">영어 5문제</span><span class="subject-card-sub" id="english-support-status">문장과 뜻을 함께</span></button>
                 <button class="subject-card science" onclick="PA_EXAM_SUPPORT.start('science')"><span class="subject-card-icon">🔬</span><span class="subject-card-name">과학 5문제</span><span class="subject-card-sub" id="science-support-status">개념을 알고 적용하기</span></button>
             </div>
+            <button id="english-replay" hidden onclick="PA_EXAM_SUPPORT.replay()" style="margin:8px 0;padding:12px;border:1px solid #ccd6e2;border-radius:8px;background:#fff;color:#234c80;">같은 문제 다시 풀기 · 영어</button>
             <p id="exam-home-status" class="science-home-note" role="status"></p>
             <p id="exam-progress-status" class="science-home-note" role="status"></p>
             <details class="science-home-note"><summary>더 보고 싶을 때</summary>
@@ -1934,6 +1935,7 @@
 
         <!-- 퀴즈 화면 -->
         <div id="quiz-page" class="page">
+            <p id="exam-replay-notice" hidden role="status" style="padding:10px;background:#e8f0fb;border-radius:8px;">같은 문제 연습 · 처음 학습 기록은 그대로예요. 중단하면 다음에는 처음부터 풀어요.</p>
             <div class="progress-bar">
                 <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
             </div>
@@ -2079,8 +2081,8 @@
         let sessionType = PA_STORAGE.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-09-19 v194';
-        const APP_CACHE_NAME = 'quiz-v194';
+        const BUILD_VERSION = '2026-09-20 v195';
+        const APP_CACHE_NAME = 'quiz-v195';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -4663,6 +4665,7 @@
 
         // 다음 문항으로 이동 (수동)
         function goNextQuestion() {
+            if(PA_EXAM_SUPPORT.isReplay()&&currentQuestionIndex>=currentSession.length-1){PA_EXAM_SUPPORT.leave();return;}
             if (QUIZ_DATA?.support_mode && currentQuestionIndex >= currentSession.length - 1 && PA_EXAM_SUPPORT.read(currentSubject).__plan?.completed) { PA_EXAM_SUPPORT.leave(); return; }
             document.getElementById('btn-next').style.display = 'none';
             currentQuestionIndex++;
@@ -4705,7 +4708,7 @@
             const btn = document.getElementById('btn-next');
             const lastStudyQuestion = !!(QUIZ_DATA?.support_mode && currentQuestionIndex >= currentSession.length - 1);
             btn.textContent = lastStudyQuestion ? '홈으로 돌아가기' : '다음 문항 ▶';
-            document.getElementById('btn-support-details').hidden = !lastStudyQuestion;
+            document.getElementById('btn-support-details').hidden = !lastStudyQuestion || PA_EXAM_SUPPORT.isReplay();
             document.querySelector('.btn-quit').style.display = lastStudyQuestion ? 'none' : '';
             btn.classList.toggle('learning-finish', lastStudyQuestion);
             btn.style.display = 'block';
@@ -6581,6 +6584,7 @@
             });
 
             if (!PA_EXAM_SUPPORT.capture()) return false;
+            if (PA_EXAM_SUPPORT.isReplay()) return;
             if (!questionHistory[q.id]) {
                 questionHistory[q.id] = { attempts: 0, correct: 0, last_seen: today(), last_correct: false };
             }
@@ -8349,6 +8353,7 @@
         }
 
         async function finishSession() {
+            if(PA_EXAM_SUPPORT.isReplay()){PA_EXAM_SUPPORT.leave();return;}
             // ========== 재도전 라운드 종료 ==========
             if (retryMode) {
                 finishRetryRound();
@@ -8796,6 +8801,7 @@
         }
         function refreshRecordStatus(){
             try{
+                PA_EXAM_SUPPORT.refreshReplayButton();
                 const el=document.getElementById('exam-home-status');if(el)el.textContent=supportRecordNotice();
                 const progress=document.getElementById('exam-progress-status');if(progress)progress.textContent=PA_PROGRESS.notice();
                 for(const subject of Object.keys(SUPPORT_STORAGE)){
@@ -8903,6 +8909,7 @@
 
         // 홈으로
         function goHome() {
+            if(PA_EXAM_SUPPORT.isReplay()){PA_EXAM_SUPPORT.clearReplay();currentSubject=null;}
             if (QUIZ_DATA && QUIZ_DATA.support_mode) { PA_EXAM_SUPPORT.finalize(); currentSubject = null; }
             document.getElementById('btn-support-details').hidden = true;
             currentMindmapBranch = null;
@@ -8925,6 +8932,7 @@
 
         // 그만하기
         function quitQuiz() {
+            if(PA_EXAM_SUPPORT.isReplay()){PA_EXAM_SUPPORT.leave();return;}
             if (QUIZ_DATA?.support_mode && PA_EXAM_SUPPORT.read(currentSubject).__plan?.completed) { PA_EXAM_SUPPORT.leave(); return; }
             if (QUIZ_DATA?.support_mode ? (PA_EXAM_SUPPORT.canSave() || confirm('작성한 답을 저장하지 못했어요. 그래도 홈으로 돌아갈까요?')) : confirm('학습을 중단하겠습니까?')) {
                 // 지금까지 푼 문항의 이력은 이미 recordAnswer에서 저장됨
@@ -10130,7 +10138,7 @@ const PA_PROGRESS=(()=>{
 </script>
 <script src="science_support.js?v=194"></script>
     <script src="english_exam.js?v=190"></script>
-    <script src="exam_support.js?v=194"></script>
-    <script src="exam_home.js?v=194"></script>
+    <script src="exam_support.js?v=195"></script>
+    <script src="exam_home.js?v=195"></script>
 </body>
 </html>
