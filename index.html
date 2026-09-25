@@ -1732,6 +1732,41 @@
         /* hidden 속성을 인라인 display로 덮지 않게 규칙으로 분리한다. */
         #btn-support-replay { display:block; width:100%; margin:10px 0; padding:14px; border:1px solid #ccd6e2; border-radius:10px; background:#fff; color:#234c80; font-size:16px; font-weight:700; cursor:pointer; }
         #btn-support-replay[hidden] { display:none; }
+        /* 2026-09-24 답 확인 화면 — 시험모드(오늘의 영어·과학 5문제)에서만 붙는 클래스다. */
+        .option-btn.exam-mark { color:#1f2933 !important; }
+        .option-btn.exam-mark-ok { border-color:#43A047 !important; background:#E8F5E9 !important; }
+        .option-btn.exam-mark-bad { border-color:#E53935 !important; background:#FFEBEE !important; }
+        .option-btn.exam-mark-miss { border-color:#43A047 !important; border-style:dashed !important; background:#fff !important; }
+        .exam-mark-badge { display:inline-block; margin-left:6px; padding:0 8px; border-radius:999px; font-size:13px; font-weight:700; line-height:22px; vertical-align:1px; white-space:nowrap; }
+        .exam-mark-badge-ok { background:#2E7D32; color:#fff; }
+        .exam-mark-badge-bad { background:#C62828; color:#fff; }
+        .exam-mark-badge-miss { background:#fff; color:#2E7D32; border:1.5px dashed #2E7D32; line-height:19px; }
+        .exam-answer-box { margin:12px 0 6px; padding:12px 12px 10px; border-radius:10px; background:#F6F8FB; border:1px solid #D5DEEA; font-size:16px; line-height:1.6; text-align:left; }
+        .exam-ab-row { display:flex; gap:8px; align-items:flex-start; margin:2px 0; }
+        .exam-ab-k { flex:0 0 76px; font-weight:700; color:#394b60; }
+        .exam-ab-v { flex:1; min-width:0; }
+        .exam-ab-v.bad { color:#B3261E; font-weight:700; }
+        .exam-ab-v.ok { color:#1B5E20; font-weight:700; }
+        .exam-ab-v.none { color:#394b60; font-weight:700; }
+        .exam-ab-neg { display:inline-block; margin-left:2px; color:#E53935; font-weight:700; }
+        .exam-ab-combo { margin-top:6px; padding-top:6px; border-top:1px dashed #C9D4E3; }
+        .exam-ab-combo .exam-ab-v { font-weight:700; color:#234c80; letter-spacing:.2px; }
+        .exam-ab-ln { display:block; font-weight:700; margin:0 0 4px; }
+        .exam-ab-ln.ok { color:#1B5E20; }
+        .exam-ab-ln.bad { color:#B3261E; }
+        .exam-ab-ln .exam-ab-neg { margin:0; }
+        .exam-ab-tag { display:inline-block; font-size:13px; font-weight:700; border-radius:999px; padding:0 7px; margin-left:4px; border:1.5px solid currentColor; line-height:19px; vertical-align:1px; }
+        #result-page.exam-result-top { justify-content:flex-start; }
+        .exam-review { margin-top:18px; text-align:left; }
+        .exam-review h3 { font-size:18px; color:#234c80; margin:0 0 4px; }
+        .exam-review-card { margin:12px 0; padding:14px 12px; border:1px solid #D5DEEA; border-radius:12px; background:#fff; }
+        .exam-review-tag { display:inline-block; font-size:14px; font-weight:700; color:#fff; background:#C62828; border-radius:6px; padding:1px 8px; margin-bottom:8px; }
+        .exam-review-tag.unk { background:#546E7A; }
+        .exam-review-sent { white-space:pre-line; line-height:1.7; font-size:15px; background:#F1F4F8; border-radius:8px; padding:8px 10px; margin:0 0 8px; }
+        .exam-review-q { font-weight:700; font-size:16px; line-height:1.6; margin:0 0 4px; }
+        .exam-review-card .exam-answer-box { margin:8px 0; }
+        .exam-review-card .mc-visual { margin:6px 0 10px; }
+        .exam-review-expl { font-size:15px; line-height:1.7; color:#333; margin:6px 0 0; }
         .science-result-note { font-size:14px; color:#607084; }
 
         #exam-home-grid button{font-family:inherit;border:0;text-align:center;cursor:pointer;width:100%;color:inherit}
@@ -2092,8 +2127,8 @@
         let sessionType = PA_STORAGE.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-09-21 v196';
-        const APP_CACHE_NAME = 'quiz-v196';
+        const BUILD_VERSION = '2026-09-25 v197';
+        const APP_CACHE_NAME = 'quiz-v197';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -4739,7 +4774,9 @@
             btn.classList.toggle('learning-finish', lastStudyQuestion);
             btn.style.display = 'block';
             // 설명/개념카드 버튼 등이 추가되어 버튼이 화면 밖으로 밀릴 수 있으므로 스크롤
-            if (!lastStudyQuestion) setTimeout(() => btn.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 150);
+            // 시험모드(오늘의 영어·과학 5문제)는 exam_support.js 가 정답 상자 기준으로 따로 스크롤한다(2026-09-24).
+            const examAnswerView = !!(QUIZ_DATA?.support_mode === true && currentSession?.[currentQuestionIndex]?._support);
+            if (!lastStudyQuestion && !examAnswerView) setTimeout(() => btn.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 150);
         }
 
 
@@ -10169,8 +10206,8 @@ const PA_PROGRESS=(()=>{
 // PROGRESS_CORE_END
 </script>
 <script src="science_support.js?v=194"></script>
-    <script src="english_exam.js?v=190"></script>
-    <script src="exam_support.js?v=196"></script>
+    <script src="english_exam.js?v=197"></script>
+    <script src="exam_support.js?v=197"></script>
     <script src="exam_home.js?v=196"></script>
 </body>
 </html>

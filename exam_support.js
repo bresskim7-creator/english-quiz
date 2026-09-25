@@ -8,7 +8,7 @@ const PA_EXAM_SUPPORT = (() => {
   function elapsed(){return timer?Math.round((timer.ms+(timer.start==null?0:tick()-timer.start))/1000):0;}
   document.addEventListener?.('visibilitychange',()=>{if(!timer)return;if(document.hidden&&timer.start!=null){timer.ms+=tick()-timer.start;timer.start=null;}else if(!document.hidden&&timer.start==null)timer.start=tick();});
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const emphasize=s=>esc(s).replace(/(해당하지 않는|적절하지 않은|올바르지 않은|바르지 않은|알맞지 않은|거리가 먼|아닌 것|틀린 것|틀린|아닌|않는|없는|못한)/g,'<span class="exam-negative" style="color:#E53935;font-weight:700;text-decoration:underline">$1</span>');
+  const emphasize=s=>esc(s).replace(/(해당하지 않는|적절하지 않은|올바르지 않은|옳지 않은|바르지 않은|알맞지 않은|거리가 먼|아닌 것|틀린 것|틀린|아닌|않는|없는|못한)/g,'<span class="exam-negative" style="color:#E53935;font-weight:700;text-decoration:underline">$1</span>');
   const day=(d=new Date())=>PA_PROGRESS.day(d);
   const later=n=>{const d=new Date();d.setDate(d.getDate()+n);return day(d);};
   function read(subject){
@@ -70,6 +70,7 @@ const PA_EXAM_SUPPORT = (() => {
       items:sessionAnswers.map(a=>({id:a.id,correct:!!a.correct,status:a.answer_status,
         assisted:!!a.practice_assisted,time_sec:a.time_sec||0,
         ...(a.selected_indices?{selected:a.selected_indices.slice()}:{}),
+        ...(Array.isArray(a.display_order)?{display_order:a.display_order.slice()}:{}),
         ...(typeof a.writing_normalized==='string'?{typed:a.writing_normalized}:{})})),
       sent:false,sent_at:null};
   }
@@ -156,6 +157,7 @@ const PA_EXAM_SUPPORT = (() => {
       started_at:rec.started_at,finished_at:rec.finished_at,
       details:(rec.items||[]).map(i=>`${i.id}${i.correct?'✓':'✗'}[${i.status}${i.assisted?';도움':''}`
         +`${i.selected?';선택='+i.selected.map(n=>n+1).join('+'):''}`
+        +`${Array.isArray(i.display_order)?';보인순서='+i.display_order.map(n=>n+1).join('-'):''}`
         +`${typeof i.typed==='string'?';쓴답='+encodeURIComponent(i.typed):''}`
         +`${i.time_sec?';'+i.time_sec+'s':''}]`).join(', ')};
   }
@@ -259,6 +261,63 @@ const PA_EXAM_SUPPORT = (() => {
     active=null;pending=null;timer=null;finishIssue='';
     const n=document.getElementById('exam-replay-notice');if(n)n.hidden=true;
   }
+  // 다시 풀기에서만 선택지 ①~⑤의 보이는 순서를 매 회 새로 섞는다(2026-09-24).
+  // 문제 순서·sentence(〈보기〉)·그림·서술형은 그대로이고, 첫 풀이는 섞지 않는다(preserve_option_order).
+  // 기록은 원래 번호(selected_indices)와 보인 순서(display_order: 원래 인덱스 배열)로 남긴다.
+  // 시험에서는 window.PA_REPLAY_RANDOM 에 고정 시드 난수를 넣어 결정적으로 검증한다.
+  function replayRandom(){const f=window.PA_REPLAY_RANDOM;const r=typeof f==='function'?Number(f()):Math.random();return Number.isFinite(r)?r:Math.random();}
+  function shuffleOrder(n,rand=replayRandom){
+    const base=Array.from({length:n},(_,i)=>i);
+    for(let t=0;t<10;t++){
+      const a=base.slice();
+      for(let i=n-1;i>0;i--){const j=Math.min(i,Math.max(0,Math.floor(rand()*(i+1))));[a[i],a[j]]=[a[j],a[i]];}
+      if(n<2||a.some((v,i)=>v!==i))return a;   // 원래 순서와 똑같이 나오면 다시 섞는다
+    }
+    return base.slice(1).concat(base.slice(0,1));   // 주입한 난수가 계속 원래 순서만 낼 때의 안전장치
+  }
+  // 첫 풀이 보기 순서(2026-09-25, Codex v4 검수 F2): 자료의 options·correct·sentence 는 원래 순서 그대로 둔다(옛 코드가 읽는 계약).
+  // 이 코드만 first_display_order(보일 순서 = 원래 번호 배열)와 display_sentence(보일 제시어)로 보여 주고, 기록은 다시 풀기와 같이
+  // 원래 번호(selected_indices)와 보인 순서(display_order)로 남긴다(제시어가 바뀌어 보였으면 display_sentence 도) → 옛 코드·새 코드·옛 자료·새 자료
+  // 어느 조합에서도 저장 번호의 뜻이 같고, 결과 카드는 그 답을 낸 화면을 다시 세운다(asAnswered).
+  function validOrder(q,o){return Array.isArray(o)&&Array.isArray(q.options)&&o.length===q.options.length&&o.map(Number).sort((m,n)=>m-n).every((v,i)=>v===i);}
+  function presentSentence(q){return typeof q.display_sentence==='string'?{...q,sentence:q.display_sentence}:q;}
+  function presentFirst(q){
+    const o=q.first_display_order,c=Number(q.correct);
+    if(q.answer_mode==='writing'||q.answer_mode==='multiple'||Array.isArray(q.correct)||!Number.isInteger(c)||!validOrder(q,o))return q;
+    const order=o.map(Number);
+    return {...presentSentence(q),options:order.map(i=>q.options[i]),correct:order.indexOf(c),_display_order:order,
+      _original:{sentence:q.sentence,options:q.options.slice(),correct:q.correct}};
+  }
+  // 결과 카드는 답을 낸 그때의 보기로 그린다(정오답은 다시 채점하지 않는다). 저장 번호(selected_indices)는 늘 자료의 원래 보기 순서
+  // 기준이므로 '원래 보기 + 답에 남은 보인 순서(display_order)'로 그 화면을 다시 세운다(2026-09-25 v6). 그래서 지금 읽은 자료가
+  // 답할 때와 달라도(업데이트 중 옛 자료·새 자료가 번갈아 로드) 카드의 낱말이 누른 낱말과 같다. 보인 순서가 없는 답은 원래 순서로
+  // 받은 답(업데이트 전 코드, 보이기 필드 없는 자료)이다. 제시어는 답에 남은 display_sentence 가 있으면 그것으로 그린다.
+  function asAnswered(q,a){
+    if(!q||!a||!Array.isArray(q.options))return q;
+    const cur=Array.isArray(q._display_order)?q._display_order:null,d=Array.isArray(a.display_order)?a.display_order.map(Number):null;
+    const said=typeof a.display_sentence==='string'?{sentence:a.display_sentence}:{};
+    if(cur&&d&&cur.length===d.length&&cur.every((v,i)=>v===d[i]))return {...q,...said};   // 이 화면과 같은 순서로 받은 답
+    const {_display_order,_original,...rest}=q;
+    let base=rest;   // 원래 순서의 제시어·보기·정답
+    if(_original)base={...rest,sentence:_original.sentence,options:_original.options,correct:_original.correct};
+    else if(cur&&validOrder(q,cur)){const options=[];cur.forEach((i,k)=>{options[i]=q.options[k];});const back=k=>cur[k];
+      base={...rest,options,correct:Array.isArray(q.correct)?q.correct.map(back).sort((x,y)=>x-y):back(q.correct)};}
+    if(!d||!validOrder(base,d))return base;
+    const at=i=>d.indexOf(i);
+    return {...base,...said,options:d.map(i=>base.options[i]),correct:Array.isArray(base.correct)?base.correct.map(at).sort((x,y)=>x-y):at(base.correct),_display_order:d};
+  }
+  // 보기가 지문 속 위치 표지뿐인 문항(ⓐ~ⓩ, (A)~(Z))은 섞지 않는다(2026-09-24c, JH 승인 — 명세 §3-6 보완).
+  // 답이 번호가 아니라 표지로 정해지므로 섞어도 자리 기억을 막지 못하고, 시험의 'ⓒ=③' 짝만 흐트러진다.
+  // 섞지 않은 문항은 첫 풀이처럼 display_order·;보인순서= 가 남지 않고, 난수도 쓰지 않는다.
+  const MARKER_OPTION=/^\s*(?:[ⓐ-ⓩ]|\([A-Z]\))\s*$/;
+  function markerOnly(q){return q.options.every(o=>MARKER_OPTION.test(String(o)));}
+  function shuffleForReplay(q){
+    if(q.answer_mode==='writing'||!Array.isArray(q.options)||q.options.length<2)return q;
+    if(markerOnly(q))return q;
+    const order=shuffleOrder(q.options.length),at=i=>order.indexOf(i);
+    return {...q,options:order.map(i=>q.options[i]),
+      correct:Array.isArray(q.correct)?q.correct.map(at).sort((a,b)=>a-b):at(q.correct),_display_order:order};
+  }
   async function replay(subject='english'){
     if(loading||isReplay())return;
     const state0=replaySourceState(subject),status=document.getElementById(subject+'-support-status');
@@ -286,7 +345,7 @@ const PA_EXAM_SUPPORT = (() => {
       active={subject,data,state,replay:true,practice};pending=null;timer=null;finishIssue='';
       QUIZ_DATA=data;currentSubject=subject;currentLesson=data.lesson;currentMode='exam_prep';
       retryMode=false;originalSession=[];originalSessionAnswers=[];sessionAnswers=[];currentQuestionIndex=0;
-      currentSession=p.tasks.map(t=>({...data.exam_prep.find(q=>q.id===t.id),_support:{...t.support,ready:false,answered:false}}));
+      currentSession=p.tasks.map(t=>shuffleForReplay(presentSentence({...data.exam_prep.find(q=>q.id===t.id),_support:{...t.support,ready:false,answered:false}})));
       sessionStartTime=Date.now();currentSessionMeta={type:subject+'_replay',lesson:currentLesson,mode:currentMode,size:currentSession.length};
       const n=document.getElementById('exam-replay-notice');if(n)n.hidden=false;
       document.getElementById('btn-support-details').hidden=true;
@@ -333,7 +392,7 @@ const PA_EXAM_SUPPORT = (() => {
     return plan.tasks.map(t=>{
       const q=data.exam_prep.find(q=>q.id===t.id);
       if(!q)throw Error('배정 문항을 찾지 못했어요. 앱 자료를 다시 확인해야 해요.');
-      return {...q,_support:{...t.support,ready:!!t.support.ready,answered:false}};
+      return presentFirst({...q,_support:{...t.support,ready:!!t.support.ready,answered:false}});
     });
   }
   function restore(){
@@ -491,6 +550,106 @@ const PA_EXAM_SUPPORT = (() => {
     return {correct:count_ok&&form_ok,writing_normalized:norm,word_count:words.length,word_count_ok:count_ok,
       writing_error:!count_ok?'word_count':!form_ok?'form_or_meaning':'none'};
   }
+  // ── 답 확인 표시(2026-09-24) — 시험모드(오늘의 영어·과학 5문제) 전용 ────────────────────
+  // 부정 발문 12문항의 표시 문구. 발문 조건을 그대로 옮긴 고정 표이며, 표에 없는 문항은 추측하지 않는다.
+  const NEG_LABEL={'E-L701-A2':'글의 내용과 일치하지 않는 보기','E-L703-A2':'글의 내용과 일치하지 않는 보기',
+    'E-L704-A2':'글의 내용과 일치하지 않는 보기','E-L705-A2':'보고서의 내용과 일치하지 않는 보기',
+    'E-L503-R3':'알맞지 않은 설명','E-L704-R3':'흐름에 알맞지 않은 문장','E-L506-R2':'기사와 일치하지 않는 보기 2개',
+    'E-L506-R3':'대화의 흐름에 가장 알맞지 않은 발화','sci_mid_plate-K01-Q4':'대륙 이동의 증거에 해당하지 않는 보기',
+    'sci_mid_element-K04-Q4':'옳지 않은 설명 2개','sci_mid_body-K01-Q2':'옳지 않은 설명','sci_mid_body-K03-Q2':'옳지 않은 설명'};
+  const CIRC=i=>String.fromCharCode(0x2460+i);
+  // 과학 보기조합: 정답 선택지에 든 기호는 ○, 나머지는 ×. '옳은 것만' 발문에만 붙인다(부정형 조합에는 붙이지 않는다).
+  function comboLine(q){
+    if(Array.isArray(q.correct)||!Array.isArray(q.options)||!/옳은 것만/.test(q.question||''))return '';
+    const labels=[...new Set(String(q.sentence||'').match(/^[ㄱㄴㄷㄹㅁ](?=\.)/gm)||[])];
+    const opt=String(q.options[q.correct]??'').trim();
+    if(labels.length<2||!/^[ㄱㄴㄷㄹㅁ](, ?[ㄱㄴㄷㄹㅁ])*$/.test(opt))return '';
+    const on=new Set(opt.split(/, ?/));
+    return labels.map(l=>l+' '+(on.has(l)?'○':'×')).join(' · ');
+  }
+  // 정답 상자. q 는 화면에 보인 그대로의 문항(다시 풀기면 섞인 options/correct), shown 은 보인 번호(0부터)다.
+  // mode 'question' = 문제 화면(정답 2개는 번호만), 'card' = 결과 카드(정답 2개도 문구까지).
+  function answerBoxHtml(q,shown,unknown,mode,answer){
+    const correct=Array.isArray(q.correct)?q.correct:[q.correct],multi=q.answer_mode==='multiple';
+    const label=NEG_LABEL[q.id]||'',neg=label?`<span class="exam-ab-neg">· ${esc(label)}</span>`:'';
+    const row=(k,v)=>`<div class="exam-ab-row"><span class="exam-ab-k">${k}</span>${v}</div>`;
+    const none='<span class="exam-ab-v none">아직 모르겠어요</span>';
+    if(q.answer_mode==='writing'){
+      // 내가 쓴 답은 입력 원문. 원문이 없는 과거 기록은 저장된 값(정규화 값)을 그대로 보여 주고 복원하지 않는다.
+      const typed=typeof answer?.writing_raw==='string'?answer.writing_raw:typeof answer?.writing_normalized==='string'?answer.writing_normalized:'';
+      return row('내가 쓴 답',unknown?none:`<span class="exam-ab-v bad">${esc(typed)}</span>`)
+        +row('모범답',`<span class="exam-ab-v ok">${esc((q.accepted_answers||[])[0]||'')}</span>`);
+    }
+    let mine,right;
+    if(multi&&mode==='card'){
+      const line=(i,cls,tag)=>`<span class="exam-ab-ln ${cls}">${CIRC(i)} ${esc(q.options[i])}${tag?` <span class="exam-ab-tag">${tag}</span>`:''}</span>`;
+      mine=unknown?none:`<span class="exam-ab-v">${shown.map(i=>correct.includes(i)?line(i,'ok','맞게 고름'):line(i,'bad','잘못 고름')).join('')}</span>`;
+      right=`<span class="exam-ab-v">${label?`<span class="exam-ab-ln">${neg}</span>`:''}${correct.map(i=>line(i,'ok',unknown||shown.includes(i)?'':'못 고름')).join('')}</span>`;
+    }else{
+      if(unknown)mine=none;
+      else if(multi)mine=`<span class="exam-ab-v ${shown.length===correct.length&&shown.every(i=>correct.includes(i))?'ok':'bad'}">${shown.map(CIRC).join('·')}</span>`;
+      else mine=shown.length?`<span class="exam-ab-v ${correct.includes(shown[0])?'ok':'bad'}">${CIRC(shown[0])} ${esc(q.options[shown[0]])}</span>`:'<span class="exam-ab-v none"></span>';   // 선택 기록이 없는 옛 답안은 비워 둔다(추측하지 않음)
+      if(multi)right=`<span class="exam-ab-v ok">${correct.map(CIRC).join('·')}${label?' '+neg:''}</span>`;
+      else right=label?`<span class="exam-ab-v ok">${CIRC(correct[0])} ${neg}<br>${esc(q.options[correct[0]])}</span>`
+        :`<span class="exam-ab-v ok">${CIRC(correct[0])} ${esc(q.options[correct[0]])}</span>`;
+    }
+    const combo=comboLine(q);
+    return row('내 선택',mine)+row('정답',right)
+      +(combo?`<div class="exam-ab-row exam-ab-combo"><span class="exam-ab-k">보기 판단</span><span class="exam-ab-v">${combo}</span></div>`:'');
+  }
+  // 답이 받아들여진 뒤에만 부른다: 고른 보기·정답 보기 표시, 정답 상자, 흐려진 버튼 숨김.
+  function showAnswer(q,opts,shown,unknown){
+    const correct=Array.isArray(q.correct)?q.correct:[q.correct],multi=q.answer_mode==='multiple';
+    opts.querySelectorAll('.option-btn').forEach((b,i)=>{
+      const c=correct.includes(i),s=shown.includes(i);if(!c&&!s)return;
+      const kind=c&&s?'ok':s?'bad':multi&&shown.length?'miss':'ok';
+      const t=document.createElement('span');t.className='exam-mark-badge exam-mark-badge-'+kind;
+      t.textContent=c&&s?'내 선택 · 정답':s?'내 선택':kind==='miss'?'정답 · 못 고름':'정답';
+      b.classList.add('exam-mark','exam-mark-'+kind);b.appendChild(t);
+    });
+    opts.querySelectorAll('.science-unsure,.science-continue').forEach(b=>{b.style.display='none';});
+    const ab=document.createElement('div');ab.className='exam-answer-box';ab.innerHTML=answerBoxHtml(q,shown,unknown,'question');
+    opts.after(ab);
+  }
+  // 해설의 n번째 줄 아래 끝(화면 좌표). 줄은 실제로 그려진 글자 줄로 센다(글자 크기·확대와 무관).
+  function lineBottom(el,n){
+    const rg=document.createRange();rg.selectNodeContents(el);const rows=[];
+    for(const r of rg.getClientRects()){if(!r.height)continue;const row=rows.find(x=>Math.abs(x.top-r.top)<2);if(row)row.bottom=Math.max(row.bottom,r.bottom);else rows.push({top:r.top,bottom:r.bottom});}
+    rows.sort((a,b)=>a.top-b.top);
+    return rows.length?rows[Math.min(n,rows.length)-1].bottom:null;
+  }
+  // 제출 직후 스크롤(시험모드 전용): 정답 상자 전체와 해설 첫 두 줄이 보이는 만큼만 움직인다.
+  // 정답 상자 윗부분은 화면 위로 넘기지 않고, '다음 문항'·'결과 보기' 버튼까지 끌어내리지 않는다.
+  function scrollToAnswer(box){
+    const fb=box.querySelector('#exam-feedback'),ab=box.querySelector('.exam-answer-box'),pg=box.closest('.page');
+    setTimeout(()=>{
+      // 그사이 다음 문항으로 넘어갔으면(이 해설 노드가 교체됨) 움직이지 않는다
+      if(!fb||!pg||!fb.isConnected||!pg.classList.contains('active'))return;
+      const view=pg.getBoundingClientRect();
+      let d=0;const want=(lineBottom(fb,2)??fb.getBoundingClientRect().top+52)+8;
+      if(want>view.bottom)d=Math.ceil(want-view.bottom);
+      const top=(ab&&ab.isConnected?ab:fb).getBoundingClientRect().top-d;
+      if(top<view.top+8)d-=Math.ceil(view.top+8-top);
+      if(d)pg.scrollBy({top:d,behavior:'smooth'});
+    },150);
+  }
+  // 결과 화면 '다시 볼 문제' — 틀림·모르겠어요 문제만 펼쳐 보여 준다(처음 풀이·다시 풀기 공통).
+  // 문항 ID 같은 내부 값은 쓰지 않는다. 보기 번호는 그 회차에 보인 번호다.
+  function reviewHtml(){
+    const cards=(Array.isArray(currentSession)?currentSession:[]).map((q,k)=>{
+      const a=q&&(Array.isArray(sessionAnswers)?sessionAnswers:[]).find(x=>x&&x.id===q.id);
+      if(!a||a.correct)return '';
+      const unknown=a.answer_status==='unknown';
+      const v=asAnswered(q,a),order=Array.isArray(v._display_order)?v._display_order:null;   // v = 답을 낸 그때의 보기(원래 보기 + 답에 남은 보인 순서)
+      const shown=(a.selected_indices||[]).map(i=>order?order.indexOf(i):i).filter(i=>i>=0).sort((x,y)=>x-y);
+      return `<article class="exam-review-card"><span class="exam-review-tag${unknown?' unk':''}">${k+1}번 · ${unknown?'모르겠어요':'틀림'}</span>`
+        +(v.sentence?`<p class="exam-review-sent">${esc(v.sentence)}</p>`:'')+renderVisualMedia(q)
+        +`<p class="exam-review-q">${emphasize(q.question)}</p>`
+        +`<div class="exam-answer-box">${answerBoxHtml(v,shown,unknown,'card',a)}</div>`
+        +`<p class="exam-review-expl">${esc(q.explanation)}</p></article>`;
+    }).filter(Boolean);
+    return cards.length?`<section class="exam-review"><h3>다시 볼 문제 ${cards.length}개</h3>${cards.join('')}</section>`:'';
+  }
   function renderMultiple(q){
     if(!q._support)return PA_SCIENCE_SUPPORT.renderMultiple(q);
     timer={ms:0,start:document.hidden?null:tick()};
@@ -502,32 +661,40 @@ const PA_EXAM_SUPPORT = (() => {
     const opts=box.querySelector('#study-options'),feedback=box.querySelector('#exam-feedback');
     const multi=q.answer_mode==='multiple',writing=q.answer_mode==='writing';
     let selected=new Set(),submitted=false,armTimer=null;
-    const finish=(correct,extra={})=>{
+    // 기록은 원래 번호(selected_indices)로 남긴다. 다시 풀기에서 섞였거나 첫 풀이에서 새 순서로 보였으면 보인 순서(display_order)도,
+    // 첫 풀이에서 제시어가 바뀌어 보였으면 그 제시어(display_sentence)도 함께 남긴다(기기 안 기록만, 전송 필드는 그대로).
+    const order=Array.isArray(q._display_order)?q._display_order:null;
+    const shownSentence=q._original&&typeof q.sentence==='string'&&q.sentence!==q._original.sentence?{display_sentence:q.sentence}:{};
+    const shownOrder=order?{display_order:order.slice(),...shownSentence}:{};
+    const chosen=list=>({selected_indices:list.map(i=>order?order[i]:i).sort((a,b)=>a-b),...shownOrder});
+    const finish=(correct,extra={},shown=null)=>{
       if(submitted)return;
       if(recordAnswer(q,correct,extra)===false)return false;
       submitted=true;clearTimeout(armTimer);opts.querySelectorAll('button,input,textarea').forEach(b=>b.disabled=true);
       const hint=document.getElementById('btn-hint');hint.disabled=true;
       feedback.textContent=(correct?'맞았어요. ':'다시 짚어 보자. ')+q.explanation;
       if(!correct){const c=QUIZ_DATA.concept_cards.find(c=>c.id===s.concept);const d=document.createElement('details');d.className='science-repair';d.open=true;d.innerHTML='<summary>헷갈린 핵심 짚어 보기</summary>'+cardMarkup(c);box.appendChild(d);}
+      if(!writing)showAnswer(q,opts,shown||[],!shown);   // 서술형 문제 화면은 바꾸지 않는다(스크롤만 적용)
       showNextButton();
+      scrollToAnswer(box);
       return true;
     };
     if(writing){
       const input=document.createElement('textarea');input.className='exam-writing';input.setAttribute('aria-label','빈칸에 들어갈 말');input.autocapitalize='none';input.spellcheck=false;
       const draft=active.state.__plan.tasks.find(t=>t.id===q.id).draft||'';input.value=draft;
       input.oninput=()=>{const st=JSON.parse(JSON.stringify(active.state));st.__plan.tasks.find(t=>t.id===q.id).draft=input.value;if(write(st))active.state=st;};opts.appendChild(input);
-      const b=document.createElement('button');b.className='science-continue';b.textContent='쓴 답 제출';b.onclick=()=>{if(!input.value.trim()){feedback.textContent='빈칸에 들어갈 말만 써 보세요. 모르면 아래 버튼을 눌러도 좋아요.';return;}const g=gradeWriting(q,input.value);finish(g.correct,g);};opts.appendChild(b);
+      const b=document.createElement('button');b.className='science-continue';b.textContent='쓴 답 제출';b.onclick=()=>{if(!input.value.trim()){feedback.textContent='빈칸에 들어갈 말만 써 보세요. 모르면 아래 버튼을 눌러도 좋아요.';return;}const g=gradeWriting(q,input.value);finish(g.correct,{...g,writing_raw:String(input.value).trim()});};opts.appendChild(b);
     }else{
       const draft=active.state.__plan.tasks.find(t=>t.id===q.id).selected||[];selected=new Set(draft);
       q.options.forEach((option,i)=>{const b=document.createElement('button');b.className='option-btn';b.style.cssText='display:block;width:100%;text-align:left;padding:12px;margin:8px 0;border:2px solid #ddd;border-radius:10px;background:white;font-size:16px;line-height:1.6';b.textContent=String.fromCharCode(0x2460+i)+' '+option;
         if(multi){b.setAttribute('aria-pressed',String(selected.has(i)));b.style.borderColor=selected.has(i)?'#1565c0':'#ddd';}
-        b.onclick=()=>{if(submitted)return;if(!multi){finish(i===q.correct,{selected_indices:[i]});return;}
+        b.onclick=()=>{if(submitted)return;if(!multi){finish(i===q.correct,chosen([i]),[i]);return;}
           const next=new Set(selected);next.has(i)?next.delete(i):next.add(i);const st=JSON.parse(JSON.stringify(active.state));st.__plan.tasks.find(t=>t.id===q.id).selected=[...next];if(!write(st))return;active.state=st;selected=next;b.setAttribute('aria-pressed',String(selected.has(i)));b.style.borderColor=selected.has(i)?'#1565c0':'#ddd';feedback.textContent=`${selected.size}개 선택 · 정답 ${q.answer_count}개`;};opts.appendChild(b);});
       if(multi){feedback.textContent=`정답 ${q.answer_count}개를 선택하세요.`;const b=document.createElement('button');b.className='science-continue';b.textContent='선택한 답 제출';
         b.onclick=()=>{if(submitted)return;if(selected.size!==q.answer_count){if(markHelp(q,'countWarning'))feedback.textContent=`정답 ${q.answer_count}개를 선택한 뒤 제출하세요. 개수 도움을 받았어요.`;return;}
-          finish(selected.size===q.correct.length&&q.correct.every(i=>selected.has(i)),{selected_indices:[...selected].sort(),required_count:q.answer_count});};opts.appendChild(b);}
+          finish(selected.size===q.correct.length&&q.correct.every(i=>selected.has(i)),{...chosen([...selected]),required_count:q.answer_count},[...selected].sort((a,b)=>a-b));};opts.appendChild(b);}
     }
-    const unsure=document.createElement('button');unsure.className='science-unsure';unsure.textContent='아직 모르겠어요';unsure.onclick=()=>{q._support_unsure=true;if(finish(false)===false)q._support_unsure=false;};
+    const unsure=document.createElement('button');unsure.className='science-unsure';unsure.textContent='아직 모르겠어요';unsure.onclick=()=>{q._support_unsure=true;if(finish(false,{...shownOrder})===false)q._support_unsure=false;};
     // 오터치 방지(2026-09-21): 개념카드 '이제 문제로 확인하기 →'와 같은 좌표에 놓이므로 렌더 직후 잠시 잠근다.
     // 제출된 문항·떨어져 나간 노드는 다시 풀지 않는다(submitted / isConnected).
     unsure.disabled=true;armTimer=setTimeout(()=>{if(!submitted&&unsure.isConnected)unsure.disabled=false;},Number(window.PA_UNSURE_ARM_MS)||600);
@@ -541,7 +708,7 @@ const PA_EXAM_SUPPORT = (() => {
   function detail(a){
     if(a.practice)return "";
     if(!a.support_subject)return PA_SCIENCE_SUPPORT.detail(a);
-    return `[${a.support_subject};concept=${a.support_concept};stage=${a.support_stage};status=${a.answer_status};assisted=${Number(a.support_assisted)};plan=${a.plan_date};answered=${a.answer_date};countHelp=${Number(a.count_warning)}${a.selected_indices?';selected='+a.selected_indices.map(i=>i+1).join('+'):''}${a.writing_error?';writing='+a.writing_error+';words='+a.word_count+';typed='+encodeURIComponent(a.writing_normalized):''}]`;
+    return `[${a.support_subject};concept=${a.support_concept};stage=${a.support_stage};status=${a.answer_status};assisted=${Number(a.support_assisted)};plan=${a.plan_date};answered=${a.answer_date};countHelp=${Number(a.count_warning)}${a.selected_indices?';selected='+a.selected_indices.map(i=>i+1).join('+'):''}${Array.isArray(a.display_order)?';shown='+a.display_order.map(i=>i+1).join('-'):''}${a.writing_error?';writing='+a.writing_error+';words='+a.word_count+';typed='+encodeURIComponent(a.writing_normalized):''}]`;
   }
   // 최초 완료와 재연습 완료가 같은 요약을 쓴다. 맞힘/틀림/모르겠어요를 합치지 않는다.
   // 맞힘 + 틀림 + 모르겠어요 + 미응답 = 전체. 도움 여부는 합치지 않고 별도 차원으로 센다.
@@ -573,11 +740,14 @@ const PA_EXAM_SUPPORT = (() => {
     const againBtn=document.getElementById('btn-support-replay');
     if(!QUIZ_DATA?.support_mode){
       PA_SCIENCE_SUPPORT.result();document.getElementById('exam-support-result')?.remove();
+      document.getElementById('result-page')?.classList.remove('exam-result-top');   // 다른 결과 화면은 가운데 정렬 그대로
       // 시험모드 결과에서 쓰던 버튼/핸들러가 다른 학습 결과 화면에 남지 않게 초기화한다.
       if(againBtn){againBtn.hidden=true;againBtn.onclick=null;}
       return;
     }
     const isRep=isReplay(),subject=active?.subject||currentSubject;
+    const rp=document.getElementById('result-page');
+    if(rp){rp.classList.add('exam-result-top');rp.scrollTop=0;}   // 카드가 붙어도 위쪽이 잘리지 않게 위에서부터 쌓고, 늘 맨 위(요약)부터 연다
     if(isRep)stopLease();
     const saveOk=isRep?savePractice(true):true;   // ② 완주 확정
     document.getElementById('btn-retry').style.display='none';document.querySelector('.result-score').style.display='none';
@@ -587,15 +757,12 @@ const PA_EXAM_SUPPORT = (() => {
     const how=[c.independent?`도움 없이 맞힘 ${c.independent}`:'',c.assisted?`설명·힌트 본 뒤 맞힘 ${c.assisted}`:'',c.precheck?`처음 사전 확인 맞힘 ${c.precheck}`:''].filter(Boolean).join(' · ');
     // 점수·정답률·등급 표현은 쓰지 않는다. 같은 날 다시 맞힌 것을 숙달로 적지 않는다.
     const tally=x=>`맞힘 ${x.correct} · 틀림 ${x.wrong} · 모르겠어요 ${x.unknown}${x.unanswered?' · 미응답 '+x.unanswered:''}`;
-    const o=isRep?originalCounts():null;
     box.innerHTML=(isRep
-        ?`<p class="exam-summary-total">총 ${c.total}문항</p>`
-         +(o?`<p class="exam-summary-sub">처음 풀 때 · ${tally(o)}</p>`:'')
-         +`<p class="exam-summary-line">다시 풀 때 · ${tally(c)}</p>`
-        :`<p class="exam-summary-line">총 ${c.total}문항 · ${tally(c)}</p>`)
-      +(how?`<p class="exam-summary-sub">${how}</p>`:'')
-      +(isRep?'<p class="exam-summary-note">다시 풀어서 나온 결과예요. 처음 푼 기록은 그대로예요.</p>'
-             :'<p class="exam-summary-note">연습 결과예요. 시험 예상 점수는 아니에요.</p>')
+        ?`<p class="exam-summary-line">이번 연습: 맞힘 ${c.correct} · 틀림 ${c.wrong}${c.unknown?' · 모르겠어요 '+c.unknown:''}${c.unanswered?' · 미응답 '+c.unanswered:''}</p>`
+         +'<p class="exam-summary-note">처음 푼 기록은 그대로예요.</p>'
+        :`<p class="exam-summary-line">총 ${c.total}문항 · ${tally(c)}</p>`
+         +(how?`<p class="exam-summary-sub">${how}</p>`:'')
+         +'<p class="exam-summary-note">연습 결과예요. 시험 예상 점수는 아니에요.</p>')
       +(isRep&&!saveOk?`<p class="exam-summary-warn">${esc(practiceNotice()||'연습 기록을 저장하지 못했어요.')}</p><button id="btn-practice-retry">연습 기록 다시 저장</button>`:'');
     const retry=document.getElementById('btn-practice-retry');
     if(retry)retry.onclick=()=>{if(savePractice(true))result();else showPracticeIssue();};
@@ -603,6 +770,8 @@ const PA_EXAM_SUPPORT = (() => {
       const together=QUIZ_DATA.concept_cards.filter(x=>active?.state?.[x.id]?.error_days>=3);
       if(together.length)box.innerHTML+='<details><summary>부모와 같이 짚어 볼 개념</summary><p>'+together.map(x=>esc(x.term)).join(' · ')+'</p><p>오늘 문제는 늘리지 않고 다음 복습에서 다시 확인해요.</p></details>';
     }
+    const review=reviewHtml();
+    if(review)box.insertAdjacentHTML('beforeend',review);
     const again=againBtn;
     if(again){
       again.hidden=!replaySourceState(subject);
@@ -615,5 +784,5 @@ const PA_EXAM_SUPPORT = (() => {
     return true;
   }
 
-  return {replay,isReplay,clearReplay,refreshReplayButton,replaySourceState,summaryCounts,originalCounts,savePractice,savePracticeProgress,recoverPractice,sendPractice,practiceLogs,practiceNotice,start,session,restore,before,after,renderMultiple,record,capture,detail,result,canSave,finalize,finishNotice,leave,showDetails,planFor,englishPlan,gradeWriting,day,read,elapsed,emphasize};
+  return {shuffleOrder,replay,isReplay,clearReplay,refreshReplayButton,replaySourceState,summaryCounts,originalCounts,savePractice,savePracticeProgress,recoverPractice,sendPractice,practiceLogs,practiceNotice,start,session,restore,before,after,renderMultiple,record,capture,detail,result,canSave,finalize,finishNotice,leave,showDetails,planFor,englishPlan,gradeWriting,day,read,elapsed,emphasize};
 })();
