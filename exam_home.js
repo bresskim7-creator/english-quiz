@@ -1,7 +1,10 @@
 const PA_EXAM_HOME=(()=>{
   const literacy=()=>Object.fromEntries(PA_PROGRESS.literacy().map(id=>[id,true]));
-  function ids(){return (DAILY_INDEX_DATA||[]).map(x=>x.date).filter(d=>d>='2026-08-30'&&d<='2026-09-16'&&window.MUNHAERAK_CARDS?.[d]).sort();}
-  function readingId(){const reads=loadDailyReadIds();return ids().find(id=>!reads.includes(id))||null;}
+  // 읽기 대상(2026-10-08 쇼츠 개편): 2026-08-30 이후 ~ 오늘의 모든 오늘의 한 장. 짝 문해력 카드 존재를 요구하지 않는다(새 카드는 3문항을 카드 안에 포함).
+  function readingIds(){const today=getTodayDateStr();return (DAILY_INDEX_DATA||[]).map(x=>x.date).filter(d=>d>='2026-08-30'&&d<=today).sort();}
+  // 문해력 대상: 기존 짝 카드(08-30~09-16, cards.js에 있는 날짜)만 — 기존 기록·진입 보존.
+  function ids(){return readingIds().filter(d=>d<='2026-09-16'&&window.MUNHAERAK_CARDS?.[d]);}
+  function readingId(){const reads=loadDailyReadIds();return readingIds().find(id=>!reads.includes(id))||null;}
   function literacyId(){const lit=literacy();return ids().find(id=>!lit[id])||null;}
   function update(){
     PA_EXAM_SUPPORT.refreshReplayButton();
@@ -21,5 +24,5 @@ const PA_EXAM_HOME=(()=>{
   // init already loads the index; wait for load completion before our status refresh.
   window.addEventListener('load',()=>setTimeout(()=>refresh(),250));
   window.addEventListener('storage',()=>refresh());
-  return {pair:readingId,readingId,literacyId,refresh,openReading,openLiteracy,ids};
+  return {pair:readingId,readingId,literacyId,refresh,openReading,openLiteracy,ids,readingIds};
 })();
