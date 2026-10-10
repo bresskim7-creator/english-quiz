@@ -1255,7 +1255,7 @@
             display: none; line-height: 1.6;
         }
         .daily-ox-item.revealed .daily-ox-explain { display: block; }
-        /* 오늘의 한 장 5지선다 3문항(quiz) — 정답·요약 키워드·같은 쇼츠는 한 줄 요약 아래에서 한 번에 공개 */
+        /* 오늘의 한 장 5지선다 3문항(quiz) — v201: '채점하기'로 세 답을 고정한 뒤 결과를 1문항씩 공개, 총점·요약 키워드·같은 쇼츠는 마지막 결과에서 공개 */
         .daily-quiz-box { background:#f3f6fb; border:1px solid #d0d9e8; border-radius:10px; padding:14px 14px 6px; margin-bottom:12px; }
         .daily-quiz-title { font-size:16px; color:#2F5496; font-weight:800; }
         .daily-quiz-guide { font-size:13px; color:#555; margin:4px 0 8px; line-height:1.5; }
@@ -1287,6 +1287,17 @@
         .daily-answer-hint { font-size:14px; font-weight:700; color:#C62828; line-height:1.5; margin:-6px 0 12px; }
         .daily-answer-hint[hidden] { display:none; }
         .daily-video-note { font-size:13px; color:#555; line-height:1.5; margin-top:12px; }
+        /* v201 (2026-10-10): 채점 결과 1문항씩 — 위치(1 / 3)·해당 질문·다음/이전 버튼, 마지막 결과에만 총점·요약 빈칸·같은 쇼츠 */
+        .daily-answer-pos { font-size:14px; font-weight:800; color:#8a5800; margin-bottom:2px; }
+        .daily-answer-q { font-size:15px; font-weight:700; color:#1f2a44; line-height:1.55; margin-bottom:6px; }
+        .daily-answer-item[hidden], .daily-answer-final[hidden], .daily-answer-nav[hidden],
+        .daily-answer-next[hidden], .daily-answer-prev[hidden] { display:none; }
+        .daily-answer-final { margin-top:2px; padding-top:10px; border-top:1px dashed #ead7b0; }
+        .daily-answer-nav { margin-top:12px; }
+        .daily-answer-next { display:block; width:100%; border:0; border-radius:10px; background:#2F5496; color:#fff; font-family:inherit;
+            font-size:16px; font-weight:800; line-height:1.4; padding:13px; cursor:pointer; }
+        .daily-answer-prev { display:block; width:100%; border:1.5px solid #c9d4e6; border-radius:10px; background:#fff; color:#2F5496; font-family:inherit;
+            font-size:15px; font-weight:700; line-height:1.4; padding:10px; margin-top:8px; cursor:pointer; }
 
         .daily-summary {
             background: #e8f5e9; border: 1px solid #c8e6c9; border-radius: 8px;
@@ -2159,8 +2170,8 @@
         let sessionType = PA_STORAGE.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-10-09 v200';
-        const APP_CACHE_NAME = 'quiz-v200';
+        const BUILD_VERSION = '2026-10-10 v201';
+        const APP_CACHE_NAME = 'quiz-v201';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -2338,15 +2349,17 @@
             document.getElementById('mute-toggle').textContent = isMuted ? '🔇' : '🔊';
             // 음소거 해제 시 AudioContext 확실히 깨우기
             if (!isMuted) getAudioCtx();
+            else stopDailyResultSound();   // v201: 오늘의 한 장 결과음이 나는 중이면 바로 멈춘다
         }
 
         function playSound(type) {
-            if (isMuted) return;
+            if (isMuted) return null;
             try {
                 const ctx = getAudioCtx();
-                if (!ctx) return;
+                if (!ctx) return null;
                 const gain = ctx.createGain();
                 gain.connect(ctx.destination);
+                const oscs = [];   // v201: 멈춤 손잡이용 — 음 구성·길이·볼륨은 바꾸지 않는다
 
                 if (type === 'correct') {
                     // 정답: 도→미→솔 밝은 3음 상승 멜로디
@@ -2359,6 +2372,7 @@
                         osc.connect(gain);
                         osc.start(ctx.currentTime + i * 0.12);
                         osc.stop(ctx.currentTime + i * 0.12 + 0.15);
+                        oscs.push(osc);
                     });
                     gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.6);
                 } else {
@@ -2374,12 +2388,37 @@
                         osc.connect(gain);
                         osc.start(ctx.currentTime + i * 0.12);
                         osc.stop(ctx.currentTime + i * 0.12 + 0.12);
+                        oscs.push(osc);
                     });
                     gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.35);
                 }
+                return makeSoundStopHandle(ctx, gain, oscs);
             } catch(e) {
                 console.warn('[Sound] playSound 오류:', e);
+                return null;
             }
+        }
+
+        // v201: playSound가 돌려주는 멈춤 손잡이. 오늘의 한 장 결과음만 이 값을 쓴다(영어·과학 호출부는 반환값을 쓰지 않아 동작 그대로).
+        // stop(): 15ms 안에 소리를 줄이고(딸깍 소리 방지) 남은 음을 멈춘 뒤 연결을 끊는다. 이미 끝난 소리에 불러도 무해하다.
+        function makeSoundStopHandle(ctx, gain, oscs) {
+            var stopped = false;
+            return {
+                stop: function () {
+                    if (stopped) return;
+                    stopped = true;
+                    var t = 0;
+                    try {
+                        t = ctx.currentTime;
+                        var v = gain.gain.value;
+                        gain.gain.cancelScheduledValues(t);
+                        gain.gain.setValueAtTime(v, t);
+                        gain.gain.linearRampToValueAtTime(0.0001, t + 0.015);
+                    } catch (e) {}
+                    oscs.forEach(function (o) { try { o.stop(t + 0.02); } catch (e) {} });
+                    setTimeout(function () { try { gain.disconnect(); } catch (e) {} }, 40);
+                }
+            };
         }
 
         // Hint handling
@@ -3109,6 +3148,7 @@
         }
 
         function showDailyTab(name) {
+            if (name !== 'today') stopDailyResultSound();   // v201: '지난 글' 목록으로 가면 남은 결과음 정지
             document.getElementById('daily-tab-today').classList.toggle('active', name === 'today');
             document.getElementById('daily-tab-archive').classList.toggle('active', name === 'archive');
             document.getElementById('daily-today-view').style.display = (name === 'today') ? '' : 'none';
@@ -3222,6 +3262,7 @@
 
         function renderDailyToday(d, ctx) {
             ctx = ctx || {};
+            stopDailyResultSound();   // v201: 카드를 다시 그리면 이전 카드의 결과음 정리
             if (!d) {
                 // 큐에서 들어왔으면 큐 빈 상태, archive 경로면 해당 날짜 미존재 상태
                 if (ctx.fromQueue) renderDailyQueueEmpty();
@@ -3308,7 +3349,7 @@
             if (_hasQuiz) {
                 html += '<div class="daily-quiz-box">';
                 html += '<div class="daily-quiz-title">✏️ 글을 읽고 풀어 보기 (' + d.quiz.length + '문항)</div>';
-                html += '<div class="daily-quiz-guide">보기를 눌러 답을 고르세요. 정답은 한 줄 요약 아래 ‘정답 확인하기’를 누르면 한 번에 나옵니다.</div>';
+                html += '<div class="daily-quiz-guide">보기를 눌러 답을 고르세요. 채점 전에는 답을 바꿀 수 있어요. 모두 고른 뒤 한 줄 요약 아래 ‘채점하기’를 누르면 1번 결과부터 차례로 나와요.</div>';
                 d.quiz.forEach(function(q, qi) {
                     html += '<div class="daily-quiz-item" data-qi="' + qi + '">';
                     html += '<div class="daily-quiz-q">' + (qi + 1) + '. ' + dailyEscapeHtml(q.q || '') + '</div>';
@@ -3346,21 +3387,25 @@
             }
 
             if (_hasQuiz) {
-                // 큐 경로(fromQueue)에서만 data-read-date를 달아, 3문항을 고르고 정답을 확인한 시점에 읽음 처리한다(스크롤 sentinel 대신).
+                // 큐 경로(fromQueue)에서만 data-read-date를 달아, 3문항을 고르고 '채점하기'를 누른 시점에 읽음 처리한다(스크롤 sentinel 대신).
+                // v201: 채점하기 → 세 답 고정 → 결과 1 / 3만 공개(정오답 소리 1회) → 아이가 '2번 결과 보기'·'3번 결과 보기'로 직접 넘김 → 마지막 결과에서 총점·요약 빈칸·같은 쇼츠.
                 html += '<button class="daily-answer-btn" onclick="revealDailyAnswers(this)"'
-                    + ((ctx.fromQueue && ctx.date) ? ' data-read-date="' + dailyEscapeHtml(ctx.date) + '"' : '') + '>✅ 정답 확인하기</button>';
+                    + ((ctx.fromQueue && ctx.date) ? ' data-read-date="' + dailyEscapeHtml(ctx.date) + '"' : '') + '>✅ 채점하기</button>';
                 html += '<div class="daily-answer-hint" hidden></div>';
-                html += '<div class="daily-answer-box" hidden>';
-                html += '<div class="daily-answer-score"></div>';
+                html += '<div class="daily-answer-box" hidden data-cur="-1" data-max="-1">';
+                html += '<div class="daily-answer-pos"></div>';
                 d.quiz.forEach(function(q, qi) {
                     var a = Number(q.answer); if (!(Number.isInteger(a) && a >= 1 && a <= 5)) a = 0;   // 정답은 1~5 정수만 인정(2.5·'2x' 거부)
-                    html += '<div class="daily-answer-item" data-qi="' + qi + '" data-answer="' + a + '">'
+                    html += '<div class="daily-answer-item" data-qi="' + qi + '" data-answer="' + a + '" hidden>'
+                        + '<div class="daily-answer-q">' + (qi + 1) + '. ' + dailyEscapeHtml(q.q || '') + '</div>'
                         + '<div class="daily-answer-mine"></div>'
                         + '<div class="daily-answer-right">정답 ' + (a ? _NUM[a - 1] + ' ' + dailyEscapeHtml((q.options || [])[a - 1] || '') : '(정답 정보 없음)') + '</div>'
                         + (q.evidence ? '<div class="daily-answer-evi"><b>본문 근거</b> ' + dailyEscapeHtml(q.evidence) + '</div>' : '')
                         + (q.explain ? '<div class="daily-answer-exp"><b>이유</b> ' + dailyEscapeHtml(q.explain) + '</div>' : '')
                         + '</div>';
                 });
+                html += '<div class="daily-answer-final" hidden>';
+                html += '<div class="daily-answer-score"></div>';
                 if (d.summary_keywords) html += '<div class="daily-answer-sum">📝 한 줄 요약 빈칸 — ' + dailyEscapeHtml(String(d.summary_keywords).replace(/^키워드:\s*/, '')) + '</div>';
                 if (d.finish_video && d.finish_video.url && /^https:\/\/(www\.|m\.)?(youtube\.com|youtu\.be)\//.test(String(d.finish_video.url))) {
                     var fv = d.finish_video;
@@ -3369,6 +3414,11 @@
                         + '<span class="daily-video-main">▶ 같은 쇼츠로 마무리: ' + dailyEscapeHtml(fv.title || '') + '</span>'
                         + '<span class="daily-video-sub">' + dailyEscapeHtml([fv.range ? '볼 구간 ' + fv.range : '', fv.focus || ''].filter(Boolean).join(' · ')) + '</span></a>';
                 }
+                html += '</div>';
+                html += '<div class="daily-answer-nav" hidden>'
+                    + '<button type="button" class="daily-answer-next" onclick="moveDailyResult(this, 1)"></button>'
+                    + '<button type="button" class="daily-answer-prev" onclick="moveDailyResult(this, -1)"></button>'
+                    + '</div>';
                 html += '</div>';
             }
 
@@ -3402,7 +3452,7 @@
             }
 
             // archive 경로에서는 옵저버를 부착하지 않는다 (read 처리 안 함).
-            // quiz 카드(쇼츠 개편, 2026-10-08)는 스크롤 읽음 처리를 쓰지 않는다 — 3문항을 고르고 '정답 확인'을 누른 시점에 읽음 처리(revealDailyAnswers).
+            // quiz 카드(쇼츠 개편, 2026-10-08)는 스크롤 읽음 처리를 쓰지 않는다 — 3문항을 고르고 '채점하기'를 누른 시점에 읽음 처리(revealDailyAnswers).
             if (ctx.fromQueue && !_hasQuiz) {
                 attachReadObserver(ctx.date);
             } else {
@@ -3415,7 +3465,7 @@
         function pickDailyQuiz(el) {
             var item = el.closest('.daily-quiz-item'); if (!item) return;
             var qbox = el.closest('.daily-quiz-box');
-            if (qbox && qbox.classList.contains('locked')) return;   // 정답 확인 뒤에는 첫 응답을 고정한다(P0-3)
+            if (qbox && qbox.classList.contains('locked')) return;   // 채점한 뒤에는 첫 응답을 고정한다(P0-3)
             item.querySelectorAll('.daily-quiz-opt').forEach(function(o){ o.classList.remove('picked'); });
             el.classList.add('picked');
         }
@@ -3423,13 +3473,15 @@
             var view = btn.closest('#daily-today-view') || document;
             var card = btn.closest('.daily-card') || view;
             var box = card.querySelector('.daily-answer-box'); if (!box) return;
+            if (box.getAttribute('data-graded') === '1') return;   // v201: 첫 채점만 인정(두 번 누름·중복 채점 차단)
             var hint = card.querySelector('.daily-answer-hint');
             var qbox = card.querySelector('.daily-quiz-box');
-            var NUM = ['①','②','③','④','⑤'], ok = 0, n = 0, picks = {}, missing = [];
+            var NUM = ['①','②','③','④','⑤'], ok = 0, n = 0, picks = {}, texts = {}, missing = [];
             card.querySelectorAll('.daily-quiz-item').forEach(function(q){
                 var qi = q.getAttribute('data-qi');
                 var p = q.querySelector('.daily-quiz-opt.picked');
                 picks[qi] = p ? +p.getAttribute('data-oi') : 0;
+                texts[qi] = p ? ((p.querySelector('.t') || {}).textContent || '') : '';
                 if (!picks[qi]) missing.push(q);
             });
             // 모든 문항에 답을 고른 뒤에만 공개한다(P0-2). 정답 여부는 조건이 아니다.
@@ -3446,17 +3498,78 @@
                 n++; var qi = it.getAttribute('data-qi'), a = +it.getAttribute('data-answer');
                 var mine = picks[qi] || 0;
                 var m = it.querySelector('.daily-answer-mine');
-                if (!mine) { m.textContent = (+qi + 1) + '번 — 고르지 않음'; m.className = 'daily-answer-mine none'; }
-                else if (mine === a) { ok++; m.textContent = (+qi + 1) + '번 — 내 답 ' + NUM[mine - 1] + ' ✓ 맞음'; m.className = 'daily-answer-mine ok'; }
-                else { m.textContent = (+qi + 1) + '번 — 내 답 ' + NUM[mine - 1] + ' ✗ 틀림'; m.className = 'daily-answer-mine no'; }
+                it.setAttribute('data-mine', String(mine));
+                it.setAttribute('data-ok', (mine && mine === a) ? '1' : '0');
+                if (!mine) { m.textContent = '고르지 않음'; m.className = 'daily-answer-mine none'; }
+                else if (mine === a) { ok++; m.textContent = '✓ 맞음 · 내 답 ' + NUM[mine - 1]; m.className = 'daily-answer-mine ok'; }
+                else { m.textContent = '✗ 틀림 · 내 답 ' + NUM[mine - 1] + (texts[qi] ? ' ' + texts[qi] : ''); m.className = 'daily-answer-mine no'; }
             });
             box.querySelector('.daily-answer-score').textContent = n + '문항 중 ' + ok + '문항 맞음';
-            if (qbox) qbox.classList.add('locked');   // 첫 응답 고정(P0-3)
+            box.setAttribute('data-graded', '1');
+            if (qbox) qbox.classList.add('locked');   // 첫 응답 고정(P0-3) — 세 답을 한 번에 고정한 뒤 결과를 하나씩 본다
             box.hidden = false; btn.hidden = true;
-            // 큐 경로: 3문항을 고르고 정답을 확인한 시점 = 학습 완료(읽음 처리 + 다음 카드로 전진). 스크롤 sentinel은 quiz 카드에 붙이지 않는다.
+            try { showDailyResult(box, 0); } catch (e) { console.warn('[daily] 결과 표시 오류:', e); }   // 1번 결과 + 정오답 소리(처음 공개)
+            // 큐 경로: 3문항을 고르고 채점한 시점 = 학습 완료(읽음 저장·전송 1회). 결과 넘기기는 아무것도 저장하지 않는다. 스크롤 sentinel은 quiz 카드에 붙이지 않는다.
+            // v201 R2: 이 경로에서는 '✓ 학습 완료' 알림을 띄우지 않는다 — 결과 1 / 3 위를 가리고, 화면의 '채점 결과 1 / 3'이 제출 완료를 이미 보여 준다.
+            // (저장 실패 알림은 markDailyAsRead 안에서 그대로 뜬다. OX 카드의 스크롤 읽음 알림도 그대로.)
             var rd = btn.getAttribute('data-read-date');
-            if (rd) { if (markDailyAsRead(rd)) showReadConfirmedToast(); }
+            if (rd) markDailyAsRead(rd);
         }
+
+        // v201: 결과 idx번(0부터)을 보여 준다. 처음 여는 결과일 때만 정오답 소리 1회(기존 playSound·음소거 설정 재사용).
+        // 이미 본 결과로 돌아가면 소리 없이 보여 준다. 어느 쪽이든 앞 결과의 남은 소리는 먼저 멈춘다(겹침·화면과 어긋남 방지).
+        function showDailyResult(box, idx) {
+            var items = box.querySelectorAll('.daily-answer-item'), n = items.length;
+            if (!(idx >= 0 && idx < n)) return;
+            stopDailyResultSound();
+            var max = parseInt(box.getAttribute('data-max'), 10); if (!(max >= -1)) max = -1;
+            var first = idx > max;
+            items.forEach(function (it, i) { it.hidden = (i !== idx); });
+            box.setAttribute('data-cur', String(idx));
+            if (first) box.setAttribute('data-max', String(idx));
+            var pos = box.querySelector('.daily-answer-pos');
+            if (pos) pos.textContent = '채점 결과 ' + (idx + 1) + ' / ' + n;
+            var fin = box.querySelector('.daily-answer-final');
+            if (fin) fin.hidden = (idx !== n - 1);   // 총점·요약 빈칸·같은 쇼츠는 마지막 결과에서만
+            var nav = box.querySelector('.daily-answer-nav'), next = box.querySelector('.daily-answer-next'), prev = box.querySelector('.daily-answer-prev');
+            if (next) { next.hidden = (idx >= n - 1); next.textContent = (idx + 2) + '번 결과 보기 →'; }
+            if (prev) { prev.hidden = (idx <= 0); prev.textContent = '← ' + idx + '번 결과 다시 보기'; }
+            if (nav) nav.hidden = (idx >= n - 1) && (idx <= 0);
+            scrollDailyResultIntoView(box, items[idx]);   // 즉시 이동 — 결과 머리와 맞음/틀림이 보인 상태에서 아래 소리가 같은 클릭 안에 시작된다
+            if (first) {
+                var right = items[idx].getAttribute('data-ok') === '1';
+                try { _dailyResultSound = playSound(right ? 'correct' : 'incorrect') || null; } catch (e) { _dailyResultSound = null; }
+            }
+        }
+        function moveDailyResult(btn, delta) {
+            var box = btn && btn.closest ? btn.closest('.daily-answer-box') : null;
+            if (!box || box.getAttribute('data-graded') !== '1') return;
+            var cur = parseInt(box.getAttribute('data-cur'), 10); if (!(cur >= 0)) cur = 0;
+            showDailyResult(box, cur + delta);
+        }
+        // 결과 머리(채점 결과 i / n)와 그 결과의 맞음/틀림 줄이 화면에 다 보이지 않으면 결과 상자 맨 위로 '즉시' 옮긴다.
+        // v201 R2: 부드러운 이동(약 0.3초) 중에 짧은 오답음(0.24초)이 끝나 버리지 않도록 결과 전용 스크롤만 즉시 이동. 다른 스크롤은 그대로.
+        function scrollDailyResultIntoView(box, item) {
+            try {
+                var sc = box.closest('.page');
+                var sr = sc ? sc.getBoundingClientRect() : null;
+                var top = sr ? sr.top : 0;
+                var bottom = sr ? sr.top + sc.clientHeight : window.innerHeight;
+                var r = box.getBoundingClientRect();
+                var m = item ? item.querySelector('.daily-answer-mine') : null;
+                var mb = m ? m.getBoundingClientRect().bottom : r.top;
+                if (r.top >= top - 1 && mb <= bottom - 4) return;
+                box.scrollIntoView({ block: 'start', behavior: 'instant' });
+            } catch (e) { try { box.scrollIntoView(true); } catch (e2) {} }
+        }
+        // v201: 오늘의 한 장 결과음 정리 — 다음/이전 넘김·음소거·화면 이탈·탭 숨김·카드 다시 그리기 때 남은 소리를 멈춘다.
+        var _dailyResultSound = null;
+        function stopDailyResultSound() {
+            var h = _dailyResultSound; _dailyResultSound = null;
+            if (h && typeof h.stop === 'function') { try { h.stop(); } catch (e) {} }
+        }
+        document.addEventListener('visibilitychange', function () { if (document.hidden) stopDailyResultSound(); });
+        window.addEventListener('pagehide', function () { stopDailyResultSound(); });
 
         function revealOx(el) {
             const answer = el.getAttribute('data-answer');
@@ -9183,6 +9296,7 @@
 
         // 페이지 전환
         function showPage(pageId) {
+            if (pageId !== 'daily-page') stopDailyResultSound();   // v201: 오늘의 한 장 화면을 떠나면 남은 결과음 정지
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
             if (pageId === 'result-page') PA_EXAM_SUPPORT.result();
