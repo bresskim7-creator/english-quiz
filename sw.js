@@ -1,3 +1,4 @@
+// v202 (2026-10-22): 오늘의 한 장 쇼츠 배치3 7장(2026-10-01~07, 21문항) 추가 — 데이터 릴리스. daily_2026-10.js 신규(7엔트리, quiz 3·finish_video·diagram 3키, 렌더러 1.2), daily_index.js 7행 + version_key, PRECACHE에 daily_2026-10.js 1줄 + img/daily_shorts_b3_10xx_v1.png 7장 등재(새 카드 첫 오프라인 진입용). 렌더러·기록·GAS·exam_home.js(?v=198) 불변, 풀이 기록(r3)은 v203 별도. index 전파 위해 CACHE_NAME v201->v202, APP_CACHE_NAME/BUILD_VERSION 동반.
 // v201 (2026-10-10): 오늘의 한 장 채점 결과를 1문항씩 — '채점하기'로 세 답 고정·읽음 1회 → 결과 1/3(해당 질문·내 답·정답·본문 근거·이유 + 기존 정오답 효과음 1회) → 아이가 '2번 결과 보기'·'3번 결과 보기'로 직접 넘김(처음 공개 때만 소리, 다시 보기는 무음) → 3/3에서 총점·요약 빈칸·같은 쇼츠. playSound가 멈춤 손잡이를 돌려줌(음색·길이·볼륨 불변, 영어·과학 호출부 무변경) → 넘김·음소거·화면 이탈·탭 숨김 때 결과음 정지. index.html만 기능 변경 — 데이터·기록·GAS·exam_home.js(?v=198) 불변. index 전파 위해 CACHE_NAME v200->v201, APP_CACHE_NAME/BUILD_VERSION 동반.
 // v200 (2026-10-09): 오늘의 한 장 쇼츠 배치2 7장(2026-09-24~30, 21문항) 추가 — daily_2026-09.js 7엔트리(quiz 3·finish_video·diagram 3키, 렌더러 1.2), daily_index.js 7행 + version_key, img/daily_shorts_b2_09xx_v1.png 7장 PRECACHE 등재(새 카드 첫 오프라인 진입용). 렌더러·기록·v198 캐시 수정(no-cache 재검증·daily_index 시각 쿼리) 불변, exam_home.js 불변(?v=198 유지). index 전파 위해 CACHE_NAME v199->v200, APP_CACHE_NAME/BUILD_VERSION 동반. GAS 무접촉.
 // v199 (2026-10-09): 쇼츠 배치1 7장(2026-09-17~23) 개념 그림 연결 — daily_2026-09.js에 diagram_url/diagram_alt/diagram_caption 3키 추가(기존 figure 분기, 빈 fallback 헤더 대신 그림), img/daily_shorts_b1_09xx_v1.png 7장 PRECACHE 등재(오프라인 첫 진입용), daily_index version_key 갱신. 본문·문항·답·기록·v198 캐시 수정 불변, exam_home.js 불변(?v=198 유지). index 전파 위해 CACHE_NAME v198->v199, APP_CACHE_NAME/BUILD_VERSION 동반. GAS 무접촉.
@@ -26,7 +27,7 @@
 // v186 (2026-08-03): 영어 단어 간격 복습(E30) — 서버(GAS v18)가 사다리를 계산하고 클라는 캐시.
 //   device_instance_id·answered_at·recall_mode·question_type 전송, doGet?action=vocab_state pull,
 //   만기 우선 선발(due_cap 램프 + new_min 2), 만기 단어는 카드 없이 냉시험.
-const CACHE_NAME = 'quiz-v201';
+const CACHE_NAME = 'quiz-v202';
 // v169 (2026-06-16): 국어 마인드맵 내용형 교체 — kor2 허브 kor_mindmap_kor2_v2.png, kor3 허브 kor_mindmap_kor3_v2.png(가지별 핵심 불릿 + ⚠함정). lesson_kor2/3 mindmap.img 동반 갱신. PRECACHE 2줄(v1→v2) 교체. APP_CACHE_NAME 동반 범프(v168->v169). 캐시 강제 갱신용.
 // v168 (2026-06-16): 사회 마인드맵 내용형 교체 — soc3 허브 soc_mindmap_soc3_v2.png, soc4 허브 soc_mindmap_soc4_v3.png(가지별 핵심 불릿 + ⚠함정). lesson_soc3/4 mindmap.img 동반 갱신. PRECACHE 2줄(v1→v2 / v2→v3) 교체. APP_CACHE_NAME 동반 범프(v167->v168). 캐시 강제 갱신용.
 // v167 (2026-06-12): 기말 총점검 보강 — 사회 soc4 환율 그래프 exam 4문항(S4-E040~E043, v1.0->1.1; img/soc_forex_shift_demand_v1.png Pillow 256색 FS 압축 -62% 배선) + 과학 sci2 형식 정합 4건(S2-E026 보기형 재설계·E032/E006 ㄱㄴㄷ 변환·E001 자구, v1.1->1.2). PRECACHE에 soc_forex_shift_demand_v1.png 등재. APP_CACHE_NAME 동반 범프(v166->v167). 캐시 강제 갱신용.
@@ -76,6 +77,7 @@ const PRECACHE_URLS = [
   './daily_index.js',
   './daily_2026-08.js',
   './daily_2026-09.js',
+  './daily_2026-10.js',
   "./img/daily_atom_structure_v2_m.png",
   "./img/daily_drift_evidence_v1_m.png",
   "./img/daily_element_symbols_v2_m.png",
@@ -100,6 +102,13 @@ const PRECACHE_URLS = [
   "./img/daily_shorts_b2_0928_v1.png",
   "./img/daily_shorts_b2_0929_v1.png",
   "./img/daily_shorts_b2_0930_v1.png",
+  "./img/daily_shorts_b3_1001_v1.png",
+  "./img/daily_shorts_b3_1002_v1.png",
+  "./img/daily_shorts_b3_1003_v1.png",
+  "./img/daily_shorts_b3_1004_v1.png",
+  "./img/daily_shorts_b3_1005_v1.png",
+  "./img/daily_shorts_b3_1006_v1.png",
+  "./img/daily_shorts_b3_1007_v1.png",
 
   './',
   './index.html',
