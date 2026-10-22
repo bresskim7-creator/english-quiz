@@ -1877,6 +1877,7 @@
                     <div class="ops-diag-row"><span>SW 상태</span><strong id="diag-sw-status">-</strong></div>
                     <div class="ops-diag-row"><span>미전송 퀴즈</span><strong id="diag-unsent-quiz">-</strong></div>
                     <div class="ops-diag-row"><span>미전송 단어</span><strong id="diag-unsent-vocab">-</strong></div>
+                    <div class="ops-diag-row"><span>미전송 오늘의 한 장</span><strong id="diag-unsent-daily">-</strong></div>
                     <div class="ops-diag-row"><span>마지막 전송</span><strong id="diag-last-send">-</strong></div>
                     <div class="ops-diag-row" style="display:block;">
                         <span>단어 아웃박스</span>
@@ -2170,8 +2171,8 @@
         let sessionType = PA_STORAGE.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-10-22 v202';
-        const APP_CACHE_NAME = 'quiz-v202';
+        const BUILD_VERSION = '2026-10-22 v203';
+        const APP_CACHE_NAME = 'quiz-v203';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -2539,6 +2540,7 @@
             setText('diag-sw-status', navigator.serviceWorker && navigator.serviceWorker.controller ? '활성' : '미등록');
             setText('diag-unsent-quiz', String(getUnsentQuizLogCount()));
             setText('diag-unsent-vocab', String(JSON.parse(PA_STORAGE.getItem('pending_vocab_log') || '[]').length + countVocabOutboxEvents()));
+            setText('diag-unsent-daily', dailyQuizUnsentLabel());   // v202
             setText('diag-last-send', getLastSendTime());
             renderVocabOutboxInspector();
         }
@@ -3389,8 +3391,11 @@
             if (_hasQuiz) {
                 // 큐 경로(fromQueue)에서만 data-read-date를 달아, 3문항을 고르고 '채점하기'를 누른 시점에 읽음 처리한다(스크롤 sentinel 대신).
                 // v201: 채점하기 → 세 답 고정 → 결과 1 / 3만 공개(정오답 소리 1회) → 아이가 '2번 결과 보기'·'3번 결과 보기'로 직접 넘김 → 마지막 결과에서 총점·요약 빈칸·같은 쇼츠.
+                // v202: 채점 순간 기록용 문맥(원문·내용버전·연 시각)을 준비해 버튼에 토큰으로 단다. 준비 실패는 렌더를 막지 않는다.
+                var _dqTok = prepareDailyQuizRecordContext(d, ctx);
                 html += '<button class="daily-answer-btn" onclick="revealDailyAnswers(this)"'
-                    + ((ctx.fromQueue && ctx.date) ? ' data-read-date="' + dailyEscapeHtml(ctx.date) + '"' : '') + '>✅ 채점하기</button>';
+                    + ((ctx.fromQueue && ctx.date) ? ' data-read-date="' + dailyEscapeHtml(ctx.date) + '"' : '')
+                    + ' data-dq-token="' + dailyEscapeHtml(_dqTok) + '">✅ 채점하기</button>';
                 html += '<div class="daily-answer-hint" hidden></div>';
                 html += '<div class="daily-answer-box" hidden data-cur="-1" data-max="-1">';
                 html += '<div class="daily-answer-pos"></div>';
@@ -3469,6 +3474,274 @@
             item.querySelectorAll('.daily-quiz-opt').forEach(function(o){ o.classList.remove('picked'); });
             el.classList.add('picked');
         }
+        // ===== v202 (2026-10-12): 오늘의 한 장 문항별 풀이 기록 =====
+        // 계획서 02_Working/261012_오늘한장_풀이기록/PLAN_v1.3.md
+        // · 채점하기 = 이 풀이를 기기에 먼저 저장한 뒤에만 정답 공개·답 고정·읽음 처리. 저장은 두 단계다:
+        //   ① 초안(draft:true)으로 쓰고 다시 읽어 확인 ② 확정 쓰기(draft 없음). 초안은 어느 탭도 보내지 않고 판정에도 쓰지 않는다.
+        //   ①에서 실패하면 초안을 지우고 실패로 안내한다(지우지 못해도 초안이라 서버로 가지 않음).
+        //   ②가 오류 없이 끝나면 그 뒤로는 실패라고 안내하지 않는다 — 확정된 기록은 다른 탭이 곧바로 보내 '전송됨'으로 바꿀 수 있고, 그것도 정상이다.
+        // · 기록 1건 = 저장소 키 1개(pa_daily_quiz_rec_v1:<기록ID>). 여러 탭이 동시에 저장·갱신해도 서로의 기록을 덮지 않는다.
+        // · 기록은 저장 후 바꾸지 않는다(전송 상태 칸만 갱신). 재전송은 같은 기록ID·같은 답안·같은 원문 그대로.
+        // · 서버가 그 기록ID로 ok를 줄 때만 '전송됨'. 그전에는 지우지 않는다(충돌·거부는 보관하고 자동 재전송만 멈춤).
+        // · 서버가 capabilities에 daily_quiz를 알릴 때만 POST(구 서버는 미등록 sheet를 일반 '로그'로 흘린다).
+        // · 첫 풀이 판정: 지난 글·이미 읽은 카드·이 기기에 같은 카드 기록 → 재풀이, 그 밖 → 첫 풀이 후보(서버가 카드별 최종 판정).
+        var DQ_REC_PREFIX = 'pa_daily_quiz_rec_v1:', DAILY_QUIZ_RECORD_CAP = 200, DAILY_QUIZ_ELAPSED_MAX = 604800;
+        var _dqCtx = {}, _dqCtxSeq = 0;
+        var _dqSending = false, _dqDirty = false, _dqRetryStep = 0, _dqRetryTimer = null, DQ_RETRY_MS = [60000, 300000, 900000];
+        // FNV-1a 32비트(UTF-8 바이트) — 서버(GAS v23 dqFnv1a_)와 같은 식. h*16777619 를 시프트 합으로 계산한다.
+        function dqFnv1a(str) {
+            var b = new TextEncoder().encode(str), h = 0x811c9dc5;
+            for (var i = 0; i < b.length; i++) { h ^= b[i]; h = (h + (h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24)) >>> 0; }
+            return ('0000000' + h.toString(16)).slice(-8);
+        }
+        // 원문 = 채점 전에 화면에 보인 내용(본문 근거·이유·요약 빈칸·쇼츠·출처는 채점 뒤에 보이거나 풀이와 무관해 제외).
+        // 배열이 아닌 칸은 빈 목록으로 본다(화면도 배열만 그린다) — 카드 데이터 모양 때문에 채점이 막히지 않게.
+        function buildDailyQuizSnapshot(d, cardId) {
+            var S = function (v) { return v == null ? '' : String(v); };
+            var A = function (v) { return Array.isArray(v) ? v : []; };
+            return {
+                v: 1, card_id: cardId, title: S(d.title), subtitle: S(d.subtitle), lead_question: S(d.lead_question), why_today: S(d.why_today),
+                image_url: S(d.image_url), diagram_url: S(d.diagram_url), diagram_alt: S(d.diagram_alt), diagram_caption: S(d.diagram_caption),
+                sections: A(d.sections).map(function (s) { return { heading: S(s && s.heading), body: S(s && s.body) }; }),
+                vocabulary: A(d.vocabulary).map(function (v) { return { ko: S(v && v.ko), en: S(v && v.en), desc: S(v && v.desc) }; }),
+                quiz: A(d.quiz).map(function (q) {
+                    var a = Number(q && q.answer); if (!(Number.isInteger(a) && a >= 1 && a <= 5)) a = 0;   // 화면과 같은 정답 규칙
+                    return { type: S(q && q.type), q: S(q && q.q), options: A(q && q.options).map(function (o) { return S(o); }), answer: a };
+                }),
+                one_line_summary: S(d.one_line_summary)
+            };
+        }
+        function prepareDailyQuizRecordContext(d, ctx) {
+            try {
+                var cardId = String(ctx.date || d.id || d.date || '');
+                var snap = buildDailyQuizSnapshot(d, cardId), s = JSON.stringify(snap);
+                var tok = 'dq' + (++_dqCtxSeq);
+                _dqCtx[tok] = { card_id: cardId, title: String(d.title || ''), path: ctx.fromQueue ? 'queue' : 'archive',
+                    snapshot: s, content_version: 'c1-' + dqFnv1a(s),
+                    data_version: String((typeof DAILY_INDEX_META !== 'undefined' && DAILY_INDEX_META && DAILY_INDEX_META.version_key) || ''),
+                    quiz: snap.quiz, opened_at: new Date().toISOString(), opened_ms: Date.now() };
+                var keys = Object.keys(_dqCtx);
+                if (keys.length > 8) keys.slice(0, keys.length - 8).forEach(function (k) { delete _dqCtx[k]; });
+                return tok;
+            } catch (e) { console.warn('[daily-quiz] 기록 준비 실패:', e); return ''; }
+        }
+        function dqRecKey(recordId) { return DQ_REC_PREFIX + recordId; }
+        // 기기의 풀이 기록 전부. 키 목록을 먼저 만든 뒤 읽는다. 읽을 수 없는(깨진) 기록 키는 지우지 않고 건너뛰며 수만 센다.
+        function listDailyQuizRecords() {
+            var keys = [], list = [], corrupt = 0;
+            try {
+                for (var i = 0; i < PA_STORAGE.length; i++) { var k = PA_STORAGE.key(i); if (k && k.indexOf(DQ_REC_PREFIX) === 0) keys.push(k); }
+            } catch (e) { return { ok: false, list: [], corrupt: 0 }; }
+            for (var j = 0; j < keys.length; j++) {
+                var raw = null;
+                try { raw = PA_STORAGE.getItem(keys[j]); } catch (e) { corrupt++; continue; }
+                if (raw == null) continue;                       // 그 사이 다른 탭이 정리한 기록
+                try { var x = JSON.parse(raw); if (x && typeof x === 'object' && dqRecKey(x.record_id) === keys[j]) { list.push(x); continue; } } catch (e) {}
+                corrupt++;
+            }
+            list.sort(function (a, b) { var p = String(a.solved_at || ''), q = String(b.solved_at || ''); return p < q ? -1 : (p > q ? 1 : 0); });
+            return { ok: true, list: list, corrupt: corrupt };
+        }
+        function readDailyQuizRecord(recordId) {
+            try { var raw = PA_STORAGE.getItem(dqRecKey(recordId)); return raw == null ? null : JSON.parse(raw); } catch (e) { return null; }
+        }
+        // 새 기록 1건 저장. 결과 {ok:true} | {ok:false, reason}
+        //   ① 초안 쓰기(draft:true) → 다시 읽어 쓴 값과 같은지 확인. 초안은 어느 탭도 보내지 않고(dailyQuizSendable) 판정에도 쓰지 않으므로
+        //      확인하는 동안 다른 탭이 이 기록을 보내거나 '전송됨'으로 바꿀 수 없다. 실패(쓰기 오류·다시 읽기 실패·없음·다른 값)
+        //      → 초안을 지우고 실패. 지우지 못해도 초안이라 서버로 가지 않는다(하루 지나면 정리).
+        //   ② 확정 쓰기(draft 없음). 오류 없이 끝나면 성공 — 이 뒤로는 실패라고 안내하지 않는다.
+        //      예외가 나면 저장소를 다시 본다: 초안이거나 없음이 확인되면 지우고 실패, 그 밖(확정 값이 있음·확인 불가)은 성공.
+        //      확정된 기록은 다른 탭이 곧바로 보내 '전송됨'으로 바꿀 수 있고 그것도 정상이므로, 확정 뒤에는 다시 읽어 비교하지 않는다.
+        function saveDailyQuizRecord(rec) {
+            var key = dqRecKey(rec.record_id), json = JSON.stringify(rec);
+            var draft = JSON.stringify(Object.assign({}, rec, { draft: true }));
+            var dropKey = function () { try { PA_STORAGE.removeItem(key); } catch (e) {} };
+            if (!storeRecordValue(key, draft)) { dropKey(); return { ok: false, reason: 'write_failed' }; }
+            var back; try { back = PA_STORAGE.getItem(key); } catch (e) { back = undefined; }
+            if (back !== draft) { dropKey(); return { ok: false, reason: back === null ? 'not_stored' : 'unverified' }; }
+            if (!storeRecordValue(key, json)) {
+                // 확정 쓰기가 예외를 냈다. 표준 동작이면 아무것도 쓰이지 않았지만, 값이 이미 들어가 있으면(다른 탭이 보냈을 수도 있음)
+                // 확정된 것으로 보고 성공 처리한다. 초안이거나 없으면 지우고 실패 — 실패 안내는 '확정 값이 없음'을 확인했을 때만.
+                // (다시 읽기마저 오류면 확정 값이 없다고 확인할 수 없으므로 실패로 안내하지 않는다.)
+                var raw2 = null, readOk = true, cur = null;
+                try { raw2 = PA_STORAGE.getItem(key); } catch (e) { readOk = false; }
+                if (readOk && raw2 != null) { try { cur = JSON.parse(raw2); } catch (e) { cur = null; } }
+                if (readOk && !(cur && cur.record_id === rec.record_id && cur.draft !== true)) { dropKey(); return { ok: false, reason: 'commit_failed' }; }
+            }
+            try { pruneDailyQuizRecords(); } catch (e) {}
+            return { ok: true };
+        }
+        // 보낼 수 있는 기록 — 확정됐고(초안 아님) 아직 서버 확인 전이며 보류(충돌·거부)가 아닌 것.
+        function dailyQuizSendable(x) {
+            return !!x && x.v === 1 && x.draft !== true && x.sent !== true && x.conflict !== true && x.rejected !== true && typeof x.snapshot === 'string';
+        }
+        // 정리: 확정되지 못한 초안(저장 실패·중단으로 남은 것)은 하루가 지나면 지운다 — 전송·판정에는 원래 쓰이지 않는다.
+        // 상한 200건(초안 제외) — '전송됨' 기록만 풀이 시각이 이른 것부터 지운다. 미전송·보류(충돌·거부)는 상한을 넘겨도 지우지 않는다.
+        function pruneDailyQuizRecords() {
+            var r = listDailyQuizRecords();
+            if (!r.ok) return 0;
+            var n = 0, now = Date.now(), kept = [];
+            for (var j = 0; j < r.list.length; j++) {
+                var x = r.list[j];
+                if (x.draft === true) {
+                    var t = Date.parse(String(x.solved_at || ''));
+                    if (isFinite(t) && now - t > 86400000) { try { PA_STORAGE.removeItem(dqRecKey(x.record_id)); n++; } catch (e) {} }
+                    continue;
+                }
+                kept.push(x);
+            }
+            if (kept.length <= DAILY_QUIZ_RECORD_CAP) return n;
+            var drop = kept.length - DAILY_QUIZ_RECORD_CAP, m = 0;
+            for (var i = 0; i < kept.length && m < drop; i++) {
+                if (kept[i].sent === true) { try { PA_STORAGE.removeItem(dqRecKey(kept[i].record_id)); m++; } catch (e) {} }
+            }
+            return n + m;
+        }
+        // 기록 1건의 전송 상태만 갱신한다 — 그 기록의 키만 쓰므로 다른 기록(다른 탭이 방금 저장한 것 포함)을 덮지 않는다.
+        function patchDailyQuizRecord(recordId, fn) {
+            var key = dqRecKey(recordId), raw = null, cur = null;
+            try { raw = PA_STORAGE.getItem(key); } catch (e) { return false; }
+            if (raw == null) return false;
+            try { cur = JSON.parse(raw); } catch (e) { return false; }
+            if (!cur || cur.record_id !== recordId || cur.draft === true) return false;   // 초안은 전송 상태를 바꾸지 않는다
+            var next = fn(Object.assign({}, cur)); if (!next) return false;
+            var json = JSON.stringify(next);
+            if (!storeRecordValue(key, json)) return false;
+            try { return PA_STORAGE.getItem(key) === json; } catch (e) { return false; }
+        }
+        function newDailyQuizId() {
+            try { if (window.crypto && crypto.randomUUID) return crypto.randomUUID(); } catch (e) {}
+            return Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 12) + '-' + Math.random().toString(36).slice(2, 12);
+        }
+        function dailyQuizDeviceId() {
+            try { var d = JSON.parse(PA_STORAGE.getItem('pa_progress_device_v1') || 'null'); return (d && typeof d.device_id === 'string') ? d.device_id.slice(0, 64) : ''; }
+            catch (e) { return ''; }
+        }
+        // 기기 판정(제출 순간). 서버가 다른 기기 기록·읽음 시각과 맞춰 카드별 최종 판정을 한다.
+        function dailyQuizClaim(cardId, path) {
+            if (path !== 'queue') return { claim: 'resolve', reason: 'archive' };
+            if (loadDailyReadIds().indexOf(cardId) !== -1) return { claim: 'resolve', reason: 'read_before' };
+            var r = listDailyQuizRecords();
+            if (r.ok && r.list.some(function (x) { return x.card_id === cardId && x.draft !== true; })) return { claim: 'resolve', reason: 'local_record' };   // 초안(실패한 시도)은 세지 않는다
+            return { claim: 'first', reason: 'queue_unread' };
+        }
+        // 채점하기 1회 = 기록 1건. 저장(초안 확인 → 확정)에 성공해야 ok.
+        function saveDailyQuizAttempt(btn, card, picks) {
+            try {
+                var c = _dqCtx[btn.getAttribute('data-dq-token') || ''];
+                if (!c) return { ok: false, reason: 'no_context' };
+                var domItems = card.querySelectorAll('.daily-answer-box .daily-answer-item');
+                var items = [], correct = 0;
+                for (var i = 0; i < c.quiz.length; i++) {
+                    var pick = +(picks[String(i)] || 0), ans = c.quiz[i].answer;
+                    if (!domItems[i] || +domItems[i].getAttribute('data-answer') !== ans) return { ok: false, reason: 'answer_mismatch' };
+                    var ok = ans > 0 && pick === ans; if (ok) correct++;
+                    items.push({ n: i + 1, type: c.quiz[i].type, pick: pick, answer: ans, ok: ok });
+                }
+                var now = Date.now(), claim = dailyQuizClaim(c.card_id, c.path);
+                var rec = { v: 1, record_id: 'dq_' + newDailyQuizId(), card_id: c.card_id, title: c.title, path: c.path,
+                    claim: claim.claim, claim_reason: claim.reason, solved_at: new Date(now).toISOString(), opened_at: c.opened_at,
+                    elapsed_sec: Math.min(DAILY_QUIZ_ELAPSED_MAX, Math.max(0, Math.round((now - c.opened_ms) / 1000))),
+                    total: items.length, correct: correct, items: items,
+                    content_version: c.content_version, data_version: c.data_version, snapshot: c.snapshot,
+                    device_id: dailyQuizDeviceId(), app_build: String(BUILD_VERSION),
+                    sent: false, sent_at: null, judged: '', conflict: false, rejected: false };
+                var w = saveDailyQuizRecord(rec);
+                return w.ok ? { ok: true, rec: rec } : w;
+            } catch (e) { console.warn('[daily-quiz] 저장 실패:', e); return { ok: false, reason: 'exception' }; }
+        }
+        function dailyQuizPayload(x) {
+            return { sheet: 'daily_quiz', v: 1, status: 'final', record_id: x.record_id, card_id: x.card_id, title: x.title, path: x.path,
+                claim: x.claim, claim_reason: x.claim_reason, solved_at: x.solved_at, opened_at: x.opened_at, elapsed_sec: x.elapsed_sec,
+                total: x.total, correct: x.correct, items: x.items, content_version: x.content_version, data_version: x.data_version,
+                snapshot: x.snapshot, device_id: x.device_id, app_build: x.app_build };
+        }
+        // 보낼 때마다 '현재 서버 주소'에 지원 여부를 묻는다. 응답 없음 = null(나중에 다시), 응답은 있는데 지원 없음 = POST 0.
+        function dailyQuizCapability(url) {
+            return new Promise(function (resolve) {
+                var done = false, cb = '__pa_dqcap_' + Math.random().toString(36).slice(2), s = document.createElement('script');
+                var t = setTimeout(function () { finish(null); }, 8000);
+                function finish(v) {
+                    if (done) return; done = true; clearTimeout(t);
+                    window[cb] = function () {};                       // 늦게 도착한 응답이 오류를 내지 않게
+                    setTimeout(function () { try { delete window[cb]; } catch (e) {} }, 60000);
+                    if (s.parentNode) s.parentNode.removeChild(s);
+                    resolve(v);
+                }
+                window[cb] = function (v) { finish(v || null); };
+                s.onerror = function () { finish(null); };
+                s.src = url + (url.indexOf('?') >= 0 ? '&' : '?') + 'action=capabilities&callback=' + cb + '&_=' + Date.now();
+                document.head.appendChild(s);
+            });
+        }
+        function scheduleDailyQuizRetry() {
+            if (_dqRetryTimer) return;
+            var ms = DQ_RETRY_MS[Math.min(_dqRetryStep++, DQ_RETRY_MS.length - 1)];
+            _dqRetryTimer = setTimeout(function () { _dqRetryTimer = null; sendDailyQuizRecords().catch(function () {}); }, ms);
+        }
+        async function sendDailyQuizRecords() {
+            if (_dqSending) { _dqDirty = true; return { sent: 0, reason: 'in-flight' }; }   // 보내는 중 새로 저장된 기록은 이번 회차가 끝난 뒤 바로 한 번 더
+            if (PA_RUNTIME.preview) return { sent: 0, reason: 'preview' };
+            var r = listDailyQuizRecords();
+            if (!r.ok) return { sent: 0, reason: 'storage' };
+            var queue = r.list.filter(dailyQuizSendable);   // 초안(확인 중·실패한 시도)은 담지 않는다
+            if (!queue.length) { _dqRetryStep = 0; return { sent: 0, reason: 'empty' }; }
+            var url = PA_RUNTIME.endpoint();
+            if (!url) return { sent: 0, reason: 'no-endpoint' };
+            _dqSending = true;
+            var sent = 0, failed = 0;
+            try {
+                var cap = await dailyQuizCapability(url);
+                if (!cap) { failed++; return { sent: 0, reason: 'capability-unreachable' }; }
+                if (!(cap.status === 'ok' && Array.isArray(cap.capabilities) && cap.capabilities.indexOf('daily_quiz') >= 0)) return { sent: 0, reason: 'no-capability' };
+                for (var i = 0; i < queue.length; i++) {
+                    var rec = queue[i];
+                    if (PA_RUNTIME.endpoint() !== url) { failed++; break; }   // 보내는 중 주소가 바뀌면 멈춘다
+                    try {
+                        var ctl = new AbortController(), to = setTimeout(function () { ctl.abort(); }, 30000), res, text = null;
+                        try {   // 30초 제한은 응답 본문을 다 읽을 때까지 건다(본문에서 멈춰도 전송 회차가 묶이지 않게)
+                            res = await PA_RUNTIME.fetch(url, { method: 'POST', body: JSON.stringify(dailyQuizPayload(rec)), signal: ctl.signal });
+                            if (res.ok) text = await res.text();
+                        } finally { clearTimeout(to); }
+                        if (!res.ok) { failed++; continue; }
+                        var body = null; try { body = JSON.parse(text); } catch (e) {}
+                        if (!body || body.record_id !== rec.record_id) { failed++; continue; }   // 전용 ACK — 기록ID가 같을 때만
+                        if (body.status === 'ok' && body.conflict === true) {
+                            patchDailyQuizRecord(rec.record_id, function (x) { x.conflict = true; x.held_reason = String(body.reason_code || 'payload_conflict'); return x; });
+                            continue;
+                        }
+                        if (body.status === 'error' && body.reason_code === 'invalid_envelope') {
+                            patchDailyQuizRecord(rec.record_id, function (x) { x.rejected = true; x.held_reason = 'invalid_envelope:' + String(body.detail || ''); return x; });
+                            continue;
+                        }
+                        if (body.status !== 'ok') { failed++; continue; }
+                        var at = new Date().toISOString(), judged = String(body.judged || '');
+                        // 서버가 받은 뒤에만 '전송됨'. 원문은 서버에 있으므로 기기 사본은 비운다.
+                        var marked = patchDailyQuizRecord(rec.record_id, function (x) { if (x.sent === true) return null; x.sent = true; x.sent_at = at; x.judged = judged; x.snapshot = null; x.compacted = true; return x; });
+                        if (!marked) { var cur = readDailyQuizRecord(rec.record_id); marked = !!(cur && cur.sent === true); }   // 다른 탭이 먼저 표시했으면 성공
+                        if (marked) sent++; else failed++;   // 표시 저장에 실패하면 다음에 다시 보내 dedup으로 확인한다
+                    } catch (e) { failed++; }
+                }
+                return { sent: sent, failed: failed };
+            } finally {
+                _dqSending = false;
+                if (failed) scheduleDailyQuizRetry(); else if (sent) _dqRetryStep = 0;
+                if (_dqDirty) { _dqDirty = false; setTimeout(function () { sendDailyQuizRecords().catch(function () {}); }, 0); }
+            }
+        }
+        function dailyQuizUnsentLabel() {
+            var r = listDailyQuizRecords();
+            if (!r.ok) return '확인 불가';
+            var pending = 0, held = 0, drafts = 0;
+            r.list.forEach(function (x) {
+                if (x.draft === true) { drafts++; return; }   // 확정되지 못한 초안 — 보내지 않음(하루 지나면 정리)
+                if (x.sent === true) return;
+                if (x.conflict === true || x.rejected === true) held++; else pending++;
+            });
+            return String(pending) + (held ? ' · 보류 ' + held : '') + (drafts ? ' · 저장 미확정 ' + drafts : '') + (r.corrupt ? ' · 읽을 수 없는 기록 ' + r.corrupt : '');
+        }
+        // ===== v202 끝 =====
+
         function revealDailyAnswers(btn) {
             var view = btn.closest('#daily-today-view') || document;
             var card = btn.closest('.daily-card') || view;
@@ -3493,6 +3766,18 @@
                 try { missing[0].scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) { try { missing[0].scrollIntoView(); } catch (e2) {} }
                 return;
             }
+            // v202: 결과를 보여 주기 전에 이 풀이를 기기에 먼저 저장한다(첫 풀이 = 저장에 처음 성공한 제출).
+            // 저장이 안 되면 정답 공개·답 고정·읽음 처리·전송을 하지 않고, 고른 답과 '채점하기' 버튼을 그대로 둔다(다시 누르면 다시 저장).
+            var _dqSaved = saveDailyQuizAttempt(btn, card, picks);
+            if (!_dqSaved.ok) {
+                console.warn('[daily-quiz] 저장 실패 — 채점 보류:', _dqSaved.reason);
+                if (hint) {
+                    hint.textContent = '풀이를 저장하지 못해서 아직 채점하지 않았어요. 고른 답은 그대로예요. 잠시 뒤 ‘채점하기’를 다시 눌러 주세요. 계속 안 되면 어른에게 알려 주세요.';
+                    hint.hidden = false;
+                }
+                try { (hint || btn).scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {}
+                return;
+            }
             if (hint) hint.hidden = true;
             box.querySelectorAll('.daily-answer-item').forEach(function(it){
                 n++; var qi = it.getAttribute('data-qi'), a = +it.getAttribute('data-answer');
@@ -3514,6 +3799,8 @@
             // (저장 실패 알림은 markDailyAsRead 안에서 그대로 뜬다. OX 카드의 스크롤 읽음 알림도 그대로.)
             var rd = btn.getAttribute('data-read-date');
             if (rd) markDailyAsRead(rd);
+            // v202: 저장한 풀이를 보낸다. 실패해도 기기에 남아 있다가 같은 기록 그대로 다시 보낸다.
+            try { sendDailyQuizRecords().catch(function () {}); } catch (e) {}
         }
 
         // v201: 결과 idx번(0부터)을 보여 준다. 처음 여는 결과일 때만 정오답 소리 1회(기존 playSound·음소거 설정 재사용).
@@ -9190,7 +9477,8 @@
                 else if(!hasRecordWork())recordRetryStep=0;
             }
         }
-        function retransmitUnsentLogs(){sendToGoogleSheets();flushVocabQueue();flushVocabOutbox();}
+        // v202: 오늘의 한 장 풀이 기록도 함께 보낸다(기록 동기화 시점 · 운영 패널 '로그 재전송' 버튼)
+        function retransmitUnsentLogs(){sendToGoogleSheets();flushVocabQueue();flushVocabOutbox();try{sendDailyQuizRecords().catch(function(){});}catch(_){}}
         // RECORD_SYNC_END
 
 
