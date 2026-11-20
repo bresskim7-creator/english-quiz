@@ -1838,16 +1838,16 @@
 
         <!-- 1단계: 과목 선택 화면 -->
         <div id="home-page" class="page active">
-            <div class="home-title">2학기 중간고사 준비</div>
+            <div class="home-title">2학기 기말고사 준비</div>
             <p class="science-home-note">한 번에 한 블록씩 · 하던 곳에서 이어 할 수 있어요</p>
             <div class="subject-grid" id="exam-home-grid">
                 <button class="subject-card daily" onclick="PA_EXAM_HOME.openReading()"><span class="subject-card-icon">📰</span><span class="subject-card-name">오늘의 한 장</span><span class="subject-card-sub" id="exam-reading-status">시험 범위 읽기</span><span id="home-daily-unread-badge" hidden></span></button>
                 <button class="subject-card daily" onclick="PA_EXAM_HOME.openLiteracy()"><span class="subject-card-icon">📖</span><span class="subject-card-name">문해력 한 장</span><span class="subject-card-sub" id="exam-literacy-status">짝 글로 요약 연습</span></button>
-                <button class="subject-card english" onclick="PA_EXAM_SUPPORT.start('english')"><span class="subject-card-icon">📘</span><span class="subject-card-name">영어 5문제</span><span class="subject-card-sub" id="english-support-status">문장과 뜻을 함께</span></button>
-                <button class="subject-card science" onclick="PA_EXAM_SUPPORT.start('science')"><span class="subject-card-icon">🔬</span><span class="subject-card-name">과학 5문제</span><span class="subject-card-sub" id="science-support-status">개념을 알고 적용하기</span></button>
+                <button class="subject-card english" onclick="PA_EXAM_SUPPORT.start('english')"><span class="subject-card-icon">📘</span><span class="subject-card-name">영어 5문제 · 중간 범위</span><span class="subject-card-sub" id="english-support-status">문장과 뜻을 함께</span></button>
+                <button class="subject-card science" onclick="PA_EXAM_SUPPORT.start('science')"><span class="subject-card-icon">🔬</span><span class="subject-card-name">기말 과학 5문제</span><span class="subject-card-sub" id="science-support-status">개념을 알고 적용하기</span></button>
             </div>
             <button id="english-replay" hidden onclick="PA_EXAM_SUPPORT.replay('english')" style="margin:8px 0;padding:12px;border:1px solid #ccd6e2;border-radius:8px;background:#fff;color:#234c80;">같은 문제 다시 풀기 · 영어</button>
-            <button id="science-replay" hidden onclick="PA_EXAM_SUPPORT.replay('science')" style="margin:8px 0;padding:12px;border:1px solid #ccd6e2;border-radius:8px;background:#fff;color:#234c80;">같은 문제 다시 풀기 · 과학</button>
+            <button id="science-replay" hidden onclick="PA_EXAM_SUPPORT.replay('science')" style="margin:8px 0;padding:12px;border:1px solid #ccd6e2;border-radius:8px;background:#fff;color:#234c80;">같은 문제 다시 풀기 · 기말 과학</button>
             <p id="exam-home-status" class="science-home-note" role="status"></p>
             <p id="exam-progress-status" class="science-home-note" role="status"></p>
             <details class="science-home-note"><summary>더 보고 싶을 때</summary>
@@ -2171,8 +2171,8 @@
         let sessionType = PA_STORAGE.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-11-13 v206';
-        const APP_CACHE_NAME = 'quiz-v206';
+        const BUILD_VERSION = '2026-11-17 v207';
+        const APP_CACHE_NAME = 'quiz-v207';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -2197,11 +2197,11 @@
         function safeSetItem(key, value) {
             try {
                 PA_STORAGE.setItem(key, value);
-                if (/^(pa_(english|science)_|quiz_logs_(eng_mid_launch|sci_mid_mix)$)/.test(key)) document.getElementById('exam-save-error')?.remove();
+                if (/^(pa_(english|science)_|quiz_logs_(eng_mid_launch|sci_mid_mix|sci_fin_mix)$)/.test(key)) document.getElementById('exam-save-error')?.remove();
                 return true;
             } catch (err) {
                 console.warn('[PA_STORAGE-set-fail]', key, err && err.message);
-                if (/^(pa_(english|science)_|quiz_logs_(eng_mid_launch|sci_mid_mix)$)/.test(key)) {
+                if (/^(pa_(english|science)_|quiz_logs_(eng_mid_launch|sci_mid_mix|sci_fin_mix)$)/.test(key)) {
                     let notice=document.getElementById('exam-save-error');
                     if(!notice){notice=document.createElement('p');notice.id='exam-save-error';notice.setAttribute('role','alert');notice.style.cssText='background:#fff3cd;padding:16px;border:2px solid #ac6600';(document.querySelector('.page.active')||document.body).prepend(notice);}
                     notice.textContent='답을 저장하지 못했어요. 이 문항에서 멈춰 있어요. 저장 공간을 확보한 뒤 다시 눌러 주세요.';
@@ -2643,7 +2643,7 @@
             // v144: 캐시버스팅 — lesson 데이터 URL에 ?v=<APP_CACHE_NAME> 부착. 버전 범프 시 자동 변경 → 강제 새 요청.
             //        (sw.js가 쿼리 제거한 bare 키로 정규화 저장/폴백하므로 오프라인 캐시 유지)
             // [④4-3] lesson별 캐시버스팅 버전(단건 데이터 갱신을 app 버전 범프 없이 전파). 키=파일명(.js 제외). 없으면 APP_CACHE_NAME.
-            const LESSON_VERSIONS = { lesson_sci_mid_plate: 'mid-3', lesson_sci_mid_element: 'mid-3', lesson_sci_mid_body: 'mid-3', lesson_kor2: 'k2-1.7', lesson_kor3: 'k3-1.5', lesson_sci2: 'sci2-1.3', lesson_sci3: 'sci3-1.2', lesson_sci4: 'sci4-1.1', lesson_soc3: 'soc3-1.1', lesson_soc4: 'soc4-1.1', lesson5: 'l5-1.0', lesson6: 'l6-1.0', lesson7: 'l7-1.0', lesson8: 'l8-1.0', lesson_ess: 'ess-1.0' };
+            const LESSON_VERSIONS = { lesson_sci_fin_b1: 'fin-5', lesson_sci_mid_plate: 'mid-3', lesson_sci_mid_element: 'mid-3', lesson_sci_mid_body: 'mid-3', lesson_kor2: 'k2-1.7', lesson_kor3: 'k3-1.5', lesson_sci2: 'sci2-1.3', lesson_sci3: 'sci3-1.2', lesson_sci4: 'sci4-1.1', lesson_soc3: 'soc3-1.1', lesson_soc4: 'soc4-1.1', lesson5: 'l5-1.0', lesson6: 'l6-1.0', lesson7: 'l7-1.0', lesson8: 'l8-1.0', lesson_ess: 'ess-1.0' };
             const ver = (u) => {
                 const m = u.match(/([A-Za-z0-9_]+)\.js(?:\?|$)/);
                 const vv = (m && LESSON_VERSIONS[m[1]]) ? LESSON_VERSIONS[m[1]] : APP_CACHE_NAME;
@@ -7536,7 +7536,7 @@
         }
         function fetchVocabJsonpUnlocked(url) {
             // 캐시버스팅은 fetchJsonCompat와 동일 규칙(LESSON_VERSIONS→APP_CACHE_NAME). fetchJsonCompat 불변 유지 위해 국소 복제.
-            const LESSON_VERSIONS = { lesson_sci_mid_plate: 'mid-3', lesson_sci_mid_element: 'mid-3', lesson_sci_mid_body: 'mid-3', lesson5: 'l5-1.0', lesson6: 'l6-1.0', lesson7: 'l7-1.0', lesson8: 'l8-1.0', lesson_ess: 'ess-1.0' };
+            const LESSON_VERSIONS = { lesson_sci_fin_b1: 'fin-5', lesson_sci_mid_plate: 'mid-3', lesson_sci_mid_element: 'mid-3', lesson_sci_mid_body: 'mid-3', lesson5: 'l5-1.0', lesson6: 'l6-1.0', lesson7: 'l7-1.0', lesson8: 'l8-1.0', lesson_ess: 'ess-1.0' };
             const jsUrlRaw = url.replace(/\.json$/, '.js');
             const m = jsUrlRaw.match(/([A-Za-z0-9_]+)\.js(?:\?|$)/);
             const vv = (m && LESSON_VERSIONS[m[1]]) ? LESSON_VERSIONS[m[1]] : APP_CACHE_NAME;
@@ -9260,8 +9260,8 @@
         }
 
         // RECORD_SYNC_BEGIN -- durable quiz results; vocabulary protocol remains separate.
-        const SUPPORT_STORAGE={english:'pa_english_2026_midterm_v1',science:'pa_science_2026_midterm_v2'};
-        const SUPPORT_LESSONS={english:'eng_mid_launch',science:'sci_mid_mix'};
+        const SUPPORT_STORAGE={english:'pa_english_2026_midterm_v1',science:'pa_science_2026_final_v1'};
+        const SUPPORT_LESSONS={english:'eng_mid_launch',science:'sci_fin_mix'};
         const supportRecordFailures=new Map();
         // Candidate values only: deployment requires isolated GAS latency measurement (M1).
         const QUIZ_SEND_TIMEOUT_MS=60000, RECORD_SYNC_GAP_MS=10000;
@@ -9273,9 +9273,16 @@
             try{PA_STORAGE.setItem(key,value);return true;}
             catch(_){try{pruneOldestQuizLogsForQuota();PA_STORAGE.setItem(key,value);return true;}catch(_){return false;}}
         }
-        function supportLogKey(subject){if(!SUPPORT_LESSONS[subject])throw Error('invalid-subject');return 'quiz_logs_'+SUPPORT_LESSONS[subject];}
-        function supportLogs(subject){const logs=JSON.parse(PA_STORAGE.getItem(supportLogKey(subject))||'[]');if(!Array.isArray(logs))throw Error('invalid-logs');return logs;}
-        function getSupportLog(subject,plan){return plan&&typeof plan.id==='string'?supportLogs(subject).find(x=>x&&x.support_session_id===plan.id&&!x.partial):null;}
+        // r2(2026-11 기말): 결과 로그는 '그 계획이 만들어진 시험'의 로그에 쓴다. 기말 계획(final 표식·sci_fin 개념)이 아니면 중간 로그(sci_mid_mix).
+        // v206에서 끝내고 전송 확인 전에 v207을 열어도 중간 풀이가 기말 로그에 다시 생기지 않는다(Codex 11/17 지적 1).
+        function supportLessonFor(subject,plan){
+            if(subject!=='science'||!plan)return SUPPORT_LESSONS[subject];
+            const fin=!!plan.final||(Array.isArray(plan.tasks)&&plan.tasks.some(t=>/^sci_fin-/.test(t?.support?.concept||'')));
+            return fin?'sci_fin_mix':'sci_mid_mix';
+        }
+        function supportLogKey(subject,plan){if(!SUPPORT_LESSONS[subject])throw Error('invalid-subject');return 'quiz_logs_'+supportLessonFor(subject,plan);}
+        function supportLogs(subject,plan){const logs=JSON.parse(PA_STORAGE.getItem(supportLogKey(subject,plan))||'[]');if(!Array.isArray(logs))throw Error('invalid-logs');return logs;}
+        function getSupportLog(subject,plan){return plan&&typeof plan.id==='string'?supportLogs(subject,plan).find(x=>x&&x.support_session_id===plan.id&&!x.partial):null;}
         function hasSupportLog(subject,plan){return !!getSupportLog(subject,plan);}
         function validStudyDate(s){if(typeof s!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(s))return false;const d=new Date(s+'T00:00:00Z');return Number.isFinite(d.getTime())&&d.toISOString().slice(0,10)===s;}
         function supportCompletionDate(plan){
@@ -9320,7 +9327,7 @@
             answers.forEach(a=>{const type=a.type||'';types[type]=types[type]||{total:0,correct:0};types[type].total++;if(a.correct)types[type].correct++;});
             const arranged=answers.filter(a=>a.type==='arrange');
             const meta=k=>[...new Set(answers.map(a=>a[k]).filter(Boolean))].join(', ');
-            return {lesson:SUPPORT_LESSONS[subject],subject,date,session_type:subject+'_support',support_session_id:plan.id,event_id:(plan.completion_event_id||PA_CURRICULUM+':'+subject+':'+plan.id)+':complete',
+            return {lesson:supportLessonFor(subject,plan),subject,date,session_type:subject+'_support',support_session_id:plan.id,event_id:(plan.completion_event_id||PA_CURRICULUM+':'+subject+':'+plan.id)+':complete',
                 total:answers.length,correct,percentage:Math.round(100*correct/answers.length),duration_sec:answers.reduce((n,a)=>n+a.time_sec,0),
                 weak:answers.filter(a=>!a.correct).map(a=>a.weak_label||a.keyword||a.id).join(', '),
                 score_group:meta('score_group'),recovery_band:meta('recovery_band'),
@@ -9333,10 +9340,10 @@
         }
         function persistSupportLog(subject,plan){
             try{
-                const logs=supportLogs(subject);let log=getSupportLog(subject,plan),created=false;
+                const logs=supportLogs(subject,plan);let log=getSupportLog(subject,plan),created=false;
                 if(!log){
                     log=buildSupportLog(subject,plan,null,newQuizTimestamp());
-                    if(!storeRecordValue(supportLogKey(subject),JSON.stringify([...logs,log])))throw Error('storage');
+                    if(!storeRecordValue(supportLogKey(subject,plan),JSON.stringify([...logs,log])))throw Error('storage');
                     created=true;
                 }
                 supportRecordFailures.delete(subject);
@@ -10486,7 +10493,8 @@
 const PA_CURRICULUM='mid2-2026-2';
 const PA_PROGRESS=(()=>{
   const REMOTE='pa_progress_remote_v1',OUTBOX='pa_progress_outbox_v1',DEVICE='pa_progress_device_v1',RECEIPTS='pa_progress_receipts_v1';
-  const KEYS={english:'pa_english_2026_midterm_v1',science:'pa_science_2026_midterm_v2'};
+  const KEYS={english:'pa_english_2026_midterm_v1',science:'pa_science_2026_final_v1'}; // 2026-11 기말: 과학 기록 키 분리(중간 키는 보존)
+  const SCIENCE_MID_KEY='pa_science_2026_midterm_v2'; // v206까지의 과학 기록 키 — 복구 때 미회수 완료만 읽는다(쓰지 않음)
   const copy=x=>JSON.parse(JSON.stringify(x));
   const obj=x=>!!x&&typeof x==='object'&&!Array.isArray(x);
   const date=s=>typeof s==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(s)&&Number.isFinite(Date.parse(s+'T00:00:00Z'))&&new Date(s+'T00:00:00Z').toISOString().slice(0,10)===s;
@@ -10494,6 +10502,9 @@ const PA_PROGRESS=(()=>{
   const union=(a=[],b=[])=>[...new Set([...a,...b])].sort((x,y)=>typeof x==='number'?x-y:x<y?-1:x>y?1:0);
   const day=(d=new Date())=>new Date(d.getTime()+9*3600000).toISOString().slice(0,10); // Asia/Seoul
   let pulling=null,pushing=null,retryTimer=null,lastSync=0,issue='',seq=0;
+  // r8b(2026-11-19, Codex r8 중간 판정 HOLD): 조회 응답을 받았지만 기기에 저장하지 못하면 그 응답을 메모리에 들고 있는다(held — 가장 최근 응답 하나.
+  // 서버 응답은 앞선 응답의 내용을 모두 담는다). 과학 시작(applyStart)은 먼저 다시 저장해 보고, 못 하면 배정하지 않는다. 다음 조회 응답을 저장하면 놓는다.
+  let held=null;
   function read(k,fallback){const s=PA_STORAGE.getItem(k);return s===null?copy(fallback):JSON.parse(s);}
   function store(k,v){try{PA_STORAGE.setItem(k,JSON.stringify(v));return true;}catch(_){issue='storage';return false;}}
   function empty(){return {v:1,curriculum:PA_CURRICULUM,literacy_read:[],completion_days:{english:{},science:{}},english_legacy_days:[],concepts:{english:{},science:{}}};}
@@ -10511,12 +10522,19 @@ const PA_PROGRESS=(()=>{
     const c={v:1};for(const k of ['last_day','last_ok','due','error_days','last_status','introduced'])c[k]=v[k];
     return {...c,last_questions:union([],v.last_questions),independent_days:union([],v.independent_days).slice(-8),evidence_at:evidence,event_id:id};
   }
-  function mergeConcept(a,b){
+  // r8(2026-11-19, Codex r7 HOLD 1·2 · JH '서버까지 고침'): 기말 과학 개념(sci_fin-)은 그 밖 칸은 지금처럼 더 새 기록, last_questions(재확인 예약·
+  // 해결 표시·낸 복습 문항)는 science_final.js의 sciFinMergeQuestions_(GAS v24와 같은 글자)로 합친다(과학 과목만 — 부르는 쪽이 id를 넘김) — 예약을 본 적 없는 더 새 기록이 예약을 지우지 않고,
+  // 해결 표시보다 먼저 틀린 예약만 닫힌다. 순서와 무관해 기기·서버 어디서 먼저 합쳐도 같다. (그 밖 개념은 r7과 같음)
+  const sciFin=id=>typeof id==='string'&&/^sci_fin-/.test(id);
+  function questionsMerge(primary,secondary){const F=typeof PA_SCIENCE_FINAL!=='undefined'?PA_SCIENCE_FINAL:null;return F?F.mergeQuestions(primary,secondary):union(primary||[],secondary||[]);}
+  function mergeConcept(a,b,id){
     const x=concept(a),y=concept(b);
     if(!y||Date.parse(y.evidence_at)>Date.now()+86400000)return a?copy(a):null;
-    if(!x)return copy(y);
+    if(!x){const o=copy(y);if(sciFin(id))o.last_questions=questionsMerge(o.last_questions,[]);return o;}
     const newer=Date.parse(y.evidence_at)>Date.parse(x.evidence_at)||(Date.parse(y.evidence_at)===Date.parse(x.evidence_at)&&y.event_id>x.event_id);
-    return {...copy(newer?y:x),introduced:x.introduced||y.introduced,independent_days:union(x.independent_days,y.independent_days).slice(-8)};
+    const out={...copy(newer?y:x),introduced:x.introduced||y.introduced,independent_days:union(x.independent_days,y.independent_days).slice(-8)};
+    if(sciFin(id))out.last_questions=questionsMerge((newer?y:x).last_questions,(newer?x:y).last_questions);
+    return out;
   }
   function bucket(a,b){return {v:1,done:true,learningDays:union(a?.learningDays||[],b.learningDays||[]),events:union(a?.events||[],b.events||[])};}
   function validBucket(b){return obj(b)&&b.done===true&&Array.isArray(b.learningDays)&&b.learningDays.every(x=>Number.isSafeInteger(x)&&x>0)&&Array.isArray(b.events)&&b.events.every(x=>typeof x==='string');}
@@ -10527,13 +10545,14 @@ const PA_PROGRESS=(()=>{
     for(const s of Object.keys(KEYS)){
       r.completion_days[s]=r.completion_days[s]||{};r.concepts[s]=r.concepts[s]||{};
       for(const [d,b] of Object.entries(snapshot.completion_days[s]||{}))if(date(d)&&validBucket(b))r.completion_days[s][d]=bucket(r.completion_days[s][d],b);
-      for(const [id,c] of Object.entries(snapshot.concepts[s]||{})){const merged=mergeConcept(r.concepts[s][id],c);if(merged)r.concepts[s][id]=merged;}
+      for(const [id,c] of Object.entries(snapshot.concepts[s]||{})){const merged=mergeConcept(r.concepts[s][id],c,s==='science'?id:'');if(merged)r.concepts[s][id]=merged;}
     }
     for(const x of snapshot.english_legacy_days){
       if(!obj(x)||typeof x.key!=='string'||!x.key.startsWith(PA_CURRICULUM+'/')||!Array.isArray(x.days)||!x.days.every(n=>Number.isSafeInteger(n)&&n>0))continue;
       const old=r.english_legacy_days.find(y=>y.key===x.key);if(old)old.days=union(old.days,x.days);else r.english_legacy_days.push(copy(x));
     }
-    return store(REMOTE,r); // No subject state, draft, or screen mutation here.
+    if(store(REMOTE,r)){held=null;return true;} // No subject state, draft, or screen mutation here.
+    held=snapshot;return false;
   }
   function receipts(){
     const r=read(RECEIPTS,{v:1,curriculum:PA_CURRICULUM,ids:[],days:[],rejected:[]});
@@ -10598,12 +10617,24 @@ const PA_PROGRESS=(()=>{
     return days;
   }
   function nextDay(state,total){const done=new Set(doneDays(state));for(let n=1;n<=total;n++)if(!done.has(n))return n;return null;}
+  // r3(2026-11 기말, Codex r2 지적 5): 과학은 미전송함의 '기말' 완료만 이 기기 오늘 완료로 센다(v206 중간 완료 봉투는 제외).
+  // 기말 봉투 = 계획이 기말(final 표식·sci_fin 개념)이거나 sci_fin- 개념 항목을 실은 것(전송 확인 뒤 local_plan이 지워져도 개념 항목은 남는다).
+  function finalEnvelope(e){
+    const p=e.local_plan;
+    if(p&&(p.final||(Array.isArray(p.tasks)&&p.tasks.some(t=>/^sci_fin-/.test(t?.support?.concept||'')))))return true;
+    return (e.items||[]).some(i=>i.kind==='concept'&&typeof i.key==='string'&&i.key.startsWith(PA_CURRICULUM+'/sci_fin-'));
+  }
   function localToday(subject,state,today){
     if(state.__plan?.completed&&state.__plan.completed_day===today)return true;
-    try{return outbox().some(e=>e.subject===subject&&(e.items||[]).some(i=>i.kind==='completion_day'&&i.study_day===today));}catch(_){return true;} // uncertainty must not trigger remote guard
+    try{return outbox().some(e=>e.subject===subject&&(subject!=='science'||finalEnvelope(e))&&(e.items||[]).some(i=>i.kind==='completion_day'&&i.study_day===today));}catch(_){return true;} // uncertainty must not trigger remote guard
   }
   function guard(subject,state,today=day()){
-    try{if(localToday(subject,state,today))return false;const r=remote();return !!(r&&validBucket(r.completion_days?.[subject]?.[today]));}catch(_){return false;}
+    try{if(localToday(subject,state,today))return false;
+      // r8b: 과학은 받았지만 저장하지 못한 조회 응답(held)도 읽기만 해서 본다 — 공간을 확보하고 다시 눌렀을 때 다른 기기의 오늘 완료를 건너뛰고 배정하지 않도록. 영어는 r7과 같음(저장된 것만).
+      return [remote(),...(subject==='science'&&held?[held]:[])].some(r=>{if(!(r&&validBucket(r.completion_days?.[subject]?.[today])))return false;
+      // r2(2026-11 기말): 과학은 서버 과정값을 중간과 함께 쓴다. 구버전(v206) 기기에서 중간 과학만 끝낸 날에는 오늘자 기말 개념 기록이 없으므로 막지 않는다.
+      if(subject==='science')return Object.entries(r.concepts?.science||{}).some(([k,c])=>/^sci_fin-/.test(k)&&c&&c.last_day===today);
+      return true;});}catch(_){return false;}
   }
   function stamp(state,subject,p){
     p.completed_at=p.completed_at||new Date().toISOString();
@@ -10631,31 +10662,64 @@ const PA_PROGRESS=(()=>{
     if(ensureCompletion(subject,state))return true;
     throw Error('완료한 답은 저장돼 있어요. 저장 공간을 확인한 뒤 다시 시작해 주세요.');
   }
+  // r8(2026-11-19, Codex r7 HOLD · JH '서버까지 고침'): applyStart = 원격·미전송함 개념 기록을 과목 상태에 합치는 유일한 자리.
+  //  - 풀던 계획이 건드린 개념: 이 기기의 답·근거(그 밖 칸)는 그대로, last_questions만 공용 규칙으로 합친다(받은 예약이 남은 문항 채점·완료 기록에 들어감).
+  //    예약이 기기에 오기 전 같은 계획에서 그 문항을 혼자 맞혔다면 해결 표시가 없어 한 번 더 확인한다(Codex 수용 범위).
+  //  - 나머지(마친 계획의 개념 포함): mergeConcept(그 밖 칸 = 더 새 기록, last_questions = 공용 규칙).
+  //  r6·r7의 바탕 근거 비교 keepRechecks, 보충 기록 recheckSupplement, 계획의 바탕 근거 base_evidence는 없앴다 — 합치기가 순서와 무관해 필요 없다.
+  //  단, 서버가 GAS v23(최신 기록 통째)이면 서버에서 예약이 지워질 수 있어 이 앱은 GAS v24 배포 뒤(또는 함께) 게시한다.
+  function startMerge(subject,result){
+    const r=remote(),all=(()=>{try{return outbox();}catch(_){return [];}})();
+    const touched=new Set(result.__plan&&!result.__plan.completed?(result.__plan.answers||[]).map(a=>a.support_concept):[]);
+    const merge=(id,c)=>{
+      if(touched.has(id)){
+        if(subject==='science'&&sciFin(id)&&obj(result[id])){const y=concept(c);
+          if(y&&Date.parse(y.evidence_at)<=Date.now()+86400000){const l=result[id],lq=questionsMerge(l.last_questions,y.last_questions);
+            if(JSON.stringify(lq)!==JSON.stringify(union([],l.last_questions||[])))result[id]={...l,last_questions:lq};}}
+        return;}
+      const local=result[id];const normalized=local&&!local.evidence_at?concept(local,local.last_day+'T00:00:00+09:00','legacy-local'):local;
+      const m=mergeConcept(normalized,c,subject==='science'?id:'');if(m)result[id]=m;};
+    for(const e of all)for(const i of e.items||[])if(i.subject===subject&&i.kind==='concept')merge(i.key.slice(PA_CURRICULUM.length+1),i.value);
+    if(r)for(const [id,c] of Object.entries(r.concepts?.[subject]||{}))merge(id,c);
+    return result;
+  }
+  function differs(a,b){const k=new Set([...Object.keys(a||{}),...Object.keys(b||{})]);k.delete('__progress_curriculum');for(const x of k)if(JSON.stringify(a[x])!==JSON.stringify(b[x]))return true;return false;}
   function applyStart(subject,state){
+    const sci=subject==='science';
     // Preserve the completed block BEFORE remote concepts can replace its local evidence.
-    if(state.__plan?.completed&&!ensureCompletion(subject,state))return state;
-    const result=copy(state),r=remote(),all=(()=>{try{return outbox();}catch(_){return [];}})();
-    const p=result.__plan,days=subject==='english'?doneDays(result):[];
+    if(state.__plan?.completed&&!ensureCompletion(subject,state)){
+      // r8(JH 11/19): 과학은 받은 기록이 진도를 바꾸는데 저장할 수 없으면 시작하지 않는다(start가 '저장 공간' 안내). 바꿀 것이 없으면 지금 진도로.
+      // r8b: 받았지만 저장하지 못한 조회 응답이 있어도 시작하지 않는다.
+      if(sci&&(held||differs(startMerge(subject,copy(state)),state)))throw Error('progress-merge-storage');
+      return state;
+    }
+    // r8b(Codex r8 중간 판정): 받은 조회 응답을 저장하지 못한 채라면 먼저 다시 저장해 본다 — 못 하면 시작하지 않는다(새 기기·이어 하기 모두, start의 기존 '저장 공간' 안내).
+    // 공간을 확보한 뒤 다시 누르거나 다음 조회 응답이 저장되면 받은 기록으로 배정한다(첫 문항 = 받은 재확인).
+    if(sci&&held&&!ingest(held))throw Error('progress-merge-storage');
+    const result=copy(state),p=result.__plan,days=subject==='english'?doneDays(result):[];
     const retire=p&&!p.completed&&subject==='english'&&days.includes(p.learningDay);
     if(retire){
       if(!enqueue({id:'retired:'+subject+':'+p.id,subject,source:'retired',items:[],local_plan:copy(p),logAck:true,progressAck:true}))return state;
       delete result.__plan;
     }
-    const touched=new Set(result.__plan&&!result.__plan.completed?(result.__plan.answers||[]).map(a=>a.support_concept):[]);
-    const merge=(id,c)=>{if(!touched.has(id)){const local=result[id];const normalized=local&&!local.evidence_at?concept(local,local.last_day+'T00:00:00+09:00','legacy-local'):local;
-      const m=mergeConcept(normalized,c);if(m)result[id]=m;}};
-    for(const e of all)for(const i of e.items||[])if(i.subject===subject&&i.kind==='concept')merge(i.key.slice(PA_CURRICULUM.length+1),i.value);
-    if(r)for(const [id,c] of Object.entries(r.concepts?.[subject]||{}))merge(id,c);
+    startMerge(subject,result);
     if(subject==='english')result.__completed_learning_days=days;
     result.__progress_curriculum=PA_CURRICULUM;
     // This is the ONLY remote-to-subject write site; invoked only immediately before start's planFor.
-    return store(KEYS[subject],result)?result:state;
+    if(store(KEYS[subject],result))return result;
+    // r8(JH 11/19): 과학은 받은 기록·예약으로 달라진 진도를 저장하지 못하면 시작하지 않는다 — 새 기기·이어 하기·마친 계획 모두.
+    // 공간을 확보한 뒤 다시 누르면 합친 진도로 배정한다(첫 문항 = 받은 재확인).
+    if(sci&&differs(result,state))throw Error('progress-merge-storage');
+    return state;
   }
   function recover(){
     if(issue==='storage'||issue==='migration')issue='';
     try{saveQueue(outbox());}catch(_){issue='storage';}
     promote();
     for(const subject of Object.keys(KEYS))try{ensureCompletion(subject,read(KEYS[subject],{}));}catch(_){issue='storage';}
+    // r3(Codex r2 지적 4): v206은 완료 계획을 저장한 뒤 미전송함·로그를 쓴다. 그 사이 앱이 닫혔다면 완료 계획은 옛 중간 키에만 있다 →
+    // 중간 키의 완료 계획도 봉투로 회수하고, 아래 반복에서 중간 로그(sci_mid_mix)로 저장한다. 봉투 id가 같아 이미 보냈거나 넣은 것은 다시 생기지 않는다.
+    try{ensureCompletion('science',read(SCIENCE_MID_KEY,{}));}catch(_){issue='storage';}
     try{for(const e of outbox())if(e.source==='completion'&&!e.logAck&&e.local_plan){
       const saved=persistSupportLog(e.subject,e.local_plan);if(saved.ok)linkLog(saved.log);
     }}catch(_){issue='storage';}
@@ -10734,7 +10798,8 @@ const PA_PROGRESS=(()=>{
 </script>
 <script src="science_support.js?v=194"></script>
     <script src="english_exam.js?v=197"></script>
-    <script src="exam_support.js?v=197"></script>
+    <script src="science_final.js?v=207"></script>
+    <script src="exam_support.js?v=207"></script>
     <script src="exam_home.js?v=198"></script>
 </body>
 </html>

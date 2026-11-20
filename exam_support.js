@@ -1,8 +1,9 @@
 /* Subject-isolated, five-question launch sessions. All progress stays in existing quiz log flow. */
 const PA_EXAM_SUPPORT = (() => {
   'use strict';
-  const KEYS={science:'pa_science_2026_midterm_v2',english:'pa_english_2026_midterm_v1'};
-  const IDS=['sci_mid_plate','sci_mid_element','sci_mid_body'];
+  // 2026-11 기말: 과학 기록은 중간(pa_science_2026_midterm_v2)과 나눠 새 키에 쌓는다. 중간 기록은 그대로 둔다.
+  const KEYS={science:'pa_science_2026_final_v1',english:'pa_english_2026_midterm_v1'};
+  const IDS=['sci_fin_b1'];  // 기말 과학 묶음(개념 6~13은 묶음이 추가될 때 여기에 덧붙인다)
   let loading=false, active=null, pending=null, timer=null, finishIssue='';
   const tick=()=>typeof performance!=='undefined'?performance.now():Date.now();
   function elapsed(){return timer?Math.round((timer.ms+(timer.start==null?0:tick()-timer.start))/1000):0;}
@@ -374,7 +375,7 @@ const PA_EXAM_SUPPORT = (() => {
     const old=state.__plan;
     // An unfinished block survives midnight/absence. Completion on the new day uses that day's five-slot allowance.
     if(old && (!old.completed || supportPlanIsToday(old,date)))return old; // finalized is presentation state, never the next-day gate.
-    const p=data.subject==='english'?englishPlan(data,state,date):PA_SCIENCE_SUPPORT.makePlan(data,state,date);
+    const p=data.subject==='english'?englishPlan(data,state,date):PA_SCIENCE_FINAL.isFinal(data)?PA_SCIENCE_FINAL.makePlan(data,state,date):PA_SCIENCE_SUPPORT.makePlan(data,state,date);
     if(p){p.subject=data.subject;p.started_at=new Date().toISOString();p.id=data.subject+'-'+p.started_at;
       p.tasks.forEach(t=>t.support.subject=data.subject);}
     return p;
@@ -425,8 +426,10 @@ const PA_EXAM_SUPPORT = (() => {
     if(subject==='english')return window.PA_ENGLISH_EXAM;
     const lessons=[];
     for(const id of IDS){const l=await fetchVocabJsonp('lesson_'+id+'.json');if(l.lesson_id!==id)throw Error('자료 버전이 맞지 않아요. 다시 시작해 주세요.');lessons.push(l);}
-    return {subject:'science',lesson:'sci_mid_mix',lesson_id:'sci_mid_mix',title:'오늘의 과학',support_mode:true,
-      concept_cards:lessons.flatMap(l=>l.concept_cards),exam_prep:lessons.flatMap(l=>l.exam_prep)};
+    return {subject:'science',lesson:'sci_fin_mix',lesson_id:'sci_fin_mix',title:'오늘의 과학',support_mode:true,exam_campaign:'2026-2-final',
+      final_plan:lessons[lessons.length-1].final_plan,
+      concept_cards:lessons.flatMap(l=>l.concept_cards),review_cards:lessons.flatMap(l=>l.review_cards||[]),
+      review_items:lessons.flatMap(l=>l.review_items||[]),exam_prep:lessons.flatMap(l=>l.exam_prep)};
   }
   async function start(subject){
     if(loading)return;
@@ -454,7 +457,12 @@ const PA_EXAM_SUPPORT = (() => {
     }catch(e){status.textContent='학습을 시작하지 못했어요. 저장 공간과 연결을 확인한 뒤 다시 눌러 주세요.';console.error('[exam-start]',e);}
     finally{loading=false;home.inert=false;}
   }
-  function cardMarkup(c){return `<section class="science-support-card"><h2>${esc(c.term)}</h2>${renderVisualMedia(c)}<p class="exam-card-lines">${esc(c.easy_explanation)}</p><p class="science-tip">기억할 점 · ${esc(c.exam_tip)}</p><small>교과서 ${c.source_refs[0].printed_pages.join('·')}쪽</small></section>`;}
+  // 기말 카드: '이름 | 하는 일 | 위치·특징' 표(table)와 여러 줄 시험 함정(exam_tip 배열)을 함께 보여 준다. 중간 카드(문자열)는 그대로.
+  function cardTable(t){if(!t||!Array.isArray(t.head)||!Array.isArray(t.rows))return '';
+    const cell='border:1px solid #d9dee5;padding:6px 7px;vertical-align:top;text-align:left;';
+    return `<div style="overflow-x:auto;margin:10px 0"><table style="border-collapse:collapse;width:100%;font-size:14px;line-height:1.45"><thead><tr>${t.head.map(h=>`<th style="${cell}background:#eef3fb;color:#234c80">${esc(h)}</th>`).join('')}</tr></thead><tbody>${t.rows.map(r=>`<tr>${r.map((v,i)=>`<td style="${cell}${i===0?'font-weight:700;':''}">${esc(v)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;}
+  function cardTips(t){return Array.isArray(t)?`<div class="science-tip">기억할 점<ul style="margin:6px 0 0;padding-left:18px">${t.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:`<p class="science-tip">기억할 점 · ${esc(t)}</p>`;}
+  function cardMarkup(c){return `<section class="science-support-card"><h2>${esc(c.term)}</h2>${renderVisualMedia(c)}<p class="exam-card-lines">${esc(c.easy_explanation)}</p>${cardTable(c.table)}${cardTips(c.exam_tip)}<small>교과서 ${c.source_refs[0].printed_pages.join('·')}쪽</small></section>`;}
   function expose(state,q){
     state.__exposures=state.__exposures||{};const list=state.__exposures[day()]||[];
     state.__exposures={[day()]:[...new Set([...list,...rules(q)])]};
@@ -510,11 +518,16 @@ const PA_EXAM_SUPPORT = (() => {
       due:same&&clean&&old.due?old.due:later(!clean&&errorDays>=3?2:independent?3:1),error_days:errorDays,
       independent_days:[...new Set([...(old.independent_days||[]),...(independent?[date]:[])])].slice(-8),last_status:status,
       last_questions:same?[...new Set([...(old.last_questions||[]),q.id])]:[q.id]};
+    // 기말: 틀린 문항을 다른 날 다시 낼 표시를 같은 개념 기록(last_questions)에 이어 적는다 — 기기 간 공유되는 기존 필드만 쓴다.
+    // r2: 재확인 정보(최초 오답 문항·같은 문항/다른 형식·해결 여부)를 풀이 기록에 남긴다.
+    const recheck=PA_SCIENCE_FINAL.isFinal(active.data)?PA_SCIENCE_FINAL.update(active.data,state[s.concept],old,q,s,status,date):null;
     state.__usage=state.__usage||{};state.__usage[q.id]=(state.__usage[q.id]||0)+1;
     expose(state,q);pending=state;s.answered=true;
     return {support_subject:active.subject,support_concept:s.concept,support_stage:s.stage,support_assisted:helped,
       answer_status:status,learning_day:state.__plan.learningDay||null,plan_date:state.__plan.date,answer_date:date,
-      count_warning:!!s.countWarning,rule_tags:q.rule_tags||[],diagnostic};
+      count_warning:!!s.countWarning,rule_tags:q.rule_tags||[],diagnostic,
+      ...(recheck&&recheck.recheck_of?{recheck_of:recheck.recheck_of,recheck_mode:recheck.recheck_mode,recheck_resolved:recheck.recheck_resolved,...(recheck.recheck_partial?{recheck_partial:true}:{})}:{}),
+      ...(recheck&&recheck.recheck_started?{recheck_started:true}:{})};
   }
   function capture(){
     if(!QUIZ_DATA?.support_mode||!active||!pending)return true;
@@ -673,7 +686,7 @@ const PA_EXAM_SUPPORT = (() => {
       submitted=true;clearTimeout(armTimer);opts.querySelectorAll('button,input,textarea').forEach(b=>b.disabled=true);
       const hint=document.getElementById('btn-hint');hint.disabled=true;
       feedback.textContent=(correct?'맞았어요. ':'다시 짚어 보자. ')+q.explanation;
-      if(!correct){const c=QUIZ_DATA.concept_cards.find(c=>c.id===s.concept);const d=document.createElement('details');d.className='science-repair';d.open=true;d.innerHTML='<summary>헷갈린 핵심 짚어 보기</summary>'+cardMarkup(c);box.appendChild(d);}
+      if(!correct){const c=QUIZ_DATA.concept_cards.find(c=>c.id===s.concept)||(QUIZ_DATA.review_cards||[]).find(c=>c.id===q.review_card);if(c){const d=document.createElement('details');d.className='science-repair';d.open=true;d.innerHTML='<summary>헷갈린 핵심 짚어 보기</summary>'+cardMarkup(c);box.appendChild(d);}}
       if(!writing)showAnswer(q,opts,shown||[],!shown);   // 서술형 문제 화면은 바꾸지 않는다(스크롤만 적용)
       showNextButton();
       scrollToAnswer(box);
@@ -708,7 +721,7 @@ const PA_EXAM_SUPPORT = (() => {
   function detail(a){
     if(a.practice)return "";
     if(!a.support_subject)return PA_SCIENCE_SUPPORT.detail(a);
-    return `[${a.support_subject};concept=${a.support_concept};stage=${a.support_stage};status=${a.answer_status};assisted=${Number(a.support_assisted)};plan=${a.plan_date};answered=${a.answer_date};countHelp=${Number(a.count_warning)}${a.selected_indices?';selected='+a.selected_indices.map(i=>i+1).join('+'):''}${Array.isArray(a.display_order)?';shown='+a.display_order.map(i=>i+1).join('-'):''}${a.writing_error?';writing='+a.writing_error+';words='+a.word_count+';typed='+encodeURIComponent(a.writing_normalized):''}]`;
+    return `[${a.support_subject};concept=${a.support_concept};stage=${a.support_stage};status=${a.answer_status};assisted=${Number(a.support_assisted)};plan=${a.plan_date};answered=${a.answer_date};countHelp=${Number(a.count_warning)}${a.selected_indices?';selected='+a.selected_indices.map(i=>i+1).join('+'):''}${Array.isArray(a.display_order)?';shown='+a.display_order.map(i=>i+1).join('-'):''}${a.writing_error?';writing='+a.writing_error+';words='+a.word_count+';typed='+encodeURIComponent(a.writing_normalized):''}${a.recheck_of?';recheck_of='+a.recheck_of+';recheck='+a.recheck_mode+';resolved='+Number(!!a.recheck_resolved)+(a.recheck_partial?';partial=1':''):''}${a.recheck_started?';recheck_start=1':''}]`;
   }
   // 최초 완료와 재연습 완료가 같은 요약을 쓴다. 맞힘/틀림/모르겠어요를 합치지 않는다.
   // 맞힘 + 틀림 + 모르겠어요 + 미응답 = 전체. 도움 여부는 합치지 않고 별도 차원으로 센다.

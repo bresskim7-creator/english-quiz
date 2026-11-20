@@ -1,3 +1,4 @@
+// v207 (2026-11-19 후보 r8: Codex r7 HOLD 3건 — 재확인 예약을 최초 문항별로 순서 무관하게 합침(앱·GAS v24 같은 규칙, 해결 표시 x:)·받은 기록 저장 실패 시 시작 안 함, r7 보충 기록 제거 / r7: Codex r6 HOLD 3건 — 이어 하기 뒤·완료 직후 도착한 다른 기기 재확인 예약도 기기·서버에 남김(보충 기록)·예약 합친 결과 저장 실패 시 시작 안 함·짝 부분 확인 동률은 최초 문항 쪽 / r6: Codex 과학 r5 단독 후보 HOLD 2건 — K05 요소 문구(요소는 간에서, 세포호흡은 물·이산화 탄소)·풀던 계획 개념도 다른 기기 재확인 예약 받기 / r5: 도움 정답 뒤 휴식 재시작 없음 / r4: Codex r3 재검토 — 짝 판정 4방향 정정·부분 확인 뒤 휴식 재시작 없음 / r3: Codex r2 재검토 HOLD 6건 반영 — 짝 방향별 확인 범위(pair_confirms)·고정 짝 막힘·조합 탐색 후 새 개념·옛 중간 키 완료 회수·미전송함 기말만·복습 상한 마지막 장치 / r2: Codex 11/17 HOLD 5건 반영 — 복구 로그 위치·복습 하루 2개·쉬는 문항 전 경로 제외·최초 오답 보존 재확인·K03 그림, 다른 기기 판단·12/14 새 개념 끄기 / r1): 2학기 기말 과학 첫 묶음 — lesson_sci_fin_b1.js(개념 1~5, c3 문항 35 + 복습 9) 신규, science_final.js(오답 짝 재출제·조건부 2개념·12/6 복습 위주·같은 날 금지) 신규, exam_support.js 기말 과학 연결·카드 표, index.html 홈 문구·과학 기록 키 분리(pa_science_2026_final_v1, 진도 공유 과정값 mid2-2026-2 유지). CACHE_NAME v206->v207, APP_CACHE_NAME/BUILD_VERSION 동반.
 // v206 (2026-11-13): 오늘의 한 장 쇼츠 배치6 7장(2026-10-22~28, 21문항) 추가 — 데이터 릴리스. daily_2026-10.js에 7엔트리 덧붙임(기존 10-01~21 바이트 보존, quiz 3·finish_video·diagram 3키, 렌더러 1.2), daily_index.js 7행 + version_key, PRECACHE에 img/daily_shorts_b6_10xx_v1.png 7장 등재(새 카드 첫 오프라인 진입용, daily_2026-10.js는 이미 등재). 렌더러·풀이 기록(r3)·GAS v23·exam_home.js(?v=198) 불변. index 전파 위해 CACHE_NAME v205->v206, APP_CACHE_NAME/BUILD_VERSION 동반.
 // v205 (2026-11-05): 오늘의 한 장 쇼츠 배치5 7장(2026-10-15~21, 21문항) 추가 — 데이터 릴리스. daily_2026-10.js에 7엔트리 덧붙임(기존 10-01~14 바이트 보존, quiz 3·finish_video·diagram 3키, 렌더러 1.2), daily_index.js 7행 + version_key, PRECACHE에 img/daily_shorts_b5_10xx_v1.png 7장 등재(새 카드 첫 오프라인 진입용, daily_2026-10.js는 이미 등재). 렌더러·풀이 기록(r3)·GAS v23·exam_home.js(?v=198) 불변. index 전파 위해 CACHE_NAME v204->v205, APP_CACHE_NAME/BUILD_VERSION 동반.
 // v204 (2026-10-30): 오늘의 한 장 쇼츠 배치4 7장(2026-10-08~14, 21문항) 추가 — 데이터 릴리스. daily_2026-10.js에 7엔트리 덧붙임(기존 10-01~07 바이트 보존, quiz 3·finish_video·diagram 3키, 렌더러 1.2), daily_index.js 7행 + version_key, PRECACHE에 img/daily_shorts_b4_10xx_v1.png 7장 등재(새 카드 첫 오프라인 진입용, daily_2026-10.js는 이미 등재). 렌더러·풀이 기록(r3)·GAS v23·exam_home.js(?v=198) 불변. index 전파 위해 CACHE_NAME v203->v204, APP_CACHE_NAME/BUILD_VERSION 동반.
@@ -31,7 +32,7 @@
 // v186 (2026-08-03): 영어 단어 간격 복습(E30) — 서버(GAS v18)가 사다리를 계산하고 클라는 캐시.
 //   device_instance_id·answered_at·recall_mode·question_type 전송, doGet?action=vocab_state pull,
 //   만기 우선 선발(due_cap 램프 + new_min 2), 만기 단어는 카드 없이 냉시험.
-const CACHE_NAME = 'quiz-v206';
+const CACHE_NAME = 'quiz-v207';
 // v169 (2026-06-16): 국어 마인드맵 내용형 교체 — kor2 허브 kor_mindmap_kor2_v2.png, kor3 허브 kor_mindmap_kor3_v2.png(가지별 핵심 불릿 + ⚠함정). lesson_kor2/3 mindmap.img 동반 갱신. PRECACHE 2줄(v1→v2) 교체. APP_CACHE_NAME 동반 범프(v168->v169). 캐시 강제 갱신용.
 // v168 (2026-06-16): 사회 마인드맵 내용형 교체 — soc3 허브 soc_mindmap_soc3_v2.png, soc4 허브 soc_mindmap_soc4_v3.png(가지별 핵심 불릿 + ⚠함정). lesson_soc3/4 mindmap.img 동반 갱신. PRECACHE 2줄(v1→v2 / v2→v3) 교체. APP_CACHE_NAME 동반 범프(v167->v168). 캐시 강제 갱신용.
 // v167 (2026-06-12): 기말 총점검 보강 — 사회 soc4 환율 그래프 exam 4문항(S4-E040~E043, v1.0->1.1; img/soc_forex_shift_demand_v1.png Pillow 256색 FS 압축 -62% 배선) + 과학 sci2 형식 정합 4건(S2-E026 보기형 재설계·E032/E006 ㄱㄴㄷ 변환·E001 자구, v1.1->1.2). PRECACHE에 soc_forex_shift_demand_v1.png 등재. APP_CACHE_NAME 동반 범프(v166->v167). 캐시 강제 갱신용.
@@ -74,7 +75,8 @@ const CACHE_NAME = 'quiz-v206';
 const PRECACHE_URLS = [
   './pa_runtime.js?v=194',
   './english_exam.js?v=197',
-  './exam_support.js?v=197',
+  './science_final.js?v=207',
+  './exam_support.js?v=207',
   './exam_home.js?v=198',
   './문해력카드/card.html',
   './문해력카드/cards.js',
@@ -164,6 +166,7 @@ const PRECACHE_URLS = [
   './lesson_sci_mid_plate.js',
   './lesson_sci_mid_element.js',
   './lesson_sci_mid_body.js',
+  './lesson_sci_fin_b1.js',
   './science_support.js?v=194',
   './img/sci_earth_interior.png',
   './img/sci_sound_three.png',
