@@ -1843,7 +1843,7 @@
             <div class="subject-grid" id="exam-home-grid">
                 <button class="subject-card daily" onclick="PA_EXAM_HOME.openReading()"><span class="subject-card-icon">📰</span><span class="subject-card-name">오늘의 한 장</span><span class="subject-card-sub" id="exam-reading-status">시험 범위 읽기</span><span id="home-daily-unread-badge" hidden></span></button>
                 <button class="subject-card daily" onclick="PA_EXAM_HOME.openLiteracy()"><span class="subject-card-icon">📖</span><span class="subject-card-name">문해력 한 장</span><span class="subject-card-sub" id="exam-literacy-status">짝 글로 요약 연습</span></button>
-                <button class="subject-card english" onclick="PA_EXAM_SUPPORT.start('english')"><span class="subject-card-icon">📘</span><span class="subject-card-name">영어 5문제 · 중간 범위</span><span class="subject-card-sub" id="english-support-status">문장과 뜻을 함께</span></button>
+                <button class="subject-card english" onclick="PA_ENGLISH_FINAL.start()"><span class="subject-card-icon">📘</span><span class="subject-card-name">기말 영어 · 문장 만들기</span><span class="subject-card-sub" id="english-support-status">하루 5분</span></button>
                 <button class="subject-card science" onclick="PA_EXAM_SUPPORT.start('science')"><span class="subject-card-icon">🔬</span><span class="subject-card-name">기말 과학 5문제</span><span class="subject-card-sub" id="science-support-status">개념을 알고 적용하기</span></button>
             </div>
             <button id="english-replay" hidden onclick="PA_EXAM_SUPPORT.replay('english')" style="margin:8px 0;padding:12px;border:1px solid #ccd6e2;border-radius:8px;background:#fff;color:#234c80;">같은 문제 다시 풀기 · 영어</button>
@@ -2171,8 +2171,8 @@
         let sessionType = PA_STORAGE.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-11-17 v207';
-        const APP_CACHE_NAME = 'quiz-v207';
+        const BUILD_VERSION = '2026-11-20 v208';
+        const APP_CACHE_NAME = 'quiz-v208';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -9382,6 +9382,8 @@
             return '읽기와 문해력 완료는 각각 기록해요.';
         }
         function supportTodayStatus(subject,state,today){
+            // 2026-11 기말: 홈 영어 카드는 E1(english_final.js) 진도로 표시한다. 중간 영어 기록(state)은 그대로 둔다.
+            if(subject==='english'&&typeof PA_ENGLISH_FINAL!=='undefined')return PA_ENGLISH_FINAL.status(today);
             const p=state.__plan,days=subject==='english'?window.PA_ENGLISH_EXAM?.launch_days?.length:0;
             if(PA_PROGRESS.guard(subject,state,today))return '✓ 오늘 학습 완료 (다른 기기)';
             if(p&&!p.completed&&!(subject==='english'&&PA_PROGRESS.doneDays(state).includes(p.learningDay)))return (p.answers||[]).length+'/5 · 이어 하기';
@@ -9447,7 +9449,7 @@
                 const sentKeys=JSON.parse(PA_STORAGE.getItem('sent_logs')||'[]');
                 const fetches=logs.map(async log=>{
                     const key=log.timestamp;if(sentKeys.includes(key))return;
-                    const isSupportLog=/^(english|science)_support$/.test(log.session_type||'');
+                    const isSupportLog=/^(english|science)_support$|^english_final$/.test(log.session_type||''); // english_final = 기말 영어 E1 결과(전송 확인 뒤에만 보냄 표시)
                     if(!isSupportLog)sentKeys.push(key); // Preserve existing non-support reservation contract.
                     const m=log.metrics||{},data={lesson:log.lesson||currentLesson||1,subject:log.subject||'english',date:log.date,session_type:log.session_type||'',
                         total:log.total,correct:log.correct,percentage:log.percentage,duration_sec:log.duration_sec||0,weak:log.weak||'',type_breakdown:log.type_breakdown||'',hint_count:log.hint_count||0,
@@ -10791,7 +10793,14 @@ const PA_PROGRESS=(()=>{
       if(typeof syncDailyReadFromServer==='function')void syncDailyReadFromServer().then(()=>{try{PA_EXAM_HOME.refresh();}catch(_){}});
     }catch(_){issue='storage';notify();}
   }
-  return {day,mergeConcept,bucket,ingest,promote,doneDays,nextDay,guard,stamp,ensureCompletion,beforeAdvance,applyStart,recover,linkLog,logEvent,beforeCompact,literacy,notice,pull,push,ackProgress,sync};
+  // 2026-11 기말 영어 E1: 진도는 개념 기록 하나(eng_fin-E1)로 기존 형식 그대로 공유한다(서버 진도 무변경). 중간 영어 학습일 번호(completion_day·english_legacy_days)와 섞지 않는다.
+  function englishFinalRemote(){const r=remote(),c=r&&r.concepts&&r.concepts.english?r.concepts.english['eng_fin-E1']:null;return obj(c)?copy(c):null;}
+  function enqueueEnglishFinal(value){
+    if(PA_RUNTIME.preview)return true;
+    const c=concept(value,value.evidence_at,value.event_id);if(!c)return false;
+    return enqueue({id:'eng_fin:'+c.event_id,subject:'english',source:'eng_final',items:[item('concept','english','eng_fin-E1',c,c.event_id,c.last_day)],logAck:true,progressAck:false});
+  }
+  return {day,mergeConcept,bucket,ingest,promote,doneDays,nextDay,guard,stamp,ensureCompletion,beforeAdvance,applyStart,recover,linkLog,logEvent,beforeCompact,literacy,notice,pull,push,ackProgress,sync,englishFinalRemote,enqueueEnglishFinal};
 })();
 
 // PROGRESS_CORE_END
@@ -10799,6 +10808,7 @@ const PA_PROGRESS=(()=>{
 <script src="science_support.js?v=194"></script>
     <script src="english_exam.js?v=197"></script>
     <script src="science_final.js?v=207"></script>
+    <script src="english_final.js?v=208"></script>
     <script src="exam_support.js?v=207"></script>
     <script src="exam_home.js?v=198"></script>
 </body>
