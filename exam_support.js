@@ -3,7 +3,7 @@ const PA_EXAM_SUPPORT = (() => {
   'use strict';
   // 2026-11 기말: 과학 기록은 중간(pa_science_2026_midterm_v2)과 나눠 새 키에 쌓는다. 중간 기록은 그대로 둔다.
   const KEYS={science:'pa_science_2026_final_v1',english:'pa_english_2026_midterm_v1'};
-  const IDS=['sci_fin_b1'];  // 기말 과학 묶음(개념 6~13은 묶음이 추가될 때 여기에 덧붙인다)
+  const IDS=['sci_fin_b1','sci_fin_b2'];  // 기말 과학 묶음(b2 = 개념 6~10 전기. 개념 11~13은 묶음이 추가될 때 여기에 덧붙인다)
   let loading=false, active=null, pending=null, timer=null, finishIssue='';
   const tick=()=>typeof performance!=='undefined'?performance.now():Date.now();
   function elapsed(){return timer?Math.round((timer.ms+(timer.start==null?0:tick()-timer.start))/1000):0;}
@@ -650,9 +650,12 @@ const PA_EXAM_SUPPORT = (() => {
   }
   // c2(밑줄 친 ㉠~㉤ 문항): 자료의 underline[i]는 표지(㉠+i) 바로 뒤에 밑줄을 그을 말이다. 문제 화면과 '다시 볼 문제' 카드가 같은 함수로 그린다.
   // 표지마다 제시문에 한 번만 있고 바로 뒤의 말이 underline과 정확히 같을 때만 긋는다. 하나라도 어긋나면 밑줄 없이 지금처럼 글자만 보인다.
+  // b2(backlog X4, Codex c2 검토 정정 2): 제시문의 표지(㉠~㉭) 수가 underline 길이와 같을 때만 긋는다 — 배열이 짧으면 앞의 것만 그어지던 것을 막음.
   function sentenceHtml(q,text){
     const s=String(text??''),u=q&&Array.isArray(q.underline)?q.underline:null;
     if(!u||!u.length)return esc(s);
+    let marks=0;for(let c=0x3260;c<=0x326D;c++)if(s.indexOf(String.fromCharCode(c))>=0)marks++;
+    if(marks!==u.length)return esc(s);
     let html='',at=0;
     for(let i=0;i<u.length;i++){
       const m=String.fromCharCode(0x3260+i),w=String(u[i]||''),k=s.indexOf(m+w);

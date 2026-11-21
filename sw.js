@@ -1,3 +1,4 @@
+// v211 (2026-11-21 후보 b2, 과학 전기 묶음 — 개념 6~10): lesson_sci_fin_b2.js 신규(카드 5·문항 29, 회로 그림 visual_svg)·exam_support.js IDS에 sci_fin_b2·밑줄은 표지 수 = underline 길이일 때만(X4)·LESSON_VERSIONS lesson_sci_fin_b2 fin2-1(b1 fin-7 그대로).
 // v210 (2026-11-21 후보 c2, 배포 점검 v3 묶음 2 + K02 카드): 과학 ○/× 안내 9문항 문구(선택 방식과 일치)·밑줄 친 ㉠~㉤ 5문항 밑줄(자료 underline, 문제 화면·다시 볼 문제 같은 범위)·다시 풀기에서 ㉠~㉤ 보기 순서 고정(MARKER_OPTION)·K02 카드 기억할 점(이온 화학식 표기·여러 원자로 된 이온)과 표 양성자 수(lesson_sci_fin_b1.js LESSON_VERSIONS fin-7, exam_support.js). 채점·배정·기록·공유·서버 규칙 불변(GAS v25 그대로). CACHE_NAME v209->v210, APP_CACHE_NAME/BUILD_VERSION 동반.
 // v209 (2026-11-21 후보 c1, 배포 점검 v3 묶음 1 — 첫날 노출 항목): 과학 카드 '핵심 정의' 한 줄(exam_support.js), 영어 E1 호칭 '남동생' 통일·단어 카드 문구·S9① 우리말 어순(english_final.js), K01-Q2 해설 ㄱ·복습 해설 'ㄴ·ㄷ' 순서·'이온식' → '이온을 나타낸 화학식'/'화학식'(lesson_sci_fin_b1.js, LESSON_VERSIONS fin-6). 채점·배정·기록·서버 규칙 불변(GAS v25 그대로). CACHE_NAME v208->v209, APP_CACHE_NAME/BUILD_VERSION 동반.
 // v208 (2026-11-20 후보, 영어 E1 r6 — STEP323): 기말 영어 E1 english_final.js 신규(r6: 채점한 날 마감 한 경로·홈으로/홈 카드/앱 열기 실제 마감·공유 기록 받을 때 결과 키 보존·앉은 자리 로그 held 먼저·다시 보임 저장 확인 먼저), 홈 영어 카드를 E1로 교체(중간 영어 기록·자료 보존, E1 진도는 개념 기록 eng_fin-E1로 공유), 결과 로그는 GAS v25(같은 결과 키 행 합치기)와 짝. 과학 r8 파일(science_final·lesson_sci_fin_b1·exam_support)·진도 코어 과학 규칙 불변. CACHE_NAME v207->v208, APP_CACHE_NAME/BUILD_VERSION 동반.
@@ -35,7 +36,7 @@
 // v186 (2026-08-03): 영어 단어 간격 복습(E30) — 서버(GAS v18)가 사다리를 계산하고 클라는 캐시.
 //   device_instance_id·answered_at·recall_mode·question_type 전송, doGet?action=vocab_state pull,
 //   만기 우선 선발(due_cap 램프 + new_min 2), 만기 단어는 카드 없이 냉시험.
-const CACHE_NAME = 'quiz-v210';
+const CACHE_NAME = 'quiz-v211';
 // v169 (2026-06-16): 국어 마인드맵 내용형 교체 — kor2 허브 kor_mindmap_kor2_v2.png, kor3 허브 kor_mindmap_kor3_v2.png(가지별 핵심 불릿 + ⚠함정). lesson_kor2/3 mindmap.img 동반 갱신. PRECACHE 2줄(v1→v2) 교체. APP_CACHE_NAME 동반 범프(v168->v169). 캐시 강제 갱신용.
 // v168 (2026-06-16): 사회 마인드맵 내용형 교체 — soc3 허브 soc_mindmap_soc3_v2.png, soc4 허브 soc_mindmap_soc4_v3.png(가지별 핵심 불릿 + ⚠함정). lesson_soc3/4 mindmap.img 동반 갱신. PRECACHE 2줄(v1→v2 / v2→v3) 교체. APP_CACHE_NAME 동반 범프(v167->v168). 캐시 강제 갱신용.
 // v167 (2026-06-12): 기말 총점검 보강 — 사회 soc4 환율 그래프 exam 4문항(S4-E040~E043, v1.0->1.1; img/soc_forex_shift_demand_v1.png Pillow 256색 FS 압축 -62% 배선) + 과학 sci2 형식 정합 4건(S2-E026 보기형 재설계·E032/E006 ㄱㄴㄷ 변환·E001 자구, v1.1->1.2). PRECACHE에 soc_forex_shift_demand_v1.png 등재. APP_CACHE_NAME 동반 범프(v166->v167). 캐시 강제 갱신용.
@@ -80,7 +81,7 @@ const PRECACHE_URLS = [
   './english_exam.js?v=197',
   './science_final.js?v=207',
   './english_final.js?v=209',
-  './exam_support.js?v=210',
+  './exam_support.js?v=211',
   './exam_home.js?v=198',
   './문해력카드/card.html',
   './문해력카드/cards.js',
@@ -171,6 +172,7 @@ const PRECACHE_URLS = [
   './lesson_sci_mid_element.js',
   './lesson_sci_mid_body.js',
   './lesson_sci_fin_b1.js',
+  './lesson_sci_fin_b2.js',
   './science_support.js?v=194',
   './img/sci_earth_interior.png',
   './img/sci_sound_three.png',
