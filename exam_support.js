@@ -458,11 +458,12 @@ const PA_EXAM_SUPPORT = (() => {
     finally{loading=false;home.inert=false;}
   }
   // 기말 카드: '이름 | 하는 일 | 위치·특징' 표(table)와 여러 줄 시험 함정(exam_tip 배열)을 함께 보여 준다. 중간 카드(문자열)는 그대로.
+  // v209: 기말 설계(DESIGN_v2)대로 쉬운 설명 다음에 '핵심 정의'(definition) 한 줄 — 첫날 K01-Q2 ㄱ이 분자 정의를 그대로 묻는다.
   function cardTable(t){if(!t||!Array.isArray(t.head)||!Array.isArray(t.rows))return '';
     const cell='border:1px solid #d9dee5;padding:6px 7px;vertical-align:top;text-align:left;';
     return `<div style="overflow-x:auto;margin:10px 0"><table style="border-collapse:collapse;width:100%;font-size:14px;line-height:1.45"><thead><tr>${t.head.map(h=>`<th style="${cell}background:#eef3fb;color:#234c80">${esc(h)}</th>`).join('')}</tr></thead><tbody>${t.rows.map(r=>`<tr>${r.map((v,i)=>`<td style="${cell}${i===0?'font-weight:700;':''}">${esc(v)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;}
   function cardTips(t){return Array.isArray(t)?`<div class="science-tip">기억할 점<ul style="margin:6px 0 0;padding-left:18px">${t.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:`<p class="science-tip">기억할 점 · ${esc(t)}</p>`;}
-  function cardMarkup(c){return `<section class="science-support-card"><h2>${esc(c.term)}</h2>${renderVisualMedia(c)}<p class="exam-card-lines">${esc(c.easy_explanation)}</p>${cardTable(c.table)}${cardTips(c.exam_tip)}<small>교과서 ${c.source_refs[0].printed_pages.join('·')}쪽</small></section>`;}
+  function cardMarkup(c){return `<section class="science-support-card"><h2>${esc(c.term)}</h2>${renderVisualMedia(c)}<p class="exam-card-lines">${esc(c.easy_explanation)}</p>${c.definition?`<p class="exam-card-def" style="margin:8px 0 0;font-size:15px;line-height:1.55"><b>핵심 정의</b> · ${esc(c.definition)}</p>`:''}${cardTable(c.table)}${cardTips(c.exam_tip)}<small>교과서 ${c.source_refs[0].printed_pages.join('·')}쪽</small></section>`;}
   function expose(state,q){
     state.__exposures=state.__exposures||{};const list=state.__exposures[day()]||[];
     state.__exposures={[day()]:[...new Set([...list,...rules(q)])]};

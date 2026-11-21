@@ -47,7 +47,7 @@ const PA_ENGLISH_FINAL=(()=>{
   const KEY='pa_english_2026_final_v1',LOG_KEY='quiz_logs_eng_fin_e1',CONCEPT='eng_fin-E1',BUDGET=300,B_MAX=3,S9_GAP=7,C2_FROM='2026-12-06';
   // 문장(전부 교과서 L6 — 본문 p.106~107, FOCUS ON LANGUAGE p.110, PLAY p.111). ko(우리말)·ko4(우리말 덩어리: 누가/봤어요/누구를/뭐 하는 걸) 중 tom·phone·violin은 Cowork 작성(Codex 검토 대상).
   const S={
-    base:{en:['I','saw','my brother','playing basketball'],ko:'나는 형이 농구하는 걸 봤어요.',ko4:['나는','봤어요','형이','농구하는 걸'],ing:'play → playing',mix:[3,0,2,1]},
+    base:{en:['I','saw','my brother','playing basketball'],ko:'나는 남동생이 농구하는 걸 봤어요.',ko4:['나는','봤어요','남동생이','농구하는 걸'],ing:'play → playing',mix:[3,0,2,1]},
     dad:{en:['We','heard','Dad','singing in the kitchen'],ko:'우리는 아빠가 부엌에서 노래하는 걸 들었어요.',mean:['우리는','들었어요','아빠','부엌에서 노래하는 것'],mix:[3,0,2,1]},
     phone:{en:['I','just heard','my phone','ringing again'],ko:'나는 방금 내 휴대폰이 또 울리는 걸 들었어요.',ko4:['나는','방금 들었어요','내 휴대폰이','또 울리는 걸'],ing:'ring → ringing',mix:[2,3,0,1]},
     violin:{en:['I','heard','him','playing the violin'],ko:'나는 그가 바이올린을 연주하는 걸 들었어요.',ko4:['나는','들었어요','그가','바이올린을 연주하는 걸'],ing:'play → playing',mix:[3,1,2,0]},
@@ -59,7 +59,7 @@ const PA_ENGLISH_FINAL=(()=>{
       accept:['he heard his cats crying at night','he heard his cats cry at night','at night he heard his cats crying','at night he heard his cats cry'],
       answer:'He heard his cats crying at night.'},
     exam:{words:['Last','Friday,','I','saw','my','brother','playing','basketball','after','school'],mix:[5,8,2,6,1,9,3,0,7,4],
-      ko:'지난 금요일, 나는 방과 후에 형이 농구하는 걸 봤어요.',answer:'Last Friday, I saw my brother playing basketball after school.'}
+      ko:'지난 금요일, 나는 남동생이 방과 후에 농구하는 걸 봤어요.',answer:'Last Friday, I saw my brother playing basketball after school.'}
   };
   const ROLE=['who','saw','whom','doing'];
   // 순서. break = 학습일 경계(그날 다른 화면을 했다면 그날은 여기서 끝). track = P0 출발(①단어 돕기 ②짧은 문장 돕기 ③바로).
@@ -418,8 +418,8 @@ const PA_ENGLISH_FINAL=(()=>{
 #e1-page .e1-main{min-height:50px;border:0;border-radius:12px;background:#2F5496;color:#fff;font-size:17px;font-weight:700;font-family:inherit}#e1-page .e1-main:disabled{background:#b9c6dc}
 #e1-page .e1-home{background:none;border:0;color:#5b6575;font-size:14px;font-family:inherit;text-decoration:underline}
 #e1-page .e1-done{text-align:center;padding:40px 0 10px;font-size:19px;font-weight:700;line-height:1.6}`;
-  // S1·S0 그림(시안 v2의 임시 SVG — 내가 형이 농구공을 던지는 모습을 보고 있다)
-  const SCENE=`<svg class="e1-illus" viewBox="0 0 400 240" role="img" aria-label="학교 운동장에서 형이 농구 골대를 향해 공을 던지는 모습을 내가 보고 있는 장면"><defs><linearGradient id="e1sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9f1fb"/><stop offset="1" stop-color="#f7fafd"/></linearGradient></defs><rect x="0" y="0" width="400" height="240" fill="url(#e1sky)"/><rect x="18" y="86" width="120" height="70" fill="#dfe6ee"/><rect x="18" y="80" width="120" height="8" fill="#c9d3de"/><g fill="#f7fafd"><rect x="30" y="98" width="16" height="14"/><rect x="56" y="98" width="16" height="14"/><rect x="82" y="98" width="16" height="14"/><rect x="108" y="98" width="16" height="14"/><rect x="30" y="124" width="16" height="14"/><rect x="56" y="124" width="16" height="14"/><rect x="82" y="124" width="16" height="14"/><rect x="108" y="124" width="16" height="14"/></g><rect x="0" y="156" width="400" height="84" fill="#e8dcc8"/><line x1="0" y1="156" x2="400" y2="156" stroke="#cdbfa6" stroke-width="2"/><path d="M250 232 A70 70 0 0 1 390 232" fill="none" stroke="#cdbfa6" stroke-width="2"/><rect x="346" y="58" width="8" height="140" fill="#596573"/><rect x="300" y="46" width="54" height="40" rx="3" fill="#f4f6f8" stroke="#596573" stroke-width="3"/><rect x="312" y="60" width="26" height="18" fill="none" stroke="#596573" stroke-width="2"/><ellipse cx="303" cy="86" rx="15" ry="4" fill="none" stroke="#C2410C" stroke-width="3"/><g stroke="#9aa5b1" stroke-width="1.5" fill="none"><path d="M289 88 L294 112"/><path d="M296 90 L298 114"/><path d="M303 90 L303 114"/><path d="M310 90 L308 114"/><path d="M317 88 L312 112"/><path d="M294 112 L312 112"/></g><path d="M262 64 Q282 36 298 70" fill="none" stroke="#15803D" stroke-width="2.5" stroke-dasharray="5 5"/><circle cx="265" cy="60" r="10" fill="#e07b2a" stroke="#9a4b12" stroke-width="2"/><path d="M255 60 H275 M265 50 V70 M258 53 Q265 60 258 67 M272 53 Q265 60 272 67" fill="none" stroke="#9a4b12" stroke-width="1.5"/><g stroke="#4a3a2f" stroke-width="6" stroke-linecap="round" fill="none"><path d="M232 92 L252 74 L262 66"/><path d="M222 94 L212 110 L224 118"/><path d="M228 128 L216 150 L224 170"/><path d="M236 128 L252 146 L246 168"/></g><rect x="218" y="88" width="26" height="42" rx="8" fill="#C2410C"/><text x="231" y="116" font-size="11" font-weight="700" fill="#fff" text-anchor="middle" font-family="system-ui, sans-serif">7</text><circle cx="231" cy="74" r="12" fill="#f3c9a4" stroke="#4a3a2f" stroke-width="2"/><path d="M219 70 Q231 58 243 70" fill="#4a3a2f"/><circle cx="96" cy="128" r="14" fill="#4a3a2f"/><rect x="78" y="142" width="36" height="52" rx="9" fill="#2F5496"/><g stroke="#2F5496" stroke-width="7" stroke-linecap="round" fill="none"><path d="M80 150 L68 186"/><path d="M112 150 L124 186"/></g><g stroke="#3b3f46" stroke-width="9" stroke-linecap="round" fill="none"><path d="M86 194 L84 226"/><path d="M106 194 L108 226"/></g><path d="M118 128 Q170 100 212 94" fill="none" stroke="#2F5496" stroke-width="1.5" stroke-dasharray="3 4" opacity=".8"/></svg>`;
+  // S1·S0 그림(시안 v2의 임시 SVG — 내가 남동생이 농구공을 던지는 모습을 보고 있다)
+  const SCENE=`<svg class="e1-illus" viewBox="0 0 400 240" role="img" aria-label="학교 운동장에서 남동생이 농구 골대를 향해 공을 던지는 모습을 내가 보고 있는 장면"><defs><linearGradient id="e1sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9f1fb"/><stop offset="1" stop-color="#f7fafd"/></linearGradient></defs><rect x="0" y="0" width="400" height="240" fill="url(#e1sky)"/><rect x="18" y="86" width="120" height="70" fill="#dfe6ee"/><rect x="18" y="80" width="120" height="8" fill="#c9d3de"/><g fill="#f7fafd"><rect x="30" y="98" width="16" height="14"/><rect x="56" y="98" width="16" height="14"/><rect x="82" y="98" width="16" height="14"/><rect x="108" y="98" width="16" height="14"/><rect x="30" y="124" width="16" height="14"/><rect x="56" y="124" width="16" height="14"/><rect x="82" y="124" width="16" height="14"/><rect x="108" y="124" width="16" height="14"/></g><rect x="0" y="156" width="400" height="84" fill="#e8dcc8"/><line x1="0" y1="156" x2="400" y2="156" stroke="#cdbfa6" stroke-width="2"/><path d="M250 232 A70 70 0 0 1 390 232" fill="none" stroke="#cdbfa6" stroke-width="2"/><rect x="346" y="58" width="8" height="140" fill="#596573"/><rect x="300" y="46" width="54" height="40" rx="3" fill="#f4f6f8" stroke="#596573" stroke-width="3"/><rect x="312" y="60" width="26" height="18" fill="none" stroke="#596573" stroke-width="2"/><ellipse cx="303" cy="86" rx="15" ry="4" fill="none" stroke="#C2410C" stroke-width="3"/><g stroke="#9aa5b1" stroke-width="1.5" fill="none"><path d="M289 88 L294 112"/><path d="M296 90 L298 114"/><path d="M303 90 L303 114"/><path d="M310 90 L308 114"/><path d="M317 88 L312 112"/><path d="M294 112 L312 112"/></g><path d="M262 64 Q282 36 298 70" fill="none" stroke="#15803D" stroke-width="2.5" stroke-dasharray="5 5"/><circle cx="265" cy="60" r="10" fill="#e07b2a" stroke="#9a4b12" stroke-width="2"/><path d="M255 60 H275 M265 50 V70 M258 53 Q265 60 258 67 M272 53 Q265 60 272 67" fill="none" stroke="#9a4b12" stroke-width="1.5"/><g stroke="#4a3a2f" stroke-width="6" stroke-linecap="round" fill="none"><path d="M232 92 L252 74 L262 66"/><path d="M222 94 L212 110 L224 118"/><path d="M228 128 L216 150 L224 170"/><path d="M236 128 L252 146 L246 168"/></g><rect x="218" y="88" width="26" height="42" rx="8" fill="#C2410C"/><text x="231" y="116" font-size="11" font-weight="700" fill="#fff" text-anchor="middle" font-family="system-ui, sans-serif">7</text><circle cx="231" cy="74" r="12" fill="#f3c9a4" stroke="#4a3a2f" stroke-width="2"/><path d="M219 70 Q231 58 243 70" fill="#4a3a2f"/><circle cx="96" cy="128" r="14" fill="#4a3a2f"/><rect x="78" y="142" width="36" height="52" rx="9" fill="#2F5496"/><g stroke="#2F5496" stroke-width="7" stroke-linecap="round" fill="none"><path d="M80 150 L68 186"/><path d="M112 150 L124 186"/></g><g stroke="#3b3f46" stroke-width="9" stroke-linecap="round" fill="none"><path d="M86 194 L84 226"/><path d="M106 194 L108 226"/></g><path d="M118 128 Q170 100 212 94" fill="none" stroke="#2F5496" stroke-width="1.5" stroke-dasharray="3 4" opacity=".8"/></svg>`;
 
   let st=null,sit=null,cur=null,today='',busy=false,preview=false,timer=null,live=null,shared='',held=[],unsaved=false;
   // 저장 묶음 = {st 진도, sit 앉은 자리, cur 풀던 화면, shared 마지막으로 전송 대기열에 넣은 기록(evidence_at), held 기록하지 못한 결과 로그}
@@ -555,18 +555,18 @@ const PA_ENGLISH_FINAL=(()=>{
     if(stage>=1)a.mean(true);if(stage===2)a.note('',null,`이 순서로 놓아 봐요.<div class="e1-path"><span>누가</span><span>→</span><span>들었어요</span><span>→</span><span>누구를</span><span>→</span><span>무엇을 하고 있던 걸</span></div>`);if(stage>=3)a.follow('정답은 이 순서예요. 눌러서 따라 놓아 봐요.');
   };
   R.words=(s,done)=>{
-    const f=frame(s.title,'');const W=[['brother','형(남동생)'],['basketball','농구'],['playing','하고 있는'],['saw','봤어요']],open=new Set();
+    const f=frame(s.title,'');const W=[['brother','남자 형제 · 이 문장에서는 남동생'],['basketball','농구'],['playing','하고 있는'],['saw','봤어요']],open=new Set();
     f.add(SCENE);f.add('<p class="e1-lead">그림에 있는 것들이에요. 탭해서 뜻을 보세요.</p>');
     const t=f.add('<div class="e1-tiles"></div>');
     const draw=()=>{t.innerHTML=W.map(([e,k],i)=>`<button type="button" class="e1-tile" data-i="${i}">${esc(e)}${open.has(i)?`<small>${esc(k)}</small>`:''}</button>`).join('');
       t.querySelectorAll('button').forEach(b=>b.onclick=()=>{open.add(+b.dataset.i);draw();});f.main('다음',open.size===W.length,()=>done({}));};
     draw();
   };
-  R.scene=(s,done)=>{const f=frame(s.title,'');f.add(SCENE);f.add('<p class="e1-cap">지난 금요일, 학교 끝나고. 형이 농구하는 걸 봤어요.</p>');f.main('다음',true,()=>done({}));};
+  R.scene=(s,done)=>{const f=frame(s.title,'');f.add(SCENE);f.add('<p class="e1-cap">지난 금요일, 학교 끝나고. 남동생이 농구하는 걸 봤어요.</p>');f.main('다음',true,()=>done({}));};
   R.pair=(s,done)=>{
     const f=frame(s.title,'');f.add('<p class="e1-lead">먼저 둘만 붙여 봐요. 누가, 뭘 하고 있죠?</p>');
     const t=f.add('<div class="e1-tiles"><button type="button" class="e1-tile c-whom" data-i="0">my brother</button><button type="button" class="e1-tile c-doing" data-i="1">playing basketball</button></div>');
-    const hit=new Set(),out=f.add('<p class="e1-note info" hidden>형이 — 농구하는</p>');
+    const hit=new Set(),out=f.add('<p class="e1-note info" hidden>남동생이 — 농구하는</p>');
     t.querySelectorAll('button').forEach(b=>b.onclick=()=>{hit.add(b.dataset.i);b.classList.add('lit');if(hit.size===2){out.hidden=false;f.main('다음',true,()=>done({}));}});
     f.main('다음',false);
   };
@@ -610,7 +610,7 @@ const PA_ENGLISH_FINAL=(()=>{
       if(i===0){sent.querySelector('.e1-blank').textContent='my brother';t.innerHTML='';note(f,fb,"맞아요. saw 다음은 '누구를'이에요.",'ok');f.main('다음',true,()=>done({memo:w===0?'solo':'help'+Math.min(w,2)}));return;}
       w++;cur.w=w;save();
       if(w>=2)note(f,fb,'my brother예요. 눌러서 놓아 봐요.');
-      else note(f,fb,i===1?"saw 바로 다음은 '누구를'이에요. 형을 봤죠? 형은 영어로 뭐죠?":"'봤어요(saw)'는 벌써 있어요. 누구를 봤는지 찾아요.");
+      else note(f,fb,i===1?"saw 바로 다음은 '누구를'이에요. 남동생을 봤죠? 남동생은 영어로 뭐죠?":"'봤어요(saw)'는 벌써 있어요. 누구를 봤는지 찾아요.");
       draw();};
     draw();f.main('다음',false);
     if(w>=2)note(f,fb,'my brother예요. 눌러서 놓아 봐요.');
