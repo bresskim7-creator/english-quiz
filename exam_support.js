@@ -310,7 +310,8 @@ const PA_EXAM_SUPPORT = (() => {
   // 보기가 지문 속 위치 표지뿐인 문항(ⓐ~ⓩ, (A)~(Z))은 섞지 않는다(2026-09-24c, JH 승인 — 명세 §3-6 보완).
   // 답이 번호가 아니라 표지로 정해지므로 섞어도 자리 기억을 막지 못하고, 시험의 'ⓒ=③' 짝만 흐트러진다.
   // 섞지 않은 문항은 첫 풀이처럼 display_order·;보인순서= 가 남지 않고, 난수도 쓰지 않는다.
-  const MARKER_OPTION=/^\s*(?:[ⓐ-ⓩ]|\([A-Z]\))\s*$/;
+  // c2: 밑줄 표지 ㉠~㉭(U+3260~326D)도 같은 이유로 섞지 않는다 — 다시 풀어도 ①=㉠ … ⑤=㉤ 짝과 정답 번호가 첫 풀이와 같다.
+  const MARKER_OPTION=/^\s*(?:[ⓐ-ⓩ]|[㉠-㉭]|\([A-Z]\))\s*$/;
   function markerOnly(q){return q.options.every(o=>MARKER_OPTION.test(String(o)));}
   function shuffleForReplay(q){
     if(q.answer_mode==='writing'||!Array.isArray(q.options)||q.options.length<2)return q;
@@ -647,6 +648,20 @@ const PA_EXAM_SUPPORT = (() => {
       if(d)pg.scrollBy({top:d,behavior:'smooth'});
     },150);
   }
+  // c2(밑줄 친 ㉠~㉤ 문항): 자료의 underline[i]는 표지(㉠+i) 바로 뒤에 밑줄을 그을 말이다. 문제 화면과 '다시 볼 문제' 카드가 같은 함수로 그린다.
+  // 표지마다 제시문에 한 번만 있고 바로 뒤의 말이 underline과 정확히 같을 때만 긋는다. 하나라도 어긋나면 밑줄 없이 지금처럼 글자만 보인다.
+  function sentenceHtml(q,text){
+    const s=String(text??''),u=q&&Array.isArray(q.underline)?q.underline:null;
+    if(!u||!u.length)return esc(s);
+    let html='',at=0;
+    for(let i=0;i<u.length;i++){
+      const m=String.fromCharCode(0x3260+i),w=String(u[i]||''),k=s.indexOf(m+w);
+      if(!w||k<at||s.split(m).length!==2)return esc(s);
+      html+=esc(s.slice(at,k))+m+'<u class="exam-ul" style="text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:3px">'+esc(w)+'</u>';
+      at=k+m.length+w.length;
+    }
+    return html+esc(s.slice(at));
+  }
   // 결과 화면 '다시 볼 문제' — 틀림·모르겠어요 문제만 펼쳐 보여 준다(처음 풀이·다시 풀기 공통).
   // 문항 ID 같은 내부 값은 쓰지 않는다. 보기 번호는 그 회차에 보인 번호다.
   function reviewHtml(){
@@ -657,7 +672,7 @@ const PA_EXAM_SUPPORT = (() => {
       const v=asAnswered(q,a),order=Array.isArray(v._display_order)?v._display_order:null;   // v = 답을 낸 그때의 보기(원래 보기 + 답에 남은 보인 순서)
       const shown=(a.selected_indices||[]).map(i=>order?order.indexOf(i):i).filter(i=>i>=0).sort((x,y)=>x-y);
       return `<article class="exam-review-card"><span class="exam-review-tag${unknown?' unk':''}">${k+1}번 · ${unknown?'모르겠어요':'틀림'}</span>`
-        +(v.sentence?`<p class="exam-review-sent">${esc(v.sentence)}</p>`:'')+renderVisualMedia(q)
+        +(v.sentence?`<p class="exam-review-sent">${sentenceHtml(q,v.sentence)}</p>`:'')+renderVisualMedia(q)
         +`<p class="exam-review-q">${emphasize(q.question)}</p>`
         +`<div class="exam-answer-box">${answerBoxHtml(v,shown,unknown,'card',a)}</div>`
         +`<p class="exam-review-expl">${esc(q.explanation)}</p></article>`;
@@ -671,7 +686,7 @@ const PA_EXAM_SUPPORT = (() => {
     const label=s.stage==='diagnostic'?'처음 만나는 내용 · 사전 확인 (복습 점수 아님)':s.new?'오늘 배운 내용 적용하기':s.mixed?'여러 날 배운 내용 섞어서 기억 확인':'설명 보기 전, 기억 확인';
     document.getElementById('instruction-text').textContent=label;
     document.getElementById('question-text').innerHTML=emphasize(q.instruction||'알맞은 답을 골라 보세요');
-    box.innerHTML=`<p class="exam-card-lines">${esc(q.sentence||'')}</p>${renderVisualMedia(q)}<p><b>${emphasize(q.question)}</b></p><div id="study-options"></div><p id="exam-feedback" role="status"></p>`;
+    box.innerHTML=`<p class="exam-card-lines">${sentenceHtml(q,q.sentence||'')}</p>${renderVisualMedia(q)}<p><b>${emphasize(q.question)}</b></p><div id="study-options"></div><p id="exam-feedback" role="status"></p>`;
     const opts=box.querySelector('#study-options'),feedback=box.querySelector('#exam-feedback');
     const multi=q.answer_mode==='multiple',writing=q.answer_mode==='writing';
     let selected=new Set(),submitted=false,armTimer=null;
