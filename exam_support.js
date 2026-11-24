@@ -3,7 +3,7 @@ const PA_EXAM_SUPPORT = (() => {
   'use strict';
   // 2026-11 기말: 과학 기록은 중간(pa_science_2026_midterm_v2)과 나눠 새 키에 쌓는다. 중간 기록은 그대로 둔다.
   const KEYS={science:'pa_science_2026_final_v1',english:'pa_english_2026_midterm_v1'};
-  const IDS=['sci_fin_b1','sci_fin_b2'];  // 기말 과학 묶음(b2 = 개념 6~10 전기. 개념 11~13은 묶음이 추가될 때 여기에 덧붙인다)
+  const IDS=['sci_fin_b1','sci_fin_b2','sci_fin_b3'];  // 기말 과학 묶음(b2 = 개념 6~10 전기, b3 = 개념 11~14 별과 우주. 배정 설정은 마지막 묶음의 final_plan)
   let loading=false, active=null, pending=null, timer=null, finishIssue='';
   const tick=()=>typeof performance!=='undefined'?performance.now():Date.now();
   function elapsed(){return timer?Math.round((timer.ms+(timer.start==null?0:tick()-timer.start))/1000):0;}
@@ -458,13 +458,51 @@ const PA_EXAM_SUPPORT = (() => {
     }catch(e){status.textContent='학습을 시작하지 못했어요. 저장 공간과 연결을 확인한 뒤 다시 눌러 주세요.';console.error('[exam-start]',e);}
     finally{loading=false;home.inert=false;}
   }
+  // v213(b3): 사진 자료(visual_img + visual_credit) — 패널별 출처(Credit 원문)·원출처 링크·CC BY 4.0·고친 내용을 사진과 같은 화면에 글로 보인다
+  //   (Codex b3 계획 검토 §4 · 후보 검토 §2). 문제 화면도 답을 고르기 전부터 모두 보인다(첫 풀이·다시 풀기 같음). 문제 화면의 출처 글은 보기 아래에 둔다(사진과 보기가 가깝게).
+  //   링크 문구는 '(가) 사진 출처'처럼 쓰임만 밝히고 천체 이름·종류는 말하지 않는다. 링크를 열지 않아도 사진만 보고 풀리게 문항을 만든다.
+  //   사진이 필요한 문제는 사진이 실제로 뜰 때까지 보기·'아직 모르겠어요'를 잠근다(renderMultiple의 photoLock — 후보 검토 §1).
+  //   사진을 못 불러오면 그림 칸을 숨기지 않고 안내한다. 문제 화면에서는 보기를 숨겨, 사진 없이 고른 답이 오답으로 남지 않게 한다(검토 §6).
+  //   다시 불러오기는 <button>이 아니라 링크로 둔다 — 카드 화면은 box.querySelector('button')(첫 버튼)에 '이제 문제로 확인하기'를 건다.
+  //   visual_credit이 없는 그림은 지금처럼 index.html의 renderVisualMedia로 그린다(b1·b2·다른 과목 그대로).
+  function photoCredit(item){
+    const c=item&&item.visual_credit;if(!c)return '';
+    const link='color:#2F5496;text-decoration:underline';
+    const lines=(c.panels||[]).map(p=>`<div class="pc-line"><a href="${esc(p.url)}" target="_blank" rel="noopener" style="${link}">${esc(p.label)} 사진 출처</a> · ${esc(p.credit)}</div>`).join('');
+    const lic=c.license?`<div><a href="${esc(c.license.url)}" target="_blank" rel="noopener" style="${link}">${esc(c.license.name)}</a> · ${esc(c.note||'')}</div>`:'';
+    return `<div class="mc-photo-credit" style="font-size:12.5px;line-height:1.5;color:#5a6472;text-align:left;overflow-wrap:anywhere;margin:6px 0 10px">${lines}${lic}</div>`;
+  }
+  function visualMarkup(item,opt){
+    if(!item||!item.visual_img||!item.visual_credit)return renderVisualMedia(item);
+    const inQuestion=!!(opt&&opt.question);
+    const svg=item.visual_svg?`<div class="mc-visual" style="margin-bottom:12px;text-align:center;overflow-x:auto;max-width:100%;">${item.visual_svg.replace(/<svg /,'<svg style="max-width:100%;height:auto;" ')}</div>`:'';
+    return `<figure class="mc-photo" style="margin:0 0 12px"><div class="mc-visual" style="margin-bottom:6px;text-align:center;max-width:100%;"><img src="${esc(item.visual_img)}" alt="${esc(item.visual_alt||'')}" style="max-width:100%;height:auto;border-radius:8px;" onerror="PA_EXAM_SUPPORT.photoMissing(this)"></div>`
+      +`<div class="photo-missing" role="alert" hidden style="background:#fff3cd;border:2px solid #ac6600;border-radius:8px;padding:10px;margin:6px 0;font-size:15px;line-height:1.5">사진을 불러오지 못했어요. 인터넷에 연결한 뒤 아래 버튼을 눌러 주세요.<span class="photo-missing-q" hidden> 사진을 보고 푸는 문제라 사진이 보일 때까지 답을 고를 수 없어요.</span><br><a href="#" role="button" class="photo-retry" style="display:inline-block;margin-top:8px;padding:10px 14px;border-radius:8px;background:#1565c0;color:#fff;font-weight:700;text-decoration:none" onclick="PA_EXAM_SUPPORT.photoRetry(this);return false">사진 다시 불러오기</a></div>`
+      +(inQuestion?'':photoCredit(item))+`</figure>${svg}`;
+  }
+  // 문제 화면(#question-container의 첫 그림)이면 보기(#study-options)를 숨긴다. 카드·'헷갈린 핵심 짚어 보기'·'다시 볼 문제'는 안내만.
+  //   r3: 제출 여부는 data-submitted로 본다 — 사진을 기다리는 동안에는 제출 전에도 보기가 잠겨(disabled) 있다.
+  function photoMissing(img){
+    const fig=img&&img.closest&&img.closest('figure.mc-photo');if(!fig)return;
+    img.style.display='none';const note=fig.querySelector('.photo-missing');if(note)note.hidden=false;
+    const box=fig.closest('#question-container');
+    if(!box||fig.closest('.science-repair')||fig.closest('.science-support-card'))return;
+    const opts=box.querySelector('#study-options');if(!opts||opts.dataset.submitted)return;   // 이미 제출한 문항은 그대로
+    opts.style.display='none';opts.dataset.photoMissing='1';const q=fig.querySelector('.photo-missing-q');if(q)q.hidden=false;
+  }
+  function photoRetry(btn){
+    const fig=btn&&btn.closest('figure.mc-photo'),img=fig&&fig.querySelector('img');if(!img)return;
+    img.onload=()=>{img.style.display='';const note=fig.querySelector('.photo-missing');if(note)note.hidden=true;
+      const opts=fig.closest('#question-container')?.querySelector('#study-options');if(opts&&opts.dataset.photoMissing){opts.style.display='';delete opts.dataset.photoMissing;}};
+    img.src=img.getAttribute('src').split('#')[0]+'#retry'+Date.now();
+  }
   // 기말 카드: '이름 | 하는 일 | 위치·특징' 표(table)와 여러 줄 시험 함정(exam_tip 배열)을 함께 보여 준다. 중간 카드(문자열)는 그대로.
   // v209: 기말 설계(DESIGN_v2)대로 쉬운 설명 다음에 '핵심 정의'(definition) 한 줄 — 첫날 K01-Q2 ㄱ이 분자 정의를 그대로 묻는다.
   function cardTable(t){if(!t||!Array.isArray(t.head)||!Array.isArray(t.rows))return '';
     const cell='border:1px solid #d9dee5;padding:6px 7px;vertical-align:top;text-align:left;';
     return `<div style="overflow-x:auto;margin:10px 0"><table style="border-collapse:collapse;width:100%;font-size:14px;line-height:1.45"><thead><tr>${t.head.map(h=>`<th style="${cell}background:#eef3fb;color:#234c80">${esc(h)}</th>`).join('')}</tr></thead><tbody>${t.rows.map(r=>`<tr>${r.map((v,i)=>`<td style="${cell}${i===0?'font-weight:700;':''}">${esc(v)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;}
   function cardTips(t){return Array.isArray(t)?`<div class="science-tip">기억할 점<ul style="margin:6px 0 0;padding-left:18px">${t.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:`<p class="science-tip">기억할 점 · ${esc(t)}</p>`;}
-  function cardMarkup(c){return `<section class="science-support-card"><h2>${esc(c.term)}</h2>${renderVisualMedia(c)}<p class="exam-card-lines">${esc(c.easy_explanation)}</p>${c.definition?`<p class="exam-card-def" style="margin:8px 0 0;font-size:15px;line-height:1.55"><b>핵심 정의</b> · ${esc(c.definition)}</p>`:''}${cardTable(c.table)}${cardTips(c.exam_tip)}<small>교과서 ${c.source_refs[0].printed_pages.join('·')}쪽</small></section>`;}
+  function cardMarkup(c){return `<section class="science-support-card"><h2>${esc(c.term)}</h2>${visualMarkup(c)}<p class="exam-card-lines">${esc(c.easy_explanation)}</p>${c.definition?`<p class="exam-card-def" style="margin:8px 0 0;font-size:15px;line-height:1.55"><b>핵심 정의</b> · ${esc(c.definition)}</p>`:''}${cardTable(c.table)}${cardTips(c.exam_tip)}<small>교과서 ${c.source_refs[0].printed_pages.join('·')}쪽</small></section>`;}
   function expose(state,q){
     state.__exposures=state.__exposures||{};const list=state.__exposures[day()]||[];
     state.__exposures={[day()]:[...new Set([...list,...rules(q)])]};
@@ -482,6 +520,7 @@ const PA_EXAM_SUPPORT = (() => {
     document.getElementById('instruction-text').textContent='먼저 한 가지를 이해해 보자';
     document.getElementById('btn-hint').style.display='none';
     box.innerHTML=cardMarkup(c)+'<button class="science-continue">이제 문제로 확인하기 →</button>';
+    {const pg0=box.closest('.page');if(pg0)pg0.scrollTop=0;}   // r2(JH 결정 11/24): 카드는 맨 위부터(앞 문항 해설 위치에 머물지 않게)
     box.querySelector('button').onclick=()=>{
       const st=JSON.parse(JSON.stringify(active.state));st.__plan.tasks.find(t=>t.id===q.id).support.ready=true;
       if(!write(st))return;active.state=st;s.ready=true;showQuestion();
@@ -675,7 +714,7 @@ const PA_EXAM_SUPPORT = (() => {
       const v=asAnswered(q,a),order=Array.isArray(v._display_order)?v._display_order:null;   // v = 답을 낸 그때의 보기(원래 보기 + 답에 남은 보인 순서)
       const shown=(a.selected_indices||[]).map(i=>order?order.indexOf(i):i).filter(i=>i>=0).sort((x,y)=>x-y);
       return `<article class="exam-review-card"><span class="exam-review-tag${unknown?' unk':''}">${k+1}번 · ${unknown?'모르겠어요':'틀림'}</span>`
-        +(v.sentence?`<p class="exam-review-sent">${sentenceHtml(q,v.sentence)}</p>`:'')+renderVisualMedia(q)
+        +(v.sentence?`<p class="exam-review-sent">${sentenceHtml(q,v.sentence)}</p>`:'')+visualMarkup(q)
         +`<p class="exam-review-q">${emphasize(q.question)}</p>`
         +`<div class="exam-answer-box">${answerBoxHtml(v,shown,unknown,'card',a)}</div>`
         +`<p class="exam-review-expl">${esc(q.explanation)}</p></article>`;
@@ -689,10 +728,22 @@ const PA_EXAM_SUPPORT = (() => {
     const label=s.stage==='diagnostic'?'처음 만나는 내용 · 사전 확인 (복습 점수 아님)':s.new?'오늘 배운 내용 적용하기':s.mixed?'여러 날 배운 내용 섞어서 기억 확인':'설명 보기 전, 기억 확인';
     document.getElementById('instruction-text').textContent=label;
     document.getElementById('question-text').innerHTML=emphasize(q.instruction||'알맞은 답을 골라 보세요');
-    box.innerHTML=`<p class="exam-card-lines">${sentenceHtml(q,q.sentence||'')}</p>${renderVisualMedia(q)}<p><b>${emphasize(q.question)}</b></p><div id="study-options"></div><p id="exam-feedback" role="status"></p>`;
+    box.innerHTML=`<p class="exam-card-lines">${sentenceHtml(q,q.sentence||'')}</p>${visualMarkup(q,{question:true})}<p><b>${emphasize(q.question)}</b></p><div id="study-options"></div><p id="exam-feedback" role="status"></p>${photoCredit(q)}`;
+    {const pg0=box.closest('.page');if(pg0)pg0.scrollTop=0;}   // r2(JH 결정 11/24): 새 문항은 맨 위(그림·사진)부터 보이게
     const opts=box.querySelector('#study-options'),feedback=box.querySelector('#exam-feedback');
     const multi=q.answer_mode==='multiple',writing=q.answer_mode==='writing';
     let selected=new Set(),submitted=false,armTimer=null;
+    // r3(Codex 후보 검토 §1): 사진이 필요한 문제는 사진이 실제로 뜰 때까지 보기·제출·'아직 모르겠어요'를 잠근다.
+    //   캐시에서 바로 읽은 사진(complete·naturalWidth)도 인식하고, 채점 직전(finish)에도 다시 본다. 사진이 없는 문제는 그대로다.
+    const photoImg=q.visual_img&&q.visual_credit?box.querySelector('figure.mc-photo img'):null;
+    const photoOk=()=>!photoImg||(photoImg.isConnected&&photoImg.complete&&photoImg.naturalWidth>0);
+    const PHOTO_WAIT='사진이 보이면 답을 고를 수 있어요.';let armed=false;
+    //   기다리는 동안은 보기 바로 위에 안내 한 줄(사진 칸이 비어 있어 보기만 흐리게 보이므로). 못 불러오면 사진 칸의 안내(photoMissing)가 대신한다.
+    const photoLock=()=>{if(!photoImg||submitted)return;const ready=photoOk();
+      opts.querySelectorAll('button,input,textarea').forEach(b=>{b.disabled=!ready||(b.classList.contains('science-unsure')&&!armed);});
+      let w=box.querySelector('.photo-wait');const show=!ready&&!opts.dataset.photoMissing;
+      if(show&&!w){w=document.createElement('p');w.className='photo-wait';w.setAttribute('role','status');w.style.cssText='margin:6px 0 2px;color:#5a6472;font-size:15px;line-height:1.5';w.textContent=PHOTO_WAIT;opts.before(w);}
+      else if(!show&&w)w.remove();};
     // 기록은 원래 번호(selected_indices)로 남긴다. 다시 풀기에서 섞였거나 첫 풀이에서 새 순서로 보였으면 보인 순서(display_order)도,
     // 첫 풀이에서 제시어가 바뀌어 보였으면 그 제시어(display_sentence)도 함께 남긴다(기기 안 기록만, 전송 필드는 그대로).
     const order=Array.isArray(q._display_order)?q._display_order:null;
@@ -701,8 +752,9 @@ const PA_EXAM_SUPPORT = (() => {
     const chosen=list=>({selected_indices:list.map(i=>order?order[i]:i).sort((a,b)=>a-b),...shownOrder});
     const finish=(correct,extra={},shown=null)=>{
       if(submitted)return;
+      if(!photoOk()){photoLock();return false;}   // r3: 채점 직전에도 이 문항의 사진이 떴는지 본다(사진 없이 고른 답·복습 예약을 남기지 않음)
       if(recordAnswer(q,correct,extra)===false)return false;
-      submitted=true;clearTimeout(armTimer);opts.querySelectorAll('button,input,textarea').forEach(b=>b.disabled=true);
+      submitted=true;clearTimeout(armTimer);opts.dataset.submitted='1';opts.querySelectorAll('button,input,textarea').forEach(b=>b.disabled=true);
       const hint=document.getElementById('btn-hint');hint.disabled=true;
       feedback.textContent=(correct?'맞았어요. ':'다시 짚어 보자. ')+q.explanation;
       if(!correct){const c=QUIZ_DATA.concept_cards.find(c=>c.id===s.concept)||(QUIZ_DATA.review_cards||[]).find(c=>c.id===q.review_card);if(c){const d=document.createElement('details');d.className='science-repair';d.open=true;d.innerHTML='<summary>헷갈린 핵심 짚어 보기</summary>'+cardMarkup(c);box.appendChild(d);}}
@@ -729,8 +781,9 @@ const PA_EXAM_SUPPORT = (() => {
     const unsure=document.createElement('button');unsure.className='science-unsure';unsure.textContent='아직 모르겠어요';unsure.onclick=()=>{q._support_unsure=true;if(finish(false,{...shownOrder})===false)q._support_unsure=false;};
     // 오터치 방지(2026-09-21): 개념카드 '이제 문제로 확인하기 →'와 같은 좌표에 놓이므로 렌더 직후 잠시 잠근다.
     // 제출된 문항·떨어져 나간 노드는 다시 풀지 않는다(submitted / isConnected).
-    unsure.disabled=true;armTimer=setTimeout(()=>{if(!submitted&&unsure.isConnected)unsure.disabled=false;},Number(window.PA_UNSURE_ARM_MS)||600);
+    unsure.disabled=true;armTimer=setTimeout(()=>{armed=true;if(!submitted&&unsure.isConnected&&photoOk())unsure.disabled=false;},Number(window.PA_UNSURE_ARM_MS)||600);
     opts.appendChild(unsure);
+    if(photoImg){photoLock();photoImg.addEventListener('load',photoLock);photoImg.addEventListener('error',photoLock);}   // r3: 사진이 뜨면 열고, 못 불러오거나 다시 불러오는 동안은 잠근 채로
     const hint=document.getElementById('btn-hint');hint.disabled=false;hint.style.display=q.hint?'':'none';
     hint.onclick=()=>{if(submitted||!markHelp(q,'hint'))return;document.getElementById('hint-display').style.display='block';document.getElementById('hint-display').textContent=q.hint;};
     if(s.hint||s.countWarning)hintUsedThisQuestion=true;
@@ -816,5 +869,5 @@ const PA_EXAM_SUPPORT = (() => {
     return true;
   }
 
-  return {shuffleOrder,replay,isReplay,clearReplay,refreshReplayButton,replaySourceState,summaryCounts,originalCounts,savePractice,savePracticeProgress,recoverPractice,sendPractice,practiceLogs,practiceNotice,start,session,restore,before,after,renderMultiple,record,capture,detail,result,canSave,finalize,finishNotice,leave,showDetails,planFor,englishPlan,gradeWriting,day,read,elapsed,emphasize};
+  return {shuffleOrder,replay,isReplay,clearReplay,refreshReplayButton,replaySourceState,summaryCounts,originalCounts,savePractice,savePracticeProgress,recoverPractice,sendPractice,practiceLogs,practiceNotice,start,session,restore,before,after,renderMultiple,record,capture,detail,result,canSave,finalize,finishNotice,leave,showDetails,planFor,englishPlan,gradeWriting,day,read,elapsed,emphasize,photoMissing,photoRetry};
 })();
