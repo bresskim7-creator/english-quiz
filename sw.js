@@ -1,3 +1,5 @@
+// v212 (2026-11-24 후보, 영어 E2 r7 — 원고 E2 v1.3·시안 v1.1·대응표 v1 + Codex 착수 의견 3건 + Codex r1 검토 4건 + Codex r2 검토 3건 + Codex r3 검토 4건 + Codex r4 검토 2건 + Codex r5 검토 4건 + Codex r6 검토 1건·회차 복원 보강): english_final.js에 둘째 묶음 E2(want·tell·ask + 사람 + to, T1~T14) 추가 — E2 전용 순서표·진도·저장 키(pa_english_2026_final_e2_v1)·공유 기록(eng_fin-E2, 서버 무변경)·결과 로그(quiz_logs_eng_fin_e2), 하루 배정은 E1·E2 함께(E2 전에는 E1 그대로), 하루 끝 문구 '오늘 영어는 여기까지예요.', 고르기 보기 글자 진하게(r3c CSS). index.html에 englishFinalRemoteE2·enqueueEnglishFinalE2·eng_fin-E2 수신 합치기(받은 첫 답·단계 보존, 엇갈린 첫 답 미확인, 영어 모듈 없을 때 보관), PRECACHE에 img/E2_t1_delete_picture.png. E1 채점·공유 규칙·서버(GAS) 불변. CACHE_NAME v212->v212, APP_CACHE_NAME/BUILD_VERSION 동반.
+// v212 (2026-11-22 후보, 영어 S9① A/B — 배포 점검 v3 §3-1): english_final.js만 기능 변경 — 5일차 혼자 쓰기(S8W) 채점 뒤 '본문 문장 보기'(본 날 S9v 기록)·S9 ① 발문 A(앞선 학습일에 봤을 때, 본문 문장 그대로)/B(앞뒤 조건, ① 제출 뒤 본문 문장)를 처음 보여 줄 때 고정(S9m, 공유 합치기는 B 우선)·A 첫 오답 after school 안내·로그 S9a m=·S8W orig=. SEQ·채점·배정·서버(GAS v25) 불변. CACHE_NAME v211->v212, APP_CACHE_NAME/BUILD_VERSION 동반.
 // v211 (2026-11-21 후보 b2, 과학 전기 묶음 — 개념 6~10): lesson_sci_fin_b2.js 신규(카드 5·문항 29, 회로 그림 visual_svg)·exam_support.js IDS에 sci_fin_b2·밑줄은 표지 수 = underline 길이일 때만(X4)·LESSON_VERSIONS lesson_sci_fin_b2 fin2-1(b1 fin-7 그대로).
 // v210 (2026-11-21 후보 c2, 배포 점검 v3 묶음 2 + K02 카드): 과학 ○/× 안내 9문항 문구(선택 방식과 일치)·밑줄 친 ㉠~㉤ 5문항 밑줄(자료 underline, 문제 화면·다시 볼 문제 같은 범위)·다시 풀기에서 ㉠~㉤ 보기 순서 고정(MARKER_OPTION)·K02 카드 기억할 점(이온 화학식 표기·여러 원자로 된 이온)과 표 양성자 수(lesson_sci_fin_b1.js LESSON_VERSIONS fin-7, exam_support.js). 채점·배정·기록·공유·서버 규칙 불변(GAS v25 그대로). CACHE_NAME v209->v210, APP_CACHE_NAME/BUILD_VERSION 동반.
 // v209 (2026-11-21 후보 c1, 배포 점검 v3 묶음 1 — 첫날 노출 항목): 과학 카드 '핵심 정의' 한 줄(exam_support.js), 영어 E1 호칭 '남동생' 통일·단어 카드 문구·S9① 우리말 어순(english_final.js), K01-Q2 해설 ㄱ·복습 해설 'ㄴ·ㄷ' 순서·'이온식' → '이온을 나타낸 화학식'/'화학식'(lesson_sci_fin_b1.js, LESSON_VERSIONS fin-6). 채점·배정·기록·서버 규칙 불변(GAS v25 그대로). CACHE_NAME v208->v209, APP_CACHE_NAME/BUILD_VERSION 동반.
@@ -36,7 +38,7 @@
 // v186 (2026-08-03): 영어 단어 간격 복습(E30) — 서버(GAS v18)가 사다리를 계산하고 클라는 캐시.
 //   device_instance_id·answered_at·recall_mode·question_type 전송, doGet?action=vocab_state pull,
 //   만기 우선 선발(due_cap 램프 + new_min 2), 만기 단어는 카드 없이 냉시험.
-const CACHE_NAME = 'quiz-v211';
+const CACHE_NAME = 'quiz-v212';
 // v169 (2026-06-16): 국어 마인드맵 내용형 교체 — kor2 허브 kor_mindmap_kor2_v2.png, kor3 허브 kor_mindmap_kor3_v2.png(가지별 핵심 불릿 + ⚠함정). lesson_kor2/3 mindmap.img 동반 갱신. PRECACHE 2줄(v1→v2) 교체. APP_CACHE_NAME 동반 범프(v168->v169). 캐시 강제 갱신용.
 // v168 (2026-06-16): 사회 마인드맵 내용형 교체 — soc3 허브 soc_mindmap_soc3_v2.png, soc4 허브 soc_mindmap_soc4_v3.png(가지별 핵심 불릿 + ⚠함정). lesson_soc3/4 mindmap.img 동반 갱신. PRECACHE 2줄(v1→v2 / v2→v3) 교체. APP_CACHE_NAME 동반 범프(v167->v168). 캐시 강제 갱신용.
 // v167 (2026-06-12): 기말 총점검 보강 — 사회 soc4 환율 그래프 exam 4문항(S4-E040~E043, v1.0->1.1; img/soc_forex_shift_demand_v1.png Pillow 256색 FS 압축 -62% 배선) + 과학 sci2 형식 정합 4건(S2-E026 보기형 재설계·E032/E006 ㄱㄴㄷ 변환·E001 자구, v1.1->1.2). PRECACHE에 soc_forex_shift_demand_v1.png 등재. APP_CACHE_NAME 동반 범프(v166->v167). 캐시 강제 갱신용.
@@ -80,7 +82,7 @@ const PRECACHE_URLS = [
   './pa_runtime.js?v=194',
   './english_exam.js?v=197',
   './science_final.js?v=207',
-  './english_final.js?v=209',
+  './english_final.js?v=212',
   './exam_support.js?v=211',
   './exam_home.js?v=198',
   './문해력카드/card.html',
@@ -141,6 +143,7 @@ const PRECACHE_URLS = [
   "./img/daily_shorts_b6_1026_v1.png",
   "./img/daily_shorts_b6_1027_v1.png",
   "./img/daily_shorts_b6_1028_v1.png",
+  "./img/E2_t1_delete_picture.png",
 
   './',
   './index.html',

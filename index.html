@@ -2171,8 +2171,8 @@
         let sessionType = PA_STORAGE.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-11-21 v211';
-        const APP_CACHE_NAME = 'quiz-v211';
+        const BUILD_VERSION = '2026-11-23 v212';
+        const APP_CACHE_NAME = 'quiz-v212';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -10529,13 +10529,52 @@ const PA_PROGRESS=(()=>{
   // 해결 표시보다 먼저 틀린 예약만 닫힌다. 순서와 무관해 기기·서버 어디서 먼저 합쳐도 같다. (그 밖 개념은 r7과 같음)
   const sciFin=id=>typeof id==='string'&&/^sci_fin-/.test(id);
   function questionsMerge(primary,secondary){const F=typeof PA_SCIENCE_FINAL!=='undefined'?PA_SCIENCE_FINAL:null;return F?F.mergeQuestions(primary,secondary):union(primary||[],secondary||[]);}
+  // r2(2026-11-23b, Codex E2 r1 HOLD 3): 기말 영어 E2(eng_fin-E2)는 그 밖 칸은 더 새 기록, last_questions는 더 새 기록 토큰 + 두 기록의 엇갈린 첫 답 미확인 표시(<문항>_u)
+  // — 판정은 english_final.js PA_ENGLISH_FINAL.E2.mergeQuestions2(앱이 첫 답을 비교하는 규칙과 같은 함수). 그 파일이 없으면 미확인 표시만 옮긴다.
+  function e2QuestionsMerge(primary,secondary){const F=typeof PA_ENGLISH_FINAL!=='undefined'&&PA_ENGLISH_FINAL.E2&&PA_ENGLISH_FINAL.E2.mergeQuestions2;
+    if(F)return F(primary||[],secondary||[]);const keep=(secondary||[]).filter(t=>/^r:[A-Za-z0-9.-]+_u:u-mixed$/.test(t));return union(primary||[],keep);}
+  // r3: 영어 모듈이 있는지 · 보관분(e2_stash)을 E2 합치기로 한 기록에 접기(같은 기록을 다시 접어도 같음).
+  const e2Ready=()=>typeof PA_ENGLISH_FINAL!=='undefined'&&!!PA_ENGLISH_FINAL.E2&&typeof PA_ENGLISH_FINAL.E2.mergeQuestions2==='function';
+  function e2Fold(c,stash){let out=c;for(const x of stash||[]){const m=mergeConcept(out,x,'eng_fin-E2');if(m)out=m;}return out;}
+  const s9Field = /^r:(S9m|S9v|S9vl):/;
+  function s9Evidence(tokens) {
+    const dates = [];
+    for (const token of tokens) {
+      const m = /^r:S9v(?:l)?:v-(\d{4}-\d{2}-\d{2})$/.exec(token);
+      if (!m) continue;
+      const time = Date.parse(m[1] + 'T00:00:00Z');
+      if (Number.isFinite(time) && new Date(time).toISOString().slice(0, 10) === m[1]) dates.push(m[1]);
+    }
+    dates.sort();
+    const result = {};
+    if (tokens.includes('r:S9m:m-B')) result.S9m = 'm-B';
+    else if (tokens.includes('r:S9m:m-A')) result.S9m = 'm-A';
+    if (dates.length) {
+      result.S9v = 'v-' + dates[0];
+      if (dates[0] !== dates[dates.length - 1]) result.S9vl = 'v-' + dates[dates.length - 1];
+    }
+    return result;
+  }
+  function s9Tokens(res) {
+    return ['S9m', 'S9v', 'S9vl'].filter(k => res[k]).map(k => 'r:' + k + ':' + res[k]);
+  }
+  function mergeE1Evidence(primary, other) {
+    const facts = s9Evidence(primary.concat(other));
+    const keep = primary.filter(t => !s9Field.test(t));
+    const oldAnswer = primary.some(t => /^r:S9(a:D-(ok|help|fail)|a0:D-wrong)$/.test(t));
+    if (oldAnswer && facts.S9m && !s9Evidence(primary).S9m) keep.push('r:S9u:u-legacy');
+    return union(keep, s9Tokens(facts));
+  }
   function mergeConcept(a,b,id){
     const x=concept(a),y=concept(b);
     if(!y||Date.parse(y.evidence_at)>Date.now()+86400000)return a?copy(a):null;
-    if(!x){const o=copy(y);if(sciFin(id))o.last_questions=questionsMerge(o.last_questions,[]);return o;}
+    if(!x){const o=copy(y);if(sciFin(id))o.last_questions=questionsMerge(o.last_questions,[]);
+      if(id==='eng_fin-E1')o.last_questions=mergeE1Evidence(o.last_questions,[]);return o;}
     const newer=Date.parse(y.evidence_at)>Date.parse(x.evidence_at)||(Date.parse(y.evidence_at)===Date.parse(x.evidence_at)&&y.event_id>x.event_id);
     const out={...copy(newer?y:x),introduced:x.introduced||y.introduced,independent_days:union(x.independent_days,y.independent_days).slice(-8)};
+    if(id==='eng_fin-E1')out.last_questions=mergeE1Evidence(out.last_questions,(newer?x:y).last_questions);
     if(sciFin(id))out.last_questions=questionsMerge((newer?y:x).last_questions,(newer?x:y).last_questions);
+    if(id==='eng_fin-E2')out.last_questions=e2QuestionsMerge((newer?y:x).last_questions,(newer?x:y).last_questions);
     return out;
   }
   function bucket(a,b){return {v:1,done:true,learningDays:union(a?.learningDays||[],b.learningDays||[]),events:union(a?.events||[],b.events||[])};}
@@ -10543,18 +10582,33 @@ const PA_PROGRESS=(()=>{
   function ingest(snapshot){
     if(!obj(snapshot)||snapshot.v!==1||snapshot.curriculum!==PA_CURRICULUM||!Array.isArray(snapshot.literacy_read)||!obj(snapshot.completion_days)||!Array.isArray(snapshot.english_legacy_days)||!obj(snapshot.concepts))return false;
     const r=remote()||empty();
+    if(held?.e1_s9_cue==='B'||snapshot.e1_s9_cue==='B')r.e1_s9_cue='B';
+    const pendingE1=held?.concepts?.english?.['eng_fin-E1'];
+    if(pendingE1){const e=mergeConcept(r.concepts.english?.['eng_fin-E1'],pendingE1,'eng_fin-E1');
+      if(e){r.concepts.english=r.concepts.english||{};r.concepts.english['eng_fin-E1']=e;}}
+    // r2: 저장하지 못해 보류한 수신 기록(held)의 E2도 다음 수신 전에 다시 합친다(엇갈린 첫 답이 다음 스냅샷으로 교체되며 사라지지 않게).
+    const pendingE2=held?.concepts?.english?.['eng_fin-E2'];
+    if(pendingE2){const e=mergeConcept(r.concepts.english?.['eng_fin-E2'],pendingE2,'eng_fin-E2');
+      if(e){r.concepts.english=r.concepts.english||{};r.concepts.english['eng_fin-E2']=e;}}
+    // r3(2026-11-23d, Codex E2 r2 설계 판단 5): 영어 모듈(english_final.js)을 읽지 못한 채 eng_fin-E2를 받으면 합치기 전 기록(캐시·받은 것)을 버리지 않고
+    // 이 기기 캐시에 보관(e2_stash, 최근 16개)했다가, 다음 정상 로드의 수신에서 E2 합치기로 비교한다(서버로 보내지 않음).
+    const stashE2=[...(Array.isArray(r.e2_stash)?r.e2_stash:[]),...(Array.isArray(held?.e2_stash)?held.e2_stash:[])];
+    if(e2Ready()){if(stashE2.length){const e=e2Fold(r.concepts.english?.['eng_fin-E2'],stashE2);if(e){r.concepts.english=r.concepts.english||{};r.concepts.english['eng_fin-E2']=e;}}delete r.e2_stash;}
+    else{const inE2=snapshot.concepts?.english?.['eng_fin-E2'],curE2=r.concepts.english?.['eng_fin-E2'],ids=new Set();
+      const keep=stashE2.concat(obj(inE2)&&obj(curE2)?[copy(curE2)]:[],obj(inE2)?[copy(inE2)]:[]).filter(x=>obj(x)&&typeof x.event_id==='string'&&!ids.has(x.event_id)&&ids.add(x.event_id)).slice(-16);
+      if(keep.length)r.e2_stash=keep;else delete r.e2_stash;}
     r.literacy_read=union(r.literacy_read||[],snapshot.literacy_read.filter(x=>typeof x==='string'));
     for(const s of Object.keys(KEYS)){
       r.completion_days[s]=r.completion_days[s]||{};r.concepts[s]=r.concepts[s]||{};
       for(const [d,b] of Object.entries(snapshot.completion_days[s]||{}))if(date(d)&&validBucket(b))r.completion_days[s][d]=bucket(r.completion_days[s][d],b);
-      for(const [id,c] of Object.entries(snapshot.concepts[s]||{})){const merged=mergeConcept(r.concepts[s][id],c,s==='science'?id:'');if(merged)r.concepts[s][id]=merged;}
+      for(const [id,c] of Object.entries(snapshot.concepts[s]||{})){const merged=mergeConcept(r.concepts[s][id],c,(s==='science'||(s==='english'&&(id==='eng_fin-E1'||id==='eng_fin-E2')))?id:'');if(merged)r.concepts[s][id]=merged;}
     }
     for(const x of snapshot.english_legacy_days){
       if(!obj(x)||typeof x.key!=='string'||!x.key.startsWith(PA_CURRICULUM+'/')||!Array.isArray(x.days)||!x.days.every(n=>Number.isSafeInteger(n)&&n>0))continue;
       const old=r.english_legacy_days.find(y=>y.key===x.key);if(old)old.days=union(old.days,x.days);else r.english_legacy_days.push(copy(x));
     }
     if(store(REMOTE,r)){held=null;return true;} // No subject state, draft, or screen mutation here.
-    held=snapshot;return false;
+    held=r;return false;
   }
   function receipts(){
     const r=read(RECEIPTS,{v:1,curriculum:PA_CURRICULUM,ids:[],days:[],rejected:[]});
@@ -10680,7 +10734,7 @@ const PA_PROGRESS=(()=>{
             if(JSON.stringify(lq)!==JSON.stringify(union([],l.last_questions||[])))result[id]={...l,last_questions:lq};}}
         return;}
       const local=result[id];const normalized=local&&!local.evidence_at?concept(local,local.last_day+'T00:00:00+09:00','legacy-local'):local;
-      const m=mergeConcept(normalized,c,subject==='science'?id:'');if(m)result[id]=m;};
+      const m=mergeConcept(normalized,c,(subject==='science'||(subject==='english'&&id==='eng_fin-E1'))?id:'');if(m)result[id]=m;};
     for(const e of all)for(const i of e.items||[])if(i.subject===subject&&i.kind==='concept')merge(i.key.slice(PA_CURRICULUM.length+1),i.value);
     if(r)for(const [id,c] of Object.entries(r.concepts?.[subject]||{}))merge(id,c);
     return result;
@@ -10794,13 +10848,28 @@ const PA_PROGRESS=(()=>{
     }catch(_){issue='storage';notify();}
   }
   // 2026-11 기말 영어 E1: 진도는 개념 기록 하나(eng_fin-E1)로 기존 형식 그대로 공유한다(서버 진도 무변경). 중간 영어 학습일 번호(completion_day·english_legacy_days)와 섞지 않는다.
-  function englishFinalRemote(){const r=remote(),c=r&&r.concepts&&r.concepts.english?r.concepts.english['eng_fin-E1']:null;return obj(c)?copy(c):null;}
+  function englishFinalHasCue(){return held?.e1_s9_cue==='B'||remote()?.e1_s9_cue==='B';}
+  function englishFinalRemote(){const c=remote()?.concepts?.english?.['eng_fin-E1'];
+    const waiting=held?.concepts?.english?.['eng_fin-E1'];
+    return waiting?mergeConcept(c,waiting,'eng_fin-E1'):(obj(c)?copy(c):null);}
   function enqueueEnglishFinal(value){
     if(PA_RUNTIME.preview)return true;
     const c=concept(value,value.evidence_at,value.event_id);if(!c)return false;
     return enqueue({id:'eng_fin:'+c.event_id,subject:'english',source:'eng_final',items:[item('concept','english','eng_fin-E1',c,c.event_id,c.last_day)],logAck:true,progressAck:false});
   }
-  return {day,mergeConcept,bucket,ingest,promote,doneDays,nextDay,guard,stamp,ensureCompletion,beforeAdvance,applyStart,recover,linkLog,logEvent,beforeCompact,literacy,notice,pull,push,ackProgress,sync,englishFinalRemote,enqueueEnglishFinal};
+  // 2026-11 기말 영어 E2: 둘째 묶음 진도도 개념 기록 하나(eng_fin-E2)로 같은 방식 공유한다(서버 무변경 — 일반 개념 병합 = 더 새 기록, 원고 E2 v1.3 §10 (b)).
+  function englishFinalRemoteE2(){const R=remote();let c=R?.concepts?.english?.['eng_fin-E2'];
+    const waiting=held?.concepts?.english?.['eng_fin-E2'];
+    if(waiting)c=mergeConcept(c,waiting,'eng_fin-E2');
+    // r3: 영어 모듈 없이 받아 보관한 기록(e2_stash)도 접어서 읽는다(캐시 저장은 다음 수신 때).
+    if(e2Ready()){const st=[...(Array.isArray(R?.e2_stash)?R.e2_stash:[]),...(Array.isArray(held?.e2_stash)?held.e2_stash:[])];if(st.length)c=e2Fold(c,st);}
+    return obj(c)?copy(c):null;}
+  function enqueueEnglishFinalE2(value){
+    if(PA_RUNTIME.preview)return true;
+    const c=concept(value,value.evidence_at,value.event_id);if(!c)return false;
+    return enqueue({id:'eng_fin2:'+c.event_id,subject:'english',source:'eng_final',items:[item('concept','english','eng_fin-E2',c,c.event_id,c.last_day)],logAck:true,progressAck:false});
+  }
+  return {day,mergeConcept,bucket,ingest,promote,doneDays,nextDay,guard,stamp,ensureCompletion,beforeAdvance,applyStart,recover,linkLog,logEvent,beforeCompact,literacy,notice,pull,push,ackProgress,sync,englishFinalRemote,englishFinalHasCue,enqueueEnglishFinal,englishFinalRemoteE2,enqueueEnglishFinalE2};
 })();
 
 // PROGRESS_CORE_END
@@ -10808,7 +10877,7 @@ const PA_PROGRESS=(()=>{
 <script src="science_support.js?v=194"></script>
     <script src="english_exam.js?v=197"></script>
     <script src="science_final.js?v=207"></script>
-    <script src="english_final.js?v=209"></script>
+    <script src="english_final.js?v=212"></script>
     <script src="exam_support.js?v=211"></script>
     <script src="exam_home.js?v=198"></script>
 </body>

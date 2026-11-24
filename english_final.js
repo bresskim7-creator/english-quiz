@@ -41,7 +41,51 @@
      문항을 이미 마감했으면 이 기기 몫의 마감 로그를 보낸다 — 서버(GAS v25)가 같은 결과 키를 한 행으로 합친다. 서버 기록과 판정이 부딪히는
      키(예: 서버엔 S8Cx 노출됨, 이 기기엔 S8C 채점)는 보태지 않는다(서버 진도 그대로).
    - 앉은 자리 닫기도 같은 순서(held 먼저 → 저장 → 로그·전송, 실패면 되돌림). 화면이 다시 보이면 저장 확인이 먼저 — 실패면 멈춤만
-     (날짜 넘기기·마감·전송 없음). */
+     (날짜 넘기기·마감·전송 없음).
+   v212(Cowork 2026-11-22, 배포 점검 v3 §3-1 S9① A/B · Codex 계획확인 1번·v3 확인 · JH 시안 v1 승인):
+   - 5일차 혼자 쓰기(S8W) 채점 뒤 '다음' → '본문 문장 보기'(교과서 106쪽 원문·덩어리·우리말, 채점 없음) → '다 봤어요'로 S8W를 마친다.
+     SEQ는 그대로(st.ptr가 번호라 끼우지 않는다). 이 장면이 처음 화면에 뜬 날을 결과 키 S9v('v-날짜')로 남긴다(S8W 완료로 추정하지 않는다 —
+     채점 뒤 '다음' 전에 닫으면 다음 날 S8W는 전날 완료로 마감되지만 S9v는 없다).
+   - S9 ① 발문은 처음 보여 줄 때 A/B를 정해 결과 키 S9m('m-A'·'m-B')으로 고정·공유한다(다시 열거나 기기를 바꿔도 그대로).
+     앞선 학습일에 본문 문장을 본 기록(S9v 날짜 < 오늘)이 있으면 A(본문 문장 그대로), 없으면 B(앞뒤 조건을 주고 배열 → ① 제출이 끝난 뒤
+     본문 문장 보기 → ②). 공유 기록 합치기에서는 B가 이긴다(조건 단서를 본 기기가 하나라도 있으면 B).
+   - A의 첫 오답이 after school 위치만 다르면 "뜻은 맞아요. 본문에서는 after school이 어디에 있었는지 떠올려 봐요." 그 밖의 안내·채점(정답 1개)·기록 규칙은 그대로.
+   - 로그: S9a[…;m=A|B](B = 제시된 조건으로 추가 힌트 없이 배열함) · S8W[…;orig=본 날짜]. GAS v25 행 합치기는 하위 값을 그대로 더한다(서버 무변경).
+   v212 r2(Cowork 2026-11-22, Codex 검토 HOLD 4건 · JH: 앱 r2 + GAS v26 별도 후보):
+   - ① 발문(B 단서)은 S9m 저장이 확인된 뒤에만 그린다. 저장 실패면 메모리 값도 되돌리고 단서 없는 멈춤 화면('다시 저장'으로 다시).
+   - B 이력 보존: 서버 기록이 이 기기보다 오래돼도 S9m=m-B는 받는다(takeB — 더 새 기록만 합치는 adopt 밖의 경로). 복구 로그는 합친 A/B(B 우선).
+   - B 노출은 실제 학습진도에 담아 공유한다. E1 결과 로그는 실제 풀이로만 만든다.
+   - A 첫 오답 '뜻은 맞아요'는 검토된 다른 어순(Last Friday, after school I saw my brother playing basketball.)에만. 다른 자리는 기존 안내.
+   - B ① 정답: "주어진 시작과 끝에 맞춰 문장을 완성했어요." + 같은 화면에 본문 문장(닫았다가 다음 날 마감돼도 이미 봤다) → '다음' → ②.
+   E2 r7(Cowork 2026-11-24b) = r6 + Codex r6 검토(HOLD 1건)·Codex 회차 복원 수정(11/23)·Cowork/Codex 보강(11/24): 받은 기록의 재확인 화면을 같은 날 다시 열 때 회차 = 그 화면을 연 회차
+     (bRound2 — '다음'만 눌러도 다음 회차 오답이 생기던 것) · 예약 합치기(mergeB2)는 마감한 실패 회차를 번호로 세고, 한쪽이 마지막 회차 또는 정답(미확인 아님)으로 마감했으면
+     다른 기기의 '다음' 전 화면이 예약을 되살리지 않음 · 받는 쪽(adopt2)은 이어 가지 않는 이 기기 첫 제출을 그 답을 낸 날짜로 한 번 남김(같은 문항·회차라도 다른 날 연 화면 포함, 행은 합친 결과 — 미확인 표시) ·
+     이 기기가 답한 재확인 회차가 다른 기기의 열린 화면에 밀리고 받은 기록에 그 회차 결과가 없으면 그 답을 낸 날로 마감(행·실패일·독립일을 남기고 회차를 한 번만 셈).
+   E2 r6(Cowork 2026-11-23g) = r5 + Codex r5 검토(HOLD) 네 경우 수정: T14 ①을 다른 기기에서 이미 마쳤으면 이 기기의 틀린 어순 대신 교과서 정답 어순을 보여 줌 ·
+     재확인은 화면을 연 회차로 찾고(open.n·예약 마지막 날), 두 기기의 엇갈린 첫 답(미확인) 회차는 대표값 B-fail = 쓴 회차로 세어 '홈'과 '다음'이 같은 예약·다음 학습일 배정을 만듦 ·
+     재확인 실패일(noc)을 공통 수신기·이 기기가 더 새 쪽 합치기에서도 합집합 · 받은 기록도 같은 시도를 채점했을 때 이 기기의 첫 제출·입력을 보존, 첫 제출 없는 미확인 행은 분모에서 뺌.
+   E2 r5(Cowork 2026-11-23f) = r4 + Codex r4 검토(HOLD) 두 경로 수정: 재확인(지난 문장 다시 쓰기·놓기)은 화면을 연 회차로 한 번만 마감 — 다른 기기가 먼저 마친 회차를 다시 차감하지 않고,
+     그날 회차를 마친 재확인은 같은 날 다시 열지 않음 · 첫 제출을 확정하기 전에 이 기기가 이미 받은 기록을 화면·채점·로그에 함께 적용(T10·T9·이월 T9·T11·T5·T6·재확인·T14 ① —
+     다른 기기의 첫 정답 → 그 기록 화면, 앞선 열람 → 연습, 정답 공개 → 따라 놓기) · 미확인 행은 대표값 대신 이 기기의 첫 제출(없으면 채점에서 뺌), 미확인으로 독립일을 세지 않음.
+   E2 r4(Cowork 2026-11-23e) = r3 + Codex r3 검토(HOLD) 네 경로 수정: C 문장 합치기를 두 기록만 보고 다시 판정(같은 날 엇갈린 첫 답 뒤 더 이른 열람이 오면 노출됨 — 받는 순서와 무관) ·
+     index 수신기도 재확인 예약을 두 기록에서 합침(첫 오답으로 잡힌 다음 학습일 '지난 문장 다시 쓰기' 보존) · T10 제출 직전에 이 기기가 받은 기록과 대조(정답 공개 뒤 도움 후 완성 없음) ·
+     잠긴 정답 칸에는 채점을 통과한 문장만(아니면 정답 예문), 다른 기기에서 이미 맞힌 연습은 '다음'으로.
+   E2 r3(Cowork 2026-11-23d) = r2 + Codex r2 검토(HOLD) 세 경로 수정: C 문장 첫 노출일을 공유해 다른 기기에서 전날 본 문장은 다음 날 맞혀도 노출됨(날짜로 선후를 알 수 없을 때만 미확인) ·
+     받은 첫 답과 단계(정답 공개·도움 후 완성·따라 놓기 마침)는 더 새 기록에 없어도 남김(받는 쪽·이 기기가 더 새 쪽·index 수신기 모두 같은 합치기) ·
+     정답을 본 뒤에는 도움 후 완성을 새로 만들지 않음 · 미확인 문장은 '혼자 맞혔어요'라고 하지 않음. T10 로그 tries = 공유된 단계로 확정되는 전체 제출 수(갈라지면 '-').
+   E2 r2(Cowork 2026-11-23b) = r1 + Codex r1 검토(HOLD) 네 경로 수정: 어제·다른 기기에서 열고 제출하지 않은 C 문장은 노출됨(연습) ·
+     T10 첫 오답과 재확인 예약을 함께 저장, 고쳐 맞힌 뒤 재개하면 다시 제출 없이 '다음' · 받은 두 기록의 엇갈린 첫 답은 index 수신 단계에서도 미확인 ·
+     T10·T14 ①의 오답 단계와 따라 놓기를 공유 기록으로 복원. T10 로그 tries = 실제 제출 수.
+   E2 r1(Cowork 2026-11-23, 원고 E2_원고_v1.3 · 시안 화면시안_E2_v1.1 · 대응표 E2_구현_대응표_v1 · JH 승인 '후보 제작과 검증까지' + Codex 착수 의견 3건):
+   - 둘째 묶음 E2(want·tell·ask + 사람 + to + 할 일)를 같은 파일에 따로 둔다: 순서표 SEQ2(T1~T14)·진도 st2·저장 키 pa_english_2026_final_e2_v1·
+     공유 기록 eng_fin-E2(서버 무변경, 일반 개념 병합)·결과 로그 quiz_logs_eng_fin_e2. E1 순서표·진도·결과 키·채점·공유 규칙은 그대로.
+   - 하루 배정 planJ: E2가 열리기 전(S8W 화면 끝 전)에는 E1 plan0 그대로. 열린 뒤에는 원고 §6 순서(T10 → S9 → T14 → 재확인 E1→E2 → E2 순서 → 이월 C E2→E1),
+     300초는 두 묶음이 함께 쓴다. S8W를 마친 날 남은 시간이 있으면 끝 화면 없이 T1로 이어 간다. 하루 끝 문구 '오늘 영어는 여기까지예요.'(E1만 한 날 포함).
+   - Codex 착수 의견: ① 재확인 문장 id는 't-' 접두(':'는 공유 기록 구분 기호) ② T14는 '다음에 풀 문항'(경계 건너뜀)으로 열고 ①만 하고 나가면 첫 답을 보존한 채 ②부터
+     ③ 첫 시도 결과는 저장이 확인된 뒤에만 안내를 보이고, 두 키는 '풀던 화면 없는 쪽 → 있는 쪽' 순서로 써서 둘째 저장 실패 뒤 앱을 닫아도 화면과 채점 기록이 같다.
+     두 기기의 같은 첫 시도가 서로 다르면 '미확인'(<문항>_u).
+   - 고르기 화면(T12·T13·T14 ②)은 고른 뒤 다시 고르기만 막고 보기 글자는 진하게(r3c와 같은 .e1-opt:disabled), 해설이 아래 버튼에 가리면 보이게 스크롤.
+     T14 ① 정답 저장 뒤 그 화면에서만 타일판을 숨긴다(공통 배열 함수 그대로). */
 const PA_ENGLISH_FINAL=(()=>{
   'use strict';
   const KEY='pa_english_2026_final_v1',LOG_KEY='quiz_logs_eng_fin_e1',CONCEPT='eng_fin-E1',BUDGET=300,B_MAX=3,S9_GAP=7,C2_FROM='2026-12-06';
@@ -59,7 +103,8 @@ const PA_ENGLISH_FINAL=(()=>{
       accept:['he heard his cats crying at night','he heard his cats cry at night','at night he heard his cats crying','at night he heard his cats cry'],
       answer:'He heard his cats crying at night.'},
     exam:{words:['Last','Friday,','I','saw','my','brother','playing','basketball','after','school'],mix:[5,8,2,6,1,9,3,0,7,4],
-      ko:'지난 금요일, 나는 남동생이 방과 후에 농구하는 걸 봤어요.',answer:'Last Friday, I saw my brother playing basketball after school.'}
+      ko:'지난 금요일, 나는 남동생이 방과 후에 농구하는 걸 봤어요.',answer:'Last Friday, I saw my brother playing basketball after school.',
+      orig:['Last Friday,','I saw my brother playing basketball','after school']}   // v212: 본문 문장 보기 덩어리(교과서 p.106)
   };
   const ROLE=['who','saw','whom','doing'];
   // 순서. break = 학습일 경계(그날 다른 화면을 했다면 그날은 여기서 끝). track = P0 출발(①단어 돕기 ②짧은 문장 돕기 ③바로).
@@ -212,7 +257,7 @@ const PA_ENGLISH_FINAL=(()=>{
   // r6 마감(순수 함수): s0의 열린 문항(채점함 = g)을 채점한 날(open.date)로 마감 → {st 마감한 상태, log 마감 로그}
   function closeOne(s0,g,c){const date=s0.open.date,r=fillFromCur(g,c),s=complete(s0,date,g.item,r);s.open=null;return {st:s,log:closeLogOf(s,date,keyOf(g.item),token(g.item,r,s))};}
   // r6 결과 키(기기에 저장되는 채점 결과 — 학습자당 한 번만 채점): 공유 기록을 받을 때 서버 기록에 없으면 보존한다.
-  const RES_KEY=/^(S9a0?|S9b|S9c|S5w?|S6|S7C|S8C|S8W|B\.[a-z]+\.\d+)$/;
+  const RES_KEY=/^(S9a0?|S9b|S9c|S9v|S9vl|S9m|S5w?|S6|S7C|S8C|S8W|B\.[a-z]+\.\d+)$/;   // v212: S9v(본문 문장을 본 날)·S9m(S9 ① A/B)
   // 충돌(보태지 않음, 서버 진도 그대로 — README): 서버 기록은 그 C 문장을 '노출됨·미채점'(<id>x)으로, 이 기기는 독립 채점(C-ok·C-fail)으로 판정.
   //  이 기기 값이 노출 뒤 연습(p-*)이면 양쪽이 노출에 동의한 것이라 충돌이 아니다 → 보존(Codex 11/20 조기 대조).
   const clash=(m,k,v)=>/^S[78]C$/.test(k)&&!!m.res[k+'x']&&/^C-(ok|fail)$/.test(v);
@@ -258,7 +303,61 @@ const PA_ENGLISH_FINAL=(()=>{
   //  ④ 열린 문항: 합친 기록에서 이미 끝난 문항이면 닫음. 받은 기록의 열린 문항이 채점되지 않았고(다른 기기는 열기만 함) 이 기기에 채점한
   //     열린 문항이 있으면 이 기기 것(채점한 날 그대로) — 결과가 열기만 한 날짜에 붙어 그날 마감·독립일이 생기지 않게(Codex 11/20).
   //  ⑤ 이 기기의 열린 채점 문항을 서버 기록이 이미 마감했으면 이 기기 몫의 마감 로그(같은 '날짜+문항' id) → 서버(GAS v25)가 한 행으로 합침.
-  function adopt(loc,rem,c){
+  // r2: 로그용 사본 — 합친 기록(m)이 B면 이 기기 상태(s)의 S9m만 B로(다른 값은 s 그대로). 단서를 본 기기가 있으면 이 기기 로그도 m=B.
+  const s9Field = /^r:(S9m|S9v|S9vl):/;
+  function s9Evidence(tokens) {
+    const dates = [];
+    for (const token of tokens) {
+      const m = /^r:S9v(?:l)?:v-(\d{4}-\d{2}-\d{2})$/.exec(token);
+      if (!m) continue;
+      const time = Date.parse(m[1] + 'T00:00:00Z');
+      if (Number.isFinite(time) && new Date(time).toISOString().slice(0, 10) === m[1]) dates.push(m[1]);
+    }
+    dates.sort();
+    const result = {};
+    if (tokens.includes('r:S9m:m-B')) result.S9m = 'm-B';
+    else if (tokens.includes('r:S9m:m-A')) result.S9m = 'm-A';
+    if (dates.length) {
+      result.S9v = 'v-' + dates[0];
+      if (dates[0] !== dates[dates.length - 1]) result.S9vl = 'v-' + dates[dates.length - 1];
+    }
+    return result;
+  }
+  function s9Tokens(res) {
+    return ['S9m', 'S9v', 'S9vl'].filter(k => res[k]).map(k => 'r:' + k + ':' + res[k]);
+  }
+  const withMode=(s,m)=>s.res.S9u!=='u-legacy'&&s.res.S9m==='m-A'&&m?.res.S9m==='m-B'?{...s,res:{...s.res,S9m:'m-B'}}:s;
+  function mergeS9Facts(primary, other, gradeSource=primary) {
+    const facts = s9Evidence(s9Tokens(primary).concat(s9Tokens(other)));
+    // Keep the account's cue fact separate from the version that produced the first answer.
+    const oldAnswer = (gradeSource.S9a || gradeSource.S9a0) &&
+      (gradeSource.S9u==='u-legacy' || !/^m-[AB]$/.test(gradeSource.S9m||''));
+    if (oldAnswer && facts.S9m) facts.S9u='u-legacy';
+    const changed = [];
+    for (const key of ['S9m','S9v','S9vl','S9u']) {
+      if (primary[key] === facts[key]) continue;
+      if (facts[key]) primary[key] = facts[key];
+      else delete primary[key];
+      changed.push(key);
+    }
+    return changed;
+  }
+  // An older or equal remote revision can contribute evidence, never other progress or a result log.
+  function takeS9Facts(loc,rem) {
+    if (!rem?.res) return null;
+    const res = {...loc.res};
+    return mergeS9Facts(res, rem.res).length ? {st:{...loc,res}} : null;
+  }
+  function readEnglishRemote() {
+    const c = PA_PROGRESS.englishFinalRemote?.();
+    const actual = c ? decode(c) : null;
+    if (!PA_PROGRESS.englishFinalHasCue?.()) return actual;
+    // A cue-only query has no score, exercise pointer, completed day or timestamp. It is not a concept record.
+    if (!actual) return {res:{S9m:'m-B'}};
+    mergeS9Facts(actual.res, {S9m:'m-B'});
+    return actual;
+  }
+  function adopt(loc,rem,c,date){
     const m=copy(rem),added=[],clashes=[],logs=[];
     const gl=loc.open?gradedOpen(loc):null,gkey=gl?keyOf(gl.item):'';
     const doneThere=gl?itemDone(rem,gl.item,gl.r.bkey):false,rg=rem.open?gradedOpen(rem):null,remGraded=!!rg;
@@ -267,10 +366,13 @@ const PA_ENGLISH_FINAL=(()=>{
     const sameOpen=x=>!!(gl&&x.open&&x.open.key===gkey&&(gl.item.type!=='b'||bKey(x,gl.item.sid)===gl.r.bkey));
     for(const [k,v] of Object.entries(loc.res)){
       if(SEEN_KEY.test(k)){if(!m.res[k]&&!m.res[k.slice(0,-1)]){m.res[k]=v;added.push(k);}continue;}
-      if(!RES_KEY.test(k)||m.res[k])continue;
+      if(s9Field.test('r:'+k+':')||!RES_KEY.test(k)||m.res[k])continue;
       if(clash(m,k,v)){clashes.push(k);continue;}
       m.res[k]=v;added.push(k);
     }
+    // v212: S9 ① A/B — 어느 기기든 B(앞뒤 조건 단서)를 보여 줬으면 B. 단서를 본 뒤의 정답이 A('본문을 혼자 떠올림')로 남지 않게.
+    const gradeSource=rem.res.S9a?rem.res:loc.res.S9a?loc.res:rem.res.S9a0?rem.res:loc.res;
+    added.push(...mergeS9Facts(m.res,loc.res,gradeSource));
     let f=mergeFacts(m,loc);
     // 이월 C: 이 기기에서 끝낸 것(결과 있음·이 기기 이월 목록에 없음)은 빼고, 이 기기에만 있는 대기(결과 없음)는 더한다
     for(const id of ['S7C','S8C'])if(m.res[id]&&loc.res[id]&&!loc.def.some(x=>x.id===id)&&m.def.some(x=>x.id===id)){m.def=m.def.filter(x=>x.id!==id);f=true;}
@@ -284,7 +386,8 @@ const PA_ENGLISH_FINAL=(()=>{
       const cand={...m,open:{key:gkey,date:loc.open.date}};
       if(gradedOpen(cand)){if(m.open&&m.open.key!==gkey)markSeen(m,m.open.key,gkey);m.open=cand.open;f=true;}
     }
-    if(gl&&doneThere&&!sameOpen(m))logs.push(closeLogOf(loc,loc.open.date,gkey,token(gl.item,fillFromCur(gl,c),loc)));
+    // r2: 복구 로그의 A/B는 합친 값(B 우선)
+    if(gl&&doneThere&&!sameOpen(m))logs.push(closeLogOf(loc,loc.open.date,gkey,token(gl.item,fillFromCur(gl,c),withMode(loc,m))));
     // r6e: 합친 기록의 열린 문항이 이 기기에서 채점한 그 시도(문항·날짜·재확인 차례 같음)이고 받은 기록은 채점하지 않았을 때만 이 기기 화면 상세(cur)를 그대로 쓴다.
     //  받은 기록이 그 문항을 채점했거나 다른 화면이면 섞지 않는다(cur 버림).
     const keepCur=!!(gl&&!remGraded&&m.open&&sameOpen(m)&&m.open.date===loc.open.date);
@@ -375,6 +478,8 @@ const PA_ENGLISH_FINAL=(()=>{
       else if(p[0]==='op'&&p.length>=3&&DAY.test(p[p.length-1])&&itemOf(p.slice(1,-1).join(':')))st.open={key:p.slice(1,-1).join(':'),date:p[p.length-1]};
       else if(p[0]==='dc'&&p.length===3&&IDX[p[1]]!==undefined&&SEQ[IDX[p[1]]].layer==='C'&&DAY.test(p[2]))st.def.push({id:p[1],from:p[2]});
     }
+    for(const k of ['S9m','S9v','S9vl'])delete st.res[k];
+    Object.assign(st.res,s9Evidence(c.last_questions));
     st.ok=(c.independent_days||[]).filter(d=>DAY.test(d));st.days.sort();st.done.sort();st.noc.sort();st.def.sort((x,y)=>IDX[x.id]-IDX[y.id]);
     st.evidence_at=c.evidence_at||'';st.event_id=c.event_id||'';
     return st;
@@ -383,6 +488,510 @@ const PA_ENGLISH_FINAL=(()=>{
   // ── 채점(E1 쓰기 전용 — exam_support.js gradeWriting은 그대로): 대소문자·끝 문장부호·쉼표는 보지 않고 형태·어순은 본다.
   const norm=s=>String(s??'').toLowerCase().replace(/[’']/g,"'").replace(/,/g,' ').replace(/[.!?]+\s*$/,'').replace(/\s+/g,' ').trim();
   function gradeWrite(accept,typed){const t=norm(typed);return !!t&&accept.some(a=>norm(a)===t);}
+
+  // ═══════════════ E2 둘째 묶음 "누가 + 원했어요·말했어요·부탁했어요 + 그 일을 할 사람 + to 할 일" — 순수 함수 ═══════════════
+  //  원고 E2_원고_v1.3 · 시안 화면시안_E2_v1.1 · 대응표 E2_구현_대응표_v1 + Codex 구현 착수 의견(2026-11-23) 3건.
+  //  r2(Codex r1 검토 HOLD 4건): ① 어제·다른 기기에서 열고 제출하지 않은 C 문장 = 노출됨(adopt2·render) ② T10 고쳐 맞힌 뒤 재개·첫 오답과 재확인 예약 함께 저장
+  //  ③ 받은 두 기록의 엇갈린 첫 답 = 미확인(mergeQuestions2 — index 수신기) ④ T10·T14 ① 오답 단계·따라 놓기를 공유 기록으로 복원 + T10 제출 횟수(tries) = 실제 제출 수.
+  //  r3(Codex r2 검토 HOLD 3건): ① C 문장 첫 노출일(T9o·T10o·T11o)을 공유해, 다른 기기에서 전날 본 문장을 다음 날 맞히면 노출됨·미채점(날짜로 선후를 알 수 없을 때만 미확인)
+  //  ② 받은 첫 답·단계(정답 공개·도움 후 완성·따라 놓기 마침)는 더 새 기록에 없어도 버리지 않는다 — 합치기 한 곳(mergeRes2)을 받는 쪽·이 기기가 더 새 쪽·index 수신기가 함께 쓴다
+  //  ③ 정답을 본 뒤에는 '도움 후 완성'을 새로 만들지 않는다 · 미확인 문장은 '혼자 맞혔어요'라고 하지 않는다 ④ T10 제출 횟수 = 공유된 단계로 확정되는 수(갈라지면 '-').
+  //  r4(Codex r3 검토 HOLD 4건): ① C 문장 합치기를 두 기록만 보고 다시 판정 — 같은 날 엇갈림(미확인) 뒤에 더 이른 열람이 와도 노출됨·미채점으로(받는 순서와 무관)
+  //  ② index 수신기도 재확인 예약(b:)을 두 기록에서 합침 ③ T10 제출 직전에 이 기기가 이미 받은 기록과 대조(정답 공개 뒤 도움 후 완성 없음)
+  //  ④ 잠긴 정답 칸에는 채점을 통과하는 문장만(아니면 정답 예문) · 이미 맞힌 연습은 '다음'으로.
+  //  r5(Codex r4 검토 HOLD 2건): ① 재확인은 화면을 연 회차(r.bkey)로 한 번만 마감 — 다른 기기가 이미 마친 회차를 다시 차감하지 않고, 그날 회차를 마친 재확인은 같은 날 다시 열지 않음
+  //  ② 첫 제출을 확정하기 전에 이 기기가 이미 받은 기록을 함께 본다(화면 쪽) — 결과 로그는 미확인이면 대표값 대신 이 기기의 첫 제출(r.own, 없으면 채점에서 뺌)을,
+  //  다른 기기의 첫 정답 뒤 이 기기 입력은 typed가 아닌 late로 남긴다. 미확인 결과로는 독립일을 세지 않는다.
+  //  E1 순서표·진도·결과 키는 그대로 두고, E2는 자기 순서표(SEQ2)·진도(st2)·저장 키·공유 기록(eng_fin-E2)·결과 로그를 따로 쓴다.
+  //  하루 배정만 planJ가 두 묶음을 함께 본다(E2가 열리기 전에는 E1 plan0 그대로).
+  const KEY2='pa_english_2026_final_e2_v1',LOG_KEY2='quiz_logs_eng_fin_e2',CONCEPT2='eng_fin-E2',T14_FROM='2026-12-13',T14_GAP=7;
+  const E2_FORMULA="교과서에서는 이런 문장을 'want/tell/ask … to부정사'라고 불러요. want·tell·ask + 사람 + to + 할 일.";
+  // 문장(교과서 L6 p.106·107·110·114·115). 재확인 문장 id = 't-' 접두(Codex 착수 의견 1: ':'는 공유 기록을 나누는 기호라 쓰지 않는다).
+  //  h2 = 도움 1의 '누가 ○○?' · to = 옮기기 마지막 줄 · linkMsg = 뜻 연결을 다 탭한 뒤 한 줄. 우리말은 Cowork 작성(원고 §10 표).
+  const S2={
+    't-base':{en:['My brother','wanted','me','to delete the picture'],ko:'남동생은 내가 그 사진을 지우기를 원했어요.',ko4:['남동생은','원했어요','내가','그 사진을 지우기를'],h2:'원했나요',
+      to:'delete → to delete',toPlus:"지우는 사람은 바로 앞의 '내가(me)'예요.",mix:[3,0,2,1],linkMsg:"영어는 '원했어요'가 둘째에 와요. 그다음 '그 일을 할 사람', 그다음 'to + 할 일'."},
+    't-mia':{en:['Daniel','asked','Mia','to catch the spider in his room'],ko:'대니얼은 미아에게 대니얼의 방에 있는 거미를 잡아 달라고 부탁했어요.',ko4:['대니얼은','부탁했어요','미아에게','대니얼의 방에 있는 거미를 잡아 달라고'],h2:'부탁했나요',
+      to:'catch → to catch',mix:[2,3,0,1],linkMsg:'거미를 잡는 사람은 미아예요.'},
+    't-luke':{en:['Luke','told','us','to be careful'],ko:'루크는 우리에게 조심하라고 말했어요.',ko4:['루크는','말했어요','우리에게','조심하라고'],h2:'말했나요',to:'be → to be',mix:[1,3,0,2],
+      accept:['luke told us to be careful']},
+    't-sophia':{en:['Sophia','wanted','her brother','to play soccer with her'],ko:'소피아는 남동생이 자기와 축구를 하기를 원했어요.',ko4:['소피아는','원했어요','남동생이','자기와 축구를 하기를'],h2:'원했나요',
+      to:'play → to play',mix:[2,3,1,0],linkMsg:"영어는 '원했어요'가 둘째에 와요. 그다음 '그 일을 할 사람', 그다음 'to + 할 일'."},
+    't-amelia':{ko:'나는 아멜리아에게 같이 산책하자고 부탁했어요.',given:['go for a walk together','I','ask','Amelia'],accept:['i asked amelia to go for a walk together'],
+      answer:'I asked Amelia to go for a walk together.'},
+    't-grand':{en:['My grandfather','always tells','me','to be brave'],ko:'할아버지는 늘 나에게 용감하라고 말씀하세요.',ko4:['할아버지는','늘 말씀하세요','나에게','용감하라고'],h2:'말씀하세요',
+      to:'be → to be',mix:[2,0,3,1],linkMsg:"영어는 '늘 말씀하세요'가 둘째에 와요. 그다음 '그 일을 할 사람', 그다음 'to + 할 일'."},
+    exam:{words:['My','brother','wanted','me','to','delete','the','picture','of','him'],mix:[7,4,0,8,2,9,5,1,6,3],ko:'남동생은 자기가 나온 그 사진을 내가 지워 주길 원했어요.',
+      answer:'My brother wanted me to delete the picture of him.'}
+  };
+  // E2 순서. break = E2 경계(그날 E2 순서 화면을 했으면 그날은 여기서 끝). T10은 하루 첫 문항 자리(planJ 2), T14는 열림 조건 자리(planJ 4)에서만 연다.
+  const SEQ2=[
+    {id:'T1',kind:'scene',title:'장면'},
+    {id:'T2',kind:'link',sent:'t-base',title:'문장과 뜻 연결'},
+    {id:'T3',kind:'demo',sent:'t-base',title:'덩어리 옮기기'},
+    {id:'T4',kind:'blank',title:'빈칸 하나 고르기'},
+    {id:'T5',kind:'arrange',sent:'t-base',layer:'A',title:'혼자 놓아 보기'},
+    {id:'brk1',kind:'break'},
+    {id:'T6',kind:'check',sent:'t-base',layer:'B',title:'다른 날 혼자 놓기'},
+    {id:'T7',kind:'practice',sent:'t-mia',noDemo:true,title:'부탁한 문장 연습'},
+    {id:'T8',kind:'practice',sent:'t-luke',write:true,title:'말한 문장 연습'},
+    {id:'T9',kind:'arrange',sent:'t-sophia',layer:'C',title:'처음 보는 문장'},
+    {id:'brk2',kind:'break'},
+    {id:'T10',kind:'write',sent:'t-amelia',layer:'C',firstOfDay:true,title:'혼자 문장 쓰기'},
+    {id:'T11',kind:'arrange',sent:'t-grand',layer:'C',title:'처음 보는 문장'},
+    {id:'T12',kind:'choose',title:'본문에서 찾기'},
+    {id:'T13',kind:'choose',title:'알맞은 말 고르기'},
+    {id:'brk3',kind:'break'},
+    {id:'T14',kind:'exam',title:'시험처럼 풀기'},
+    {id:'END',kind:'end'}
+  ];
+  const IDX2=Object.fromEntries(SEQ2.map((s,i)=>[s.id,i]));
+  function fresh2(){return {v:1,ptr:0,res:{},b:[],days:[],done:[],noc:[],ok:[],sec:{date:'',n:0},t5:'',t8a:'',t10:'',t13:'',def:[],dcd:'',sd:'',open:null,evidence_at:'',event_id:''};}
+  // E2가 열림 = E1 S8W 화면(뒤의 본문 장면 '다 봤어요'까지)을 마침. S8W가 틀려도 연다(원고 §6).
+  const e2Open=st1=>!!st1&&!!st1.s8w&&st1.ptr>IDX.S8W;
+  const e1Fin=st1=>st1.ptr>=IDX.END&&!st1.def.length&&!st1.b.length;
+  const e2Fin=st=>st.ptr>=IDX2.END&&!st.def.length&&!st.b.length;
+  // '다음에 풀 문항'(경계 건너뜀). Codex 착수 의견 2: T13을 마친 직후 진행 위치는 T14 앞 경계(brk3)라 위치 == T14로 비교하면 시험이 열리지 않는다.
+  const nextStep2=st=>{let i=st.ptr;while(i<SEQ2.length&&SEQ2[i].kind==='break')i++;return i;};
+  const writeDue2=(st,date)=>st.ptr<=IDX2.T10&&!!st.t8a&&st.t8a<date;
+  const defDue2=(st,date)=>!!st.t10&&st.t10<date&&st.dcd!==date&&!st.noc.includes(date)?st.def.find(x=>x.from<=date)||null:null;
+  // T14: T5(A) 7일 뒤 이후(7일 뒤가 12/13을 넘으면 12/13) + E2 순서(T13)를 마친 다음 날 이후. 날짜는 실제 날짜.
+  const t14Due=(st,date)=>nextStep2(st)===IDX2.T14&&!!st.t5&&!!st.t13&&st.t13<date&&(gap(st.t5,date)>=T14_GAP||date>=T14_FROM);
+  // E1 S9가 남음(S8W 뒤 진행 위치는 brk5 또는 S9) · S9를 오늘 열었거나 마쳤거나 오늘 열 수 있음 → 그날 T14는 쉼(원고 §6, S9 ③ 해설이 T14 ②를 미리 알려 주지 않게).
+  const s9Pending=st1=>st1.ptr<=IDX.S9;
+  const s9Day=(st1,date)=>(!!st1.open&&st1.open.key==='S9'&&st1.open.date===date)||(st1.ptr>IDX.S9&&st1.sd===date)||(s9Pending(st1)&&examReady(st1,date));
+  // E2 순서 부분(planJ 6): 경계에서 그날 E2 순서 화면을 했으면 멈춤. 실패한 날(st2.noc — 묶음별) 새 C 배열은 skip(이월).
+  function seq2(st,date){
+    const noc=st.noc.includes(date);
+    for(let i=st.ptr;i<SEQ2.length;i++){
+      const s=SEQ2[i];
+      if(s.kind==='break'){if(st.sd===date)return {type:'stop',reason:'break'};continue;}
+      if(s.kind==='write'||s.kind==='exam'||s.kind==='end')return null;
+      if(s.layer==='C')return noc?{type:'skip',idx:i,track:2}:{type:'step',idx:i,track:2};
+      return {type:'step',idx:i,track:2};
+    }
+    return null;
+  }
+  // 하루 배정(순수 함수, 원고 §6 하루 순서): 1 S8W(E2 전) · 2 T10(그날 아무것도 하기 전) · 3 E1 S9 · 4 T14 · 5 재확인 E1→E2 · 6 E2 순서 · 7 이월 C E2→E1.
+  //  300초는 E1·E2가 함께 쓴다(화면 사이에서만 멈춤). 반환 항목: E1은 지금 모양 그대로, E2는 track:2.
+  function planJ(st1,st2,date){
+    if(!e2Open(st1))return plan0(st1,date);
+    if(st1.done.includes(date)||st2.done.includes(date))return {type:'stop',reason:'done'};
+    const act=active(st1,date)||active(st2,date);
+    if(act&&secOf(st1,date)+secOf(st2,date)>=BUDGET)return {type:'stop',reason:'budget'};
+    if(!act&&writeDue2(st2,date))return {type:'step',idx:IDX2.T10,track:2};
+    if(s9Pending(st1)&&examReady(st1,date))return {type:'step',idx:IDX.S9};
+    if(t14Due(st2,date)&&!s9Day(st1,date))return {type:'step',idx:IDX2.T14,track:2};
+    const d1=st1.b.filter(x=>x.last<date);if(d1.length)return {type:'b',sid:d1[0].sid};
+    const d2=st2.b.filter(x=>x.last<date);if(d2.length)return {type:'b',sid:d2[0].sid,track:2};
+    const q=seq2(st2,date);if(q)return q;
+    const c2=defDue2(st2,date);if(c2)return {type:'dc',id:c2.id,track:2};
+    const c1=defDue(st1,date);if(c1)return {type:'dc',id:c1.id};
+    return {type:'stop',reason:act?'break':e1Fin(st1)&&e2Fin(st2)?'end':'wait'};
+  }
+  function pushDef2(st,id,date){if(!st.def.some(x=>x.id===id)){st.def.push({id,from:add(date,1)});st.def.sort((x,y)=>IDX2[x.id]-IDX2[y.id]);}}
+  function deferAt2(st0,idx,date){const st=copy(st0);pushDef2(st,SEQ2[idx].id,date);st.ptr=Math.max(st.ptr,idx+1);return st;}
+  function advanceJ(st1,st2,date){
+    for(let k=0;k<SEQ.length+SEQ2.length+4;k++){
+      const p=planJ(st1,st2,date);if(p.type!=='skip')return {st1,st2,p};
+      if(p.track===2)st2=deferAt2(st2,p.idx,date);else st1=deferAt(st1,p.idx,date);
+    }
+    return {st1,st2,p:{type:'stop',reason:'wait'}};
+  }
+  const keyOf2=it=>it.type==='b'?'b:'+it.sid:it.type==='dc'?'dc:'+it.id:SEQ2[it.idx].id;
+  function itemOf2(key){
+    if(/^b:t-/.test(key))return S2[key.slice(2)]?{type:'b',sid:key.slice(2),track:2}:null;
+    if(/^dc:T/.test(key)){const id=key.slice(3),s=SEQ2[IDX2[id]];return s&&s.layer==='C'&&s.kind==='arrange'?{type:'dc',id,track:2}:null;}
+    return IDX2[key]!==undefined?{type:'step',idx:IDX2[key],track:2}:null;
+  }
+  function resumable2(st,date){
+    const o=st.open;if(!o||o.date!==date||st.done.includes(date))return null;
+    const it=itemOf2(o.key);if(!it)return null;
+    if(it.type==='step'){
+      if(!(it.idx>=st.ptr&&SEQ2[it.idx].kind!=='break'))return null;
+      for(let j=st.ptr;j<it.idx;j++){const x=SEQ2[j];if(x.kind==='break'||(SEQ2[it.idx].kind==='write'&&x.layer==='C'))continue;return null;}
+      return it;
+    }
+    if(it.type==='b')return st.b.some(x=>x.sid===it.sid&&x.last<date)?it:null;   // r5: 그날 회차를 이미 마친 재확인(다른 기기 포함)은 같은 날 다시 열지 않음(원고 §7 '다음 학습일에 한 번')
+    if(it.type==='dc')return st.def.some(x=>x.id===it.id)?it:null;
+    return null;
+  }
+  // 두 묶음의 풀던 화면(그날 연 미완료 문항) — E1 먼저.
+  function resumableJ(st1,st2,date){if(st1.done.includes(date)||st2.done.includes(date))return null;return resumable(st1,date)||resumable2(st2,date);}
+  // 노출됨·미채점: 처음 보는 문장(T9·T11 배열, T10 쓰기 — 원고 §7-5)을 열었다가 첫 제출 없이 다른 화면으로 밀림.
+  function seenTarget2(st,fromKey,toKey){
+    if(!fromKey||fromKey===toKey)return null;
+    const it=itemOf2(fromKey);if(!it)return null;
+    const s=it.type==='dc'?SEQ2[IDX2[it.id]]:it.type==='step'?SEQ2[it.idx]:null;
+    if(!s||s.layer!=='C'||(s.kind!=='arrange'&&s.kind!=='write')||st.res[s.id]||st.res[s.id+'x'])return null;
+    return s.id;
+  }
+  function markSeen2(st,fromKey,toKey){const id=seenTarget2(st,fromKey,toKey);if(!id)return false;st.res[id+'x']='C-seen';return true;}
+  // 화면 하나를 마친 결과 반영(순수 함수) — E1 complete와 같은 규칙을 E2 순서표로.
+  function complete2(st0,date,item,r){
+    const st=copy(st0);r=r||{};
+    if(!st.days.includes(date))st.days.push(date);
+    const okDay=()=>{if(!st.ok.includes(date))st.ok.push(date);},okIf=k=>{if(!st.res[k+'_u'])okDay();};   // r5: 미확인(엇갈린 첫 답)의 대표값으로는 독립일을 세지 않음
+    if(item.type==='b'){
+      // r5(Codex r4 지적 1): 마감하는 회차 = 화면을 연 회차(r.bkey). 다른 기기가 이미 마친 회차면 시도 수를 다시 올리지 않는다(남은 기회 보존).
+      const sid=item.sid,x=st.b.find(y=>y.sid===sid),bm=/^B\.(t-[a-z]+)\.(\d+)$/.exec(r.bkey||''),n=bm&&bm[1]===sid?+bm[2]:0;if(!x)return st;
+      const key=n?r.bkey:'B.'+sid+'.'+(x.tries+1);fix(st,key,'B-'+(r.code==='ok'?'ok':'fail'));
+      if(st.res[key]==='B-ok'){st.b=st.b.filter(y=>y.sid!==sid);okIf(key);}
+      else{x.tries=Math.max(x.tries,n||x.tries+1);x.last=date;if(x.tries>=B_MAX)st.b=st.b.filter(y=>y.sid!==sid);if(!st.noc.includes(date))st.noc.push(date);}
+      return st;
+    }
+    if(item.type==='dc'){
+      const id=item.id,s=SEQ2[IDX2[id]];if(!s||!st.def.some(x=>x.id===id))return st;
+      if(seen2(st,id)||/^p-/.test(st.res[id]||'')){fix(st,id,'p-'+(r.code||'ok'));st.def=st.def.filter(x=>x.id!==id);st.dcd=date;return st;}
+      fix(st,id,'C-'+(r.code==='ok'?'ok':'fail'));st.def=st.def.filter(x=>x.id!==id);st.dcd=date;
+      if(st.res[id]==='C-ok')okIf(id);else schedule(st,s.sent,date);
+      return st;
+    }
+    const s=SEQ2[item.idx];st.ptr=Math.max(st.ptr,item.idx+1);st.sd=date;
+    switch(s.kind){
+      case 'blank':fix(st,s.id,'m-'+(r.memo||'solo'));break;
+      case 'arrange':
+        if(s.layer==='A'){fix(st,s.id,'A-'+(st.res[s.id+'w']&&r.code==='ok'?'help':r.code));st.t5=st.t5||date;if(st.res[s.id]==='A-ok')okIf(s.id);}
+        else if(seen2(st,s.id)||/^p-/.test(st.res[s.id]||''))fix(st,s.id,'p-'+(r.code||'ok'));
+        else{fix(st,s.id,'C-'+(r.code==='ok'?'ok':'fail'));if(st.res[s.id]==='C-ok')okIf(s.id);else schedule(st,s.sent,date);}
+        break;
+      case 'check':fix(st,s.id,'B-'+(r.code==='ok'?'ok':'fail'));if(st.res[s.id]==='B-ok')okIf(s.id);else schedule(st,s.sent,date);break;
+      case 'practice':fix(st,s.id,'p-'+(r.code||'ok'));if(s.write)st.t8a=st.t8a||date;break;
+      case 'write':
+        // T10을 마치면 그 앞의 결과 없는 C 배열(시간 때문에 못 연 T9 = 미노출 C, 또는 노출됨)은 이월. 첫 시도를 한 것은 그 결과로 마감(E1 S8W와 같은 규칙).
+        for(let i=st0.ptr;i<item.idx;i++){const c=SEQ2[i];if(c.layer!=='C'||c.kind!=='arrange')continue;
+          if(!st.res[c.id])pushDef2(st,c.id,date);
+          else if(st.res[c.id]==='C-ok')okIf(c.id);
+          else if(st.res[c.id]==='C-fail'&&!st.b.some(x=>x.sid===c.sent))st.b.push({sid:c.sent,tries:0,last:date});}
+        if(seen2(st,s.id)||/^p-/.test(st.res[s.id]||''))fix(st,s.id,'p-'+(r.code||'ok'));
+        else{fix(st,s.id,'C-'+(r.code==='ok'?'ok':'fail'));if(st.res[s.id]==='C-ok')okIf(s.id);else schedule(st,s.sent,date);}
+        st.t10=st.t10||date;break;
+      case 'choose':for(const [k,v] of Object.entries(r.res||{}))if(/^(ok|fail)$/.test(v))fix(st,k,'p-'+v);if(s.id==='T13')st.t13=st.t13||date;break;
+      case 'exam':if(!st.res.T14a&&r.d)fix(st,'T14a','D-'+(st.res.T14a0&&r.d==='ok'?'help':r.d));if(r.b)fix(st,'T14b','p-'+r.b);if(st.res.T14a==='D-ok')okIf('T14a');break;
+      default:fix(st,s.id,'seen');
+    }
+    return st;
+  }
+  // 채점한 채 끝나지 않은 열린 문항(→ 채점한 날로 마감). T14(①만 하고 나감)·고르기·연습은 마감하지 않고 다음에 이어 간다
+  //  (Codex 착수 의견 2 · 원고 v1.3 §6 '①만 하고 나간 날은 ①의 남은 도움·② 연습이 남은 것').
+  // r6(Codex r5 지적 2): 재확인은 화면을 연 회차로 찾는다(제출·'다음'·당일 종료·다음 날 복구 모두). 이 기기가 연 화면 = open.n(render가 남김),
+  //  받은 기록의 열린 화면 = 예약의 마지막 날로 판정 — 그날 마감된 회차가 있으면 그 회차(재확인은 하루 한 회차만 열림), 없으면 다음 회차. r5는 늘 '예약 횟수+1'이라
+  //  다른 기기가 같은 회차를 마쳐 횟수가 오르면 이 기기가 채점한 회차를 찾지 못했다(마감·로그 없음).
+  function bRound2(st,sid){const o=st&&st.open,x=st&&st.b.find(y=>y.sid===sid),mine=!!(o&&o.key==='b:'+sid);
+    if(mine&&o.n>0)return o.n;if(!x)return 0;return mine&&x.tries>0&&x.last===o.date?x.tries:x.tries+1;}
+  function gradedOpen2(st){
+    const o=st&&st.open;if(!o)return null;const it=itemOf2(o.key);if(!it)return null;
+    const v=k=>String(st.res[k]||''),got=(re,k)=>re.test(v(k))?{item:it,r:{code:v(k).split('-')[1]}}:null;
+    if(it.type==='b'){const n=bRound2(st,it.sid);if(!n)return null;const k='B.'+it.sid+'.'+n,g=got(/^B-(ok|fail)$/,k);if(g)g.r.bkey=k;return g;}
+    if(it.type==='dc')return st.def.some(x=>x.id===it.id)?got(/^C-(ok|fail)$/,it.id):null;
+    if(it.idx<st.ptr)return null;
+    const s=SEQ2[it.idx];
+    if(s.kind==='arrange')return s.layer==='A'?got(/^A-(ok|help|fail)$/,s.id):got(/^C-(ok|fail)$/,s.id);
+    if(s.kind==='check')return got(/^B-(ok|fail)$/,s.id);
+    if(s.kind==='write')return got(/^C-(ok|fail)$/,s.id);
+    return null;
+  }
+  const closeId2=(date,key)=>'e2-'+date.replace(/-/g,'')+'-close-'+key.replace(/[^A-Za-z0-9]/g,'');
+  function closeLogOf2(s,date,key,tk){return {id:closeId2(date,key),date,items:[tk],sec:0,reason:'recovered',ptrId:(SEQ2[s.ptr]||{}).id};}
+  function fillFromCur2(g,c){
+    const r={...g.r};
+    if(c&&c.key===keyOf2(g.item)){const s=g.item.type==='step'?SEQ2[g.item.idx]:null;
+      if(s&&s.kind==='arrange'&&s.layer==='A')r.w=c.w||0;
+      if(s&&s.kind==='write'){const t=c.typed||[];r.w=c.w!==undefined?c.w:Math.max(0,t.length-1);r.n=t.length;r.typed=t.join(' / ');if(c.late&&c.late.length)r.late=c.late.join(' / ');}
+      if(c.own)r.own=c.own;}
+    return r;
+  }
+  function closeOne2(s0,g,c){const date=s0.open.date,r=fillFromCur2(g,c),s=complete2(s0,date,g.item,r);s.open=null;return {st:s,log:closeLogOf2(s,date,keyOf2(g.item),token2(g.item,r,s))};}
+  // 결과 로그 토큰(원고 §10 기록 칸: C ✔ · C ✗ · 도움 후 완성(help=ok) · 노출됨·미채점(seen=1) · 미노출 이월(def=1)).
+  // r5(Codex r4 README ②): 미확인(<키>_u)이면 합친 대표값으로 새 점수를 만들지 않는다 — 이 기기가 낸 첫 제출(r.own)이 있으면 그 값으로, 없으면 채점에서 뺀다(g:false). 둘 다 u=mixed 표시.
+  //  r6(Codex r5 지적 4): 이 기기 첫 제출이 없으면 nd(분모 제외) — 행 합계가 비어도 문항 수로 채우지 않는다(logRecord2).
+  function uTok2(RS,r,k,v,fmt){const own=r.own&&r.own[k],w=own||v;return {t:fmt(w,';u=mixed'),g:!!own,ok:!!own&&/-ok$/.test(own),...(own?{}:{nd:true})};}
+  function token2(item,r,S0){
+    const RS=S0.res;r=r||{};
+    if(item.type==='b'){const t=r.bkey&&RS[r.bkey]?r.bkey:Object.keys(RS).filter(k=>k.startsWith('B.'+item.sid+'.')&&!/_u$/.test(k)).sort().pop();
+      if(RS[t+'_u'])return uTok2(RS,r,t,RS[t],(w,u)=>`${t}[${w}${u}]`);return {t:`${t}[${RS[t]}]`,g:true,ok:RS[t]==='B-ok'};}
+    if(item.type==='dc'){const v=RS[item.id]||'C-fail';if(/^p-/.test(v))return {t:`${item.id}[${v.replace('-','=')};def=1;seen=1]`,g:true,ok:v==='p-ok'};
+      if(RS[item.id+'_u'])return uTok2(RS,r,item.id,v,(w,u)=>`${item.id}[${w.replace('-','=')}${u};def=1]`);return {t:`${item.id}[${v.replace('-','=')};def=1]`,g:true,ok:v==='C-ok'};}
+    const s=SEQ2[item.idx],v=RS[s.id]||'',pv=k=>/^p-(ok|fail)$/.test(RS[k]||'')?RS[k].slice(2):'',U=RS[s.id+'_u'];
+    const tries=r.w===undefined?'-':(r.w||0)+1;
+    switch(s.kind){
+      case 'blank':return {t:`${s.id}[memo=${r.memo}]`,g:true,ok:r.memo==='solo'};
+      case 'arrange':if(/^p-/.test(v))return {t:`${s.id}[${v.replace('-','=')};seen=1]`,g:true,ok:v==='p-ok'};{const aw=s.layer==='A'?';w='+(r.w===undefined?'-':r.w):'';
+        if(U)return uTok2(RS,r,s.id,v,(w,u)=>`${s.id}[${w.replace('-','=')}${u}${aw}]`);return {t:`${s.id}[${v.replace('-','=')}${aw}]`,g:true,ok:/-ok$/.test(v)};}
+      case 'check':if(U)return uTok2(RS,r,s.id,v,(w,u)=>`${s.id}[${w.replace('-','=')}${u}]`);return {t:`${s.id}[${v.replace('-','=')}]`,g:true,ok:v==='B-ok'};
+      case 'write':{const loc=r.n!==undefined?r.n:tries;   // r2: 이 기기의 실제 제출 수(세 번 틀려 정답을 본 경우 3 — r1은 w+1 = 4)
+        if(/^p-/.test(v))return {t:`${s.id}[${v.replace('-','=')};seen=1;tries=${loc}]`,g:true,ok:v==='p-ok'};
+        // r3(Codex r2): 기기를 바꿔도 공유된 단계(첫 답·T10w2·T10w3·T10h)로 확정되는 전체 제출 수. 갈라진 기록(미확인·정답 공개와 도움 후 완성이 함께)은 '-'.
+        const sh=triesT10(RS),tn=sh==='-'?'-':sh===null?loc:Math.max(sh,typeof loc==='number'?loc:0);
+        // r5: late = 다른 기기의 첫 정답을 받은 뒤 이 기기에서 쓴 문장(첫 시도 이력 typed와 섞지 않음)
+        const tail=w=>`${RS.T10h==='h-ok'?';help=ok':''};typed=${encodeURIComponent(r.typed||'')}${r.late?';late='+encodeURIComponent(r.late):''}`;
+        if(U)return uTok2(RS,r,s.id,v,(w,u)=>`${s.id}[${w.replace('-','=')}${u};tries=${tn}${tail(w)}]`);
+        return {t:`${s.id}[${v.replace('-','=')};tries=${tn}${tail(v)}]`,g:true,ok:v==='C-ok'};}
+      case 'practice':return {t:`${s.id}[p=${r.code};w=${r.w||0}${r.write?';write='+r.write:''}]`,g:true,ok:r.code==='ok'};
+      case 'choose':{const ks=s.id==='T12'?['T12a','T12b','T12c']:['T13a','T13b'],f=ks.map(pv),sel=r.sel||{};
+        return {t:ks.map((k,i)=>`${k}[p=${f[i]||'-'}${f[i]?';sel='+(sel[k]===undefined?'-':sel[k]):''}]`).join(', '),g:true,ok:f[0]==='ok',extra:f.slice(1).filter(Boolean).map(x=>x==='ok')};}
+      case 'exam':{const own=RS.T14a_u?(r.own&&r.own.T14a)||'':'',d=RS.T14a_u?own||RS.T14a||'D-'+r.d:RS.T14a||'D-'+r.d;   // r5: 미확인이면 이 기기 첫 제출, 없으면 정답으로 세지 않음
+        return {t:`T14a[${d.replace('-','=')}${RS.T14a_u?';u=mixed':''};w=${r.dw===undefined?'-':r.dw}], T14b[p=${r.b?r.b+';sel='+(r.sel===undefined?'-':r.sel):'-'}]`,g:true,ok:RS.T14a_u?own==='D-ok':d==='D-ok',extra:r.b?[r.b==='ok']:[]};}
+      default:return {t:`${s.id}[seen]`,g:false};
+    }
+  }
+  // 기기 간 공유: 개념 기록 하나(eng_fin-E2, 토큰 형식은 E1과 같음 — 표지 e2v:1). 서버는 일반 개념 병합(더 새 기록) — GAS 무변경(원고 §10 (b)).
+  function encode2(st){
+    const q=['e2v:1','ptr:'+SEQ2[Math.min(st.ptr,SEQ2.length-1)].id+':'+st.ptr];
+    for(const [k,v] of Object.entries(st.res))q.push('r:'+k+':'+v);
+    for(const x of st.b)q.push('b:'+x.sid+':'+x.tries+':'+x.last);
+    for(const d of st.days)q.push('day:'+d);for(const d of st.done)q.push('done:'+d);for(const d of st.noc)q.push('noc:'+d);
+    if(st.sec.date)q.push('sec:'+st.sec.date+':'+st.sec.n);
+    for(const k of ['t5','t8a','t10','t13'])if(st[k])q.push(k+':'+st[k]);
+    for(const x of st.def)q.push('dc:'+x.id+':'+x.from);if(st.dcd)q.push('dcd:'+st.dcd);if(st.sd)q.push('sd:'+st.sd);if(st.open)q.push('op:'+st.open.key+':'+st.open.date);
+    const days=uniq(st.days),last=days[days.length-1];
+    const graded=Object.entries(st.res).filter(([,v])=>/^(A|B|C|D)-(ok|help|fail)$/.test(v));
+    const lastV=graded.length?graded[graded.length-1][1]:'';
+    return {v:1,last_day:last,due:add(last,1),last_ok:/-ok$/.test(lastV),introduced:true,error_days:graded.filter(([,v])=>/-(fail)$/.test(v)).length,
+      last_status:!lastV?'assisted':/-ok$/.test(lastV)?'independent':/-help$/.test(lastV)?'assisted':'incorrect',
+      last_questions:uniq(q).filter(t=>TOKEN.test(t)),independent_days:uniq(st.ok).slice(-8),evidence_at:st.evidence_at,event_id:st.event_id};
+  }
+  function decode2(c){
+    if(!c||!Array.isArray(c.last_questions)||!c.last_questions.includes('e2v:1'))return null;
+    const st=fresh2();
+    for(const t of c.last_questions){
+      const p=String(t).split(':');
+      if(p[0]==='ptr'&&IDX2[p[1]]!==undefined)st.ptr=IDX2[p[1]];
+      else if(p[0]==='r'&&p.length===3)st.res[p[1]]=p[2];
+      else if(p[0]==='b'&&p.length===4&&S2[p[1]]&&DAY.test(p[3]))st.b.push({sid:p[1],tries:+p[2]||0,last:p[3]});
+      else if(p[0]==='day'&&DAY.test(p[1]))st.days.push(p[1]);
+      else if(p[0]==='done'&&DAY.test(p[1]))st.done.push(p[1]);
+      else if(p[0]==='noc'&&DAY.test(p[1]))st.noc.push(p[1]);
+      else if(p[0]==='sec'&&DAY.test(p[1]))st.sec={date:p[1],n:+p[2]||0};
+      else if(['t5','t8a','t10','t13'].includes(p[0])&&DAY.test(p[1]))st[p[0]]=p[1];
+      else if(p[0]==='dcd'&&DAY.test(p[1]))st.dcd=p[1];
+      else if(p[0]==='sd'&&DAY.test(p[1]))st.sd=p[1];
+      else if(p[0]==='op'&&p.length>=3&&DAY.test(p[p.length-1])&&itemOf2(p.slice(1,-1).join(':')))st.open={key:p.slice(1,-1).join(':'),date:p[p.length-1]};
+      else if(p[0]==='dc'&&p.length===3&&itemOf2('dc:'+p[1])&&DAY.test(p[2]))st.def.push({id:p[1],from:p[2]});
+    }
+    st.ok=(c.independent_days||[]).filter(d=>DAY.test(d));st.days.sort();st.done.sort();st.noc.sort();st.def.sort((x,y)=>IDX2[x.id]-IDX2[y.id]);
+    st.evidence_at=c.evidence_at||'';st.event_id=c.event_id||'';
+    return st;
+  }
+  // 받을 때 보존하는 결과 키(학습자당 한 번만 채점) · 노출 표시 · 미확인 표시.
+  //  r2: T10w2·T10w3(T10 둘째·셋째 오답 — 다른 기기에서 남은 도움 단계 복원) · T14a1(T14 ① 둘째 오답) · T14af(셋째 오답 뒤 따라 놓기 마침).
+  const RES_KEY2=/^(T5w?|T6|T9|T10(h|w2|w3)?|T11|T12[abc]|T13[ab]|T14a[01f]?|T14b|B\.t-[a-z]+\.\d+)$/;
+  const SEEN_KEY2=/^T(9|10|11)x$/;
+  const UNSURE2=/^(T5|T6|T9|T10|T11|T14a|B\.t-[a-z]+\.\d+)_u$/;
+  // Codex 착수 의견 3: 같은 첫 시도가 두 기기에 서로 다르게 남아 선후를 입증할 수 없으면 '미확인'(<문항>_u = u-mixed, 원고 §10).
+  //  첫 시도의 모양: A·D는 첫 오답 표시(T5w·T14a0)가 있으면 'wrong', C는 노출됨(Tnx·노출 뒤 연습 p-*)이면 'seen'.
+  function first2(res,k){
+    if(k==='T5')return res.T5w?'wrong':res.T5==='A-ok'?'ok':res.T5||'';
+    if(k==='T14a')return res.T14a0?'wrong':res.T14a==='D-ok'?'ok':res.T14a||'';
+    if(/^T(9|10|11)$/.test(k))return /^p-/.test(res[k]||'')||(!res[k]&&res[k+'x'])?'seen':res[k]||'';
+    return res[k]||'';
+  }
+  // r3: 두 결과의 엇갈린 첫 시도 = mergeRes2가 새로 붙이는 미확인 표시(C 문장은 첫 노출일로 판정).
+  function unsure2(a,b){const m=mergeRes2(a,b);return Object.keys(m).filter(k=>/_u$/.test(k)&&!a[k]&&!b[k]).map(k=>k.slice(0,-2));}
+  // ── r3 C 문장 첫 노출일(Codex r2 HOLD 1) ──
+  //  Tno = 'o-YYYY-MM-DD' = 그 C 문장(T9·T10·T11)이 첫 시도 화면으로 처음 열린 날(어느 기기든 가장 이른 날). 화면을 열 때 남기고(render) 공유·합칠 때 이른 날을 남긴다.
+  //  첫 시도 화면은 첫 노출일 당일에만 열리므로(그 뒤 날은 연습), 첫 답이 있는 기록의 Tno = 그 첫 답을 낸 날이다.
+  //  노출 표시(Tnx): C-seen = 노출됨·미채점(날짜가 지나 다시 열림·다른 기기가 넘어감·늦은 답) · C-push = 같은 날 한 기기에서 제출 없이 다른 화면으로 밀림
+  //  (같은 날 다른 기기의 첫 답과 선후를 알 수 없는 경우는 이것뿐이다).
+  const CK2=['T9','T10','T11'],O_KEY2=/^T(9|10|11)o$/,CU_KEY2=/^T(9|10|11)_u$/,J2=x=>JSON.stringify(x&&typeof x==='object'&&!Array.isArray(x)?Object.keys(x).sort().map(k=>[k,x[k]]):x);   // r4: 키 순서와 무관하게 비교
+  const oDay2=(r,k)=>{const v=String((r&&r[k+'o'])||'');return /^o-\d{4}-\d{2}-\d{2}$/.test(v)?v.slice(2):'';};
+  const ans2=(r,k)=>/^C-(ok|fail)$/.test(r[k]||'')&&!r[k+'x']?r[k]:'';
+  const seen2=(st,id)=>!st.res[id]&&!!st.res[id+'x'];
+  function cBase2(key){const it=itemOf2(key);if(!it)return null;const s=it.type==='dc'?SEQ2[IDX2[it.id]]:it.type==='step'?SEQ2[it.idx]:null;
+    return s&&s.layer==='C'&&(s.kind==='arrange'||s.kind==='write')?s.id:null;}
+  // 열린 첫 시도 화면(제출 전)도 노출 — 첫 노출일 표시가 없으면 열린 날로 채운 사본.
+  function withOpen2(res,open){
+    const k=open&&cBase2(open.key);if(!k||res[k]||res[k+'x']||!DAY.test(open.date||''))return res;
+    const o=oDay2(res,k);if(o&&o<=open.date)return res;
+    return {...res,[k+'o']:'o-'+open.date};
+  }
+  // C 문장 하나 합치기 — r4(Codex r3 지적 4): 두 기록만 보고 처음부터 다시 판정한다(a·b 대칭, 받는 순서와 무관 — 결과를 다시 합쳐도 같음).
+  //  · 첫 노출일 E = 두 기록 중 이른 날. 첫 시도 화면은 첫 노출일 당일에만 열리므로, 기록의 첫 답은 그 기록의 첫 노출일에 낸 답이다.
+  //  · 날짜가 있는 미확인(u-mixed)은 '그 기록의 첫 노출일에 두 첫 답(또는 화면 밀림과 첫 답)이 엇갈림'이라는 뜻이다. 더 이른 노출이 오면(E < 그 날)
+  //    엇갈린 답은 모두 늦은 답 = 연습이 되어 미확인이 풀린다. 같은 날이면 그대로 미확인. r3는 미확인을 한 번 붙이면 다시 판정하지 않아 순서에 따라 갈렸다.
+  //  · 첫 노출일 없는 기록(r2 형식)이 엇갈림에 끼면 날짜로 풀 수 없으므로 미확인을 남기고 첫 노출일도 붙이지 않는다(뒤에 와도 풀리지 않게).
+  //  · 남길 값이 둘이면 정한 순서로 고른다(C-ok > C-fail > p-ok > p-help > p-fail) — 어느 기록이 남길(더 새) 기록이든 같게.
+  const RANK2={'C-ok':5,'C-fail':4,'p-ok':3,'p-help':2,'p-fail':1};
+  const pick2=(...vs)=>vs.filter(v=>RANK2[v]).sort((x,y)=>RANK2[y]-RANK2[x])[0]||'';
+  function cMerge2(out,a,b,k){
+    const da=oDay2(a,k),db=oDay2(b,k),E=[da,db].filter(Boolean).sort()[0]||'';
+    for(const s of ['','x','_u','o'])delete out[k+s];
+    const has=r=>!!(r[k]||r[k+'x']||r[k+'_u']);
+    if((has(a)&&!da)||(has(b)&&!db)){                                            // 첫 노출일 없는 기록 = r2 규칙(날짜로 풀지 않음)
+      const v=pick2(a[k],b[k]),x=first2(a,k),y=first2(b,k);
+      if(v)out[k]=v;else if(a[k+'x']||b[k+'x'])out[k+'x']=a[k+'x']==='C-push'||b[k+'x']==='C-push'?'C-push':'C-seen';
+      if(a[k+'_u']||b[k+'_u']||(x&&y&&x!==y)){out[k+'_u']='u-mixed';return;}
+      if(E)out[k+'o']='o-'+E;return;}
+    if(E)out[k+'o']='o-'+E;
+    const uOn=(r,d)=>!!r[k+'_u']&&d===E;                                           // 날짜 있는 미확인: 그 기록의 첫 노출일 = E일 때만 유효
+    if(uOn(a,da)||uOn(b,db)){out[k+'_u']='u-mixed';const v=pick2(a[k],b[k]);if(v)out[k]=v;return;}
+    const Aa=ans2(a,k),Ab=ans2(b,k),onA=!!Aa&&da===E,onB=!!Ab&&db===E;            // 첫 노출일에 낸 첫 답만 첫 시도
+    const pushed=(r,d)=>!ans2(r,k)&&!r[k+'_u']&&r[k+'x']==='C-push'&&d===E;
+    if((onA&&onB&&Aa!==Ab)||(onA&&!onB&&pushed(b,db))||(onB&&!onA&&pushed(a,da))){out[k+'_u']='u-mixed';out[k]=pick2(Aa,Ab);return;}
+    if(onA||onB){out[k]=onA?Aa:Ab;return;}
+    // 첫 노출일에 낸 첫 답이 없음: 늦은 답(다른 날 답·풀린 미확인의 답)과 연습 값은 연습으로, 노출 표시만 남은 경우는 C-push(첫 노출일에 밀림) 또는 C-seen.
+    const late=[a[k],b[k]].filter(v=>RANK2[v]).map(v=>'p-'+v.split('-')[1]);
+    if(late.length){out[k]=pick2(...late);out[k+'x']=pushed(a,da)||pushed(b,db)?'C-push':'C-seen';return;}   // 첫 노출일의 화면 밀림은 연습 값과 함께도 남김(뒤에 오는 같은 날 첫 답과 비교)
+    // 첫 답 없이 노출만: 첫 노출일에 밀림 = C-push · 그 밖 노출 표시가 있거나 어느 기록의 첫 노출일이 E보다 늦음(= 그 기기가 더 늦은 날 다시 봄) = C-seen.
+    //  뒤의 규칙 덕분에 '첫 시도 화면을 d일에 연 기기가 더 이른 첫 노출일을 받으면' 그 자리에서 노출됨이 되어(화면 중 받는 r4 제출 전 대조 포함), 이어 쓴 답이 이른 날의 첫 시도로 잘못 기록되지 않는다.
+    if(pushed(a,da)||pushed(b,db))out[k+'x']='C-push';else if(a[k+'x']||b[k+'x']||(da&&da>E)||(db&&db>E))out[k+'x']='C-seen';
+  }
+  // 결과 합치기(순수 함수) — a = 남길 기록의 결과, b = 다른 기록의 결과. 첫 답·단계·미확인 표시는 a에 없으면 b에서(학습자당 한 번만 채점),
+  //  C 문장은 cMerge2, 그 밖 첫 시도(T5·T6·T14a·재확인 회차)는 서로 다르면 미확인.
+  function mergeRes2(a,b){
+    const out={...a};
+    for(const [k,v] of Object.entries(b||{})){
+      if(SEEN_KEY2.test(k)||O_KEY2.test(k)||CK2.includes(k)||CU_KEY2.test(k))continue;   // r4: C 문장의 미확인 표시도 cMerge2가 다시 판정
+      if(UNSURE2.test(k)||RES_KEY2.test(k)){if(!out[k])out[k]=v;}
+    }
+    for(const k of CK2)cMerge2(out,a,b||{},k);
+    const bk=o=>Object.keys(o).filter(k=>/^B\.t-[a-z]+\.\d+$/.test(k));
+    for(const k of uniq(['T5','T6','T14a',...bk(a),...bk(b||{})])){const x=first2(a,k),y=first2(b||{},k);if(x&&y&&x!==y&&!out[k+'_u'])out[k+'_u']='u-mixed';}
+    // r6(Codex r5 지적 2): 미확인 재확인 회차의 대표값은 받는 순서와 무관하게 'B-fail' = 독립 정답이 확인되지 않은 회차. 한 번 쓴 회차로 세고 예약은 이어 간다
+    //  (남은 기회는 다음 학습일). r5는 남길 기록 쪽 값이라, 다른 기기의 B-ok가 대표값이 되면 '홈'으로 나간 기기만 그 값으로 마감해 다음 날 복습이 사라졌다.
+    for(const k of Object.keys(out))if(/^B\.t-[a-z]+\.\d+$/.test(k)&&out[k+'_u'])out[k]='B-fail';
+    return out;
+  }
+  // r6(Codex r5 지적 2): E2 재확인 예약 합치기 = E1 mergeB + 미확인 회차는 쓴 회차. 채점만 하고 마감 전인 열린 시도(skip)라도 미확인이면 이미 두 기기에서 답한 회차라
+  //  시도 수에 넣고, 그 회차를 연 화면(opens = 두 기록의 열린 재확인 화면과 그 회차 — openK2)의 날을 마지막 날로 둔다(같은 날 새 회차를 열지 않음).
+  //  다른 회차를 연 화면의 날은 쓰지 않는다. 그 기기가 나중에 마감해도 회차 = 화면을 연 회차라 두 번 세지 않는다.
+  const openK2=st=>{const o=st&&st.open,it=o&&itemOf2(o.key);return it&&it.type==='b'?{key:o.key,date:o.date,k:'B.'+it.sid+'.'+bRound2(st,it.sid)}:null;};
+  function mergeB2(m,loc,skip,opens,primaryRes){
+    const out=[],sids=[...new Set([...m.b.map(x=>x.sid),...loc.b.map(x=>x.sid)])];
+    const rn=k=>+k.split('.').pop();
+    for(const sid of sids){
+      const all=Object.keys(m.res).filter(k=>/^B\.t-[a-z]+\.\d+$/.test(k)&&k.startsWith('B.'+sid+'.')),ks=all.filter(k=>!(skip&&skip.has(k)));
+      if(ks.some(k=>m.res[k]==='B-ok'&&!m.res[k+'_u']))continue;
+      const y=m.b.find(x=>x.sid===sid),x=loc.b.find(z=>z.sid===sid),uks=all.filter(k=>m.res[k+'_u']),un=Math.max(0,...uks.map(rn));
+      // 한쪽이 마지막 회차까지 마감했으면 다른 기기의 열린 화면이 예약을 되살릴 수 없다.
+      const finalKey='B.'+sid+'.'+B_MAX;
+      if((!y&&primaryRes[finalKey])||(!x&&loc.res[finalKey]))continue;
+      // r7: 정답으로 마감한 쪽도 같다 — 예약이 없는 쪽 기록에 그 문장의 정답(미확인 아님)이 있으면, 같은 회차를 채점만 하고 '다음' 전인 다른 기기의 열린 화면이 예약을 되살릴 수 없다.
+      const okDone=r=>all.some(k=>r[k]==='B-ok'&&!m.res[k+'_u']);
+      if((!y&&okDone(primaryRes))||(!x&&okDone(loc.res)))continue;
+      // 옛 기기의 열린 1회차를 빼더라도 마감한 2·3회차의 번호는 그대로다.
+      const closedFailures=ks.filter(k=>m.res[k]==='B-fail').map(rn);
+      const tries=Math.max(y?y.tries:0,x?x.tries:0,un,...closedFailures);if(tries>=B_MAX)continue;
+      let last=later(y?y.last:'',x?x.last:'');
+      if(un)for(const o of opens||[])if(o&&o.key==='b:'+sid&&uks.includes(o.k)&&DAY.test(o.date||''))last=later(last,o.date);
+      out.push({sid,tries,last});
+    }
+    if(JSON.stringify(out)===JSON.stringify(m.b))return false;
+    m.b=out;return true;
+  }
+  // T10 전체 제출 수(공유된 단계로 확정): 첫 정답 1 · 고쳐 맞힘 = 오답 수 + 1 · 정답 공개 3 · 그 밖 마감 = 오답 수. 갈라진 기록이면 '-', C 첫 답이 없으면 null.
+  function triesT10(RS){
+    if(RS.T10_u)return '-';const v=RS.T10||'';if(v==='C-ok')return 1;if(v!=='C-fail')return null;
+    if(RS.T10h==='h-ok')return RS.T10w3?'-':(RS.T10w2?2:1)+1;
+    return RS.T10w3?3:RS.T10w2?2:1;
+  }
+  function pendingIn2(m,it){if(it.type==='step')return m.ptr<=it.idx;if(it.type==='b')return m.b.some(x=>x.sid===it.sid);if(it.type==='dc')return m.def.some(x=>x.id===it.id);return false;}
+  function itemDone2(m,it,bkey){
+    if(it.type==='step')return m.ptr>it.idx;
+    if(it.type==='dc')return !m.def.some(x=>x.id===it.id)&&!!(m.res[it.id]||m.res[it.id+'x']);
+    if(it.type==='b')return !!bkey&&!!m.res[bkey];
+    return false;
+  }
+  function mergeFacts2(m,loc){
+    let f=false;
+    for(const k of ['days','done','noc']){const u=uniq([...m[k],...loc[k]]);if(u.length!==m[k].length)f=true;m[k]=u;}
+    const ok0=uniq(m.ok).slice(-8).join(),ou=uniq([...m.ok,...loc.ok]);m.ok=ou;if(ou.slice(-8).join()!==ok0)f=true;
+    for(const k of ['t5','t8a','t10','t13'])if(loc[k]&&(!m[k]||loc[k]<m[k])){m[k]=loc[k];f=true;}
+    for(const k of ['sd','dcd'])if(loc[k]&&loc[k]>m[k]){m[k]=loc[k];f=true;}
+    if(loc.sec&&loc.sec.date&&(loc.sec.date>m.sec.date||(loc.sec.date===m.sec.date&&loc.sec.n>m.sec.n))){m.sec={date:loc.sec.date,n:loc.sec.n};f=true;}
+    return f;
+  }
+  // 공유 기록 받기(순수 함수) = E1 adopt(r6)에서 S9 사실 처리를 뺀 것 + '미확인'. 더 최근 서버 기록(rem)을 쓰되 이 기기(loc)에만 있는 실제 기록은 보존한다.
+  function adopt2(loc,rem,c,date){
+    const m=copy(rem),added=[],logs=[];
+    const gl=loc.open?gradedOpen2(loc):null,gkey=gl?keyOf2(gl.item):'';
+    // r2(Codex r1 HOLD 1): 이 기기에서 열었지만 첫 제출 전인 C 문장(T9·T10·T11). 받은 기록에 이 열린 화면이 없으면 노출이 사라지므로 아래에서 보존한다.
+    const ls=!gl&&loc.open?seenTarget2(loc,loc.open.key,null):null;
+    const doneThere=gl?itemDone2(rem,gl.item,gl.r.bkey):false,rg=rem.open?gradedOpen2(rem):null,remGraded=!!rg;
+    const skip=new Set([gl&&gl.r.bkey,rg&&rg.r.bkey].filter(Boolean));
+    const sameOpen=x=>!!(gl&&x.open&&x.open.key===gkey&&(gl.item.type!=='b'||'B.'+gl.item.sid+'.'+bRound2(x,gl.item.sid)===gl.r.bkey));   // r6: 연 회차로 비교
+    // r3(Codex r2 HOLD 1·2·3): 결과 합치기는 mergeRes2 한 곳 — 이 기기에만 있는 첫 답·단계 보존, C 문장은 첫 노출일로 선후 판정, 선후를 알 수 없는 첫 답만 미확인.
+    const r0=m.res;m.res=mergeRes2(withOpen2(rem.res,rem.open),withOpen2(loc.res,loc.open));
+    for(const k of uniq([...Object.keys(r0),...Object.keys(m.res)]))if(r0[k]!==m.res[k])added.push(k);
+    let f=mergeFacts2(m,loc);
+    for(const id of ['T9','T11'])if(m.res[id]&&loc.res[id]&&!loc.def.some(x=>x.id===id)&&m.def.some(x=>x.id===id)){m.def=m.def.filter(x=>x.id!==id);f=true;}
+    for(const x of loc.def)if(!m.def.some(y=>y.id===x.id)&&!m.res[x.id]){m.def.push({id:x.id,from:x.from});f=true;}
+    m.def.sort((x,y)=>IDX2[x.id]-IDX2[y.id]);
+    if(mergeB2(m,loc,skip,[openK2(loc),openK2(rem)],rem.res))f=true;
+    if(loc.ptr>m.ptr){m.ptr=loc.ptr;f=true;}
+    const ro=m.open,rit=ro?itemOf2(ro.key):null;
+    if(ro&&(!rit||!pendingIn2(m,rit))){m.open=null;f=true;}
+    if(gl&&!remGraded&&pendingIn2(m,gl.item)&&!(sameOpen(m)&&m.open.date===loc.open.date)){
+      const cand={...m,open:{key:gkey,date:loc.open.date,...(gl.item.type==='b'?{n:+gl.r.bkey.split('.').pop()}:{})}};   // r6: 재확인은 연 회차를 함께
+      if(gradedOpen2(cand)){if(m.open&&m.open.key!==gkey)markSeen2(m,m.open.key,gkey);m.open=cand.open;f=true;}
+    }
+    // r2: 받은 기록에서도 같은 화면(같은 날)이 열려 있으면 그대로. 받은 기록에 열린 화면이 없고 그 문장이 아직 남아 있으면 열린 화면을 되살린다
+    //  (같은 날이면 첫 시도로 이어 풀고, 날짜가 지났으면 화면을 열 때 노출됨으로). 그 밖(다른 기기가 이월·진행·다른 화면) = 노출됨·미채점.
+    if(ls&&!m.res[ls]&&!m.res[ls+'x']&&!(m.open&&m.open.key===loc.open.key&&m.open.date===loc.open.date)){
+      const lit=itemOf2(loc.open.key);
+      if(!m.open&&lit&&pendingIn2(m,lit)){m.open={key:loc.open.key,date:loc.open.date};f=true;}
+      else{m.res[ls+'x']='C-seen';added.push(ls+'x');}
+    }
+    // r6(Codex r5 지적 4): 합친 기록의 열린 화면이 이 기기에서 채점한 그 시도(문항·날짜·재확인 회차 같음)이면, 받은 기록도 같은 시도를 채점했더라도 이 기기 화면 상세(cur)를 둔다.
+    //  이 기기가 실제로 낸 첫 제출(own)과 입력(typed)이 미확인 행의 근거라서다. r5는 받은 기록이 채점했으면 버려, 같은 날 다시 열고 마감한 행이 'C=ok;typed='(대표값)로 남았다.
+    const keepCur=!!(gl&&m.open&&sameOpen(m)&&m.open.date===loc.open.date);
+    // r7(Codex 11/24): 이 기기가 채점한 시도를 합친 기록에서 이어 가지 않으면(화면 상세 cur를 버리는 모든 경우 — 닫힘·다른 화면, 같은 문항·회차라도 다른 날 연 화면)
+    //  받은 기록에 그 문항 결과가 있을 때 이 기기의 첫 제출을 그 답을 낸 날짜(loc.open.date)로 한 번 남긴다. r6는 문항·회차만 같으면 건너뛰어, 다른 날 같은 회차를 푼 기기의
+    //  기록을 받으면 이 기기 첫 답의 행이 사라졌다. 행은 합친 결과로 만든다 — 미확인이면 u=mixed 표시와 함께 이 기기 첫 제출(own)만 채점(없으면 분모 제외). 마감으로 남기는 행과 같은 규칙.
+    if(gl&&doneThere&&!keepCur)logs.push(closeLogOf2(loc,loc.open.date,gkey,token2(gl.item,fillFromCur2(gl,c),(gl.item.type==='b'||m.res[(gl.item.id||gkey)+'_u'])?{...loc,res:m.res}:loc)));
+    // r7: 이 기기가 답을 낸 재확인 회차(own)가 받은 기록의 다른 열린 화면에 밀려 이어지지 않고 받은 기록에 그 회차 결과도 없으면(두 기기가 한 회차 어긋난 경우 등) 그 답을 낸 날로 마감한다
+    //  — 날짜가 지나 복구 마감하는 것(closeOne2)과 같은 규칙. 두지 않으면 열린 화면이 사라진 채점 결과를 다음 합치기가 '마감한 회차'로 세어, 이 기기의 행·독립일 없이 회차만 쓰인다.
+    //  예약의 마지막 날은 뒤로 가지 않게 늦은 쪽. 다른 기기 답만 받은 열린 화면(own 없음)은 그 기기가 스스로 마감하므로 여기서 닫지 않는다.
+    if(gl&&gl.item.type==='b'&&!keepCur&&!doneThere&&c&&c.key===gkey&&c.own&&c.own[gl.r.bkey]&&pendingIn2(m,gl.item)){
+      const r=fillFromCur2(gl,c),sidB=gl.item.sid,last0=(m.b.find(x=>x.sid===sidB)||{}).last||'',s=complete2(m,loc.open.date,gl.item,r),x=s.b.find(z=>z.sid===sidB);
+      if(x)x.last=later(last0,x.last);
+      m.res=s.res;m.b=s.b;m.days=s.days.slice().sort();m.ok=s.ok.slice().sort();m.noc=s.noc.slice().sort();f=true;
+      logs.push(closeLogOf2(loc,loc.open.date,gkey,token2(gl.item,r,s)));
+    }
+    return {st:m,added,logs,keepCur,stamp:added.length>0||f,changed:added.length>0||logs.length>0||f};
+  }
+  // r2(Codex r1 HOLD 3)·r3(Codex r2 HOLD 2·3): index 수신기(PA_PROGRESS.mergeConcept)가 eng_fin-E2 두 기록을 합칠 때 부른다. primary = 남길(더 새) 기록의 토큰, other = 버려질 기록의 토큰.
+  //  결과 토큰(r:)은 mergeRes2로 합친다 — 버려질 기록에만 있는 첫 답·단계(정답 공개·따라 놓기 마침 등)·첫 노출일·미확인 표시를 남기고, C 문장은 첫 노출일로 판정한다.
+  //  그래서 중간에 그 문항이 없는 기록이 끼어도 이미 받은 첫 답이 사라지지 않는다(도착·기록 시각 순서와 무관). 결과 밖 토큰(진행 위치·예약·날 등)은 primary 그대로.
+  function tokensRes2(q){const o={};for(const t of q){const p=String(t).split(':');if(p[0]==='r'&&p.length===3)o[p[1]]=p[2];}return o;}
+  function tokensOpen2(q){for(const t of q){const p=String(t).split(':');if(p[0]==='op'&&p.length>=3&&DAY.test(p[p.length-1]))return {key:p.slice(1,-1).join(':'),date:p[p.length-1]};}return null;}
+  //  r4(Codex r3 지적 3): 재확인 예약(b:)도 두 기록에서 합친다 — 앱의 mergeB와 같은 규칙(합친 결과에 그 문장의 B-ok가 있으면 끝, 시도 수는 큰 쪽,
+  //  정한 횟수면 끝, 마지막 날은 늦은 쪽, 채점만 하고 마감 전인 열린 재확인 결과는 끝낸 것으로 세지 않음). 첫 오답으로 잡힌 다음 학습일 '지난 문장 다시 쓰기'가
+  //  더 새 기록에 없다는 이유로 사라지지 않게. 그 밖 토큰(진행 위치·날·이월 등)은 r3와 같이 primary 그대로.
+  function mergeQuestions2(primary,other){
+    const A=Array.isArray(primary)?primary.slice():[],B=Array.isArray(other)?other:[];
+    if(!A.includes('e2v:1')||!B.includes('e2v:1'))return A;
+    const res=mergeRes2(withOpen2(tokensRes2(A),tokensOpen2(A)),withOpen2(tokensRes2(B),tokensOpen2(B)));
+    const P=decode2({last_questions:A}),O=decode2({last_questions:B}),m={...P,res};
+    const gP=P.open?gradedOpen2(P):null,gO=O.open?gradedOpen2(O):null;
+    mergeB2(m,O,new Set([gP&&gP.r.bkey,gO&&gO.r.bkey].filter(Boolean)),[openK2(P),openK2(O)],P.res);
+    // r6(Codex r5 지적 3): 재확인에 실패한 날(noc)은 어느 기기에서 생겼든 실제 기록 — 두 기록의 합집합(그날 새 C 배열 이월과 다음 학습일 배정이 한 기기에서 풀었을 때와 같게).
+    const noc=uniq([...P.noc,...O.noc]).sort();
+    const rest=A.filter(t=>{const p=String(t).split(':');return !((p[0]==='r'&&p.length===3)||(p[0]==='b'&&p.length===4)||(p[0]==='noc'&&p.length===2));});
+    return uniq([...rest,...Object.entries(res).map(([k,v])=>'r:'+k+':'+v),...m.b.map(x=>'b:'+x.sid+':'+x.tries+':'+x.last),...noc.map(d=>'noc:'+d)]).filter(t=>TOKEN.test(t));
+  }
+  // 이 기기 기록이 더 새 경우(받지 않음): r3 — 받은(옛) 기록에만 있는 첫 답·단계·첫 노출일·미확인 표시와 재확인 예약도 이 기기에 합친다(mergeRes2·mergeB).
+  //  진행 위치·열린 문항·이월 목록은 이 기기 것 그대로. 바뀐 것이 없으면 null.
+  function reconcile2(loc,rem){
+    if(!rem||!rem.res)return null;
+    const s=copy(loc);s.res=mergeRes2(withOpen2(loc.res,loc.open),withOpen2(rem.res,rem.open));
+    const gl=loc.open?gradedOpen2(loc):null,rg=rem.open?gradedOpen2(rem):null;
+    mergeB2(s,{...rem,b:Array.isArray(rem.b)?rem.b:[]},new Set([gl&&gl.r.bkey,rg&&rg.r.bkey].filter(Boolean)),[openK2(loc),openK2(rem)],loc.res);
+    // r6(Codex r5 지적 3): 받은(옛) 기록의 재확인 실패일도 합친다(합집합). r5는 이 기기 것만 남겨, 같은 날 다시 열면 이월해야 할 새 C 배열(T11)이 열렸다.
+    s.noc=uniq([...loc.noc,...(Array.isArray(rem.noc)?rem.noc:[])]).sort();
+    if(J2(s.res)===J2(loc.res)&&J2(s.b)===J2(loc.b)&&J2(s.noc)===J2(loc.noc))return null;
+    return s;
+  }
+  // E2 성취(원고 §10) — 확인된 첫 시도만(로그 행 수·정답률로 다시 세지 않음). 미확인 = 기기 기록이 엇갈려 선후를 입증할 수 없음.
+  function achieve2(st){
+    const R=st.res,lab=(k,v)=>R[k+'_u']?'미확인':v,o={};
+    o.A=lab('T5',R.T5==='A-ok'?'✔':R.T5||R.T5w?'✗':'');
+    o.B=lab('T6',R.T6==='B-ok'?'✔':R.T6==='B-fail'?'✗':'');
+    for(const k of ['T9','T10','T11'])o[k]=lab(k,R[k]==='C-ok'?'C ✔':R[k]==='C-fail'?(k==='T10'&&R.T10h==='h-ok'?'C ✗ · 도움 후 완성':'C ✗'):/^p-/.test(R[k]||'')||R[k+'x']?'노출됨·미채점':st.def.some(x=>x.id===k)?'미노출 이월':'');
+    o.D=lab('T14a',R.T14a==='D-ok'?'✔':R.T14a||R.T14a0?'✗':'');
+    o.B2=Object.keys(R).filter(k=>/^B\.t-[a-z]+\.\d+$/.test(k)).sort().map(k=>k+' '+lab(k,R[k]==='B-ok'?'✔':'✗'));
+    return o;
+  }
 
   // ───────────────────────── 화면 ─────────────────────────
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -413,15 +1022,22 @@ const PA_ENGLISH_FINAL=(()=>{
 #e1-page .e1-sent{margin:0;font-size:21px;font-weight:700;text-align:center;line-height:1.6}#e1-page .e1-blank{display:inline-block;min-width:110px;border-bottom:3px solid var(--whom);color:var(--whom);padding:0 6px}
 #e1-page .e1-opt{display:block;width:100%;text-align:left;padding:12px;border:2px solid var(--line);border-radius:10px;background:#fff;font-size:17px;font-family:inherit;margin-bottom:8px}
 #e1-page .e1-opt.ok{border-color:var(--ok);background:var(--ok-bg)}#e1-page .e1-opt.no{border-color:#e0a3a3;background:#fdf1f1}
+#e1-page .e1-opt:disabled{color:#1f2937;opacity:1;cursor:default}
 #e1-page .e1-illus{width:100%;height:auto;border-radius:12px;display:block}#e1-page .e1-cap{margin:0;font-size:18px;font-weight:600;text-align:center}
 #e1-page .e1-foot{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);padding:10px 16px 14px;display:flex;flex-direction:column;gap:8px}
 #e1-page .e1-main{min-height:50px;border:0;border-radius:12px;background:#2F5496;color:#fff;font-size:17px;font-weight:700;font-family:inherit}#e1-page .e1-main:disabled{background:#b9c6dc}
 #e1-page .e1-home{background:none;border:0;color:#5b6575;font-size:14px;font-family:inherit;text-decoration:underline}
-#e1-page .e1-done{text-align:center;padding:40px 0 10px;font-size:19px;font-weight:700;line-height:1.6}`;
+#e1-page .e1-done{text-align:center;padding:40px 0 10px;font-size:19px;font-weight:700;line-height:1.6}
+#e1-page .e1-orig{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}#e1-page .e1-ob{display:flex;flex-direction:column;align-items:center;padding:8px 10px;border-radius:10px;border:2px solid var(--tile-line);background:var(--tile);text-align:center}
+#e1-page .e1-ob b{font-size:17px}#e1-page .e1-ob small{font-size:12.5px;color:var(--muted);margin-top:2px;font-weight:600}
+#e1-page .e1-lead.e1-after{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line)}#e1-page .e1-ob.t{border-color:#9a7b2f;background:#fbf4e2}#e1-page .e1-ob.t b{color:#7a5a12}#e1-page .e1-ob.m{border-color:var(--who);background:var(--who-bg)}#e1-page .e1-ob.m b{color:var(--who)}
+#e1-page .e1-dlg{border:1px solid var(--line);border-radius:10px;padding:8px 12px;background:#fafbfc;font-size:16px;line-height:1.55}#e1-page .e1-dlg p{margin:2px 0}#e1-page .e1-dlg b{display:inline-block;width:20px;color:#5b6575}#e1-page .e1-dlg.box{font-size:15px}#e1-page .e1-dlg .bx{font-weight:700;color:#5b6575;margin-bottom:4px}#e1-page .e1-blank.sm{min-width:64px;text-align:center;font-weight:700}`;
   // S1·S0 그림(시안 v2의 임시 SVG — 내가 남동생이 농구공을 던지는 모습을 보고 있다)
   const SCENE=`<svg class="e1-illus" viewBox="0 0 400 240" role="img" aria-label="학교 운동장에서 남동생이 농구 골대를 향해 공을 던지는 모습을 내가 보고 있는 장면"><defs><linearGradient id="e1sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9f1fb"/><stop offset="1" stop-color="#f7fafd"/></linearGradient></defs><rect x="0" y="0" width="400" height="240" fill="url(#e1sky)"/><rect x="18" y="86" width="120" height="70" fill="#dfe6ee"/><rect x="18" y="80" width="120" height="8" fill="#c9d3de"/><g fill="#f7fafd"><rect x="30" y="98" width="16" height="14"/><rect x="56" y="98" width="16" height="14"/><rect x="82" y="98" width="16" height="14"/><rect x="108" y="98" width="16" height="14"/><rect x="30" y="124" width="16" height="14"/><rect x="56" y="124" width="16" height="14"/><rect x="82" y="124" width="16" height="14"/><rect x="108" y="124" width="16" height="14"/></g><rect x="0" y="156" width="400" height="84" fill="#e8dcc8"/><line x1="0" y1="156" x2="400" y2="156" stroke="#cdbfa6" stroke-width="2"/><path d="M250 232 A70 70 0 0 1 390 232" fill="none" stroke="#cdbfa6" stroke-width="2"/><rect x="346" y="58" width="8" height="140" fill="#596573"/><rect x="300" y="46" width="54" height="40" rx="3" fill="#f4f6f8" stroke="#596573" stroke-width="3"/><rect x="312" y="60" width="26" height="18" fill="none" stroke="#596573" stroke-width="2"/><ellipse cx="303" cy="86" rx="15" ry="4" fill="none" stroke="#C2410C" stroke-width="3"/><g stroke="#9aa5b1" stroke-width="1.5" fill="none"><path d="M289 88 L294 112"/><path d="M296 90 L298 114"/><path d="M303 90 L303 114"/><path d="M310 90 L308 114"/><path d="M317 88 L312 112"/><path d="M294 112 L312 112"/></g><path d="M262 64 Q282 36 298 70" fill="none" stroke="#15803D" stroke-width="2.5" stroke-dasharray="5 5"/><circle cx="265" cy="60" r="10" fill="#e07b2a" stroke="#9a4b12" stroke-width="2"/><path d="M255 60 H275 M265 50 V70 M258 53 Q265 60 258 67 M272 53 Q265 60 272 67" fill="none" stroke="#9a4b12" stroke-width="1.5"/><g stroke="#4a3a2f" stroke-width="6" stroke-linecap="round" fill="none"><path d="M232 92 L252 74 L262 66"/><path d="M222 94 L212 110 L224 118"/><path d="M228 128 L216 150 L224 170"/><path d="M236 128 L252 146 L246 168"/></g><rect x="218" y="88" width="26" height="42" rx="8" fill="#C2410C"/><text x="231" y="116" font-size="11" font-weight="700" fill="#fff" text-anchor="middle" font-family="system-ui, sans-serif">7</text><circle cx="231" cy="74" r="12" fill="#f3c9a4" stroke="#4a3a2f" stroke-width="2"/><path d="M219 70 Q231 58 243 70" fill="#4a3a2f"/><circle cx="96" cy="128" r="14" fill="#4a3a2f"/><rect x="78" y="142" width="36" height="52" rx="9" fill="#2F5496"/><g stroke="#2F5496" stroke-width="7" stroke-linecap="round" fill="none"><path d="M80 150 L68 186"/><path d="M112 150 L124 186"/></g><g stroke="#3b3f46" stroke-width="9" stroke-linecap="round" fill="none"><path d="M86 194 L84 226"/><path d="M106 194 L108 226"/></g><path d="M118 128 Q170 100 212 94" fill="none" stroke="#2F5496" stroke-width="1.5" stroke-dasharray="3 4" opacity=".8"/></svg>`;
 
   let st=null,sit=null,cur=null,today='',busy=false,preview=false,timer=null,live=null,shared='',held=[],unsaved=false;
+  // E2: 둘째 묶음 진도·앉은 자리·전송 표시·미기록 로그(저장 키 KEY2). 풀던 화면(cur)은 하나 — E2 화면이면 cur.track===2이고 E2 키에 저장된다.
+  let st2=fresh2(),sit2=null,shared2='',held2=[],w2last='';
   // 저장 묶음 = {st 진도, sit 앉은 자리, cur 풀던 화면, shared 마지막으로 전송 대기열에 넣은 기록(evidence_at), held 기록하지 못한 결과 로그}
   function load(){
     try{const raw=PA_STORAGE.getItem(KEY);if(!raw)return {st:fresh(),sit:null,cur:null,shared:'',held:[]};const o=JSON.parse(raw);
@@ -430,18 +1046,42 @@ const PA_ENGLISH_FINAL=(()=>{
     catch(_){throw Error('영어 기록을 읽지 못했어요. 기록을 보존한 채 어른에게 알려 주세요.');}
   }
   function write(o){const v=JSON.stringify(o);return typeof safeSetItem==='function'?safeSetItem(KEY,v)===true:(PA_STORAGE.setItem(KEY,v),true);}
+  function load2(){
+    try{const raw=PA_STORAGE.getItem(KEY2);if(!raw)return {st:fresh2(),sit:null,cur:null,shared:'',held:[]};const o=JSON.parse(raw);
+      if(!o||!o.st||o.st.v!==1)throw Error('bad');
+      return {st:{...fresh2(),...o.st},sit:o.sit||null,cur:o.cur||null,shared:typeof o.shared==='string'?o.shared:'',held:Array.isArray(o.held)?o.held:[]};}
+    catch(_){throw Error('영어 기록을 읽지 못했어요. 기록을 보존한 채 어른에게 알려 주세요.');}
+  }
+  function w2raw(v){return typeof safeSetItem==='function'?safeSetItem(KEY2,v)===true:(PA_STORAGE.setItem(KEY2,v),true);}
+  function write2(o){return w2raw(JSON.stringify(o));}
+  const bundle2=()=>({st:st2,sit:sit2,cur:cur&&cur.track===2?cur:null,shared:shared2,held:held2});
   // r4: 저장 결과를 늘 '저장 안 됨'(unsaved)에 반영한다(호출마다 따로 처리하지 않게). 성공하면 메모리 전체가 저장된 것.
-  function save(){if(preview)return true;let ok=false;try{ok=write({st,sit,cur,shared,held});}catch(_){ok=false;}unsaved=!ok;return ok;}
-  function stampOn(s){s.evidence_at=new Date().toISOString();s.event_id=(typeof PA_CURRICULUM!=='undefined'?PA_CURRICULUM:'pa')+':english:e1:'+(crypto.randomUUID?crypto.randomUUID():String(Date.now()));}
+  // E2(Codex 착수 의견 3): 두 키는 한 번에 쓰이지 않는다 → 풀던 화면이 없는 쪽(닫는 쪽)을 먼저, 풀던 화면이 있는 쪽을 나중에 쓰고, 앞이 실패하면 뒤는 쓰지 않는다.
+  //  풀던 화면과 그 묶음의 첫 시도 결과는 같은 키에 함께 쓰이므로(한 번의 setItem) 둘째 저장이 실패한 채 앱이 닫혀도 화면 정보와 채점 기록이 어긋나지 않는다.
+  //  E2 키는 바뀐 때만 쓴다(E2가 열리기 전에는 E1 키 한 번 — r3와 같음).
+  function save(){if(preview)return true;let ok=false;try{
+    const j2=JSON.stringify(bundle2()),e2=()=>{if(j2===w2last)return true;const r=w2raw(j2);if(r)w2last=j2;return r;};
+    const b1={st,sit,cur:cur&&cur.track===2?null:cur,shared,held};
+    ok=cur&&cur.track===2?(write(b1)&&e2()):(e2()&&write(b1));}catch(_){ok=false;}unsaved=!ok;return ok;}
+  function stampOn(s){s.evidence_at=new Date().toISOString();s.event_id=(typeof PA_CURRICULUM!=='undefined'?PA_CURRICULUM:'pa')+':english:e1:'+(crypto.randomUUID?crypto.randomUUID():Array.from(crypto.getRandomValues(new Uint8Array(16)),b=>b.toString(16).padStart(2,'0')).join(''));}
   function stamp(){stampOn(st);}
+  function stampOn2(s){s.evidence_at=new Date().toISOString();s.event_id=(typeof PA_CURRICULUM!=='undefined'?PA_CURRICULUM:'pa')+':english:e2:'+(crypto.randomUUID?crypto.randomUUID():Array.from(crypto.getRandomValues(new Uint8Array(16)),b=>b.toString(16).padStart(2,'0')).join(''));}
+  function stamp2(){stampOn2(st2);}
   // 전송: 마지막으로 대기열에 넣은 기록(shared)과 지금 기록이 다르면 넣는다. 넣지 못하면 shared를 그대로 둬서 다음 기회(앱 열기·홈·다시 보일 때)에 다시 넣는다.
+  const shareKey=s=>s.evidence_at+'|'+s.event_id;
   function shareState(s,sh){
-    if(!s||!s.evidence_at||s.evidence_at===sh||!s.days.length)return sh;
-    try{if(PA_PROGRESS.enqueueEnglishFinal&&PA_PROGRESS.enqueueEnglishFinal(encode(s))===true)return s.evidence_at;}catch(e){console.warn('[e1-progress]',e&&e.message);}
+    if(!s||!s.evidence_at||shareKey(s)===sh||!s.days.length)return sh;
+    try{if(PA_PROGRESS.enqueueEnglishFinal&&PA_PROGRESS.enqueueEnglishFinal(encode(s))===true)return shareKey(s);}catch(e){console.warn('[e1-progress]',e&&e.message);}
     return sh;
   }
+  function shareState2(s,sh){
+    if(!s||!s.evidence_at||shareKey(s)===sh||!s.days.length)return sh;
+    try{if(PA_PROGRESS.enqueueEnglishFinalE2&&PA_PROGRESS.enqueueEnglishFinalE2(encode2(s))===true)return shareKey(s);}catch(e){console.warn('[e2-progress]',e&&e.message);}
+    return sh;
+  }
+  function readRemote2(){try{const c=PA_PROGRESS.englishFinalRemoteE2?.();return c?decode2(c):null;}catch(_){return null;}}
   // 전송 시점: 첫 시도 결과 기록(fixNow)·앉은 자리 닫기(나가기·끝·날짜 바뀜)·화면 숨김·시작·resend. 화면마다 보내지는 않는다(대기열이 화면 수만큼 늘지 않게).
-  function share(){if(preview)return;const n=shareState(st,shared);if(n!==shared){shared=n;save();}}
+  function share(){if(preview)return;const n=shareState(st,shared),n2=shareState2(st2,shared2);if(n!==shared||n2!==shared2){shared=n;shared2=n2;save();}}
   // 첫 시도 결과는 그 자리에서 기록·저장·전송 대기열에(맞음·틀림 모두).
   function fixNow(k,v){rollDay();fix(st,k,v);stamp();const ok=save();if(ok)share();return ok;}
   // 저장 안 됨이면 다시 저장해 본다(성공하면 전송도). 화면 전환 버튼마다 먼저 부른다.
@@ -463,9 +1103,11 @@ const PA_ENGLISH_FINAL=(()=>{
   const now=()=>typeof performance!=='undefined'?performance.now():Date.now();
   function tStart(){if(!timer)timer={ms:0,at:null};if(timer.at===null&&!document.hidden)timer.at=now();}
   function tTake(){if(!timer)return 0;let ms=timer.ms+(timer.at===null?0:now()-timer.at);timer.ms=0;timer.at=timer.at===null?null:now();return ms/1000;}
-  // 쓴 시간을 오늘 기록에 더한다. 1초 이상이면 '최근 기록' 표시도 바꿔 다른 기기에 전해지게 한다.
-  function flushTime(){const s=tTake();if(s>0){st=addSec(st,today,s);if(sit)sit.sec=(sit.sec||0)+s;if(s>=1)stamp();}}
+  // 쓴 시간을 오늘 기록에 더한다(E2 화면이면 E2 진도·앉은 자리에). 1초 이상이면 '최근 기록' 표시도 바꿔 다른 기기에 전해지게 한다.
+  function flushTime(){const s=tTake();if(s>0){if(cur&&cur.track===2){st2=addSec(st2,today,s);const z=s2();z.sec=(z.sec||0)+s;if(s>=1)stamp2();}else{st=addSec(st,today,s);if(sit)sit.sec=(sit.sec||0)+s;if(s>=1)stamp();}}}
   function newSit(){return {id:'e1-'+new Date().toISOString().replace(/[^0-9TZ]/g,''),date:today,items:[],sec:0};}
+  function newSit2(){return {id:'e2-'+new Date().toISOString().replace(/[^0-9TZ]/g,''),date:today,items:[],sec:0};}
+  function s2(){if(!sit2)sit2=newSit2();return sit2;}
   // 실제 날짜 확인: 화면을 연 채 날짜(서울)가 바뀌었으면 전날 앉은 자리를 닫고 새 날짜로 이어 간다(결과는 실제 날짜로 기록).
   // r6: 저장 실패면 날짜를 넘기지 않고 false(부르는 쪽이 멈춤). 날짜가 그대로거나 넘겼으면 true.
   function rollDay(){
@@ -473,8 +1115,8 @@ const PA_ENGLISH_FINAL=(()=>{
     // r4: 열린 문항(open)의 날짜는 여기서 바꾸지 않는다 — 그날 배정(syncDay)이 정해진 뒤에만 기록.
     flushTime();
     if(!closeSitting('dayroll'))return false;
-    const was=today;today=d;sit=newSit();
-    if(!save()){today=was;sit=null;return false;}
+    const was=today;today=d;sit=newSit();if(cur&&cur.track===2)sit2=newSit2();
+    if(!save()){today=was;sit=null;sit2=null;return false;}
     return true;
   }
   if(typeof document!=='undefined'){
@@ -515,7 +1157,7 @@ const PA_ENGLISH_FINAL=(()=>{
   function holdHere(){const b=document.querySelector('#e1-page .e1-body');if(b)hold(b);}
   function note(f,el,text,kind,html){if(!el){el=f.add('<p class="e1-note"></p>');}el.className='e1-note'+(kind?' '+kind:'');el.hidden=false;if(html)el.innerHTML=html;else el.textContent=text;return el;}
   const verbQ=s=>/heard/.test(s.en[1])?'들었나요':'봤나요';
-  const helpTexts=s=>[`누가 ${verbQ(s)}? '${s.ko4[0]}'부터 찾아봐요.`,`다음은 '${s.ko4[1]}'(${s.en[1]}). 그다음 누구를, 그다음 뭐 하는 걸.`];
+  const helpTexts=s=>s.h2?[`누가 ${s.h2}? '${s.ko4[0]}'부터 찾아봐요.`,`다음은 '${s.ko4[1]}'(${s.en[1]}). 그다음 그 일을 할 사람, 그다음 to + 할 일.`]:[`누가 ${verbQ(s)}? '${s.ko4[0]}'부터 찾아봐요.`,`다음은 '${s.ko4[1]}'(${s.en[1]}). 그다음 누구를, 그다음 뭐 하는 걸.`];
   // 덩어리(또는 단어) 배열. opts: chunks, mix, roles, colored, meanings, words, ask, onCheck(correct,order), onAsk
   function arrange(f,o){
     const ans=o.chunks,n=ans.length;let placed=[],follow=false,colored=!!o.colored,meanings=!!o.meanings,locked=false;
@@ -523,17 +1165,33 @@ const PA_ENGLISH_FINAL=(()=>{
     const askBtn=o.ask?f.add('<button type="button" class="e1-ask">모르겠어요</button>'):null;
     const fb=f.add('<p class="e1-note" hidden></p>');
     const cls=i=>colored&&o.roles?' c-'+o.roles[i]:'';
+    function finishFollow(){
+      locked=true;
+      draw();
+      if(o.onFollowed)o.onFollowed();
+    }
     function draw(){
       area.innerHTML=placed.map((i,k)=>`<button type="button" class="e1-tile picked${cls(i)}" data-k="${k}">${esc(ans[i])}</button>`).join('');
       tiles.innerHTML=o.mix.map(i=>`<button type="button" class="e1-tile${cls(i)}" data-i="${i}" ${placed.includes(i)||locked||(follow&&i!==placed.length)?'disabled':''}>${esc(ans[i])}${meanings&&o.meanings?`<small>${esc(o.meanings[i])}</small>`:''}</button>`).join('');
       area.querySelectorAll('button').forEach(b=>b.onclick=()=>{if(locked||follow)return;placed.splice(+b.dataset.k,1);draw();});
-      tiles.querySelectorAll('button').forEach(b=>b.onclick=()=>{const i=+b.dataset.i;if(locked||placed.includes(i))return;if(follow&&i!==placed.length)return;placed.push(i);draw();});
-      if(follow){f.main('다음',placed.length===n,()=>{locked=true;draw();o.onFollowed&&o.onFollowed();});}
+      tiles.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+        const i=+b.dataset.i;
+        if(locked||placed.includes(i))return;
+        if(follow&&i!==placed.length)return;
+        placed.push(i);
+        draw();
+        if(follow&&placed.length===n&&o.advanceOnLastFollowTile)gate(finishFollow,f.body);
+      });
+      if(follow){
+        const complete=placed.length===n;
+        // S9 B에서 자동 전환을 저장하지 못했으면 같은 화면의 버튼으로 다시 시도한다.
+        f.main(complete&&o.advanceOnLastFollowTile?'다시 저장':'다음',complete,finishFollow);
+      }
       else f.main('확인',placed.length===n&&!locked,()=>{const ok=placed.every((v,k)=>v===k);o.onCheck(ok,placed.slice());});
     }
     if(askBtn)askBtn.onclick=()=>{if(!locked&&!follow)gate(()=>{if(!locked&&!follow)o.onAsk&&o.onAsk();},f.body);};   // r5: P0 '모르겠어요'도 관문
     draw();
-    return {reset(){placed=[];draw();},color(on){colored=on;draw();},mean(on){meanings=on;draw();},lock(){locked=true;if(askBtn)askBtn.hidden=true;draw();},
+    return {reset(){placed=[];draw();},unlock(){locked=false;draw();},solved(){placed=ans.map((_,i)=>i);follow=false;locked=true;draw();},color(on){colored=on;draw();},mean(on){meanings=on;draw();},lock(){locked=true;if(askBtn)askBtn.hidden=true;draw();},
       follow(text){follow=true;locked=false;placed=[];if(askBtn)askBtn.hidden=true;note(f,fb,'',null,`${esc(text||'순서는 이래요.')}<div class="e1-path">${ans.map(a=>`<span>${esc(a)}</span>`).join('<span>→</span>')}</div>`);draw();},
       note(text,kind,html){return note(f,fb,text,kind,html);},hideAsk(){if(askBtn)askBtn.hidden=true;}};
   }
@@ -579,7 +1237,7 @@ const PA_ENGLISH_FINAL=(()=>{
     const draw=()=>{en.innerHTML=sent.en.map((w,i)=>`<button type="button" class="e1-tile c-${ROLE[i]}${hit.has(i)?' lit':''}" data-i="${i}">${esc(w)}</button>`).join('');
       ko.innerHTML=sent.ko4.map((w,i)=>`<span class="e1-tile${hit.has(i)?' c-'+ROLE[i]+' lit':''}" style="cursor:default">${esc(w)}</span>`).join('');
       en.querySelectorAll('button').forEach(b=>b.onclick=()=>{hit.add(+b.dataset.i);draw();});
-      if(hit.size===4){msg.hidden=false;msg.textContent=`영어는 '${sent.ko4[1]}'가 둘째에 와요. 그다음 '누구를', 그다음 '뭐 하는 걸'.`;}
+      if(hit.size===4){msg.hidden=false;msg.textContent=sent.linkMsg||`영어는 '${sent.ko4[1]}'가 둘째에 와요. 그다음 '누구를', 그다음 '뭐 하는 걸'.`;}
       f.main('다음',hit.size===4,()=>done());};
     draw();
   }
@@ -591,7 +1249,7 @@ const PA_ENGLISH_FINAL=(()=>{
     const draw=()=>{top.innerHTML=koOrder.map(i=>`<span class="e1-tile c-${ROLE[i]}" style="cursor:default;${i<k?'opacity:.3':''}">${esc(sent.ko4[i])}</span>`).join('');
       slots.innerHTML=[0,1,2,3].map(i=>`<div class="e1-slot" style="${i<k?`color:var(--${ROLE[i]});border-style:solid;border-color:var(--${ROLE[i]})`:''}">${i<k?esc(sent.en[i]):''}</div>`).join('');
       if(k===2){cap.hidden=false;cap.textContent=`'${sent.ko4[1]}'가 앞으로 나와요.`;}
-      if(k===4){cap.hidden=false;cap.textContent='하고 있던 행동은 -ing예요. '+sent.ing+'.';}
+      if(k===4){cap.hidden=false;cap.textContent=sent.to?'할 일 앞에는 to를 붙여요. '+sent.to+'.'+(sent.toPlus?' '+sent.toPlus:''):'하고 있던 행동은 -ing예요. '+sent.ing+'.';}
       if(k<4)f.main('옮기기',true,()=>{k++;draw();});else f.main('다음',true,()=>done());};
     draw();
   }
@@ -717,10 +1375,64 @@ const PA_ENGLISH_FINAL=(()=>{
     if(w>=3)show();
     return f;
   }
+  // v212: 본문 문장 보기(채점 없음) — 5일차 혼자 쓰기 '다음' 뒤 · S9 B의 ① 제출 뒤에 같은 장면을 쓴다.
+  const seenOn=s0=>(s9Evidence(s9Tokens(s0?.res||{})).S9v||'').slice(2);
+  function modeOf(s0,date) {
+    const facts = s9Evidence(s9Tokens(s0.res));
+    if (facts.S9m === 'm-B') return 'B';
+    if (facts.S9m === 'm-A') return 'A';
+    const last = (facts.S9vl || facts.S9v || '').slice(2);
+    return last && last < date ? 'A' : 'B';
+  }
+  // The caller presents the new text only after true. Roll back every changed field on write failure.
+  function storeS9Facts(incoming) {
+    const res = {...st.res};
+    if (!mergeS9Facts(res, incoming).length) return true;
+    const prior = {res:st.res, evidence_at:st.evidence_at, event_id:st.event_id};
+    st.res=res;
+    stamp();
+    if (!save()) { Object.assign(st, prior); return false; }
+    share();
+    return true;
+  }
+  function recordOrigSeen(date) { return storeS9Facts({S9v:'v-'+date}); }
+  function receivedS9Facts() {
+    const remote = preview ? null : readEnglishRemote();
+    return s9Evidence(s9Tokens(st.res).concat(s9Tokens(remote?.res||{})));
+  }
+  // An already-open question can receive new facts before submission. Persist them with the actual attempt.
+  function absorbLiveS9Facts() { mergeS9Facts(st.res, receivedS9Facts()); }
+  function recallFeedbackOkay(date) {
+    const facts = receivedS9Facts();
+    const last = (facts.S9vl || facts.S9v || '').slice(2);
+    return st.res.S9u!=='u-legacy' && facts.S9m==='m-A' && !!last && last<date;
+  }
+  function recordExamMode(date) {
+    const facts = receivedS9Facts();
+    facts.S9m='m-'+modeOf({res:facts},date);
+    return storeS9Facts(facts);
+  }
+  // r2: 본문 문장 덩어리(리드·덩어리·원문·우리말·안내) — 장면 화면과 B ① 정답 화면(같은 화면 아래)이 같이 쓴다. 리드 요소를 돌려준다.
+  function origShow(f,lead,cls){
+    const e=S.exam,lab=['언제','처음에 배운 문장','언제'];
+    const top=f.add(`<p class="e1-lead${cls?' '+cls:''}">${esc(lead)}</p>`);
+    f.add(`<div class="e1-orig">${e.orig.map((c,i)=>`<div class="e1-ob ${i===1?'m':'t'}"><b>${esc(c)}</b><small>${lab[i]}</small></div>`).join('')}</div>`);
+    f.add(`<p class="e1-sent" style="font-size:19px">${esc(e.answer)}</p>`);f.add(`<p class="e1-ko">${esc(e.ko)}</p>`);
+    f.add('<p class="e1-note info">이 본문 문장은 <b>Last Friday,</b>로 시작하고 <b>after school</b>로 끝나요.</p>');
+    return top;
+  }
+  function origScene(title,count,lead,btn,onNext){const f=frame(title,count);origShow(f,lead);f.main(btn,true,onNext);return f;}
   R.write=(s,done)=>{
-    if(st.res[s.id]==='C-ok')return recorded(s.title,'이 문장은 처음 쓸 때 혼자 맞혔어요.',[S.cats.answer],()=>done({code:'ok',w:0,typed:(cur.typed||[]).join(' / ')}));
+    // v212: 채점이 끝난 뒤 '다음' → 본문 문장 보기 → '다 봤어요'로 S8W를 마친다. 장면이 화면에 뜬 날을 S9v로(처음 한 번, 저장·공유).
+    const orig=r=>{
+      if(!recordOrigSeen(today))return saveBlocked(()=>orig(r));
+      origScene(s.title,'','처음에 배운 문장이 교과서 106쪽 본문에는 이렇게 나와요.','다 봤어요',()=>done(r));
+    };
+    const toOrig=r=>subStep({phase:'orig',r8:r},()=>orig(r));   // 저장되기 전에는 넘어가지 않는다(r5 하위 화면 규칙)
+    if(cur.phase==='orig')return orig(cur.r8||{code:st.res[s.id]==='C-ok'?'ok':'fail',w:cur.w||0,typed:(cur.typed||[]).join(' / ')});
+    if(st.res[s.id]==='C-ok')return recorded(s.title,'이 문장은 처음 쓸 때 혼자 맞혔어요.',[S.cats.answer],()=>toOrig({code:'ok',w:0,typed:(cur.typed||[]).join(' / ')}));
     const first=()=>{if(!st.res[s.id])fixNow(s.id,'C-fail');};
-    const cb=(ok,w,typed)=>done({code:ok&&w===0&&st.res[s.id]!=='C-fail'?'ok':'fail',w,typed:(cur.typed||[]).join(' / ')});
+    const cb=(ok,w,typed)=>toOrig({code:ok&&w===0&&st.res[s.id]!=='C-fail'?'ok':'fail',w,typed:(cur.typed||[]).join(' / ')});
     cb.retry=true;
     writeScreen(s.title,'1/1','주어진 말을 모두 사용하고, 필요하면 형태를 바꾸어 문장을 쓰세요.',first,cb,w=>{if(w===0&&!st.res[s.id])fixNow(s.id,'C-ok');});
   };
@@ -742,15 +1454,72 @@ const PA_ENGLISH_FINAL=(()=>{
   R.exam=(s,done)=>{
     cur.r=cur.r||{};
     const term='<p class="e1-note info">시험에서는 이런 문장을 \'지각동사 문장\'이라고 불러요. see·hear·feel + 누구를 + -ing.</p>';
+    // v212: ①이 끝나면 B는 본문 문장 보기(o9) → ②, A는 바로 ②. 하위 화면 전환은 저장되기 전에는 넘어가지 않는다(r5).
+    const toB=()=>subStep({phase:'b',w:0},B);
+    const after1=()=>st.res.S9m==='m-B'?subStep({phase:'o9',w:0},O9):toB();
+    const O9_LEAD='방금 놓은 문장은 교과서 106쪽 본문 문장이에요. 본문에는 이렇게 나와요.',O9=()=>origScene(s.title,'1/3',O9_LEAD,'다음',toB);
+    // r2(Codex HOLD 3): A 첫 오답이 검토된 다른 어순(Last Friday, after school I saw my brother playing basketball. — 배포 점검 REVIEW v2·v3)일 때만
+    //  '뜻은 맞아요'. after school을 다른 자리에 넣어 Last Friday·my brother 등을 깨뜨린 답은 기존 안내.
+    const ALT=[0,1,8,9,2,3,4,5,6,7].join(),asOnly=o=>o.join()===ALT;
     const A=()=>{
-      const e=S.exam,f=frame(s.title,'1/3');f.add(term);f.add('<p class="e1-lead">우리말에 맞게 단어를 순서대로 놓으세요.</p>');f.add(`<p class="e1-ko">${esc(e.ko)}</p>`);
+      const legacy=st.res.S9u==='u-legacy'||(!st.res.S9m&&Boolean(st.res.S9a0||st.res.S9a||cur.w>0));
+      if(!legacy&&!recordExamMode(today))return saveBlocked(A);
+      const md=legacy?'legacy':st.res.S9m.slice(2),e=S.exam,f=frame(s.title,'1/3');f.add(term);
+      const prompt=legacy?'우리말에 맞게 단어를 순서대로 놓으세요.':md==='A'
+        ?'앞에서 본 106쪽 본문 문장이에요. 우리말에 맞게, <b>본문 문장 그대로</b> 단어를 놓으세요.'
+        :'우리말에 맞게 단어를 놓으세요. <b>Last Friday,</b>로 시작하고 <b>after school</b>로 끝내세요.';
+      f.add(`<p class="e1-lead">${prompt}</p>`);
+      f.add(`<p class="e1-ko">${esc(e.ko)}</p>`);
       let w=cur.w||(st.res.S9a0?1:0);const tips=["'지난 금요일'(Last Friday,)부터 놓고, 그다음 누가 봤는지 찾아봐요.","I saw 다음은 누구를(my brother), 그다음 뭐 하는 걸(playing basketball), 마지막에 after school."];
+      const tip=k=>k===1&&md==='A'&&cur.t1==='as'?'뜻은 맞아요. 본문에서는 after school이 어디에 있었는지 떠올려 봐요.':tips[k-1];
       const a=arrange(f,{chunks:e.words,mix:e.mix,words:true,
-        onCheck:ok=>{if(ok){a.lock();cur.r.d=w===0&&!st.res.S9a0?'ok':'help';cur.r.dw=w;fixNow('S9a','D-'+cur.r.d);a.note(w===0?'맞아요! 시간이 지나도 혼자 놓았어요.':'맞아요.','ok');f.main('다음',true,()=>subStep({phase:'b',w:0},B));return;}
-          w++;cur.w=w;if(!st.res.S9a0)fixNow('S9a0','D-wrong');save();
-          if(w>=3){cur.r.d='fail';cur.r.dw=w;fixNow('S9a','D-fail');a.follow('순서는 이래요. 눌러서 따라 놓아 봐요.');return;}a.reset();a.note(tips[w-1]);},
-        onFollowed:()=>{cur.r.d='fail';cur.r.dw=w;subStep({phase:'b',w:0},B);}});   // r5: ②로 넘어가는 저장 확인
-      if(w>=3)a.follow('순서는 이래요. 눌러서 따라 놓아 봐요.');else if(w>0)a.note(tips[w-1]);
+        advanceOnLastFollowTile:st.res.S9m==='m-B',
+        onCheck:(ok,order)=>{
+          absorbLiveS9Facts();
+          // gate() has assigned the submitting day. Persist this attempt's
+          // result, counter and feedback selector together before giving a hint.
+          if(ok){
+            cur.r.d=w===0&&!st.res.S9a0?'ok':'help';cur.r.dw=w;
+            fix(st,'S9a','D-'+cur.r.d);
+          }else{
+            w++;cur.w=w;
+            if(w===1)cur.t1=asOnly(order||[])?'as':'';
+            fix(st,'S9a0','D-wrong');
+            if(w>=3){cur.r.d='fail';cur.r.dw=w;fix(st,'S9a','D-fail');}
+          }
+          stamp();
+          const correctFeedback=()=>{
+            a.lock();
+            let feedback='맞아요.';
+            if(w===0){
+              if(md==='B')feedback='맞아요! 주어진 시작과 끝에 맞춰 문장을 완성했어요.';
+              else if(md==='A'&&recallFeedbackOkay(today))feedback='맞아요! 시간이 지나도 혼자 놓았어요.';
+              else feedback='맞아요. 본문 순서대로 놓았어요.';
+            }
+            a.note(feedback,'ok');
+            if(md==='B'){
+              const top=origShow(f,O9_LEAD,'e1-after');
+              try{top.scrollIntoView({block:'start'});}catch(_){}
+              f.main('다음',true,toB);
+            }else f.main('다음',true,after1);
+          };
+          if(!save()){
+            // No new teaching content until the real submission is durable.
+            // Retain the original day and attempt in memory. The button uses
+            // gate(): persist first, then settle any overnight change.
+            a.lock();hold(f.body);
+            f.main('다시 저장',true,()=>{
+              if(ok)correctFeedback();else A();
+            });
+            return;
+          }
+          share();
+          if(ok){correctFeedback();return;}
+          if(w>=3){a.follow('순서는 이래요. 눌러서 따라 놓아 봐요.');return;}
+          a.reset();a.note(tip(w));
+        },
+        onFollowed:()=>{cur.r.d='fail';cur.r.dw=w;after1();}});   // r5: 다음 하위 화면으로 넘어가는 저장 확인
+      if(w>=3)a.follow('순서는 이래요. 눌러서 따라 놓아 봐요.');else if(w>0)a.note(tip(w));
     };
     const B=()=>{
       const f=frame(s.title,'2/3');let w=cur.w||0;
@@ -784,9 +1553,309 @@ const PA_ENGLISH_FINAL=(()=>{
       f.main('다음',false);
     };
     // ①을 이미 기록했으면(이 기기에서 맞힌 뒤 나갔거나 다른 기기에서 ①을 마침) ②부터. ①을 따라 놓는 중이면 그 화면을 이어 간다. r5: ②를 기록했으면 ③부터.
-    if(cur.phase==='c'||(st.res.S9a&&pv('S9b')))return C();if(cur.phase==='b'||(st.res.S9a&&!(st.res.S9a==='D-fail'&&cur.w>=3)))return B();A();
+    // v212: B는 ①을 마친 뒤 본문 문장 보기(o9)를 거쳐 ②로 — 다른 기기에서 이어 받으면 o9부터(한 번 더 보여 줘도 해가 없다).
+    if(cur.phase==='c'||(st.res.S9a&&pv('S9b')))return C();if(cur.phase==='b')return B();if(cur.phase==='o9')return O9();
+    if(st.res.S9a&&!(st.res.S9a==='D-fail'&&cur.w>=3))return st.res.S9m==='m-B'?O9():B();A();
   };
   R.end=(s,done)=>done({});
+
+  // ───────────────────────── E2 화면 (E1 화면 종류만 — 문구·타일·보기만 E2 데이터) ─────────────────────────
+  // Codex 착수 의견 3: 첫 시도 결과(·그 화면의 오답 수)는 저장이 확인된 뒤에만 안내·정답·다음 화면을 보인다.
+  //  저장이 안 되면 그 자리에서 멈추고 '다시 저장'(앱을 닫으면 아무것도 보지 않은 첫 시도로 남는다 — 화면과 채점 기록이 늘 같다).
+  const TA2='<textarea class="e1-write" placeholder="여기에 영어 문장을 써요" autocapitalize="sentences" autocomplete="off" spellcheck="false"></textarea>';
+  const LEAD10='네 덩어리를 나누지 말고, 낱말 하나만 더해 지난 일을 한 문장으로 쓰세요. 필요하면 낱말의 모양을 바꿔도 돼요.';
+  function persist2(){rollDay();stamp2();const ok=save();if(ok)share();return ok;}
+  function keep2(f,show){if(persist2())return show();hold(f.body);f.main('다시 저장',true,show);}
+  // 해설·안내가 아래 버튼에 가리면 버튼 위로 보이게(원고 v1.3 — 글자·터치 크기는 그대로, 본문만 스크롤).
+  function reveal(el){try{const foot=document.querySelector('#e1-page .e1-foot');if(!foot||!el)return;const fr=foot.getBoundingClientRect(),r=el.getBoundingClientRect();
+    if(r.bottom>fr.top-4||r.top<0){el.style.scrollMarginBottom=Math.ceil(fr.height+12)+'px';el.style.scrollMarginTop='12px';el.scrollIntoView({block:'nearest'});}}catch(_){}}
+  // 도움 있는 배열(A층·연습). persist면 결과·오답 수를 저장한 뒤에만 안내(A층 T5). 연습은 E1처럼 저장만 해 둔다.
+  function helped2(f,sent,o,finish){
+    let w=o.w||0;const tips=helpTexts(sent);
+    const a=arrange(f,{chunks:sent.en,mix:sent.mix,roles:ROLE,colored:w>0||o.colored,
+      onCheck:ok=>{
+        if(o.pre&&sync2()&&o.pre(ok,a))return;   // r5: 결과를 확정하기 전에 이 기기가 받은 기록과 합침(T5) — 다른 기기 결과가 있으면 그 기록 화면으로
+        if(ok){o.onRight&&o.onRight(w);a.lock();
+          const show=()=>{a.note(w===0&&o.soloText&&(!o.isSolo||o.isSolo())?o.soloText:'맞아요.','ok');f.main('다음',true,()=>finish(w===0?'ok':'help',w));};   // r5: 받은 첫 오답이 있으면 '혼자'라고 하지 않음
+          return o.persist?keep2(f,show):(save(),show());}
+        w++;cur.w=w;o.onWrong&&o.onWrong(w);
+        const show=()=>{if(w>=3){a.color(true);a.follow('순서는 이래요. 눌러서 따라 놓아 봐요.');return;}a.unlock();a.reset();a.color(true);a.note(tips[w-1]);};
+        if(o.persist){a.lock();return keep2(f,show);}
+        save();show();},
+      onFollowed:()=>{a.note(o.failText||'괜찮아요. 다음에 다시 혼자 해 봐요.','info');f.main('다음',true,()=>finish('fail',w));}});
+    if(w>=3){a.color(true);a.follow('순서는 이래요. 눌러서 따라 놓아 봐요.');}else if(w>0)a.note(tips[Math.min(w,2)-1]);
+    return a;
+  }
+  // r5(Codex r4 지적 2): 첫 시도 결과 키를 이 기기가 처음 정할 때만 cur.own에 남긴다 — 미확인 행에서 대표값 대신 이 기기의 첫 제출로 쓴다(token2).
+  function fixMine(k,v){if(st2.res[k])return;fix(st2,k,v);if(cur)cur.own={...(cur.own||{}),[k]:v};}
+  // 도움 없는 한 번(B·C 첫 시도): 결과를 고정·저장한 뒤에만 맞음/틀림 안내.
+  //  r5(Codex r4 지적 2): 고정하기 전에 이 기기가 이미 받은 기록과 합친다(sync2 — 서버 접속 없음). 다른 기기의 첫 답·노출이 먼저 와 있으면 화면 쪽(o.pre)이
+  //  화면을 열기 전에 받았을 때와 같게 처리한다(첫 답 → 그 기록 화면, 노출 → 이번 답은 연습). 통신 전에 서로 낸 첫 답이 엇갈린 경우만 미확인(mergeRes2).
+  function once2(f,sent,o){
+    const a=arrange(f,{chunks:sent.en,mix:sent.mix,onFollowed:o.onFollowed,onCheck:ok=>{
+      a.lock();if(!st2.res[o.key]&&sync2()&&o.pre&&o.pre(ok,a))return;
+      fixMine(o.key,ok?o.good:o.bad);
+      keep2(f,()=>{if(st2.res[o.key]===o.good){a.note(o.okText,'ok');f.main('다음',true,()=>o.onOk());}else o.onBad(a);});}});
+    return a;
+  }
+  const R2={};
+  R2.scene=(s,done)=>{const f=frame(s.title,'');
+    const img=f.add('<img class="e1-illus" src="img/E2_t1_delete_picture.png" width="1500" height="900" alt="남동생이 휴대폰 속 자기 사진을 가리키며 걱정하고, 벨라가 휴지통 버튼을 누르려는 장면">');
+    img.onerror=()=>{img.hidden=true;};   // 그림을 못 불러와도 자막으로 진행(원고 §3 T1)
+    f.add('<p class="e1-cap">사진이 나쁜 댓글과 함께 퍼졌어요. 남동생은 내가 그 사진을 지우기를 원했어요.</p>');f.main('다음',true,()=>done({}));};
+  R2.link=(s,done)=>linkScreen(s,S2[s.sent],s.title,"'봤어요' 문장과 자리가 같아요. 덩어리를 탭하면 뜻이 같이 켜져요.",()=>done({}));
+  R2.demo=(s,done)=>demoScreen(S2[s.sent],s.title,()=>done({}));
+  // T4 빈칸 하나 고르기(4층 밖 메모): 오답 1회 = 보기별 안내, 2회 = 남은 보기 1개.
+  R2.blank=(s,done)=>{
+    const f=frame(s.title,'');let w=cur.w||0;const opts=['deleting','to delete','delete'];
+    f.add(`<p class="e1-ko">${esc(S2['t-base'].ko)}</p>`);
+    const sent=f.add('<p class="e1-sent">My brother wanted me <span class="e1-blank">&nbsp;</span> the picture.</p>');
+    f.add('<p class="e1-lead" style="text-align:center">방금 배운 교과서 문장을 떠올려 보세요. 남동생이 내가 하기를 원한 일을 어떻게 썼나요?</p>');
+    const t=f.add('<div class="e1-tiles"></div>'),fb=f.add('<p class="e1-note" hidden></p>');
+    const draw=()=>{t.innerHTML=opts.map((o,i)=>`<button type="button" class="e1-tile" data-i="${i}" ${w>=2&&i!==1?'disabled':''}>${esc(o)}</button>`).join('');
+      t.querySelectorAll('button').forEach(b=>b.onclick=()=>gate(()=>pick(+b.dataset.i),f.body));};
+    const pick=i=>{
+      if(i===1){sent.querySelector('.e1-blank').textContent='to delete';t.innerHTML='';note(f,fb,'맞아요. 남동생이 원한 일은 사람 뒤에 to + 할 일로 써요.','ok');f.main('다음',true,()=>done({memo:w===0?'solo':'help'+Math.min(w,2)}));return;}
+      w++;cur.w=w;save();
+      if(w>=2)note(f,fb,'to delete예요. 눌러서 놓아 봐요.');
+      else note(f,fb,i===0?'앞에서 -ing는 보고 들은 일이 한창일 때 썼어요. 이 문장에서 남동생이 원한 건 내가 사진을 지우는 일이에요. 교과서에서는 to delete라고 썼어요.':'할 일 앞에 붙는 말이 빠졌어요. 남동생이 원한 일은 교과서에서 to + 할 일로 썼어요.');
+      draw();};
+    draw();f.main('다음',false);
+    if(w>=2)note(f,fb,'to delete예요. 눌러서 놓아 봐요.');
+  };
+  R2.arrange=(s,done)=>{
+    const sent=S2[s.sent];
+    if(s.layer==='A'){
+      const v=st2.res[s.id];
+      if(v&&!(cur.w>=3&&v==='A-fail'))return recorded(s.title,v==='A-fail'?'지난번에 순서를 같이 살펴본 문장이에요. 다음에 다시 혼자 해 봐요.':'이 문장은 이미 놓았어요.',sent.en,()=>done({code:v.slice(2),w:cur.w||0}));
+      const f=frame(s.title,'');f.add('<p class="e1-lead">이번엔 혼자 순서대로 놓아요.</p>');f.add(`<p class="e1-ko">${esc(sent.ko)}</p>`);
+      helped2(f,sent,{w:cur.w||(st2.res[s.id+'w']?1:0),persist:true,soloText:'맞아요. 오늘 혼자 놓았어요.',failText:'오늘은 여기까지. 다음에 다시 혼자 해 봐요.',
+        pre:(ok,a)=>{if(!st2.res[s.id])return false;a.lock();keep2(f,()=>R2.arrange(s,done));return true;},   // r5: 다른 기기에서 이미 끝낸 T5 → 그 기록 화면
+        isSolo:()=>!st2.res[s.id+'w'],   // r5: 다른 기기의 첫 오답(T5w)을 받았으면 정답이어도 도움 후 완성(A-help) — 안내도 '맞아요.'
+        onWrong:w=>{fix(st2,s.id+'w','A-wrong');if(w>=3)fixMine(s.id,'A-fail');},
+        onRight:w=>fixMine(s.id,w>0||st2.res[s.id+'w']?'A-help':'A-ok')},(code,w)=>done({code,w}));
+      return;
+    }
+    // C 배열(T9·T11): 우리말만, 첫 시도. 틀리면 C ✗(저장 확인 뒤) → 그 자리에서 뜻 연결 → 시연 → 도움 있는 배열(연습). E1 S7C 규칙 그대로.
+    const remedial=()=>linkScreen(s,sent,s.title,'괜찮아요. 이 문장을 같이 살펴봐요. 덩어리를 탭하면 뜻이 켜져요.',()=>demoScreen(sent,s.title,()=>{
+      const f=frame(s.title,'');f.add('<p class="e1-lead">이제 다시 놓아 봐요.</p>');f.add(`<p class="e1-ko">${esc(sent.ko)}</p>`);
+      helped2(f,sent,{w:0,colored:true},()=>done({code:'fail'}));}));
+    if(st2.res[s.id]==='C-fail')return remedial();
+    if(st2.res[s.id]==='C-ok')return recorded(s.title,st2.res[s.id+'_u']?'이 문장은 이미 놓았어요.':'이 문장은 처음 볼 때 혼자 놓았어요.',sent.en,()=>done({code:'ok'}));   // r3: 미확인이면 혼자 했다고 단정하지 않음
+    if(/^p-(ok|help|fail)$/.test(st2.res[s.id]||''))return recorded('본 적 있는 문장','이 문장은 전에 연습했어요.',sent.en,()=>done({code:st2.res[s.id].slice(2)}));
+    if(seen2(st2,s.id)){   // 노출됨·미채점 → 연습(원고 §7-5)
+      const f=frame('본 적 있는 문장','');f.add('<p class="e1-lead">전에 한 번 본 문장이에요. 순서대로 놓아 봐요.</p>');f.add(`<p class="e1-ko">${esc(sent.ko)}</p>`);
+      helped2(f,sent,{w:cur.w||0},(code,w)=>done({code,w}));return;
+    }
+    const f=frame(s.title,'1/1');f.add('<p class="e1-lead">처음 보는 문장이에요. <b>우리말만 보고</b> 놓아 보세요.</p>');f.add(`<p class="e1-ko">${esc(sent.ko)}</p>`);
+    once2(f,sent,{key:s.id,good:'C-ok',bad:'C-fail',okText:'맞아요! 처음 보는 문장도 혼자 놓았어요.',onOk:()=>done({code:'ok'}),
+      onBad:a=>{a.note('괜찮아요. 이 문장을 같이 살펴봐요.','info');f.main('다음',true,remedial);},
+      // r5(Codex r4 지적 2 — T9·이월 T9·T11): 첫 제출 전에 받은 기록. 다른 기기의 첫 답·연습 → 그 기록 화면(정답 = 기록, 오답 = 같이 살펴보기, 연습 = 본 적 있는 문장).
+      //  다른 기기가 더 이른 날 본 문장 → 이번 답은 연습(맞으면 '맞아요.'·p-ok, 틀리면 연습 화면 도움 1부터) — 열기 전에 받았을 때와 같은 기록·다음 날 배정.
+      pre:(ok,a)=>{
+        if(st2.res[s.id]){keep2(f,()=>R2.arrange(s,done));return true;}
+        if(!seen2(st2,s.id))return false;
+        if(!ok){cur.w=1;keep2(f,()=>R2.arrange(s,done));return true;}
+        keep2(f,()=>{document.querySelector('.header-title').textContent='영어 · 본 적 있는 문장';const c=f.body.querySelector('.e1-count');if(c)c.textContent='';
+          const l=f.body.querySelector('.e1-lead');if(l)l.textContent='전에 한 번 본 문장이에요. 순서대로 놓아 봐요.';   // 연습 화면과 같은 제목·안내
+          a.note('맞아요.','ok');f.main('다음',true,()=>done({code:'ok',w:0}));});return true;}});
+  };
+  // T6 다른 날 혼자(B층): T5와 같은 화면, 도움 문구 없이 한 번. 틀리면 따라 놓기 → 시연 → 도움 있는 배열(연습). E1 S6 규칙 그대로.
+  R2.check=(s,done)=>{
+    const sent=S2[s.sent];
+    const remedial=()=>demoScreen(sent,s.title,()=>{const f=frame(s.title,'');f.add('<p class="e1-lead">이제 다시 놓아 봐요.</p>');f.add(`<p class="e1-ko">${esc(sent.ko)}</p>`);
+      helped2(f,sent,{w:0,colored:true},()=>done({code:'fail'}));});
+    if(st2.res[s.id]==='B-fail')return remedial();
+    if(st2.res[s.id]==='B-ok')return recorded(s.title,st2.res[s.id+'_u']?'이 문장은 이미 놓았어요.':'이 문장은 다른 날에도 혼자 놓았어요.',sent.en,()=>done({code:'ok'}));
+    const f=frame(s.title,'');f.add('<p class="e1-lead">이번엔 혼자 순서대로 놓아요.</p>');f.add(`<p class="e1-ko">${esc(sent.ko)}</p>`);
+    once2(f,sent,{key:s.id,good:'B-ok',bad:'B-fail',okText:'맞아요. 다른 날에도 혼자 놓았어요.',onOk:()=>done({code:'ok'}),onFollowed:remedial,
+      onBad:a=>a.follow('순서는 이래요. 눌러서 따라 놓아 봐요.'),pre:()=>{if(!st2.res[s.id])return false;keep2(f,()=>R2.check(s,done));return true;}});   // r5: 다른 기기의 T6 결과 → 그 기록 화면
+  };
+  // T7 뜻 연결 → 배열(시연 생략) · T8 배열 → 쓰기 연습. 기록은 연습.
+  R2.practice=(s,done)=>{
+    const sent=S2[s.sent];
+    const arr=()=>{const f=frame(s.title,'');f.add(`<p class="e1-lead">${s.write?"이번엔 '말했어요'. 자리는 똑같아요.":'순서대로 놓아 봐요.'}</p>`);f.add(`<p class="e1-ko">${esc(sent.ko)}</p>`);
+      helped2(f,sent,{w:cur.w||0},(code,w)=>{if(!s.write)return done({code,w});subStep({phase:'write',code,w2:0},()=>wr(code,w));});};
+    const wr=(code,w)=>{
+      const f=frame(s.title,'');let w2=cur.w2||0;
+      f.add('<p class="e1-lead">이번엔 같은 문장을 직접 써 봐요. 덩어리를 보고 순서대로 쓰면 돼요.</p>');f.add(`<p class="e1-ko">${esc(sent.ko)}</p>`);
+      f.add(`<div class="e1-given">${sent.mix.map(i=>`<span>${esc(sent.en[i])}</span>`).join('')}</div>`);
+      const ta=f.add(TA2),fb=f.add('<p class="e1-note" hidden></p>');
+      const submit=()=>{
+        if(gradeWrite(sent.accept,ta.value)){ta.classList.add('ok');ta.readOnly=true;note(f,fb,'맞아요.','ok');f.main('다음',true,()=>done({code,w,write:w2===0?'ok':'help'}));return;}
+        w2++;cur.w2=w2;save();
+        if(w2>=2){ta.readOnly=true;note(f,fb,'정답은 이래요: '+sent.en.join(' ')+'.','info');f.main('다음',true,()=>done({code,w,write:'fail'}));}
+        else{note(f,fb,'덩어리 순서대로 써 봐요: 누가 → 말했어요 → 그 일을 할 사람 → to + 할 일.');f.main('다시 제출',true,submit);}};
+      ta.oninput=()=>f.enable(!!ta.value.trim()&&!ta.readOnly);f.main('제출',false,submit);
+    };
+    if(cur.phase==='write')return wr(cur.code||'ok',cur.w||0);
+    if(s.noDemo)return linkScreen(s,sent,s.title,"이번엔 '부탁했어요'. 자리는 똑같아요 — 누가, 부탁했어요, 그 일을 할 사람, to + 할 일.",arr);
+    return arr();
+  };
+  // T10 혼자 쓰기(C층)·그 재확인(B층)·노출 뒤 연습: 첫 제출 하나로 결과(key가 있을 때, 저장 확인 뒤 안내). 틀려도 입력칸은 열어 둔다(원고 v1.3).
+  //  안내 1·2 → 3번째에 정답. C층에서 안내 뒤 맞히면 '도움 후 완성'(help 키). done({right,w,typed,n}).
+  //  o = {key 첫 시도 결과 키, good, bad, help '도움 후 완성' 키, sched 첫 오답 때 함께 예약할 재확인 문장, stage 오답 단계 공유 키 앞부분}
+  //  r2(Codex r1 HOLD 2): ① 첫 오답(C ✗)과 다음 학습일 재확인 예약을 한 번의 저장에(원고 §3 T10) ② 고쳐 맞힌 뒤 '다음' 전에 나갔다 오면
+  //  맞힌 문장·잠긴 입력칸·'다음'으로(다시 제출 없음) ③ 둘째·셋째 오답(T10w2·T10w3)을 저장해 다른 기기에서도 남은 도움 단계부터.
+  //  r3(Codex r2 HOLD 3): 정답을 공개한 사실(T10w3)이 있으면 그 뒤 맞힌 답으로 '도움 후 완성'(T10h)을 새로 만들지 않는다.
+  //  r5(Codex r4 지적 1·2): 재확인은 화면을 연 회차로 마감(R2.bretry bkey) · 다른 기기의 첫 정답을 받은 뒤의 첫 제출은 그 기록 화면으로(o.redo, 입력은 late).
+  //  r4(Codex r3 지적 1·2): ① 잠긴 정답 칸에 되살리는 문장도 실제 채점(gradeWrite)을 통과해야 한다 — 이 기기 입력 중 통과한 마지막 것, 없으면 정답 예문.
+  //  ② 제출 직전에 이 기기가 이미 받은 기록(readRemote2)을 합쳐 대조한다(서버 접속 없음). 다른 기기에서 정답이 공개됐으면 정답 확인 화면으로(도움 후 완성 없음),
+  //  이미 고쳐 맞혔으면 맞힌 상태로, 다른 기기가 더 이른 날 본 문장이면 이번 답은 연습으로 기록한다. ③ o.solved = 이미 정답을 낸 연습('다음'으로 이어 감).
+  function sync2(){const r=readRemote2();if(!r)return false;const rc=reconcile2(st2,r);if(!rc)return false;st2.res=rc.res;st2.b=rc.b;return true;}
+  function writeScreen2(title,lead,o,done){
+    const c=S2['t-amelia'],f=frame(title,'1/1'),good=o.good,bad=o.bad,RS=st2.res;let key=o.key,help=o.help;
+    const stageOf=R=>key&&R[key]===bad?(o.stage&&R[o.stage+'w3']?3:o.stage&&R[o.stage+'w2']?2:1):0;
+    let w=Math.max(cur.w||0,stageOf(RS));if(w)cur.w=w;
+    const solved=!!cur.solved||!!o.solved||(!!help&&!!key&&RS[key]===bad&&RS[help]==='h-ok');
+    const okTyped=()=>(cur.typed||[]).slice().reverse().find(t=>gradeWrite(c.accept,t))||'';
+    f.add(`<p class="e1-lead">${lead}</p>`);f.add(`<p class="e1-ko">${esc(c.ko)}</p>`);
+    f.add('<p class="e1-lead" style="font-size:14px;color:#5b6575;margin-bottom:-8px">주어진 말</p>');
+    f.add(`<div class="e1-given">${c.given.map(g=>`<span>${esc(g)}</span>`).join('')}</div>`);
+    const ta=f.add(TA2),fb=f.add('<p class="e1-note" hidden></p>');
+    const TIPS=['부탁한 사람 → 부탁했어요 → 그 일을 할 사람 → to + 할 일 순서예요.','ask를 과거로 바꾸고, 할 일 앞에 to를 붙여 보세요.'];
+    const fin=right=>done({right,w,typed:(cur.typed||[]).join(' / '),n:(cur.typed||[]).length});
+    const right=()=>{ta.classList.add('ok');ta.readOnly=true;note(f,fb,'맞았어요! 할 일 앞에 to를 붙였어요.','ok');f.main('다음',true,()=>fin(true));};
+    const answer=()=>{ta.readOnly=true;note(f,fb,'정답은 이래요: '+c.answer,'info');f.main('다음',true,()=>fin(false));};
+    const tip=()=>{ta.readOnly=false;note(f,fb,TIPS[Math.min(w,2)-1]);f.main('다시 제출',!!ta.value.trim(),submit);};
+    const submit=()=>{
+      const typed=ta.value,ok=gradeWrite(c.accept,typed);cur.typed=(cur.typed||[]).concat([typed.slice(0,120)]);
+      const had=!!key&&!!st2.res[key],synced=!!key&&sync2();
+      if(synced){
+        if(o.stage&&(seen2(st2,key)||/^p-/.test(st2.res[key]||''))){key=null;help=null;}   // 다른 기기가 더 이른 날 본 문장 → 이번 답부터 연습
+        // r5(Codex r4 지적 2-T10): 이 기기가 첫 답을 내기 전에 다른 기기의 첫 정답(C ✔·재확인 B ✔)을 받았으면 같은 문장을 다시 요구하지 않고 그 기록 화면으로.
+        //  이 입력은 첫 시도 이력(typed)이 아니라 late로 남긴다. 다른 기기의 첫 오답이면 그 단계부터 이어 간다(아래).
+        else if(!had&&o.redo&&st2.res[key]===good){cur.late=(cur.late||[]).concat(cur.typed.splice(-1));ta.readOnly=true;return keep2(f,o.redo);}
+        else{const s=stageOf(st2.res);if(s>w){w=s;cur.w=w;}
+          if(o.stage&&st2.res[key]===bad&&st2.res[o.stage+'w3']){ta.readOnly=true;return keep2(f,answer);}                        // 이미 정답 공개 → 정답 확인
+          if(help&&st2.res[key]===bad&&st2.res[help]==='h-ok'){ta.readOnly=true;cur.solved=true;if(!ok)ta.value=c.answer;return keep2(f,right);}}}   // 이미 고쳐 맞힘
+      const first=!!key&&!st2.res[key];
+      if(ok){ta.readOnly=true;cur.solved=true;if(first)fixMine(key,good);else if(help&&key&&st2.res[key]===bad&&!(o.stage&&st2.res[o.stage+'w3']))fix(st2,help,'h-ok');return (first||help||synced)?keep2(f,right):(save(),right());}
+      w++;cur.w=w;
+      if(first){fixMine(key,bad);if(o.sched)schedule(st2,o.sched,today);ta.readOnly=true;return keep2(f,w>=3?answer:tip);}   // 첫 답(C ✗·B ✗)과 재확인 예약은 저장 확인 뒤에만 안내
+      if(o.stage&&key&&st2.res[key]===bad){if(w>=2)fix(st2,o.stage+'w2','w-2');if(w>=3)fix(st2,o.stage+'w3','w-3');ta.readOnly=true;return keep2(f,w>=3?answer:tip);}
+      if(synced){ta.readOnly=true;return keep2(f,w>=3?answer:tip);}
+      save();if(w>=3)answer();else tip();};
+    ta.oninput=()=>f.enable(!!ta.value.trim()&&!ta.readOnly);f.main('제출',false,submit);
+    const last=(cur.typed||[]).slice(-1)[0];
+    if(solved){ta.value=okTyped()||c.answer;right();}   // 맞힌 뒤 재개: 채점을 통과한 이 기기 문장, 없으면(다른 기기에서 맞힘) 정답 예문 — 잠긴 칸·'다음'
+    else if(w>=3){if(last)ta.value=last;answer();}else if(w>0){if(last)ta.value=last;tip();}
+    return f;
+  }
+  R2.write=(s,done)=>{
+    const k=s.id,c=S2[s.sent];
+    const late=()=>(cur.late||[]).join(' / ')||undefined;   // r5: 다른 기기의 첫 정답 뒤 이 기기 입력
+    if(st2.res[k]==='C-ok')return recorded(s.title,st2.res[k+'_u']?'이 문장은 이미 썼어요.':'이 문장은 처음 쓸 때 혼자 맞혔어요.',[c.answer],()=>done({code:'ok',w:0,typed:(cur.typed||[]).join(' / '),late:late()}));   // r3(Codex r2): 미확인이면 혼자 맞혔다고 단정하지 않음
+    const isPr=()=>seen2(st2,k)||/^p-/.test(st2.res[k]||''),practice=isPr();   // 노출됨·미채점 → 연습(첫 노출 성취로 세지 않음, 재확인 예약 없음)
+    // r4(Codex r3 지적 1): 다른 기기에서 이미 정답을 낸 연습(p-ok·p-help, '다음' 전에 멈춤)은 같은 문장을 다시 쓰게 하지 않고 '다음'으로. 보기만 한 연습은 직접 쓴다.
+    //  끝낼 때의 연습 여부는 그때의 기록으로 다시 본다(화면을 연 뒤 받은 기록으로 연습이 된 경우 — writeScreen2 ②).
+    writeScreen2(practice?'본 적 있는 문장':s.title,practice?'전에 한 번 본 문장이에요. '+LEAD10:LEAD10,
+      practice?{key:null,solved:/^p-(ok|help)$/.test(st2.res[k]||'')}:{key:k,good:'C-ok',bad:'C-fail',help:'T10h',sched:s.sent,stage:'T10',redo:()=>R2.write(s,done)},
+      r=>{const pr=isPr();done({code:pr?(r.right?(r.w===0?'ok':'help'):'fail'):(st2.res[k]==='C-ok'?'ok':'fail'),w:r.w,typed:r.typed,n:r.n,late:late()});});
+  };
+  // 재확인(B): 이전 날 틀린 E2 문장을 도움 없이 한 번(T6·C 배열 = 배열, T10 = 같은 쓰기 화면 — 대응표 §11-6).
+  //  r5(Codex r4 지적 1): 마감하는 회차 = 화면을 연 회차(bkey) — 화면 중 다른 기기가 그 회차를 먼저 마쳐 예약 횟수가 올라가도 '다음'이 새 회차를 만들지 않는다.
+  //   다른 기기가 그 회차를 정답(B ✔)으로 마쳤으면 그 기록 화면, 오답이면 그 회차 안에서 이어 간다(남은 기회는 다음 학습일).
+  R2.bretry=(sid,done,k0)=>{
+    const o2=st2.open,key=k0||(o2&&o2.key==='b:'+sid&&o2.n>0?'B.'+sid+'.'+o2.n:bKey(st2,sid)),fin=code=>done({code,bkey:key});   // r6: 연 회차(open.n)
+    if(sid==='t-amelia'){
+      if(st2.res[key]==='B-ok')return recorded('지난 문장 다시 쓰기',st2.res[key+'_u']?'이 문장은 이미 썼어요.':'이 문장은 다른 날 혼자 맞혔어요.',[S2[sid].answer],()=>fin('ok'));
+      return writeScreen2('지난 문장 다시 쓰기','지난번 문장을 이번엔 혼자 한 번 써 봐요. '+LEAD10,{key,good:'B-ok',bad:'B-fail',redo:()=>R2.bretry(sid,done,key)},()=>fin(st2.res[key]==='B-ok'?'ok':'fail'));
+    }
+    const sent=S2[sid];
+    if(st2.res[key]==='B-ok')return recorded('지난 문장 다시 놓기',st2.res[key+'_u']?'이 문장은 이미 놓았어요.':'이 문장은 다른 날 혼자 맞혔어요.',sent.en,()=>fin('ok'));
+    const f=frame('지난 문장 다시 놓기','1/1');
+    f.add('<p class="e1-lead">지난번에 살펴본 문장이에요. 이번엔 도움 없이 한 번 놓아 봐요.</p>');f.add(`<p class="e1-ko">${esc(sent.ko)}</p>`);
+    const a=once2(f,sent,{key,good:'B-ok',bad:'B-fail',okText:'맞아요. 다른 날에도 혼자 놓았어요.',onOk:()=>fin('ok'),onFollowed:()=>fin('fail'),
+      onBad:x=>x.follow('순서는 이래요. 눌러서 따라 놓아 봐요.'),pre:()=>{if(!st2.res[key])return false;keep2(f,()=>R2.bretry(sid,done,key));return true;}});
+    if(st2.res[key]==='B-fail')a.follow('순서는 이래요. 눌러서 따라 놓아 봐요.');
+  };
+  // 고르기(E1 S9 ③ 일반화) — 보기 2~5개·번호 표시 여부·질문/지문 줄. 고른 뒤에는 다시 고르기만 막고 글자는 진하게(.e1-opt:disabled).
+  //  첫 선택은 그 자리에서 기록(p-ok/p-fail)·저장 확인 뒤 해설. 해설이 아래 버튼에 가리면 보이게 스크롤.
+  function chooseScreen(title,q,onNext){
+    const f=frame(title,q.count);f.add(q.top);
+    const box=f.add('<div></div>'),fb=f.add('<p class="e1-note" hidden></p>');
+    box.innerHTML=q.opts.map((o,i)=>`<button type="button" class="e1-opt" data-i="${i}">${q.num?'①②③④⑤'[i]+' ':''}${esc(o)}</button>`).join('');
+    const show=i=>{box.querySelectorAll('button').forEach(x=>x.disabled=true);box.children[q.ans].classList.add('ok');
+      if(i>=0&&i!==q.ans)box.children[i].classList.add('no');
+      note(f,fb,q.ex,i===q.ans?'ok':'info');f.main('다음',true,onNext);reveal(fb);};
+    const was=st2.res[q.key];
+    if(/^p-(ok|fail)$/.test(was||''))return show(was==='p-ok'?q.ans:((cur.sel||{})[q.key]?cur.sel[q.key]-1:-1));
+    box.querySelectorAll('button').forEach(b=>b.onclick=()=>gate(()=>{
+      if(st2.res[q.key])return;const i=+b.dataset.i;cur.sel={...(cur.sel||{}),[q.key]:i+1};
+      fix(st2,q.key,'p-'+(i===q.ans?'ok':'fail'));box.querySelectorAll('button').forEach(x=>x.disabled=true);
+      keep2(f,()=>show(i));},f.body));
+    f.main('다음',false);
+  }
+  const Q12=[
+    {key:'T12a',count:'1/3',num:true,ans:1,top:"<p class=\"e1-lead\">벨라의 글 일부예요. 질문의 답이 들어 있는 문장을 고르세요.</p><p class=\"e1-sent\" style=\"font-size:18px\">What did Bella's brother want her to do?</p><p class=\"e1-ko\" style=\"font-size:16px;font-weight:600\">벨라의 남동생은 벨라가 무엇을 하기를 원했나요?</p>",
+      opts:['The copy was spread here and there, and I was so embarrassed.','My brother wanted me to delete the picture of him.','I apologized to him, and I deleted my post immediately.','However, the copies still remain online.'],
+      ex:'②예요. 질문은 남동생이 원한 것을 묻고 있어요. ②는 남동생이 원한 일, ③은 그 뒤에 실제로 일어난 일을 말해요.'},
+    {key:'T12b',count:'2/3',num:true,ans:0,top:'<p class="e1-sent" style="font-size:18px">My brother wanted me to delete the picture of him.</p><p class="e1-lead" style="text-align:center">사진을 지우는 사람은 누구예요?</p>',
+      opts:['벨라(me)','남동생(my brother)'],ex:'to delete 바로 앞의 me(벨라)가 지워요. 남동생은 원한 사람이에요.'},
+    {key:'T12c',count:'3/3',num:true,ans:2,top:'<p class="e1-lead">지훈의 글에 Happy Digital Laundry가 답했어요.</p><p class="e1-sent" style="font-size:17px">Then, we asked the ad company to delete your information, and they did.</p><p class="e1-lead" style="text-align:center">정보를 지운 쪽은 누구예요?</p>',
+      opts:['Happy Digital Laundry(we)','지훈(you)','광고 회사(the ad company)'],ex:"asked 다음의 the ad company가 to delete를 해요. 사람 자리에 회사도 올 수 있어요. 지훈이 쓴 'I want to delete it.'은 사람 자리가 없어서, 지훈이 직접 지우고 싶다는 뜻이에요."}
+  ];
+  const DLG13="<div class=\"e1-dlg\"><p><b>A</b>I saw you <span class=\"e1-blank sm\">①</span> with your sister yesterday.</p><p><b>B</b>Oh, you did? We ran about 5 km together.</p><p><b>A</b>Wasn't it hard? I know that she runs very fast.</p><p><b>B</b>That's true, so I asked her <span class=\"e1-blank sm\">②</span> slowly.</p></div>";
+  const Q13=[
+    {key:'T13a',count:'1/2',num:false,ans:0,top:'<p class="e1-lead">대화를 읽고, 빈칸에 알맞은 말을 고르세요.</p>'+DLG13+'<p class="e1-lead">첫째 빈칸에 들어갈 말을 고르세요.</p>',
+      opts:['running','to run'],ex:'saw 다음 사람 뒤에는 to를 쓰지 않아요. 보고 들은 일이 한창일 때는 -ing예요.'},
+    {key:'T13b',count:'2/2',num:false,ans:1,top:'<p class="e1-lead">대화를 읽고, 빈칸에 알맞은 말을 고르세요.</p>'+DLG13+'<p class="e1-lead">둘째 빈칸에 들어갈 말을 고르세요.</p>',
+      opts:['run','to run'],ex:'asked 다음 사람 뒤에는 to + 할 일이에요. 부탁한 일은 천천히 달리는 거예요.'}
+  ];
+  const Q14={key:'T14b',count:'2/2',num:true,ans:2,top:'<p class="e1-lead">보기마다 어법에 맞는지 따져 보고, 어법에 맞는 문장을 모두 담은 번호를 고르세요.</p><div class="e1-dlg box"><p class="bx">〈보기〉</p><p>(A) Luke told us to be careful.</p><p>(B) I heard him to play the violin.</p><p>(C) Daniel asked Mia catch the spider in his room.</p><p>(D) We heard Dad singing in the kitchen.</p><p>(E) Mr. Brown asked her to reading a book to the class.</p></div>',
+    opts:['(A), (C)','(B), (D)','(A), (D)','(A), (D), (E)','(B), (C), (E)'],
+    ex:'③ (A)·(D)예요. (B) heard 다음 사람 뒤에는 to를 쓰지 않아요(playing). (C) asked 다음 사람 뒤에는 to가 필요해요(to catch). (E) to 다음에는 -ing를 붙이지 않고 read 그대로 써요(to read).'};
+  // T12 본문에서 찾기(3문항)·T13 알맞은 말(2문항). cur.phase = 지금 문항 번호. 다른 기기·나갔다 오면 아직 안 고른 문항부터.
+  R2.choose=(s,done)=>{
+    const Q=s.id==='T12'?Q12:Q13;
+    const resOf=()=>Object.fromEntries(Q.map(q=>[q.key,(st2.res[q.key]||'').slice(2)]));
+    const go=i=>chooseScreen(s.title,Q[i],()=>i+1<Q.length?subStep({phase:i+1},()=>go(i+1)):done({res:resOf(),sel:{...(cur.sel||{})}}));
+    let i=typeof cur.phase==='number'?cur.phase:Q.findIndex(q=>!st2.res[q.key]);if(i<0)i=Q.length-1;
+    go(i);
+  };
+  // T14 시험처럼: ① 단어 배열(D층 — 첫 제출만) → ② 어법 고르기(연습). ①만 하고 나갔으면 다음에 첫 답을 보존한 채 ②부터(Codex 착수 의견 2).
+  // r2(Codex r1 HOLD 4): 오답 수(T14a0 첫째·T14a1 둘째·T14a=D-fail 셋째)와 따라 놓기 마침(T14af)을 저장해, 기기를 바꿔도 남은 도움 단계부터 이어 간다
+  //  (셋째 오답 뒤 → 따라 놓기, 따라 놓기를 마친 뒤 → ②). 처음 어긋난 자리(cur.t)는 같은 기기 화면 정보라 다른 기기에서는 공식 줄만.
+  const wrong14=()=>st2.res.T14a==='D-fail'?3:st2.res.T14a1?2:st2.res.T14a0?1:0;
+  R2.exam=(s,done)=>{
+    cur.r=cur.r||{};
+    const e=S2.exam,toB=()=>subStep({phase:'b'},B);
+    const B=()=>chooseScreen(s.title,Q14,()=>done({d:cur.r.d||(st2.res.T14a||'').slice(2),dw:cur.r.dw!==undefined?cur.r.dw:wrong14(),b:(st2.res.T14b||'').slice(2)||undefined,sel:(cur.sel||{}).T14b}));
+    const A=()=>{
+      const f=frame(s.title,'1/2');f.add('<p class="e1-lead">우리말에 맞게 단어를 순서대로 놓으세요.</p>');f.add(`<p class="e1-ko">${esc(e.ko)}</p>`);
+      let w=Math.max(cur.w||0,wrong14());
+      const TIPS=['누가 원했나요? My brother부터 놓아 봐요.','wanted 다음은 그 일을 할 사람(me), 그다음 to + 할 일.',"'자기가 나온 그 사진'은 the picture를 먼저 놓고 of him을 뒤에 붙여요."];
+      // 낸 답이 처음 어긋난 자리로 도움을 고른다(원고 v1.3): 1~2번째(My brother) ① · 3~6번째(wanted me to delete) ② · 7~10번째(the picture of him) ③
+      const tipOf=order=>{const k=order.findIndex((v,j)=>v!==j);return k<2?0:k<6?1:2;};
+      let fl=null;const formula=()=>{if(fl)return;const t=f.body.querySelector('.e1-tiles');fl=document.createElement('p');fl.className='e1-note info';fl.textContent=E2_FORMULA;t.after(fl);};   // ① 첫 제출 뒤 첫 줄(원고 v1.1)
+      const a=arrange(f,{chunks:e.words,mix:e.mix,words:true,
+        onCheck:(ok,order)=>{
+          a.lock();
+          // r5(Codex r4 지적 2-T14 ①): 제출을 확정하기 전에 받은 기록과 합친다 — 다른 기기에서 ①을 이미 마쳤으면 그 결과로 ②, 정답 어순을 이미 공개했으면
+          //  따라 놓기(새 정답·2/2 없음), 오답만 받았으면 그 단계부터(이번 정답 = 도움 후 완성).
+          if(!st2.res.T14a&&sync2()){const d=st2.res.T14a,sw=wrong14();
+            if(d==='D-ok'||d==='D-help'||(d==='D-fail'&&st2.res.T14af))return keep2(f,()=>{formula();const t=f.body.querySelector('.e1-tiles');if(t)t.hidden=true;
+              a.solved();   // r6(Codex r5 지적 1): 이 기기에서 놓은 순서 대신 저장된 교과서 정답 어순을 보여 준다(틀린 어순이 맞은 것처럼 남지 않게)
+              const n=a.note('이 문장은 이미 놓았어요.','ok');f.main('다음',true,toB);reveal(n);});
+            if(d==='D-fail'){w=Math.max(w,3);cur.w=w;cur.r.d='fail';cur.r.dw=w;return keep2(f,()=>{formula();a.follow('순서는 이래요. 눌러서 따라 놓아 봐요.');});}
+            if(sw>w){w=sw;cur.w=w;}}
+          if(ok){cur.r.d=w===0&&!st2.res.T14a0?'ok':'help';cur.r.dw=w;fixMine('T14a','D-'+cur.r.d);}
+          else{w++;cur.w=w;cur.t=tipOf(order||[]);fix(st2,'T14a0','D-wrong');if(w>=2)fix(st2,'T14a1','D-wrong');if(w>=3){cur.r.d='fail';cur.r.dw=w;fixMine('T14a','D-fail');}}
+          keep2(f,()=>{formula();
+            if(ok){const t=f.body.querySelector('.e1-tiles');if(t)t.hidden=true;   // 정답 저장 뒤 타일판 숨김 — 이 화면만(공통 arrange 그대로)
+              const n=a.note(cur.r.d==='ok'?'맞아요! 교과서 문장을 혼자 놓았어요.':'맞아요. 문장을 완성했어요.','ok');f.main('다음',true,toB);reveal(n);return;}
+            if(w>=3){a.follow('순서는 이래요. 눌러서 따라 놓아 봐요.');return;}
+            a.unlock();a.reset();a.note(TIPS[cur.t|0]);});},
+        onFollowed:()=>{cur.r.d='fail';cur.r.dw=w;fix(st2,'T14af','f-ok');keep2(f,toB);}});
+      if(w>=3){formula();a.follow('순서는 이래요. 눌러서 따라 놓아 봐요.');}else if(w>0){formula();if(cur.t!==undefined)a.note(TIPS[cur.t]);}
+    };
+    if(cur.phase==='b'||st2.res.T14b)return B();
+    const a14=st2.res.T14a;
+    if(a14==='D-ok'||a14==='D-help'||(a14==='D-fail'&&st2.res.T14af))return B();   // D-fail이고 따라 놓기 전이면 ①의 따라 놓기부터
+    A();
+  };
+  R2.end=(s,done)=>done({});
 
   // ───────────────────────── 흐름 ─────────────────────────
   function token(item,r,st0){
@@ -800,29 +1869,54 @@ const PA_ENGLISH_FINAL=(()=>{
       // r5: 다른 기기에서 마감해 이 기기 화면 정보(w·tries·sel)가 없으면 '-'
       case 'arrange':if(/^p-/.test(v||''))return {t:`${s.id}[${v.replace('-','=')};seen=1]`,g:true,ok:v==='p-ok'};return {t:`${s.id}[${v.replace('-','=')}${s.layer==='A'?';w='+(r.w===undefined?'-':r.w):''}]`,g:true,ok:/-ok$/.test(v)};
       case 'check':return {t:`${s.id}[${v.replace('-','=')}]`,g:true,ok:v==='B-ok'};
-      case 'write':return {t:`${s.id}[${v.replace('-','=')};tries=${r.w===undefined?'-':(r.w||0)+1};typed=${encodeURIComponent(r.typed||'')}]`,g:true,ok:v==='C-ok'};
+      case 'write':return {t:`${s.id}[${v.replace('-','=')};tries=${r.w===undefined?'-':(r.w||0)+1};typed=${encodeURIComponent(r.typed||'')}${seenOn({res:RS})?';orig='+seenOn({res:RS}):''}]`,g:true,ok:v==='C-ok'};   // v212: orig = 본문 문장을 본 날(맨 뒤)
       case 'practice':return {t:`${s.id}[p=${r.code};w=${r.w||0}${r.write?';write='+r.write:''}]`,g:true,ok:r.code==='ok'};
       // r5: ②·③ 중 풀지 않은 것은 p=-(미실시) — 정답률 플래그·분모에서 뺀다
       case 'exam':{const d=RS.S9a||'D-'+r.d,ex=[];if(r.b)ex.push(r.b==='ok');if(r.c)ex.push(r.c==='ok');
-        return {t:`S9a[${d.replace('-','=')};w=${r.dw===undefined?'-':r.dw}], S9b[p=${r.b||'-'}], S9c[p=${r.c?r.c+';sel='+(r.sel===undefined?'-':r.sel):'-'}]`,g:true,ok:d==='D-ok',extra:ex};}
+        const md=RS.S9u!=='u-legacy'&&/^m-[AB]$/.test(RS.S9m||'')?';m='+RS.S9m.slice(2):'';   // v212: A/B(B = 제시된 조건으로 추가 힌트 없이 배열함)
+        return {t:`S9a[${d.replace('-','=')};w=${r.dw===undefined?'-':r.dw}${md}], S9b[p=${r.b||'-'}], S9c[p=${r.c?r.c+';sel='+(r.sel===undefined?'-':r.sel):'-'}]`,g:true,ok:d==='D-ok',extra:ex};}
       default:return {t:`${s.id}[seen]`,g:false};
     }
   }
   const DAY_NOTE='날이 바뀌어서 오늘 첫 문장부터 시작해요.';
+  // r6(Codex r5 지적 2): 이 기기가 그 회차에 첫 제출을 낸 채(마감 전) 나간 재확인 화면은 같은 날 다시 열면 그 화면으로 이어 간다.
+  //  다른 기기가 같은 회차를 마쳐 예약의 마지막 날이 오늘이 되어도(resumable2는 새로 열지 않음) 열린 문항을 다른 화면이 덮어 이 기기 제출이 마감·기록되지 않는 일을 막는다.
+  //  이 기기가 냈는지는 풀던 화면의 첫 제출(cur.own)로만 안다 — 다른 기기 결과만 받은 열린 화면은 r5처럼 다시 열지 않는다. 회차는 연 회차 그대로(더 쓰지 않음).
+  function ownOpen2(s2st,c,date){const o=s2st&&s2st.open;if(!o||o.date!==date||!c||c.key!==o.key||!c.own||(s2st.done||[]).includes(date))return null;
+    const it=itemOf2(o.key);if(!it||it.type!=='b')return null;const g=gradedOpen2(s2st);return g&&c.own[g.r.bkey]?it:null;}
+  const curKey=it=>it.track===2?keyOf2(it):keyOf(it);
   function render(item,opt){
-    const key=keyOf(item);
-    // r5: 바꾸기 전 값(풀던 화면·열린 문항·노출 표시) — 저장 실패·화면 오류면 셋 다 되돌린다(열지 못한 문항은 열린 문항·본 적 있음이 아님).
-    const was={cur,open:st.open,ev:st.evidence_at,eid:st.event_id,seen:null};
-    const undo=()=>{cur=was.cur;st.open=was.open;if(was.seen){delete st.res[was.seen+'x'];st.evidence_at=was.ev;st.event_id=was.eid;}};
-    if(!cur||cur.key!==key)cur={key,item,w:0,stage:0};else cur.item=item;
+    const t2=item.track===2,key=curKey(item);
+    // r5: 바꾸기 전 값(풀던 화면·열린 문항·노출 표시) — 저장 실패·화면 오류면 모두 되돌린다(열지 못한 문항은 열린 문항·본 적 있음이 아님).
+    const was={cur,open:st.open,open2:st2.open,ev:st.evidence_at,eid:st.event_id,ev2:st2.evidence_at,eid2:st2.event_id,seen:null,add2:[],sit2};
+    const undo=()=>{cur=was.cur;st.open=was.open;st2.open=was.open2;sit2=was.sit2;
+      if(was.seen){delete st.res[was.seen+'x'];st.evidence_at=was.ev;st.event_id=was.eid;}
+      if(was.add2.length){for(const k of was.add2)delete st2.res[k];st2.evidence_at=was.ev2;st2.event_id=was.eid2;}};
+    if(!cur||cur.key!==key)cur=t2?{key,item,track:2,w:0,stage:0}:{key,item,w:0,stage:0};else cur.item=item;
+    // r4: 열려 있던 C 문장이 제출 없이 다른 화면으로 밀림 → 노출됨·미채점(E1·E2 각자). 다른 묶음의 화면을 열면 그 묶음의 열린 문항은 닫는다.
     const sid=st.open?seenTarget(st,st.open.key,key):null;
-    if(sid){st.res[sid+'x']='C-seen';was.seen=sid;stamp();}   // r4: 열려 있던 C 배열이 제출 없이 밀림 → 노출됨·미채점
-    if(!st.open||st.open.key!==key||st.open.date!==today)st.open={key,date:today};
-    // r4: 배정(st)과 열린 문항(open)을 함께 저장. 저장하지 못하면 새 화면을 열지 않고 멈춘다(다시 저장 → 그 화면).
+    if(sid){st.res[sid+'x']='C-seen';was.seen=sid;stamp();}
+    // r2(Codex r1 HOLD 1): 같은 E2 C 문장이라도 열린 날이 오늘이 아니면(어제 열고 제출 없이 닫음) 노출됨·미채점 → 연습 화면. 같은 날 다시 열면 첫 시도 그대로.
+    //  r3: 같은 날 제출 없이 다른 화면으로 밀린 경우만 C-push(같은 날 다른 기기의 첫 답과 선후를 알 수 없는 유일한 경우), 그 밖 노출은 C-seen.
+    const mark2=(k,v)=>{st2.res[k]=v;was.add2.push(k);stamp2();};
+    if(st2.open){const p=seenTarget2(st2,st2.open.key,key);
+      if(p)mark2(p+'x',st2.open.date===today?'C-push':'C-seen');
+      else if(st2.open.date!==today){const q=seenTarget2(st2,st2.open.key,null);if(q)mark2(q+'x','C-seen');}}
+    // r3(Codex r2 HOLD 1): C 문장 첫 시도 화면을 열면 첫 노출일(Tno)을 남기고 바로 공유 대상으로(다른 기기가 다음 날 첫 시도로 받지 않게).
+    //  다른 기기에서 받은 첫 노출일이 오늘보다 이르면 이 기기에서 처음 열어도 노출됨·미채점 → 연습 화면.
+    const cb=t2?cBase2(key):null;
+    if(cb&&!st2.res[cb]&&!st2.res[cb+'x']){const o=oDay2(st2.res,cb);if(o&&o<today)mark2(cb+'x','C-seen');else if(!o)mark2(cb+'o','o-'+today);}
+    if(t2){if(st.open)st.open=null;if(!st2.open||st2.open.key!==key||st2.open.date!==today)st2.open={key,date:today};
+      if(item.type==='b'&&!(st2.open.n>0))st2.open.n=bRound2(st2,item.sid);   // r6(Codex r5 지적 2): 연 회차를 열린 문항에 남김(이 기기 저장만 — 공유 기록 형식 그대로) · r7(Codex r6 검토): 회차 = bRound2(받은 기록의 열린 화면을 같은 날 다시 열 때 예약 횟수+1이 아님)
+      s2();}
+    else{if(st2.open)st2.open=null;if(!st.open||st.open.key!==key||st.open.date!==today)st.open={key,date:today};}
+    // r4: 배정과 열린 문항을 함께 저장. 저장하지 못하면 새 화면을 열지 않고 멈춘다(다시 저장 → 그 화면).
     if(!save()){undo();return saveBlocked(()=>render(item,opt));}
     tStart();
     const fin=r=>finishItem(item,r);
-    try{if(item.type==='b')R.bretry(item.sid,fin);else if(item.type==='dc')R.arrange(SEQ[IDX[item.id]],fin);else{const s=SEQ[item.idx];R[s.kind](s,fin);}
+    try{
+      if(t2){if(item.type==='b')R2.bretry(item.sid,fin);else if(item.type==='dc')R2.arrange(SEQ2[IDX2[item.id]],fin);else{const s=SEQ2[item.idx];R2[s.kind](s,fin);}}
+      else if(item.type==='b')R.bretry(item.sid,fin);else if(item.type==='dc')R.arrange(SEQ[IDX[item.id]],fin);else{const s=SEQ[item.idx];R[s.kind](s,fin);}
       // r5: 날짜가 바뀌어 다른 문항으로 옮겼을 때만 안내 한 줄(확인 버튼 없음 — 바로 풀 수 있게)
       if(opt&&opt.dayNote){const b=document.querySelector('#e1-page .e1-body');if(b){const n=document.createElement('p');n.className='e1-note info e1-day';n.textContent=DAY_NOTE;const c=b.querySelector('.e1-count');if(c)c.after(n);else b.prepend(n);}}}
     catch(e){console.error('[e1-render]',e);undo();save();const f=frame('영어','');f.add('<p class="e1-note">화면을 여는 데 문제가 생겼어요. 홈으로 돌아가 다시 눌러 주세요.</p>');f.main('홈으로',true,()=>exit());}
@@ -836,63 +1930,73 @@ const PA_ENGLISH_FINAL=(()=>{
   function finishItem(item,r){
     if(!rollDay())return saveBlocked(()=>finishItem(item,r));   // r6
     flushTime();
-    st=complete(st,today,item,r);st.open=null;stamp();
-    const tk=token(item,r);if(sit)sit.items.push(tk);
+    if(item.track===2){if(cur&&cur.track===2&&cur.own)r={...r,own:cur.own};st2=complete2(st2,today,item,r);st2.open=null;stamp2();s2().items.push(token2(item,r,st2));}   // r5: 이 기기 첫 제출(미확인 행)
+    else{st=complete(st,today,item,r);st.open=null;stamp();const tk=token(item,r);if(sit)sit.items.push(tk);}
     cur=null;
     if(!save())return saveBlocked();
     next();
   }
   function next(){
     if(!rollDay())return saveBlocked();   // r6
-    const a=advance(st,today);
-    if(a.st!==st){st=a.st;stamp();if(!save())return saveBlocked();}
+    const a=advanceJ(st,st2,today);
+    if(a.st1!==st||a.st2!==st2){if(a.st1!==st){st=a.st1;stamp();}if(a.st2!==st2){st2=a.st2;stamp2();}if(!save())return saveBlocked();}
     const p=a.p;
     if(p.type==='stop')return endDay(p.reason);
     render(p);
   }
-  // r4 날짜 배정(아래 큰 버튼·화면 다시 보임 공통 — r3 reroute 대체): 날짜가 바뀌었으면 앱을 새로 열 때와 같은 그날 배정(advance, S8W 먼저 등).
+  // r4 날짜 배정(아래 큰 버튼·화면 다시 보임 공통 — r3 reroute 대체): 날짜가 바뀌었으면 앱을 새로 열 때와 같은 그날 배정(S8W·T10 먼저 등).
   //  같은 화면이면 열린 문항 날짜를 새 날짜로 저장한 뒤 이어 간다(그 제출은 새 날짜로 처리). 저장 실패면 멈춤(다시 누르면 저장 → 이어 감).
   //  다른 화면이면 그 화면을 연다(그 제출은 처리하지 않음). 그날 할 것이 없으면 하루 끝.
-  // r6 지적 1·2·4 — 채점한 날 마감, 한 경로(화면 중): 날짜가 바뀐 뒤 이미 채점한 열린 문항을 채점한 날(open.date)로 마감한다.
+  // r6 지적 1·2·4 — 채점한 날 마감, 한 경로(화면 중): 날짜가 바뀐 뒤 이미 채점한 열린 문항을 채점한 날(open.date)로 마감한다(E1·E2 각자).
   //  마감 로그(id 날짜+문항)는 진도와 함께 먼저 저장(held) → 저장 성공 뒤에만 로그 쓰기·전송. 저장 실패면 마감 전으로 되돌리고 false(멈춤).
   function settleClose(){
-    const g=st&&st.open&&st.open.date!==PA_PROGRESS.day()?gradedOpen(st):null;
-    if(!g)return true;
-    const was={st,cur,held:held.slice()};
-    const c=closeOne(st,g,cur);st=c.st;stamp();cur=null;
-    if(!preview&&!held.some(x=>x.id===c.log.id))held.push(c.log);
-    if(!save()){st=was.st;cur=was.cur;held=was.held;return false;}
+    const d=PA_PROGRESS.day();
+    const g=st&&st.open&&st.open.date!==d?gradedOpen(st):null,g2=st2&&st2.open&&st2.open.date!==d?gradedOpen2(st2):null;
+    if(!g&&!g2)return true;
+    const was={st,st2,cur,held:held.slice(),held2:held2.slice()};
+    if(g){const c=closeOne(st,g,cur&&cur.track===2?null:cur);st=c.st;stamp();if(!preview&&!held.some(x=>x.id===c.log.id))held.push(c.log);}
+    if(g2){const c=closeOne2(st2,g2,cur&&cur.track===2?cur:null);st2=c.st;stamp2();if(!preview&&!held2.some(x=>x.id===c.log.id))held2.push(c.log);}
+    cur=null;
+    if(!save()){st=was.st;st2=was.st2;cur=was.cur;held=was.held;held2=was.held2;return false;}
     flushHeld();share();kick();
     return true;
   }
   // held(진도와 함께 저장된 미기록 로그)를 결과 로그에 쓴다. 쓴 것만 held에서 뺀다(같은 id는 writeLog가 한 번만 받음).
-  function flushHeld(){if(preview||!held.length)return;const keep=held.filter(x=>!tryLog(x));if(keep.length!==held.length){held=keep;save();}}
+  function flushHeld(){if(preview)return;let ch=false;
+    if(held.length){const keep=held.filter(x=>!tryLog(x));if(keep.length!==held.length){held=keep;ch=true;}}
+    if(held2.length){const keep=held2.filter(x=>!tryLog2(x));if(keep.length!==held2.length){held2=keep;ch=true;}}
+    if(ch)save();}
   function kick(){try{PA_PROGRESS.sync();}catch(_){}try{if(typeof scheduleRecordSync==='function')scheduleRecordSync(0);}catch(_){}}
   function syncDay(cont){
     if(!live||!today||PA_PROGRESS.day()===today)return cont?cont():undefined;
     // r6: 마감(한 경로) → 전날 앉은 자리 닫기. 둘 다 저장되기 전에는 날짜를 넘기지 않고 멈춘다(로그·전송 없음).
     if(!settleClose())return holdHere();
     if(!rollDay())return holdHere();
-    const a=advance(st,today);
-    if(a.st!==st){st=a.st;stamp();}
+    const a=advanceJ(st,st2,today);
+    if(a.st1!==st){st=a.st1;stamp();}if(a.st2!==st2){st2=a.st2;stamp2();}
     const p=a.p;
     if(p.type==='stop')return endDay(p.reason);
-    if(cur&&keyOf(p)===cur.key){
-      st.open={key:cur.key,date:today};
+    if(cur&&curKey(p)===cur.key){
+      // r2: 날짜가 바뀐 채 열려 있던 E2 C 문장(첫 제출 전)은 그대로 이어 받지 않고 다시 연다 → render가 노출됨·미채점으로 표시하고 연습 화면.
+      if(p.track===2&&st2.open&&st2.open.key===cur.key&&st2.open.date!==today&&seenTarget2(st2,cur.key,null))return render(p,{dayNote:true});
+      if(p.track===2)st2.open={key:cur.key,date:today};else st.open={key:cur.key,date:today};
       if(!save())return holdHere();
       return cont?cont():undefined;
     }
     render(p,{dayNote:true});
   }
+  // 하루 끝(원고 E2 v1.3 §6·§10 — E1·E2 공통 화면 하나). E1을 마치고 남은 시간에 E2를 이어 가는 날은 planJ가 E2 화면을 주므로 여기 오지 않는다.
   function endDay(reason){
     flushTime();
+    const e2Done=active(st2,today)&&e2Fin(st2),allDone=e2Done&&e1Fin(st);
     if(active(st,today)&&!st.done.includes(today)){st=stopDay(st,today);stamp();}
-    cur=null;st.open=null;
+    if(active(st2,today)&&!st2.done.includes(today)){st2=stopDay(st2,today);stamp2();}
+    cur=null;st.open=null;st2.open=null;
     if(!save())return saveBlocked(()=>endDay(reason));   // r4: 하루 끝 기록을 저장하지 못하면 끝 화면 대신 멈춤
     if(!closeSitting(reason))return saveBlocked(()=>endDay(reason));   // r6
     live=false;timer=null;
     const f=frame('오늘 영어 끝','');
-    const msg=reason==='end'?'첫 묶음을 모두 마쳤어요. 다음 묶음을 준비하고 있어요.':reason==='wait'?'다음 영어를 준비하고 있어요.':'오늘 영어 끝! 다음 학습일에 이어서 해요.';
+    const msg=e2Done?'둘째 묶음을 모두 마쳤어요.'+(allDone?' 다음 묶음을 준비하고 있어요.':''):reason==='end'?'첫 묶음을 모두 마쳤어요. 다음 묶음을 준비하고 있어요.':reason==='wait'?'다음 영어를 준비하고 있어요.':'오늘 영어는 여기까지예요.';
     f.add(`<p class="e1-done">${esc(msg)}</p>`);f.main('홈으로',true,()=>exit());
   }
   // r6: 로그 한 줄 계산(순수 함수) — GAS v25 행 합치기 재계산과 같은 규칙(sim에서 대조).
@@ -918,14 +2022,29 @@ const PA_ENGLISH_FINAL=(()=>{
     if(!ok)throw Error('storage');
   }
   const tryLog=s=>{try{writeLog(s);return true;}catch(e){console.warn('[e1-log]',e&&e.message);return false;}};
-  // 앉은 자리 닫기 — r6: 결과 로그를 진도와 함께 먼저 저장(held) → 저장 성공 뒤에만 로그 쓰기·전송. 저장 실패면 되돌리고 false.
+  // E2 결과 로그(quiz_logs_eng_fin_e2, lesson eng_fin_e2) = 일반 로그(제출 이력, GAS는 사건ID 중복만 거름 — 원고 §10 (b)).
+  function logRecord2(s){
+    const log=logRecord({...s,track:0});
+    const items=s.items,graded=items.filter(x=>x.g),flags=graded.flatMap(x=>[x.ok,...(x.extra||[])]),total=flags.length,correct=flags.filter(Boolean).length;
+    // r6(Codex r5 지적 4): 이 기기 첫 제출이 없는 미확인 행(nd)은 전체·유형별 분모에서 뺀다 — 채점한 것이 없을 때 문항 수로 채우는 공통 규칙(total||items.length)에서도 제외.
+    return {...log,total:total||items.filter(x=>!x.nd).length,lesson:'eng_fin_e2',type_breakdown:'E2:'+correct+'/'+total,details:`[E2;stop=${s.reason};ptr=${s.ptrId}] `+items.map(x=>x.t).join(', ')};
+  }
+  function writeLog2(s){
+    const logs=JSON.parse(PA_STORAGE.getItem(LOG_KEY2)||'[]');if(!Array.isArray(logs))throw Error('invalid-logs');
+    if(logs.some(x=>x&&x.support_session_id===s.id))return;
+    const log=logRecord2(s);logs.push(log);
+    const ok=typeof storeRecordValue==='function'?storeRecordValue(LOG_KEY2,JSON.stringify(logs)):(PA_STORAGE.setItem(LOG_KEY2,JSON.stringify(logs)),true);
+    if(!ok)throw Error('storage');
+  }
+  const tryLog2=s=>{try{writeLog2(s);return true;}catch(e){console.warn('[e2-log]',e&&e.message);return false;}};
+  // 앉은 자리 닫기 — r6: 결과 로그를 진도와 함께 먼저 저장(held) → 저장 성공 뒤에만 로그 쓰기·전송. 저장 실패면 되돌리고 false. E1·E2 앉은 자리 각자.
   function closeSitting(reason){
-    if(!sit)return true;
-    if(preview){sit=null;return true;}
-    const s={...sit,reason:sit.reason||reason,track:st.track,ptrId:(SEQ[st.ptr]||{}).id},was={sit,held:held.slice()};
-    sit=null;
-    if(s.items.length&&!held.some(x=>x.id===s.id))held.push(s);
-    if(!save()){sit=was.sit;held=was.held;return false;}
+    if(!sit&&!sit2)return true;
+    if(preview){sit=null;sit2=null;return true;}
+    const was={sit,sit2,held:held.slice(),held2:held2.slice()};
+    if(sit){const s={...sit,reason:sit.reason||reason,track:st.track,ptrId:(SEQ[st.ptr]||{}).id};sit=null;if(s.items.length&&!held.some(x=>x.id===s.id))held.push(s);}
+    if(sit2){const s={...sit2,reason:sit2.reason||reason,ptrId:(SEQ2[st2.ptr]||{}).id};sit2=null;if(s.items.length&&!held2.some(x=>x.id===s.id))held2.push(s);}
+    if(!save()){sit=was.sit;sit2=was.sit2;held=was.held;held2=was.held2;return false;}
     flushHeld();share();kick();
     return true;
   }
@@ -936,53 +2055,83 @@ const PA_ENGLISH_FINAL=(()=>{
     timer=null;
     if(typeof goHome==='function')goHome();else showPage('home-page');
   }
-  // 화면을 하는 중이 아닐 때(앱 열기·홈·다시 보일 때·연결될 때): 보내지 못한 진도와 기록하지 못한 결과 로그를 다시.
+  // 화면을 하는 중이 아닐 때(앱 열기·홈·다시 보일 때·연결될 때): 보내지 못한 진도와 기록하지 못한 결과 로그를 다시(E1·E2 각자).
   function resend(){
     if(live||busy)return;
     try{
       if(typeof PA_RUNTIME!=='undefined'&&PA_RUNTIME.preview)return;
-      if(typeof PA_STORAGE==='undefined'||typeof PA_PROGRESS==='undefined'||!PA_STORAGE.getItem(KEY))return;
-      const o=load();let dirty=false;
-      const n=shareState(o.st,o.shared);if(n!==o.shared){o.shared=n;dirty=true;}
-      if(o.held.length){const keep=o.held.filter(s=>!tryLog(s));if(keep.length!==o.held.length){o.held=keep;dirty=true;}}
-      if(dirty)write(o);
+      if(typeof PA_STORAGE==='undefined'||typeof PA_PROGRESS==='undefined')return;
+      if(PA_STORAGE.getItem(KEY)){try{
+        const o=load();let dirty=false;
+        const n=shareState(o.st,o.shared);if(n!==o.shared){o.shared=n;dirty=true;}
+        if(o.held.length){const keep=o.held.filter(s=>!tryLog(s));if(keep.length!==o.held.length){o.held=keep;dirty=true;}}
+        if(dirty)write(o);}catch(_){}}
+      if(PA_STORAGE.getItem(KEY2)){try{
+        const o=load2();let dirty=false;
+        const n=shareState2(o.st,o.shared);if(n!==o.shared){o.shared=n;dirty=true;}
+        if(o.held.length){const keep=o.held.filter(s=>!tryLog2(s));if(keep.length!==o.held.length){o.held=keep;dirty=true;}}
+        if(dirty)write2(o);}catch(_){}}
     }catch(_){}
   }
   // r6 지적 1·3 — 화면 중이 아닐 때(홈 카드·앱 열기) 실제 마감: 지금 쓸 기록(이 기기 기록, 더 최근 서버 기록이면 adopt로 합침)에
   //  지난 날 채점한 미완료 문항이 있으면 채점한 날로 마감 → 마감 로그를 held에 넣고 진도와 함께 저장 → 저장 성공 뒤에만 로그 쓰기·전송.
   //  dry(화면 중·시작 중·미리보기)면 저장 없이 같은 계산의 사본. 반환 {o 이 기기 저장 묶음(마감 전), s 지금 쓸 상태, useRemote, blocked}
   function settleStored(date,dry){
-    const o=load(),rem=PA_PROGRESS.englishFinalRemote?PA_PROGRESS.englishFinalRemote():null,r=rem?decode(rem):null;
-    let s=o.st,a=null;const useRemote=!!r&&newer(r,o.st);
-    if(useRemote){a=adopt(o.st,r,o.cur);s=a.st;}
+    const o=load(),r=readEnglishRemote();
+    let s=o.st,a=null,tb=null;const useRemote=!!r?.evidence_at&&newer(r,o.st);
+    if(useRemote){a=adopt(o.st,r,o.cur,date);s=a.st;}else if(r){tb=takeS9Facts(o.st,r);if(tb)s=tb.st;}   // r2: 오래된 서버 기록의 B 이력
     const g=s.open&&s.open.date!==date?gradedOpen(s):null,c=useRemote?(a.keepCur?o.cur:null):o.cur;   // r6e: 이 기기가 채점한 시도면 화면 상세 보존
     if(dry)return {o,s:g?closeOne(s,g,c).st:s,useRemote};
-    if(!g&&!(a&&a.changed))return {o,s,useRemote};
+    if(!g&&!(a&&a.changed)&&!tb)return {o,s,useRemote};
     const n={st:s,sit:o.sit,cur:o.cur,shared:o.shared,held:o.held.slice()};
     const keep=l=>{if(!n.held.some(x=>x.id===l.id))n.held.push(l);};
-    if(a){n.cur=a.keepCur?o.cur:null;n.shared=r.evidence_at;a.logs.forEach(keep);}
+    if(a){n.cur=a.keepCur?o.cur:null;n.shared=shareKey(r);a.logs.forEach(keep);}
     if(g){const x=closeOne(n.st,g,c);n.st=x.st;n.cur=null;keep(x.log);}
-    if(g||(a&&a.stamp))stampOn(n.st);
+    if(g||(a&&a.stamp)||(tb&&n.st.days.length))stampOn(n.st);
     if(!write(n))return {o,s,useRemote,blocked:true};   // 저장 못 하면 마감·로그·전송 없음(다음 기회에 다시)
     n.held=n.held.filter(x=>!tryLog(x));n.shared=shareState(n.st,n.shared);
     try{write(n);}catch(_){}
     kick();
     return {o,s:n.st,useRemote,settled:true};
   }
+  // E2 같은 경로: 더 최근 서버 기록이면 adopt2(이 기기 결과 키 보존·미확인), 이 기기가 더 새면 미확인 표시만 받는다(reconcile2).
+  function settleStored2(date,dry){
+    const o=load2(),r=readRemote2();
+    let s=o.st,a=null,rc=null;const useRemote=!!r?.evidence_at&&newer(r,o.st);
+    if(useRemote){a=adopt2(o.st,r,o.cur,date);s=a.st;}else if(r){rc=reconcile2(o.st,r);if(rc)s=rc;}
+    const g=s.open&&s.open.date!==date?gradedOpen2(s):null,c=useRemote?(a.keepCur?o.cur:null):o.cur;
+    if(dry)return {o,s:g?closeOne2(s,g,c).st:s,useRemote};
+    if(!g&&!(a&&a.changed)&&!rc)return {o,s,useRemote};
+    const n={st:s,sit:o.sit,cur:o.cur,shared:o.shared,held:o.held.slice()};
+    const keep=l=>{if(!n.held.some(x=>x.id===l.id))n.held.push(l);};
+    if(a){n.cur=a.keepCur?o.cur:null;n.shared=shareKey(r);a.logs.forEach(keep);}
+    if(g){const x=closeOne2(n.st,g,c);n.st=x.st;n.cur=null;keep(x.log);}
+    if(g||(a&&a.stamp)||rc)stampOn2(n.st);
+    if(!write2(n))return {o,s,useRemote,blocked:true};
+    n.held=n.held.filter(x=>!tryLog2(x));n.shared=shareState2(n.st,n.shared);
+    try{write2(n);}catch(_){}
+    kick();
+    return {o,s:n.st,useRemote,settled:true};
+  }
+  // 홈 카드 부제(원고 E2 v1.3 §10): 풀던 화면 → 그날 학습 끝 → (E2가 열린 뒤) 둘째 묶음 완료 / 진행 중 → E2 전에는 r3 문구 그대로.
   function status(date){
     try{
       date=date||PA_PROGRESS.day();resend();
       // r6: 홈 카드 = 실제 마감 결과(화면 중·시작 중·미리보기면 같은 계산의 사본)
-      const {o,s,useRemote}=settleStored(date,live||busy||!!(typeof PA_RUNTIME!=='undefined'&&PA_RUNTIME.preview));
-      if(resumable(s,date))return '하던 곳에서 이어 하기';
-      const p=plan(s,date);
+      const dry=live||busy||!!(typeof PA_RUNTIME!=='undefined'&&PA_RUNTIME.preview);
+      const {o,s,useRemote}=settleStored(date,dry),q=settleStored2(date,dry),z=q.s;
+      if(resumableJ(s,z,date)||(!s.done.includes(date)&&ownOpen2(z,q.o.cur,date)))return '하던 곳에서 이어 하기';
+      const p=planJ(s,z,date),open2=e2Open(s);
+      const fin2=()=>'둘째 묶음 완료'+(e1Fin(s)?' · 다음 묶음 준비 중':'');
       if(p.type==='stop'){
-        if(p.reason==='done'||p.reason==='break'||p.reason==='budget')return '✓ 오늘 영어 완료'+(useRemote&&!o.st.done.includes(date)?' (다른 기기)':'');
+        if(p.reason==='done'||p.reason==='break'||p.reason==='budget')return '✓ 오늘 영어 완료'+((useRemote||q.useRemote)&&!o.st.done.includes(date)&&!q.o.st.done.includes(date)?' (다른 기기)':'');
+        if(open2&&e2Fin(z))return fin2();
         if(p.reason==='end')return '첫 묶음 완료 · 다음 묶음 준비 중';
         return '다음 영어 준비 중';
       }
       if(!s.days.length&&!s.open)return '하루 5분 · 오늘 시작할 곳 찾기';
-      if(active(s,date))return '하던 곳에서 이어 하기';
+      if(active(s,date)||active(z,date))return '하던 곳에서 이어 하기';
+      if(open2)return e2Fin(z)?fin2():'둘째 묶음 진행 중';
       return '하루 5분 · 문장 만들기';
     }catch(_){return '영어 기록 확인이 필요해요';}
   }
@@ -995,23 +2144,31 @@ const PA_ENGLISH_FINAL=(()=>{
       // 다른 기기 진도를 짧게 한 번 더 받아 본다(최대 3초). 못 받아도 이 기기 기록으로 시작한다.
       try{await Promise.race([PA_PROGRESS.pull(),new Promise(r=>setTimeout(r,3000))]);}catch(_){}
       today=PA_PROGRESS.day();
-      // r6: 홈 카드와 같은 실제 마감(공유 기록 합치기 포함)을 먼저 — 저장하지 못하면 시작하지 않는다.
-      if(!preview&&settleStored(today,false).blocked)throw Error('storage');
-      const o=load();st=o.st;sit=o.sit;cur=o.cur;shared=o.shared;held=o.held;
+      // r6: 홈 카드와 같은 실제 마감(공유 기록 합치기 포함)을 먼저 — 저장하지 못하면 시작하지 않는다(E1·E2 각자).
+      if(!preview&&(settleStored(today,false).blocked||settleStored2(today,false).blocked))throw Error('storage');
+      const o=load(),o2=load2();st=o.st;sit=o.sit;shared=o.shared;held=o.held;st2=o2.st;sit2=o2.sit;shared2=o2.shared;held2=o2.held;
+      // 풀던 화면은 한 묶음에만 저장된다(save 순서). 둘 다 있으면 E2 쪽은 E2의 열린 문항과 같을 때만.
+      cur=o2.cur&&(!o.cur||(st2.open&&o2.cur.key===st2.open.key))?{...o2.cur,track:2}:o.cur;
+      w2last=JSON.stringify(bundle2());
       // 지난번에 닫지 못한 앉은 자리(앱 종료 등): r6 held 먼저 → 저장 → 로그. 저장 실패면 시작하지 않는다.
-      if(sit&&Array.isArray(sit.items)&&sit.items.length&&!preview){if(!closeSitting('recovered'))throw Error('storage');}
-      sit=null;
+      if(((sit&&Array.isArray(sit.items)&&sit.items.length)||(sit2&&Array.isArray(sit2.items)&&sit2.items.length))&&!preview){if(!closeSitting('recovered'))throw Error('storage');}
+      sit=null;sit2=null;
       flushHeld();
-      const rem=PA_PROGRESS.englishFinalRemote?PA_PROGRESS.englishFinalRemote():null,r=rem?decode(rem):null;
+      const r=readEnglishRemote();
       // r6: 더 최근 서버 기록은 adopt(이 기기 결과 키 보존). 위 settleStored가 이미 합쳐 저장했으면 여기서는 보통 바뀌는 것이 없다.
-      if(r&&newer(r,st)){const a=adopt(st,r,cur);st=a.st;cur=a.keepCur?cur:null;shared=r.evidence_at;if(a.stamp)stamp();if(!preview)a.logs.forEach(l=>{if(!held.some(x=>x.id===l.id))held.push(l);});}
+      const c1=cur&&cur.track===2?null:cur;
+      if(r?.evidence_at&&newer(r,st)){const a=adopt(st,r,c1,today);st=a.st;if(c1&&!a.keepCur)cur=null;shared=shareKey(r);if(a.stamp)stamp();if(!preview)a.logs.forEach(l=>{if(!held.some(x=>x.id===l.id))held.push(l);});}
+      else if(r){const tb=takeS9Facts(st,r);if(tb){st=tb.st;if(st.days.length)stamp();}}
+      const r2=readRemote2(),c2=cur&&cur.track===2?cur:null;
+      if(r2?.evidence_at&&newer(r2,st2)){const a=adopt2(st2,r2,c2,today);st2=a.st;if(c2&&!a.keepCur)cur=null;shared2=shareKey(r2);if(a.stamp)stamp2();if(!preview)a.logs.forEach(l=>{if(!held2.some(x=>x.id===l.id))held2.push(l);});}
+      else if(r2){const rc=reconcile2(st2,r2);if(rc){st2=rc;stamp2();}}
       // r6: 지난 날 채점한 채 끝나지 않은 열린 문항 → 한 경로(settleClose)로 마감. 저장 실패면 시작하지 않는다.
       if(!settleClose())throw Error('storage');
-      if(held.length){if(!save())throw Error('storage');flushHeld();}
+      if(held.length||held2.length){if(!save())throw Error('storage');flushHeld();}
       share();
-      const res=resumable(st,today);
-      const a=res?{st,p:res}:advance(st,today);
-      if(a.st!==st){st=a.st;stamp();}
+      const res=resumableJ(st,st2,today)||(!st.done.includes(today)&&ownOpen2(st2,cur&&cur.track===2?cur:null,today));
+      const a=res?{st1:st,st2,p:res}:advanceJ(st,st2,today);
+      if(a.st1!==st){st=a.st1;stamp();}if(a.st2!==st2){st2=a.st2;stamp2();}
       if(a.p.type==='stop'){save();share();if(el)el.textContent=status(today);return;}
       sit=newSit();
       if(!save())throw Error('storage');
@@ -1020,7 +2177,9 @@ const PA_ENGLISH_FINAL=(()=>{
     }catch(e){if(el)el.textContent='영어를 시작하지 못했어요. 저장 공간과 연결을 확인한 뒤 다시 눌러 주세요.';console.error('[e1-start]',e);}
     finally{busy=false;}
   }
+  const E2=Object.freeze({SEQ2,IDX2,S2,KEY2,LOG_KEY2,CONCEPT2,T14_FROM,RES_KEY2,fresh2,planJ,advanceJ,complete2,resumable2,resumableJ,encode2,decode2,adopt2,reconcile2,mergeQuestions2,mergeRes2,withOpen2,cBase2,triesT10,
+    gradedOpen2,closeOne2,token2,keyOf2,itemOf2,seenTarget2,e2Open,e1Fin,e2Fin,t14Due,s9Day,nextStep2,achieve2,unsure2,logRecord2,mergeFacts2,mergeB2,bRound2});
   return Object.freeze({start,status,exit,resend,plan,advance,resumable,complete,stopDay,addSec,encode,decode,newer,gradeWrite,norm,fresh,markSeen,gradedOpen,closeStale,
-    adopt,mergeFacts,mergeB,pendingIn,closeOne,itemDone,closeId,logRecord,tokenOf:(it,r,s)=>token(it,r,s),RES_KEY,SEQ,IDX,S,BUDGET,C2_FROM,TOKEN,KEY,LOG_KEY,CONCEPT});
+    adopt,mergeFacts,mergeB,pendingIn,closeOne,itemDone,closeId,logRecord,modeOf,seenOn,takeS9Facts,takeB:takeS9Facts,withMode,tokenOf:(it,r,s)=>token(it,r,s),RES_KEY,SEQ,IDX,S,BUDGET,C2_FROM,TOKEN,KEY,LOG_KEY,CONCEPT,E2});
 })();
 if(typeof module!=='undefined')module.exports=PA_ENGLISH_FINAL;
