@@ -2171,8 +2171,8 @@
         let sessionType = PA_STORAGE.getItem('session_type') || 'A';
         let currentSubject = 'english'; // 'english' | 'korean'
         let currentMindmapBranch = null; // 과학 마인드맵 가지 학습 중이면 가지번호, 아니면 null
-        const BUILD_VERSION = '2026-11-24 v213';
-        const APP_CACHE_NAME = 'quiz-v213';
+        const BUILD_VERSION = '2026-11-25 v214';
+        const APP_CACHE_NAME = 'quiz-v214';
 
         // ── 기말 과학 범위 숨김 (2026-06-06) ──
         // 기말 후 복원: FINALS_MODE = false 한 줄로 셀렉터(sci1~4) 전체 노출 복귀.
@@ -10536,6 +10536,13 @@ const PA_PROGRESS=(()=>{
   // r3: 영어 모듈이 있는지 · 보관분(e2_stash)을 E2 합치기로 한 기록에 접기(같은 기록을 다시 접어도 같음).
   const e2Ready=()=>typeof PA_ENGLISH_FINAL!=='undefined'&&!!PA_ENGLISH_FINAL.E2&&typeof PA_ENGLISH_FINAL.E2.mergeQuestions2==='function';
   function e2Fold(c,stash){let out=c;for(const x of stash||[]){const m=mergeConcept(out,x,'eng_fin-E2');if(m)out=m;}return out;}
+  // 2026-11 기말 영어 E4·E5(원고 E4E5 v1.2 §10): 셋째·넷째 묶음(eng_fin-E4·eng_fin-E5)도 E2와 같은 합치기 — 그 밖 칸은 더 새 기록, last_questions는 더 새 기록 토큰 +
+  // 두 기록의 엇갈린 첫 답 미확인 표시. 판정은 english_final.js PA_ENGLISH_FINAL.E4·E5.mergeQuestions(앱 규칙과 같은 함수). 영어 모듈 없이 받으면 보관(e4_stash·e5_stash).
+  const XFIN={'eng_fin-E4':'E4','eng_fin-E5':'E5'},xStashKey=id=>'e'+id.slice(-1)+'_stash';
+  const xReady=id=>typeof PA_ENGLISH_FINAL!=='undefined'&&!!PA_ENGLISH_FINAL[XFIN[id]]&&typeof PA_ENGLISH_FINAL[XFIN[id]].mergeQuestions==='function';
+  function xQuestionsMerge(id,primary,secondary){if(xReady(id))return PA_ENGLISH_FINAL[XFIN[id]].mergeQuestions(primary||[],secondary||[]);
+    const keep=(secondary||[]).filter(t=>/^r:[A-Za-z0-9.-]+_u:u-mixed$/.test(t));return union(primary||[],keep);}
+  function xFold(c,stash,id){let out=c;for(const x of stash||[]){const m=mergeConcept(out,x,id);if(m)out=m;}return out;}
   const s9Field = /^r:(S9m|S9v|S9vl):/;
   function s9Evidence(tokens) {
     const dates = [];
@@ -10575,6 +10582,7 @@ const PA_PROGRESS=(()=>{
     if(id==='eng_fin-E1')out.last_questions=mergeE1Evidence(out.last_questions,(newer?x:y).last_questions);
     if(sciFin(id))out.last_questions=questionsMerge((newer?y:x).last_questions,(newer?x:y).last_questions);
     if(id==='eng_fin-E2')out.last_questions=e2QuestionsMerge((newer?y:x).last_questions,(newer?x:y).last_questions);
+    if(XFIN[id])out.last_questions=xQuestionsMerge(id,(newer?y:x).last_questions,(newer?x:y).last_questions);
     return out;
   }
   function bucket(a,b){return {v:1,done:true,learningDays:union(a?.learningDays||[],b.learningDays||[]),events:union(a?.events||[],b.events||[])};}
@@ -10597,11 +10605,20 @@ const PA_PROGRESS=(()=>{
     else{const inE2=snapshot.concepts?.english?.['eng_fin-E2'],curE2=r.concepts.english?.['eng_fin-E2'],ids=new Set();
       const keep=stashE2.concat(obj(inE2)&&obj(curE2)?[copy(curE2)]:[],obj(inE2)?[copy(inE2)]:[]).filter(x=>obj(x)&&typeof x.event_id==='string'&&!ids.has(x.event_id)&&ids.add(x.event_id)).slice(-16);
       if(keep.length)r.e2_stash=keep;else delete r.e2_stash;}
+    // E4·E5: E2와 같은 보류 기록 다시 합치기 · 영어 모듈 없을 때 보관(e4_stash·e5_stash, 최근 16개).
+    for(const xid of Object.keys(XFIN)){const sk=xStashKey(xid);
+      const pend=held?.concepts?.english?.[xid];
+      if(pend){const e=mergeConcept(r.concepts.english?.[xid],pend,xid);if(e){r.concepts.english=r.concepts.english||{};r.concepts.english[xid]=e;}}
+      const stash=[...(Array.isArray(r[sk])?r[sk]:[]),...(Array.isArray(held?.[sk])?held[sk]:[])];
+      if(xReady(xid)){if(stash.length){const e=xFold(r.concepts.english?.[xid],stash,xid);if(e){r.concepts.english=r.concepts.english||{};r.concepts.english[xid]=e;}}delete r[sk];}
+      else{const inX=snapshot.concepts?.english?.[xid],curX=r.concepts.english?.[xid],ids=new Set();
+        const keep=stash.concat(obj(inX)&&obj(curX)?[copy(curX)]:[],obj(inX)?[copy(inX)]:[]).filter(x=>obj(x)&&typeof x.event_id==='string'&&!ids.has(x.event_id)&&ids.add(x.event_id)).slice(-16);
+        if(keep.length)r[sk]=keep;else delete r[sk];}}
     r.literacy_read=union(r.literacy_read||[],snapshot.literacy_read.filter(x=>typeof x==='string'));
     for(const s of Object.keys(KEYS)){
       r.completion_days[s]=r.completion_days[s]||{};r.concepts[s]=r.concepts[s]||{};
       for(const [d,b] of Object.entries(snapshot.completion_days[s]||{}))if(date(d)&&validBucket(b))r.completion_days[s][d]=bucket(r.completion_days[s][d],b);
-      for(const [id,c] of Object.entries(snapshot.concepts[s]||{})){const merged=mergeConcept(r.concepts[s][id],c,(s==='science'||(s==='english'&&(id==='eng_fin-E1'||id==='eng_fin-E2')))?id:'');if(merged)r.concepts[s][id]=merged;}
+      for(const [id,c] of Object.entries(snapshot.concepts[s]||{})){const merged=mergeConcept(r.concepts[s][id],c,(s==='science'||(s==='english'&&(id==='eng_fin-E1'||id==='eng_fin-E2'||!!XFIN[id])))?id:'');if(merged)r.concepts[s][id]=merged;}
     }
     for(const x of snapshot.english_legacy_days){
       if(!obj(x)||typeof x.key!=='string'||!x.key.startsWith(PA_CURRICULUM+'/')||!Array.isArray(x.days)||!x.days.every(n=>Number.isSafeInteger(n)&&n>0))continue;
@@ -10869,7 +10886,19 @@ const PA_PROGRESS=(()=>{
     const c=concept(value,value.evidence_at,value.event_id);if(!c)return false;
     return enqueue({id:'eng_fin2:'+c.event_id,subject:'english',source:'eng_final',items:[item('concept','english','eng_fin-E2',c,c.event_id,c.last_day)],logAck:true,progressAck:false});
   }
-  return {day,mergeConcept,bucket,ingest,promote,doneDays,nextDay,guard,stamp,ensureCompletion,beforeAdvance,applyStart,recover,linkLog,logEvent,beforeCompact,literacy,notice,pull,push,ackProgress,sync,englishFinalRemote,englishFinalHasCue,enqueueEnglishFinal,englishFinalRemoteE2,enqueueEnglishFinalE2};
+  // E4·E5: 같은 방식(개념 기록 하나, 서버 무변경). id = 'eng_fin-E4' | 'eng_fin-E5'.
+  function englishFinalRemoteX(id){if(!XFIN[id])return null;const R=remote();let c=R?.concepts?.english?.[id];
+    const waiting=held?.concepts?.english?.[id];
+    if(waiting)c=mergeConcept(c,waiting,id);
+    if(xReady(id)){const sk=xStashKey(id),st=[...(Array.isArray(R?.[sk])?R[sk]:[]),...(Array.isArray(held?.[sk])?held[sk]:[])];if(st.length)c=xFold(c,st,id);}
+    return obj(c)?copy(c):null;}
+  function enqueueEnglishFinalX(id,value){
+    if(PA_RUNTIME.preview)return true;
+    if(!XFIN[id])return false;
+    const c=concept(value,value.evidence_at,value.event_id);if(!c)return false;
+    return enqueue({id:'eng_fin'+id.slice(-1)+':'+c.event_id,subject:'english',source:'eng_final',items:[item('concept','english',id,c,c.event_id,c.last_day)],logAck:true,progressAck:false});
+  }
+  return {day,mergeConcept,bucket,ingest,promote,doneDays,nextDay,guard,stamp,ensureCompletion,beforeAdvance,applyStart,recover,linkLog,logEvent,beforeCompact,literacy,notice,pull,push,ackProgress,sync,englishFinalRemote,englishFinalHasCue,enqueueEnglishFinal,englishFinalRemoteE2,enqueueEnglishFinalE2,englishFinalRemoteX,enqueueEnglishFinalX};
 })();
 
 // PROGRESS_CORE_END
@@ -10877,7 +10906,7 @@ const PA_PROGRESS=(()=>{
 <script src="science_support.js?v=194"></script>
     <script src="english_exam.js?v=197"></script>
     <script src="science_final.js?v=207"></script>
-    <script src="english_final.js?v=212"></script>
+    <script src="english_final.js?v=214"></script>
     <script src="exam_support.js?v=213"></script>
     <script src="exam_home.js?v=198"></script>
 </body>
