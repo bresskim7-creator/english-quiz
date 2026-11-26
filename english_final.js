@@ -96,7 +96,25 @@
    - r2(Codex r1 필수): ① 열린 화면이 받은 기록의 재확인 실패일(noc)도 합침 ② (r3로 대신함)
      ③ 연습 쓰기(U8·V8) 결과·입력을 저장한 뒤 안내 — 다시 열어도 같은 화면·같은 결과 ④ V10 안내는 이 기기에서 방금 낸 답을 먼저 판정(다른 기기 오답은 횟수로). 모두 공장 안(E1·E2 코드 무변경).
    - r3(Codex r2 대조표): 시험처럼 U12·V14는 문항마다 이 기기에서 직접 낸 첫 답만 한 번 채점(맞음 1·틀림 0, 다른 기기 기록을 받은 뒤에도 유지),
-     결과·해설만 본 문항은 분모·취약 제외. 화면·공유 성취·완료 상태는 그대로. */
+     결과·해설만 본 문항은 분모·취약 제외. 화면·공유 성취·완료 상태는 그대로.
+   E1·E2 후속 r1(v215 후보, Cowork 2026-11-25 · JH 지시 'E1 S8a부터, 같은 방식으로 E2 T8 · T10 열린 화면 noc · T14 ②만 직접 푼 기기에 ① 점수 없음' —
+     E4·E5 공장에 들어간 r2 필수 1·3, r3 기기별 채점을 E1·E2 자리로 옮김. 순서표·하루 배정·공유 기록 형식·서버(GAS v26 r2) 그대로):
+   - E1 S8a·E2 T8 연습 쓰기: 결과(맞음 ok · 도움 뒤 맞음 help · 정답 공개 fail)와 입력을 저장한 뒤 안내 — 홈·앱 재실행 뒤에도 같은 입력·안내·잠긴 칸·'다음',
+     쓰기 결과는 처음 정해진 그대로 한 번. 첫 오답 뒤 나갔으면 그 입력·안내·'다시 제출'로 이어 감.
+   - E2 T10: 열린 화면이 제출 직전에 받은 기록을 합칠 때(sync2) 재확인 실패일(noc)도 합침 → 다른 기기의 그날 재확인 실패를 받으면 그날 T11은 다음 학습일.
+   - E2 T14: ①·②는 문항마다 이 기기에서 직접 낸 첫 답(st2.mine — 기기에만, 공유 기록에는 없음)만 한 번 채점(맞음 1·틀림 0),
+     결과·해설만 본 문항은 ;seen=1로 분모·취약 제외(둘 다면 행 분모 0). D=·p=는 합친 성취 그대로, 이 기기 첫 답과 다르면 ;own=. 화면·공유 성취·완료 상태는 그대로.
+   E1·E2 후속 r2(같은 v215 후보, Cowork 2026-11-25 · Codex r1 검토 HOLD 세 경우 · JH 'S8a·T8·U8·V8 함께, 경우 2·3은 E1·E2 범위대로'):
+   - 연습 쓰기(E1 S8a·E2 T8·E4 U8·E5 V8): 이 기기에서 쓰기 결과를 본 뒤 '다음' 전에 나간 사이 다른 기기가 그 문항을 먼저 마치면, 그 기록을 받을 때
+     이 기기 쓰기 결과를 그 화면을 연 날로 한 번 남긴다(마감 행 id = 날짜+문항). 첫 오답만 내고 나갔으면 남기지 않는다. 공장은 이 한 자리만.
+   - v214에서 넘어온 채점 도중 상태: S8a·T8 두 번 틀려 정답을 본 채(cur.w2>=2) → 정답 공개·잠긴 칸·'다음'(쓰기 결과 fail) ·
+     T14 → 풀던 화면에 남은 직접 제출 근거(① 이 기기 오답 흔적 cur.t·이 기기가 정한 cur.own.T14a, ② 고른 번호 cur.sel.T14b)로 이 기기 첫 답 칸(st2.mine)을 한 번 채움.
+   E1·E2 후속 r3(같은 판 후보, Cowork 2026-11-25 · Codex r2 검토 HOLD 1건 · JH '남은 쓰기 기록 문제 한 건만'): 연습 쓰기(S8a·T8·U8·V8)를 쓰던 기기가
+     '다음' 전에 나간 사이 다른 기기의 중간 기록(같은 문항을 풀고 있음)을 받아도, 합친 기록에서 같은 문항이 열려 있고 아직 끝나지 않았으면 이 기기 쓰기 화면
+     (입력·'맞아요'·'다음'·오답 수)을 그대로 둔다. 그 뒤 다른 기기가 먼저 마치면 r2 규칙대로 이 기기 결과를 한 번 남긴다.
+   E1·E2 후속 r4(같은 판 후보, Cowork 2026-11-25 · Codex r3 검토 HOLD 1건): 연습 쓰기 결과가 정해질 때 그 화면을 연 날(cur.wd)을 결과와 함께 남기고,
+     다른 기기가 먼저 마친 기록으로 이 기기 결과를 남길 때 행 날짜·id를 그 날짜로 만든다. r3는 열린 날짜를 써서, 다음 날 다른 기기의 중간 기록을 받거나
+     화면을 다시 열면 전날 낸 결과가 다음 날 행으로 남았다. 날짜 칸 없이 넘어온 결과(v214)는 읽을 때 저장된 같은 문항의 열린 날짜로 채운다. */
 const PA_ENGLISH_FINAL=(()=>{
   'use strict';
   const KEY='pa_english_2026_final_v1',LOG_KEY='quiz_logs_eng_fin_e1',CONCEPT='eng_fin-E1',BUDGET=300,B_MAX=3,S9_GAP=7,C2_FROM='2026-12-06';
@@ -399,10 +417,21 @@ const PA_ENGLISH_FINAL=(()=>{
     }
     // r2: 복구 로그의 A/B는 합친 값(B 우선)
     if(gl&&doneThere&&!sameOpen(m))logs.push(closeLogOf(loc,loc.open.date,gkey,token(gl.item,fillFromCur(gl,c),withMode(loc,m))));
+    // 후속 r2(Codex r1 경우 1 · JH 2026-11-25 'S8a·T8·U8·V8 함께'): 연습 쓰기를 이 기기에서 끝내고(결과 cur.wres — v214에서 넘어온 두 번 오답 cur.w2>=2는 정답 공개)
+    //  '다음' 전에 나간 사이 받은 기록에서 그 문항이 이미 끝났으면(이 기기에 다시 열 화면이 없음) 이 기기 쓰기 결과를 그 화면을 연 날로 한 번 남긴다
+    //  (마감 행 id = 날짜+문항 — 다시 받아도 같은 행). 첫 오답만 내고 나갔으면(결과 없음) 남기지 않는다. v214까지는 쓰기 결과가 '다음'에서만 행이 되어 이 경우 사라졌다.
+    //  후속 r4(Codex r3 검토): 행 날짜·id = 이 기기 결과가 정해진 화면을 연 날(c.wd). 날짜 칸이 없을 때만 열린 날짜(읽을 때 wdFill이 채움).
+    {const pw=c&&c.phase==='write'&&(c.wres||(c.w2>=2?'fail':'')),pi=c&&c.item;
+      if(pw&&pi&&pi.type==='step'&&loc.open&&loc.open.key===c.key&&loc.ptr<=pi.idx&&rem.ptr>pi.idx&&SEQ[pi.idx]&&SEQ[pi.idx].kind==='practice'&&SEQ[pi.idx].write)
+        logs.push(closeLogOf(loc,c.wd||loc.open.date,c.key,token(pi,{code:c.code||'ok',w:c.w||0,write:pw},m)));}
+    // 후속 r3(Codex r2 검토 · JH 2026-11-25): 연습 쓰기 화면(쓰기 단계 cur)이 합친 기록에서도 같은 문항으로 열려 있고 아직 끝나지 않았으면(다른 기기의 중간 기록)
+    //  이 기기 쓰기 화면(입력·결과·오답 수)을 그대로 둔다. r2는 버려서 첫 배열 화면으로 돌아갔고, 뒤에 그 기기가 먼저 마쳐도 이 기기 결과가 남지 않았다.
+    //  E1 S8a는 문항 자리가 15여도 진행 위치가 14일 수 있어 위치가 같은지 대신 '지나지 않았는지'(m.ptr<=자리)로 본다.
+    const wk=c&&c.phase==='write'&&c.item,keepW=!!(wk&&wk.type==='step'&&m.open&&m.open.key===c.key&&m.ptr<=wk.idx&&SEQ[wk.idx]&&SEQ[wk.idx].kind==='practice'&&SEQ[wk.idx].write);
     // r6e: 합친 기록의 열린 문항이 이 기기에서 채점한 그 시도(문항·날짜·재확인 차례 같음)이고 받은 기록은 채점하지 않았을 때만 이 기기 화면 상세(cur)를 그대로 쓴다.
     //  받은 기록이 그 문항을 채점했거나 다른 화면이면 섞지 않는다(cur 버림).
     const keepCur=!!(gl&&!remGraded&&m.open&&sameOpen(m)&&m.open.date===loc.open.date);
-    return {st:m,added,clashes,logs,keepCur,stamp:added.length>0||f,changed:added.length>0||logs.length>0||f};
+    return {st:m,added,clashes,logs,keepCur:keepCur||keepW,stamp:added.length>0||f,changed:added.length>0||logs.length>0||f};
   }
   const bKey=(st,sid)=>{const x=st.b.find(y=>y.sid===sid);return 'B.'+sid+'.'+((x?x.tries:0)+1);};
   function schedule(st,sid,date){if(!st.b.some(x=>x.sid===sid))st.b.push({sid,tries:0,last:date});if(!st.noc.includes(date))st.noc.push(date);}
@@ -742,7 +771,15 @@ const PA_ENGLISH_FINAL=(()=>{
       case 'choose':{const ks=s.id==='T12'?['T12a','T12b','T12c']:['T13a','T13b'],f=ks.map(pv),sel=r.sel||{};
         return {t:ks.map((k,i)=>`${k}[p=${f[i]||'-'}${f[i]?';sel='+(sel[k]===undefined?'-':sel[k]):''}]`).join(', '),g:true,ok:f[0]==='ok',extra:f.slice(1).filter(Boolean).map(x=>x==='ok')};}
       case 'exam':{const own=RS.T14a_u?(r.own&&r.own.T14a)||'':'',d=RS.T14a_u?own||RS.T14a||'D-'+r.d:RS.T14a||'D-'+r.d;   // r5: 미확인이면 이 기기 첫 제출, 없으면 정답으로 세지 않음
-        return {t:`T14a[${d.replace('-','=')}${RS.T14a_u?';u=mixed':''};w=${r.dw===undefined?'-':r.dw}], T14b[p=${r.b?r.b+';sel='+(r.sel===undefined?'-':r.sel):'-'}]`,g:true,ok:RS.T14a_u?own==='D-ok':d==='D-ok',extra:r.b?[r.b==='ok']:[]};}
+        // 후속 r1(v215 — E4·E5 r3와 같은 규칙): ①·②는 문항마다 이 기기에서 직접 낸 첫 답(S0.mine)만 한 번 채점 — 맞으면 1, 틀리면 0.
+        //  결과·해설만 보고 '다음'을 누른 문항은 ;seen=1 · 분모·취약 제외(둘 다 아니면 행 nd). D=·p=는 합친 성취 그대로, 이 기기 첫 답과 맞음 여부가 다르면 ;own=ok|fail.
+        //  v214까지는 ①을 늘 채점해, 다른 기기에서 ①을 마친 뒤 이 기기에서 ②만 푼 행에도 ① 점수가 붙었다.
+        const M=S0.mine||{},m1=M.T14a,m2=M.T14b;
+        const t1=`T14a[${d.replace('-','=')}${RS.T14a_u?';u=mixed':''}${m1?((m1==='ok')!==(d==='D-ok')?';own='+m1:''):';seen=1'};w=${r.dw===undefined?'-':r.dw}]`,
+          t2=`T14b[p=${r.b?r.b+';sel='+(r.sel===undefined?'-':r.sel):'-'}${m2?(m2!==r.b?';own='+m2:''):';seen=1'}]`;
+        if(m1)return {t:t1+', '+t2,g:true,ok:m1==='ok',extra:m2?[m2==='ok']:[]};
+        if(m2)return {t:t2+', '+t1,g:true,ok:m2==='ok',extra:[]};   // ②만 직접 골랐으면 ②만(취약 이름이 ②가 되게 앞에)
+        return {t:t1+', '+t2,g:false,ok:false,nd:true};}
       default:return {t:`${s.id}[seen]`,g:false};
     }
   }
@@ -915,6 +952,7 @@ const PA_ENGLISH_FINAL=(()=>{
   // 공유 기록 받기(순수 함수) = E1 adopt(r6)에서 S9 사실 처리를 뺀 것 + '미확인'. 더 최근 서버 기록(rem)을 쓰되 이 기기(loc)에만 있는 실제 기록은 보존한다.
   function adopt2(loc,rem,c,date){
     const m=copy(rem),added=[],logs=[];
+    if(loc.mine)m.mine=copy(loc.mine);   // 후속 r1: 이 기기에서 직접 낸 T14 첫 답(기기에만 두는 칸) — 받은 기록에는 없다
     const gl=loc.open?gradedOpen2(loc):null,gkey=gl?keyOf2(gl.item):'';
     // r2(Codex r1 HOLD 1): 이 기기에서 열었지만 첫 제출 전인 C 문장(T9·T10·T11). 받은 기록에 이 열린 화면이 없으면 노출이 사라지므로 아래에서 보존한다.
     const ls=!gl&&loc.open?seenTarget2(loc,loc.open.key,null):null;
@@ -959,7 +997,24 @@ const PA_ENGLISH_FINAL=(()=>{
       m.res=s.res;m.b=s.b;m.days=s.days.slice().sort();m.ok=s.ok.slice().sort();m.noc=s.noc.slice().sort();f=true;
       logs.push(closeLogOf2(loc,loc.open.date,gkey,token2(gl.item,r,s)));
     }
-    return {st:m,added,logs,keepCur,stamp:added.length>0||f,changed:added.length>0||logs.length>0||f};
+    // 후속 r1(E4·E5 r3 경우 6과 같음): T14를 이 기기에서 직접 풀다 '다음' 전에 나갔고, 받은 기록에서는 T14가 이미 끝났으면(이 기기에 다시 열 화면이 없음)
+    //  직접 낸 첫 답을 그 화면을 연 날로 한 번 남긴다(마감 행 id = 날짜+문항 — 다시 받아도 같은 행).
+    if(loc.open&&loc.open.key==='T14'&&loc.ptr<=IDX2.T14&&m.ptr>IDX2.T14&&loc.mine&&(loc.mine.T14a||loc.mine.T14b)){
+      const R=m.res,r={d:(R.T14a||'').slice(2),dw:R.T14a==='D-fail'?3:R.T14a1?2:R.T14a0?1:0,b:(R.T14b||'').slice(2)||undefined,sel:c&&c.sel?c.sel.T14b:undefined,...(c&&c.own?{own:c.own}:{})};
+      logs.push(closeLogOf2(loc,loc.open.date,'T14',token2({type:'step',idx:IDX2.T14,track:2},r,m)));
+    }
+    // 후속 r2(Codex r1 경우 1 · JH 2026-11-25 'S8a·T8·U8·V8 함께'): 연습 쓰기를 이 기기에서 끝내고(결과 cur.wres — v214에서 넘어온 두 번 오답 cur.w2>=2는 정답 공개)
+    //  '다음' 전에 나간 사이 받은 기록에서 그 문항이 이미 끝났으면(이 기기에 다시 열 화면이 없음) 이 기기 쓰기 결과를 그 화면을 연 날로 한 번 남긴다
+    //  (마감 행 id = 날짜+문항 — 다시 받아도 같은 행). 첫 오답만 내고 나갔으면(결과 없음) 남기지 않는다. v214까지는 쓰기 결과가 '다음'에서만 행이 되어 이 경우 사라졌다.
+    //  후속 r4(Codex r3 검토): 행 날짜·id = 이 기기 결과가 정해진 화면을 연 날(c.wd). 날짜 칸이 없을 때만 열린 날짜(읽을 때 wdFill이 채움).
+    {const pw=c&&c.phase==='write'&&(c.wres||(c.w2>=2?'fail':'')),pi=c&&c.item;
+      if(pw&&pi&&pi.type==='step'&&loc.open&&loc.open.key===c.key&&loc.ptr<=pi.idx&&rem.ptr>pi.idx&&SEQ2[pi.idx]&&SEQ2[pi.idx].kind==='practice'&&SEQ2[pi.idx].write)
+        logs.push(closeLogOf2(loc,c.wd||loc.open.date,c.key,token2(pi,{code:c.code||'ok',w:c.w||0,write:pw},m)));}
+    // 후속 r3(Codex r2 검토 · JH 2026-11-25): 연습 쓰기 화면(쓰기 단계 cur)이 합친 기록에서도 같은 문항으로 열려 있고 아직 끝나지 않았으면(다른 기기의 중간 기록)
+    //  이 기기 쓰기 화면(입력·결과·오답 수)을 그대로 둔다. r2는 버려서 첫 배열 화면으로 돌아갔고, 뒤에 그 기기가 먼저 마쳐도 이 기기 결과가 남지 않았다.
+    //  E1 S8a는 문항 자리가 15여도 진행 위치가 14일 수 있어 위치가 같은지 대신 '지나지 않았는지'(m.ptr<=자리)로 본다.
+    const wk=c&&c.phase==='write'&&c.item,keepW=!!(wk&&wk.type==='step'&&m.open&&m.open.key===c.key&&m.ptr<=wk.idx&&SEQ2[wk.idx]&&SEQ2[wk.idx].kind==='practice'&&SEQ2[wk.idx].write);
+    return {st:m,added,logs,keepCur:keepCur||keepW,stamp:added.length>0||f,changed:added.length>0||logs.length>0||f};
   }
   // r2(Codex r1 HOLD 3)·r3(Codex r2 HOLD 2·3): index 수신기(PA_PROGRESS.mergeConcept)가 eng_fin-E2 두 기록을 합칠 때 부른다. primary = 남길(더 새) 기록의 토큰, other = 버려질 기록의 토큰.
   //  결과 토큰(r:)은 mergeRes2로 합친다 — 버려질 기록에만 있는 첫 답·단계(정답 공개·따라 놓기 마침 등)·첫 노출일·미확인 표시를 남기고, C 문장은 첫 노출일로 판정한다.
@@ -1405,7 +1460,18 @@ const PA_ENGLISH_FINAL=(()=>{
       const R=m.res,r={d:(R[XA]||'').slice(2),dw:R[XA]==='D-fail'?3:R[XA+'1']?2:R[XA+'0']?1:0,b:XB?(R[XM+'b']||'').slice(2)||undefined:undefined,sel:XB&&c&&c.sel?c.sel[XM+'b']:undefined,...(c&&c.own?{own:c.own}:{})};
       logs.push(closeLogOf2(loc,loc.open.date,XM,token2({type:'step',idx:IDX2[XM],track:TR},r,m)));
     }
-    return {st:m,added,logs,keepCur,stamp:added.length>0||f,changed:added.length>0||logs.length>0||f};
+    // 후속 r2(Codex r1 경우 1 · JH 2026-11-25 'S8a·T8·U8·V8 함께'): 연습 쓰기를 이 기기에서 끝내고(결과 cur.wres — v214에서 넘어온 두 번 오답 cur.w2>=2는 정답 공개)
+    //  '다음' 전에 나간 사이 받은 기록에서 그 문항이 이미 끝났으면(이 기기에 다시 열 화면이 없음) 이 기기 쓰기 결과를 그 화면을 연 날로 한 번 남긴다
+    //  (마감 행 id = 날짜+문항 — 다시 받아도 같은 행). 첫 오답만 내고 나갔으면(결과 없음) 남기지 않는다. v214까지는 쓰기 결과가 '다음'에서만 행이 되어 이 경우 사라졌다.
+    //  후속 r4(Codex r3 검토): 행 날짜·id = 이 기기 결과가 정해진 화면을 연 날(c.wd). 날짜 칸이 없을 때만 열린 날짜(읽을 때 wdFill이 채움).
+    {const pw=c&&c.phase==='write'&&(c.wres||(c.w2>=2?'fail':'')),pi=c&&c.item;
+      if(pw&&pi&&pi.type==='step'&&loc.open&&loc.open.key===c.key&&loc.ptr<=pi.idx&&rem.ptr>pi.idx&&SEQ2[pi.idx]&&SEQ2[pi.idx].kind==='practice'&&SEQ2[pi.idx].write)
+        logs.push(closeLogOf2(loc,c.wd||loc.open.date,c.key,token2(pi,{code:c.code||'ok',w:c.w||0,write:pw},m)));}
+    // 후속 r3(Codex r2 검토 · JH 2026-11-25): 연습 쓰기 화면(쓰기 단계 cur)이 합친 기록에서도 같은 문항으로 열려 있고 아직 끝나지 않았으면(다른 기기의 중간 기록)
+    //  이 기기 쓰기 화면(입력·결과·오답 수)을 그대로 둔다. r2는 버려서 첫 배열 화면으로 돌아갔고, 뒤에 그 기기가 먼저 마쳐도 이 기기 결과가 남지 않았다.
+    //  E1 S8a는 문항 자리가 15여도 진행 위치가 14일 수 있어 위치가 같은지 대신 '지나지 않았는지'(m.ptr<=자리)로 본다.
+    const wk=c&&c.phase==='write'&&c.item,keepW=!!(wk&&wk.type==='step'&&m.open&&m.open.key===c.key&&m.ptr<=wk.idx&&SEQ2[wk.idx]&&SEQ2[wk.idx].kind==='practice'&&SEQ2[wk.idx].write);
+    return {st:m,added,logs,keepCur:keepCur||keepW,stamp:added.length>0||f,changed:added.length>0||logs.length>0||f};
   }
   // r2(Codex r1 HOLD 3)·r3(Codex r2 HOLD 2·3): index 수신기(PA_PROGRESS.mergeConcept)가 eng_fin-E2 두 기록을 합칠 때 부른다. primary = 남길(더 새) 기록의 토큰, other = 버려질 기록의 토큰.
   //  결과 토큰(r:)은 mergeRes2로 합친다 — 버려질 기록에만 있는 첫 답·단계(정답 공개·따라 놓기 마침 등)·첫 노출일·미확인 표시를 남기고, C 문장은 첫 노출일로 판정한다.
@@ -1574,8 +1640,8 @@ const PA_ENGLISH_FINAL=(()=>{
         f.main('다음',true,()=>done({code,w,write:res}));};
       const again=()=>{ta.readOnly=false;note(f,fb,sent.wfb1);f.main('다시 제출',!!ta.value.trim(),submit);};
       const submit=()=>{const v=ta.value.slice(0,200);
-        if(gradeWrite(sent.accept,ta.value))return subStep({wres:w2===0?'ok':'help',wtx:v},()=>shut(cur.wres));
-        const n=w2+1;subStep(n>=2?{w2:n,wres:'fail',wtx:v}:{w2:n,wtx:v},()=>{w2=n;if(n>=2)shut('fail');else again();});};
+        if(gradeWrite(sent.accept,ta.value))return subStep({wres:w2===0?'ok':'help',wtx:v,wd:wDay(H.st)},()=>shut(cur.wres));   // 후속 r4: 결과와 그 화면을 연 날을 함께
+        const n=w2+1;subStep(n>=2?{w2:n,wres:'fail',wtx:v,wd:wDay(H.st)}:{w2:n,wtx:v},()=>{w2=n;if(n>=2)shut('fail');else again();});};
       ta.oninput=()=>f.enable(!!ta.value.trim()&&!ta.readOnly);f.main('제출',false,submit);
       if(cur.wres)shut(cur.wres);else if(w2>0){ta.value=cur.wtx||'';again();}
     };
@@ -1784,7 +1850,8 @@ const PA_ENGLISH_FINAL=(()=>{
     function load2(){
       try{const raw=PA_STORAGE.getItem(KEY2);if(!raw)return {st:fresh2(),sit:null,cur:null,shared:'',held:[]};const o=JSON.parse(raw);
         if(!o||!o.st||o.st.v!==1)throw Error('bad');
-        return {st:{...fresh2(),...o.st},sit:o.sit||null,cur:o.cur||null,shared:typeof o.shared==='string'?o.shared:'',held:Array.isArray(o.held)?o.held:[]};}
+        const s={...fresh2(),...o.st},c=o.cur||null;wdFill(s,c);   // 후속 r4: 날짜 칸 없이 넘어온 연습 쓰기 결과(v214 U8·V8 cur.wres) — 같은 문항의 열린 날짜로
+        return {st:s,sit:o.sit||null,cur:c,shared:typeof o.shared==='string'?o.shared:'',held:Array.isArray(o.held)?o.held:[]};}
       catch(_){throw Error('영어 기록을 읽지 못했어요. 기록을 보존한 채 어른에게 알려 주세요.');}
     }
     function w2raw(v){return typeof safeSetItem==='function'?safeSetItem(KEY2,v)===true:(PA_STORAGE.setItem(KEY2,v),true);}
@@ -1943,14 +2010,24 @@ const PA_ENGLISH_FINAL=(()=>{
   function load(){
     try{const raw=PA_STORAGE.getItem(KEY);if(!raw)return {st:fresh(),sit:null,cur:null,shared:'',held:[]};const o=JSON.parse(raw);
       if(!o||!o.st||o.st.v!==1)throw Error('bad');
-      return {st:{...fresh(),...o.st},sit:o.sit||null,cur:o.cur||null,shared:typeof o.shared==='string'?o.shared:'',held:Array.isArray(o.held)?o.held:[]};}
+      const s={...fresh(),...o.st},c=o.cur||null;wdFill(s,c);   // 후속 r4: 날짜 칸 없이 넘어온 연습 쓰기 결과(v214 S8a 두 번 오답) — 같은 문항의 열린 날짜로
+      return {st:s,sit:o.sit||null,cur:c,shared:typeof o.shared==='string'?o.shared:'',held:Array.isArray(o.held)?o.held:[]};}
     catch(_){throw Error('영어 기록을 읽지 못했어요. 기록을 보존한 채 어른에게 알려 주세요.');}
   }
   function write(o){const v=JSON.stringify(o);return typeof safeSetItem==='function'?safeSetItem(KEY,v)===true:(PA_STORAGE.setItem(KEY,v),true);}
+  // 후속 r2(Codex r1 경우 3): v214는 이 기기 첫 답 칸(st2.mine)이 없어, T14를 채점하던 중(마지막 '다음' 전) 업데이트되면 이 기기가 직접 맞힌 문항도 해설만 본 것(seen=1)이 되었다.
+  //  풀던 화면(cur)에 남은 직접 제출 근거로 비어 있는 칸만 한 번 채운다(v215에서 낸 답이 이미 있으면 그대로) — 저장된 st2를 받은 기록으로 바꾸기(adopt2) 전에.
+  //  ① cur.t(v214는 이 기기에서 틀릴 때만 남김)나 이 기기가 정한 D-fail이면 fail, 이 기기가 정한 D-ok·D-help(cur.own.T14a — 다른 기기 오답 뒤 이 기기 첫 답이 정답)면 ok.
+  //  ② 이 기기에서 고른 번호(cur.sel.T14b)의 정오. 근거가 없으면(다른 기기 결과·해설만 봄) 채우지 않는다 → 분모 제외 그대로. 공유 기록에는 싣지 않는다(encode2 그대로).
+  function mine14(s,c){if(!c||c.key!=='T14')return;const M={...(s.mine||{})},o=c.own||{};
+    if(!M.T14a&&(c.t!==undefined||o.T14a))M.T14a=c.t!==undefined||o.T14a==='D-fail'?'fail':'ok';
+    if(!M.T14b&&c.sel&&c.sel.T14b)M.T14b=c.sel.T14b-1===Q14.ans?'ok':'fail';
+    if(M.T14a||M.T14b)s.mine=M;}
   function load2(){
     try{const raw=PA_STORAGE.getItem(KEY2);if(!raw)return {st:fresh2(),sit:null,cur:null,shared:'',held:[]};const o=JSON.parse(raw);
       if(!o||!o.st||o.st.v!==1)throw Error('bad');
-      return {st:{...fresh2(),...o.st},sit:o.sit||null,cur:o.cur||null,shared:typeof o.shared==='string'?o.shared:'',held:Array.isArray(o.held)?o.held:[]};}
+      const s={...fresh2(),...o.st},c=o.cur||null;mine14(s,c);wdFill(s,c);   // 후속 r2: v214에서 T14를 채점하던 중 업데이트된 기기 · r4: 날짜 칸 없이 넘어온 T8 쓰기 결과
+      return {st:s,sit:o.sit||null,cur:c,shared:typeof o.shared==='string'?o.shared:'',held:Array.isArray(o.held)?o.held:[]};}
     catch(_){throw Error('영어 기록을 읽지 못했어요. 기록을 보존한 채 어른에게 알려 주세요.');}
   }
   function w2raw(v){return typeof safeSetItem==='function'?safeSetItem(KEY2,v)===true:(PA_STORAGE.setItem(KEY2,v),true);}
@@ -1998,6 +2075,13 @@ const PA_ENGLISH_FINAL=(()=>{
     syncDay(fn);
   }
   // r5 하위 화면 전환(S9 ①→②→③, S8 배열→쓰기): 바꾼 뒤 저장 → 실패면 되돌리고 그 화면 그대로 멈춤(다시 누르면 다시 저장).
+  // 후속 r4(Codex r3 검토 · JH 2026-11-25): 연습 쓰기(S8a·T8·U8·V8) 결과가 정해질 때 그 화면을 연 날(열린 문항 날짜 — 없으면 오늘)을 결과와 함께 화면 상세에 남긴다(cur.wd).
+  //  다른 기기가 먼저 마친 기록을 받아 이 기기 결과를 남길 때(마감 행 날짜·id) 이 날짜를 쓴다. r3는 열린 날짜를 써서, 다음 날 다른 기기의 중간 기록을 받거나
+  //  화면을 다시 열면 열린 날짜가 그날로 바뀌어 전날 낸 결과가 다음 날 행으로 남았다.
+  function wDay(S){return cur&&S&&S.open&&S.open.key===cur.key&&S.open.date||today;}
+  //  날짜 칸 없이 넘어온 결과(v214 — E1·E2 두 번 오답 정답 공개 cur.w2>=2 · E4·E5 cur.wres)는 읽을 때 저장된 열린 문항이 같은 문항이면 그 날짜로 채운다
+  //  (받은 기록과 합치거나 화면을 다시 열어 열린 날짜가 바뀌기 전 — 이 기기가 그 화면을 연 날).
+  function wdFill(s,c){if(c&&c.phase==='write'&&!c.wd&&(c.wres||c.w2>=2)&&s&&s.open&&s.open.key===c.key&&s.open.date)c.wd=s.open.date;}
   function subStep(set,go){
     const ks=Object.keys(set),old={};for(const k of ks){old[k]=cur[k];cur[k]=set[k];}
     if(!save()){for(const k of ks){if(old[k]===undefined)delete cur[k];else cur[k]=old[k];}return holdHere();}
@@ -2245,17 +2329,26 @@ const PA_ENGLISH_FINAL=(()=>{
     const sent=S[s.sent],heard=/heard/.test(sent.en[1]);
     const arr=()=>{const f=frame(s.title,'');f.add('<p class="e1-lead">순서대로 놓아 봐요.</p>');f.add(`<p class="e1-ko">${esc(sent.ko)}</p>`);
       helpedArrange(f,sent,{w:cur.w||0,onWrong:w=>{cur.w=w;save();}},(code,w)=>{if(!s.write)return done({code,w});subStep({phase:'write',code,w2:0},()=>writePractice(code,w));});};   // r5: 쓰기로 넘어가는 저장 확인
+    // 후속 r1(v215, JH 2026-11-25 — E4·E5 r2 필수 3과 같은 방식): 쓰기 결과(맞음 ok · 도움 뒤 맞음 help · 정답 공개 fail)와 입력(cur.wtx)을 저장한 뒤 안내(저장이 안 되면 그 자리에서 멈춤 — subStep).
+    //  v214까지는 결과를 '다음' 버튼에만 두어, 채점 직후 홈·앱 재실행 뒤 빈 입력칸·'제출'로 돌아가 쓰기 결과가 바뀔 수 있었다(fail → help, ok → fail).
+    //  다시 열면 같은 입력·안내·잠긴 칸·'다음'(결과는 처음 정해진 그대로, 결과 로그의 쓰기 칸은 '다음' 한 번에 한 번). 첫 오답 뒤면 그 입력·안내·'다시 제출'.
     const writePractice=(code,w)=>{
       const f=frame(s.title,'');let w2=cur.w2||0;
       f.add('<p class="e1-lead">이번엔 같은 문장을 직접 써 봐요. 덩어리를 보고 순서대로 쓰면 돼요.</p>');f.add(`<p class="e1-ko">${esc(sent.ko)}</p>`);
       f.add(`<div class="e1-given">${sent.mix.map(i=>`<span>${esc(sent.en[i])}</span>`).join('')}</div>`);
       const ta=f.add('<textarea class="e1-write" placeholder="여기에 영어 문장을 써요" autocapitalize="sentences" autocomplete="off" spellcheck="false"></textarea>'),fb=f.add('<p class="e1-note" hidden></p>');
-      const submit=()=>{
-        if(gradeWrite(sent.accept,ta.value)){ta.classList.add('ok');ta.readOnly=true;note(f,fb,'맞아요.','ok');f.main('다음',true,()=>done({code,w,write:w2===0?'ok':'help'}));return;}
-        w2++;cur.w2=w2;save();
-        if(w2>=2){ta.readOnly=true;note(f,fb,'정답은 이래요: '+sent.en.join(' ')+'.','info');f.main('다음',true,()=>done({code,w,write:'fail'}));}
-        else{note(f,fb,`덩어리 순서대로 써 봐요: 누가 → ${sent.ko4[1]} → 누구를 → 뭐 하는 걸.`);f.main('다시 제출',true,submit);}};
+      const shut=res=>{if(!ta.value)ta.value=cur.wtx||'';ta.readOnly=true;
+        if(res==='fail')note(f,fb,'정답은 이래요: '+sent.en.join(' ')+'.','info');else{ta.classList.add('ok');note(f,fb,'맞아요.','ok');}
+        f.main('다음',true,()=>done({code,w,write:res}));};
+      const again=()=>{ta.readOnly=false;note(f,fb,`덩어리 순서대로 써 봐요: 누가 → ${sent.ko4[1]} → 누구를 → 뭐 하는 걸.`);f.main('다시 제출',!!ta.value.trim(),submit);};
+      const submit=()=>{const v=ta.value.slice(0,200);
+        if(gradeWrite(sent.accept,ta.value))return subStep({wres:w2===0?'ok':'help',wtx:v,wd:wDay(st)},()=>shut(cur.wres));   // 후속 r4: 결과와 그 화면을 연 날을 함께
+        const n=w2+1;subStep(n>=2?{w2:n,wres:'fail',wtx:v,wd:wDay(st)}:{w2:n,wtx:v},()=>{w2=n;if(n>=2)shut('fail');else again();});};
       ta.oninput=()=>f.enable(!!ta.value.trim()&&!ta.readOnly);f.main('제출',false,submit);
+      // 후속 r2(Codex r1 경우 2): v214는 쓰기 결과를 저장하지 않고 오답 수(cur.w2)만 남겼다 — 두 번 틀려 정답을 본 채(w2>=2) 업데이트되면 정답 공개로 복원
+      //  (쓰기 결과 fail · 입력 문구는 v214가 남기지 않아 빈 칸). 첫 오답 한 번(w2=1)이면 다시 제출.
+      const wr0=cur.wres||(w2>=2?'fail':'');
+      if(wr0)shut(wr0);else if(w2>0){ta.value=cur.wtx||'';again();}
     };
     if(cur.phase==='write')return writePractice(cur.code||'ok',cur.w||0);
     if(s.write)return arr();
@@ -2580,17 +2673,24 @@ const PA_ENGLISH_FINAL=(()=>{
     const sent=S2[s.sent];
     const arr=()=>{const f=frame(s.title,'');f.add(`<p class="e1-lead">${s.write?"이번엔 '말했어요'. 자리는 똑같아요.":'순서대로 놓아 봐요.'}</p>`);f.add(`<p class="e1-ko">${esc(sent.ko)}</p>`);
       helped2(f,sent,{w:cur.w||0},(code,w)=>{if(!s.write)return done({code,w});subStep({phase:'write',code,w2:0},()=>wr(code,w));});};
+    // 후속 r1(v215 — E1 S8a와 같은 방식, E4·E5 r2 필수 3): 쓰기 결과·입력(cur.wtx)을 저장한 뒤 안내. 다시 열면 같은 입력·안내·잠긴 칸·'다음', 첫 오답 뒤면 '다시 제출'.
     const wr=(code,w)=>{
       const f=frame(s.title,'');let w2=cur.w2||0;
       f.add('<p class="e1-lead">이번엔 같은 문장을 직접 써 봐요. 덩어리를 보고 순서대로 쓰면 돼요.</p>');f.add(`<p class="e1-ko">${esc(sent.ko)}</p>`);
       f.add(`<div class="e1-given">${sent.mix.map(i=>`<span>${esc(sent.en[i])}</span>`).join('')}</div>`);
       const ta=f.add(TA2),fb=f.add('<p class="e1-note" hidden></p>');
-      const submit=()=>{
-        if(gradeWrite(sent.accept,ta.value)){ta.classList.add('ok');ta.readOnly=true;note(f,fb,'맞아요.','ok');f.main('다음',true,()=>done({code,w,write:w2===0?'ok':'help'}));return;}
-        w2++;cur.w2=w2;save();
-        if(w2>=2){ta.readOnly=true;note(f,fb,'정답은 이래요: '+sent.en.join(' ')+'.','info');f.main('다음',true,()=>done({code,w,write:'fail'}));}
-        else{note(f,fb,'덩어리 순서대로 써 봐요: 누가 → 말했어요 → 그 일을 할 사람 → to + 할 일.');f.main('다시 제출',true,submit);}};
+      const shut=res=>{if(!ta.value)ta.value=cur.wtx||'';ta.readOnly=true;
+        if(res==='fail')note(f,fb,'정답은 이래요: '+sent.en.join(' ')+'.','info');else{ta.classList.add('ok');note(f,fb,'맞아요.','ok');}
+        f.main('다음',true,()=>done({code,w,write:res}));};
+      const again=()=>{ta.readOnly=false;note(f,fb,'덩어리 순서대로 써 봐요: 누가 → 말했어요 → 그 일을 할 사람 → to + 할 일.');f.main('다시 제출',!!ta.value.trim(),submit);};
+      const submit=()=>{const v=ta.value.slice(0,200);
+        if(gradeWrite(sent.accept,ta.value))return subStep({wres:w2===0?'ok':'help',wtx:v,wd:wDay(st2)},()=>shut(cur.wres));   // 후속 r4: 결과와 그 화면을 연 날을 함께
+        const n=w2+1;subStep(n>=2?{w2:n,wres:'fail',wtx:v,wd:wDay(st2)}:{w2:n,wtx:v},()=>{w2=n;if(n>=2)shut('fail');else again();});};
       ta.oninput=()=>f.enable(!!ta.value.trim()&&!ta.readOnly);f.main('제출',false,submit);
+      // 후속 r2(Codex r1 경우 2): v214는 쓰기 결과를 저장하지 않고 오답 수(cur.w2)만 남겼다 — 두 번 틀려 정답을 본 채(w2>=2) 업데이트되면 정답 공개로 복원
+      //  (쓰기 결과 fail · 입력 문구는 v214가 남기지 않아 빈 칸). 첫 오답 한 번(w2=1)이면 다시 제출.
+      const wr0=cur.wres||(w2>=2?'fail':'');
+      if(wr0)shut(wr0);else if(w2>0){ta.value=cur.wtx||'';again();}
     };
     if(cur.phase==='write')return wr(cur.code||'ok',cur.w||0);
     if(s.noDemo)return linkScreen(s,sent,s.title,"이번엔 '부탁했어요'. 자리는 똑같아요 — 누가, 부탁했어요, 그 일을 할 사람, to + 할 일.",arr);
@@ -2606,7 +2706,9 @@ const PA_ENGLISH_FINAL=(()=>{
   //  r4(Codex r3 지적 1·2): ① 잠긴 정답 칸에 되살리는 문장도 실제 채점(gradeWrite)을 통과해야 한다 — 이 기기 입력 중 통과한 마지막 것, 없으면 정답 예문.
   //  ② 제출 직전에 이 기기가 이미 받은 기록(readRemote2)을 합쳐 대조한다(서버 접속 없음). 다른 기기에서 정답이 공개됐으면 정답 확인 화면으로(도움 후 완성 없음),
   //  이미 고쳐 맞혔으면 맞힌 상태로, 다른 기기가 더 이른 날 본 문장이면 이번 답은 연습으로 기록한다. ③ o.solved = 이미 정답을 낸 연습('다음'으로 이어 감).
-  function sync2(){const r=readRemote2();if(!r)return false;const rc=reconcile2(st2,r);if(!rc)return false;st2.res=rc.res;st2.b=rc.b;return true;}
+  // 후속 r1(v215 — E4·E5 r2 필수 1과 같음): 받은 기록의 재확인 실패일(noc)도 합친다(reconcile2가 합집합). v214까지는 성취·예약만 받아, T10을 연 채
+  //  다른 기기의 그날 재확인 실패를 받으면 그날 T11이 열렸다(seq2는 noc가 있는 날 새 C 배열을 이월).
+  function sync2(){const r=readRemote2();if(!r)return false;const rc=reconcile2(st2,r);if(!rc)return false;st2.res=rc.res;st2.b=rc.b;st2.noc=rc.noc;return true;}
   function writeScreen2(title,lead,o,done){
     const c=S2['t-amelia'],f=frame(title,'1/1'),good=o.good,bad=o.bad,RS=st2.res;let key=o.key,help=o.help;
     const stageOf=R=>key&&R[key]===bad?(o.stage&&R[o.stage+'w3']?3:o.stage&&R[o.stage+'w2']?2:1):0;
@@ -2687,7 +2789,7 @@ const PA_ENGLISH_FINAL=(()=>{
     if(/^p-(ok|fail)$/.test(was||''))return show(was==='p-ok'?q.ans:((cur.sel||{})[q.key]?cur.sel[q.key]-1:-1));
     box.querySelectorAll('button').forEach(b=>b.onclick=()=>gate(()=>{
       if(st2.res[q.key])return;const i=+b.dataset.i;cur.sel={...(cur.sel||{}),[q.key]:i+1};
-      fix(st2,q.key,'p-'+(i===q.ans?'ok':'fail'));box.querySelectorAll('button').forEach(x=>x.disabled=true);
+      fix(st2,q.key,'p-'+(i===q.ans?'ok':'fail'));if(q.mine)q.mine(i===q.ans);box.querySelectorAll('button').forEach(x=>x.disabled=true);
       keep2(f,()=>show(i));},f.body));
     f.main('다음',false);
   }
@@ -2722,10 +2824,13 @@ const PA_ENGLISH_FINAL=(()=>{
   // r2(Codex r1 HOLD 4): 오답 수(T14a0 첫째·T14a1 둘째·T14a=D-fail 셋째)와 따라 놓기 마침(T14af)을 저장해, 기기를 바꿔도 남은 도움 단계부터 이어 간다
   //  (셋째 오답 뒤 → 따라 놓기, 따라 놓기를 마친 뒤 → ②). 처음 어긋난 자리(cur.t)는 같은 기기 화면 정보라 다른 기기에서는 공식 줄만.
   const wrong14=()=>st2.res.T14a==='D-fail'?3:st2.res.T14a1?2:st2.res.T14a0?1:0;
+  // 후속 r1(v215 — E4·E5 r3와 같음): 이 기기에서 직접 낸 첫 답(T14 ①·②) — 문항마다 처음 한 번만. 진도(st2)에 두되 공유 기록(encode2)에는 넣지 않고,
+  //  받은 기록으로 진도를 바꿔도(adopt2) 이어 받는다. 결과 토큰(token2)은 이 칸으로만 채점한다.
+  const mine1=(k,ok)=>{const M=st2.mine||(st2.mine={});if(!M[k])M[k]=ok?'ok':'fail';};
   R2.exam=(s,done)=>{
     cur.r=cur.r||{};
     const e=S2.exam,toB=()=>subStep({phase:'b'},B);
-    const B=()=>chooseScreen(s.title,Q14,()=>done({d:cur.r.d||(st2.res.T14a||'').slice(2),dw:cur.r.dw!==undefined?cur.r.dw:wrong14(),b:(st2.res.T14b||'').slice(2)||undefined,sel:(cur.sel||{}).T14b}));
+    const B=()=>chooseScreen(s.title,{...Q14,mine:ok=>mine1('T14b',ok)},()=>done({d:cur.r.d||(st2.res.T14a||'').slice(2),dw:cur.r.dw!==undefined?cur.r.dw:wrong14(),b:(st2.res.T14b||'').slice(2)||undefined,sel:(cur.sel||{}).T14b}));
     const A=()=>{
       const f=frame(s.title,'1/2');f.add('<p class="e1-lead">우리말에 맞게 단어를 순서대로 놓으세요.</p>');f.add(`<p class="e1-ko">${esc(e.ko)}</p>`);
       let w=Math.max(cur.w||0,wrong14());
@@ -2736,6 +2841,7 @@ const PA_ENGLISH_FINAL=(()=>{
       const a=arrange(f,{chunks:e.words,mix:e.mix,words:true,
         onCheck:(ok,order)=>{
           a.lock();
+          mine1('T14a',ok);   // 후속 r1: 받은 기록을 읽기 전에 — 제출 직후 '이미 놓았어요'가 떠도 이 기기 첫 배열의 정오는 이 기기 점수
           // r5(Codex r4 지적 2-T14 ①): 제출을 확정하기 전에 받은 기록과 합친다 — 다른 기기에서 ①을 이미 마쳤으면 그 결과로 ②, 정답 어순을 이미 공개했으면
           //  따라 놓기(새 정답·2/2 없음), 오답만 받았으면 그 단계부터(이번 정답 = 도움 후 완성).
           if(!st2.res.T14a&&sync2()){const d=st2.res.T14a,sw=wrong14();

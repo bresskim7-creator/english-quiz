@@ -1,3 +1,4 @@
+// v215 (2026-11-25 후보, 영어 E1·E2 후속 r2): english_final.js만 — E1 S8a·E2 T8 연습 쓰기의 결과·입력을 저장한 뒤 안내(홈·재실행 뒤 같은 화면·같은 결과) · 연습 쓰기(S8a·T8·U8·V8)를 다른 기기가 먼저 마쳐도 이 기기 쓰기 결과를 한 번 남김 · v214에서 넘어온 채점 도중 상태(S8a·T8 정답 공개 · T14 직접 낸 답) 이어받기 · E2 T10 열린 화면이 받은 기록의 재확인 실패일도 합침(그날 T11 이월) · E2 T14 ①·②는 이 기기에서 직접 낸 첫 답만 채점(결과·해설만 본 문항은 분모·취약 제외). E4·E5는 연습 쓰기 한 자리만 · 서버(GAS v26 r2)·사전 캐시 목록 그대로. CACHE_NAME v214->v215, APP_CACHE_NAME/BUILD_VERSION 동반, english_final.js?v=215.
 // v214 (2026-11-25 후보, 영어 E4·E5 r3 — 원고 E4E5 v1.2·시안 v1(GO)·대응표 v1): english_final.js에 셋째 묶음 E4(-thing + 꾸미는 말, U1~U12)·넷째 묶음 E5(목적격 관계대명사, V1~V14) 추가 — E2 엔진을 묶음 정의만 바꿔 쓰는 공장(묶음마다 순서표·진도·저장 키·공유 기록 eng_fin-E4·E5·결과 로그), 하루 배정은 E4가 열리기 전(E2 T13 전)에는 지금 그대로, 시연·도움 문구는 문장 데이터. index.html에 englishFinalRemoteX·enqueueEnglishFinalX·eng_fin-E4·E5 수신 합치기(E2와 같은 규칙), PRECACHE에 img/E4_u1_sparrow_socks.png. E1·E2 채점·공유 규칙·서버(GAS v26) 불변. CACHE_NAME v213->v214, APP_CACHE_NAME/BUILD_VERSION 동반, english_final.js?v=214.
 // v213 (2026-11-24 후보 b3, 과학 Ⅷ 별과 우주 — 개념 11~14): lesson_sci_fin_b3.js 신규(카드 4·문항 20, 그림 visual_svg·관측 사진 visual_img 5장, final_plan.planned_total 14)·exam_support.js IDS에 sci_fin_b3·사진 출처 글(패널별 Credit·원출처 링크·CC BY 4.0, 문제 화면도 답 전부터)·사진 문항은 사진이 뜰 때까지 보기 잠금·못 불러올 때 안내(보기 숨김)·LESSON_VERSIONS lesson_sci_fin_b3 fin3-1·PRECACHE에 lesson_sci_fin_b3.js와 img/sci_fin_b3_k13_*.jpg 5장. science_final.js·서버(GAS v26) 불변.
 // v212 (2026-11-24 후보, 영어 E2 r7 — 원고 E2 v1.3·시안 v1.1·대응표 v1 + Codex 착수 의견 3건 + Codex r1 검토 4건 + Codex r2 검토 3건 + Codex r3 검토 4건 + Codex r4 검토 2건 + Codex r5 검토 4건 + Codex r6 검토 1건·회차 복원 보강): english_final.js에 둘째 묶음 E2(want·tell·ask + 사람 + to, T1~T14) 추가 — E2 전용 순서표·진도·저장 키(pa_english_2026_final_e2_v1)·공유 기록(eng_fin-E2, 서버 무변경)·결과 로그(quiz_logs_eng_fin_e2), 하루 배정은 E1·E2 함께(E2 전에는 E1 그대로), 하루 끝 문구 '오늘 영어는 여기까지예요.', 고르기 보기 글자 진하게(r3c CSS). index.html에 englishFinalRemoteE2·enqueueEnglishFinalE2·eng_fin-E2 수신 합치기(받은 첫 답·단계 보존, 엇갈린 첫 답 미확인, 영어 모듈 없을 때 보관), PRECACHE에 img/E2_t1_delete_picture.png. E1 채점·공유 규칙·서버(GAS) 불변. CACHE_NAME v212->v212, APP_CACHE_NAME/BUILD_VERSION 동반.
@@ -40,7 +41,7 @@
 // v186 (2026-08-03): 영어 단어 간격 복습(E30) — 서버(GAS v18)가 사다리를 계산하고 클라는 캐시.
 //   device_instance_id·answered_at·recall_mode·question_type 전송, doGet?action=vocab_state pull,
 //   만기 우선 선발(due_cap 램프 + new_min 2), 만기 단어는 카드 없이 냉시험.
-const CACHE_NAME = 'quiz-v214';
+const CACHE_NAME = 'quiz-v215';
 // v169 (2026-06-16): 국어 마인드맵 내용형 교체 — kor2 허브 kor_mindmap_kor2_v2.png, kor3 허브 kor_mindmap_kor3_v2.png(가지별 핵심 불릿 + ⚠함정). lesson_kor2/3 mindmap.img 동반 갱신. PRECACHE 2줄(v1→v2) 교체. APP_CACHE_NAME 동반 범프(v168->v169). 캐시 강제 갱신용.
 // v168 (2026-06-16): 사회 마인드맵 내용형 교체 — soc3 허브 soc_mindmap_soc3_v2.png, soc4 허브 soc_mindmap_soc4_v3.png(가지별 핵심 불릿 + ⚠함정). lesson_soc3/4 mindmap.img 동반 갱신. PRECACHE 2줄(v1→v2 / v2→v3) 교체. APP_CACHE_NAME 동반 범프(v167->v168). 캐시 강제 갱신용.
 // v167 (2026-06-12): 기말 총점검 보강 — 사회 soc4 환율 그래프 exam 4문항(S4-E040~E043, v1.0->1.1; img/soc_forex_shift_demand_v1.png Pillow 256색 FS 압축 -62% 배선) + 과학 sci2 형식 정합 4건(S2-E026 보기형 재설계·E032/E006 ㄱㄴㄷ 변환·E001 자구, v1.1->1.2). PRECACHE에 soc_forex_shift_demand_v1.png 등재. APP_CACHE_NAME 동반 범프(v166->v167). 캐시 강제 갱신용.
@@ -84,7 +85,7 @@ const PRECACHE_URLS = [
   './pa_runtime.js?v=194',
   './english_exam.js?v=197',
   './science_final.js?v=207',
-  './english_final.js?v=214',
+  './english_final.js?v=215',
   './exam_support.js?v=213',
   './exam_home.js?v=198',
   './문해력카드/card.html',
